@@ -14,7 +14,7 @@ namespace Testing {
         }
 
         #region Variables
-        public MicroGame idCard;
+        public IDCard idCard;
         [Range(60, 180)]
         public float bpm = 60;
         public enum difficulty
@@ -32,6 +32,11 @@ namespace Testing {
         #endregion
 
         #region Methods
+        public void Start()
+        {
+            SceneManager.LoadScene(idCard.idName, LoadSceneMode.Additive);
+        }
+
         /// <summary>
         /// Debug the result of the game on a panel
         /// </summary>
