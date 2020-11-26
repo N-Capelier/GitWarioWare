@@ -6,8 +6,7 @@ namespace ExampleScene
 {
     public class PlayerBehavior : MonoBehaviour
     {
-        [Range(60, 120)]
-        public int bpm;
+       
         public Vector3 rightPosition;
         public Vector3 leftPosition;
 

@@ -28,6 +28,8 @@ namespace ExampleScene
         //stop spawns on end game
         private bool canSpawn = true;
 
+        private bool isHard;
+
         [Header("UI")]
         //win panel
         public GameObject panel;
@@ -35,11 +37,14 @@ namespace ExampleScene
         public TextMeshProUGUI bpmText;
         public Slider timerUI;
         public TextMeshProUGUI ticNumber;
+        
         private void Start()
         {
             bpm = Manager.Instance.bpm;
             bpmText.text = "bpm: " + bpm.ToString();
             spawnCooldwon = 60 / bpm;
+            if (Manager.Instance.currentDifficulty == Manager.difficulty.HARD)
+                isHard = true;
         }
 
 
@@ -51,18 +56,41 @@ namespace ExampleScene
             if(timer>= spawnCooldwon && canSpawn)
             {
                 timer = 0;
-                if (left)
-                    Instantiate(ennemy, leftPosition, Quaternion.identity, transform);
+                if (!isHard)
+                    NormalSpawn();
                 else
-                    Instantiate(ennemy, rightPosition, Quaternion.identity, transform);
-                left = !left;
+                   StartCoroutine( HardSpawn());
+
                 cpt++;
                 ticNumber.text = cpt.ToString();
                 if(cpt == 8)
                 {
-                    Manager.Instance.Result(true);
+                   Result(true);
                 }
             }
+        }
+        private void NormalSpawn()
+        {
+            if (left)
+                Instantiate(ennemy, leftPosition, Quaternion.identity, transform);
+            else
+                Instantiate(ennemy, rightPosition, Quaternion.identity, transform);
+            left = !left;
+        }
+         private IEnumerator HardSpawn()
+        {
+            NormalSpawn();
+            if (Random.Range(0, 2) == 1)
+            {
+                yield return new WaitForSeconds(spawnCooldwon / 2);
+                NormalSpawn();
+            }
+
+        }
+        public void Result(bool win)
+        {
+            canSpawn = false;
+            Manager.Instance.Result(true);
         }
     }
 

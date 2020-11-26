@@ -9,11 +9,18 @@ namespace ExampleScene
     {
         [Range(0.1f,1f)]
         public float speed;
+
         //distance at wich the ennemy will hit the enney
         public float minDistance;
 
-        [HideInInspector]
-        // Update is called once per frame
+        private void Start()
+        {
+            if(Manager.Instance.currentDifficulty >= Manager.difficulty.MEDIUM)
+            {
+                speed = speed * 1.2f;
+            }
+        }
+
         void Update()
         {
             transform.Translate(Vector3.down*speed);
