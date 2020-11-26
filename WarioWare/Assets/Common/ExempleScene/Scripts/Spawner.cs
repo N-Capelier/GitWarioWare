@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using Testing;
 
 
 namespace ExampleScene
@@ -36,7 +37,7 @@ namespace ExampleScene
         public TextMeshProUGUI ticNumber;
         private void Start()
         {
-            bpm = player.bpm;
+            bpm = Manager.Instance.bpm;
             bpmText.text = "bpm: " + bpm.ToString();
             spawnCooldwon = 60 / bpm;
         }
@@ -59,31 +60,10 @@ namespace ExampleScene
                 ticNumber.text = cpt.ToString();
                 if(cpt == 8)
                 {
-                    Result(true);
+                    Manager.Instance.Result(true);
                 }
             }
         }
-
-        /// <summary>
-        /// debug the result of the game on a panel
-        /// </summary>
-        /// <param name="win"> if true the game is win , if fals the game is lose</param>
-        public void Result(bool win)
-        {
-            canSpawn = false;
-            foreach (Ennemy ennemy in GetComponentsInChildren<Ennemy>())
-            {
-               Destroy( ennemy.gameObject);
-            }
-            panel.SetActive(true);
-            if (win)
-                resultText.text = "Victory";
-            else
-                resultText.text = "Lose";
-           
-
-        }
-        
     }
 
 }

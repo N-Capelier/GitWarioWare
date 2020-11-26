@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Testing;
 
 namespace ExampleScene
 {
@@ -33,7 +34,7 @@ namespace ExampleScene
             {
                 if (transform.position.y - hit.transform.position.y <= minDistance)
                 {
-                    transform.parent.GetComponent<Spawner>().Result(false);
+                    Manager.Instance.Result(false);
                 }
             }
         }
