@@ -16,6 +16,6 @@ public class IDCard : ScriptableObject
 
 
 public enum Cluster { Theodore, Aurelien, Thibault};
-public enum TrioTheodore { A1,B1,C1,D1};
-public enum TrioAurelien { A2,B2,C2,D2};
-public enum TrioThibault { A3,B3,C3,D3};
+public enum TrioTheodore { Brigantin, SpanishInquisition, TrapioWare, LeRafiot };
+public enum TrioAurelien { ACommeAkuma, RadioRTL, DragonsPépères};
+public enum TrioThibault { LLL, Soupe, Fleebos, SAS};
