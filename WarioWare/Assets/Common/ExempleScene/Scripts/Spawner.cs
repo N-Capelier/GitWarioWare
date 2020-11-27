@@ -38,6 +38,7 @@ namespace ExampleScene
         public Slider timerUI;
         public TextMeshProUGUI ticNumber;
         public Image input;
+
         private void Start()
         {
             bpm = Manager.Instance.bpm;
@@ -54,26 +55,29 @@ namespace ExampleScene
             timer += Time.deltaTime;
             timerUI.value = timer / spawnCooldwon;
 
-            if(timer>= spawnCooldwon && canSpawn  )
+            if (timer >= spawnCooldwon && canSpawn)
             {
                 timer = 0;
-                if(cpt == 0)
+                if (cpt == 0)
                     input.gameObject.SetActive(false);
 
                 if (cpt > 0)
                 {
-                if (!isHard)
-                    NormalSpawn();
-                else
-                   StartCoroutine( HardSpawn());
 
-                }                
+
+                    if (!isHard)
+                        NormalSpawn();
+                    else
+                        StartCoroutine(HardSpawn());
+
+
+                }
 
                 cpt++;
                 ticNumber.text = cpt.ToString();
-                if(cpt == 8)
+                if (cpt == 8)
                 {
-                   Result(true);
+                    Result(true);
                 }
             }
         }
@@ -85,7 +89,7 @@ namespace ExampleScene
                 Instantiate(ennemy, rightPosition, Quaternion.identity, transform);
             left = !left;
         }
-         private IEnumerator HardSpawn()
+        private IEnumerator HardSpawn()
         {
             NormalSpawn();
             if (Random.Range(0, 2) == 1)
@@ -98,7 +102,7 @@ namespace ExampleScene
         public void Result(bool win)
         {
             canSpawn = false;
-            Manager.Instance.Result(true);
+            Manager.Instance.Result(win);
         }
     }
 
