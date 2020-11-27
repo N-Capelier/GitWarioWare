@@ -34,7 +34,7 @@ namespace Testing {
         #region Methods
         public void Start()
         {
-            SceneManager.LoadScene(idCard.idName, LoadSceneMode.Additive);
+            SceneManager.LoadScene(idCard.microGameScene.BuildIndex, LoadSceneMode.Additive);
         }
 
         /// <summary>

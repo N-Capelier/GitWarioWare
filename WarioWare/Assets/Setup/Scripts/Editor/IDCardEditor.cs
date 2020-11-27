@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine.SceneManagement;
 using Trisibo;
+using UnityEngine;
 
 [CustomEditor(typeof(IDCard))]
 public class IDCardEditor : Editor {
@@ -11,18 +12,13 @@ public class IDCardEditor : Editor {
 	private TrioAurelien trioAurel;
 	private TrioTheodore trioTheo;
 	private TrioThibault trioThibault;
-
 	private void OnEnable() {
 		idCard = target as IDCard;
 	}
-	
 
-	
 	public override void OnInspectorGUI()
 	{
-		if (idCard.idName == null || idCard.idName == string.Empty)
-			idCard.idName = idCard.name;
-		idCard.idName = EditorGUILayout.TextField("Nom :" ,idCard.idName);
+		
 		idCard.cluster = (Cluster)EditorGUILayout.EnumPopup("Cluster ",idCard.cluster);
         switch (idCard.cluster)
         {
@@ -41,9 +37,31 @@ public class IDCardEditor : Editor {
             default:
                 break;
         }
+
+		idCard.input = (Gameplay)EditorGUILayout.EnumPopup("Gameplay ", idCard.input);
+
 		EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(idCard.microGameScene)));
+
+		GUILayout.Space(830);
+
+		if (GUILayout.Button("Add To Build")) { AddScene(idCard.microGameScene.EditorSceneAsset); }
+
 		EditorUtility.SetDirty(idCard);
 		Repaint();
 		serializedObject.ApplyModifiedProperties();
     }
+	private void AddScene(SceneAsset scene)
+	{
+		List<EditorBuildSettingsScene> m_SceneAssets = new List<EditorBuildSettingsScene>();
+        for (int i = 0; i < EditorBuildSettings.scenes.Length; i++)
+        {
+			var _path = EditorBuildSettings.scenes[i].path;
+			m_SceneAssets.Add(new EditorBuildSettingsScene (_path,true));
+        }
+		string scenePath = AssetDatabase.GetAssetPath(scene);
+		m_SceneAssets.Add(new EditorBuildSettingsScene(scenePath, true));
+
+		EditorBuildSettings.scenes = m_SceneAssets.ToArray();
+
+	}
 }

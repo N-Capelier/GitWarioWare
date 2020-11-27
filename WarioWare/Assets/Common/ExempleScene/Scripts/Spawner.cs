@@ -37,7 +37,7 @@ namespace ExampleScene
         public TextMeshProUGUI bpmText;
         public Slider timerUI;
         public TextMeshProUGUI ticNumber;
-        
+        public Image input;
         private void Start()
         {
             bpm = Manager.Instance.bpm;
@@ -53,13 +53,21 @@ namespace ExampleScene
         {
             timer += Time.deltaTime;
             timerUI.value = timer / spawnCooldwon;
-            if(timer>= spawnCooldwon && canSpawn)
+
+            if(timer>= spawnCooldwon && canSpawn  )
             {
                 timer = 0;
+                if(cpt == 0)
+                    input.gameObject.SetActive(false);
+
+                if (cpt > 0)
+                {
                 if (!isHard)
                     NormalSpawn();
                 else
                    StartCoroutine( HardSpawn());
+
+                }                
 
                 cpt++;
                 ticNumber.text = cpt.ToString();

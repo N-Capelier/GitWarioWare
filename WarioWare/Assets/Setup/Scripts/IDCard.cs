@@ -7,9 +7,10 @@ using Trisibo;
 [System.Serializable]
 public class IDCard : ScriptableObject
 {
-    public string idName ;
+    
     public Cluster cluster;
     public string trio;
+    public Gameplay input;
   [SerializeField]  public SceneField microGameScene;
     
 }
@@ -19,3 +20,5 @@ public enum Cluster { Theodore, Aurelien, Thibault};
 public enum TrioTheodore { Brigantin, SpanishInquisition, TrapioWare, LeRafiot };
 public enum TrioAurelien { ACommeAkuma, RadioRTL, DragonsPépères};
 public enum TrioThibault { LLL, Soupe, Fleebos, SAS};
+
+public enum Gameplay { ButtonA, ButtonB, ButtonY, ButtonX, Bumper, Trigger}
