@@ -15,7 +15,7 @@ public class TimedBehaviour : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().name == "TestingScene")
         {
-            bpm = Manager.Instance.bpm;
+            bpm =(float) Manager.Instance.bpm;
             currentDifficulty = Manager.Instance.currentDifficulty;
         }
     }
