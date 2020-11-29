@@ -47,7 +47,7 @@ namespace ExampleScene
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            timerUI.value = timer / spawnCooldown;
+            timerUI.value = (float)timer / spawnCooldown;
 
         }
 

@@ -9,8 +9,9 @@ public class TimedBehaviour : MonoBehaviour
    [HideInInspector] public float bpm = 60;
     [HideInInspector] public Manager.difficulty currentDifficulty = 0;
 
-    [HideInInspector] public float timer;
-
+   
+   public double timer;
+    public double currentTime;
     public virtual void Start()
     {
         if (SceneManager.GetActiveScene().name == "TestingScene")
@@ -18,15 +19,16 @@ public class TimedBehaviour : MonoBehaviour
             bpm =(float) Manager.Instance.bpm;
             currentDifficulty = Manager.Instance.currentDifficulty;
         }
+        currentTime = AudioSettings.dspTime;
     }
 
 
     public virtual void FixedUpdate()
     {
-        timer += Time.deltaTime;
+        timer = AudioSettings.dspTime - currentTime;
         if (timer >= 60 / bpm)
         {
-            timer = 0;
+            currentTime = AudioSettings.dspTime;
             TimedUpdate();
         }
     }
