@@ -8,14 +8,10 @@ using Testing;
 
 namespace ExampleScene
 {
-    public class Spawner : MonoBehaviour
+    public class Spawner : TimedBehaviour
     {
-        //will do the cooldwon
-        private float timer;
-        //global bpm at start
-        private float bpm;
-        // 60/ bpm to ahve a timer in seconds
-        private float spawnCooldwon;
+        private float spawnCooldown;
+
         //references
         public PlayerBehavior player;
         public GameObject ennemy;
@@ -39,29 +35,31 @@ namespace ExampleScene
         public TextMeshProUGUI ticNumber;
         public Image input;
 
-        private void Start()
+        public override void Start()
         {
-            bpm = Manager.Instance.bpm;
+            base.Start();
             bpmText.text = "bpm: " + bpm.ToString();
-            spawnCooldwon = 60 / bpm;
             if (Manager.Instance.currentDifficulty == Manager.difficulty.HARD)
                 isHard = true;
+            spawnCooldown = 60 / bpm;
         }
 
-
-        // Update is called once per frame
-        void FixedUpdate()
+        public override void FixedUpdate()
         {
-            timer += Time.deltaTime;
-            timerUI.value = timer / spawnCooldwon;
+            base.FixedUpdate();
+            timerUI.value = timer / spawnCooldown;
 
-            if (timer >= spawnCooldwon && canSpawn)
+        }
+
+        public override void TimedUpdate()
+        {
+            if (canSpawn)
             {
-                timer = 0;
+
                 if (cpt == 0)
                     input.gameObject.SetActive(false);
 
-                if (cpt > 0)
+                if (cpt > 0 && cpt<8)
                 {
 
 
@@ -81,6 +79,7 @@ namespace ExampleScene
                 }
             }
         }
+
         private void NormalSpawn()
         {
             if (left)
@@ -94,7 +93,7 @@ namespace ExampleScene
             NormalSpawn();
             if (Random.Range(0, 2) == 1)
             {
-                yield return new WaitForSeconds(spawnCooldwon / 2);
+                yield return new WaitForSeconds(spawnCooldown / 2);
                 NormalSpawn();
             }
 

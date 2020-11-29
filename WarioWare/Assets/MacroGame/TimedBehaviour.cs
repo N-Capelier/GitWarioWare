@@ -4,12 +4,12 @@ using UnityEngine;
 using Testing;
 using UnityEngine.SceneManagement;
 
-public class TimedBehavior : MonoBehaviour
+public class TimedBehaviour : MonoBehaviour
 {
-    float bpm = 60;
-    Manager.difficulty currentDifficulty = 0;
-  
-    private float timer;
+   [HideInInspector] public float bpm = 60;
+    [HideInInspector] public Manager.difficulty currentDifficulty = 0;
+
+    [HideInInspector] public float timer;
 
     public virtual void Start()
     {
