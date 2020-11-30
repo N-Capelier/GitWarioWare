@@ -19,8 +19,7 @@ namespace ExampleScene
         public Vector3 leftPosition;
         // previous ennemy was left or right
         private bool left;
-        // end the game when reach 8
-        private int cpt;
+
         //stop spawns on end game
         private bool canSpawn = true;
 
@@ -53,27 +52,24 @@ namespace ExampleScene
 
         public override void TimedUpdate()
         {
+            base.TimedUpdate();
             if (canSpawn)
             {
 
-                if (cpt == 0)
+                if (Tic == 1)
                     input.gameObject.SetActive(false);
 
-                if (cpt > 0 && cpt<8)
+                if (Tic > 1 && Tic<8)
                 {
-
-
                     if (!isHard)
                         NormalSpawn();
                     else
                         StartCoroutine(HardSpawn());
-
-
                 }
 
-                cpt++;
-                ticNumber.text = cpt.ToString();
-                if (cpt == 8)
+               
+                ticNumber.text = Tic.ToString();
+                if (Tic == 8)
                 {
                     Result(true);
                 }

@@ -10,8 +10,16 @@ public class TimedBehaviour : MonoBehaviour
     [HideInInspector] public Manager.difficulty currentDifficulty = 0;
 
     private bool isInPlayableScene;
-   public double timer;
+    public double timer;
     public double currentTime;
+
+    // tic increment every timed update, at 8 you must call the result
+    public int Tic
+    {
+        get;
+        private set;
+    }
+
     public virtual void Start()
     {
         if (SceneManager.GetActiveScene().name == "TestingScene")
@@ -41,7 +49,7 @@ public class TimedBehaviour : MonoBehaviour
         if (timer >= 60 / bpm)
         {
             timer = 0;
-            TimedUpdate();
+            TimedUpdate();            
         }
     }
     /// <summary>
@@ -53,7 +61,7 @@ public class TimedBehaviour : MonoBehaviour
         if (timer >= 60 / bpm)
         {
             currentTime = AudioSettings.dspTime;
-            TimedUpdate();
+            TimedUpdate();            
         }
     }
     #endregion
@@ -63,7 +71,7 @@ public class TimedBehaviour : MonoBehaviour
     /// </summary>
     public virtual void TimedUpdate()
     {
-
+        Tic++;
     }
 
 }

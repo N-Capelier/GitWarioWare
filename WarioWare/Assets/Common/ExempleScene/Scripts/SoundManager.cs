@@ -35,7 +35,7 @@ namespace ExampleScene
         //Update call every tics
         public override void TimedUpdate()
         {
-
+            base.TimedUpdate();
         }
 
     }
