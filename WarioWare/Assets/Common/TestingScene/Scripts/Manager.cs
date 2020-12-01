@@ -8,7 +8,7 @@ using UnityEngine.UI;
 namespace Testing { 
     public class Manager : Singleton<Manager>
     {
-        public enum difficulty
+        public enum Difficulty
         {
             EASY,
             MEDIUM,
@@ -31,7 +31,7 @@ namespace Testing {
       
         public BPM bpm = BPM.Slow;
         
-        public difficulty currentDifficulty;
+        public Difficulty currentDifficulty;
 
         [Header("UI Management")]
         public GameObject panel;

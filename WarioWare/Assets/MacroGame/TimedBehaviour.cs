@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class TimedBehaviour : MonoBehaviour
 {
    [HideInInspector] public float bpm = 60;
-    [HideInInspector] public Manager.difficulty currentDifficulty = 0;
+    [HideInInspector] public Manager.Difficulty currentDifficulty = 0;
 
     private bool isInPlayableScene;
     public double timer;
