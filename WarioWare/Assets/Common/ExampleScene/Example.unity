@@ -972,6 +972,7 @@ MonoBehaviour:
   bpm: 60
   currentDifficulty: 0
   timer: 0
+  currentTime: 0
   player: {fileID: 472217540}
   ennemy: {fileID: 8115943555535704992, guid: 8cc0e224a3aef984c99a8f02099b4e2e, type: 3}
   rightPosition: {x: 3.5, y: 18, z: 0}
@@ -980,7 +981,7 @@ MonoBehaviour:
   resultText: {fileID: 169655129}
   bpmText: {fileID: 1055891970}
   timerUI: {fileID: 1428133427}
-  ticNumber: {fileID: 1361720925}
+  tickNumber: {fileID: 0}
   input: {fileID: 1330898506}
 --- !u!4 &948930884
 Transform:
@@ -1206,7 +1207,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: -1758291959
-  m_SortingOrder: 1
+  m_SortingOrder: 100
   m_TargetDisplay: 0
 --- !u!224 &1107565170
 RectTransform:
@@ -1452,7 +1453,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -1.9000244, y: -5.5}
+  m_AnchoredPosition: {x: -1.8999023, y: -5.5}
   m_SizeDelta: {x: 55.435913, y: 55.436157}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1270132420
@@ -1655,7 +1656,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 1.5999756, y: 2.2677002}
+  m_AnchoredPosition: {x: 1.6000977, y: 2.2677002}
   m_SizeDelta: {x: 103.69458, y: 70.97162}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1330898506
@@ -2229,6 +2230,7 @@ MonoBehaviour:
   bpm: 60
   currentDifficulty: 0
   timer: 0
+  currentTime: 0
   globalMusic:
   - {fileID: 1314369783}
   - {fileID: 2068924902}

@@ -9,9 +9,10 @@ public class IDCard : ScriptableObject
 {
     
     public Cluster cluster;
-    public string trio;
+    [SerializeField] public string trio;
     public ChallengeHaptique haptiqueChal;
     public ChallengeInput inputChal;
+    public int indexEnum;
   [SerializeField]  public SceneField microGameScene;
     
 }

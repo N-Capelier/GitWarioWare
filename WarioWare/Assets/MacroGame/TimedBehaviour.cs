@@ -45,9 +45,10 @@ public class TimedBehaviour : MonoBehaviour
     /// </summary>
     private void UpdateCustomScene()
     {
-        timer = Time.deltaTime;
+        timer += Time.deltaTime;
         if (timer >= 60 / bpm)
         {
+            Tick++;
             timer = 0;
             TimedUpdate();            
         }
@@ -60,6 +61,7 @@ public class TimedBehaviour : MonoBehaviour
         timer = AudioSettings.dspTime - currentTime;
         if (timer >= 60 / bpm)
         {
+            Tick++;
             currentTime = AudioSettings.dspTime;
             TimedUpdate();            
         }
@@ -71,7 +73,7 @@ public class TimedBehaviour : MonoBehaviour
     /// </summary>
     public virtual void TimedUpdate()
     {
-        Tick++;
+        
     }
 
 }
