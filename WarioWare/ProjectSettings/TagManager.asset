@@ -8,8 +8,8 @@ TagManager:
   - Button1
   - Button2
   - Wall
-  - Ennemy2
-  - Ennemy1
+  - Enemy1
+  - Enemy2
   layers:
   - Default
   - TransparentFX
@@ -20,7 +20,7 @@ TagManager:
   - 
   - 
   - Player
-  - Ennemy
+  - Enemy
   - AbovePlayer
   - UnderPlayer
   - 
