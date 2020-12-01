@@ -7,14 +7,14 @@ using UnityEngine.SceneManagement;
 public class TimedBehaviour : MonoBehaviour
 {
    [HideInInspector] public float bpm = 60;
-    [HideInInspector] public Manager.difficulty currentDifficulty = 0;
+    [HideInInspector] public Manager.Difficulty currentDifficulty = 0;
 
     private bool isInPlayableScene;
     public double timer;
     public double currentTime;
 
-    // tic increment every timed update, at 8 you must call the result
-    public int Tic
+    // Tick increments on every TimedUpdate(), at 8 you must call the result
+    public int Tick
     {
         get;
         private set;
@@ -67,11 +67,11 @@ public class TimedBehaviour : MonoBehaviour
     #endregion
 
     /// <summary>
-    /// TimedUdpate is call at each tic. Use this if you want your script to update with rithme
+    /// TimedUdpate is called at each tick. Use this if you want your script to update with rythme.
     /// </summary>
     public virtual void TimedUpdate()
     {
-        Tic++;
+        Tick++;
     }
 
 }
