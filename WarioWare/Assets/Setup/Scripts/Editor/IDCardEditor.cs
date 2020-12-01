@@ -38,7 +38,7 @@ public class IDCardEditor : Editor {
                 break;
         }
 
-		idCard.aptiqueChal = (ChallengeAptique)EditorGUILayout.EnumPopup("Challenge Aptique ", idCard.aptiqueChal);
+		idCard.haptiqueChal = (ChallengeHaptique)EditorGUILayout.EnumPopup("Challenge Haptique ", idCard.haptiqueChal);
 		idCard.inputChal = (ChallengeInput)EditorGUILayout.EnumPopup("Challenge Input ", idCard.inputChal);
 		
 		EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(idCard.microGameScene)));

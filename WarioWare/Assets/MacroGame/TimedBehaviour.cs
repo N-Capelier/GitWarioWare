@@ -13,7 +13,7 @@ public class TimedBehaviour : MonoBehaviour
     public double timer;
     public double currentTime;
 
-    // tic increment every timed update, at 8 you must call the result
+    // Tick increments on every TimedUpdate(), at 8 you must call the result
     public int Tick
     {
         get;
@@ -67,7 +67,7 @@ public class TimedBehaviour : MonoBehaviour
     #endregion
 
     /// <summary>
-    /// TimedUdpate is call at each tic. Use this if you want your script to update with rithme
+    /// TimedUdpate is called at each tick. Use this if you want your script to update with rythme.
     /// </summary>
     public virtual void TimedUpdate()
     {

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cluster: 0
   trio: Brigantin
-  aptiqueChal: 0
+  haptiqueChal: 0
   inputChal: 0
   microGameScene:
     sceneAsset: {fileID: 102900000, guid: 5a69eb2c7d8cf83418eec73e0e0afa85, type: 3}
