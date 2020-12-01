@@ -26,13 +26,13 @@ namespace ExampleScene
 
         }
 
-        //Update call on a fixed time
+        //Update called on a fixed time
         public override void FixedUpdate()
         {
             base.FixedUpdate();
         }
 
-        //Update call every tics
+        //Update call every ticks
         public override void TimedUpdate()
         {
             base.TimedUpdate();
