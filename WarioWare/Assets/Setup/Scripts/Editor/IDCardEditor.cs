@@ -38,8 +38,9 @@ public class IDCardEditor : Editor {
                 break;
         }
 
-		idCard.input = (Gameplay)EditorGUILayout.EnumPopup("Gameplay ", idCard.input);
-
+		idCard.aptiqueChal = (ChallengeAptique)EditorGUILayout.EnumPopup("Challenge Aptique ", idCard.aptiqueChal);
+		idCard.inputChal = (ChallengeInput)EditorGUILayout.EnumPopup("Challenge Input ", idCard.inputChal);
+		
 		EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(idCard.microGameScene)));
 
 		GUILayout.Space(830);

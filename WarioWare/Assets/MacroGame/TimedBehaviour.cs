@@ -14,7 +14,7 @@ public class TimedBehaviour : MonoBehaviour
     public double currentTime;
 
     // tic increment every timed update, at 8 you must call the result
-    public int Tic
+    public int Tick
     {
         get;
         private set;
@@ -71,7 +71,7 @@ public class TimedBehaviour : MonoBehaviour
     /// </summary>
     public virtual void TimedUpdate()
     {
-        Tic++;
+        Tick++;
     }
 
 }

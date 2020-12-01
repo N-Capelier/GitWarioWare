@@ -31,7 +31,7 @@ namespace ExampleScene
         public TextMeshProUGUI resultText;
         public TextMeshProUGUI bpmText;
         public Slider timerUI;
-        public TextMeshProUGUI ticNumber;
+        public TextMeshProUGUI tickNumber;
         public Image input;
 
         public override void Start()
@@ -56,10 +56,10 @@ namespace ExampleScene
             if (canSpawn)
             {
 
-                if (Tic == 1)
+                if (Tick == 1)
                     input.gameObject.SetActive(false);
 
-                if (Tic > 1 && Tic<8)
+                if (Tick > 1 && Tick<8)
                 {
                     if (!isHard)
                         NormalSpawn();
@@ -68,8 +68,8 @@ namespace ExampleScene
                 }
 
                
-                ticNumber.text = Tic.ToString();
-                if (Tic == 8)
+                tickNumber.text = Tick.ToString();
+                if (Tick == 8)
                 {
                     Result(true);
                 }
