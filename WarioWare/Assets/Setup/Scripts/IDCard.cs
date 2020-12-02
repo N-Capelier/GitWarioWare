@@ -9,8 +9,10 @@ public class IDCard : ScriptableObject
 {
     
     public Cluster cluster;
-    public string trio;
-    public Gameplay input;
+    [SerializeField] public string trio;
+    public ChallengeHaptique haptiqueChal;
+    public ChallengeInput inputChal;
+    public int indexEnum;
   [SerializeField]  public SceneField microGameScene;
     
 }
@@ -21,4 +23,6 @@ public enum TrioTheodore { Brigantin, SpanishInquisition, TrapioWare, LeRafiot }
 public enum TrioAurelien { ACommeAkuma, RadioRTL, DragonsPépères};
 public enum TrioThibault { LLL, Soupe, Fleebos, SAS};
 
-public enum Gameplay { ButtonA, ButtonB, ButtonY, ButtonX, Bumper, Trigger}
+
+public enum ChallengeHaptique { A1, A2, A3, A4, A5, A6, A7,A8,A9,A10 }
+public enum ChallengeInput { I1,I2,I3,I4,I5,I6,I7,I8,I9,I10}

@@ -8,6 +8,19 @@ using UnityEngine.UI;
 namespace Testing { 
     public class Manager : Singleton<Manager>
     {
+        public enum Difficulty
+        {
+            EASY,
+            MEDIUM,
+            HARD
+        }
+        public enum BPM
+        {
+            Slow = 60,
+            Medium =90,
+            Fast = 120,
+            SuperFast = 140
+        }
         private void Awake()
         {
             CreateSingleton(true);
@@ -15,15 +28,10 @@ namespace Testing {
 
         #region Variables
         public IDCard idCard;
-        [Range(60, 180)]
-        public float bpm = 60;
-        public enum difficulty
-        {
-            EASY,
-            MEDIUM,
-            HARD
-        }
-        public difficulty currentDifficulty;
+      
+        public BPM bpm = BPM.Slow;
+        
+        public Difficulty currentDifficulty;
 
         [Header("UI Management")]
         public GameObject panel;
