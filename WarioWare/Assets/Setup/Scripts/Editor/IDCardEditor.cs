@@ -49,8 +49,8 @@ public class IDCardEditor : Editor {
 		
 		EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(idCard.microGameScene)));
 
-		
-
+		EditorGUILayout.Space(20);
+		if(idCard.microGameScene.BuildIndex == -1)
 		if (GUILayout.Button("Add To Build")) { AddScene(idCard.microGameScene.EditorSceneAsset); }
 
 		EditorUtility.SetDirty(idCard);
