@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Trisibo;
+using Caps;
 [CreateAssetMenu(fileName = "New ID", menuName = "IDCard", order = 50)]
 [System.Serializable]
 public class IDCard : ScriptableObject
@@ -17,7 +18,7 @@ public class IDCard : ScriptableObject
     [SerializeField]  public SceneField microGameScene;
 
     // will be used later on the macro;
-    public int currentDifficulty;
+    public Difficulty currentDifficulty;
 }
 
 
