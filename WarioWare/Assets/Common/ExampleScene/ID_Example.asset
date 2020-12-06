@@ -17,7 +17,9 @@ MonoBehaviour:
   haptiqueChal: 0
   inputChal: 0
   indexEnum: 0
+  verbe: Dodge left/right
   microGameScene:
     sceneAsset: {fileID: 102900000, guid: 5a69eb2c7d8cf83418eec73e0e0afa85, type: 3}
     required: 0
     buildIndex: 1
+  currentDifficulty: 0

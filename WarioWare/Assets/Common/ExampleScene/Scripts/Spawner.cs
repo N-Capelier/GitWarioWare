@@ -32,7 +32,6 @@ namespace ExampleScene
         public TextMeshProUGUI bpmText;
         public Slider timerUI;
         public TextMeshProUGUI tickNumber;
-        public Image input;
 
         public override void Start()
         {
@@ -55,11 +54,8 @@ namespace ExampleScene
             base.TimedUpdate();
             if (canSpawn)
             {
-
-                if (Tick == 1)
-                    input.gameObject.SetActive(false);
-
-                if (Tick > 1 && Tick<8)
+             
+                if ( Tick<8)
                 {
                     if (!isHard)
                         NormalSpawn();

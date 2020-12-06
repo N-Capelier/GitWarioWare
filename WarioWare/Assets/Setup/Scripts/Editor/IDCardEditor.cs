@@ -49,6 +49,14 @@ public class IDCardEditor : Editor {
 		
 		EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(idCard.microGameScene)));
 
+
+		EditorGUILayout.LabelField("Verbe " + idCard.verbe.Length.ToString() + "/ 16");
+		idCard.verbe = EditorGUILayout.TextField(idCard.verbe);
+		if(idCard.verbe.Length> 16)
+        {
+			idCard.verbe =	idCard.verbe.Remove(16,idCard.verbe.Length-16);
+        }
+
 		EditorGUILayout.Space(20);
 		if(idCard.microGameScene.BuildIndex == -1)
 		if (GUILayout.Button("Add To Build")) { AddScene(idCard.microGameScene.EditorSceneAsset); }
