@@ -36,13 +36,21 @@ namespace Testing {
         [Header("UI Management")]
         public GameObject panel;
         public TextMeshProUGUI resultText;
-
+        public GameObject verbePanel;
+        public TextMeshProUGUI verbeText;
+        public GameObject sceneCam;
         #endregion
 
         #region Methods
-        public void Start()
+        public IEnumerator Start()
         {
-            SceneManager.LoadScene(idCard.microGameScene.BuildIndex, LoadSceneMode.Additive);
+            var _scene = SceneManager.LoadSceneAsync(idCard.microGameScene.BuildIndex, LoadSceneMode.Additive);
+            _scene.allowSceneActivation = false;
+            verbeText.text = idCard.verbe;
+            yield return new WaitForSeconds(2f);
+            sceneCam.SetActive(false);
+            verbePanel.SetActive(false);
+            _scene.allowSceneActivation = true;
         }
 
         /// <summary>
@@ -58,6 +66,7 @@ namespace Testing {
                 resultText.text = "You Lost!";
             
             panel.SetActive(true);
+
         }
         #endregion
     }
