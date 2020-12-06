@@ -13,8 +13,11 @@ public class IDCard : ScriptableObject
     public ChallengeHaptique haptiqueChal;
     public ChallengeInput inputChal;
     public int indexEnum;
-  [SerializeField]  public SceneField microGameScene;
-    
+    public string verbe = string.Empty;
+    [SerializeField]  public SceneField microGameScene;
+
+    // will be used later on the macro;
+    public int currentDifficulty;
 }
 
 
