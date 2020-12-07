@@ -16,13 +16,13 @@ namespace UI
         // Start is called before the first frame update
         void Start()
         {
-
+            PlayerManager.Instance.UpdatePlayerUI += UpdateUI ;
         }
 
         // Update is called once per frame
         void Update()
         {
-            UpdateUI();
+            
         }
 
         public void UpdateUI()

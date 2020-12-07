@@ -13,6 +13,9 @@ namespace Player
         public int beatcoins;
         public int food;
 
+        public delegate void PlayerUIHandler();
+        public event PlayerUIHandler UpdatePlayerUI ;
+
         #endregion
 
         private void Awake()
@@ -22,7 +25,8 @@ namespace Player
 
         void Start()
         {
-
+            //Initialisation de l'UI du player
+            UpdatePlayerUI.Invoke();
         }
 
         void Update()
@@ -34,14 +38,17 @@ namespace Player
         public void TakeDamage(int damage)
         {
             playerHp -= damage;
+            UpdatePlayerUI.Invoke();
         }
         public void GainCoins(int coins)
         {
             beatcoins += coins;
+            UpdatePlayerUI.Invoke();
         }
         public void GainFood(int f)
         {
             food += f;
+            UpdatePlayerUI.Invoke();
         }
         #endregion
     }
