@@ -14,12 +14,12 @@ PresetManager:
         type: 2}
       m_Filter: 
   - first:
-      m_NativeTypeID: 1006
-      m_ManagedTypePPtr: {fileID: 0}
+      m_NativeTypeID: 114
+      m_ManagedTypePPtr: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677,
+        type: 3}
       m_ManagedTypeFallback: 
     second:
-    - m_Preset: {fileID: 2655988077585873504, guid: 14a57cf3b9fa1c74b884aa7e0dcf1faa,
-        type: 2}
+    - m_Preset: {fileID: 0}
       m_Filter: 
   - first:
       m_NativeTypeID: 108
