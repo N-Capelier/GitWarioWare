@@ -44,7 +44,7 @@ public class CapsSorterEditor : Editor
     private void Reset()
     {
         capsSorter.sortedIdCards = new List<IDCardList>((int)ChallengeHaptique.A10);
-        for (int i = 0; i <(int) ChallengeHaptique.A10; i++)
+        for (int i = 0; i <(int) ChallengeHaptique.A10 +1; i++)
         {
             capsSorter.sortedIdCards.Add(new IDCardList()); ;
         }
