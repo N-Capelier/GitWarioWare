@@ -1,13 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Testing;
+using Caps;
 using UnityEngine.SceneManagement;
 
 public class TimedBehaviour : MonoBehaviour
 {
    [HideInInspector] public float bpm = 60;
-    [HideInInspector] public Manager.Difficulty currentDifficulty = 0;
+    [HideInInspector] public Difficulty currentDifficulty = 0;
 
     public double timer;
     public double currentTime;
@@ -21,7 +21,7 @@ public class TimedBehaviour : MonoBehaviour
 
     public virtual void Start()
     {
-        if (SceneManager.GetActiveScene().name == "TestingScene")
+        if (SceneManager.GetActiveScene().name == "TestingScene" || SceneManager.GetActiveScene().name == "SceneCap")
         {
             bpm =(float) Manager.Instance.bpm;
             currentDifficulty = Manager.Instance.currentDifficulty;
