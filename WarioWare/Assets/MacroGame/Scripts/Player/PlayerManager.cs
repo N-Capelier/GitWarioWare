@@ -47,7 +47,14 @@ namespace Player
         }
         public void GainFood(int f)
         {
-            food += f;
+            if(food + f >= 10)
+            {
+                food = 10;
+            }
+            else
+            {
+                food += f;
+            }
             UpdatePlayerUI.Invoke();
         }
         #endregion
