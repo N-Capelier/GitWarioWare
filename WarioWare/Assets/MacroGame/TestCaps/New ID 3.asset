@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c2cda822bfa80074f881e6fe0192b4c9, type: 3}
-  m_Name: ID_Example
+  m_Name: New ID 3
   m_EditorClassIdentifier: 
   cluster: 0
   trio: Brigantin
-  haptiqueChal: 4
-  inputChal: 4
+  haptiqueChal: 2
+  inputChal: 2
   indexEnum: 0
-  verbe: Dodge left/right
+  verbe: Dodge
   microGameScene:
     sceneAsset: {fileID: 102900000, guid: 5a69eb2c7d8cf83418eec73e0e0afa85, type: 3}
     required: 0

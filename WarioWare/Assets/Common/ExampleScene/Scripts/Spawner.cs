@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-using Testing;
+using Caps;
 
 
 namespace ExampleScene
@@ -37,7 +37,7 @@ namespace ExampleScene
         {
             base.Start();
             bpmText.text = "bpm: " + bpm.ToString();
-            if (Manager.Instance.currentDifficulty == Manager.Difficulty.HARD)
+            if (Manager.Instance.currentDifficulty == Difficulty.HARD)
                 isHard = true;
             spawnCooldown = 60 / bpm;
         }
