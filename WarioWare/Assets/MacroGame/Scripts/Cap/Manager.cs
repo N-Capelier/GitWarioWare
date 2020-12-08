@@ -20,7 +20,8 @@ namespace Caps
         public float verbeTime;
         public int numberBeforSpeedUp;
         //int that will be added on the id to make it appear more offen, they all start with a value of 10
-        public int purcentageAddedOnID;
+        public int capWeightToAdd;
+        public int listWeightToAdd;
 
         [Header ("other stuff")]
         public CapsSorter sorter;
@@ -69,8 +70,8 @@ namespace Caps
             verbePanel.SetActive(true);
             if(currentAsyncScene == null)
             {
+                Debug.Log(_currentCap.chosenMiniGames.Count);
                 currentDifficulty = _currentCap.chosenMiniGames[currentMiniGame].currentDifficulty;
-                Debug.Log(_currentCap.chosenMiniGames[currentMiniGame].currentDifficulty);
                 currentAsyncScene = SceneManager.LoadSceneAsync(_currentCap.chosenMiniGames[currentMiniGame].microGameScene.BuildIndex, LoadSceneMode.Additive);
                 currentAsyncScene.allowSceneActivation = false;
 
@@ -150,6 +151,7 @@ namespace Caps
             miniGamePassedNumber = 0;
             currentMiniGame = 0;
         }
+
         /// <summary>
         /// reset the difficulty and apparitionPurcentage of all games
         /// </summary>
@@ -160,7 +162,7 @@ namespace Caps
                 foreach (IDCard idCard in list.IDCards)
                 {
                     idCard.currentDifficulty = 0;
-                    idCard.apparitionPurcentage = 10;
+                    idCard.idWeight = 10;
                 }
             }
         }
@@ -188,9 +190,10 @@ namespace Caps
                 for (int i = 0; i < island.capNumber; i++)
                 {
                     island.cap.Add(new Cap());
-                    island.cap[i].purcentageAddedOnID = purcentageAddedOnID;
+                    island.cap[i].capWeight = capWeightToAdd;
+                    island.cap[i].listWeight = listWeightToAdd;
                     island.cap[i].length = island.size + 4 + zoneNumber;
-                    island.cap[i].IDCardList = sorter.sortedIdCards[Random.Range(0, sorter.sortedIdCards.Count)];
+                    island.cap[i].ChoseIdList(sorter);
                     island.cap[i].ChoseMiniGames();
                 }
                 

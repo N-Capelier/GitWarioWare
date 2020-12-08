@@ -18,5 +18,5 @@ public class CapsSorter : ScriptableObject
 public class IDCardList
 {
     public List<IDCard> IDCards = new List<IDCard>();
-
+    public int weight;
 }

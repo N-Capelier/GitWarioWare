@@ -8,7 +8,7 @@ public class CapsSorterEditor : Editor
 {
 
     private CapsSorter capsSorter;
-
+    private int initialListWeight;
     private void OnEnable()
     {
         capsSorter = target as CapsSorter;
@@ -26,6 +26,7 @@ public class CapsSorterEditor : Editor
         serializedObject.Update();
         EditorGUILayout.PropertyField(serializedObject.FindProperty("chalInput"));
         EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(capsSorter.idCards)));
+        initialListWeight = EditorGUILayout.IntField("Initial list weight",initialListWeight);
         if (GUILayout.Button("SorteCards"))
         {
             Reset();
@@ -59,6 +60,8 @@ public class CapsSorterEditor : Editor
             capsSorter.sortedIdCards[(int)capsSorter.idCards[i].inputChal].IDCards.Add(capsSorter.idCards[i]);
             else
             capsSorter.sortedIdCards[(int)capsSorter.idCards[i].haptiqueChal].IDCards.Add(capsSorter.idCards[i]);
+
+            capsSorter.sortedIdCards[(int)capsSorter.idCards[i].inputChal].weight = initialListWeight;
         }
 
     }
