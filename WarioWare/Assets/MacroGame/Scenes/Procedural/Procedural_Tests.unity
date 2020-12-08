@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -230,11 +230,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1881126563}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85cbb633a52657644b60a48d785c9397, type: 3}
+  m_Script: {fileID: 11500000, guid: fa7d62bebe1a91b458be59e7aa0961a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rewards:
-  - {fileID: 11400000, guid: 476a0fe99a005954987c3566d07b8d64, type: 2}
+  islands: []
+  islandSprites: []
+  gameRewards: []
+  commonRewardRateWeight: 50
+  epicRewardRateWeight: 35
+  legendaryRewardRateWeight: 15
 --- !u!4 &1881126565
 Transform:
   m_ObjectHideFlags: 0
