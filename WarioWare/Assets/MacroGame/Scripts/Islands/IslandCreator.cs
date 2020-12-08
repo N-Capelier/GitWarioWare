@@ -38,12 +38,12 @@ namespace Islands
             if (_totalWeight != 100)
             {
                 _commonRate = commonRewardRateWeight * 100 / _totalWeight;
-                _epicRate = epicRewardRateWeight * 100 / _totalWeight;
+                _epicRate = _commonRate + (epicRewardRateWeight * 100 / _totalWeight);
             }
             else
             {
                 _commonRate = commonRewardRateWeight;
-                _epicRate = epicRewardRateWeight;
+                _epicRate = _commonRate + epicRewardRateWeight;
             }
 
             //Split rewards from rarity
