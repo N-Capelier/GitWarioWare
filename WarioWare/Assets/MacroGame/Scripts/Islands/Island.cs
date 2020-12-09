@@ -1,7 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using Rewards;
+using UnityEngine.UI;
 
 namespace Islands
 {
@@ -16,13 +15,14 @@ namespace Islands
         #region Variables
 
         //Variables
-        IslandDifficulty difficulty;
-        Reward reward;
+        [HideInInspector] public IslandDifficulty difficulty;
+        [HideInInspector] public Reward reward;
 
-        [SerializeField] Island[] neighbours;
+        public Island[] neighbours;
 
         //Components
-        SpriteRenderer spriteRenderer;
+        Image image;
+        [HideInInspector] public Button button;
 
         #endregion
 
@@ -30,7 +30,8 @@ namespace Islands
 
         private void Awake()
         {
-            spriteRenderer = GetComponent<SpriteRenderer>();
+            image = GetComponent<Image>();
+            button = GetComponent<Button>();
         }
 
         #endregion
@@ -48,15 +49,15 @@ namespace Islands
             {
                 case RewardRarity.Common:
                     difficulty = IslandDifficulty.Easy;
-                    spriteRenderer.sprite = _sprite;
+                    image.sprite = _sprite;
                     break;
                 case RewardRarity.Epic:
                     difficulty = IslandDifficulty.Medium;
-                    spriteRenderer.sprite = _sprite;
+                    image.sprite = _sprite;
                     break;
                 case RewardRarity.Legendary:
                     difficulty = IslandDifficulty.Hard;
-                    spriteRenderer.sprite = _sprite;
+                    image.sprite = _sprite;
                     break;
                 default:
                     throw new System.Exception("Rarity not linked to difficulty !");

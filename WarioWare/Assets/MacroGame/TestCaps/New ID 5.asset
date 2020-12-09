@@ -23,3 +23,4 @@ MonoBehaviour:
     required: 0
     buildIndex: 1
   currentDifficulty: 0
+  idWeight: 10

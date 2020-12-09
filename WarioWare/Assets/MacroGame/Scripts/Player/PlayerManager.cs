@@ -37,7 +37,16 @@ namespace Player
         #region CustomMethods
         public void TakeDamage(int damage)
         {
-            playerHp -= damage;
+            if(playerHp - damage <= 0)
+            {
+                playerHp = 0;
+                //Death event Here
+                Debug.Log("You are dead");
+            }
+            else
+            {
+                playerHp -= damage;
+            }
             UpdatePlayerUI.Invoke();
         }
         public void GainCoins(int coins)
