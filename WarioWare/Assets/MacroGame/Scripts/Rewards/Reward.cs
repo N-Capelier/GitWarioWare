@@ -2,14 +2,14 @@
 
 namespace Rewards
 {
-    public enum Rarity
+    public enum RewardRarity
     {
         Common = 0,
         Epic = 1,
         Legendary = 2
     }
 
-    public enum Type
+    public enum RewardType
     {
         Resource = 0,
         Item = 1,
@@ -19,8 +19,8 @@ namespace Rewards
     public abstract class Reward : ScriptableObject
     {
         public string rewardName;
-        public Type type;
-        public Rarity rarity;
+        public RewardType type;
+        public RewardRarity rarity;
         public int price;
 
         public abstract void GiveEffect();
