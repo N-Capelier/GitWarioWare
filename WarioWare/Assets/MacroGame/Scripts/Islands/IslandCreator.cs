@@ -9,7 +9,7 @@ namespace Islands
     {
         [Header("Game Elements")]
 
-        [SerializeField] Island[] islands;
+        public Island[] islands;
         [SerializeField] Sprite[] islandSprites;
 
         [SerializeField] Reward[] gameRewards;

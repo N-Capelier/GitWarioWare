@@ -1,21 +1,21 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using Islands;
 
 namespace Player
 {
     public class PlayerMovement : MonoBehaviour
     {
         public GameObject playerAvatar;
-        public TempIslands[] islands;
-        public TempIslands playerIsland;
+        public Island[] islands;
+        public Island playerIsland;
 
         void Start()
         {
             //Initialize Connections
+            islands = IslandCreator.Instance.islands;
             ClearConnections();
             GetNeighbors();
-            playerAvatar.transform.position = playerIsland.islandButton.transform.position;
+            playerAvatar.transform.position = playerIsland.button.transform.position;
             playerAvatar.transform.position += new Vector3(0, 15, 0);
         }
 
@@ -26,7 +26,7 @@ namespace Player
         {
             for(int i = 0; i < islands.Length; i++)
             {
-                islands[i].islandButton.interactable = false;
+                islands[i].button.interactable = false;
             }
         }
 
@@ -35,19 +35,19 @@ namespace Player
         /// </summary>
         private void GetNeighbors()
         {
-            playerIsland.islandButton.interactable = true;
-            for (int i = 0; i < playerIsland.neighbors.Length; i++)
+            playerIsland.button.interactable = true;
+            for (int i = 0; i < playerIsland.neighbours.Length; i++)
             {
-                playerIsland.neighbors[i].islandButton.interactable = true;
+                playerIsland.neighbours[i].button.interactable = true;
             }
-            playerIsland.islandButton.Select();
+            playerIsland.button.Select();
         }
 
         /// <summary>
         /// Move the player from his current island to the target island. Moving costs 1 food, if 0 food then it costs 1 hp.
         /// </summary>
         /// <param name="targetIsland">Which island is the player going to.</param>
-        public void Move(TempIslands targetIsland)
+        public void Move(Island targetIsland)
         {
             if(targetIsland != playerIsland)
             {
@@ -66,7 +66,7 @@ namespace Player
 
                 //Lancer le cap
 
-                playerAvatar.transform.position = targetIsland.islandButton.transform.position;
+                playerAvatar.transform.position = targetIsland.button.transform.position;
                 playerAvatar.transform.position += new Vector3(0, 15, 0);
             }
         }
@@ -76,11 +76,11 @@ namespace Player
         /// Show the selected island's UI informations.
         /// </summary>
         /// <param name="targetIsland">Which island is the player selecting.</param>
-        public void ShowSelectedIslandInfo(TempIslands targetIsland)
+        public void ShowSelectedIslandInfo(Island targetIsland)
         {
             if (targetIsland != playerIsland)
             {
-                Debug.Log(targetIsland.gameObject.name + " has " + targetIsland.neighbors.Length + " neighbor(s).");
+                Debug.Log(targetIsland.gameObject.name + " has " + targetIsland.neighbours.Length + " neighbor(s).");
                 //show UI here
             }
         }

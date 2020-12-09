@@ -18,7 +18,7 @@ namespace Caps
         [Header("Playtest variable")]
         public float transitionTime;
         public float verbeTime;
-        public int numberBeforSpeedUp;
+        public int numberBeforeSpeedUp;
         //int that will be added on the id to make it appear more offen, they all start with a value of 10
         public int capWeightToAdd;
         public int listWeightToAdd;
@@ -120,7 +120,7 @@ namespace Caps
 
             miniGamePassedNumber++;
 
-            if(miniGamePassedNumber%numberBeforSpeedUp == 0)
+            if(miniGamePassedNumber%numberBeforeSpeedUp == 0)
             {
                bpm = bpm.Next(); 
             }
