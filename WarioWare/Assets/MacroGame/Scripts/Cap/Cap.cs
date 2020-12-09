@@ -17,8 +17,35 @@ namespace Caps
         public bool isDone;
 
         //for easy debug
-        public int purcentageAddedOnID;
+        public int capWeight;
+        public int listWeight;
 
+        /// <summary>
+        /// chose a id list base on a random influence by the weight of each list
+        /// </summary>
+        /// <param name="sorter"></param>
+        public void ChoseIdList(CapsSorter sorter)
+        {
+            int weight = 0;
+            for (int i = 0; i < sorter.sortedIdCards.Count; i++)
+            {
+                weight += sorter.sortedIdCards[i].weight;
+            }
+            var _random = (Random.Range(0, weight));
+            int _currentChance = 0;
+            int _previousChance = 0;
+            for (int i = 0; i < sorter.sortedIdCards.Count; i++)
+            {
+                _currentChance += sorter.sortedIdCards[i].weight;
+                if(_random >=_previousChance && _random< _currentChance)
+                {
+                    IDCardList = sorter.sortedIdCards[i];
+                    sorter.sortedIdCards[i].weight += listWeight;
+                    return;
+                }
+                _previousChance = _currentChance;
+            }
+        }
         public void ChoseMiniGames()
         {
             if (!firstGame)
@@ -29,7 +56,7 @@ namespace Caps
                 int purcentage =0;
                 for (int i = 0; i < IDCardList.IDCards.Count; i++)
                 {
-                    purcentage += IDCardList.IDCards[i].apparitionPurcentage;
+                    purcentage += IDCardList.IDCards[i].idWeight;
                 }
                 
                 // this reference all the differente mini game stocked in the cap
@@ -48,7 +75,7 @@ namespace Caps
                     int _previousChance = 0;
                     for (int x = 0; x < IDCardList.IDCards.Count; x++)
                     {
-                        _currentChance += IDCardList.IDCards[x].apparitionPurcentage;
+                        _currentChance += IDCardList.IDCards[x].idWeight;
                         if(_random>= _previousChance && _random< _currentChance )
                         {
                             if (!_indexAlreadyTaken.Contains(x))
@@ -56,7 +83,7 @@ namespace Caps
                                 chosenMiniGames.Add(IDCardList.IDCards[x]);
                                 _indexAlreadyTaken.Add(x);
                                 //this number is what will be needed to be calculated
-                                IDCardList.IDCards[x].apparitionPurcentage += purcentageAddedOnID;
+                                IDCardList.IDCards[x].idWeight += capWeight;
                                 Debug.Log(IDCardList.IDCards[x].name);
                                 break;
                             }

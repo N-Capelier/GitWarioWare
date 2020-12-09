@@ -440,7 +440,6 @@ GameObject:
   - component: {fileID: 572195785}
   - component: {fileID: 572195784}
   - component: {fileID: 572195786}
-  - component: {fileID: 572195787}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -463,11 +462,12 @@ MonoBehaviour:
   transitionTime: 5
   verbeTime: 3
   numberBeforSpeedUp: 2
-  purcentageAddedOnID: 2
+  capWeightToAdd: 5
+  listWeightToAdd: 0
   sorter: {fileID: 11400000, guid: 6dc05a15978033047a905a916eb5d27c, type: 2}
   challengeHaptique: 0
   challengeInput: 3
-  zoneNumber: 2
+  zoneNumber: 0
   bpm: 120
   currentDifficulty: 0
   panel: {fileID: 137554992}
@@ -499,18 +499,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 31f9f8773a6977744bb4a731275d1a88, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &572195787
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 572195783}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f64b7bd4e1576a4b92c8781ed1343cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &578110617

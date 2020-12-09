@@ -20,7 +20,7 @@ public class IDCard : ScriptableObject
 
     // will be used later on the macro;
    [SerializeField] public Difficulty currentDifficulty;
-  [SerializeField]  public int apparitionPurcentage;
+  [SerializeField]  public int idWeight;
 }
 
 
