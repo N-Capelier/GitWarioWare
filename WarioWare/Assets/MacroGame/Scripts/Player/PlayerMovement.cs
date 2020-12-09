@@ -10,7 +10,6 @@ namespace Player
         public TempIslands[] islands;
         public TempIslands playerIsland;
 
-        // Start is called before the first frame update
         void Start()
         {
             //Initialize Connections
@@ -18,15 +17,11 @@ namespace Player
             GetNeighbors();
             playerAvatar.transform.position = playerIsland.islandButton.transform.position;
             playerAvatar.transform.position += new Vector3(0, 15, 0);
-            //playerIsland.islandButton.Select();
         }
 
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
-
+        /// <summary>
+        /// Resets all Island UI buttons of the zone to not interactable.
+        /// </summary>
         private void ClearConnections()
         {
             for(int i = 0; i < islands.Length; i++)
@@ -35,6 +30,9 @@ namespace Player
             }
         }
 
+        /// <summary>
+        /// Get the player's current island neighbors and set their UI to interactable.
+        /// </summary>
         private void GetNeighbors()
         {
             playerIsland.islandButton.interactable = true;
@@ -45,6 +43,10 @@ namespace Player
             playerIsland.islandButton.Select();
         }
 
+        /// <summary>
+        /// Move the player from his current island to the target island. Moving costs 1 food, if 0 food then it costs 1 hp.
+        /// </summary>
+        /// <param name="targetIsland">Which island is the player going to.</param>
         public void Move(TempIslands targetIsland)
         {
             if(targetIsland != playerIsland)
@@ -69,6 +71,11 @@ namespace Player
             }
         }
 
+
+        /// <summary>
+        /// Show the selected island's UI informations.
+        /// </summary>
+        /// <param name="targetIsland">Which island is the player selecting.</param>
         public void ShowSelectedIslandInfo(TempIslands targetIsland)
         {
             if (targetIsland != playerIsland)
