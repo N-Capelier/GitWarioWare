@@ -5,8 +5,9 @@ namespace Rewards
     public enum RewardRarity
     {
         Common = 0,
-        Epic = 1,
-        Legendary = 2
+        Rare = 1,
+        Epic = 2,
+        Legendary = 3
     }
 
     public enum RewardType

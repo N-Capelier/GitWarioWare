@@ -1,18 +1,23 @@
 ﻿using UnityEngine;
 using Islands;
+using Caps;
 
 namespace Player
 {
-    public class PlayerMovement : MonoBehaviour
+    public class PlayerMovement : Singleton<PlayerMovement>
     {
         public GameObject playerAvatar;
-        public Island[] islands;
+        [HideInInspector] public Island[] islands;
         public Island playerIsland;
+
+        private void Awake()
+        {
+            CreateSingleton();
+        }
 
         void Start()
         {
             //Initialize Connections
-            islands = IslandCreator.Instance.islands;
             ClearConnections();
             GetNeighbors();
             playerAvatar.transform.position = playerIsland.button.transform.position;
@@ -24,7 +29,7 @@ namespace Player
         /// </summary>
         private void ClearConnections()
         {
-            for(int i = 0; i < islands.Length; i++)
+            for (int i = 0; i < islands.Length; i++)
             {
                 islands[i].button.interactable = false;
             }
@@ -49,13 +54,23 @@ namespace Player
         /// <param name="targetIsland">Which island is the player going to.</param>
         public void Move(Island targetIsland)
         {
-            if(targetIsland != playerIsland)
+            if (targetIsland != playerIsland)
             {
+                //Lancer le cap
+                for (int i = 0; i < playerIsland.accessibleNeighbours.Length; i++)
+                {
+                    if (playerIsland.accessibleNeighbours[i] == targetIsland)
+                    {
+                        //COUPER LES INPUTS DE LA MACRO
+
+                        StartCoroutine(Manager.Instance.StartCap(playerIsland.capList[i]));
+                    }
+                }
                 playerIsland = targetIsland;
                 ClearConnections();
                 GetNeighbors();
-                
-                if (PlayerManager.Instance.food>0)
+
+                if (PlayerManager.Instance.food > 0)
                 {
                     PlayerManager.Instance.GainFood(-1);
                 }
@@ -64,7 +79,7 @@ namespace Player
                     PlayerManager.Instance.TakeDamage(1);
                 }
 
-                //Lancer le cap
+                
 
                 playerAvatar.transform.position = targetIsland.button.transform.position;
                 playerAvatar.transform.position += new Vector3(0, 15, 0);

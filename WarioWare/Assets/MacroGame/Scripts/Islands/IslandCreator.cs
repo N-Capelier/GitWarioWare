@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using Rewards;
+using Caps;
+using Player;
 
 namespace Islands
 {
@@ -17,8 +19,13 @@ namespace Islands
         [Header("Procedural Generation")]
 
         [SerializeField] [Range(0, 100)] int commonRewardRateWeight;
+        [SerializeField] [Range(0, 100)] int rareRewardRateWeight;
         [SerializeField] [Range(0, 100)] int epicRewardRateWeight;
-        [SerializeField] [Range(0, 100)] int legendaryRewardRateWeight;
+
+        [Space]
+
+        [SerializeField] [Range(0, 100)] [Tooltip("In percentage")] int commonRewardRandomness;
+        [SerializeField] [Range(0, 100)] [Tooltip("In percentage")] int rareRewardRandomness;
 
         private void Awake()
         {
@@ -32,24 +39,28 @@ namespace Islands
 
         void GenerateRewards()
         {
+            //Apply randomness to weights
+            commonRewardRateWeight += Random.Range(commonRewardRateWeight - commonRewardRateWeight * commonRewardRandomness / 100, commonRewardRandomness + commonRewardRateWeight * commonRewardRandomness / 100);
+            rareRewardRateWeight += Random.Range(rareRewardRateWeight - rareRewardRateWeight * rareRewardRandomness / 100, rareRewardRandomness + rareRewardRateWeight * rareRewardRandomness / 100);
+
             //Convert weights to percentages
-            int _totalWeight = commonRewardRateWeight + epicRewardRateWeight + legendaryRewardRateWeight;
-            int _commonRate, _epicRate;
+            int _totalWeight = commonRewardRateWeight + rareRewardRateWeight + epicRewardRateWeight;
+            int _commonRate, _rareRate;
             if (_totalWeight != 100)
             {
                 _commonRate = commonRewardRateWeight * 100 / _totalWeight;
-                _epicRate = _commonRate + (epicRewardRateWeight * 100 / _totalWeight);
+                _rareRate = _commonRate + (rareRewardRateWeight * 100 / _totalWeight);
             }
             else
             {
                 _commonRate = commonRewardRateWeight;
-                _epicRate = _commonRate + epicRewardRateWeight;
+                _rareRate = _commonRate + rareRewardRateWeight;
             }
 
             //Split rewards from rarity
             List<Reward> _commonRewards = new List<Reward>();
+            List<Reward> _rareRewards = new List<Reward>();
             List<Reward> _epicRewards = new List<Reward>();
-            List<Reward> _legendaryRewards = new List<Reward>();
 
             for (int i = 0; i < gameRewards.Length; i++)
             {
@@ -58,34 +69,46 @@ namespace Islands
                     case RewardRarity.Common:
                         _commonRewards.Add(gameRewards[i]);
                         break;
+                    case RewardRarity.Rare:
+                        _rareRewards.Add(gameRewards[i]);
+                        break;
                     case RewardRarity.Epic:
                         _epicRewards.Add(gameRewards[i]);
                         break;
-                    case RewardRarity.Legendary:
-                        _legendaryRewards.Add(gameRewards[i]);
-                        break;
                     default:
-                        throw new System.Exception("Missing reward rarity !");
+                        break;
                 }
             }
 
-            //Generate the rewards depending on their drop rate
-            Reward[] _generatedReward = new Reward[islands.Length];
+            //Filter and keep "classic" islands
+            List<Island> _generatedIslandsList = new List<Island>();
 
             for (int i = 0; i < islands.Length; i++)
             {
-                float index = i / islands.Length * 100;
+                if (islands[i].difficulty == IslandDifficulty.Legendary || islands[i].difficulty == IslandDifficulty.Shop)
+                    continue;
+                _generatedIslandsList.Add(islands[i]);
+            }
+
+            Island[] _generatedIslands = _generatedIslandsList.ToArray();
+
+            //Generate the rewards depending on their drop rate
+            Reward[] _generatedReward = new Reward[_generatedIslands.Length];
+
+            for (int i = 0; i < _generatedIslands.Length; i++)
+            {
+                float index = i / _generatedIslands.Length * 100;
                 if (index <= _commonRate)
                 {
                     _generatedReward[i] = _commonRewards[Random.Range(0, _commonRewards.Count)];
                 }
-                else if (index <= _epicRate)
+                else if (index <= _rareRate)
                 {
-                    _generatedReward[i] = _epicRewards[Random.Range(0, _epicRewards.Count)];
+                    _generatedReward[i] = _rareRewards[Random.Range(0, _rareRewards.Count)];
                 }
                 else
                 {
-                    _generatedReward[i] = _legendaryRewards[Random.Range(0, _legendaryRewards.Count)];
+                    _generatedReward[i] = _epicRewards[Random.Range(0, _epicRewards.Count)];
                 }
             }
 
@@ -93,7 +116,7 @@ namespace Islands
             _generatedReward = FisherYates(_generatedReward);
 
             //Spread the rewards to the islands
-            for (int i = 0; i < islands.Length; i++)
+            for (int i = 0; i < _generatedIslands.Length; i++)
             {
                 Sprite _islandSprite;
                 switch (_generatedReward[i].rarity)
@@ -101,18 +124,22 @@ namespace Islands
                     case RewardRarity.Common:
                         _islandSprite = islandSprites[0];
                         break;
-                    case RewardRarity.Epic:
+                    case RewardRarity.Rare:
                         _islandSprite = islandSprites[1];
                         break;
-                    case RewardRarity.Legendary:
+                    case RewardRarity.Epic:
                         _islandSprite = islandSprites[2];
                         break;
                     default:
-                        throw new System.Exception("Sprite out of bounds !");
+                        throw new System.Exception("Island difficulty not set!");
                 }
 
-                islands[i].SetReward(_generatedReward[i], _islandSprite);
+                _generatedIslands[i].SetReward(_generatedReward[i], _islandSprite);
             }
+            Manager.Instance.islandList = islands;
+            Manager.Instance.CapAttribution();
+            Manager.Instance.ResetIDCards();
+            PlayerMovement.Instance.islands = islands;
         }
 
         Reward[] FisherYates(Reward[] _rewards)

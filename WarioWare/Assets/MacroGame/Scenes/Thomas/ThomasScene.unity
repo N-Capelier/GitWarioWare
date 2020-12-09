@@ -131,6 +131,8 @@ GameObject:
   m_Component:
   - component: {fileID: 38581155}
   - component: {fileID: 38581154}
+  - component: {fileID: 38581157}
+  - component: {fileID: 38581156}
   m_Layer: 0
   m_Name: TempIsland_5
   m_TagString: Untagged
@@ -147,15 +149,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 38581153}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a56672d55ee0cff45a0670ee48cdaae8, type: 3}
+  m_Script: {fileID: 11500000, guid: 579652f82ce3efa43981b8da470cf715, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  neighbors:
-  - {fileID: 845714113}
-  - {fileID: 1904571443}
-  islandButton: {fileID: 1189669792}
---- !u!4 &38581155
-Transform:
+  difficulty: 0
+  reward: {fileID: 0}
+  neighbours: []
+  accessibleNeighbours: []
+  button: {fileID: 0}
+--- !u!224 &38581155
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -166,8 +169,50 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1651678814}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &38581156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 38581153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &38581157
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 38581153}
+  m_CullTransparentMesh: 0
 --- !u!1 &164978510
 GameObject:
   m_ObjectHideFlags: 0
@@ -235,7 +280,7 @@ MonoBehaviour:
         m_MethodName: Move
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 1904571443}
+          m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: Player.TempIslands, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -320,7 +365,7 @@ MonoBehaviour:
           m_MethodName: ShowSelectedIslandInfo
           m_Mode: 2
           m_Arguments:
-            m_ObjectArgument: {fileID: 1904571443}
+            m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: Player.TempIslands, Assembly-CSharp
             m_IntArgument: 0
             m_FloatArgument: 0
@@ -442,54 +487,100 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
---- !u!1 &515705881
-GameObject:
+--- !u!1001 &715731590
+PrefabInstance:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 515705882}
-  - component: {fileID: 515705883}
-  m_Layer: 0
-  m_Name: TempIsland_2
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &515705882
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 515705881}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1651678814}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &515705883
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 515705881}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a56672d55ee0cff45a0670ee48cdaae8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  neighbors:
-  - {fileID: 1255850767}
-  - {fileID: 845714113}
-  - {fileID: 1904571443}
-  islandButton: {fileID: 845096556}
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 293288237190241250, guid: 3e801be1482f7b3488b8c2e7378c8d08,
+        type: 3}
+      propertyPath: sceneCam
+      value: 
+      objectReference: {fileID: 416702228}
+    - target: {fileID: 293288237190241250, guid: 3e801be1482f7b3488b8c2e7378c8d08,
+        type: 3}
+      propertyPath: verbTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 293288237190241250, guid: 3e801be1482f7b3488b8c2e7378c8d08,
+        type: 3}
+      propertyPath: numberBeforeSpeedUp
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 293288237190241250, guid: 3e801be1482f7b3488b8c2e7378c8d08,
+        type: 3}
+      propertyPath: listWeightToAdd
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 293288237190241250, guid: 3e801be1482f7b3488b8c2e7378c8d08,
+        type: 3}
+      propertyPath: bpm
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905592145793964715, guid: 3e801be1482f7b3488b8c2e7378c8d08,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 976.428
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905592145793964715, guid: 3e801be1482f7b3488b8c2e7378c8d08,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 511.3703
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905592145793964715, guid: 3e801be1482f7b3488b8c2e7378c8d08,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -184.125
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905592145793964715, guid: 3e801be1482f7b3488b8c2e7378c8d08,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905592145793964715, guid: 3e801be1482f7b3488b8c2e7378c8d08,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905592145793964715, guid: 3e801be1482f7b3488b8c2e7378c8d08,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905592145793964715, guid: 3e801be1482f7b3488b8c2e7378c8d08,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905592145793964715, guid: 3e801be1482f7b3488b8c2e7378c8d08,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905592145793964715, guid: 3e801be1482f7b3488b8c2e7378c8d08,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905592145793964715, guid: 3e801be1482f7b3488b8c2e7378c8d08,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905592145793964715, guid: 3e801be1482f7b3488b8c2e7378c8d08,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4619185250453406020, guid: 3e801be1482f7b3488b8c2e7378c8d08,
+        type: 3}
+      propertyPath: m_Name
+      value: CapManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3e801be1482f7b3488b8c2e7378c8d08, type: 3}
 --- !u!1 &812100986
 GameObject:
   m_ObjectHideFlags: 0
@@ -503,6 +594,7 @@ GameObject:
   - component: {fileID: 812100988}
   - component: {fileID: 812100987}
   - component: {fileID: 812100991}
+  - component: {fileID: 812100992}
   m_Layer: 5
   m_Name: Button_1
   m_TagString: Untagged
@@ -557,8 +649,8 @@ MonoBehaviour:
         m_MethodName: Move
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 1255850767}
-          m_ObjectArgumentAssemblyTypeName: Player.TempIslands, Assembly-CSharp
+          m_ObjectArgument: {fileID: 812100992}
+          m_ObjectArgumentAssemblyTypeName: Islands.Island, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -642,13 +734,32 @@ MonoBehaviour:
           m_MethodName: ShowSelectedIslandInfo
           m_Mode: 2
           m_Arguments:
-            m_ObjectArgument: {fileID: 1255850767}
+            m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: Player.TempIslands, Assembly-CSharp
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &812100992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 812100986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 579652f82ce3efa43981b8da470cf715, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  difficulty: 0
+  reward: {fileID: 0}
+  neighbours:
+  - {fileID: 845096561}
+  accessibleNeighbours:
+  - {fileID: 845096561}
+  button: {fileID: 0}
 --- !u!1 &845096555
 GameObject:
   m_ObjectHideFlags: 0
@@ -662,6 +773,7 @@ GameObject:
   - component: {fileID: 845096557}
   - component: {fileID: 845096556}
   - component: {fileID: 845096560}
+  - component: {fileID: 845096561}
   m_Layer: 5
   m_Name: Button_2
   m_TagString: Untagged
@@ -716,8 +828,8 @@ MonoBehaviour:
         m_MethodName: Move
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 515705883}
-          m_ObjectArgumentAssemblyTypeName: Player.TempIslands, Assembly-CSharp
+          m_ObjectArgument: {fileID: 845096561}
+          m_ObjectArgumentAssemblyTypeName: Islands.Island, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -801,13 +913,32 @@ MonoBehaviour:
           m_MethodName: ShowSelectedIslandInfo
           m_Mode: 2
           m_Arguments:
-            m_ObjectArgument: {fileID: 515705883}
+            m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: Player.TempIslands, Assembly-CSharp
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &845096561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 845096555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 579652f82ce3efa43981b8da470cf715, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  difficulty: 0
+  reward: {fileID: 0}
+  neighbours:
+  - {fileID: 812100992}
+  accessibleNeighbours:
+  - {fileID: 812100992}
+  button: {fileID: 0}
 --- !u!1 &845714111
 GameObject:
   m_ObjectHideFlags: 0
@@ -818,6 +949,8 @@ GameObject:
   m_Component:
   - component: {fileID: 845714112}
   - component: {fileID: 845714113}
+  - component: {fileID: 845714115}
+  - component: {fileID: 845714114}
   m_Layer: 0
   m_Name: TempIsland_3
   m_TagString: Untagged
@@ -825,8 +958,8 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &845714112
-Transform:
+--- !u!224 &845714112
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -837,8 +970,13 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1651678814}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &845714113
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -848,13 +986,51 @@ MonoBehaviour:
   m_GameObject: {fileID: 845714111}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a56672d55ee0cff45a0670ee48cdaae8, type: 3}
+  m_Script: {fileID: 11500000, guid: 579652f82ce3efa43981b8da470cf715, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  neighbors:
-  - {fileID: 515705883}
-  - {fileID: 38581154}
-  islandButton: {fileID: 1173805134}
+  difficulty: 0
+  reward: {fileID: 0}
+  neighbours: []
+  accessibleNeighbours: []
+  button: {fileID: 0}
+--- !u!114 &845714114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 845714111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &845714115
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 845714111}
+  m_CullTransparentMesh: 0
 --- !u!1 &877828142
 GameObject:
   m_ObjectHideFlags: 0
@@ -1135,7 +1311,7 @@ MonoBehaviour:
         m_MethodName: Move
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 845714113}
+          m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: Player.TempIslands, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -1163,7 +1339,7 @@ MonoBehaviour:
           m_MethodName: ShowSelectedIslandInfo
           m_Mode: 2
           m_Arguments:
-            m_ObjectArgument: {fileID: 845714113}
+            m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: Player.TempIslands, Assembly-CSharp
             m_IntArgument: 0
             m_FloatArgument: 0
@@ -1237,7 +1413,7 @@ MonoBehaviour:
         m_MethodName: Move
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 38581154}
+          m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: Player.TempIslands, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -1322,7 +1498,7 @@ MonoBehaviour:
           m_MethodName: ShowSelectedIslandInfo
           m_Mode: 2
           m_Arguments:
-            m_ObjectArgument: {fileID: 38581154}
+            m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: Player.TempIslands, Assembly-CSharp
             m_IntArgument: 0
             m_FloatArgument: 0
@@ -1360,12 +1536,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerAvatar: {fileID: 1711983871}
   islands:
-  - {fileID: 1255850767}
-  - {fileID: 515705883}
-  - {fileID: 845714113}
-  - {fileID: 1904571443}
-  - {fileID: 38581154}
-  playerIsland: {fileID: 1255850767}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  playerIsland: {fileID: 812100992}
 --- !u!4 &1223849138
 Transform:
   m_ObjectHideFlags: 0
@@ -1378,54 +1554,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1255850765
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1255850766}
-  - component: {fileID: 1255850767}
-  m_Layer: 0
-  m_Name: TempIsland_1
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1255850766
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1255850765}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1651678814}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1255850767
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1255850765}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a56672d55ee0cff45a0670ee48cdaae8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  neighbors:
-  - {fileID: 515705883}
-  islandButton: {fileID: 812100987}
 --- !u!1 &1286159255
 GameObject:
   m_ObjectHideFlags: 0
@@ -1455,7 +1585,7 @@ Transform:
   m_Children:
   - {fileID: 1664611619}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1329301328
 PrefabInstance:
@@ -1527,7 +1657,7 @@ PrefabInstance:
     - target: {fileID: 5975730464407200855, guid: 9a784a7e95199cf47b1f43fb6d7aa90d,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5975730464407200855, guid: 9a784a7e95199cf47b1f43fb6d7aa90d,
         type: 3}
@@ -1610,7 +1740,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1651678813
 GameObject:
@@ -1627,7 +1757,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1651678814
 Transform:
   m_ObjectHideFlags: 0
@@ -1639,13 +1769,11 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1255850766}
-  - {fileID: 515705882}
   - {fileID: 845714112}
   - {fileID: 1904571442}
   - {fileID: 38581155}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1664611618
 GameObject:
@@ -1913,6 +2041,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1904571442}
   - component: {fileID: 1904571443}
+  - component: {fileID: 1904571445}
+  - component: {fileID: 1904571444}
   m_Layer: 0
   m_Name: TempIsland_4
   m_TagString: Untagged
@@ -1920,8 +2050,8 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1904571442
-Transform:
+--- !u!224 &1904571442
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1932,8 +2062,13 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1651678814}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1904571443
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1943,13 +2078,196 @@ MonoBehaviour:
   m_GameObject: {fileID: 1904571441}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a56672d55ee0cff45a0670ee48cdaae8, type: 3}
+  m_Script: {fileID: 11500000, guid: 579652f82ce3efa43981b8da470cf715, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  neighbors:
-  - {fileID: 515705883}
-  - {fileID: 38581154}
-  islandButton: {fileID: 164978511}
+  difficulty: 0
+  reward: {fileID: 0}
+  neighbours: []
+  accessibleNeighbours: []
+  button: {fileID: 0}
+--- !u!114 &1904571444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1904571441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1904571445
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1904571441}
+  m_CullTransparentMesh: 0
+--- !u!1001 &2089550670
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2190592433291563160, guid: 27cb8457ccf60b3438238bc2156ab8ca,
+        type: 3}
+      propertyPath: islands.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2190592433291563160, guid: 27cb8457ccf60b3438238bc2156ab8ca,
+        type: 3}
+      propertyPath: islandSprites.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2190592433291563160, guid: 27cb8457ccf60b3438238bc2156ab8ca,
+        type: 3}
+      propertyPath: gameRewards.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2190592433291563160, guid: 27cb8457ccf60b3438238bc2156ab8ca,
+        type: 3}
+      propertyPath: islands.Array.data[0]
+      value: 
+      objectReference: {fileID: 812100992}
+    - target: {fileID: 2190592433291563160, guid: 27cb8457ccf60b3438238bc2156ab8ca,
+        type: 3}
+      propertyPath: islands.Array.data[1]
+      value: 
+      objectReference: {fileID: 845096561}
+    - target: {fileID: 2190592433291563160, guid: 27cb8457ccf60b3438238bc2156ab8ca,
+        type: 3}
+      propertyPath: islands.Array.data[2]
+      value: 
+      objectReference: {fileID: 845714113}
+    - target: {fileID: 2190592433291563160, guid: 27cb8457ccf60b3438238bc2156ab8ca,
+        type: 3}
+      propertyPath: islands.Array.data[3]
+      value: 
+      objectReference: {fileID: 1904571443}
+    - target: {fileID: 2190592433291563160, guid: 27cb8457ccf60b3438238bc2156ab8ca,
+        type: 3}
+      propertyPath: islands.Array.data[4]
+      value: 
+      objectReference: {fileID: 38581154}
+    - target: {fileID: 2190592433291563160, guid: 27cb8457ccf60b3438238bc2156ab8ca,
+        type: 3}
+      propertyPath: islandSprites.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 438608444985344459fbc1d650b6fa37,
+        type: 3}
+    - target: {fileID: 2190592433291563160, guid: 27cb8457ccf60b3438238bc2156ab8ca,
+        type: 3}
+      propertyPath: islandSprites.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 9285a8dc29c81ae46819fe7d47ce734e,
+        type: 3}
+    - target: {fileID: 2190592433291563160, guid: 27cb8457ccf60b3438238bc2156ab8ca,
+        type: 3}
+      propertyPath: islandSprites.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: c8cefb8c5c56788438c0fcbf6bc6b2e1,
+        type: 3}
+    - target: {fileID: 2190592433291563160, guid: 27cb8457ccf60b3438238bc2156ab8ca,
+        type: 3}
+      propertyPath: gameRewards.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 10811bda64abe4246abba81a290c6025,
+        type: 2}
+    - target: {fileID: 2190592433291563160, guid: 27cb8457ccf60b3438238bc2156ab8ca,
+        type: 3}
+      propertyPath: gameRewards.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 2920de82f6924c74aa4d2c800730d505,
+        type: 2}
+    - target: {fileID: 2190592433291563160, guid: 27cb8457ccf60b3438238bc2156ab8ca,
+        type: 3}
+      propertyPath: gameRewards.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 476a0fe99a005954987c3566d07b8d64,
+        type: 2}
+    - target: {fileID: 2190592433291563161, guid: 27cb8457ccf60b3438238bc2156ab8ca,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1305.248
+      objectReference: {fileID: 0}
+    - target: {fileID: 2190592433291563161, guid: 27cb8457ccf60b3438238bc2156ab8ca,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 520.2171
+      objectReference: {fileID: 0}
+    - target: {fileID: 2190592433291563161, guid: 27cb8457ccf60b3438238bc2156ab8ca,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2190592433291563161, guid: 27cb8457ccf60b3438238bc2156ab8ca,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2190592433291563161, guid: 27cb8457ccf60b3438238bc2156ab8ca,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2190592433291563161, guid: 27cb8457ccf60b3438238bc2156ab8ca,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2190592433291563161, guid: 27cb8457ccf60b3438238bc2156ab8ca,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2190592433291563161, guid: 27cb8457ccf60b3438238bc2156ab8ca,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2190592433291563161, guid: 27cb8457ccf60b3438238bc2156ab8ca,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2190592433291563161, guid: 27cb8457ccf60b3438238bc2156ab8ca,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2190592433291563161, guid: 27cb8457ccf60b3438238bc2156ab8ca,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2190592433291563167, guid: 27cb8457ccf60b3438238bc2156ab8ca,
+        type: 3}
+      propertyPath: m_Name
+      value: IslandCreator
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 27cb8457ccf60b3438238bc2156ab8ca, type: 3}
 --- !u!1 &2090883886
 GameObject:
   m_ObjectHideFlags: 0
@@ -2151,7 +2469,7 @@ PrefabInstance:
     - target: {fileID: 2703362669422701556, guid: 6bbebc6197c651f4c8ee1b6918b7c5f7,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2703362669422701556, guid: 6bbebc6197c651f4c8ee1b6918b7c5f7,
         type: 3}

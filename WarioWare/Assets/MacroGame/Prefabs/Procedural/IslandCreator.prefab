@@ -47,5 +47,7 @@ MonoBehaviour:
   islandSprites: []
   gameRewards: []
   commonRewardRateWeight: 50
+  rareRewardRateWeight: 15
   epicRewardRateWeight: 35
-  legendaryRewardRateWeight: 15
+  commonRewardRandomness: 10
+  rareRewardRandomness: 10
