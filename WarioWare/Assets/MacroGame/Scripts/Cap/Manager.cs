@@ -27,6 +27,14 @@ namespace Caps
         public int capWeightToAdd;
         public int listWeightToAdd;
 
+        [Range(1, 90)]
+        public int barrelProbality;
+        public int maxBarrelRessources;
+        public int minBarrelRessources;
+        public int lifeWeight;
+        public int goldWeight;
+        public int foodWeight;
+
         [Header ("Parameters")]
         public CapsSorter sorter;
         [HideInInspector] public Island[] allIslands;
@@ -103,7 +111,10 @@ namespace Caps
                 resultText.text = "You Won!";
 
             else
+            {
                 resultText.text = "You Lost!";
+                PlayerManager.Instance.TakeDamage(1);
+            }
 
             panel.SetActive(true);
             StartCoroutine(Transition());
@@ -123,6 +134,11 @@ namespace Caps
 
             sceneCam.SetActive(true);
 
+            if (currentCap.hasBarrel[miniGamePassedNumber])
+            {
+                BarrelressourcesContente();
+            }
+
             currentMiniGame++;
             if (currentMiniGame == currentCap.chosenMiniGames.Count-1)
                 currentMiniGame = 0;
@@ -138,6 +154,7 @@ namespace Caps
             currentDifficulty = currentCap.chosenMiniGames[currentMiniGame].currentDifficulty;
             currentAsyncScene = SceneManager.LoadSceneAsync(currentCap.chosenMiniGames[currentMiniGame].microGameScene.BuildIndex, LoadSceneMode.Additive);
             currentAsyncScene.allowSceneActivation = false;
+
 
             yield return new WaitForSeconds(transitionTime * 60 / (float)bpm);
             if(currentCap.length == miniGamePassedNumber)
@@ -225,10 +242,31 @@ namespace Caps
                     else
                         island.capList[i].length = (int)island.difficulty + 4 + zoneNumber;
                     island.capList[i].ChoseIdList(sorter);
-                    island.capList[i].ChoseMiniGames();
+                    island.capList[i].ChoseMiniGames(barrelProbality);
                 }
                 
             }
+        }
+
+        private void BarrelressourcesContente()
+        {
+            var _size = Random.Range(minBarrelRessources, maxBarrelRessources);
+            int _goldAmount = 0;
+            int _lifeAmount = 0;
+            int _foodAmount = 0;
+            for (int i = 0; i < _size; i++)
+            {
+                int _weight = goldWeight + lifeWeight + foodWeight;
+                var _random = Random.Range(0, _weight);
+                if (_random < goldWeight)
+                    _goldAmount++;
+                else if (_random < goldWeight + lifeWeight)
+                    _lifeAmount++;
+                else if (_random < goldWeight + lifeWeight + foodWeight)
+                    _foodAmount++;
+            }
+            PlayerManager.Instance.GainCoins(_goldAmount);
+            PlayerManager.Instance.GainFood(_foodAmount);
         }
         #endregion
     }

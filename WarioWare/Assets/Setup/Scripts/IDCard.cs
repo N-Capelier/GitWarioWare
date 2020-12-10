@@ -17,9 +17,11 @@ public class IDCard : ScriptableObject
     public string verbe = string.Empty;
     [SerializeField]  public SceneField microGameScene;
 
+    public bool hasBarrel;
+
 
     // will be used later on the macro;
-   [SerializeField] public Difficulty currentDifficulty;
+    [SerializeField] public Difficulty currentDifficulty;
   [SerializeField]  public int idWeight;
 }
 
