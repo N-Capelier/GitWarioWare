@@ -12,19 +12,26 @@ namespace Islands
         Medium = 1,
         Hard = 2,
         Legendary = 3,
-        Shop = 4
+        Shop = 4,
+        Start = 5,
+        Boss
     }
     public class Island : MonoBehaviour
     {
         #region Variables
 
-        //Variables
+        [Header("Required")]
         public IslandDifficulty difficulty;
         [HideInInspector] public Reward reward;
 
-        public Island[] neighbours;
         public Island[] accessibleNeighbours;
         [HideInInspector] public List<Cap> capList = new List<Cap>();
+
+        [Header("Special Islands")]
+        [SerializeField] Sprite legendaryIslandSprite;
+        [SerializeField] Sprite startIslandSprite;
+        [SerializeField] Sprite shopIslandSprite;
+        [SerializeField] Sprite bossIslandSprite;
 
         //Components
         Image image;
@@ -38,6 +45,31 @@ namespace Islands
         {
             image = GetComponent<Image>();
             button = GetComponent<Button>();
+        }
+
+        #endregion
+
+        #region Unity Messages
+
+        private void Start()
+        {
+            switch(difficulty)
+            {
+                case IslandDifficulty.Legendary:
+                    image.sprite = legendaryIslandSprite;
+                    break;
+                case IslandDifficulty.Start:
+                    image.sprite = startIslandSprite;
+                    break;
+                case IslandDifficulty.Shop:
+                    image.sprite = shopIslandSprite;
+                    break;
+                case IslandDifficulty.Boss:
+                    image.sprite = bossIslandSprite;
+                    break;
+                default:
+                    break;
+            }
         }
 
         #endregion

@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using SD_UsualAction;
 using Islands;
+using Player;
 
 namespace Caps
 {
@@ -48,6 +49,12 @@ namespace Caps
         public GameObject verbePanel;
         public TextMeshProUGUI verbeText;
         public GameObject sceneCam;
+        public GameObject capUI;
+        public GameObject macroUI;
+
+        //events
+        //public delegate void MapUIHandler();
+        //public event MapUIHandler ResetFocus;
         #endregion
 
         #region Methods
@@ -64,15 +71,15 @@ namespace Caps
             currentCap = _currentCap;
             if (currentCap.isDone)
             {
-                Debug.Log("already done");
                 CapEnd();
                 yield break;
             }
+            capUI.SetActive(true);
+            macroUI.SetActive(false);
             panel.SetActive(false);
             verbePanel.SetActive(true);
             if(currentAsyncScene == null)
             {
-                Debug.Log(_currentCap.chosenMiniGames.Count);
                 currentDifficulty = _currentCap.chosenMiniGames[currentMiniGame].currentDifficulty;
                 currentAsyncScene = SceneManager.LoadSceneAsync(_currentCap.chosenMiniGames[currentMiniGame].microGameScene.BuildIndex, LoadSceneMode.Additive);
                 currentAsyncScene.allowSceneActivation = false;
@@ -148,7 +155,7 @@ namespace Caps
         {
             currentCap.isDone = true;
 
-            var _island = new Island();
+            Island _island = null;
             foreach (var island in islandList)
             {
                 if (island.capList.Contains(currentCap))
@@ -178,7 +185,10 @@ namespace Caps
             bpm = BPM.Slow;
             miniGamePassedNumber = 0;
             currentMiniGame = 0;
+            macroUI.SetActive(true);
+            capUI.SetActive(false);
 
+            PlayerMovement.Instance.ResetFocus();
             //REACTIVER LES INPUTS MACRO
         }
 

@@ -4,7 +4,7 @@ using UnityEngine;
 namespace SD_UsualAction
 {
 
-    
+
 
     public delegate void ActionRef<T>(ref T item);
 
@@ -15,7 +15,7 @@ namespace SD_UsualAction
             T[] Arr = (T[])Enum.GetValues(src.GetType());
             int j = Array.IndexOf<T>(Arr, src) + 1;
 
-            return (Arr.Length == j) ? Arr[Arr.Length-1] : Arr[j];
+            return (Arr.Length == j) ? Arr[Arr.Length - 1] : Arr[j];
         }
         public class ActionWithDefault
         {

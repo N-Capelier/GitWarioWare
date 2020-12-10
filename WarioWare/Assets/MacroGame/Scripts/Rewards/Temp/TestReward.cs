@@ -2,7 +2,7 @@
 
 namespace Rewards
 {
-    [CreateAssetMenu(fileName = "New Test Reward", menuName = "Rewards/Test Reward", order = 50)]
+    [CreateAssetMenu(fileName = "New Test Reward", menuName = "Reward/Test Reward", order = 50)]
     public class TestReward : Reward
     {
         public override void GetDescription()
