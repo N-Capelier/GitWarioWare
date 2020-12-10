@@ -23,6 +23,11 @@ namespace UI
             horizontalMove = Input.GetAxis("Right_Joystick_X");
             verticalMove = Input.GetAxis("Right_Joystick_Y");
 
+            if (Mathf.Abs(Input.GetAxis("Left_Joystick_X")) > joystickDeadZone || Mathf.Abs(Input.GetAxis("Left_Joystick_Y")) > joystickDeadZone || !IsInsideMap())
+            {
+                targetTransform.position = playerTransform.position;
+            }
+            
             if (Mathf.Abs(horizontalMove) < joystickDeadZone && Mathf.Abs(verticalMove) < joystickDeadZone)
             {
                 targetTransform.position = playerTransform.position;
@@ -30,11 +35,6 @@ namespace UI
             else
             {
                 MoveTarget();
-            }
-
-            if (!IsInsideMap())
-            {
-                targetTransform.position = playerTransform.position;
             }
         }
 
