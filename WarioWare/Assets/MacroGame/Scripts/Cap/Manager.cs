@@ -5,6 +5,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using SD_UsualAction;
+using Islands;
+
 namespace Caps
 {
     public class Manager : Singleton<Manager>
@@ -17,15 +19,15 @@ namespace Caps
         #region Variables
         [Header("Playtest variable")]
         public float transitionTime;
-        public float verbeTime;
+        public float verbTime;
         public int numberBeforeSpeedUp;
         //int that will be added on the id to make it appear more offen, they all start with a value of 10
         public int capWeightToAdd;
         public int listWeightToAdd;
 
-        [Header ("other stuff")]
+        [Header ("Parameters")]
         public CapsSorter sorter;
-        public List<TemporaryIsland> islandList = new List<TemporaryIsland>();
+        public Island[] islandList;
         public ChallengeHaptique challengeHaptique;
         public ChallengeInput challengeInput;
         public int zoneNumber;
@@ -77,7 +79,7 @@ namespace Caps
 
             }
             verbeText.text = _currentCap.chosenMiniGames[currentMiniGame].verbe;
-            yield return new WaitForSeconds(verbeTime);
+            yield return new WaitForSeconds(verbTime);
             sceneCam.SetActive(false);
             verbePanel.SetActive(false);
             currentAsyncScene.allowSceneActivation = true;
@@ -145,11 +147,39 @@ namespace Caps
         private void CapEnd()
         {
             currentCap.isDone = true;
+
+            var _island = new Island();
+            foreach (var island in islandList)
+            {
+                if (island.capList.Contains(currentCap))
+                {
+                    _island = island;
+                    break;
+                }
+            }
+
+            var _index = 1000;
+            for (int i = 0; i < _island.capList.Count; i++)
+            {
+                if (_island.capList[i] == currentCap)
+                    _index = i;
+            }
+
+            var _islandToGo = _island.accessibleNeighbours[_index];
+            for (int i = 0; i < _islandToGo.accessibleNeighbours.Length; i++)
+            {
+                if(_islandToGo.accessibleNeighbours[i] == _island)
+                {
+                    _islandToGo.capList[i].isDone = true;
+                }
+            }
             currentCap = null;
             resultText.text = "GG";
             bpm = BPM.Slow;
             miniGamePassedNumber = 0;
             currentMiniGame = 0;
+
+            //REACTIVER LES INPUTS MACRO
         }
 
         /// <summary>
@@ -168,33 +198,23 @@ namespace Caps
         }
 
         /// <summary>
-        /// this is a temporaly mesur, I'm waiting for the real island to be created
-        /// </summary>
-        public void IslandCreation()
-        {
-            for (int i = 0; i < 15; i++)
-            {
-                islandList.Add(new TemporaryIsland());
-                islandList[i].size = Random.Range(0, 3);
-                islandList[i].capNumber = Random.Range(1, 3);
-            }
-        }
-
-        /// <summary>
         /// create a cap for each island depending on cap number
         /// </summary>
         public void CapAttribution()
         {
-            foreach (TemporaryIsland island in islandList)
+            foreach (Island island in islandList)
             {
-                for (int i = 0; i < island.capNumber; i++)
+                for (int i = 0; i < island.accessibleNeighbours.Length; i++)
                 {
-                    island.cap.Add(new Cap());
-                    island.cap[i].capWeight = capWeightToAdd;
-                    island.cap[i].listWeight = listWeightToAdd;
-                    island.cap[i].length = island.size + 4 + zoneNumber;
-                    island.cap[i].ChoseIdList(sorter);
-                    island.cap[i].ChoseMiniGames();
+                    island.capList.Add(new Cap());
+                    island.capList[i].capWeight = capWeightToAdd;
+                    island.capList[i].listWeight = listWeightToAdd;
+                    if((int)island.difficulty > 2)
+                        island.capList[i].length = 6 + zoneNumber;
+                    else
+                        island.capList[i].length = (int)island.difficulty + 4 + zoneNumber;
+                    island.capList[i].ChoseIdList(sorter);
+                    island.capList[i].ChoseMiniGames();
                 }
                 
             }

@@ -27,7 +27,7 @@ public class CapsSorterEditor : Editor
         EditorGUILayout.PropertyField(serializedObject.FindProperty("chalInput"));
         EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(capsSorter.idCards)));
         initialListWeight = EditorGUILayout.IntField("Initial list weight",initialListWeight);
-        if (GUILayout.Button("SorteCards"))
+        if (GUILayout.Button("Sort Cards"))
         {
             Reset();
             Sorter();
@@ -44,10 +44,13 @@ public class CapsSorterEditor : Editor
 
     private void Reset()
     {
-        capsSorter.sortedIdCards = new List<IDCardList>((int)ChallengeHaptique.A10);
-        for (int i = 0; i <(int) ChallengeHaptique.A10 +1; i++)
+        if(capsSorter!= null)
         {
-            capsSorter.sortedIdCards.Add(new IDCardList()); ;
+            capsSorter.sortedIdCards = new List<IDCardList>((int)ChallengeHaptique.A10);
+            for (int i = 0; i <(int) ChallengeHaptique.A10 +1; i++)
+            {
+                capsSorter.sortedIdCards.Add(new IDCardList()); ;
+            }
         }
     }
 

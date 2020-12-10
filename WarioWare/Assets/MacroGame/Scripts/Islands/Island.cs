@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
+using System.Collections.Generic;
 using Rewards;
 using UnityEngine.UI;
+using Caps;
 
 namespace Islands
 {
@@ -8,17 +10,21 @@ namespace Islands
     {
         Easy = 0,
         Medium = 1,
-        Hard = 2
+        Hard = 2,
+        Legendary = 3,
+        Shop = 4
     }
     public class Island : MonoBehaviour
     {
         #region Variables
 
         //Variables
-        [HideInInspector] public IslandDifficulty difficulty;
+        public IslandDifficulty difficulty;
         [HideInInspector] public Reward reward;
 
         public Island[] neighbours;
+        public Island[] accessibleNeighbours;
+        [HideInInspector] public List<Cap> capList = new List<Cap>();
 
         //Components
         Image image;
@@ -51,11 +57,11 @@ namespace Islands
                     difficulty = IslandDifficulty.Easy;
                     image.sprite = _sprite;
                     break;
-                case RewardRarity.Epic:
+                case RewardRarity.Rare:
                     difficulty = IslandDifficulty.Medium;
                     image.sprite = _sprite;
                     break;
-                case RewardRarity.Legendary:
+                case RewardRarity.Epic:
                     difficulty = IslandDifficulty.Hard;
                     image.sprite = _sprite;
                     break;
