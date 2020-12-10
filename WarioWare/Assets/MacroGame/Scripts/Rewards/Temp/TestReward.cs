@@ -10,7 +10,7 @@ namespace Rewards
             Debug.Log("This is a reward.");
         }
 
-        public override void GiveEffect()
+        public override void ApplyPassiveEffect()
         {
             Debug.Log("Got the reward!");
         }
@@ -18,6 +18,11 @@ namespace Rewards
         public override void RemoveEffect()
         {
             Debug.Log("Lost my reward!");
+        }
+
+        public override void ApplyActiveEffect()
+        {
+            Debug.Log("Reward used!");
         }
     }
 }

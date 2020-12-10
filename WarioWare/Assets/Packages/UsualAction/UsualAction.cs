@@ -4,18 +4,31 @@ using UnityEngine;
 namespace SD_UsualAction
 {
 
-
+    
 
     public delegate void ActionRef<T>(ref T item);
 
     public static class ActionExtention
     {
+        public static AudioSource PlaySecured(this AudioSource audioSource) 
+        {
+            if(audioSource.clip != null)
+            {
+                audioSource.Play();
+                return audioSource;
+            }
+            else
+            {
+                Debug.LogError("Your audio Source doesn't have any clip, please use ApplyAudioClip of the sound Manager");
+                return null;
+            }
+        }
         public static T Next<T>(this T src) where T : struct
         {
             T[] Arr = (T[])Enum.GetValues(src.GetType());
             int j = Array.IndexOf<T>(Arr, src) + 1;
 
-            return (Arr.Length == j) ? Arr[Arr.Length - 1] : Arr[j];
+            return (Arr.Length == j) ? Arr[Arr.Length-1] : Arr[j];
         }
         public class ActionWithDefault
         {
