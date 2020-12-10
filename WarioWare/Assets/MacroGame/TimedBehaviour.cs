@@ -38,7 +38,6 @@ public class TimedBehaviour : MonoBehaviour
             Tick++;
             currentTime = AudioSettings.dspTime;
             TimedUpdate();
-            Debug.Log(Tick);
         }
     }
   

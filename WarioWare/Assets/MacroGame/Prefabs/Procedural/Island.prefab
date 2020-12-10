@@ -224,7 +224,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   difficulty: 0
   reward: {fileID: 0}
-  neighbours: []
+  accessibleNeighbours: []
+  legendaryIslandSprite: {fileID: 21300000, guid: 9a03aedf6c049d54983077fe6ce0539a,
+    type: 3}
+  startIslandSprite: {fileID: 21300000, guid: 9a03aedf6c049d54983077fe6ce0539a, type: 3}
+  shopIslandSprite: {fileID: 21300000, guid: 9a03aedf6c049d54983077fe6ce0539a, type: 3}
+  bossIslandSprite: {fileID: 21300000, guid: 9a03aedf6c049d54983077fe6ce0539a, type: 3}
   button: {fileID: 0}
 --- !u!114 &2169064544655167480
 MonoBehaviour:

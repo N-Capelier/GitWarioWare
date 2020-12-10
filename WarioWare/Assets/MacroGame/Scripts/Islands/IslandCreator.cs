@@ -40,8 +40,8 @@ namespace Islands
         void GenerateRewards()
         {
             //Apply randomness to weights
-            commonRewardRateWeight += Random.Range(commonRewardRateWeight - commonRewardRateWeight * commonRewardRandomness / 100, commonRewardRandomness + commonRewardRateWeight * commonRewardRandomness / 100);
-            rareRewardRateWeight += Random.Range(rareRewardRateWeight - rareRewardRateWeight * rareRewardRandomness / 100, rareRewardRandomness + rareRewardRateWeight * rareRewardRandomness / 100);
+            commonRewardRateWeight += Random.Range(commonRewardRateWeight * commonRewardRandomness / 100, commonRewardRateWeight * commonRewardRandomness / 100);
+            rareRewardRateWeight += Random.Range(rareRewardRateWeight * rareRewardRandomness / 100, rareRewardRateWeight * rareRewardRandomness / 100);
 
             //Convert weights to percentages
             int _totalWeight = commonRewardRateWeight + rareRewardRateWeight + epicRewardRateWeight;
@@ -85,9 +85,8 @@ namespace Islands
 
             for (int i = 0; i < islands.Length; i++)
             {
-                if (islands[i].difficulty == IslandDifficulty.Legendary || islands[i].difficulty == IslandDifficulty.Shop)
-                    continue;
-                _generatedIslandsList.Add(islands[i]);
+                if (islands[i].difficulty == IslandDifficulty.Easy || islands[i].difficulty == IslandDifficulty.Medium || islands[i].difficulty == IslandDifficulty.Hard)
+                    _generatedIslandsList.Add(islands[i]);
             }
 
             Island[] _generatedIslands = _generatedIslandsList.ToArray();
@@ -97,7 +96,7 @@ namespace Islands
 
             for (int i = 0; i < _generatedIslands.Length; i++)
             {
-                float index = i / _generatedIslands.Length * 100;
+                float index = i * 100 / _generatedIslands.Length;
                 if (index <= _commonRate)
                 {
                     _generatedReward[i] = _commonRewards[Random.Range(0, _commonRewards.Count)];
@@ -115,7 +114,7 @@ namespace Islands
             //Shuffle the rewards
             _generatedReward = FisherYates(_generatedReward);
 
-            //Spread the rewards to the islands
+            //Spread the rewards through the islands
             for (int i = 0; i < _generatedIslands.Length; i++)
             {
                 Sprite _islandSprite;

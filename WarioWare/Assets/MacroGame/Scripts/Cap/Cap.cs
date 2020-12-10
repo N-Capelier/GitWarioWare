@@ -84,7 +84,6 @@ namespace Caps
                                 _indexAlreadyTaken.Add(x);
                                 //this number is what will be needed to be calculated
                                 IDCardList.IDCards[x].idWeight += capWeight;
-                                Debug.Log(IDCardList.IDCards[x].name);
                                 break;
                             }
                             else

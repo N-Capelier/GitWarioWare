@@ -64,7 +64,6 @@ namespace Caps
             currentCap = _currentCap;
             if (currentCap.isDone)
             {
-                Debug.Log("already done");
                 CapEnd();
                 yield break;
             }
@@ -72,7 +71,6 @@ namespace Caps
             verbePanel.SetActive(true);
             if(currentAsyncScene == null)
             {
-                Debug.Log(_currentCap.chosenMiniGames.Count);
                 currentDifficulty = _currentCap.chosenMiniGames[currentMiniGame].currentDifficulty;
                 currentAsyncScene = SceneManager.LoadSceneAsync(_currentCap.chosenMiniGames[currentMiniGame].microGameScene.BuildIndex, LoadSceneMode.Additive);
                 currentAsyncScene.allowSceneActivation = false;
@@ -148,7 +146,7 @@ namespace Caps
         {
             currentCap.isDone = true;
 
-            var _island = new Island();
+            Island _island = null;
             foreach (var island in islandList)
             {
                 if (island.capList.Contains(currentCap))

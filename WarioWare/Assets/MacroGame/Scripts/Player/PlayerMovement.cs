@@ -41,9 +41,9 @@ namespace Player
         private void GetNeighbors()
         {
             playerIsland.button.interactable = true;
-            for (int i = 0; i < playerIsland.neighbours.Length; i++)
+            for (int i = 0; i < playerIsland.accessibleNeighbours.Length; i++)
             {
-                playerIsland.neighbours[i].button.interactable = true;
+                playerIsland.accessibleNeighbours[i].button.interactable = true;
             }
             playerIsland.button.Select();
         }
@@ -95,7 +95,7 @@ namespace Player
         {
             if (targetIsland != playerIsland)
             {
-                Debug.Log(targetIsland.gameObject.name + " has " + targetIsland.neighbours.Length + " neighbor(s).");
+                //Debug.Log(targetIsland.gameObject.name + " has " + targetIsland.accessibleNeighbours.Length + " neighbor(s).");
                 //show UI here
             }
         }
