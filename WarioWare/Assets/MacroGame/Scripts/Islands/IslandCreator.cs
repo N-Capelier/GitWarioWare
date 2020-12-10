@@ -34,10 +34,10 @@ namespace Islands
 
         private void Start()
         {
-            GenerateRewards();
+            GenerateIslands();
         }
 
-        void GenerateRewards()
+        void GenerateIslands()
         {
             //Apply randomness to weights
             commonRewardRateWeight += Random.Range(commonRewardRateWeight * commonRewardRandomness / 100, commonRewardRateWeight * commonRewardRandomness / 100);
@@ -57,7 +57,7 @@ namespace Islands
                 _rareRate = _commonRate + rareRewardRateWeight;
             }
 
-            //Split rewards from rarity
+            //Split rewards from their rarity
             List<Reward> _commonRewards = new List<Reward>();
             List<Reward> _rareRewards = new List<Reward>();
             List<Reward> _epicRewards = new List<Reward>();
@@ -99,15 +99,15 @@ namespace Islands
                 float index = i * 100 / _generatedIslands.Length;
                 if (index <= _commonRate)
                 {
-                    _generatedReward[i] = _commonRewards[Random.Range(0, _commonRewards.Count)];
+                    _generatedReward[i] = GetRandomReward(_commonRewards.ToArray());
                 }
                 else if (index <= _rareRate)
                 {
-                    _generatedReward[i] = _rareRewards[Random.Range(0, _rareRewards.Count)];
+                    _generatedReward[i] = GetRandomReward(_rareRewards.ToArray());
                 }
                 else
                 {
-                    _generatedReward[i] = _epicRewards[Random.Range(0, _epicRewards.Count)];
+                    _generatedReward[i] = GetRandomReward(_epicRewards.ToArray());
                 }
             }
 
@@ -139,6 +139,61 @@ namespace Islands
             Manager.Instance.CapAttribution();
             Manager.Instance.ResetIDCards();
             PlayerMovement.Instance.islands = islands;
+        }
+
+        Reward GetRandomReward(Reward[] _rewards)
+        {
+            //Convert weights to percentages
+            int _totalWeight = 0;
+            foreach(Reward _reward in _rewards)
+            {
+                _totalWeight += _reward.dropRateWeight;
+            }
+
+            int[] _percentages = new int[_rewards.Length];
+
+            if(_totalWeight != 100)
+            {
+                for (int i = 0; i < _rewards.Length; i++)
+                {
+                    int _push = 0;
+                    if(i > 0)
+                    {
+                        for (int j = 0; j < i; j++)
+                        {
+                            _push += _percentages[j];
+                        }
+                    }
+                    _percentages[i] = _push + (_rewards[i].dropRateWeight * 100 / _totalWeight);
+                }
+            }
+            else
+            {
+                for (int i = 0; i < _rewards.Length; i++)
+                {
+                    int _push = 0;
+                    if (i > 0)
+                    {
+                        for (int j = 0; j < i; j++)
+                        {
+                            _push += _percentages[j];
+                        }
+                    }
+                    _percentages[i] = _push + _rewards[i].dropRateWeight;
+                }
+            }
+
+            //Generate the rewards depending on their drop weight
+            int index = Random.Range(0, 100);
+
+            for (int i = 0; i < _rewards.Length; i++)
+            {
+                if (index <= _percentages[i])
+                {
+                    return _rewards[i];
+                }
+            }
+            throw new System.Exception("Error on percentages calculation");
         }
 
         Reward[] FisherYates(Reward[] _rewards)

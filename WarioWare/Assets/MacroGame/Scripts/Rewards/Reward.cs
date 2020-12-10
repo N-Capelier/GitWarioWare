@@ -23,8 +23,10 @@ namespace Rewards
         public RewardType type;
         public RewardRarity rarity;
         public int price;
+        [Range(0, 100)] public int dropRateWeight;
 
-        public abstract void GiveEffect();
+        public abstract void ApplyPassiveEffect();
+        public abstract void ApplyActiveEffect();
         public abstract void RemoveEffect();
         public abstract void GetDescription();
     }

@@ -348,7 +348,7 @@ PrefabInstance:
     - target: {fileID: 2190592433291563160, guid: 27cb8457ccf60b3438238bc2156ab8ca,
         type: 3}
       propertyPath: gameRewards.Array.size
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2190592433291563160, guid: 27cb8457ccf60b3438238bc2156ab8ca,
         type: 3}
@@ -453,13 +453,31 @@ PrefabInstance:
         type: 3}
       propertyPath: gameRewards.Array.data[1]
       value: 
-      objectReference: {fileID: 11400000, guid: 6e8c958c5fefc68468df9803ae1d1041,
+      objectReference: {fileID: 11400000, guid: 4553ee9c7c9f5dc4bb24f820c0d72b46,
         type: 2}
     - target: {fileID: 2190592433291563160, guid: 27cb8457ccf60b3438238bc2156ab8ca,
         type: 3}
       propertyPath: gameRewards.Array.data[2]
       value: 
       objectReference: {fileID: 11400000, guid: 545dd087f7bf0ab409ecfd4584c03b60,
+        type: 2}
+    - target: {fileID: 2190592433291563160, guid: 27cb8457ccf60b3438238bc2156ab8ca,
+        type: 3}
+      propertyPath: gameRewards.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: c919857bbb36b004889b897d1f87caeb,
+        type: 2}
+    - target: {fileID: 2190592433291563160, guid: 27cb8457ccf60b3438238bc2156ab8ca,
+        type: 3}
+      propertyPath: gameRewards.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: 6e8c958c5fefc68468df9803ae1d1041,
+        type: 2}
+    - target: {fileID: 2190592433291563160, guid: 27cb8457ccf60b3438238bc2156ab8ca,
+        type: 3}
+      propertyPath: gameRewards.Array.data[5]
+      value: 
+      objectReference: {fileID: 11400000, guid: 750a02393ad96f5448bf29108a171cbf,
         type: 2}
     - target: {fileID: 2190592433291563161, guid: 27cb8457ccf60b3438238bc2156ab8ca,
         type: 3}

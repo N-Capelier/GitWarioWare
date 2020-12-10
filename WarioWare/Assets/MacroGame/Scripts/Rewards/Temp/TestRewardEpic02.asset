@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bc895c323c72472409a79cb720f2c2bd, type: 3}
-  m_Name: Test03
+  m_Name: TestRewardEpic02
   m_EditorClassIdentifier: 
-  rewardName: Test02
+  rewardName: Epic2
   type: 1
   rarity: 2
   price: 5
+  dropRateWeight: 50
