@@ -15,6 +15,7 @@ namespace Caps
         private void Awake()
         {
             CreateSingleton(true);
+            ResetIDCards();
         }
 
         #region Variables
@@ -86,7 +87,7 @@ namespace Caps
 
             }
             verbeText.text = _currentCap.chosenMiniGames[currentMiniGame].verbe;
-            yield return new WaitForSeconds(verbTime);
+            yield return new WaitForSeconds(verbTime * 60 / (float)bpm);
             sceneCam.SetActive(false);
             verbePanel.SetActive(false);
             currentAsyncScene.allowSceneActivation = true;
@@ -116,11 +117,11 @@ namespace Caps
         /// <returns></returns>
         private IEnumerator Transition()
         {
-            sceneCam.SetActive(true);
             SceneManager.UnloadSceneAsync(currentCap.chosenMiniGames[currentMiniGame].microGameScene.BuildIndex);
             if (currentCap.chosenMiniGames[currentMiniGame].currentDifficulty != Difficulty.HARD)
                 currentCap.chosenMiniGames[currentMiniGame].currentDifficulty++;
 
+            sceneCam.SetActive(true);
 
             currentMiniGame++;
             if (currentMiniGame == currentCap.chosenMiniGames.Count-1)
@@ -138,7 +139,7 @@ namespace Caps
             currentAsyncScene = SceneManager.LoadSceneAsync(currentCap.chosenMiniGames[currentMiniGame].microGameScene.BuildIndex, LoadSceneMode.Additive);
             currentAsyncScene.allowSceneActivation = false;
 
-            yield return new WaitForSeconds(transitionTime);
+            yield return new WaitForSeconds(transitionTime * 60 / (float)bpm);
             if(currentCap.length == miniGamePassedNumber)
             {
                 CapEnd();

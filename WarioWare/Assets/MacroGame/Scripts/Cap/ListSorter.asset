@@ -71,63 +71,63 @@ MonoBehaviour:
     - {fileID: 11400000, guid: b2dba776eaa2ef64babf752199c2a2d7, type: 2}
     - {fileID: 11400000, guid: b2dba776eaa2ef64babf752199c2a2d7, type: 2}
     - {fileID: 11400000, guid: b2dba776eaa2ef64babf752199c2a2d7, type: 2}
-    weight: 1
+    weight: 17
   - IDCards:
     - {fileID: 11400000, guid: 5a2e00892daf8bc45860ea9f11647171, type: 2}
     - {fileID: 11400000, guid: 5a2e00892daf8bc45860ea9f11647171, type: 2}
     - {fileID: 11400000, guid: 5a2e00892daf8bc45860ea9f11647171, type: 2}
     - {fileID: 11400000, guid: 5a2e00892daf8bc45860ea9f11647171, type: 2}
     - {fileID: 11400000, guid: 5a2e00892daf8bc45860ea9f11647171, type: 2}
-    weight: 1
+    weight: 3
   - IDCards:
     - {fileID: 11400000, guid: a24e07df355d55140a339a2df24fd29d, type: 2}
     - {fileID: 11400000, guid: a24e07df355d55140a339a2df24fd29d, type: 2}
     - {fileID: 11400000, guid: a24e07df355d55140a339a2df24fd29d, type: 2}
     - {fileID: 11400000, guid: a24e07df355d55140a339a2df24fd29d, type: 2}
     - {fileID: 11400000, guid: a24e07df355d55140a339a2df24fd29d, type: 2}
-    weight: 1
+    weight: 15
   - IDCards:
     - {fileID: 11400000, guid: 223e11e60b05d8247b298257102d0fb6, type: 2}
     - {fileID: 11400000, guid: 223e11e60b05d8247b298257102d0fb6, type: 2}
     - {fileID: 11400000, guid: 223e11e60b05d8247b298257102d0fb6, type: 2}
     - {fileID: 11400000, guid: 223e11e60b05d8247b298257102d0fb6, type: 2}
     - {fileID: 11400000, guid: 223e11e60b05d8247b298257102d0fb6, type: 2}
-    weight: 1
+    weight: 16
   - IDCards:
     - {fileID: 11400000, guid: 619bbada6b4d4514d84394f74699cab4, type: 2}
     - {fileID: 11400000, guid: 619bbada6b4d4514d84394f74699cab4, type: 2}
     - {fileID: 11400000, guid: 619bbada6b4d4514d84394f74699cab4, type: 2}
     - {fileID: 11400000, guid: 619bbada6b4d4514d84394f74699cab4, type: 2}
     - {fileID: 11400000, guid: 619bbada6b4d4514d84394f74699cab4, type: 2}
-    weight: 1
+    weight: 39
   - IDCards:
     - {fileID: 11400000, guid: dd9a51cf25e43a44680cde7007a435bd, type: 2}
     - {fileID: 11400000, guid: dd9a51cf25e43a44680cde7007a435bd, type: 2}
     - {fileID: 11400000, guid: dd9a51cf25e43a44680cde7007a435bd, type: 2}
     - {fileID: 11400000, guid: dd9a51cf25e43a44680cde7007a435bd, type: 2}
     - {fileID: 11400000, guid: dd9a51cf25e43a44680cde7007a435bd, type: 2}
-    weight: 1
+    weight: 30
   - IDCards:
     - {fileID: 11400000, guid: 3ad87f2ab0fdb91438a3e715ed54ec6f, type: 2}
     - {fileID: 11400000, guid: 3ad87f2ab0fdb91438a3e715ed54ec6f, type: 2}
     - {fileID: 11400000, guid: 3ad87f2ab0fdb91438a3e715ed54ec6f, type: 2}
     - {fileID: 11400000, guid: 3ad87f2ab0fdb91438a3e715ed54ec6f, type: 2}
     - {fileID: 11400000, guid: 3ad87f2ab0fdb91438a3e715ed54ec6f, type: 2}
-    weight: 1
+    weight: 15
   - IDCards:
     - {fileID: 11400000, guid: 5bc51f470a1782d42872674bc0b33ad1, type: 2}
     - {fileID: 11400000, guid: 5bc51f470a1782d42872674bc0b33ad1, type: 2}
     - {fileID: 11400000, guid: 5bc51f470a1782d42872674bc0b33ad1, type: 2}
     - {fileID: 11400000, guid: 5bc51f470a1782d42872674bc0b33ad1, type: 2}
     - {fileID: 11400000, guid: 5bc51f470a1782d42872674bc0b33ad1, type: 2}
-    weight: 1
+    weight: 10
   - IDCards:
     - {fileID: 11400000, guid: 2dcb41fa80428ef4abb319debd307e62, type: 2}
     - {fileID: 11400000, guid: 2dcb41fa80428ef4abb319debd307e62, type: 2}
     - {fileID: 11400000, guid: 2dcb41fa80428ef4abb319debd307e62, type: 2}
     - {fileID: 11400000, guid: 2dcb41fa80428ef4abb319debd307e62, type: 2}
     - {fileID: 11400000, guid: 2dcb41fa80428ef4abb319debd307e62, type: 2}
-    weight: 1
+    weight: 24
   - IDCards:
     - {fileID: 11400000, guid: ace84b4dd0e22af4388655e8c2127a65, type: 2}
     - {fileID: 11400000, guid: ace84b4dd0e22af4388655e8c2127a65, type: 2}
