@@ -27,7 +27,7 @@ namespace Caps
 
         [Header ("Parameters")]
         public CapsSorter sorter;
-        public Island[] islandList;
+        [HideInInspector] public Island[] allIslands;
         public ChallengeHaptique challengeHaptique;
         public ChallengeInput challengeInput;
         public int zoneNumber;
@@ -151,7 +151,7 @@ namespace Caps
             currentCap.isDone = true;
 
             Island _island = null;
-            foreach (var island in islandList)
+            foreach (var island in allIslands)
             {
                 if (island.capList.Contains(currentCap))
                 {
@@ -206,7 +206,7 @@ namespace Caps
         /// </summary>
         public void CapAttribution()
         {
-            foreach (Island island in islandList)
+            foreach (Island island in allIslands)
             {
                 for (int i = 0; i < island.accessibleNeighbours.Length; i++)
                 {
