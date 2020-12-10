@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using SD_UsualAction;
 using Islands;
+using Player;
 
 namespace Caps
 {
@@ -50,6 +51,10 @@ namespace Caps
         public GameObject sceneCam;
         public GameObject capUI;
         public GameObject macroUI;
+
+        //events
+        //public delegate void MapUIHandler();
+        //public event MapUIHandler ResetFocus;
         #endregion
 
         #region Methods
@@ -183,6 +188,7 @@ namespace Caps
             macroUI.SetActive(true);
             capUI.SetActive(false);
 
+            PlayerMovement.Instance.ResetFocus();
             //REACTIVER LES INPUTS MACRO
         }
 
