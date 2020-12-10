@@ -20,8 +20,6 @@ namespace Player
 
         public delegate void PlayerUIHandler();
         public event PlayerUIHandler UpdatePlayerUI;
-        public event PlayerUIHandler ShowInventory;
-        public event PlayerUIHandler HideInventory;
 
 
         private bool inInventory = false;
@@ -44,12 +42,12 @@ namespace Player
             //Show / Hide Inventory
             if(Manager.Instance.macroUI.activeSelf && Input.GetButtonDown("Start_Button") && !inInventory)
             {
-                ShowInventory.Invoke();
+                PlayerInventory.Instance.Show();
                 inInventory = true;
             }
             if(Manager.Instance.macroUI.activeSelf && inInventory && Input.GetButtonDown("Start_Button"))
             {
-                HideInventory.Invoke();
+                PlayerInventory.Instance.Hide();
                 inInventory = false;
             }
         }
