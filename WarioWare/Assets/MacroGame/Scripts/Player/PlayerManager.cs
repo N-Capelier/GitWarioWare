@@ -8,10 +8,13 @@ namespace Player
     public class PlayerManager : Singleton<PlayerManager>
     {
         #region Variables
-
+        [Header ("Ressources")]
         public int playerHp;
         public int beatcoins;
         public int food;
+
+        [Header("MaxRessources")]
+        public int maxFood;
 
         public delegate void PlayerUIHandler();
         public event PlayerUIHandler UpdatePlayerUI ;
@@ -56,9 +59,9 @@ namespace Player
         }
         public void GainFood(int f)
         {
-            if(food + f >= 10)
+            if(food + f >= maxFood)
             {
-                food = 10;
+                food = maxFood;
             }
             else
             {

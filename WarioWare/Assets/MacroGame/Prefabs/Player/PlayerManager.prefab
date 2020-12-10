@@ -43,6 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e25c13ce238959049aace529ca753c8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHp: 0
+  playerHp: 10
   beatcoins: 0
-  food: 0
+  food: 5
+  maxFood: 10
