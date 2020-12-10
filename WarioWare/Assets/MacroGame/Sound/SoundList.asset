@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00d8df940e1a36e49ba067d6340331f8, type: 3}
+  m_Name: SoundList
+  m_EditorClassIdentifier: 
+  soundClassic:
+  - name: patate
+    volume: 0.5
+    clip: {fileID: 8300000, guid: 5e8420836d21ce048a5fa140065004bb, type: 3}
+  soundBpms:
+  - sounds:
+    - name: dsfsdf_0
+      volume: 0.5
+      clip: {fileID: 0}
+    - name: dsfsdf_1
+      volume: 0.5
+      clip: {fileID: 0}
+    - name: dsfsdf_2
+      volume: 0.5
+      clip: {fileID: 0}
+    - name: dsfsdf_3
+      volume: 0.5
+      clip: {fileID: 0}
+    bpm: 3c0000005a000000780000008c000000
+    name: dsfsdf

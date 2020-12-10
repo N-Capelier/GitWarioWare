@@ -12,7 +12,7 @@ public class IDCard : ScriptableObject
     public Cluster cluster;
     [SerializeField] public string trio;
     public ChallengeHaptique haptiqueChal;
-    public ChallengeInput inputChal;
+    public ChallengeInput  inputChal;
     public int indexEnum;
     public string verbe = string.Empty;
     [SerializeField]  public SceneField microGameScene;
