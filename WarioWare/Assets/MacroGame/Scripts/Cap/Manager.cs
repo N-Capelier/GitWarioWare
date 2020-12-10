@@ -48,6 +48,8 @@ namespace Caps
         public GameObject verbePanel;
         public TextMeshProUGUI verbeText;
         public GameObject sceneCam;
+        public GameObject capUI;
+        public GameObject macroUI;
         #endregion
 
         #region Methods
@@ -67,6 +69,8 @@ namespace Caps
                 CapEnd();
                 yield break;
             }
+            capUI.SetActive(true);
+            macroUI.SetActive(false);
             panel.SetActive(false);
             verbePanel.SetActive(true);
             if(currentAsyncScene == null)
@@ -176,6 +180,8 @@ namespace Caps
             bpm = BPM.Slow;
             miniGamePassedNumber = 0;
             currentMiniGame = 0;
+            macroUI.SetActive(true);
+            capUI.SetActive(false);
 
             //REACTIVER LES INPUTS MACRO
         }

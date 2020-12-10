@@ -11,25 +11,17 @@ namespace UI
         private float horizontalMove;
         private float verticalMove;
 
-        public CinemachineVirtualCamera UICamera;
         public RectTransform mapCanvas;
         public Transform targetTransform;
         public Transform playerTransform;
         public float cameraSpeed;
         public float joystickDeadZone;
 
-
-        // Start is called before the first frame update
-        void Start()
-        {
-
-        }
-
         // Update is called once per frame
         void Update()
         {
-            horizontalMove = Input.GetAxis("Left_Joystick_X");
-            verticalMove = Input.GetAxis("Left_Joystick_Y");
+            horizontalMove = Input.GetAxis("Right_Joystick_X");
+            verticalMove = Input.GetAxis("Right_Joystick_Y");
 
             if (Mathf.Abs(horizontalMove) < joystickDeadZone && Mathf.Abs(verticalMove) < joystickDeadZone)
             {

@@ -95,7 +95,7 @@ namespace Player
         {
             if (targetIsland != playerIsland)
             {
-                //Debug.Log(targetIsland.gameObject.name + " has " + targetIsland.accessibleNeighbours.Length + " neighbor(s).");
+                Debug.Log(targetIsland.gameObject.name + " has " + targetIsland.accessibleNeighbours.Length + " neighbor(s).");
                 //show UI here
             }
         }

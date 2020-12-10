@@ -62,6 +62,7 @@ MonoBehaviour:
   verbePanel: {fileID: 8977992822539135360}
   verbeText: {fileID: 8977992822820432095}
   sceneCam: {fileID: 0}
+  capUI: {fileID: 8977992823757320655}
 --- !u!114 &8977992822187955209
 MonoBehaviour:
   m_ObjectHideFlags: 0
