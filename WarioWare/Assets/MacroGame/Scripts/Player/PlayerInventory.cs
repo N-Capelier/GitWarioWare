@@ -36,6 +36,15 @@ namespace Player
         
         public void Show()
         {
+
+            for(int i = 0; i < slots.Length; i++)
+            {
+                if(stockedRewards[i] == null)
+                {
+                    rewardImages[i].gameObject.SetActive(false);
+                }
+            }
+
             inventoryCanvas.SetActive(true);
             slots[0].Select();
 
@@ -65,6 +74,7 @@ namespace Player
         public void AddToInventory(Reward item, int slot)
         {
             stockedRewards[slot] = item;
+            rewardImages[slot].gameObject.SetActive(true);
             //rewardImages[slot].sprite = item.sprite;
             rewardToAdd = null;
             rewardToAddImage.gameObject.SetActive(false);
@@ -79,6 +89,7 @@ namespace Player
         {
             stockedRewards[slot].RemoveEffect();
             stockedRewards[slot] = newItem;
+            rewardImages[slot].gameObject.SetActive(true);
             //rewardImages[slot].sprite = item.sprite;
             rewardToAdd = null;
             rewardToAddImage.gameObject.SetActive(false);
@@ -107,7 +118,10 @@ namespace Player
 
                     if(stockedRewards[i] != null && rewardToAdd == null)
                     {
+                        //if(stockedRewards[i] is activeItem)
                         UseItem(stockedRewards[i]);
+                        stockedRewards[i] = null;
+                        rewardImages[i].gameObject.SetActive(false);
                     }
                 }
             }
