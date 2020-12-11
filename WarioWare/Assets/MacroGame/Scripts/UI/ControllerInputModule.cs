@@ -29,25 +29,25 @@ namespace UnityEngine.EventSystems
         }
 
         [SerializeField]
-        private string m_HorizontalAxis = "Horizontal";
+        private string m_HorizontalAxis = "Left_Joystick_X";
 
         /// <summary>
         /// Name of the vertical axis for movement (if axis events are used).
         /// </summary>
         [SerializeField]
-        private string m_VerticalAxis = "Vertical";
+        private string m_VerticalAxis = "Left_Joystick_Y";
 
         /// <summary>
         /// Name of the submit button.
         /// </summary>
         [SerializeField]
-        private string m_SubmitButton = "Submit";
+        private string m_SubmitButton = "A_Button";
 
         /// <summary>
         /// Name of the submit button.
         /// </summary>
         [SerializeField]
-        private string m_CancelButton = "Cancel";
+        private string m_CancelButton = "B_Button";
 
         [SerializeField]
         private float m_InputActionsPerSecond = 10;
