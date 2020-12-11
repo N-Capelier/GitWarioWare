@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using Rewards;
 using Caps;
+using UI;
+using UnityEngine.SceneManagement;
 
 
 namespace Player
@@ -61,7 +63,8 @@ namespace Player
             if(playerHp - damage <= 0)
             {
                 playerHp = 0;
-                //Death event Here
+
+                StartCoroutine(DeathCoroutine());
                 Debug.Log("You are dead");
             }
             else
@@ -93,6 +96,13 @@ namespace Player
                 food += f;
             }
             UpdatePlayerUI.Invoke();
+        }
+
+        private IEnumerator DeathCoroutine()
+        {
+            FadeManager.Instance.FadeInAndOut(4);
+            yield return new WaitForSeconds(2);
+            SceneManager.LoadScene("Menu");    
         }
         #endregion
     }

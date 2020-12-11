@@ -2,13 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-namespace Caps
+namespace UI
 {
     [RequireComponent(typeof(Image))]
-    public class FadeManager : MonoBehaviour
+    public class FadeManager : Singleton<FadeManager>
     {
         private Image fade;
 
+        private void Awake()
+        {
+            CreateSingleton();
+        }
         private void Start()
         {
             fade = GetComponent<Image>();
