@@ -39,14 +39,17 @@ namespace Player
 
         void Update()
         {
-            //Show / Hide Inventory
-            if(Manager.Instance.macroUI.activeSelf && Input.GetButtonDown("Start_Button") && !inInventory)
+
+            //Show / Hide Inventory //check micro UI inactive
+            if(!Manager.Instance.capUI.activeSelf && Input.GetButtonDown("Start_Button") && !inInventory)
             {
+                Manager.Instance.macroUI.SetActive(false);
                 PlayerInventory.Instance.Show();
                 inInventory = true;
             }
-            if(Manager.Instance.macroUI.activeSelf && inInventory && Input.GetButtonDown("Start_Button"))
+            else if(!Manager.Instance.capUI.activeSelf && inInventory && Input.GetButtonDown("Start_Button"))
             {
+                Manager.Instance.macroUI.SetActive(true);
                 PlayerInventory.Instance.Hide();
                 inInventory = false;
             }

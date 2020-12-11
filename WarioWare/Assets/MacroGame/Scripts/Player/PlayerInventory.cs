@@ -9,7 +9,7 @@ namespace Player
 {
     public class PlayerInventory : Singleton<PlayerInventory>
     {
-        public Canvas inventoryCanvas;
+        public GameObject inventoryCanvas;
         public Button[] slots;
         public Image[] rewardImages;
         public Image rewardToAddImage;
@@ -36,7 +36,7 @@ namespace Player
         
         public void Show()
         {
-            inventoryCanvas.gameObject.SetActive(true);
+            inventoryCanvas.SetActive(true);
             slots[0].Select();
 
             if(rewardToAdd != null)
@@ -50,7 +50,7 @@ namespace Player
         {
             if(rewardToAdd == null)
             {
-                inventoryCanvas.gameObject.SetActive(false);
+                inventoryCanvas.SetActive(false);
                 PlayerMovement.Instance.ResetFocus();
             }
         }
