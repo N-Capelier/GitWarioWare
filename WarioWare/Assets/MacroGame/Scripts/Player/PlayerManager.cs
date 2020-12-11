@@ -1,6 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Rewards;
+using Caps;
+using UI;
+using UnityEngine.SceneManagement;
 
 
 namespace Player
@@ -17,7 +21,10 @@ namespace Player
         public int maxFood;
 
         public delegate void PlayerUIHandler();
-        public event PlayerUIHandler UpdatePlayerUI ;
+        public event PlayerUIHandler UpdatePlayerUI;
+
+
+        private bool inInventory = false;
 
         #endregion
 
@@ -35,6 +42,19 @@ namespace Player
         void Update()
         {
 
+            //Show / Hide Inventory //check micro UI inactive
+            if(!Manager.Instance.capUI.activeSelf && Input.GetButtonDown("Start_Button") && !inInventory)
+            {
+                Manager.Instance.macroUI.SetActive(false);
+                PlayerInventory.Instance.Show();
+                inInventory = true;
+            }
+            else if(!Manager.Instance.capUI.activeSelf && inInventory && Input.GetButtonDown("Start_Button"))
+            {
+                Manager.Instance.macroUI.SetActive(true);
+                PlayerInventory.Instance.Hide();
+                inInventory = false;
+            }
         }
 
         #region CustomMethods
@@ -43,13 +63,21 @@ namespace Player
             if(playerHp - damage <= 0)
             {
                 playerHp = 0;
-                //Death event Here
+
+                StartCoroutine(DeathCoroutine());
                 Debug.Log("You are dead");
             }
             else
             {
                 playerHp -= damage;
             }
+            UpdatePlayerUI.Invoke();
+        }
+
+        public void Heal(int health)
+        {       
+            playerHp += health;
+            
             UpdatePlayerUI.Invoke();
         }
         public void GainCoins(int coins)
@@ -68,6 +96,13 @@ namespace Player
                 food += f;
             }
             UpdatePlayerUI.Invoke();
+        }
+
+        private IEnumerator DeathCoroutine()
+        {
+            FadeManager.Instance.FadeInAndOut(4);
+            yield return new WaitForSeconds(2);
+            SceneManager.LoadScene("Menu");    
         }
         #endregion
     }
