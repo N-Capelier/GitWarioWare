@@ -37,6 +37,9 @@ namespace Islands
         Image image;
         [HideInInspector] public Button button;
 
+        [Header("References")]
+        public Transform anchorPoint;
+
         #endregion
 
         #region Unity Messages
@@ -80,25 +83,39 @@ namespace Islands
         /// Init the island with this method.
         /// </summary>
         /// <param name="_reward"></param>
-        public void SetReward(Reward _reward, Sprite _sprite)
+        public void SetReward(Reward _reward, IslandSprite _sprite)
         {
             reward = _reward;
             switch (_reward.rarity)
             {
                 case RewardRarity.Common:
                     difficulty = IslandDifficulty.Easy;
-                    image.sprite = _sprite;
                     break;
                 case RewardRarity.Rare:
                     difficulty = IslandDifficulty.Medium;
-                    image.sprite = _sprite;
                     break;
                 case RewardRarity.Epic:
                     difficulty = IslandDifficulty.Hard;
-                    image.sprite = _sprite;
                     break;
                 default:
                     throw new System.Exception("Rarity not linked to difficulty !");
+            }
+
+            image.sprite = _sprite.sprite;
+
+            switch(_sprite.anchorPoint)
+            {
+                case IslandAnchorPoint.East:
+                    anchorPoint.position.Set(64, 0, 0);
+                    break;
+                case IslandAnchorPoint.South_East:
+                    anchorPoint.position.Set(64, -64, 0);
+                    break;
+                case IslandAnchorPoint.South:
+                    anchorPoint.position.Set(0, -64, 0);
+                    break;
+                default:
+                    break;
             }
         }
 
