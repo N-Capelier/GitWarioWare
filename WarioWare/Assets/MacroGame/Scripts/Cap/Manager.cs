@@ -87,7 +87,7 @@ namespace Caps
             }
             //little fade  
             StartCoroutine(FadeManager.Instance.FadeInAndOut(0.5f * 60 / (float)bpm));
-            yield return new WaitForSeconds(0.5f * 60 / (float)bpm);
+            yield return new WaitForSeconds(0.25f * 60 / (float)bpm);
             capUI.SetActive(true);
             macroUI.SetActive(false);
             panel.SetActive(false);
@@ -101,7 +101,7 @@ namespace Caps
             }
             verbeText.text = _currentCap.chosenMiniGames[currentMiniGame].verbe;
            
-            yield return new WaitForSeconds((verbTime-0.5f) * 60 / (float)bpm);
+            yield return new WaitForSeconds((verbTime-0.25f) * 60 / (float)bpm);
             sceneCam.SetActive(false);
             verbePanel.SetActive(false);
             currentAsyncScene.allowSceneActivation = true;
@@ -138,7 +138,7 @@ namespace Caps
 
             //little fade
             StartCoroutine(FadeManager.Instance.FadeInAndOut(0.5f * 60 / (float)bpm));
-            yield return new WaitForSeconds(0.5f * 60 / (float)bpm);
+            yield return new WaitForSeconds(0.25f * 60 / (float)bpm);
             #region resultConsequences
             if (win)
             {
