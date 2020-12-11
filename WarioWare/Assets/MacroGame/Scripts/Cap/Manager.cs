@@ -52,8 +52,6 @@ namespace Caps
 
         public BPM bpm = BPM.Slow;
 
-        public FadeManager fade;
-
         public Difficulty currentDifficulty;
 
         [Header("UI Management")]
@@ -87,8 +85,8 @@ namespace Caps
                 CapEnd();
                 yield break;
             }
-            //little fade
-            StartCoroutine(fade.FadeInAndOut(0.5f * 60 / (float)bpm));
+            //little fade  
+            StartCoroutine(FadeManager.Instance.FadeInAndOut(0.5f * 60 / (float)bpm));
             yield return new WaitForSeconds(0.5f * 60 / (float)bpm);
             capUI.SetActive(true);
             macroUI.SetActive(false);
@@ -139,7 +137,7 @@ namespace Caps
             currentMiniGame++;
 
             //little fade
-            StartCoroutine(fade.FadeInAndOut(0.5f * 60 / (float)bpm));
+            StartCoroutine(FadeManager.Instance.FadeInAndOut(0.5f * 60 / (float)bpm));
             yield return new WaitForSeconds(0.5f * 60 / (float)bpm);
             #region resultConsequences
             if (win)
