@@ -106,7 +106,7 @@ namespace Player
             {
                 if(clickedButton == slots[i])
                 {
-                    if(stockedRewards[i] == null)
+                    if(stockedRewards[i] == null && rewardToAdd != null)
                     {
                         AddToInventory(rewardToAdd, i);
                     }
