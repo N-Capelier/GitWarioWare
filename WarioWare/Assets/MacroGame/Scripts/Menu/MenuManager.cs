@@ -8,7 +8,7 @@ public class MenuManager : MonoBehaviour
 
     public GameObject loadingScreen;
     public Slider loadingBar;
-    private bool canLoad;
+    //private bool canLoad;
     private AsyncOperation loading;
     private void Update()
     {
@@ -30,7 +30,7 @@ public class MenuManager : MonoBehaviour
         loadingScreen.SetActive(true);
         loading = SceneManager.LoadSceneAsync("Zone1");
         loading.allowSceneActivation = false;
-        canLoad = true;
+        //canLoad = true;
         for (float i = 0; i < 1; i+= 0.01f)
         {
             loadingBar.value = i;

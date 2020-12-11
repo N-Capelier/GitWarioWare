@@ -6,7 +6,6 @@ using Caps;
 using UI;
 using UnityEngine.SceneManagement;
 
-
 namespace Player
 {
     public class PlayerManager : Singleton<PlayerManager>
@@ -102,6 +101,8 @@ namespace Player
         {
             FadeManager.Instance.FadeInAndOut(4);
             yield return new WaitForSeconds(2);
+            Manager.Instance.EndGame();
+            Instance.EndGame();
             SceneManager.LoadScene("Menu");    
         }
         #endregion
