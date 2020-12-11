@@ -27,6 +27,16 @@ namespace Caps
         public int capWeightToAdd;
         public int listWeightToAdd;
 
+        //barrel
+        [Range(1, 90)]
+        public int barrelProbality;
+        public int maxBarrelRessources;
+        public int minBarrelRessources;
+        public int lifeWeight;
+        public int goldWeight;
+        public int foodWeight;
+
+
         [Header ("Parameters")]
         public CapsSorter sorter;
         [HideInInspector] public Island[] allIslands;
@@ -41,6 +51,7 @@ namespace Caps
 
         public BPM bpm = BPM.Slow;
 
+        public FadeManager fade;
 
         public Difficulty currentDifficulty;
 
@@ -75,6 +86,9 @@ namespace Caps
                 CapEnd();
                 yield break;
             }
+            //little fade
+            StartCoroutine(fade.FadeInAndOut(0.5f * 60 / (float)bpm));
+            yield return new WaitForSeconds(0.5f * 60 / (float)bpm);
             capUI.SetActive(true);
             macroUI.SetActive(false);
             panel.SetActive(false);
@@ -87,7 +101,8 @@ namespace Caps
 
             }
             verbeText.text = _currentCap.chosenMiniGames[currentMiniGame].verbe;
-            yield return new WaitForSeconds(verbTime * 60 / (float)bpm);
+           
+            yield return new WaitForSeconds((verbTime-0.5f) * 60 / (float)bpm);
             sceneCam.SetActive(false);
             verbePanel.SetActive(false);
             currentAsyncScene.allowSceneActivation = true;
@@ -99,31 +114,48 @@ namespace Caps
         /// <param name="win"> if true the game is won , if false the game is lost</param>
         public void Result(bool win)
         {
-            if (win)
-                resultText.text = "You Won!";
-
-            else
-                resultText.text = "You Lost!";
-
-            panel.SetActive(true);
-            StartCoroutine(Transition());
-
-
+            
+            StartCoroutine(Transition(win));
         }
 
         /// <summary>
         /// make the transition within a cap
         /// </summary>
         /// <returns></returns>
-        private IEnumerator Transition()
+        private IEnumerator Transition(bool win)
         {
+            
+
+            panel.SetActive(true);
             SceneManager.UnloadSceneAsync(currentCap.chosenMiniGames[currentMiniGame].microGameScene.BuildIndex);
             if (currentCap.chosenMiniGames[currentMiniGame].currentDifficulty != Difficulty.HARD)
                 currentCap.chosenMiniGames[currentMiniGame].currentDifficulty++;
 
             sceneCam.SetActive(true);
 
+            
+
             currentMiniGame++;
+
+            //little fade
+            StartCoroutine(fade.FadeInAndOut(0.5f * 60 / (float)bpm));
+            yield return new WaitForSeconds(0.5f * 60 / (float)bpm);
+            #region resultConsequences
+            if (win)
+            {
+                resultText.text = "You Won!";
+                if (currentCap.hasBarrel[miniGamePassedNumber])
+                {
+                    BarrelressourcesContente();
+                }
+            }
+            else
+            {
+                resultText.text = "You Lost!";
+                PlayerManager.Instance.TakeDamage(1);
+            }
+            #endregion
+
             if (currentMiniGame == currentCap.chosenMiniGames.Count-1)
                 currentMiniGame = 0;
 
@@ -139,7 +171,7 @@ namespace Caps
             currentAsyncScene = SceneManager.LoadSceneAsync(currentCap.chosenMiniGames[currentMiniGame].microGameScene.BuildIndex, LoadSceneMode.Additive);
             currentAsyncScene.allowSceneActivation = false;
 
-            yield return new WaitForSeconds(transitionTime * 60 / (float)bpm);
+            yield return new WaitForSeconds((transitionTime-0.5f) * 60 / (float)bpm);
             if(currentCap.length == miniGamePassedNumber)
             {
                 CapEnd();
@@ -225,10 +257,32 @@ namespace Caps
                     else
                         island.capList[i].length = (int)island.difficulty + 4 + zoneNumber;
                     island.capList[i].ChoseIdList(sorter);
-                    island.capList[i].ChoseMiniGames();
+                    island.capList[i].ChoseMiniGames(barrelProbality);
                 }
                 
             }
+        }
+
+        private void BarrelressourcesContente()
+        {
+            var _size = Random.Range(minBarrelRessources, maxBarrelRessources);
+            int _goldAmount = 0;
+            int _lifeAmount = 0;
+            int _foodAmount = 0;
+            for (int i = 0; i < _size; i++)
+            {
+                int _weight = goldWeight + lifeWeight + foodWeight;
+                var _random = Random.Range(0, _weight);
+                if (_random < goldWeight)
+                    _goldAmount++;
+                else if (_random < goldWeight + lifeWeight)
+                    _lifeAmount++;
+                else if (_random < goldWeight + lifeWeight + foodWeight)
+                    _foodAmount++;
+            }
+            PlayerManager.Instance.GainCoins(_goldAmount);
+            PlayerManager.Instance.GainFood(_foodAmount);
+            PlayerManager.Instance.Heal(_lifeAmount);
         }
         #endregion
     }

@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Rewards;
+using Caps;
 
 
 namespace Player
@@ -17,7 +19,12 @@ namespace Player
         public int maxFood;
 
         public delegate void PlayerUIHandler();
-        public event PlayerUIHandler UpdatePlayerUI ;
+        public event PlayerUIHandler UpdatePlayerUI;
+        public event PlayerUIHandler ShowInventory;
+        public event PlayerUIHandler HideInventory;
+
+
+        private bool inInventory = false;
 
         #endregion
 
@@ -34,7 +41,17 @@ namespace Player
 
         void Update()
         {
-
+            //Show / Hide Inventory
+            if(Manager.Instance.macroUI.activeSelf && Input.GetButtonDown("Start_Button") && !inInventory)
+            {
+                ShowInventory.Invoke();
+                inInventory = true;
+            }
+            if(Manager.Instance.macroUI.activeSelf && inInventory && Input.GetButtonDown("Start_Button"))
+            {
+                HideInventory.Invoke();
+                inInventory = false;
+            }
         }
 
         #region CustomMethods
@@ -50,6 +67,13 @@ namespace Player
             {
                 playerHp -= damage;
             }
+            UpdatePlayerUI.Invoke();
+        }
+
+        public void Heal(int health)
+        {       
+            playerHp += health;
+            
             UpdatePlayerUI.Invoke();
         }
         public void GainCoins(int coins)

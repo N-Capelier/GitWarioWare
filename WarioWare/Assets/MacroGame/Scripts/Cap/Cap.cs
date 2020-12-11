@@ -13,6 +13,7 @@ namespace Caps
         public IDCardList IDCardList;
         public bool cursed;
         public List<IDCard> chosenMiniGames = new List<IDCard>();
+        public bool[] hasBarrel;
         public bool firstGame;
         public bool isDone;
 
@@ -46,7 +47,7 @@ namespace Caps
                 _previousChance = _currentChance;
             }
         }
-        public void ChoseMiniGames()
+        public void ChoseMiniGames(int barrelProbabilty)
         {
             if (!firstGame)
             {
@@ -95,6 +96,17 @@ namespace Caps
                         _previousChance = _currentChance;
                     }
                     
+                }
+
+                hasBarrel = new bool[length-1];
+                for (int i = 0; i < hasBarrel.Length; i++)
+                {
+                    var _random = Random.Range(1, 99);
+                    if (_random < barrelProbabilty)
+                        hasBarrel[i] = true;
+                    else
+                        hasBarrel[i] = false;
+
                 }
             }
         }
