@@ -38,7 +38,8 @@ namespace Islands
         [HideInInspector] public Button button;
 
         [Header("References")]
-        public Transform anchorPoint;
+        public RectTransform anchorPoint;
+        [SerializeField] float anchorRange = 64;
 
         #endregion
 
@@ -50,13 +51,9 @@ namespace Islands
             button = GetComponent<Button>();
         }
 
-        #endregion
-
-        #region Unity Messages
-
         private void Start()
         {
-            switch(difficulty)
+            switch (difficulty)
             {
                 case IslandDifficulty.Legendary:
                     image.sprite = legendaryIslandSprite;
@@ -106,13 +103,28 @@ namespace Islands
             switch(_sprite.anchorPoint)
             {
                 case IslandAnchorPoint.East:
-                    anchorPoint.position.Set(64, 0, 0);
+                    anchorPoint.localPosition = new Vector2(anchorRange, 0);
                     break;
                 case IslandAnchorPoint.South_East:
-                    anchorPoint.position.Set(64, -64, 0);
+                    anchorPoint.localPosition = new Vector2(anchorRange, -anchorRange);
                     break;
                 case IslandAnchorPoint.South:
-                    anchorPoint.position.Set(0, -64, 0);
+                    anchorPoint.localPosition = new Vector2(0, -anchorRange);
+                    break;
+                case IslandAnchorPoint.South_West:
+                    anchorPoint.localPosition = new Vector2(-anchorRange, -anchorRange);
+                    break;
+                case IslandAnchorPoint.West:
+                    anchorPoint.localPosition = new Vector2(-anchorRange, 0);
+                    break;
+                case IslandAnchorPoint.North_West:
+                    anchorPoint.localPosition = new Vector2(-anchorRange, anchorRange);
+                    break;
+                case IslandAnchorPoint.North:
+                    anchorPoint.localPosition = new Vector2(0, -anchorRange);
+                    break;
+                case IslandAnchorPoint.North_East:
+                    anchorPoint.localPosition = new Vector2(anchorRange, anchorRange);
                     break;
                 default:
                     break;
