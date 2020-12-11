@@ -7,6 +7,7 @@ using UnityEngine.UI;
 using SD_UsualAction;
 using Islands;
 using Player;
+using UI;
 
 namespace Caps
 {

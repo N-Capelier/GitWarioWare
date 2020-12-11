@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using Rewards;
 using Caps;
+using UI;
+using UnityEngine.SceneManagement;
 
 
 namespace Player
@@ -20,8 +22,6 @@ namespace Player
 
         public delegate void PlayerUIHandler();
         public event PlayerUIHandler UpdatePlayerUI;
-        public event PlayerUIHandler ShowInventory;
-        public event PlayerUIHandler HideInventory;
 
 
         private bool inInventory = false;
@@ -41,15 +41,18 @@ namespace Player
 
         void Update()
         {
-            //Show / Hide Inventory
-            if(Manager.Instance.macroUI.activeSelf && Input.GetButtonDown("Start_Button") && !inInventory)
+
+            //Show / Hide Inventory //check micro UI inactive
+            if(!Manager.Instance.capUI.activeSelf && Input.GetButtonDown("B_Button") && !inInventory)
             {
-                ShowInventory.Invoke();
+                Manager.Instance.macroUI.SetActive(false);
+                PlayerInventory.Instance.Show();
                 inInventory = true;
             }
-            if(Manager.Instance.macroUI.activeSelf && inInventory && Input.GetButtonDown("Start_Button"))
+            else if(!Manager.Instance.capUI.activeSelf && inInventory && Input.GetButtonDown("B_Button"))
             {
-                HideInventory.Invoke();
+                Manager.Instance.macroUI.SetActive(true);
+                PlayerInventory.Instance.Hide();
                 inInventory = false;
             }
         }
@@ -60,7 +63,8 @@ namespace Player
             if(playerHp - damage <= 0)
             {
                 playerHp = 0;
-                //Death event Here
+
+                StartCoroutine(DeathCoroutine());
                 Debug.Log("You are dead");
             }
             else
@@ -92,6 +96,13 @@ namespace Player
                 food += f;
             }
             UpdatePlayerUI.Invoke();
+        }
+
+        private IEnumerator DeathCoroutine()
+        {
+            FadeManager.Instance.FadeInAndOut(4);
+            yield return new WaitForSeconds(2);
+            SceneManager.LoadScene("Menu");    
         }
         #endregion
     }
