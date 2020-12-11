@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Rewards;
+using Caps;
 
 
 namespace Player
@@ -70,6 +71,8 @@ namespace Player
             {
                 inventoryCanvas.SetActive(false);
                 PlayerMovement.Instance.ResetFocus();
+                Manager.Instance.macroUI.SetActive(true);
+                PlayerManager.Instance.inInventory = false;
             }
         }
 

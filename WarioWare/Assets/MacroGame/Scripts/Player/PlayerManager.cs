@@ -23,7 +23,7 @@ namespace Player
         public event PlayerUIHandler UpdatePlayerUI;
 
 
-        private bool inInventory = false;
+        [HideInInspector] public bool inInventory = false;
 
         #endregion
 
@@ -50,9 +50,9 @@ namespace Player
             }
             else if(!Manager.Instance.capUI.activeSelf && inInventory && Input.GetButtonDown("Start_Button"))
             {
-                Manager.Instance.macroUI.SetActive(true);
+                
                 PlayerInventory.Instance.Hide();
-                inInventory = false;
+                
             }
         }
 
