@@ -14,8 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cluster: 0
   trio: Brigantin
-  haptiqueChal: 4
-  inputChal: 4
   indexEnum: 0
   verbe: Dodge left/right
   microGameScene:
