@@ -98,7 +98,7 @@ namespace Caps
                     
                 }
 
-                hasBarrel = new bool[length-1];
+                hasBarrel = new bool[length];
                 for (int i = 0; i < hasBarrel.Length; i++)
                 {
                     var _random = Random.Range(1, 99);

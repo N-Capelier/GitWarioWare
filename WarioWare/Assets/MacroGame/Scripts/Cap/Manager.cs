@@ -59,6 +59,7 @@ namespace Caps
         public TextMeshProUGUI resultText;
         public GameObject verbePanel;
         public TextMeshProUGUI verbeText;
+        public Image inputImage;
         public GameObject sceneCam;
         public GameObject capUI;
         public GameObject macroUI;
@@ -100,7 +101,7 @@ namespace Caps
 
             }
             verbeText.text = _currentCap.chosenMiniGames[currentMiniGame].verbe;
-           
+            inputImage.sprite = _currentCap.chosenMiniGames[currentMiniGame].inputs;
             yield return new WaitForSeconds((verbTime-0.25f) * 60 / (float)bpm);
             sceneCam.SetActive(false);
             verbePanel.SetActive(false);

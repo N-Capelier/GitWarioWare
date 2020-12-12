@@ -38,6 +38,7 @@ namespace Testing {
         public TextMeshProUGUI resultText;
         public GameObject verbePanel;
         public TextMeshProUGUI verbeText;
+        public Image inputImage;
         public GameObject sceneCam;
         #endregion
 
@@ -47,6 +48,7 @@ namespace Testing {
             var _scene = SceneManager.LoadSceneAsync(idCard.microGameScene.BuildIndex, LoadSceneMode.Additive);
             _scene.allowSceneActivation = false;
             verbeText.text = idCard.verbe;
+            inputImage.sprite = idCard.inputs;
             yield return new WaitForSeconds(2f);
             sceneCam.SetActive(false);
             verbePanel.SetActive(false);

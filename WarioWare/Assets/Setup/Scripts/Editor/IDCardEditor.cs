@@ -56,7 +56,8 @@ public class IDCardEditor : Editor {
         {
 			idCard.verbe =	idCard.verbe.Remove(16,idCard.verbe.Length-16);
         }
-
+		idCard.inputs = (Sprite)EditorGUILayout.ObjectField(idCard.inputs,typeof(Sprite), true);
+		idCard.inputs = (Sprite)EditorGUILayout.ObjectField(idCard.inputs, typeof(Sprite),false, GUILayout.Height(200), GUILayout.MinWidth(200), GUILayout.MaxWidth(350));
 		EditorGUILayout.Space(20);
 		if(idCard.microGameScene.BuildIndex == -1)
 		if (GUILayout.Button("Add To Build")) { AddScene(idCard.microGameScene.EditorSceneAsset); }
