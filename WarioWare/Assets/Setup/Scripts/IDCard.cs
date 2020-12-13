@@ -24,9 +24,23 @@ public class IDCard : ScriptableObject
 }
 
 
+#region enum
 public enum Cluster { Theodore, Aurelien, Thibault};
 public enum TrioTheodore { Brigantin, SpanishInquisition, TrapioWare, LeRafiot };
 public enum TrioAurelien { ACommeAkuma, RadioRTL, DragonsPépères};
 public enum TrioThibault { LLL, Soupe, Fleebos, SAS};
-
+public enum Difficulty
+{
+    EASY,
+    MEDIUM,
+    HARD
+}
+public enum BPM
+{
+    Slow = 60,
+    Medium = 90,
+    Fast = 120,
+    SuperFast = 140
+}
+#endregion
 

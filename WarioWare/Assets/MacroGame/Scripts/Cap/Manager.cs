@@ -284,18 +284,3 @@ namespace Caps
     }
 
 }
-    #region enum
-    public enum Difficulty
-    {
-        EASY,
-        MEDIUM,
-        HARD
-    }
-    public enum BPM
-    {
-        Slow = 60,
-        Medium = 90,
-        Fast = 120,
-        SuperFast = 140
-    }
-    #endregion
