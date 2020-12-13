@@ -6,7 +6,6 @@ using Caps;
 using UI;
 using UnityEngine.SceneManagement;
 
-
 namespace Player
 {
     public class PlayerManager : Singleton<PlayerManager>
@@ -24,7 +23,7 @@ namespace Player
         public event PlayerUIHandler UpdatePlayerUI;
 
 
-        private bool inInventory = false;
+        [HideInInspector] public bool inInventory = false;
 
         #endregion
 
@@ -43,17 +42,17 @@ namespace Player
         {
 
             //Show / Hide Inventory //check micro UI inactive
-            if(!Manager.Instance.capUI.activeSelf && Input.GetButtonDown("B_Button") && !inInventory)
+            if(!Manager.Instance.capUI.activeSelf && Input.GetButtonDown("Start_Button") && !inInventory)
             {
                 Manager.Instance.macroUI.SetActive(false);
                 PlayerInventory.Instance.Show();
                 inInventory = true;
             }
-            else if(!Manager.Instance.capUI.activeSelf && inInventory && Input.GetButtonDown("B_Button"))
+            else if(!Manager.Instance.capUI.activeSelf && inInventory && Input.GetButtonDown("Start_Button"))
             {
-                Manager.Instance.macroUI.SetActive(true);
+                
                 PlayerInventory.Instance.Hide();
-                inInventory = false;
+                
             }
         }
 
@@ -102,6 +101,8 @@ namespace Player
         {
             FadeManager.Instance.FadeInAndOut(4);
             yield return new WaitForSeconds(2);
+            Manager.Instance.EndGame();
+            Instance.EndGame();
             SceneManager.LoadScene("Menu");    
         }
         #endregion

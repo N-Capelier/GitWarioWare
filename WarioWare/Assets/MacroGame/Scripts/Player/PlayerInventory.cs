@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Rewards;
+using Caps;
 
 
 namespace Player
@@ -13,7 +14,12 @@ namespace Player
         public Button[] slots;
         public Image[] rewardImages;
         public Image rewardToAddImage;
-        public Reward[] stockedRewards;
+        [HideInInspector] public Reward[] stockedRewards;
+
+        [Header("Override Confirmation")]
+        public GameObject overrideConfirmationPanel;
+        public Button noButton;
+        private int indexToOverride;
 
         private Reward rewardToAdd;
 
@@ -24,8 +30,8 @@ namespace Player
 
         // Start is called before the first frame update
         void Start()
-        {
-
+        {   
+            //rewardToAdd = stockedRewards[0]; -- feature testing
         }
 
         // Update is called once per frame
@@ -42,6 +48,10 @@ namespace Player
                 if(stockedRewards[i] == null)
                 {
                     rewardImages[i].gameObject.SetActive(false);
+                }
+                else
+                {
+                    rewardImages[i].gameObject.SetActive(true);
                 }
             }
 
@@ -61,6 +71,8 @@ namespace Player
             {
                 inventoryCanvas.SetActive(false);
                 PlayerMovement.Instance.ResetFocus();
+                Manager.Instance.macroUI.SetActive(true);
+                PlayerManager.Instance.inInventory = false;
             }
         }
 
@@ -109,11 +121,15 @@ namespace Player
                     if(stockedRewards[i] == null && rewardToAdd != null)
                     {
                         AddToInventory(rewardToAdd, i);
+                        break;
                     }
                     
                     if(stockedRewards[i] != null && rewardToAdd != null)
                     {
-                        OverrideInventorySlot(rewardToAdd, i);
+                        indexToOverride = i;
+                        overrideConfirmationPanel.SetActive(true);
+                        noButton.Select();
+                        break;
                     }
 
                     if(stockedRewards[i] != null && rewardToAdd == null)
@@ -122,6 +138,7 @@ namespace Player
                         UseItem(stockedRewards[i]);
                         stockedRewards[i] = null;
                         rewardImages[i].gameObject.SetActive(false);
+                        break;
                     }
                 }
             }
@@ -143,6 +160,21 @@ namespace Player
                     //popupUI here
                 }
             }   
+        }
+
+        public void NoOverride()
+        {
+            overrideConfirmationPanel.SetActive(false);
+            slots[0].Select();
+            indexToOverride = -1;
+        }
+
+        public void Override()
+        {
+            overrideConfirmationPanel.SetActive(false);
+            OverrideInventorySlot(rewardToAdd, indexToOverride);
+            slots[0].Select();
+            indexToOverride = -1;
         }
 
     }

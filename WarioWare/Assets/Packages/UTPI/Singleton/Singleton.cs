@@ -59,4 +59,10 @@ public abstract class Singleton<T> : MonoBehaviour where T : Component
         }
         return false;
     }
+
+    public void EndGame()
+    {
+        instance = null;
+        Destroy(gameObject);
+    }
 }
