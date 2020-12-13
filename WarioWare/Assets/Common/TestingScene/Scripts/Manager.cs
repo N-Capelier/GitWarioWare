@@ -8,19 +8,7 @@ using UnityEngine.UI;
 namespace Testing { 
     public class Manager : Singleton<Manager>
     {
-        public enum Difficulty
-        {
-            EASY,
-            MEDIUM,
-            HARD
-        }
-        public enum BPM
-        {
-            Slow = 60,
-            Medium =90,
-            Fast = 120,
-            SuperFast = 140
-        }
+     
         private void Awake()
         {
             CreateSingleton(true);
