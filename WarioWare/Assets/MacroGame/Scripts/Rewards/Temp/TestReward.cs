@@ -15,7 +15,7 @@ namespace Rewards
             Debug.Log("Got the reward!");
         }
 
-        public override void RemoveEffect()
+        public override void RemovePassiveEffect()
         {
             Debug.Log("Lost my reward!");
         }

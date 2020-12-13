@@ -22,5 +22,6 @@ MonoBehaviour:
     sceneAsset: {fileID: 102900000, guid: 5a69eb2c7d8cf83418eec73e0e0afa85, type: 3}
     required: 0
     buildIndex: 1
+  hasBarrel: 0
   currentDifficulty: 0
   idWeight: 10

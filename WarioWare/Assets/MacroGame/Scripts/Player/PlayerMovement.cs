@@ -22,7 +22,7 @@ namespace Player
             //Initialize Connections
             ClearConnections();
             GetNeighbors();
-            playerAvatar.transform.position = playerIsland.button.transform.position;
+            playerAvatar.transform.position = playerIsland.anchorPoint.position;
             playerAvatar.transform.position += new Vector3(0, 15, 0);
         }
 
@@ -83,7 +83,7 @@ namespace Player
 
                 
 
-                playerAvatar.transform.position = targetIsland.button.transform.position;
+                playerAvatar.transform.position = targetIsland.anchorPoint.position;
                 playerAvatar.transform.position += new Vector3(0, 15, 0);
             }
         }

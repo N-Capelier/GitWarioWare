@@ -12,7 +12,14 @@ namespace Islands
         [Header("Game Elements")]
 
         public Island[] islands;
-        [SerializeField] Sprite[] islandSprites;
+
+        [Space]
+
+        [SerializeField] IslandSprite[] easyIslandSprites;
+        [SerializeField] IslandSprite[] mediumIslandSprites;
+        [SerializeField] IslandSprite[] hardIslandSprites;
+
+        [Space]
 
         [SerializeField] Reward[] gameRewards;
 
@@ -117,17 +124,17 @@ namespace Islands
             //Spread the rewards through the islands
             for (int i = 0; i < _generatedIslands.Length; i++)
             {
-                Sprite _islandSprite;
+                IslandSprite _islandSprite;
                 switch (_generatedReward[i].rarity)
                 {
                     case RewardRarity.Common:
-                        _islandSprite = islandSprites[0];
+                        _islandSprite = easyIslandSprites[Random.Range(0, easyIslandSprites.Length)];
                         break;
                     case RewardRarity.Rare:
-                        _islandSprite = islandSprites[1];
+                        _islandSprite = mediumIslandSprites[Random.Range(0, mediumIslandSprites.Length)];
                         break;
                     case RewardRarity.Epic:
-                        _islandSprite = islandSprites[2];
+                        _islandSprite = hardIslandSprites[Random.Range(0, hardIslandSprites.Length)];
                         break;
                     default:
                         throw new System.Exception("Island difficulty not set!");
