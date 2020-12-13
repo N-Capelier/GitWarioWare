@@ -96,7 +96,7 @@ namespace Player
 
         public void OverrideInventorySlot(Reward newItem, int slot)
         {
-            stockedRewards[slot].RemoveEffect();
+            stockedRewards[slot].RemovePassiveEffect();
             stockedRewards[slot] = newItem;
             rewardImages[slot].gameObject.SetActive(true);
             //rewardImages[slot].sprite = item.sprite;
