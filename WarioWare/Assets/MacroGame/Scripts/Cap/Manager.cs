@@ -41,8 +41,6 @@ namespace Caps
         [Header ("Parameters")]
         public CapsSorter sorter;
         [HideInInspector] public Island[] allIslands;
-        public ChallengeHaptique challengeHaptique;
-        public ChallengeInput challengeInput;
         public int zoneNumber;
        
         private int currentMiniGame;
@@ -59,10 +57,11 @@ namespace Caps
         public TextMeshProUGUI resultText;
         public GameObject verbePanel;
         public TextMeshProUGUI verbeText;
+        public Image inputImage;
         public GameObject sceneCam;
         public GameObject capUI;
         public GameObject macroUI;
-
+        public TextMeshProUGUI idName;
         //events
         //public delegate void MapUIHandler();
         //public event MapUIHandler ResetFocus;
@@ -100,7 +99,8 @@ namespace Caps
 
             }
             verbeText.text = _currentCap.chosenMiniGames[currentMiniGame].verbe;
-           
+            inputImage.sprite = _currentCap.chosenMiniGames[currentMiniGame].inputs;
+            idName.text = _currentCap.chosenMiniGames[currentMiniGame].name;
             yield return new WaitForSeconds((verbTime-0.25f) * 60 / (float)bpm);
             sceneCam.SetActive(false);
             verbePanel.SetActive(false);
@@ -155,7 +155,7 @@ namespace Caps
             }
             #endregion
 
-            if (currentMiniGame == currentCap.chosenMiniGames.Count-1)
+            if (currentMiniGame == currentCap.chosenMiniGames.Count)
                 currentMiniGame = 0;
 
 
@@ -229,14 +229,12 @@ namespace Caps
         /// </summary>
         public void ResetIDCards()
         {
-            foreach (IDCardList list in sorter.sortedIdCards)
-            {
-                foreach (IDCard idCard in list.IDCards)
+            foreach (IDCard idCard in sorter.idCards)
                 {
                     idCard.currentDifficulty = 0;
                     idCard.idWeight = 10;
                 }
-            }
+            
         }
 
         /// <summary>
@@ -255,8 +253,7 @@ namespace Caps
                         island.capList[i].length = 6 + zoneNumber;
                     else
                         island.capList[i].length = (int)island.difficulty + 4 + zoneNumber;
-                    island.capList[i].ChoseIdList(sorter);
-                    island.capList[i].ChoseMiniGames(barrelProbality);
+                    island.capList[i].ChoseMiniGames(barrelProbality, sorter);
                 }
                 
             }
@@ -286,19 +283,4 @@ namespace Caps
         #endregion
     }
 
-    #region enum
-    public enum Difficulty
-    {
-        EASY,
-        MEDIUM,
-        HARD
-    }
-    public enum BPM
-    {
-        Slow = 60,
-        Medium = 90,
-        Fast = 120,
-        SuperFast = 140
-    }
-    #endregion
 }

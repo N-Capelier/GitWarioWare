@@ -44,11 +44,7 @@ public class IDCardEditor : Editor {
                 break;
         }
 
-		idCard.haptiqueChal = (ChallengeHaptique)EditorGUILayout.EnumPopup("Challenge Haptique ", idCard.haptiqueChal);
-		idCard.inputChal = (ChallengeInput)EditorGUILayout.EnumPopup("Challenge Input ", idCard.inputChal);
-		
 		EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(idCard.microGameScene)));
-
 
 		EditorGUILayout.LabelField("Verbe " + idCard.verbe.Length.ToString() + "/ 16");
 		idCard.verbe = EditorGUILayout.TextField(idCard.verbe);
@@ -56,7 +52,8 @@ public class IDCardEditor : Editor {
         {
 			idCard.verbe =	idCard.verbe.Remove(16,idCard.verbe.Length-16);
         }
-
+		idCard.inputs = (Sprite)EditorGUILayout.ObjectField(idCard.inputs,typeof(Sprite), true);
+		idCard.inputs = (Sprite)EditorGUILayout.ObjectField(idCard.inputs, typeof(Sprite),false, GUILayout.Height(200), GUILayout.MinWidth(200), GUILayout.MaxWidth(350));
 		EditorGUILayout.Space(20);
 		if(idCard.microGameScene.BuildIndex == -1)
 		if (GUILayout.Button("Add To Build")) { AddScene(idCard.microGameScene.EditorSceneAsset); }

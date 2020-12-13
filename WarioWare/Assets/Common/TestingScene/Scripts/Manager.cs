@@ -8,19 +8,7 @@ using UnityEngine.UI;
 namespace Testing { 
     public class Manager : Singleton<Manager>
     {
-        public enum Difficulty
-        {
-            EASY,
-            MEDIUM,
-            HARD
-        }
-        public enum BPM
-        {
-            Slow = 60,
-            Medium =90,
-            Fast = 120,
-            SuperFast = 140
-        }
+     
         private void Awake()
         {
             CreateSingleton(true);
@@ -38,6 +26,7 @@ namespace Testing {
         public TextMeshProUGUI resultText;
         public GameObject verbePanel;
         public TextMeshProUGUI verbeText;
+        public Image inputImage;
         public GameObject sceneCam;
         #endregion
 
@@ -47,6 +36,7 @@ namespace Testing {
             var _scene = SceneManager.LoadSceneAsync(idCard.microGameScene.BuildIndex, LoadSceneMode.Additive);
             _scene.allowSceneActivation = false;
             verbeText.text = idCard.verbe;
+            inputImage.sprite = idCard.inputs;
             yield return new WaitForSeconds(2f);
             sceneCam.SetActive(false);
             verbePanel.SetActive(false);
