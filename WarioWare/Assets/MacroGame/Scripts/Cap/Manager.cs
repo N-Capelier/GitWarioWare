@@ -283,6 +283,7 @@ namespace Caps
         #endregion
     }
 
+}
     #region enum
     public enum Difficulty
     {
@@ -298,4 +299,3 @@ namespace Caps
         SuperFast = 140
     }
     #endregion
-}
