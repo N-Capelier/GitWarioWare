@@ -23,7 +23,7 @@ public class MenuButton : Selectable, ISelectHandler , ISubmitHandler
     //Do this when the selectable UI object is selected.
     public override void OnSelect(BaseEventData eventData)
     {
-        onSelected.Play();
+        onSelected.PlaySecured();
         
     }
     public void OnSubmit(BaseEventData eventData)
@@ -36,7 +36,7 @@ public class MenuButton : Selectable, ISelectHandler , ISubmitHandler
         {
             SoundManager.Instance.ApplyAudioClip("Clicked", playerInputs);
         }
-        playerInputs.Play();
+        playerInputs.PlaySecured();
     }
 
 

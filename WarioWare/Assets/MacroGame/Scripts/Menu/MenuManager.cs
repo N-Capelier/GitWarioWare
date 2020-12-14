@@ -18,7 +18,7 @@ public class MenuManager : MonoBehaviour
     {
         mainMusic = GetComponent<AudioSource>();
         SoundManager.Instance.ApplyAudioClip("Menu", mainMusic);
-        mainMusic.Play();
+        mainMusic.PlaySecured();
     }
 
    
@@ -50,7 +50,7 @@ public class MenuManager : MonoBehaviour
         }
         loading.allowSceneActivation = true;
     }
-    public void Quite()
+    public void Quit()
     {
         Application.Quit();
     }

@@ -8,7 +8,7 @@ using SD_UsualAction;
 using Islands;
 using Player;
 using UI;
-
+using Sound;
 namespace Caps
 {
     public class Manager : Singleton<Manager>
@@ -64,8 +64,9 @@ namespace Caps
         public TextMeshProUGUI idName;
 
         [Header("Transition")]
-        public Animator charaAnimator;
+        public TransitionAnimations animations;
         public Camera transitionCam;
+        public AudioSource transitionMusic;
         //events
         //public delegate void MapUIHandler();
         //public event MapUIHandler ResetFocus;
@@ -127,16 +128,13 @@ namespace Caps
         /// <returns></returns>
         private IEnumerator Transition(bool win)
         {
-            
-             
+            SoundManager.Instance.ApplyAudioClip("transition", transitionMusic, bpm);
             panel.SetActive(true);
             SceneManager.UnloadSceneAsync(currentCap.chosenMiniGames[currentMiniGame].microGameScene.BuildIndex);
             if (currentCap.chosenMiniGames[currentMiniGame].currentDifficulty != Difficulty.HARD)
                 currentCap.chosenMiniGames[currentMiniGame].currentDifficulty++;
 
             sceneCam.SetActive(true);
-
-            
 
             currentMiniGame++;
 
@@ -145,7 +143,8 @@ namespace Caps
             yield return new WaitForSeconds(0.25f * 60 / (float)bpm);
             #region resultConsequences
             transitionCam.enabled = true;
-            charaAnimator.speed = 60f / (float)bpm;
+            transitionMusic.PlayDelayed((transitionTime - 0.5f) * 60 / (float)bpm);
+            
             if (win)
             {
                 resultText.text = "You Won!";
@@ -156,7 +155,7 @@ namespace Caps
             }
             else
             {
-                charaAnimator.SetTrigger("Sad");
+                animations.PlayAnimation((float)bpm, false);
                 resultText.text = "You Lost!";
                 PlayerManager.Instance.TakeDamage(1);
             }
