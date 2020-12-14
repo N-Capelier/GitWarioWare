@@ -62,6 +62,10 @@ namespace Caps
         public GameObject capUI;
         public GameObject macroUI;
         public TextMeshProUGUI idName;
+
+        [Header("Transition")]
+        public Animator charaAnimator;
+        public Camera transitionCam;
         //events
         //public delegate void MapUIHandler();
         //public event MapUIHandler ResetFocus;
@@ -124,7 +128,7 @@ namespace Caps
         private IEnumerator Transition(bool win)
         {
             
-
+             
             panel.SetActive(true);
             SceneManager.UnloadSceneAsync(currentCap.chosenMiniGames[currentMiniGame].microGameScene.BuildIndex);
             if (currentCap.chosenMiniGames[currentMiniGame].currentDifficulty != Difficulty.HARD)
@@ -140,6 +144,8 @@ namespace Caps
             StartCoroutine(FadeManager.Instance.FadeInAndOut(0.5f * 60 / (float)bpm));
             yield return new WaitForSeconds(0.25f * 60 / (float)bpm);
             #region resultConsequences
+            transitionCam.enabled = true;
+            charaAnimator.speed = 60f / (float)bpm;
             if (win)
             {
                 resultText.text = "You Won!";
@@ -150,6 +156,7 @@ namespace Caps
             }
             else
             {
+                charaAnimator.SetTrigger("Sad");
                 resultText.text = "You Lost!";
                 PlayerManager.Instance.TakeDamage(1);
             }
@@ -171,6 +178,7 @@ namespace Caps
             currentAsyncScene.allowSceneActivation = false;
 
             yield return new WaitForSeconds((transitionTime-0.5f) * 60 / (float)bpm);
+            transitionCam.enabled = false;
             if(currentCap.length == miniGamePassedNumber)
             {
                 CapEnd();

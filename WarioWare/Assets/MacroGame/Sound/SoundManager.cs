@@ -7,7 +7,10 @@ namespace Sound
     public class SoundManager : Singleton<SoundManager>
     {
         [SerializeField] private SoundList soundList;
-
+        private void Awake()
+        {
+            CreateSingleton(true);
+        }
         public void ApplyAudioClip(string name, AudioSource audioSource)
         {
             bool isSelected = false;

@@ -13,9 +13,12 @@ MonoBehaviour:
   m_Name: SoundList
   m_EditorClassIdentifier: 
   soundClassic:
-  - name: patate
+  - name: Menu
     volume: 0.5
     clip: {fileID: 8300000, guid: 5e8420836d21ce048a5fa140065004bb, type: 3}
+  - name: Selected
+    volume: 0.5
+    clip: {fileID: 8300000, guid: 3cd81a9afb65dda4cbe9e0b62bb09523, type: 3}
   soundBpms:
   - sounds:
     - name: dsfsdf_0
