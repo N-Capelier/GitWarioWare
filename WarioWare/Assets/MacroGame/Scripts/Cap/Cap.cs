@@ -10,9 +10,9 @@ namespace Caps
         /// this name will be changed latter when we have islandes
         /// </summary>
         public int length;
-        public IDCardList IDCardList;
         public bool cursed;
         public List<IDCard> chosenMiniGames = new List<IDCard>();
+        public bool[] hasBarrel;
         public bool firstGame;
         public bool isDone;
 
@@ -20,33 +20,8 @@ namespace Caps
         public int capWeight;
         public int listWeight;
 
-        /// <summary>
-        /// chose a id list base on a random influence by the weight of each list
-        /// </summary>
-        /// <param name="sorter"></param>
-        public void ChoseIdList(CapsSorter sorter)
-        {
-            int weight = 0;
-            for (int i = 0; i < sorter.sortedIdCards.Count; i++)
-            {
-                weight += sorter.sortedIdCards[i].weight;
-            }
-            var _random = (Random.Range(0, weight));
-            int _currentChance = 0;
-            int _previousChance = 0;
-            for (int i = 0; i < sorter.sortedIdCards.Count; i++)
-            {
-                _currentChance += sorter.sortedIdCards[i].weight;
-                if(_random >=_previousChance && _random< _currentChance)
-                {
-                    IDCardList = sorter.sortedIdCards[i];
-                    sorter.sortedIdCards[i].weight += listWeight;
-                    return;
-                }
-                _previousChance = _currentChance;
-            }
-        }
-        public void ChoseMiniGames()
+        
+        public void ChoseMiniGames(int barrelProbabilty, CapsSorter sorter)
         {
             if (!firstGame)
             {
@@ -54,9 +29,9 @@ namespace Caps
                 int differentGameNumber = length / (int)2;
                 //purcentage will ad every value if each game to creat a global procentage
                 int purcentage =0;
-                for (int i = 0; i < IDCardList.IDCards.Count; i++)
+                for (int i = 0; i < sorter.idCards.Count; i++)
                 {
-                    purcentage += IDCardList.IDCards[i].idWeight;
+                    purcentage += sorter.idCards[i].idWeight;
                 }
                 
                 // this reference all the differente mini game stocked in the cap
@@ -73,18 +48,17 @@ namespace Caps
                     // if its taken, redue this iteration by doing i--
                     int _currentChance = 0;
                     int _previousChance = 0;
-                    for (int x = 0; x < IDCardList.IDCards.Count; x++)
+                    for (int x = 0; x < sorter.idCards.Count; x++)
                     {
-                        _currentChance += IDCardList.IDCards[x].idWeight;
+                        _currentChance += sorter.idCards[x].idWeight;
                         if(_random>= _previousChance && _random< _currentChance )
                         {
                             if (!_indexAlreadyTaken.Contains(x))
                             {
-                                chosenMiniGames.Add(IDCardList.IDCards[x]);
+                                chosenMiniGames.Add(sorter.idCards[x]);
                                 _indexAlreadyTaken.Add(x);
                                 //this number is what will be needed to be calculated
-                                IDCardList.IDCards[x].idWeight += capWeight;
-                                Debug.Log(IDCardList.IDCards[x].name);
+                                sorter.idCards[x].idWeight += capWeight;
                                 break;
                             }
                             else
@@ -96,6 +70,17 @@ namespace Caps
                         _previousChance = _currentChance;
                     }
                     
+                }
+
+                hasBarrel = new bool[length];
+                for (int i = 0; i < hasBarrel.Length; i++)
+                {
+                    var _random = Random.Range(1, 99);
+                    if (_random < barrelProbabilty)
+                        hasBarrel[i] = true;
+                    else
+                        hasBarrel[i] = false;
+
                 }
             }
         }

@@ -14,4 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/MacroGame/Scenes/Cap/SceneCap.unity
     guid: a4d3aa6738ba93b4db2f1a3df0b3d41d
+  - enabled: 1
+    path: Assets/MacroGame/Scenes/Zones/Zone1.unity
+    guid: 288640a6e05bf1d4a8a51843d9eec62e
+  - enabled: 1
+    path: Assets/MacroGame/Scenes/Menu.unity
+    guid: d511ba1ec5821a747bc76e61971511a2
   m_configObjects: {}

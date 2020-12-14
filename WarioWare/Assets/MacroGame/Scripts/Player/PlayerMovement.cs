@@ -10,6 +10,8 @@ namespace Player
         [HideInInspector] public Island[] islands;
         public Island playerIsland;
 
+        private Island lastSelectedIsland;
+
         private void Awake()
         {
             CreateSingleton();
@@ -20,7 +22,7 @@ namespace Player
             //Initialize Connections
             ClearConnections();
             GetNeighbors();
-            playerAvatar.transform.position = playerIsland.button.transform.position;
+            playerAvatar.transform.position = playerIsland.anchorPoint.position;
             playerAvatar.transform.position += new Vector3(0, 15, 0);
         }
 
@@ -41,9 +43,9 @@ namespace Player
         private void GetNeighbors()
         {
             playerIsland.button.interactable = true;
-            for (int i = 0; i < playerIsland.neighbours.Length; i++)
+            for (int i = 0; i < playerIsland.accessibleNeighbours.Length; i++)
             {
-                playerIsland.neighbours[i].button.interactable = true;
+                playerIsland.accessibleNeighbours[i].button.interactable = true;
             }
             playerIsland.button.Select();
         }
@@ -81,7 +83,7 @@ namespace Player
 
                 
 
-                playerAvatar.transform.position = targetIsland.button.transform.position;
+                playerAvatar.transform.position = targetIsland.anchorPoint.position;
                 playerAvatar.transform.position += new Vector3(0, 15, 0);
             }
         }
@@ -93,11 +95,27 @@ namespace Player
         /// <param name="targetIsland">Which island is the player selecting.</param>
         public void ShowSelectedIslandInfo(Island targetIsland)
         {
+            //Selection security
+            if(targetIsland.button.interactable)
+            {
+                lastSelectedIsland = targetIsland;
+            }
+            else
+            {
+                lastSelectedIsland.button.Select();
+            }
+
+
             if (targetIsland != playerIsland)
             {
-                Debug.Log(targetIsland.gameObject.name + " has " + targetIsland.neighbours.Length + " neighbor(s).");
+                Debug.Log(targetIsland.gameObject.name + " has " + targetIsland.accessibleNeighbours.Length + " neighbor(s).");
                 //show UI here
             }
+        }
+
+        public void ResetFocus()
+        {
+            playerIsland.button.Select();
         }
     }
 }

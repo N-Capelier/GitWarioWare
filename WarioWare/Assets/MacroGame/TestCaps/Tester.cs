@@ -18,8 +18,8 @@ namespace Caps
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                var _random = Random.Range(0, Manager.Instance.islandList.Length);
-                StartCoroutine(Manager.Instance.StartCap(Manager.Instance.islandList[_random].capList[Random.Range(0, Manager.Instance.islandList[_random].capList.Count)]));
+                var _random = Random.Range(0, Manager.Instance.allIslands.Length);
+                StartCoroutine(Manager.Instance.StartCap(Manager.Instance.allIslands[_random].capList[Random.Range(0, Manager.Instance.allIslands[_random].capList.Count)]));
             }
         }
     }
