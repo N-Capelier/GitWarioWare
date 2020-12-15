@@ -28,6 +28,7 @@ namespace Testing {
         public TextMeshProUGUI verbeText;
         public Image inputImage;
         public GameObject sceneCam;
+        public bool isLoaded;
         #endregion
 
         #region Methods
@@ -41,6 +42,7 @@ namespace Testing {
             sceneCam.SetActive(false);
             verbePanel.SetActive(false);
             _scene.allowSceneActivation = true;
+            isLoaded = true;
         }
 
         /// <summary>

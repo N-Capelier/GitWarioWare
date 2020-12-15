@@ -47,7 +47,7 @@ namespace Caps
         private int miniGamePassedNumber;
         private AsyncOperation currentAsyncScene;
         private Cap currentCap;
-
+        [HideInInspector] public bool isLoaded;
         public BPM bpm = BPM.Slow;
 
         public Difficulty currentDifficulty;
@@ -99,6 +99,7 @@ namespace Caps
             if(currentAsyncScene == null)
             {
                 currentDifficulty = _currentCap.chosenMiniGames[currentMiniGame].currentDifficulty;
+                isLoaded = false;
                 currentAsyncScene = SceneManager.LoadSceneAsync(_currentCap.chosenMiniGames[currentMiniGame].microGameScene.BuildIndex, LoadSceneMode.Additive);
                 currentAsyncScene.allowSceneActivation = false;
 
@@ -110,6 +111,7 @@ namespace Caps
             sceneCam.SetActive(false);
             verbePanel.SetActive(false);
             currentAsyncScene.allowSceneActivation = true;
+            isLoaded = true;
         }
 
         /// <summary>
@@ -173,9 +175,10 @@ namespace Caps
             }
 
             currentDifficulty = currentCap.chosenMiniGames[currentMiniGame].currentDifficulty;
+            isLoaded = false;
             currentAsyncScene = SceneManager.LoadSceneAsync(currentCap.chosenMiniGames[currentMiniGame].microGameScene.BuildIndex, LoadSceneMode.Additive);
             currentAsyncScene.allowSceneActivation = false;
-
+            
             yield return new WaitForSeconds((transitionTime-0.5f) * 60 / (float)bpm);
             transitionCam.enabled = false;
             if(currentCap.length == miniGamePassedNumber)
