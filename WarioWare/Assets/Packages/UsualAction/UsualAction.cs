@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
+
 namespace SD_UsualAction
 {
 
@@ -10,19 +11,7 @@ namespace SD_UsualAction
 
     public static class ActionExtention
     {
-        public static AudioSource PlaySecured(this AudioSource audioSource) 
-        {
-            if(audioSource.clip != null)
-            {
-                audioSource.Play();
-                return audioSource;
-            }
-            else
-            {
-                Debug.LogError("Your audio Source doesn't have any clip, please use ApplyAudioClip of the sound Manager");
-                return null;
-            }
-        }
+       
         public static T Next<T>(this T src) where T : struct
         {
             T[] Arr = (T[])Enum.GetValues(src.GetType());
@@ -122,4 +111,21 @@ namespace SD_UsualAction
 
     }
 
+}
+public static class AudioSourceExtension
+{
+    public static AudioSource PlaySecured(this AudioSource audioSource)
+    {
+        if (audioSource.clip != null)
+        {
+            audioSource.Play();
+            return audioSource;
+        }
+        else
+        {
+            Debug.LogError("Your audio Source doesn't have any clip, please use ApplyAudioClip of the sound Manager");
+            return null;
+        }
+    }
+    
 }

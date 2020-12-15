@@ -15,6 +15,7 @@ namespace Caps
         public bool[] hasBarrel;
         public bool firstGame;
         public bool isDone;
+        public GameObject trail;
 
         //for easy debug
         public int capWeight;

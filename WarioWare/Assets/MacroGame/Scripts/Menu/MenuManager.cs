@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Sound;
 public class MenuManager : MonoBehaviour
 {
 
@@ -10,6 +11,17 @@ public class MenuManager : MonoBehaviour
     public Slider loadingBar;
     //private bool canLoad;
     private AsyncOperation loading;
+    private AudioSource mainMusic;
+
+    public MenuButton play;
+    private void Start()
+    {
+        mainMusic = GetComponent<AudioSource>();
+        SoundManager.Instance.ApplyAudioClip("Menu", mainMusic);
+        mainMusic.PlaySecured();
+    }
+
+   
     private void Update()
     {
         //disable because the scen is to fast to load
@@ -38,7 +50,7 @@ public class MenuManager : MonoBehaviour
         }
         loading.allowSceneActivation = true;
     }
-    public void Quite()
+    public void Quit()
     {
         Application.Quit();
     }

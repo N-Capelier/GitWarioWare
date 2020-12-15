@@ -9,6 +9,7 @@ public class SoundListEditor : Editor
 
     private SoundList soundList;
     private BPM[] bpm;
+    private Vector2 scrollPosition;
     private void OnEnable()
     {
         soundList = target as SoundList;
@@ -24,9 +25,12 @@ public class SoundListEditor : Editor
     public override void OnInspectorGUI()
     {
         serializedObject.Update();
+        var _rect = EditorGUILayout.BeginHorizontal();
+       scrollPosition = EditorGUILayout.BeginScrollView(scrollPosition);
         DisplaySoundBPM();
         DisplaySound();
-
+        EditorGUILayout.EndScrollView();
+        EditorGUILayout.EndVertical();
         serializedObject.ApplyModifiedProperties();
         EditorUtility.SetDirty(soundList);
         Repaint();
@@ -47,10 +51,10 @@ public class SoundListEditor : Editor
                 EditorGUILayout.Space(30);
                 bpm[i] = (BPM)EditorGUILayout.EnumPopup(bpm[i]);
                 soundsBpm.sounds[i].name = soundsBpm.name + "_" + i;
-                EditorGUILayout.LabelField(soundsBpm.sounds[i].name,GUILayout.MaxWidth(150) );
-                soundsBpm.sounds[i].clip = (AudioClip)EditorGUILayout.ObjectField(soundsBpm.sounds[i].clip, typeof(AudioClip), true);
+                EditorGUILayout.LabelField(soundsBpm.sounds[i].name,GUILayout.MaxWidth(100) );
+                soundsBpm.sounds[i].clip = (AudioClip)EditorGUILayout.ObjectField(soundsBpm.sounds[i].clip, typeof(AudioClip), true, GUILayout.MinWidth(200));
                 soundsBpm.bpm[i] = bpm[i];
-                soundsBpm.sounds[i].volume = EditorGUILayout.Slider(soundsBpm.sounds[i].volume, 0, 1);
+                soundsBpm.sounds[i].volume = EditorGUILayout.Slider(soundsBpm.sounds[i].volume, 0, 1, GUILayout.MinWidth(150));
                 EditorGUILayout.EndHorizontal();
             }
         }

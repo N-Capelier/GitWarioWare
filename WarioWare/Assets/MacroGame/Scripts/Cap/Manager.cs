@@ -8,7 +8,7 @@ using SD_UsualAction;
 using Islands;
 using Player;
 using UI;
-
+using Sound;
 namespace Caps
 {
     public class Manager : Singleton<Manager>
@@ -47,7 +47,7 @@ namespace Caps
         private int miniGamePassedNumber;
         private AsyncOperation currentAsyncScene;
         private Cap currentCap;
-
+        [HideInInspector] public bool isLoaded;
         public BPM bpm = BPM.Slow;
 
         public Difficulty currentDifficulty;
@@ -62,6 +62,11 @@ namespace Caps
         public GameObject capUI;
         public GameObject macroUI;
         public TextMeshProUGUI idName;
+
+        [Header("Transition")]
+        public TransitionAnimations animations;
+        public Camera transitionCam;
+        public AudioSource transitionMusic;
         //events
         //public delegate void MapUIHandler();
         //public event MapUIHandler ResetFocus;
@@ -94,6 +99,7 @@ namespace Caps
             if(currentAsyncScene == null)
             {
                 currentDifficulty = _currentCap.chosenMiniGames[currentMiniGame].currentDifficulty;
+                isLoaded = false;
                 currentAsyncScene = SceneManager.LoadSceneAsync(_currentCap.chosenMiniGames[currentMiniGame].microGameScene.BuildIndex, LoadSceneMode.Additive);
                 currentAsyncScene.allowSceneActivation = false;
 
@@ -105,6 +111,7 @@ namespace Caps
             sceneCam.SetActive(false);
             verbePanel.SetActive(false);
             currentAsyncScene.allowSceneActivation = true;
+            isLoaded = true;
         }
 
         /// <summary>
@@ -123,8 +130,7 @@ namespace Caps
         /// <returns></returns>
         private IEnumerator Transition(bool win)
         {
-            
-
+            SoundManager.Instance.ApplyAudioClip("transition", transitionMusic, bpm);
             panel.SetActive(true);
             SceneManager.UnloadSceneAsync(currentCap.chosenMiniGames[currentMiniGame].microGameScene.BuildIndex);
             if (currentCap.chosenMiniGames[currentMiniGame].currentDifficulty != Difficulty.HARD)
@@ -132,14 +138,15 @@ namespace Caps
 
             sceneCam.SetActive(true);
 
-            
-
             currentMiniGame++;
 
             //little fade
             StartCoroutine(FadeManager.Instance.FadeInAndOut(0.5f * 60 / (float)bpm));
             yield return new WaitForSeconds(0.25f * 60 / (float)bpm);
             #region resultConsequences
+            transitionCam.enabled = true;
+            transitionMusic.PlayDelayed((transitionTime - 0.5f) * 60 / (float)bpm);
+            
             if (win)
             {
                 resultText.text = "You Won!";
@@ -150,6 +157,7 @@ namespace Caps
             }
             else
             {
+                animations.PlayAnimation((float)bpm, false);
                 resultText.text = "You Lost!";
                 PlayerManager.Instance.TakeDamage(1);
             }
@@ -167,10 +175,12 @@ namespace Caps
             }
 
             currentDifficulty = currentCap.chosenMiniGames[currentMiniGame].currentDifficulty;
+            isLoaded = false;
             currentAsyncScene = SceneManager.LoadSceneAsync(currentCap.chosenMiniGames[currentMiniGame].microGameScene.BuildIndex, LoadSceneMode.Additive);
             currentAsyncScene.allowSceneActivation = false;
-
+            
             yield return new WaitForSeconds((transitionTime-0.5f) * 60 / (float)bpm);
+            transitionCam.enabled = false;
             if(currentCap.length == miniGamePassedNumber)
             {
                 CapEnd();
