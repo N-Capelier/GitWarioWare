@@ -67,6 +67,11 @@ namespace Caps
         public TransitionAnimations animations;
         public Camera transitionCam;
         public AudioSource transitionMusic;
+
+        [Header("Debug")]
+        [SerializeField] bool isDebug = false;
+
+
         //events
         //public delegate void MapUIHandler();
         //public event MapUIHandler ResetFocus;
@@ -181,7 +186,7 @@ namespace Caps
             
             yield return new WaitForSeconds((transitionTime-0.5f) * 60 / (float)bpm);
             transitionCam.enabled = false;
-            if(currentCap.length == miniGamePassedNumber)
+            if((currentCap.length == miniGamePassedNumber) || (isDebug && Input.GetKey(KeyCode.RightArrow)))
             {
                 CapEnd();
                 yield break;
@@ -195,6 +200,10 @@ namespace Caps
         /// </summary>
         private void CapEnd()
         {
+            bool _giveReward = true;
+            if (currentCap.isDone)
+                _giveReward = false;
+
             currentCap.isDone = true;
 
             Island _island = null;
@@ -231,7 +240,8 @@ namespace Caps
             capUI.SetActive(false);
 
             PlayerMovement.Instance.ResetFocus();
-            PlayerInventory.Instance.SetItemToAdd(PlayerMovement.Instance.playerIsland.reward);
+            if(_giveReward)
+                PlayerInventory.Instance.SetItemToAdd(PlayerMovement.Instance.playerIsland.reward);
             //REACTIVER LES INPUTS MACRO
         }
 

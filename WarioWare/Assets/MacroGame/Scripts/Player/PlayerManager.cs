@@ -97,7 +97,7 @@ namespace Player
 
         private IEnumerator DeathCoroutine()
         {
-            FadeManager.Instance.FadeInAndOut(4);
+            StartCoroutine(FadeManager.Instance.FadeInAndOut(4));
             yield return new WaitForSeconds(2);
             Manager.Instance.EndGame();
             Instance.EndGame();
