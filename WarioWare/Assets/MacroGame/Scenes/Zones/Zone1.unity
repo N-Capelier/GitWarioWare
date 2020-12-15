@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -2725,6 +2725,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cap Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 8977992822539135367, guid: 80ac864817d34d641be6448f49de01a3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 1.1000977
+      objectReference: {fileID: 0}
+    - target: {fileID: 8977992822900354065, guid: 80ac864817d34d641be6448f49de01a3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 1.1000977
+      objectReference: {fileID: 0}
     - target: {fileID: 8977992823629226229, guid: 80ac864817d34d641be6448f49de01a3,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -2739,6 +2749,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8977992823629226235, guid: 80ac864817d34d641be6448f49de01a3,
+        type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8977992823629226235, guid: 80ac864817d34d641be6448f49de01a3,
+        type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 8977992823629226235, guid: 80ac864817d34d641be6448f49de01a3,
+        type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
       objectReference: {fileID: 0}
     - target: {fileID: 8977992823757320655, guid: 80ac864817d34d641be6448f49de01a3,
         type: 3}
@@ -2956,21 +2981,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2729649824798288377, guid: 9a784a7e95199cf47b1f43fb6d7aa90d,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3306907611619356141, guid: 9a784a7e95199cf47b1f43fb6d7aa90d,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 17.579956
-      objectReference: {fileID: 0}
-    - target: {fileID: 4870777317120696625, guid: 9a784a7e95199cf47b1f43fb6d7aa90d,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5975730464407200853, guid: 9a784a7e95199cf47b1f43fb6d7aa90d,
         type: 3}
       propertyPath: m_Name
@@ -3029,11 +3039,6 @@ PrefabInstance:
     - target: {fileID: 5975730464407200855, guid: 9a784a7e95199cf47b1f43fb6d7aa90d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7464948805728526855, guid: 9a784a7e95199cf47b1f43fb6d7aa90d,
-        type: 3}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
