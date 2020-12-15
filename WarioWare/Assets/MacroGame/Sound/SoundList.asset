@@ -35,3 +35,78 @@ MonoBehaviour:
       clip: {fileID: 8300000, guid: 3cd81a9afb65dda4cbe9e0b62bb09523, type: 3}
     bpm: 3c0000005a000000780000008c000000
     name: transition
+  - sounds:
+    - name: gameOverJingle_0
+      volume: 0.5
+      clip: {fileID: 8300000, guid: 1a0bce2916308234d92fb7f3c005f372, type: 3}
+    - name: gameOverJingle_1
+      volume: 0.5
+      clip: {fileID: 8300000, guid: b65aa85c9b2e22d4c904285cda74edfc, type: 3}
+    - name: gameOverJingle_2
+      volume: 0.5
+      clip: {fileID: 8300000, guid: 5a7f0afb2c9383e40b0c6a7eee234b0f, type: 3}
+    - name: gameOverJingle_3
+      volume: 0.5
+      clip: {fileID: 8300000, guid: e6c569d937d854b438aa0bfe5a7fe85e, type: 3}
+    bpm: 3c0000005a000000780000008c000000
+    name: gameOverJingle
+  - sounds:
+    - name: loseJingle_0
+      volume: 0.5
+      clip: {fileID: 8300000, guid: 765a8536ba73ba44788d1146b192e1a8, type: 3}
+    - name: loseJingle_1
+      volume: 0.5
+      clip: {fileID: 8300000, guid: 110adf67473f84e4a9616b2a93b7d137, type: 3}
+    - name: loseJingle_2
+      volume: 0.5
+      clip: {fileID: 8300000, guid: b8b1245fa7dff4641873dfa16e6041d2, type: 3}
+    - name: loseJingle_3
+      volume: 0.5
+      clip: {fileID: 8300000, guid: 97d0b209a0f27ab449e9d64ae5b17745, type: 3}
+    bpm: 3c0000005a000000780000008c000000
+    name: loseJingle
+  - sounds:
+    - name: speedUpJingle_0
+      volume: 0.5
+      clip: {fileID: 8300000, guid: a20efa59815b6cd4080dc7f35180558c, type: 3}
+    - name: speedUpJingle_1
+      volume: 0.5
+      clip: {fileID: 8300000, guid: 29dd06d59e9362d408f7c35177c510e1, type: 3}
+    - name: speedUpJingle_2
+      volume: 0.5
+      clip: {fileID: 8300000, guid: 01095e813d3001747bc740a3b7fe8eda, type: 3}
+    - name: speedUpJingle_3
+      volume: 0.5
+      clip: {fileID: 8300000, guid: 01095e813d3001747bc740a3b7fe8eda, type: 3}
+    bpm: 3c0000005a000000780000008c000000
+    name: speedUpJingle
+  - sounds:
+    - name: verbeJingle_0
+      volume: 0.5
+      clip: {fileID: 8300000, guid: 1dca43be3d7bd464cbdc8bd939292133, type: 3}
+    - name: verbeJingle_1
+      volume: 0.5
+      clip: {fileID: 8300000, guid: 87c560ba042876d41b12412b61a802c8, type: 3}
+    - name: verbeJingle_2
+      volume: 0.5
+      clip: {fileID: 8300000, guid: 0bdc4fd587a132b4897497cbfc15ef2e, type: 3}
+    - name: verbeJingle_3
+      volume: 0.5
+      clip: {fileID: 8300000, guid: 5bf13b301f1a1c747be9220e4c3e6b63, type: 3}
+    bpm: 3c0000005a000000780000008c000000
+    name: verbeJingle
+  - sounds:
+    - name: victoryJingle_0
+      volume: 0.5
+      clip: {fileID: 8300000, guid: 83b9c012273327f4aaaeb7594785a93a, type: 3}
+    - name: victoryJingle_1
+      volume: 0.5
+      clip: {fileID: 8300000, guid: 9dd3fc8f130611f47a2abf4d9f6fdfac, type: 3}
+    - name: victoryJingle_2
+      volume: 0.5
+      clip: {fileID: 8300000, guid: 2a6a53eeee1aacd418f79b557eab4357, type: 3}
+    - name: victoryJingle_3
+      volume: 0.5
+      clip: {fileID: 8300000, guid: a4243e4596d918f4da83c072b36def0d, type: 3}
+    bpm: 3c0000005a000000780000008c000000
+    name: victoryJingle
