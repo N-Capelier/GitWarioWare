@@ -25,8 +25,9 @@ namespace Islands
         [HideInInspector] public Reward reward;
 
         public Island[] accessibleNeighbours;
+        public List<GameObject> traiList = new List<GameObject>();
+
         [HideInInspector] public List<Cap> capList = new List<Cap>();
-         public List<GameObject> traiList = new List<GameObject>();
 
         [Header("Special Islands")]
         [SerializeField] Sprite legendaryIslandSprite;
