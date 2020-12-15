@@ -44,9 +44,7 @@ namespace Player
             //Show / Hide Inventory //check micro UI inactive
             if(!Manager.Instance.capUI.activeSelf && Input.GetButtonDown("Start_Button") && !inInventory)
             {
-                Manager.Instance.macroUI.SetActive(false);
                 PlayerInventory.Instance.Show();
-                inInventory = true;
             }
             else if(!Manager.Instance.capUI.activeSelf && inInventory && Input.GetButtonDown("Start_Button"))
             {

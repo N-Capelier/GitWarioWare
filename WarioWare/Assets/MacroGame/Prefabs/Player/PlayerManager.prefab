@@ -1049,8 +1049,8 @@ MonoBehaviour:
   - {fileID: 2153259916559101004}
   rewardToAddImage: {fileID: 5899773764523035838}
   stockedRewards:
-  - {fileID: 11400000, guid: 3a2ef45706a27934ab0ce73a6a395026, type: 2}
-  - {fileID: 11400000, guid: 6e8c958c5fefc68468df9803ae1d1041, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
   overrideConfirmationPanel: {fileID: 645322326660893994}
   noButton: {fileID: 2725318225762058609}

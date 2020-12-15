@@ -231,6 +231,7 @@ namespace Caps
             capUI.SetActive(false);
 
             PlayerMovement.Instance.ResetFocus();
+            PlayerInventory.Instance.SetItemToAdd(PlayerMovement.Instance.playerIsland.reward);
             //REACTIVER LES INPUTS MACRO
         }
 
