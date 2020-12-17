@@ -25,9 +25,8 @@ namespace Caps
         public float verbTime;
         public int numberBeforeSpeedUp;
         //int that will be added on the id to make it appear more offen, they all start with a value of 10
-        public int capWeightToAdd;
-        public int listWeightToAdd;
-
+        public int idWeightToAdd;
+        public int idInitialWeight;
         //barrel
         [Range(1, 90)]
         public int barrelProbality;
@@ -291,7 +290,7 @@ namespace Caps
             foreach (IDCard idCard in sorter.idCards)
                 {
                     idCard.currentDifficulty = 0;
-                    idCard.idWeight = 10;
+                    idCard.idWeight = idInitialWeight;
                 }
             
         }
@@ -301,13 +300,27 @@ namespace Caps
         /// </summary>
         public void CapAttribution()
         {
+            if(zoneNumber ==0)
+            {
+                
+                sorter.idCardsNotPlayed = sorter.idCards;
+                
+            }
+            else
+            {
+                sorter.idCardsNotPlayed = new List<IDCard>();
+                foreach (IDCard id in sorter.idCards)
+                {
+                    if (!sorter.iDCardsPlayed.Contains(id))
+                        sorter.idCardsNotPlayed.Add(id);
+                }
+            }
             foreach (Island island in allIslands)
             {
                 for (int i = 0; i < island.accessibleNeighbours.Length; i++)
                 {
                     island.capList.Add(new Cap());
-                    island.capList[i].capWeight = capWeightToAdd;
-                    island.capList[i].listWeight = listWeightToAdd;
+                    island.capList[i].capWeight = idWeightToAdd;
                     if((int)island.difficulty > 2)
                         island.capList[i].length = 6 + zoneNumber;
                     else
