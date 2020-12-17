@@ -64,7 +64,7 @@ namespace Caps
         public TextMeshProUGUI idName;
 
         [Header("Transition")]
-        public TransitionAnimations animations;
+        public TransitionAnimations transition;
         public Camera transitionCam;
         public AudioSource transitionMusic;
 
@@ -109,7 +109,7 @@ namespace Caps
                 currentAsyncScene = SceneManager.LoadSceneAsync(_currentCap.chosenMiniGames[currentMiniGame].microGameScene.BuildIndex, LoadSceneMode.Additive);
                 currentAsyncScene.allowSceneActivation = false;
                 macroSceneIndex = SceneManager.GetActiveScene().buildIndex;
-
+                transition.DisplayBarrel(_currentCap);
                 SoundManager.Instance.ApplyAudioClip("verbeJingle", transitionMusic, bpm);
                 transitionMusic.PlaySecured();
             }
@@ -153,6 +153,7 @@ namespace Caps
 
             isLoaded = false;
             sceneCam.SetActive(true);
+            transition.MoveShip(currentCap, miniGamePassedNumber);
 
             currentMiniGame++;
 
@@ -175,7 +176,7 @@ namespace Caps
             }
             else
             {
-                animations.PlayAnimation((float)bpm, false);
+                transition.PlayAnimation((float)bpm, false);
                 PlayerManager.Instance.TakeDamage(1);
                 if (PlayerManager.Instance.playerHp > 0)
                     resultText.text = "You Lost!";
@@ -337,6 +338,9 @@ namespace Caps
                 }
                 
             }
+            transition.DisplayBarrel(allIslands[1].capList[0]);
+            transition.MoveShip(allIslands[0].capList[0], 3);
+
         }
 
         private void BarrelressourcesContente()
