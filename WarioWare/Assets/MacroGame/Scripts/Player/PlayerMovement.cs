@@ -69,24 +69,6 @@ namespace Player
 
             if (targetIsland != playerIsland)
             {
-                //Lancer le cap
-                for (int i = 0; i < playerIsland.accessibleNeighbours.Length; i++)
-                {
-                    if (playerIsland.accessibleNeighbours[i] == targetIsland)
-                    {
-                        //COUPER LES INPUTS DE LA MACRO
-
-                        StartCoroutine(Manager.Instance.StartCap(playerIsland.capList[i]));
-                        if (playerIsland.capList[i].isDone)
-                        {
-                            _isCapDone = true;
-                        }
-                    }
-                }
-                playerIsland = targetIsland;
-                ClearConnections();
-                GetNeighbors();
-
                 if (PlayerManager.Instance.food > 0)
                 {
                     PlayerManager.Instance.GainFood(-1);
@@ -95,6 +77,27 @@ namespace Player
                 {
                     PlayerManager.Instance.TakeDamage(1);
                 }
+
+                //Lancer le cap + check if not dead
+                if(PlayerManager.Instance.playerHp > 0)
+                {
+                    for (int i = 0; i < playerIsland.accessibleNeighbours.Length; i++)
+                    {
+                        if (playerIsland.accessibleNeighbours[i] == targetIsland)
+                        {
+                            //COUPER LES INPUTS DE LA MACRO
+
+                            StartCoroutine(Manager.Instance.StartCap(playerIsland.capList[i]));
+                            if (playerIsland.capList[i].isDone)
+                            {
+                                _isCapDone = true;
+                            }
+                        }
+                    }
+                }
+                playerIsland = targetIsland;
+                ClearConnections();
+                GetNeighbors();
 
                 if (_isCapDone)
                     playerAvatar.transform.position = targetIsland.anchorPoint.position;

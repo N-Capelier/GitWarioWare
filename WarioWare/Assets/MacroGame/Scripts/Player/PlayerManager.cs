@@ -5,6 +5,8 @@ using Rewards;
 using Caps;
 using UI;
 using UnityEngine.SceneManagement;
+using Sound;
+
 
 namespace Player
 {
@@ -21,6 +23,9 @@ namespace Player
 
         public delegate void PlayerUIHandler();
         public event PlayerUIHandler UpdatePlayerUI;
+
+        [Header("Sound")]
+        public AudioSource audioSource;
 
 
         [HideInInspector] public bool inInventory = false;
@@ -97,8 +102,11 @@ namespace Player
 
         private IEnumerator DeathCoroutine()
         {
+            SoundManager.Instance.ApplyAudioClip("gameOverJingle", audioSource, Manager.Instance.bpm);
+            audioSource.PlaySecured();
+
             StartCoroutine(FadeManager.Instance.FadeInAndOut(4));
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(audioSource.clip.length);
             Manager.Instance.EndGame();
             Instance.EndGame();
             SceneManager.LoadScene("Menu");    

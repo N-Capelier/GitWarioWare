@@ -136,8 +136,7 @@ namespace Caps
         /// </summary>
         /// <param name="win"> if true the game is won , if false the game is lost</param>
         public void Result(bool win)
-        {
-            
+        {   
             StartCoroutine(Transition(win));
         }
 
@@ -177,51 +176,60 @@ namespace Caps
             else
             {
                 animations.PlayAnimation((float)bpm, false);
-                resultText.text = "You Lost!";
                 PlayerManager.Instance.TakeDamage(1);
+                if (PlayerManager.Instance.playerHp > 0)
+                    resultText.text = "You Lost!";
+                else
+                    resultText.text = "You are dead!";
                 SoundManager.Instance.ApplyAudioClip("loseJingle", transitionMusic, bpm);
             }
 
-            //play victory/lose jingle and wait for jingle to finish
-            transitionMusic.PlaySecured();
-            yield return new WaitForSeconds(transitionMusic.clip.length);
-            #endregion
-
-            if (currentMiniGame == currentCap.chosenMiniGames.Count)
-                currentMiniGame = 0;
-
-
-            miniGamePassedNumber++;
-
-            if(miniGamePassedNumber%numberBeforeSpeedUp == 0 && currentCap.length != miniGamePassedNumber)
+            //check if not dead and proceed
+            if (PlayerManager.Instance.playerHp > 0) 
             {
-                //play speed up jingle and wait for jingle to finish
-                SoundManager.Instance.ApplyAudioClip("speedUpJingle", transitionMusic, bpm);
+                //play victory/lose jingle and wait for jingle to finish
                 transitionMusic.PlaySecured();
-                resultText.text = "Speed Up!";
-
                 yield return new WaitForSeconds(transitionMusic.clip.length);
-                bpm = bpm.Next(); 
+                #endregion
+
+                if (currentMiniGame == currentCap.chosenMiniGames.Count)
+                    currentMiniGame = 0;
+
+
+                miniGamePassedNumber++;
+
+                if (miniGamePassedNumber % numberBeforeSpeedUp == 0 && currentCap.length != miniGamePassedNumber)
+                {
+                    //play speed up jingle and wait for jingle to finish
+                    SoundManager.Instance.ApplyAudioClip("speedUpJingle", transitionMusic, bpm);
+                    transitionMusic.PlaySecured();
+                    resultText.text = "Speed Up!";
+
+                    yield return new WaitForSeconds(transitionMusic.clip.length);
+                    bpm = bpm.Next();
+                }
+
+                currentDifficulty = currentCap.chosenMiniGames[currentMiniGame].currentDifficulty;
+
+                currentAsyncScene = SceneManager.LoadSceneAsync(currentCap.chosenMiniGames[currentMiniGame].microGameScene.BuildIndex, LoadSceneMode.Additive);
+                currentAsyncScene.allowSceneActivation = false;
+
+                if (currentCap.length != miniGamePassedNumber)
+                {
+                    SoundManager.Instance.ApplyAudioClip("verbeJingle", transitionMusic, bpm);
+                    transitionMusic.PlaySecured();
+                }
+
+                transitionCam.enabled = false;
+                if ((currentCap.length == miniGamePassedNumber) || (isDebug && Input.GetKey(KeyCode.RightArrow)))
+                {
+                    CapEnd();
+                    yield break;
+                }
+                StartCoroutine(StartCap(currentCap));
             }
 
-            currentDifficulty = currentCap.chosenMiniGames[currentMiniGame].currentDifficulty;
-           
-            currentAsyncScene = SceneManager.LoadSceneAsync(currentCap.chosenMiniGames[currentMiniGame].microGameScene.BuildIndex, LoadSceneMode.Additive);
-            currentAsyncScene.allowSceneActivation = false;
-
-            if (currentCap.length != miniGamePassedNumber)
-            {
-                SoundManager.Instance.ApplyAudioClip("verbeJingle", transitionMusic, bpm);
-                transitionMusic.PlaySecured();
-            }
-
-            transitionCam.enabled = false;
-            if((currentCap.length == miniGamePassedNumber) || (isDebug && Input.GetKey(KeyCode.RightArrow)))
-            {
-                CapEnd();
-                yield break;
-            }
-            StartCoroutine(StartCap(currentCap));
+            
         }
        
 
