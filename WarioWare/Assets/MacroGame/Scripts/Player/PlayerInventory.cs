@@ -42,8 +42,10 @@ namespace Player
         
         public void Show()
         {
+            Manager.Instance.macroUI.SetActive(false);
+            PlayerManager.Instance.inInventory = true;
 
-            for(int i = 0; i < slots.Length; i++)
+            for (int i = 0; i < slots.Length; i++)
             {
                 if(stockedRewards[i] == null)
                 {
@@ -134,11 +136,13 @@ namespace Player
 
                     if(stockedRewards[i] != null && rewardToAdd == null)
                     {
-                        //if(stockedRewards[i] is activeItem)
-                        UseItem(stockedRewards[i]);
-                        stockedRewards[i] = null;
-                        rewardImages[i].gameObject.SetActive(false);
-                        break;
+                        if(stockedRewards[i].effect == RewardEffect.Active)
+                        {
+                            UseItem(stockedRewards[i]);
+                            stockedRewards[i] = null;
+                            rewardImages[i].gameObject.SetActive(false);
+                            break;
+                        }
                     }
                 }
             }

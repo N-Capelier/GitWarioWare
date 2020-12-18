@@ -7,8 +7,9 @@ using Trisibo;
 [System.Serializable]
 public class CapsSorter : ScriptableObject
 {
-
     [SerializeField] public List<IDCard> idCards;
+    [SerializeField] public List<IDCard> idCardsNotPlayed;
+    [SerializeField] public List<IDCard> iDCardsPlayed;
 
 }
 

@@ -31,7 +31,7 @@ namespace Sound
         public void ApplyAudioClip(string name, AudioSource audioSource, BPM bpm)
         {
             bool isSelected = false;
-            Debug.Log(soundList.soundBpms);
+            //Debug.Log(soundList.soundBpms);
             foreach (SoundBpm soundBpm in soundList.soundBpms)
             {
                 if (soundBpm.name == name)

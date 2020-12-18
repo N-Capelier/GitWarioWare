@@ -30,11 +30,11 @@ public class MenuButton : Selectable, ISelectHandler , ISubmitHandler
     {
         if (!IsInteractable())
         {
-            SoundManager.Instance.ApplyAudioClip("ClikImpossible", playerInputs);
+           // SoundManager.Instance.ApplyAudioClip("ClikImpossible", playerInputs);
         }
         else
         {
-            SoundManager.Instance.ApplyAudioClip("Clicked", playerInputs);
+           // SoundManager.Instance.ApplyAudioClip("Clicked", playerInputs);
         }
         playerInputs.PlaySecured();
     }

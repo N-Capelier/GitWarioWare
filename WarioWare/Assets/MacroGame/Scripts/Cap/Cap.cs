@@ -13,26 +13,23 @@ namespace Caps
         public bool cursed;
         public List<IDCard> chosenMiniGames = new List<IDCard>();
         public bool[] hasBarrel;
-        public bool firstGame;
         public bool isDone;
         public GameObject trail;
 
         //for easy debug
         public int capWeight;
-        public int listWeight;
 
         
         public void ChoseMiniGames(int barrelProbabilty, CapsSorter sorter)
         {
-            if (!firstGame)
-            {
+            
                 //number of different game calculated by devided the lenght by 2 (it's int so it's fine 5/2 = 2)
                 int differentGameNumber = length / (int)2;
                 //purcentage will ad every value if each game to creat a global procentage
                 int purcentage =0;
-                for (int i = 0; i < sorter.idCards.Count; i++)
+                for (int i = 0; i < sorter.idCardsNotPlayed.Count; i++)
                 {
-                    purcentage += sorter.idCards[i].idWeight;
+                    purcentage += sorter.idCardsNotPlayed[i].idWeight;
                 }
                 
                 // this reference all the differente mini game stocked in the cap
@@ -49,17 +46,17 @@ namespace Caps
                     // if its taken, redue this iteration by doing i--
                     int _currentChance = 0;
                     int _previousChance = 0;
-                    for (int x = 0; x < sorter.idCards.Count; x++)
+                    for (int x = 0; x < sorter.idCardsNotPlayed.Count; x++)
                     {
-                        _currentChance += sorter.idCards[x].idWeight;
+                        _currentChance += sorter.idCardsNotPlayed[x].idWeight;
                         if(_random>= _previousChance && _random< _currentChance )
                         {
                             if (!_indexAlreadyTaken.Contains(x))
                             {
-                                chosenMiniGames.Add(sorter.idCards[x]);
+                                chosenMiniGames.Add(sorter.idCardsNotPlayed[x]);
                                 _indexAlreadyTaken.Add(x);
                                 //this number is what will be needed to be calculated
-                                sorter.idCards[x].idWeight += capWeight;
+                                sorter.idCardsNotPlayed[x].idWeight += capWeight;
                                 break;
                             }
                             else
@@ -72,7 +69,15 @@ namespace Caps
                     }
                     
                 }
-
+                //add the selected id to idcards played so they wonte be selected in the next zone
+            foreach (IDCard idcard in chosenMiniGames)
+            {
+                if (sorter.idCards.Contains(idcard))
+                {
+                    if(!sorter.iDCardsPlayed.Contains(idcard))
+                        sorter.iDCardsPlayed.Add(idcard);
+                }
+            }
                 hasBarrel = new bool[length];
                 for (int i = 0; i < hasBarrel.Length; i++)
                 {
@@ -83,7 +88,7 @@ namespace Caps
                         hasBarrel[i] = false;
 
                 }
-            }
+            
         }
     }
 }

@@ -12,6 +12,8 @@ namespace Player
 
         private Island lastSelectedIsland;
 
+        Clock transitionTimer;
+
         private void Awake()
         {
             CreateSingleton();
@@ -23,7 +25,14 @@ namespace Player
             ClearConnections();
             GetNeighbors();
             playerAvatar.transform.position = playerIsland.anchorPoint.position;
-            playerAvatar.transform.position += new Vector3(0, 15, 0);
+
+            transitionTimer = new Clock();
+        }
+
+        private void Update()
+        {
+            if(transitionTimer.onFinish)
+                playerAvatar.transform.position = playerIsland.anchorPoint.position;
         }
 
         /// <summary>
@@ -56,22 +65,10 @@ namespace Player
         /// <param name="targetIsland">Which island is the player going to.</param>
         public void Move(Island targetIsland)
         {
+            bool _isCapDone = false;
+
             if (targetIsland != playerIsland)
             {
-                //Lancer le cap
-                for (int i = 0; i < playerIsland.accessibleNeighbours.Length; i++)
-                {
-                    if (playerIsland.accessibleNeighbours[i] == targetIsland)
-                    {
-                        //COUPER LES INPUTS DE LA MACRO
-
-                        StartCoroutine(Manager.Instance.StartCap(playerIsland.capList[i]));
-                    }
-                }
-                playerIsland = targetIsland;
-                ClearConnections();
-                GetNeighbors();
-
                 if (PlayerManager.Instance.food > 0)
                 {
                     PlayerManager.Instance.GainFood(-1);
@@ -81,10 +78,31 @@ namespace Player
                     PlayerManager.Instance.TakeDamage(1);
                 }
 
-                
+                //Lancer le cap + check if not dead
+                if(PlayerManager.Instance.playerHp > 0)
+                {
+                    for (int i = 0; i < playerIsland.accessibleNeighbours.Length; i++)
+                    {
+                        if (playerIsland.accessibleNeighbours[i] == targetIsland)
+                        {
+                            //COUPER LES INPUTS DE LA MACRO
 
-                playerAvatar.transform.position = targetIsland.anchorPoint.position;
-                playerAvatar.transform.position += new Vector3(0, 15, 0);
+                            StartCoroutine(Manager.Instance.StartCap(playerIsland.capList[i]));
+                            if (playerIsland.capList[i].isDone)
+                            {
+                                _isCapDone = true;
+                            }
+                        }
+                    }
+                }
+                playerIsland = targetIsland;
+                ClearConnections();
+                GetNeighbors();
+
+                if (_isCapDone)
+                    playerAvatar.transform.position = targetIsland.anchorPoint.position;
+                else
+                    transitionTimer.SetTime(3f);
             }
         }
 
@@ -96,7 +114,7 @@ namespace Player
         public void ShowSelectedIslandInfo(Island targetIsland)
         {
             //Selection security
-            if(targetIsland.button.interactable)
+            if (targetIsland.button.interactable)
             {
                 lastSelectedIsland = targetIsland;
             }
@@ -108,7 +126,7 @@ namespace Player
 
             if (targetIsland != playerIsland)
             {
-                Debug.Log(targetIsland.gameObject.name + " has " + targetIsland.accessibleNeighbours.Length + " neighbor(s).");
+                //Debug.Log(targetIsland.gameObject.name + " has " + targetIsland.accessibleNeighbours.Length + " neighbor(s).");
                 //show UI here
             }
         }

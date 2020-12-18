@@ -143,8 +143,8 @@ namespace Islands
                 _generatedIslands[i].SetReward(_generatedReward[i], _islandSprite);
             }
             Manager.Instance.allIslands = islands;
-            Manager.Instance.CapAttribution();
             Manager.Instance.ResetIDCards();
+            Manager.Instance.CapAttribution();
             PlayerMovement.Instance.islands = islands;
         }
 

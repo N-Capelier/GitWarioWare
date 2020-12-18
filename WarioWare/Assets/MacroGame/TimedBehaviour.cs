@@ -33,7 +33,9 @@ public class TimedBehaviour : MonoBehaviour
     public virtual void FixedUpdate()
     {
         if(Manager.Instance.isLoaded)
-        timer = AudioSettings.dspTime - currentTime;
+        {
+            timer = AudioSettings.dspTime - currentTime;
+        }
         if (timer >= 60 / bpm)
         {
             Tick++;
