@@ -209,7 +209,12 @@ namespace Caps
                     yield return new WaitForSeconds(transitionMusic.clip.length);
                     bpm = bpm.Next();
                 }
-
+                transitionCam.enabled = false;
+                if ((currentCap.length == miniGamePassedNumber) || (isDebug && Input.GetKey(KeyCode.RightArrow)))
+                {
+                    CapEnd();
+                    yield break;
+                }
                 currentDifficulty = currentCap.chosenMiniGames[currentMiniGame].currentDifficulty;
 
                 currentAsyncScene = SceneManager.LoadSceneAsync(currentCap.chosenMiniGames[currentMiniGame].microGameScene.BuildIndex, LoadSceneMode.Additive);
@@ -221,12 +226,7 @@ namespace Caps
                     transitionMusic.PlaySecured();
                 }
 
-                transitionCam.enabled = false;
-                if ((currentCap.length == miniGamePassedNumber) || (isDebug && Input.GetKey(KeyCode.RightArrow)))
-                {
-                    CapEnd();
-                    yield break;
-                }
+                
                 StartCoroutine(StartCap(currentCap));
             }
 
@@ -244,7 +244,6 @@ namespace Caps
                 _giveReward = false;
 
             currentCap.isDone = true;
-            SceneManager.UnloadSceneAsync(currentCap.chosenMiniGames[currentMiniGame].microGameScene.BuildIndex);
 
             Island _island = null;
             foreach (var island in allIslands)
@@ -272,6 +271,8 @@ namespace Caps
                 }
             }
 
+            currentAsyncScene = null;
+            sceneCam.SetActive(true);
             currentCap = null;
             resultText.text = "GG";
             bpm = BPM.Slow;
