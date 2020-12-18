@@ -17,4 +17,22 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/MacroGame/Scenes/Zones/Zone1.unity
     guid: 288640a6e05bf1d4a8a51843d9eec62e
+  - enabled: 1
+    path: Assets/MacroGame/Scenes/Menu.unity
+    guid: d511ba1ec5821a747bc76e61971511a2
+  - enabled: 1
+    path: Assets/MicroGames/Cluster Thibaut/TrioSoupe/DeterrageTresor/Scene_DeterrageTresor.unity
+    guid: caaac774d79574e459c7a3f0ce8fdb81
+  - enabled: 1
+    path: Assets/MicroGames/Cluster Thibaut/TrioSoupe/ServiceRapide/ServiceRapide.unity
+    guid: efb7f580f4b53a247ab267d11ae8beef
+  - enabled: 1
+    path: Assets/MicroGames/Cluster Theodore/TrioSpanishInquisition/HisserLeDrapeau/HisserLeDrapeau.unity
+    guid: 425234ff2b8564545a874b06d79ecdaa
+  - enabled: 1
+    path: Assets/MicroGames/Cluster Theodore/TrioTrapioWare/Spin/Spin.unity
+    guid: 7c0f9a28b10ed9a41b377a84331ce307
+  - enabled: 1
+    path: Assets/MicroGames/Cluster Aurelien/TrioACommAkuma/SaveThePirate/S_SaveThePirate.unity
+    guid: 277f6b617c88de84e98a16bbffeebd11
   m_configObjects: {}
