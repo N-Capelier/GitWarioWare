@@ -105,7 +105,7 @@ namespace Player
             SoundManager.Instance.ApplyAudioClip("gameOverJingle", audioSource, Manager.Instance.bpm);
             audioSource.PlaySecured();
 
-            StartCoroutine(FadeManager.Instance.FadeInAndOut(4));
+            StartCoroutine(FadeManager.Instance.FadeIn(1));
             yield return new WaitForSeconds(audioSource.clip.length);
             Manager.Instance.EndGame();
             Instance.EndGame();

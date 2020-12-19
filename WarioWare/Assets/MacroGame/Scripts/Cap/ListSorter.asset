@@ -18,3 +18,15 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d28c8efbe7a86af4fae3c20ee068ab6c, type: 2}
   - {fileID: 11400000, guid: cc8533ccfaa62744b808416dbc99a767, type: 2}
   - {fileID: 11400000, guid: 2844dc6dcee3cbc4584320a1efa62f5f, type: 2}
+  idCardsNotPlayed:
+  - {fileID: 11400000, guid: 7d6de108b2babae4f9ea07f4be7e6994, type: 2}
+  - {fileID: 11400000, guid: 1be560d1feeca0041bd10641bdc64e30, type: 2}
+  - {fileID: 11400000, guid: d28c8efbe7a86af4fae3c20ee068ab6c, type: 2}
+  - {fileID: 11400000, guid: cc8533ccfaa62744b808416dbc99a767, type: 2}
+  - {fileID: 11400000, guid: 2844dc6dcee3cbc4584320a1efa62f5f, type: 2}
+  iDCardsPlayed:
+  - {fileID: 11400000, guid: d28c8efbe7a86af4fae3c20ee068ab6c, type: 2}
+  - {fileID: 11400000, guid: 2844dc6dcee3cbc4584320a1efa62f5f, type: 2}
+  - {fileID: 11400000, guid: cc8533ccfaa62744b808416dbc99a767, type: 2}
+  - {fileID: 11400000, guid: 7d6de108b2babae4f9ea07f4be7e6994, type: 2}
+  - {fileID: 11400000, guid: 1be560d1feeca0041bd10641bdc64e30, type: 2}

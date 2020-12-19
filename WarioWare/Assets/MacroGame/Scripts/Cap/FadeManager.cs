@@ -12,23 +12,39 @@ namespace UI
         private void Awake()
         {
             CreateSingleton();
+
         }
         private void Start()
         {
             fade = GetComponent<Image>();
         }
-        public IEnumerator FadeInAndOut(float timer)
+        public IEnumerator FadeIn(float timer)
         {
-            for (float i = 0; i < timer/2; i+= 0.01f)
+            fade.color = new Color(0, 0, 0, 0);
+            for (float i = 0; i < timer; i+= 0.01f)
             {
-                fade.color = new Color(0, 0, 0, i *2/ timer);
+                fade.color = new Color(0, 0, 0, i / timer);
                 yield return new WaitForSeconds(0.01f);
             }
+            fade.color = Color.black;
+            Debug.Log("black");
+        }
+
+        public IEnumerator FadeOut(float timer)
+        {
+            fade.color = Color.black;
             for (float i = 0; i < timer / 2; i += 0.01f)
             {
-                fade.color = new Color(0, 0, 0,1-( i *2/ timer));
+                fade.color = new Color(0, 0, 0, 1 - (i  / timer));
                 yield return new WaitForSeconds(0.01f);
             }
+            fade.color = new Color(0, 0, 0, 0);
+            Debug.Log("white");
+
+        }
+        public void NoPanel()
+        {
+            fade.color = new Color(0, 0, 0, 0);
         }
     }
 }
