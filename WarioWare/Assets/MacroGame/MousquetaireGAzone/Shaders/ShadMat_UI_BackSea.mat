@@ -25,9 +25,13 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _ShaderHeight: 0.07
-    - _WaveQuantity: 9
-    - _WaveSize: 0.03
-    - _WaveSpeed: 1
+    - Vector1_2955E56D: 0.005
+    - _BPM: 60
+    - _OffSet: 0.08
+    - _ShaderHeight: 0.067
+    - _WaveQuantity: 5
+    - _WaveSize: 0.1
+    - _WaveSpeed: -3
     m_Colors:
+    - Color_2FA990F3: {r: 0.20392159, g: 0.5686275, b: 0.6666667, a: 1}
     - _WaveColor: {r: 0.19215688, g: 0.38431376, b: 0.47450984, a: 1}
