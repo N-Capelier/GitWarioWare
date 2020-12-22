@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/MicroGames/Cluster Aurelien/TrioACommAkuma/SaveThePirate/S_SaveThePirate.unity
     guid: 277f6b617c88de84e98a16bbffeebd11
+  - enabled: 1
+    path: Assets/MacroGame/Scenes/FreeMode.unity
+    guid: 2d2047d96916a604aa4520bee8e038cd
   m_configObjects: {}

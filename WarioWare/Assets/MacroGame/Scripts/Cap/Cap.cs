@@ -90,5 +90,25 @@ namespace Caps
                 }
             
         }
+
+        public Cap()
+        {
+         
+        }
+        /// <summary>
+        /// use only in freeMode
+        /// </summary>
+        /// <param name="cards"></param>
+        public Cap(List<IDCard> cards)
+        {
+            chosenMiniGames = cards;
+            length = chosenMiniGames.Count;
+            List<bool> _barrel = new List<bool>();
+            foreach (var id in chosenMiniGames)
+            {
+                _barrel.Add(false);
+            }
+            hasBarrel = _barrel.ToArray();
+        }
     }
 }

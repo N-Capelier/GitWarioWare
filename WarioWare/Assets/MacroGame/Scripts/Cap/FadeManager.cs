@@ -27,6 +27,7 @@ namespace UI
                  yield return new WaitForSeconds(0.01f);
              }
             fade.color = Color.black;
+            NoPanel();
         }
 
         public IEnumerator FadeOut(float timer)

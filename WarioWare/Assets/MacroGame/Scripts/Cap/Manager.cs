@@ -62,6 +62,7 @@ namespace Caps
         public GameObject capUI;
         public GameObject macroUI;
         public TextMeshProUGUI idName;
+        public GameObject clock;
 
         [Header("Transition")]
         public TransitionAnimations transition;
@@ -126,7 +127,6 @@ namespace Caps
             idName.text = _currentCap.chosenMiniGames[currentMiniGame].name;
 
             //yield return new WaitForSeconds((verbTime-0.25f) * 60 / (float)bpm);
-            Debug.Log(transitionMusic.clip.length);
             yield return new WaitForSeconds(transitionMusic.clip.length);
 
             currentAsyncScene.allowSceneActivation = true;
@@ -134,9 +134,12 @@ namespace Caps
             yield return new WaitUntil(() => currentAsyncScene.isDone);
             sceneCam.SetActive(false);
             verbePanel.SetActive(false);
+            clock.SetActive(true);
             isLoaded = true;
             Scene scene = SceneManager.GetSceneByBuildIndex(_currentCap.chosenMiniGames[currentMiniGame].microGameScene.BuildIndex);
             SceneManager.SetActiveScene(scene);
+            clock.GetComponent<UI.Clock>().timer = 0;
+            clock.GetComponent<UI.Clock>().bpm = (float)bpm;
         }
 
         /// <summary>
@@ -155,7 +158,7 @@ namespace Caps
         /// <returns></returns>
         private IEnumerator Transition(bool win)
         {
-
+            clock.SetActive(false);
             cantDoTransition = true;
             //little fade
             StartCoroutine(FadeManager.Instance.FadeIn(0.15f * 60 / (float)bpm));
