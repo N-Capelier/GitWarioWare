@@ -21,13 +21,12 @@ namespace UI
         public IEnumerator FadeIn(float timer)
         {
             fade.color = new Color(0, 0, 0, 0);
-            for (float i = 0; i < timer; i+= 0.01f)
-            {
-                fade.color = new Color(0, 0, 0, i / timer);
-                yield return new WaitForSeconds(0.01f);
-            }
+             for (float i = 0; i < timer; i+= 0.01f)
+             {
+                 fade.color = new Color(0, 0, 0, i / timer);
+                 yield return new WaitForSeconds(0.01f);
+             }
             fade.color = Color.black;
-            Debug.Log("black");
         }
 
         public IEnumerator FadeOut(float timer)
@@ -39,7 +38,6 @@ namespace UI
                 yield return new WaitForSeconds(0.01f);
             }
             fade.color = new Color(0, 0, 0, 0);
-            Debug.Log("white");
 
         }
         public void NoPanel()

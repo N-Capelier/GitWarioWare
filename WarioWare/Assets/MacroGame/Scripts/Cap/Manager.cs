@@ -67,6 +67,7 @@ namespace Caps
         public TransitionAnimations transition;
         public Camera transitionCam;
         public AudioSource transitionMusic;
+        private bool cantDoTransition;
 
         [Header("Debug")]
         [SerializeField] bool isDebug = false;
@@ -88,6 +89,7 @@ namespace Caps
         /// <returns></returns>
         public IEnumerator StartCap(Cap _currentCap)
         {
+            cantDoTransition = false;
             currentCap = _currentCap;
             if (currentCap.isDone)
             {
@@ -95,8 +97,10 @@ namespace Caps
                 yield break;
             }
             //little fade  
+            Debug.Log(0.15f * 60 / (float)bpm);
+            Debug.Log(0.25f * 60 / (float)bpm);
             StartCoroutine(FadeManager.Instance.FadeIn(0.15f * 60 / (float)bpm));
-            yield return new WaitForSeconds(0.25f * 60 / (float)bpm);
+            yield return new WaitForSeconds(0.5f * 60 / (float)bpm);
             sceneCam.SetActive(true);
             transitionCam.enabled = false;
             capUI.SetActive(true);
@@ -141,6 +145,7 @@ namespace Caps
         /// <param name="win"> if true the game is won , if false the game is lost</param>
         public void Result(bool win)
         {   
+            if(!cantDoTransition)
             StartCoroutine(Transition(win));
         }
 
@@ -150,8 +155,8 @@ namespace Caps
         /// <returns></returns>
         private IEnumerator Transition(bool win)
         {
-            
 
+            cantDoTransition = true;
             //little fade
             StartCoroutine(FadeManager.Instance.FadeIn(0.15f * 60 / (float)bpm));
             yield return new WaitForSeconds(0.25f * 60 / (float)bpm);
