@@ -12,7 +12,7 @@ namespace UnityEngine.EventSystems
     /// <remarks>
     /// Input module for working with, mouse, keyboard, or controller.
     /// </remarks>
-    public class StandaloneInputModule : PointerInputModule
+    public class ControllerInputModule : PointerInputModule
     {
         private float m_PrevActionTime;
         private Vector2 m_LastMoveVector;
@@ -25,7 +25,7 @@ namespace UnityEngine.EventSystems
 
         private PointerEventData m_InputPointerEvent;
 
-        protected StandaloneInputModule()
+        protected ControllerInputModule()
         {
         }
 
@@ -43,25 +43,25 @@ namespace UnityEngine.EventSystems
         }
 
         [SerializeField]
-        private string m_HorizontalAxis = "Horizontal";
+        private string m_HorizontalAxis = "Left_Joystick_X";
 
         /// <summary>
         /// Name of the vertical axis for movement (if axis events are used).
         /// </summary>
         [SerializeField]
-        private string m_VerticalAxis = "Vertical";
+        private string m_VerticalAxis = "Left_Joystick_Y";
 
         /// <summary>
         /// Name of the submit button.
         /// </summary>
         [SerializeField]
-        private string m_SubmitButton = "Submit";
+        private string m_SubmitButton = "A_Button";
 
         /// <summary>
         /// Name of the submit button.
         /// </summary>
         [SerializeField]
-        private string m_CancelButton = "Cancel";
+        private string m_CancelButton = "Y_Button";
 
         [SerializeField]
         private float m_InputActionsPerSecond = 10;

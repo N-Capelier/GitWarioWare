@@ -10,6 +10,7 @@ namespace Player
 {
     public class PlayerInventory : Singleton<PlayerInventory>
     {
+        [Header("Inventory UI")]
         public GameObject inventoryCanvas;
         public Button[] slots;
         public Image[] rewardImages;
@@ -21,6 +22,10 @@ namespace Player
         public Button noButton;
         private int indexToOverride;
 
+        [Header("Reward UI")]
+        public GameObject rewardCanvas;
+        public Image rewardImage;
+
         private Reward rewardToAdd;
 
         private void Awake()
@@ -31,7 +36,7 @@ namespace Player
         // Start is called before the first frame update
         void Start()
         {   
-            //rewardToAdd = stockedRewards[0]; -- feature testing
+            //rewardToAdd = stockedRewards[0]; //-- feature testing
         }
 
         // Update is called once per frame
