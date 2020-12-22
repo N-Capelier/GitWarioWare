@@ -22,7 +22,7 @@ namespace Caps
         #region Variables
         [Header("Playtest variable")]
         public float transitionTime;
-        public float verbTime;
+      //  public float verbTime;
         public int numberBeforeSpeedUp;
         //int that will be added on the id to make it appear more offen, they all start with a value of 10
         public int idWeightToAdd;
@@ -97,6 +97,8 @@ namespace Caps
             //little fade  
             StartCoroutine(FadeManager.Instance.FadeIn(0.15f * 60 / (float)bpm));
             yield return new WaitForSeconds(0.25f * 60 / (float)bpm);
+            sceneCam.SetActive(true);
+            transitionCam.enabled = false;
             capUI.SetActive(true);
             macroUI.SetActive(false);
             panel.SetActive(false);
@@ -120,6 +122,7 @@ namespace Caps
             idName.text = _currentCap.chosenMiniGames[currentMiniGame].name;
 
             //yield return new WaitForSeconds((verbTime-0.25f) * 60 / (float)bpm);
+            Debug.Log(transitionMusic.clip.length);
             yield return new WaitForSeconds(transitionMusic.clip.length);
 
             currentAsyncScene.allowSceneActivation = true;
@@ -152,7 +155,9 @@ namespace Caps
             //little fade
             StartCoroutine(FadeManager.Instance.FadeIn(0.15f * 60 / (float)bpm));
             yield return new WaitForSeconds(0.25f * 60 / (float)bpm);
-           //panel.SetActive(true);
+            //panel.SetActive(true);
+            sceneCam.SetActive(true);
+            transitionCam.enabled = true;
             SceneManager.UnloadSceneAsync(currentCap.chosenMiniGames[currentMiniGame].microGameScene.BuildIndex);
             if (currentCap.chosenMiniGames[currentMiniGame].currentDifficulty != Difficulty.HARD)
                 currentCap.chosenMiniGames[currentMiniGame].currentDifficulty++;
@@ -162,8 +167,7 @@ namespace Caps
 
             currentMiniGame++;
 
-            transitionCam.enabled = true;
-            sceneCam.SetActive(true);
+
             StartCoroutine(FadeManager.Instance.FadeOut(0.15f * 60 / (float)bpm));
             yield return new WaitForSeconds(0.25f * 60 / (float)bpm);
 
