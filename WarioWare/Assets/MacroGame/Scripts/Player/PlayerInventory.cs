@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Rewards;
 using Caps;
-
+using TMPro;
 
 namespace Player
 {
@@ -16,6 +16,8 @@ namespace Player
         public Image[] rewardImages;
         public Image rewardToAddImage;
         [HideInInspector] public Reward[] stockedRewards;
+        public GameObject itemDescriptionContainer;
+        public TextMeshProUGUI itemDescription;
 
         [Header("Override Confirmation")]
         public GameObject overrideConfirmationPanel;
@@ -165,8 +167,14 @@ namespace Player
             {
                 if(slots[i] == selectedSlot && stockedRewards[i] != null)
                 {
-                    stockedRewards[i].GetDescription();
-                    //popupUI here
+
+                    //itemDescription.text = stockedRewards[i].GetDescription();
+                    itemDescriptionContainer.SetActive(true);
+                    break;
+                }
+                else
+                {
+                    itemDescriptionContainer.SetActive(false);
                 }
             }   
         }
