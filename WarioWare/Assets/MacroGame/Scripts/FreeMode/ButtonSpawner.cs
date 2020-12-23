@@ -10,6 +10,7 @@ namespace FreeMode
 {
     public class ButtonSpawner : MonoBehaviour
     {
+        public ScrollController scrollController;
         public GameObject button;
         private List<Button> buttons = new List<Button>();
         public CapsSorter sorter;
@@ -61,6 +62,7 @@ namespace FreeMode
     }
         private void SetUnSelectable()
         {
+            scrollController.quiteButton.gameObject.SetActive(false);
             foreach (var button in buttons)
             {
                 button.enabled = false;

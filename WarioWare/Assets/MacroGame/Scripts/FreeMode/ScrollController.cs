@@ -103,8 +103,4 @@ public class ScrollController : MonoBehaviour
         targetScrollObject = selection;
     }
 
-    public void ToMenu()
-    {
-        SceneManager.LoadScene("Menu");
-    }
 }
