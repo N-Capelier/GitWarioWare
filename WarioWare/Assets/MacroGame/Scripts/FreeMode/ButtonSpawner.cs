@@ -26,7 +26,7 @@ namespace FreeMode
                 _id.GetComponentInChildren<TextMeshProUGUI>().text = idName + " de " + id.trio;
 
                 _id.GetComponent<Button>().onClick.AddListener(() => PlayCard(id));
-
+                id.currentDifficulty = Difficulty.EASY;
                 buttons.Add(_id.GetComponent<Button>());
 
                 if (!doOnce)
@@ -66,6 +66,7 @@ namespace FreeMode
                 button.enabled = false;
                 button.GetComponent<Image>().enabled = false;
                 button.GetComponentInChildren<TextMeshProUGUI>().enabled = false;
+
             }
         }
 }

@@ -109,7 +109,10 @@ namespace Player
             yield return new WaitForSeconds(audioSource.clip.length);
             Manager.Instance.EndGame();
             Instance.EndGame();
-            SceneManager.LoadScene("Menu");    
+            if (SceneManager.GetActiveScene().name == "FreeMode")
+                SceneManager.LoadScene("FreeMode");
+            else
+                SceneManager.LoadScene("Menu");    
         }
         #endregion
     }

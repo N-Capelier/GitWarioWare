@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 public class ScrollController : MonoBehaviour
 {
     #region Variables
@@ -10,6 +11,7 @@ public class ScrollController : MonoBehaviour
     // settings
     public float scrollSpeed = 10f;
 
+    public Button quiteButton;
     [SerializeField]
     private RectTransform layoutListGroup = null;
 
@@ -33,6 +35,10 @@ public class ScrollController : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        if (Input.GetButtonDown("B_Button") && quiteButton.gameObject.activeSelf && SceneManager.GetActiveScene().name == "FreeMode")
+        {
+            quiteButton.Select();
+        }
         ScrollRectToLevelSelection();
     }
 
@@ -95,5 +101,10 @@ public class ScrollController : MonoBehaviour
         }
         // save last object we were "heading to" to prevent blocking
         targetScrollObject = selection;
+    }
+
+    public void ToMenu()
+    {
+        SceneManager.LoadScene("Menu");
     }
 }
