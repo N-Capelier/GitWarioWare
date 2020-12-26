@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ShadMat_SeaTopView
-  m_Shader: {fileID: -6465566751694194690, guid: db186f4f15e8de74ca1ad15575f58837,
+  m_Name: ShadMat_UI_BackSea
+  m_Shader: {fileID: -6465566751694194690, guid: c1d5b220c3ce0aa45bb21c16eafcf387,
     type: 3}
   m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
   m_LightmapFlags: 4
@@ -25,17 +25,13 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_2F764C90: 1
-    - Vector1_598C027A: 0.3
-    - Vector1_813F5547: 0.1
-    - Vector1_A7DEBCE0: 10
-    - Vector1_ACFCDA2A: 0.8
-    - Vector1_B13A8466: 1.5
-    - Vector1_C57DA693: 0.4813798
-    - Vector1_EB866110: 0.5
-    - Vector1_EF5D412C: 0
+    - Vector1_2955E56D: 0.005
+    - _BPM: 60
+    - _OffSet: 0.08
+    - _ShaderHeight: 0.067
+    - _WaveQuantity: 5
+    - _WaveSize: 0.1
+    - _WaveSpeed: -3
     m_Colors:
-    - Color_FA2BC929: {r: 0.10866857, g: 0.44992578, b: 0.6981132, a: 1}
-    - Color_FC7FC81D: {r: 0.7783019, g: 0.9068605, b: 1, a: 1}
-    - Vector2_2FE36705: {r: 1, g: 1, b: 0, a: 0}
-    - Vector2_Tilling: {r: 25, g: 25, b: 0, a: 0}
+    - Color_2FA990F3: {r: 0.20392159, g: 0.5686275, b: 0.6666667, a: 1}
+    - _WaveColor: {r: 0.19215688, g: 0.38431376, b: 0.47450984, a: 1}
