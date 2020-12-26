@@ -21,7 +21,7 @@ namespace Islands
 
         [Space]
 
-        [SerializeField] Reward[] gameRewards;
+        [SerializeField] public Reward[] gameRewards;
 
         [Header("Procedural Generation")]
 
@@ -148,7 +148,7 @@ namespace Islands
             PlayerMovement.Instance.islands = islands;
         }
 
-        Reward GetRandomReward(Reward[] _rewards)
+        public Reward GetRandomReward(Reward[] _rewards)
         {
             //Convert weights to percentages
             int _totalWeight = 0;

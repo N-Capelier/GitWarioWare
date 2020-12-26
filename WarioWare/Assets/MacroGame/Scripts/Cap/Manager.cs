@@ -393,13 +393,16 @@ namespace Caps
             PlayerInventory.Instance.rewardCanvas.SetActive(false);
 
             if (PlayerMovement.Instance.playerIsland.reward.type != RewardType.Resource)
+            {
                 PlayerInventory.Instance.SetItemToAdd(PlayerMovement.Instance.playerIsland.reward);
+            }
             else
+            {
                 PlayerMovement.Instance.playerIsland.reward.ApplyPassiveEffect();
                 macroUI.SetActive(true);
                 capUI.SetActive(false);
-
                 PlayerMovement.Instance.ResetFocus();
+            }
         }
         #endregion
     }
