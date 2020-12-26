@@ -14,6 +14,8 @@ namespace Player
 
         Clock transitionTimer;
 
+        [SerializeField] Island bossIsland;
+
         private void Awake()
         {
             CreateSingleton();
@@ -33,6 +35,11 @@ namespace Player
         {
             if(transitionTimer.onFinish)
                 playerAvatar.transform.position = playerIsland.anchorPoint.position;
+
+            if(playerIsland == bossIsland)
+            {
+                PlayerManager.Instance.TakeDamage(20);
+            }
         }
 
         /// <summary>

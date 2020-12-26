@@ -22,7 +22,7 @@ namespace Caps
         #region Variables
         [Header("Playtest variable")]
         public float transitionTime;
-        public float verbTime;
+      //  public float verbTime;
         public int numberBeforeSpeedUp;
         //int that will be added on the id to make it appear more offen, they all start with a value of 10
         public int idWeightToAdd;
@@ -62,11 +62,13 @@ namespace Caps
         public GameObject capUI;
         public GameObject macroUI;
         public TextMeshProUGUI idName;
+        public GameObject clock;
 
         [Header("Transition")]
         public TransitionAnimations transition;
         public Camera transitionCam;
         public AudioSource transitionMusic;
+        private bool cantDoTransition;
 
         [Header("Debug")]
         [SerializeField] bool isDebug = false;
@@ -88,6 +90,7 @@ namespace Caps
         /// <returns></returns>
         public IEnumerator StartCap(Cap _currentCap)
         {
+            cantDoTransition = false;
             currentCap = _currentCap;
             if (currentCap.isDone)
             {
@@ -95,13 +98,19 @@ namespace Caps
                 yield break;
             }
             //little fade  
-            StartCoroutine(FadeManager.Instance.FadeInAndOut(0.5f * 60 / (float)bpm));
-            yield return new WaitForSeconds(0.25f * 60 / (float)bpm);
+            Debug.Log(0.15f * 60 / (float)bpm);
+            Debug.Log(0.25f * 60 / (float)bpm);
+            StartCoroutine(FadeManager.Instance.FadeIn(0.15f * 60 / (float)bpm));
+            yield return new WaitForSeconds(0.5f * 60 / (float)bpm);
+            sceneCam.SetActive(true);
+            transitionCam.enabled = false;
             capUI.SetActive(true);
             macroUI.SetActive(false);
             panel.SetActive(false);
             verbePanel.SetActive(true);
-
+            FadeManager.Instance.NoPanel();
+            SoundManager.Instance.ApplyAudioClip("verbeJingle", transitionMusic, bpm);
+            transitionMusic.PlaySecured();
             if (currentAsyncScene == null)
             {
                 currentDifficulty = _currentCap.chosenMiniGames[currentMiniGame].currentDifficulty;
@@ -110,8 +119,7 @@ namespace Caps
                 currentAsyncScene.allowSceneActivation = false;
                 macroSceneIndex = SceneManager.GetActiveScene().buildIndex;
                 transition.DisplayBarrel(_currentCap);
-                SoundManager.Instance.ApplyAudioClip("verbeJingle", transitionMusic, bpm);
-                transitionMusic.PlaySecured();
+                
             }
 
             verbeText.text = _currentCap.chosenMiniGames[currentMiniGame].verbe;
@@ -121,14 +129,17 @@ namespace Caps
             //yield return new WaitForSeconds((verbTime-0.25f) * 60 / (float)bpm);
             yield return new WaitForSeconds(transitionMusic.clip.length);
 
-            sceneCam.SetActive(false);
-            verbePanel.SetActive(false);
             currentAsyncScene.allowSceneActivation = true;
 
             yield return new WaitUntil(() => currentAsyncScene.isDone);
+            sceneCam.SetActive(false);
+            verbePanel.SetActive(false);
+            clock.SetActive(true);
             isLoaded = true;
             Scene scene = SceneManager.GetSceneByBuildIndex(_currentCap.chosenMiniGames[currentMiniGame].microGameScene.BuildIndex);
             SceneManager.SetActiveScene(scene);
+            clock.GetComponent<UI.Clock>().timer = 0;
+            clock.GetComponent<UI.Clock>().bpm = (float)bpm;
         }
 
         /// <summary>
@@ -137,6 +148,7 @@ namespace Caps
         /// <param name="win"> if true the game is won , if false the game is lost</param>
         public void Result(bool win)
         {   
+            if(!cantDoTransition)
             StartCoroutine(Transition(win));
         }
 
@@ -146,23 +158,28 @@ namespace Caps
         /// <returns></returns>
         private IEnumerator Transition(bool win)
         {
-            panel.SetActive(true);
+            clock.SetActive(false);
+            cantDoTransition = true;
+            //little fade
+            StartCoroutine(FadeManager.Instance.FadeIn(0.15f * 60 / (float)bpm));
+            yield return new WaitForSeconds(0.25f * 60 / (float)bpm);
+            //panel.SetActive(true);
+            sceneCam.SetActive(true);
+            transitionCam.enabled = true;
             SceneManager.UnloadSceneAsync(currentCap.chosenMiniGames[currentMiniGame].microGameScene.BuildIndex);
             if (currentCap.chosenMiniGames[currentMiniGame].currentDifficulty != Difficulty.HARD)
                 currentCap.chosenMiniGames[currentMiniGame].currentDifficulty++;
 
             isLoaded = false;
-            sceneCam.SetActive(true);
             transition.MoveShip(currentCap, miniGamePassedNumber);
 
             currentMiniGame++;
 
-            //little fade
-            StartCoroutine(FadeManager.Instance.FadeInAndOut(0.5f * 60 / (float)bpm));
+
+            StartCoroutine(FadeManager.Instance.FadeOut(0.15f * 60 / (float)bpm));
             yield return new WaitForSeconds(0.25f * 60 / (float)bpm);
 
             #region resultConsequences
-            transitionCam.enabled = true;
             //transitionMusic.PlayDelayed((transitionTime - 0.5f) * 60 / (float)bpm);
             
             if (win)
@@ -198,7 +215,7 @@ namespace Caps
 
 
                 miniGamePassedNumber++;
-
+                
                 if (miniGamePassedNumber % numberBeforeSpeedUp == 0 && currentCap.length != miniGamePassedNumber)
                 {
                     //play speed up jingle and wait for jingle to finish
@@ -209,24 +226,20 @@ namespace Caps
                     yield return new WaitForSeconds(transitionMusic.clip.length);
                     bpm = bpm.Next();
                 }
-
-                currentDifficulty = currentCap.chosenMiniGames[currentMiniGame].currentDifficulty;
-
-                currentAsyncScene = SceneManager.LoadSceneAsync(currentCap.chosenMiniGames[currentMiniGame].microGameScene.BuildIndex, LoadSceneMode.Additive);
-                currentAsyncScene.allowSceneActivation = false;
-
-                if (currentCap.length != miniGamePassedNumber)
-                {
-                    SoundManager.Instance.ApplyAudioClip("verbeJingle", transitionMusic, bpm);
-                    transitionMusic.PlaySecured();
-                }
-
-                transitionCam.enabled = false;
                 if ((currentCap.length == miniGamePassedNumber) || (isDebug && Input.GetKey(KeyCode.RightArrow)))
                 {
                     CapEnd();
                     yield break;
                 }
+                currentDifficulty = currentCap.chosenMiniGames[currentMiniGame].currentDifficulty;
+
+                currentAsyncScene = SceneManager.LoadSceneAsync(currentCap.chosenMiniGames[currentMiniGame].microGameScene.BuildIndex, LoadSceneMode.Additive);
+                currentAsyncScene.allowSceneActivation = false;
+
+               
+
+               
+
                 StartCoroutine(StartCap(currentCap));
             }
 
@@ -244,7 +257,6 @@ namespace Caps
                 _giveReward = false;
 
             currentCap.isDone = true;
-            SceneManager.UnloadSceneAsync(currentCap.chosenMiniGames[currentMiniGame].microGameScene.BuildIndex);
 
             Island _island = null;
             foreach (var island in allIslands)
@@ -271,7 +283,10 @@ namespace Caps
                     _islandToGo.capList[i].isDone = true;
                 }
             }
+            transitionCam.enabled = false;
 
+            currentAsyncScene = null;
+            sceneCam.SetActive(true);
             currentCap = null;
             resultText.text = "GG";
             bpm = BPM.Slow;

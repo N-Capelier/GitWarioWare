@@ -54,4 +54,9 @@ public class MenuManager : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void LoadFreeMode()
+    {
+        SceneManager.LoadScene("FreeMode");
+    }
 }
