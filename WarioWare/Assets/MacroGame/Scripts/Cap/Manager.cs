@@ -9,6 +9,8 @@ using Islands;
 using Player;
 using UI;
 using Sound;
+using Rewards;
+
 namespace Caps
 {
     public class Manager : Singleton<Manager>
@@ -292,17 +294,17 @@ namespace Caps
             bpm = BPM.Slow;
             miniGamePassedNumber = 0;
             currentMiniGame = 0;
-            macroUI.SetActive(true);
             capUI.SetActive(false);
 
-            PlayerMovement.Instance.ResetFocus();
-            PlayerInventory.Instance.SetItemToAdd(PlayerMovement.Instance.playerIsland.reward);
 
             Scene scene = SceneManager.GetSceneByBuildIndex(macroSceneIndex = SceneManager.GetActiveScene().buildIndex);
             SceneManager.SetActiveScene(scene);
 
-            if(_giveReward)
-                PlayerInventory.Instance.SetItemToAdd(PlayerMovement.Instance.playerIsland.reward);
+            //reward attribution
+            if (_giveReward)
+                StartCoroutine(RewardUI());
+               
+            
             //REACTIVER LES INPUTS MACRO
         }
 
@@ -378,6 +380,26 @@ namespace Caps
             PlayerManager.Instance.GainCoins(_goldAmount);
             PlayerManager.Instance.GainFood(_foodAmount);
             PlayerManager.Instance.Heal(_lifeAmount);
+        }
+
+        private IEnumerator RewardUI()
+        {
+            //PlayerInventory.Instance.rewardImage.sprite = PlayerMovement.Instance.playerIsland.reward.sprite;
+            PlayerInventory.Instance.rewardCanvas.SetActive(true);
+
+            yield return new WaitForSeconds(3);
+
+            //apply object effect if ressource
+            PlayerInventory.Instance.rewardCanvas.SetActive(false);
+
+            if (PlayerMovement.Instance.playerIsland.reward.type != RewardType.Resource)
+                PlayerInventory.Instance.SetItemToAdd(PlayerMovement.Instance.playerIsland.reward);
+            else
+                PlayerMovement.Instance.playerIsland.reward.ApplyPassiveEffect();
+                macroUI.SetActive(true);
+                capUI.SetActive(false);
+
+                PlayerMovement.Instance.ResetFocus();
         }
         #endregion
     }

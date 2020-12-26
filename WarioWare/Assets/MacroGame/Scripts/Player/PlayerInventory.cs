@@ -4,22 +4,29 @@ using UnityEngine;
 using UnityEngine.UI;
 using Rewards;
 using Caps;
-
+using TMPro;
 
 namespace Player
 {
     public class PlayerInventory : Singleton<PlayerInventory>
     {
+        [Header("Inventory UI")]
         public GameObject inventoryCanvas;
         public Button[] slots;
         public Image[] rewardImages;
         public Image rewardToAddImage;
         [HideInInspector] public Reward[] stockedRewards;
+        public GameObject itemDescriptionContainer;
+        public TextMeshProUGUI itemDescription;
 
         [Header("Override Confirmation")]
         public GameObject overrideConfirmationPanel;
         public Button noButton;
         private int indexToOverride;
+
+        [Header("Reward UI")]
+        public GameObject rewardCanvas;
+        public Image rewardImage;
 
         private Reward rewardToAdd;
 
@@ -31,7 +38,7 @@ namespace Player
         // Start is called before the first frame update
         void Start()
         {   
-            //rewardToAdd = stockedRewards[0]; -- feature testing
+            //rewardToAdd = stockedRewards[0]; //-- feature testing
         }
 
         // Update is called once per frame
@@ -160,8 +167,14 @@ namespace Player
             {
                 if(slots[i] == selectedSlot && stockedRewards[i] != null)
                 {
-                    stockedRewards[i].GetDescription();
-                    //popupUI here
+
+                    //itemDescription.text = stockedRewards[i].GetDescription();
+                    itemDescriptionContainer.SetActive(true);
+                    break;
+                }
+                else
+                {
+                    itemDescriptionContainer.SetActive(false);
                 }
             }   
         }

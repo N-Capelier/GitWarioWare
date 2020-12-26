@@ -1,6 +1,7 @@
 ﻿using System;
-using UnityEngine;
 using UnityEngine.Serialization;
+using System.Collections.Generic;
+using UnityEngine;
 
 namespace UnityEngine.EventSystems
 {
@@ -28,6 +29,19 @@ namespace UnityEngine.EventSystems
         {
         }
 
+        [Obsolete("Mode is no longer needed on input module as it handles both mouse and keyboard simultaneously.", false)]
+        public enum InputMode
+        {
+            Mouse,
+            Buttons
+        }
+
+        [Obsolete("Mode is no longer needed on input module as it handles both mouse and keyboard simultaneously.", false)]
+        public InputMode inputMode
+        {
+            get { return InputMode.Mouse; }
+        }
+
         [SerializeField]
         private string m_HorizontalAxis = "Left_Joystick_X";
 
@@ -47,7 +61,7 @@ namespace UnityEngine.EventSystems
         /// Name of the submit button.
         /// </summary>
         [SerializeField]
-        private string m_CancelButton = "B_Button";
+        private string m_CancelButton = "Y_Button";
 
         [SerializeField]
         private float m_InputActionsPerSecond = 10;
@@ -58,6 +72,12 @@ namespace UnityEngine.EventSystems
         [SerializeField]
         [FormerlySerializedAs("m_AllowActivationOnMobileDevice")]
         private bool m_ForceModuleActive;
+
+        [SerializeField]
+        private bool m_UseMouse;
+
+        [SerializeField]
+        private bool m_UseMouseUnfocus;
 
         [Obsolete("allowActivationOnMobileDevice has been deprecated. Use forceModuleActive instead (UnityUpgradable) -> forceModuleActive")]
         public bool allowActivationOnMobileDevice
@@ -133,6 +153,18 @@ namespace UnityEngine.EventSystems
         {
             get { return m_CancelButton; }
             set { m_CancelButton = value; }
+        }
+
+        public bool useMouse
+        {
+            get { return m_UseMouse; }
+            set { m_UseMouse = value; }
+        }
+
+        public bool useMouseUnfocus
+        {
+            get { return m_UseMouseUnfocus; }
+            set { m_UseMouseUnfocus = value; }
         }
 
         private bool ShouldIgnoreEventsOnNoFocus()
@@ -271,6 +303,9 @@ namespace UnityEngine.EventSystems
             // case 1004066 - touch / mouse events should be processed before navigation events in case
             // they change the current selected gameobject and the submit button is a touch / mouse button.
 
+            // touch needs to take precedence because of the mouse emulation layer
+            if (!ProcessTouchEvents() && input.mousePresent && useMouse)
+                ProcessMouseEvent();
 
             if (eventSystem.sendNavigationEvents)
             {
@@ -280,6 +315,32 @@ namespace UnityEngine.EventSystems
                 if (!usedEvent)
                     SendSubmitEventToSelectedObject();
             }
+        }
+
+        private bool ProcessTouchEvents()
+        {
+            for (int i = 0; i < input.touchCount; ++i)
+            {
+                Touch touch = input.GetTouch(i);
+
+                if (touch.type == TouchType.Indirect)
+                    continue;
+
+                bool released;
+                bool pressed;
+                var pointer = GetTouchPointerEventData(touch, out pressed, out released);
+
+                ProcessTouchPress(pointer, pressed, released);
+
+                if (!released)
+                {
+                    ProcessMove(pointer);
+                    ProcessDrag(pointer);
+                }
+                else
+                    RemovePointerData(pointer);
+            }
+            return input.touchCount > 0;
         }
 
         /// <summary>
@@ -485,6 +546,10 @@ namespace UnityEngine.EventSystems
             return axisEventData.used;
         }
 
+        protected void ProcessMouseEvent()
+        {
+            ProcessMouseEvent(0);
+        }
 
         [Obsolete("This method is no longer checked, overriding it with return true does nothing!")]
         protected virtual bool ForceAutoSelect()
@@ -495,7 +560,30 @@ namespace UnityEngine.EventSystems
         /// <summary>
         /// Process all mouse events.
         /// </summary>
-        
+        protected void ProcessMouseEvent(int id)
+        {
+            var mouseData = GetMousePointerEventData(id);
+            var leftButtonData = mouseData.GetButtonState(PointerEventData.InputButton.Left).eventData;
+
+            m_CurrentFocusedGameObject = leftButtonData.buttonData.pointerCurrentRaycast.gameObject;
+
+            // Process the first mouse button fully
+            ProcessMousePress(leftButtonData);
+            ProcessMove(leftButtonData.buttonData);
+            ProcessDrag(leftButtonData.buttonData);
+
+            // Now process right / middle clicks
+            ProcessMousePress(mouseData.GetButtonState(PointerEventData.InputButton.Right).eventData);
+            ProcessDrag(mouseData.GetButtonState(PointerEventData.InputButton.Right).eventData.buttonData);
+            ProcessMousePress(mouseData.GetButtonState(PointerEventData.InputButton.Middle).eventData);
+            ProcessDrag(mouseData.GetButtonState(PointerEventData.InputButton.Middle).eventData.buttonData);
+
+            if (!Mathf.Approximately(leftButtonData.buttonData.scrollDelta.sqrMagnitude, 0.0f))
+            {
+                var scrollHandler = ExecuteEvents.GetEventHandler<IScrollHandler>(leftButtonData.buttonData.pointerCurrentRaycast.gameObject);
+                ExecuteEvents.ExecuteHierarchy(scrollHandler, leftButtonData.buttonData, ExecuteEvents.scrollHandler);
+            }
+        }
 
         protected bool SendUpdateEventToSelectedObject()
         {
@@ -525,7 +613,10 @@ namespace UnityEngine.EventSystems
                 pointerEvent.pressPosition = pointerEvent.position;
                 pointerEvent.pointerPressRaycast = pointerEvent.pointerCurrentRaycast;
 
-                DeselectIfSelectionChanged(currentOverGo, pointerEvent);
+                if (useMouseUnfocus)
+                {
+                    DeselectIfSelectionChanged(currentOverGo, pointerEvent);
+                }
 
                 // search for the control that will receive the press
                 // if we can't find a press handler set the press
@@ -582,3 +673,4 @@ namespace UnityEngine.EventSystems
         }
     }
 }
+

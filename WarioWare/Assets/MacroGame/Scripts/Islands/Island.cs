@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Rewards;
 using UnityEngine.UI;
 using Caps;
+using TMPro;
 
 namespace Islands
 {
@@ -42,6 +43,12 @@ namespace Islands
         [Header("References")]
         public RectTransform anchorPoint;
         [SerializeField] float anchorRange = 64;
+
+        [Header("UI")]
+        public GameObject islandDescriptionContainer;
+        public Image islandRewardImage;
+        public TextMeshProUGUI rewardDescription;
+        public TextMeshProUGUI capLength;
 
         #endregion
 

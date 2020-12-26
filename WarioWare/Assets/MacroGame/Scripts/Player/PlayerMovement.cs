@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using Islands;
 using Caps;
+using DG.Tweening;
 
 namespace Player
 {
@@ -11,6 +12,7 @@ namespace Player
         public Island playerIsland;
 
         private Island lastSelectedIsland;
+        private GameObject previousDescription;
 
         Clock transitionTimer;
 
@@ -130,11 +132,28 @@ namespace Player
                 lastSelectedIsland.button.Select();
             }
 
+            if(previousDescription != null)
+                previousDescription.SetActive(false);
 
             if (targetIsland != playerIsland)
             {
+                
                 //Debug.Log(targetIsland.gameObject.name + " has " + targetIsland.accessibleNeighbours.Length + " neighbor(s).");
+                
                 //show UI here
+                targetIsland.islandDescriptionContainer.transform.position = targetIsland.anchorPoint.transform.position; //replace description box
+                //targetIsland.rewardDescription.text = targetIsland.reward.GetDescription();
+                //targetIsland.islandRewardImage.sprite = targetIsland.reward.sprite;
+                 for (int i = 0; i < playerIsland.accessibleNeighbours.Length; i++)
+                 {
+                    if (playerIsland.accessibleNeighbours[i] == targetIsland)
+                    {
+                        targetIsland.capLength.text = playerIsland.capList[i].length.ToString();
+                        break;
+                    }
+                 }
+                targetIsland.islandDescriptionContainer.SetActive(true);
+                previousDescription = targetIsland.islandDescriptionContainer;
             }
         }
 
