@@ -233,7 +233,7 @@ MonoBehaviour:
   anchorPoint: {fileID: 3748599129037821376}
   anchorRange: 20
   islandDescriptionContainer: {fileID: 8363130318030232697}
-  islandReward: {fileID: 2299780175705094732}
+  islandRewardImage: {fileID: 0}
   rewardDescription: {fileID: 6007136880416375271}
   capLength: {fileID: 2038510407971258397}
 --- !u!114 &2169064544655167480

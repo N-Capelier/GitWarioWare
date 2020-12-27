@@ -17,7 +17,6 @@ public class TransitionWarioClassicTest : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            SceneManager.LoadSceneAsync(TargetSceneIndex,LoadSceneMode.Additive);
             CenterViewport(renderTexture.rectTransform, 1f);
         }
     }

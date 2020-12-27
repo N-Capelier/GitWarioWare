@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.U2D;
 using System.Collections.Generic;
 using Rewards;
 using UnityEngine.UI;
@@ -26,7 +27,7 @@ namespace Islands
         [HideInInspector] public Reward reward;
 
         public Island[] accessibleNeighbours;
-        public List<GameObject> traiList = new List<GameObject>();
+        public List<SpriteShapeRenderer> traiList = new List<SpriteShapeRenderer>();
 
         [HideInInspector] public List<Cap> capList = new List<Cap>();
 
@@ -62,6 +63,16 @@ namespace Islands
 
         private void Start()
         {
+            if (traiList.Count > 0)
+            {
+                for (int i = 0; i < traiList.Count; i++)
+                {
+                    //materials[1] pour le edge material et non le fill material
+                    traiList[i].materials[1].SetInt("bool_Available", 0);
+                    traiList[i].materials[1].SetInt("bool_Selected", 0);
+                }
+            }
+
             switch (difficulty)
             {
                 case IslandDifficulty.Legendary:
