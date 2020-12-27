@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using Rewards;
 using Caps;
 using TMPro;
+using Shop;
 
 namespace Player
 {
@@ -79,8 +80,16 @@ namespace Player
             if(rewardToAdd == null)
             {
                 inventoryCanvas.SetActive(false);
-                PlayerMovement.Instance.ResetFocus();
-                Manager.Instance.macroUI.SetActive(true);
+                if(!ShopManager.Instance.inShop)
+                {
+                    Manager.Instance.macroUI.SetActive(true);
+                    PlayerMovement.Instance.ResetFocus();
+                }
+                else
+                {
+                    ShopManager.Instance.shopCanvas.SetActive(true);
+                    ShopManager.Instance.shopSlots[0].Select();
+                }
                 PlayerManager.Instance.inInventory = false;
             }
         }

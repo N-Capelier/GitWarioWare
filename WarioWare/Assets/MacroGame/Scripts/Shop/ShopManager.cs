@@ -24,7 +24,7 @@ namespace Shop
         private List<Reward> allResources = new List<Reward>();
         private List<Reward> allItems = new List<Reward>();
 
-        private bool inShop;
+        [HideInInspector] public bool inShop;
 
 
         private void Awake()
@@ -40,7 +40,12 @@ namespace Shop
 
         private void Update()
         {
-            if (inShop && (Input.GetButtonDown("Start_Button") || Input.GetButtonDown("B_Button")))
+            if (Input.GetButtonDown("Y_Button"))
+            {
+               // Show(); //--Feature testing
+            }
+
+            if (inShop && (Input.GetButtonDown("Start_Button") || Input.GetButtonDown("B_Button")) && !PlayerManager.Instance.inInventory)
             {
                 Hide();
             }
@@ -77,7 +82,6 @@ namespace Shop
             
             for (int i = 0; i < shopSlots.Length; i++)
             {
-                Debug.Log(shopItems[i]);
                 //shopItemImages[i].sprite = shopItems[i].sprite;
             }
         }
@@ -106,7 +110,7 @@ namespace Shop
         public void Hide()
         {
             inShop = false;
-            shopCanvas.SetActive(true);
+            shopCanvas.SetActive(false);
             Manager.Instance.macroUI.SetActive(true);
             PlayerMovement.Instance.ResetFocus();
         }
@@ -126,6 +130,7 @@ namespace Shop
                         }
                         else
                         {
+                            shopCanvas.SetActive(false);
                             PlayerInventory.Instance.SetItemToAdd(shopItems[i]);
                         }
 
@@ -148,6 +153,7 @@ namespace Shop
                 {
 
                     //itemDescription.text = shopItems[i].GetDescription();
+                    itemDescription.text = shopItems[i].name; //--Feature testing
                     itemPrice.text = shopItems[i].price.ToString();
                     itemDescriptionContainer.SetActive(true);
                     break;

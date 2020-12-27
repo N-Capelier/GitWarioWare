@@ -2,6 +2,7 @@
 using Islands;
 using Caps;
 using DG.Tweening;
+using Shop;
 
 namespace Player
 {
@@ -112,6 +113,11 @@ namespace Player
                     playerAvatar.transform.position = targetIsland.anchorPoint.position;
                 else
                     transitionTimer.SetTime(3f);
+            }
+
+            if(targetIsland == playerIsland && playerIsland.difficulty == IslandDifficulty.Shop)
+            {
+                ShopManager.Instance.Show();            
             }
         }
 
