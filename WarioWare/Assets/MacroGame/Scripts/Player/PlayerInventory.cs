@@ -71,7 +71,7 @@ namespace Player
             if(rewardToAdd != null)
             {
                 rewardToAddImage.gameObject.SetActive(true);
-                //rewardToAddImage.sprite = rewardToAdd.sprite;
+                rewardToAddImage.sprite = rewardToAdd.sprite;
             }
         }
 
@@ -105,9 +105,10 @@ namespace Player
         {
             stockedRewards[slot] = item;
             rewardImages[slot].gameObject.SetActive(true);
-            //rewardImages[slot].sprite = item.sprite;
+            rewardImages[slot].sprite = item.sprite;
             rewardToAdd = null;
             rewardToAddImage.gameObject.SetActive(false);
+            ShowSelectedSlotInfo(slots[slot]);
             /*if(item =passive)
             {
              apply passive effect
@@ -120,7 +121,7 @@ namespace Player
             stockedRewards[slot].RemovePassiveEffect();
             stockedRewards[slot] = newItem;
             rewardImages[slot].gameObject.SetActive(true);
-            //rewardImages[slot].sprite = item.sprite;
+            rewardImages[slot].sprite = newItem.sprite;
             rewardToAdd = null;
             rewardToAddImage.gameObject.SetActive(false);
             /*if(item =passive)
@@ -157,6 +158,7 @@ namespace Player
                             UseItem(stockedRewards[i]);
                             stockedRewards[i] = null;
                             rewardImages[i].gameObject.SetActive(false);
+                            ShowSelectedSlotInfo(slots[i]);
                             break;
                         }
                     }
@@ -178,6 +180,7 @@ namespace Player
                 {
 
                     //itemDescription.text = stockedRewards[i].GetDescription();
+                    itemDescription.text = stockedRewards[i].name; //--feature testing
                     itemDescriptionContainer.SetActive(true);
                     break;
                 }

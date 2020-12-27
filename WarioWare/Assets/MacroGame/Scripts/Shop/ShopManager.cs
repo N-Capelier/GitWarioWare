@@ -42,7 +42,7 @@ namespace Shop
         {
             if (Input.GetButtonDown("Y_Button"))
             {
-               // Show(); //--Feature testing
+                Show(); //--Feature testing
             }
 
             if (inShop && (Input.GetButtonDown("Start_Button") || Input.GetButtonDown("B_Button")) && !PlayerManager.Instance.inInventory)
@@ -67,22 +67,20 @@ namespace Shop
             }
 
             //Initialize shop stocked items
-            Reward _reward = IslandCreator.Instance.GetRandomReward(allResources.ToArray());
+            Reward _reward = IslandCreator.Instance.FisherYates(allItems.ToArray())[0];
             shopItems.Add(_reward);
             allResources.Remove(_reward);
             
             for(int i = 0; i < 2; i++)
             {
-                _reward = IslandCreator.Instance.GetRandomReward(allItems.ToArray());
+                _reward = IslandCreator.Instance.FisherYates(allResources.ToArray())[0];
                 shopItems.Add(_reward);
                 allItems.Remove(_reward);
             }
-           
-
             
             for (int i = 0; i < shopSlots.Length; i++)
             {
-                //shopItemImages[i].sprite = shopItems[i].sprite;
+                shopItemImages[i].sprite = shopItems[i].sprite;
             }
         }
 
@@ -152,8 +150,8 @@ namespace Shop
                 if (shopSlots[i] == selectedSlot && shopItems[i] != null)
                 {
 
-                    //itemDescription.text = shopItems[i].GetDescription();
-                    itemDescription.text = shopItems[i].name; //--Feature testing
+                    itemDescription.text = shopItems[i].GetDescription();
+                    //itemDescription.text = shopItems[i].name; //--Feature testing
                     itemPrice.text = shopItems[i].price.ToString();
                     itemDescriptionContainer.SetActive(true);
                     break;

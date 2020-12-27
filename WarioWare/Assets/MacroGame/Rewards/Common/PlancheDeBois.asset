@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PlancheDeBois
   m_EditorClassIdentifier: 
   rewardName: Planche de bois
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 25585f9c32cb8c545bd2f7d4a4241729, type: 3}
   type: 0
   rarity: 0
   effect: 1

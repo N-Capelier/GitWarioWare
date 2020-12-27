@@ -51,6 +51,6 @@ namespace Rewards
         /// <summary>
         /// Use this method to get the description and stats of the item.
         /// </summary>
-        public abstract void GetDescription();
+        public abstract string GetDescription();
     }
 }

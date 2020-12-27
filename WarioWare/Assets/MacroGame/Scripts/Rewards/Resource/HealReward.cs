@@ -19,9 +19,9 @@ namespace Rewards
             PlayerManager.Instance.Heal(healAmount);
         }
 
-        public override void GetDescription()
+        public override string GetDescription()
         {
-            
+            return "Gagnez " + healAmount + " planches";
         }
 
         public override void RemovePassiveEffect()
