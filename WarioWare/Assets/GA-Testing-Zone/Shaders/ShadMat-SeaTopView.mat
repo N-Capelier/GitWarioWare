@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: ShadMat-SeaTopView
-  m_Shader: {fileID: -6465566751694194690, guid: 96da82be27fbcb944aa73dc2fb4e2efb,
+  m_Shader: {fileID: -6465566751694194690, guid: 2061f048ff64eda41a505af5b1ffbacc,
     type: 3}
   m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
   m_LightmapFlags: 4
@@ -21,7 +21,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _MainTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 0633912121d68b148baf3679712407d5, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Texture2DAsset_53B1F6AE_Out_0:
