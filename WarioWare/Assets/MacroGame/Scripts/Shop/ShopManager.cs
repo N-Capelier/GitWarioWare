@@ -42,12 +42,17 @@ namespace Shop
         {
             if (Input.GetButtonDown("Y_Button"))
             {
-                Show(); //--Feature testing
+                //Show(); //--Feature testing
             }
 
-            if (inShop && (Input.GetButtonDown("Start_Button") || Input.GetButtonDown("B_Button")) && !PlayerManager.Instance.inInventory)
+            if (inShop && (Input.GetButtonDown("B_Button")) && !PlayerManager.Instance.inInventory)
             {
                 Hide();
+            }
+
+            if(inShop && Input.GetButtonDown("Start_Button"))
+            {
+                shopCanvas.SetActive(false);
             }
         }
 
