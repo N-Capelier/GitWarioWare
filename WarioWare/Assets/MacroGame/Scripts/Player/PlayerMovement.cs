@@ -115,7 +115,7 @@ namespace Player
                     transitionTimer.SetTime(3f);
             }
 
-            if(targetIsland == playerIsland && playerIsland.difficulty == IslandDifficulty.Shop)
+            if(targetIsland == playerIsland && playerIsland.type == IslandType.Shop)
             {
                 ShopManager.Instance.Show();            
             }

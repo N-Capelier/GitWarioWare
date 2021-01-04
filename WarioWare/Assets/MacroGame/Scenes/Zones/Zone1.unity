@@ -2210,6 +2210,11 @@ PrefabInstance:
       propertyPath: accessibleNeighbours.Array.data[2]
       value: 
       objectReference: {fileID: 1033701646}
+    - target: {fileID: 7309059693642548127, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: type
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc2f8b499c511b94f934b47245aeb98e, type: 3}
 --- !u!224 &1165643161 stripped
@@ -2447,7 +2452,12 @@ PrefabInstance:
     - target: {fileID: 7309059693642548127, guid: bc2f8b499c511b94f934b47245aeb98e,
         type: 3}
       propertyPath: difficulty
-      value: 6
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7309059693642548127, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: type
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc2f8b499c511b94f934b47245aeb98e, type: 3}
@@ -3430,7 +3440,7 @@ PrefabInstance:
     - target: {fileID: 7309059693642548127, guid: bc2f8b499c511b94f934b47245aeb98e,
         type: 3}
       propertyPath: difficulty
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7309059693642548127, guid: bc2f8b499c511b94f934b47245aeb98e,
         type: 3}
@@ -3452,6 +3462,11 @@ PrefabInstance:
       propertyPath: accessibleNeighbours.Array.data[3]
       value: 
       objectReference: {fileID: 1529762787}
+    - target: {fileID: 7309059693642548127, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: type
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc2f8b499c511b94f934b47245aeb98e, type: 3}
 --- !u!224 &1676958724 stripped
