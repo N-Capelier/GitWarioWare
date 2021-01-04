@@ -347,10 +347,11 @@ namespace Caps
                 {
                     island.capList.Add(new Cap());
                     island.capList[i].capWeight = idWeightToAdd;
-                    if((int)island.difficulty > 2)
+                    Island _IslandTarget = island.accessibleNeighbours[i];
+                    if ((int)_IslandTarget.difficulty > 2)
                         island.capList[i].length = 6 + zoneNumber;
                     else
-                        island.capList[i].length = (int)island.difficulty + 4 + zoneNumber;
+                        island.capList[i].length = (int)_IslandTarget.difficulty + 4 + zoneNumber;
                     island.capList[i].ChoseMiniGames(barrelProbality, sorter);
                 }
                 
