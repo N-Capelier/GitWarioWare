@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: ShadMat_Traits
+  m_Shader: {fileID: -6465566751694194690, guid: f426aa4914573bc46a0a3f0ee98106b2,
+    type: 3}
+  m_ShaderKeywords: ENUM_STATE_OUTOFRANGE
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 73eb846a705f4ae4796543a110fdeae7, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_26494871_Out_0:
+        m_Texture: {fileID: 2800000, guid: dd9db90370f7e494e8629a01149558fe, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Boolean_3DBC902B: 1
+    - Boolean_AB56FF33: 0
+    - ENUM_STATE: 2
+    - _DefilSpeed: 0.3
+    - _Scale: 1
+    - _borderThickness: 0.1
+    - _defilSpeed: 1
+    - _height: 0.4
+    - _roundness: 0.1
+    - _scale: 1.2
+    - _width: 0.8
+    - bool_Available: 1
+    - bool_Selected: 1
+    m_Colors:
+    - Col_AvSelectedCenter: {r: 1.8745098, g: 1.8745098, b: 1.309804, a: 1}
+    - Col_AvailableBorder: {r: 0.7450981, g: 0.25490198, b: 0.26666668, a: 1}
+    - Col_AvailableCenter: {r: 0.93725497, g: 0.93725497, b: 0.654902, a: 1}
+    - Color_3BD78C7D: {r: 0.74509805, g: 0.25490198, b: 0.26666668, a: 1}
+    - Color_E33FD6E1: {r: 0.937255, g: 0.937255, b: 0.654902, a: 1}

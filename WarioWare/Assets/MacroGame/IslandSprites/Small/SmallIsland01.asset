@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89b7721df142aee43a85d40a01d50522, type: 3}
   m_Name: SmallIsland01
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 0514dadc66c11f2408cfde2e727e4ce8, type: 3}
+  sprite: {fileID: 21300000, guid: 77cba797eefb08a4d9df2e28e6ee4ad0, type: 3}
   anchorPoint: 3
