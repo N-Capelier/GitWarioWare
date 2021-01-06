@@ -90,12 +90,16 @@ namespace Caps
         /// </summary>
         /// <param name="_currentCap"></param>
         /// <returns></returns>
-        public IEnumerator StartCap(Cap _currentCap)
+        public IEnumerator StartCap(Cap _currentCap) ////////////////////////////////////////////////////////////////////////////////////////////////////////////
         {
             cantDoTransition = false;
             currentCap = _currentCap;
             if (currentCap.isDone)
             {
+                if(isLureActive)
+                {
+                    isLure = true;
+                }
                 CapEnd();
                 yield break;
             }
@@ -154,6 +158,9 @@ namespace Caps
             StartCoroutine(Transition(win));
         }
 
+        [HideInInspector] public bool isLureActive = false;
+        [HideInInspector] public bool isLure = false;
+
         /// <summary>
         /// make the transition within a cap
         /// </summary>
@@ -190,13 +197,22 @@ namespace Caps
                 resultText.text = "You Won!";
                 if (currentCap.hasBarrel[miniGamePassedNumber])
                 {
-                    BarrelressourcesContente();
+                    BarrelRessourcesContent();
                 }
             }
             else
             {
                 transition.PlayAnimation((float)bpm, false);
-                PlayerManager.Instance.TakeDamage(1);
+
+                if(isLure)
+                {
+                    isLure = false;
+                }
+                else
+                {
+                    PlayerManager.Instance.TakeDamage(1);
+                }
+
                 if (PlayerManager.Instance.playerHp > 0)
                     resultText.text = "You Lost!";
                 else
@@ -361,9 +377,11 @@ namespace Caps
 
         }
 
-        private void BarrelressourcesContente()
+        [HideInInspector] public int bonusBarrels = 0;
+
+        private void BarrelRessourcesContent()
         {
-            var _size = Random.Range(minBarrelRessources, maxBarrelRessources);
+            var _size = Random.Range(minBarrelRessources + bonusBarrels, maxBarrelRessources + bonusBarrels);
             int _goldAmount = 0;
             int _lifeAmount = 0;
             int _foodAmount = 0;

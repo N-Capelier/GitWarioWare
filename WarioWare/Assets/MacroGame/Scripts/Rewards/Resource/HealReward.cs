@@ -9,9 +9,9 @@ namespace Rewards
     public class HealReward : Reward
     {
         [SerializeField] int healAmount;
-        public override void ApplyActiveEffect()
+        public override bool ApplyActiveEffect()
         {
-            
+            return false;
         }
 
         public override void ApplyPassiveEffect()

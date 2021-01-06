@@ -36,13 +36,11 @@ namespace Player
             CreateSingleton();
         }
 
-        // Start is called before the first frame update
         void Start()
         {   
             //rewardToAdd = stockedRewards[0]; //-- feature testing
         }
 
-        // Update is called once per frame
         void Update()
         {
 
@@ -94,11 +92,26 @@ namespace Player
             }
         }
 
-        public void UseItem(Reward item)
+        public void UseActiveItem(Reward item)
         {
-            //item.GiveEffect();
-            //destroy item from inventory
+            bool _isApplied = item.ApplyActiveEffect();
+            if(_isApplied)
+            {
+                //destroy item from inventory
+            }
+        }
 
+        public void SearchAndDestroyItem(string _itemName)
+        {
+            for(int i = 0; i < stockedRewards.Length; i++)
+            {
+                if(stockedRewards[i].rewardName == _itemName)
+                {
+                    //destroy item at index i from inventory
+                    return;
+                }
+            }
+            throw new System.Exception("Item not in inventory!");
         }
 
         public void AddToInventory(Reward item, int slot)
@@ -155,7 +168,7 @@ namespace Player
                     {
                         if(stockedRewards[i].effect == RewardEffect.Active)
                         {
-                            UseItem(stockedRewards[i]);
+                            UseActiveItem(stockedRewards[i]);
                             stockedRewards[i] = null;
                             rewardImages[i].gameObject.SetActive(false);
                             ShowSelectedSlotInfo(slots[i]);

@@ -41,7 +41,7 @@ namespace Rewards
         /// <summary>
         /// Use this method when the player decides to use the item.
         /// </summary>
-        public abstract void ApplyActiveEffect();
+        public abstract bool ApplyActiveEffect();
 
         /// <summary>
         /// Use this method when the player uses or deletes the item.
