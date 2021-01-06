@@ -5,6 +5,7 @@ using Rewards;
 using UnityEngine.UI;
 using Caps;
 using TMPro;
+using Player;
 
 namespace Islands
 {

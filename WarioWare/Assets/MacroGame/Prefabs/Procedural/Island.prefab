@@ -322,7 +322,7 @@ MonoBehaviour:
   bossIslandSprite: {fileID: 21300000, guid: 9a03aedf6c049d54983077fe6ce0539a, type: 3}
   button: {fileID: 0}
   anchorPoint: {fileID: 3748599129037821376}
-  anchorRange: 20
+  anchorRange: 64
   islandDescriptionContainer: {fileID: 8363130318030232697}
   islandRewardImage: {fileID: 2299780175705094732}
   rewardDescription: {fileID: 6007136880416375271}
