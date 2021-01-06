@@ -356,7 +356,7 @@ namespace Caps
                 }
                 
             }
-            transition.DisplayBarrel(allIslands[1].capList[0]);
+            transition.DisplayBarrel(allIslands[0].capList[0]);
             transition.MoveShip(allIslands[0].capList[0], 3);
 
         }

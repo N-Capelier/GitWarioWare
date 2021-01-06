@@ -2369,11 +2369,61 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 2169064544655167480, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1007450609}
+    - target: {fileID: 2169064544655167480, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ShowSelectedIslandInfo
+      objectReference: {fileID: 0}
+    - target: {fileID: 2169064544655167480, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2169064544655167480, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: Islands.Island, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2169064544655167480, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 470442373}
     - target: {fileID: 4031692456795551083, guid: bc2f8b499c511b94f934b47245aeb98e,
         type: 3}
       propertyPath: m_Name
       value: Island 7
       objectReference: {fileID: 0}
+    - target: {fileID: 4765462416859257723, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1007450609}
+    - target: {fileID: 4765462416859257723, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Move
+      objectReference: {fileID: 0}
+    - target: {fileID: 4765462416859257723, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4765462416859257723, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: Islands.Island, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4765462416859257723, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 470442373}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc2f8b499c511b94f934b47245aeb98e, type: 3}
 --- !u!224 &470442372 stripped
@@ -2496,11 +2546,61 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 2169064544655167480, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1007450609}
+    - target: {fileID: 2169064544655167480, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ShowSelectedIslandInfo
+      objectReference: {fileID: 0}
+    - target: {fileID: 2169064544655167480, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2169064544655167480, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: Islands.Island, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2169064544655167480, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 517683017}
     - target: {fileID: 4031692456795551083, guid: bc2f8b499c511b94f934b47245aeb98e,
         type: 3}
       propertyPath: m_Name
       value: Island 11
       objectReference: {fileID: 0}
+    - target: {fileID: 4765462416859257723, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1007450609}
+    - target: {fileID: 4765462416859257723, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Move
+      objectReference: {fileID: 0}
+    - target: {fileID: 4765462416859257723, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4765462416859257723, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: Islands.Island, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4765462416859257723, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 517683017}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc2f8b499c511b94f934b47245aeb98e, type: 3}
 --- !u!224 &517683016 stripped
@@ -2697,11 +2797,61 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 2169064544655167480, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1007450609}
+    - target: {fileID: 2169064544655167480, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ShowSelectedIslandInfo
+      objectReference: {fileID: 0}
+    - target: {fileID: 2169064544655167480, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2169064544655167480, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: Islands.Island, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2169064544655167480, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 579928859}
     - target: {fileID: 4031692456795551083, guid: bc2f8b499c511b94f934b47245aeb98e,
         type: 3}
       propertyPath: m_Name
       value: Island 12
       objectReference: {fileID: 0}
+    - target: {fileID: 4765462416859257723, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1007450609}
+    - target: {fileID: 4765462416859257723, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Move
+      objectReference: {fileID: 0}
+    - target: {fileID: 4765462416859257723, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4765462416859257723, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: Islands.Island, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4765462416859257723, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 579928859}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc2f8b499c511b94f934b47245aeb98e, type: 3}
 --- !u!224 &579928858 stripped
@@ -2824,11 +2974,61 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 2169064544655167480, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1007450609}
+    - target: {fileID: 2169064544655167480, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ShowSelectedIslandInfo
+      objectReference: {fileID: 0}
+    - target: {fileID: 2169064544655167480, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2169064544655167480, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: Islands.Island, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2169064544655167480, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 625634558}
     - target: {fileID: 4031692456795551083, guid: bc2f8b499c511b94f934b47245aeb98e,
         type: 3}
       propertyPath: m_Name
       value: Island 10
       objectReference: {fileID: 0}
+    - target: {fileID: 4765462416859257723, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1007450609}
+    - target: {fileID: 4765462416859257723, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Move
+      objectReference: {fileID: 0}
+    - target: {fileID: 4765462416859257723, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4765462416859257723, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: Islands.Island, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4765462416859257723, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 625634558}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc2f8b499c511b94f934b47245aeb98e, type: 3}
 --- !u!224 &625634557 stripped
@@ -4115,11 +4315,61 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 2169064544655167480, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1007450609}
+    - target: {fileID: 2169064544655167480, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ShowSelectedIslandInfo
+      objectReference: {fileID: 0}
+    - target: {fileID: 2169064544655167480, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2169064544655167480, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: Islands.Island, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2169064544655167480, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 938469397}
     - target: {fileID: 4031692456795551083, guid: bc2f8b499c511b94f934b47245aeb98e,
         type: 3}
       propertyPath: m_Name
       value: Island 6
       objectReference: {fileID: 0}
+    - target: {fileID: 4765462416859257723, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1007450609}
+    - target: {fileID: 4765462416859257723, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Move
+      objectReference: {fileID: 0}
+    - target: {fileID: 4765462416859257723, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4765462416859257723, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: Islands.Island, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4765462416859257723, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 938469397}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc2f8b499c511b94f934b47245aeb98e, type: 3}
 --- !u!224 &938469396 stripped
@@ -4302,11 +4552,61 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 2169064544655167480, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1007450609}
+    - target: {fileID: 2169064544655167480, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ShowSelectedIslandInfo
+      objectReference: {fileID: 0}
+    - target: {fileID: 2169064544655167480, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2169064544655167480, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: Islands.Island, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2169064544655167480, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 1033701646}
     - target: {fileID: 4031692456795551083, guid: bc2f8b499c511b94f934b47245aeb98e,
         type: 3}
       propertyPath: m_Name
       value: Island 2
       objectReference: {fileID: 0}
+    - target: {fileID: 4765462416859257723, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1007450609}
+    - target: {fileID: 4765462416859257723, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Move
+      objectReference: {fileID: 0}
+    - target: {fileID: 4765462416859257723, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4765462416859257723, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: Islands.Island, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4765462416859257723, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 1033701646}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc2f8b499c511b94f934b47245aeb98e, type: 3}
 --- !u!224 &1033701645 stripped
@@ -4537,6 +4837,31 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 2169064544655167480, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1007450609}
+    - target: {fileID: 2169064544655167480, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ShowSelectedIslandInfo
+      objectReference: {fileID: 0}
+    - target: {fileID: 2169064544655167480, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2169064544655167480, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: Islands.Island, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2169064544655167480, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 1165643162}
     - target: {fileID: 3261583286980489744, guid: bc2f8b499c511b94f934b47245aeb98e,
         type: 3}
       propertyPath: m_Color.r
@@ -4557,6 +4882,31 @@ PrefabInstance:
       propertyPath: m_Name
       value: Island 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4765462416859257723, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1007450609}
+    - target: {fileID: 4765462416859257723, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Move
+      objectReference: {fileID: 0}
+    - target: {fileID: 4765462416859257723, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4765462416859257723, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: Islands.Island, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4765462416859257723, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 1165643162}
     - target: {fileID: 8363130318030232697, guid: bc2f8b499c511b94f934b47245aeb98e,
         type: 3}
       propertyPath: m_IsActive
@@ -4987,11 +5337,61 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 2169064544655167480, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1007450609}
+    - target: {fileID: 2169064544655167480, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ShowSelectedIslandInfo
+      objectReference: {fileID: 0}
+    - target: {fileID: 2169064544655167480, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2169064544655167480, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: Islands.Island, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2169064544655167480, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 1350365007}
     - target: {fileID: 4031692456795551083, guid: bc2f8b499c511b94f934b47245aeb98e,
         type: 3}
       propertyPath: m_Name
       value: Island Boss
       objectReference: {fileID: 0}
+    - target: {fileID: 4765462416859257723, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1007450609}
+    - target: {fileID: 4765462416859257723, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Move
+      objectReference: {fileID: 0}
+    - target: {fileID: 4765462416859257723, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4765462416859257723, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: Islands.Island, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4765462416859257723, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 1350365007}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc2f8b499c511b94f934b47245aeb98e, type: 3}
 --- !u!224 &1350365006 stripped
@@ -5517,11 +5917,61 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 2169064544655167480, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1007450609}
+    - target: {fileID: 2169064544655167480, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ShowSelectedIslandInfo
+      objectReference: {fileID: 0}
+    - target: {fileID: 2169064544655167480, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2169064544655167480, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: Islands.Island, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2169064544655167480, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 1480527069}
     - target: {fileID: 4031692456795551083, guid: bc2f8b499c511b94f934b47245aeb98e,
         type: 3}
       propertyPath: m_Name
       value: Island 9
       objectReference: {fileID: 0}
+    - target: {fileID: 4765462416859257723, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1007450609}
+    - target: {fileID: 4765462416859257723, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Move
+      objectReference: {fileID: 0}
+    - target: {fileID: 4765462416859257723, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4765462416859257723, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: Islands.Island, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4765462416859257723, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 1480527069}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc2f8b499c511b94f934b47245aeb98e, type: 3}
 --- !u!224 &1480527068 stripped
@@ -5723,11 +6173,61 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 2169064544655167480, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1007450609}
+    - target: {fileID: 2169064544655167480, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ShowSelectedIslandInfo
+      objectReference: {fileID: 0}
+    - target: {fileID: 2169064544655167480, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2169064544655167480, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: Islands.Island, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2169064544655167480, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 1529762787}
     - target: {fileID: 4031692456795551083, guid: bc2f8b499c511b94f934b47245aeb98e,
         type: 3}
       propertyPath: m_Name
       value: Island 5
       objectReference: {fileID: 0}
+    - target: {fileID: 4765462416859257723, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1007450609}
+    - target: {fileID: 4765462416859257723, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Move
+      objectReference: {fileID: 0}
+    - target: {fileID: 4765462416859257723, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4765462416859257723, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: Islands.Island, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4765462416859257723, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 1529762787}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc2f8b499c511b94f934b47245aeb98e, type: 3}
 --- !u!224 &1529762786 stripped
@@ -6080,11 +6580,61 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 2169064544655167480, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1007450609}
+    - target: {fileID: 2169064544655167480, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ShowSelectedIslandInfo
+      objectReference: {fileID: 0}
+    - target: {fileID: 2169064544655167480, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2169064544655167480, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: Islands.Island, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2169064544655167480, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 1676958725}
     - target: {fileID: 4031692456795551083, guid: bc2f8b499c511b94f934b47245aeb98e,
         type: 3}
       propertyPath: m_Name
       value: Island Shop
       objectReference: {fileID: 0}
+    - target: {fileID: 4765462416859257723, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1007450609}
+    - target: {fileID: 4765462416859257723, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Move
+      objectReference: {fileID: 0}
+    - target: {fileID: 4765462416859257723, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4765462416859257723, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: Islands.Island, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4765462416859257723, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 1676958725}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc2f8b499c511b94f934b47245aeb98e, type: 3}
 --- !u!224 &1676958724 stripped
@@ -6298,11 +6848,61 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 2169064544655167480, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1007450609}
+    - target: {fileID: 2169064544655167480, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ShowSelectedIslandInfo
+      objectReference: {fileID: 0}
+    - target: {fileID: 2169064544655167480, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2169064544655167480, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: Islands.Island, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2169064544655167480, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 1756726551}
     - target: {fileID: 4031692456795551083, guid: bc2f8b499c511b94f934b47245aeb98e,
         type: 3}
       propertyPath: m_Name
       value: Island 8
       objectReference: {fileID: 0}
+    - target: {fileID: 4765462416859257723, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1007450609}
+    - target: {fileID: 4765462416859257723, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Move
+      objectReference: {fileID: 0}
+    - target: {fileID: 4765462416859257723, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4765462416859257723, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: Islands.Island, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4765462416859257723, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 1756726551}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc2f8b499c511b94f934b47245aeb98e, type: 3}
 --- !u!224 &1756726550 stripped
@@ -6775,11 +7375,61 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 2169064544655167480, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1007450609}
+    - target: {fileID: 2169064544655167480, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ShowSelectedIslandInfo
+      objectReference: {fileID: 0}
+    - target: {fileID: 2169064544655167480, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2169064544655167480, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: Islands.Island, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2169064544655167480, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 1860211205}
     - target: {fileID: 4031692456795551083, guid: bc2f8b499c511b94f934b47245aeb98e,
         type: 3}
       propertyPath: m_Name
       value: Island 3
       objectReference: {fileID: 0}
+    - target: {fileID: 4765462416859257723, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1007450609}
+    - target: {fileID: 4765462416859257723, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Move
+      objectReference: {fileID: 0}
+    - target: {fileID: 4765462416859257723, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4765462416859257723, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: Islands.Island, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4765462416859257723, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 1860211205}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc2f8b499c511b94f934b47245aeb98e, type: 3}
 --- !u!224 &1860211204 stripped
@@ -6939,11 +7589,61 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 2169064544655167480, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1007450609}
+    - target: {fileID: 2169064544655167480, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ShowSelectedIslandInfo
+      objectReference: {fileID: 0}
+    - target: {fileID: 2169064544655167480, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2169064544655167480, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: Islands.Island, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2169064544655167480, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 1944169964}
     - target: {fileID: 4031692456795551083, guid: bc2f8b499c511b94f934b47245aeb98e,
         type: 3}
       propertyPath: m_Name
       value: Island 13
       objectReference: {fileID: 0}
+    - target: {fileID: 4765462416859257723, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1007450609}
+    - target: {fileID: 4765462416859257723, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Move
+      objectReference: {fileID: 0}
+    - target: {fileID: 4765462416859257723, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4765462416859257723, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: Islands.Island, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4765462416859257723, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 1944169964}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc2f8b499c511b94f934b47245aeb98e, type: 3}
 --- !u!224 &1944169963 stripped
