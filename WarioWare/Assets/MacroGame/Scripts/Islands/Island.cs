@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using Caps;
 using TMPro;
 using Player;
+using UnityEngine.EventSystems;
 
 namespace Islands
 {
@@ -48,6 +49,7 @@ namespace Islands
         //Components
         Image image;
         [HideInInspector] public Button button;
+        [HideInInspector] public EventTrigger eventTrigger;
 
         [Header("References")]
         public RectTransform anchorPoint;
@@ -67,7 +69,10 @@ namespace Islands
         {
             image = GetComponent<Image>();
             button = GetComponent<Button>();
+            eventTrigger = GetComponent<EventTrigger>(); 
         }
+
+
 
         private void Start()
         {
@@ -98,6 +103,14 @@ namespace Islands
                 default:
                     break;
             }
+
+            //Set button event click & select
+            EventTrigger.Entry entry = new EventTrigger.Entry();
+            entry.eventID = EventTriggerType.Select;
+            entry.callback.AddListener((data) => { OnSelect(); });
+
+            button.onClick.AddListener(OnClick);
+            eventTrigger.triggers.Add(entry);
         }
 
         #endregion
@@ -157,6 +170,14 @@ namespace Islands
                 default:
                     break;
             }
+        }
+        public void OnClick()
+        {
+            PlayerMovement.Instance.Move(this);
+        }
+        public void OnSelect()
+        {
+            PlayerMovement.Instance.ShowSelectedIslandInfo(this);
         }
 
         #endregion
