@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8c1c741fec899b4f80a5afcb8b1f54d, type: 3}
   m_Name: VoileDeLeurre
   m_EditorClassIdentifier: 
-  rewardName: 
-  sprite: {fileID: 0}
-  type: 0
-  rarity: 0
-  effect: 0
-  price: 0
-  dropRateWeight: 0
+  rewardName: Voile de leurre
+  sprite: {fileID: 21300000, guid: df547bc70465afd4c88ad82dff4cca63, type: 3}
+  type: 1
+  rarity: 1
+  effect: 1
+  price: 8
+  dropRateWeight: 10

@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c21106e702a13964abdf51f3107adb16, type: 3}
   m_Name: LaGalere
   m_EditorClassIdentifier: 
-  rewardName: 
-  sprite: {fileID: 0}
-  type: 0
+  rewardName: "La gal\xE8re"
+  sprite: {fileID: 21300000, guid: df547bc70465afd4c88ad82dff4cca63, type: 3}
+  type: 1
   rarity: 0
   effect: 0
-  price: 0
-  dropRateWeight: 0
+  price: 8
+  dropRateWeight: 10
   beatcoinAmmount: 2
   foodAmmount: 1

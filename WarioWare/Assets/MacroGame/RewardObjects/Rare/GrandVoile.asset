@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4c5f024f14d8c414ca940117210ccb77, type: 3}
-  m_Name: MainSail
+  m_Name: GrandVoile
   m_EditorClassIdentifier: 
-  rewardName: 
-  sprite: {fileID: 0}
-  type: 0
-  rarity: 0
-  effect: 0
-  price: 0
-  dropRateWeight: 0
+  rewardName: Grand voile
+  sprite: {fileID: 21300000, guid: df547bc70465afd4c88ad82dff4cca63, type: 3}
+  type: 1
+  rarity: 1
+  effect: 1
+  price: 10
+  dropRateWeight: 10

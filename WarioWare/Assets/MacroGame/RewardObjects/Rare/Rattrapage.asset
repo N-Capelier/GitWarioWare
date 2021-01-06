@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3a27e1f1c8a17b4bb677dad3f4e90c1, type: 3}
   m_Name: Rattrapage
   m_EditorClassIdentifier: 
-  rewardName: 
-  sprite: {fileID: 0}
-  type: 0
-  rarity: 0
-  effect: 0
-  price: 0
-  dropRateWeight: 0
+  rewardName: Rattrapage
+  sprite: {fileID: 21300000, guid: 95b2cb015f4613b499731158dca5e997, type: 3}
+  type: 2
+  rarity: 1
+  effect: 1
+  price: 10
+  dropRateWeight: 10
   healAmmount: 3
