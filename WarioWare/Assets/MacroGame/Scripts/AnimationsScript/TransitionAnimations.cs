@@ -1,7 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿
 using UnityEngine;
 using Caps;
+using DG.Tweening;
+
 
 public class TransitionAnimations : MonoBehaviour
 {
@@ -22,12 +23,13 @@ public class TransitionAnimations : MonoBehaviour
 
             }
         }
+        ship.transform.position = startPosition.position;
     }
-    public void MoveShip(Cap cap, int capNumber)
+    public void MoveShip(Cap cap, int capNumber, float shipMoveTime)
     {
         var distance = Vector3.Distance(startPosition.position, endPosition.position);
-        var position = Vector3Extensions.AddX(startPosition.position, distance * capNumber / cap.hasBarrel.Length);
-        ship.transform.position = position;
+        var position = Vector3Extensions.AddX(startPosition.position, distance * (capNumber+1) / cap.hasBarrel.Length);
+        ship.transform.DOMoveX(position.x,shipMoveTime);
     }
     public void PlayAnimation( float bpm, bool win)
     {

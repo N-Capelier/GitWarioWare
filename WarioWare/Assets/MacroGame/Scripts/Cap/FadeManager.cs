@@ -21,6 +21,7 @@ namespace UI
         public IEnumerator FadeIn(float timer)
         {
             fade.color = new Color(0, 0, 0, 0);
+             
              for (float i = 0; i < timer; i+= 0.01f)
              {
                  fade.color = new Color(0, 0, 0, i / timer);
