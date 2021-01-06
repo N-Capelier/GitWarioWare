@@ -12,18 +12,25 @@ namespace Islands
     {
         Easy = 0,
         Medium = 1,
-        Hard = 2,
-        Legendary = 3,
-        Shop = 4,
-        Start = 5,
+        Hard = 2
+    }
+    public enum IslandType
+    {
+        Common,
+        Shop,
+        Start,
+        Legendary,
         Boss
     }
+
+
     public class Island : MonoBehaviour
     {
         #region Variables
 
         [Header("Required")]
         public IslandDifficulty difficulty;
+        public IslandType type;
         [HideInInspector] public Reward reward;
 
         public Island[] accessibleNeighbours;
@@ -73,19 +80,19 @@ namespace Islands
                 }
             }
 
-            switch (difficulty)
+            switch (type)
             {
-                case IslandDifficulty.Legendary:
-                    image.sprite = legendaryIslandSprite;
-                    break;
-                case IslandDifficulty.Start:
+                case IslandType.Start:
                     image.sprite = startIslandSprite;
                     break;
-                case IslandDifficulty.Shop:
+                case IslandType.Shop:
                     image.sprite = shopIslandSprite;
                     break;
-                case IslandDifficulty.Boss:
+                case IslandType.Boss:
                     image.sprite = bossIslandSprite;
+                    break;
+                case IslandType.Legendary:
+                    image.sprite = legendaryIslandSprite;
                     break;
                 default:
                     break;

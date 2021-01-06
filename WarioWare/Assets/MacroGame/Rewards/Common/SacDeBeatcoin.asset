@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SacDeBeatcoin
   m_EditorClassIdentifier: 
   rewardName: Sac de Beatcoins
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 69e3d4bae3dc2b94ab38838e9e36f85e, type: 3}
   type: 0
   rarity: 0
   effect: 1

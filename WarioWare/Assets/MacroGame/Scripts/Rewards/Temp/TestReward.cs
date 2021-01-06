@@ -5,9 +5,10 @@ namespace Rewards
     [CreateAssetMenu(fileName = "New Test Reward", menuName = "Reward/Test Reward", order = 50)]
     public class TestReward : Reward
     {
-        public override void GetDescription()
+        public override string GetDescription()
         {
             Debug.Log("This is a reward.");
+            return rewardName;
         }
 
         public override void ApplyPassiveEffect()

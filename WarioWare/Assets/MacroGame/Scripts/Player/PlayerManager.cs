@@ -51,11 +51,9 @@ namespace Player
             {
                 PlayerInventory.Instance.Show();
             }
-            else if(!Manager.Instance.capUI.activeSelf && inInventory && Input.GetButtonDown("Start_Button"))
+            else if(!Manager.Instance.capUI.activeSelf && inInventory && (Input.GetButtonDown("Start_Button") || Input.GetButtonDown("B_Button")))
             {
-                
-                PlayerInventory.Instance.Hide();
-                
+                PlayerInventory.Instance.Hide(); 
             }
         }
 

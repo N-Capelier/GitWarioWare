@@ -19,9 +19,9 @@ namespace Rewards
             PlayerManager.Instance.GainCoins(beatcoinAmount);
         }
 
-        public override void GetDescription()
+        public override string GetDescription()
         {
-
+            return "Gagnez " + beatcoinAmount + " Beatcoins";
         }
 
         public override void RemovePassiveEffect()

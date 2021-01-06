@@ -5549,10 +5549,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2712765997138401047, guid: 9a784a7e95199cf47b1f43fb6d7aa90d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5975730464407200853, guid: 9a784a7e95199cf47b1f43fb6d7aa90d,
         type: 3}
       propertyPath: m_Name
       value: PlayerManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 5975730464407200854, guid: 9a784a7e95199cf47b1f43fb6d7aa90d,
+        type: 3}
+      propertyPath: beatcoins
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 5975730464407200855, guid: 9a784a7e95199cf47b1f43fb6d7aa90d,
         type: 3}

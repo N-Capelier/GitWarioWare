@@ -19,9 +19,9 @@ namespace Rewards
             PlayerManager.Instance.GainFood(foodAmount);
         }
 
-        public override void GetDescription()
+        public override string GetDescription()
         {
-
+            return "Gagnez " + foodAmount + " rations";
         }
 
         public override void RemovePassiveEffect()

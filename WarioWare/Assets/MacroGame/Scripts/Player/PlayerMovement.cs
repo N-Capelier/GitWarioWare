@@ -2,6 +2,7 @@
 using Islands;
 using Caps;
 using DG.Tweening;
+using Shop;
 
 namespace Player
 {
@@ -113,6 +114,11 @@ namespace Player
                 else
                     transitionTimer.SetTime(3f);
             }
+
+            if(targetIsland == playerIsland && playerIsland.type == IslandType.Shop)
+            {
+                ShopManager.Instance.Show();            
+            }
         }
 
 
@@ -142,7 +148,7 @@ namespace Player
                 
                 //show UI here
                 targetIsland.islandDescriptionContainer.transform.position = targetIsland.anchorPoint.transform.position; //replace description box
-                //targetIsland.rewardDescription.text = targetIsland.reward.GetDescription();
+                targetIsland.rewardDescription.text = targetIsland.reward.GetDescription();
                 //targetIsland.islandRewardImage.sprite = targetIsland.reward.sprite;
                  for (int i = 0; i < playerIsland.accessibleNeighbours.Length; i++)
                  {

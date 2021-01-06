@@ -21,7 +21,7 @@ namespace Islands
 
         [Space]
 
-        [SerializeField] Reward[] gameRewards;
+        [SerializeField] public Reward[] gameRewards;
 
         [Header("Procedural Generation")]
 
@@ -148,7 +148,7 @@ namespace Islands
             PlayerMovement.Instance.islands = islands;
         }
 
-        Reward GetRandomReward(Reward[] _rewards)
+        private Reward GetRandomReward(Reward[] _rewards)
         {
             //Convert weights to percentages
             int _totalWeight = 0;
@@ -203,7 +203,7 @@ namespace Islands
             throw new System.Exception("Error on percentages calculation");
         }
 
-        Reward[] FisherYates(Reward[] _rewards)
+        public Reward[] FisherYates(Reward[] _rewards)
         {
             for (int i = _rewards.Length - 1; i > 0; i--)
             {
