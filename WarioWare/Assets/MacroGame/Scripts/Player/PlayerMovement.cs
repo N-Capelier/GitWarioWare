@@ -3,6 +3,7 @@ using Islands;
 using Caps;
 using DG.Tweening;
 using Shop;
+using Rewards;
 
 namespace Player
 {
@@ -161,18 +162,44 @@ namespace Player
 
             if (targetIsland != playerIsland)
             {
-                
-                //Debug.Log(targetIsland.gameObject.name + " has " + targetIsland.accessibleNeighbours.Length + " neighbor(s).");
-                
-                //show UI here
                 targetIsland.islandDescriptionContainer.transform.position = targetIsland.anchorPoint.transform.position; //replace description box
-                targetIsland.rewardDescription.text = targetIsland.reward.GetDescription();
-                //targetIsland.islandRewardImage.sprite = targetIsland.reward.sprite;
-                 for (int i = 0; i < playerIsland.accessibleNeighbours.Length; i++)
+
+                if(targetIsland.reward != null)
+                {
+                    switch (targetIsland.reward.type)
+                    {
+                        case RewardType.Resource:
+                            targetIsland.islandRewardImage.sprite = targetIsland.reward.sprite;
+                            targetIsland.rewardDescription.text = "Récupérez des ressources!"; 
+                            break;
+                        case RewardType.Item:
+                            //targetIsland.islandRewardImage.sprite = insérer coffre;
+                            targetIsland.rewardDescription.text = "Récupérez un coffre au trésor!"; 
+                            break;
+                        case RewardType.CursedItem:
+                            //targetIsland.islandRewardImage.sprite = insérer coffre maudit/légendaire;
+                            targetIsland.rewardDescription.text = "Récupérez un coffre maudit!";
+                            break;
+                    }
+                }
+                switch (targetIsland.type)
+                {
+                    case IslandType.Shop:
+                        //targetIsland.islandRewardImage.sprite = insérer enseigne du shop;
+                        targetIsland.rewardDescription.text = "Au bonheur des pirates";
+                        break;
+
+                    case IslandType.Boss:
+                        //targetIsland.islandRewardImage.sprite = insérer tête de boss;
+                        targetIsland.rewardDescription.text = "Affrontez le Galion Champion!";
+                        break;
+                }
+
+                for (int i = 0; i < playerIsland.accessibleNeighbours.Length; i++)
                  {
                     if (playerIsland.accessibleNeighbours[i] == targetIsland)
                     {
-                        targetIsland.capLength.text = playerIsland.capList[i].length.ToString();
+                        targetIsland.capLength.text = playerIsland.capList[i].length.ToString() + " mini-jeux.";
                         break;
                     }
                  }
