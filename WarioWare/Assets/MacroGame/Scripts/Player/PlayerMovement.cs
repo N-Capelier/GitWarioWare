@@ -77,6 +77,13 @@ namespace Player
         /// <param name="targetIsland">Which island is the player going to.</param>
         public void Move(Island targetIsland)
         {
+            Debug.Log(targetIsland.name);
+            Debug.Log(playerIsland.name);
+            if(targetIsland == playerIsland && playerIsland.type == IslandType.Shop)
+            {
+                ShopManager.Instance.Show();            
+            }
+
             bool _isCapDone = false;
 
             if (targetIsland != playerIsland)
@@ -130,10 +137,6 @@ namespace Player
                     transitionTimer.SetTime(3f);
             }
 
-            if(targetIsland == playerIsland && playerIsland.type == IslandType.Shop)
-            {
-                ShopManager.Instance.Show();            
-            }
         }
 
 
