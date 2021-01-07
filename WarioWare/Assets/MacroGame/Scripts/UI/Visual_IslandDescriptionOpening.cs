@@ -30,14 +30,14 @@ namespace UI
 
         public void Close()
         {
-            parchemin.transform.localScale = Vector3.up*openedSize; 
+            parchemin.transform.localScale = new Vector3(1, openedSize,0) ; 
             parchemin.DOScaleY(closedSize, openingTime);
             StartCoroutine(WaitToClose());
         }
 
         private IEnumerator WaitToClose()
         {
-            yield return new WaitForSeconds(openingTime*2);
+            yield return new WaitForSeconds(openingTime);
             gameObject.SetActive(false);
 
         }
