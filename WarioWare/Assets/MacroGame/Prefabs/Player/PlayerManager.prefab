@@ -1272,12 +1272,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e25c13ce238959049aace529ca753c8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHp: 10
-  beatcoins: 0
-  food: 5
-  maxFood: 10
+  playerHp: 100
+  beatcoins: 200
+  food: 50
+  maxFood: 100
   audioSource: {fileID: 1190770246925491698}
   inInventory: 0
+  isSturdy: 0
+  sturdyHealAmmount: 3
 --- !u!114 &1517109797
 MonoBehaviour:
   m_ObjectHideFlags: 0

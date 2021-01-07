@@ -17,6 +17,6 @@ MonoBehaviour:
   type: 0
   rarity: 0
   effect: 1
-  price: 3
+  price: 30
   dropRateWeight: 25
-  foodAmount: 1
+  foodAmount: 10

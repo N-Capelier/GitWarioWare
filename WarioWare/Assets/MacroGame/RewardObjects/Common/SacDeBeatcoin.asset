@@ -19,4 +19,4 @@ MonoBehaviour:
   effect: 1
   price: 0
   dropRateWeight: 25
-  beatcoinAmount: 3
+  beatcoinAmount: 30

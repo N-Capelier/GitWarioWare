@@ -19,6 +19,9 @@ namespace Player
 
         [SerializeField] Island bossIsland;
 
+        [SerializeField] int foodPrice = 10;
+        [SerializeField] int damagesWhenNoFood = 10;
+
         private void Awake()
         {
             CreateSingleton();
@@ -39,10 +42,12 @@ namespace Player
             if(transitionTimer.onFinish)
                 playerAvatar.transform.position = playerIsland.anchorPoint.position;
 
+            /* Pre-Alpha zone transition
             if(playerIsland == bossIsland)
             {
                 PlayerManager.Instance.TakeDamage(20);
             }
+            */
         }
 
         /// <summary>
@@ -102,12 +107,12 @@ namespace Player
                 if (PlayerManager.Instance.food > 0)
                 {
                     if(!isMainSail && !_isCapDone)
-                        PlayerManager.Instance.GainFood(-1);
+                        PlayerManager.Instance.GainFood(foodPrice);
                 }
                 else
                 {
                     if(!isMainSail && !_isCapDone)
-                        PlayerManager.Instance.TakeDamage(1);
+                        PlayerManager.Instance.TakeDamage(damagesWhenNoFood);
                 }
 
                 //Lancer le cap + check if not dead

@@ -17,6 +17,6 @@ MonoBehaviour:
   type: 1
   rarity: 0
   effect: 1
-  price: 5
+  price: 50
   dropRateWeight: 10
   bonusBarrels: 3

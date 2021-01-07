@@ -17,7 +17,7 @@ MonoBehaviour:
   type: 1
   rarity: 0
   effect: 0
-  price: 8
+  price: 80
   dropRateWeight: 10
-  beatcoinAmmount: 2
-  foodAmmount: 1
+  beatcoinAmmount: 20
+  foodAmmount: 10
