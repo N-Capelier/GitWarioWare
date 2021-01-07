@@ -21,9 +21,10 @@ namespace Rewards
             Debug.Log("Lost my reward!");
         }
 
-        public override void ApplyActiveEffect()
+        public override bool ApplyActiveEffect()
         {
             Debug.Log("Reward used!");
+            return true;
         }
     }
 }

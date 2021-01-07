@@ -1,14 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Player;
+using Caps;
 
 namespace Rewards
 {
-    [CreateAssetMenu(fileName = "New Beatcoin", menuName = "Reward/Resource/Beatcoin", order = 50)]
-    public class BeatcoinReward : Reward
+    [CreateAssetMenu(fileName = "New LureSail", menuName = "Reward/Item/Lure Sail", order = 50)]
+    public class LureSailReward : Reward
     {
-        [SerializeField] int beatcoinAmount;
         public override bool ApplyActiveEffect()
         {
             return false;
@@ -16,17 +15,19 @@ namespace Rewards
 
         public override void ApplyPassiveEffect()
         {
-            PlayerManager.Instance.GainCoins(beatcoinAmount);
+            Manager.Instance.isLureActive = true;
+            Manager.Instance.isLure = true;
         }
 
         public override string GetDescription()
         {
-            return "Gagnez " + beatcoinAmount + " Beatcoins";
+            return $"Esquive le premier dégât de chaque cap.";
         }
 
         public override void RemovePassiveEffect()
         {
-
+            Manager.Instance.isLureActive = false;
+            Manager.Instance.isLure = false;
         }
     }
 }

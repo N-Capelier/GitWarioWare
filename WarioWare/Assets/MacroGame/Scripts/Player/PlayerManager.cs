@@ -30,6 +30,10 @@ namespace Player
 
         [HideInInspector] public bool inInventory = false;
 
+        //Rewards
+        [HideInInspector] public bool isSturdy = false;
+        [HideInInspector] public int sturdyHealAmmount = 3;
+
         #endregion
 
         private void Awake()
@@ -57,6 +61,8 @@ namespace Player
             }
         }
 
+
+
         #region CustomMethods
         public void TakeDamage(int damage)
         {
@@ -64,8 +70,17 @@ namespace Player
             {
                 playerHp = 0;
 
-                StartCoroutine(DeathCoroutine());
-                Debug.Log("You are dead");
+                if (isSturdy)
+                {
+                    playerHp = sturdyHealAmmount;
+                    isSturdy = false;
+                    PlayerInventory.Instance.SearchAndDestroyItem("Rattrapage");
+                }
+                else
+                {
+                    StartCoroutine(DeathCoroutine());
+                    Debug.Log("You are dead");
+                }
             }
             else
             {

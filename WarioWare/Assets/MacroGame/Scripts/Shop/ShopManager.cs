@@ -56,7 +56,7 @@ namespace Shop
             }
         }
 
-        void InitializeShop()
+        public void InitializeShop()
         {
             //Part resources from other item types;
             for (int i = 0; i < IslandCreator.Instance.gameRewards.Length; i++)

@@ -1,32 +1,32 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Player;
+using Shop;
 
 namespace Rewards
 {
-    [CreateAssetMenu(fileName = "New Beatcoin", menuName = "Reward/Resource/Beatcoin", order = 50)]
-    public class BeatcoinReward : Reward
+    [CreateAssetMenu(fileName = "New Roulette", menuName = "Reward/Item/Roulette", order = 50)]
+    public class RouletteReward : Reward
     {
-        [SerializeField] int beatcoinAmount;
         public override bool ApplyActiveEffect()
         {
-            return false;
+            ShopManager.Instance.InitializeShop();
+            return true;
         }
 
         public override void ApplyPassiveEffect()
         {
-            PlayerManager.Instance.GainCoins(beatcoinAmount);
+            
         }
 
         public override string GetDescription()
         {
-            return "Gagnez " + beatcoinAmount + " Beatcoins";
+            return $"Régénère le contenu de la boutique.";
         }
 
         public override void RemovePassiveEffect()
         {
-
+            
         }
     }
 }

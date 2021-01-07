@@ -9,9 +9,9 @@ namespace Rewards
     public class RationReward : Reward
     {
         [SerializeField] int foodAmount;
-        public override void ApplyActiveEffect()
+        public override bool ApplyActiveEffect()
         {
-
+            return false;
         }
 
         public override void ApplyPassiveEffect()
