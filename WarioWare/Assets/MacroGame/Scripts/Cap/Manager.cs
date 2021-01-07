@@ -325,6 +325,7 @@ namespace Caps
 
             //reward attribution
             if (_giveReward)
+            {
                 if(PlayerMovement.Instance.playerIsland.type == IslandType.Shop)
                 {
                     PlayerInventory.Instance.Show();
@@ -333,6 +334,7 @@ namespace Caps
                 {
                     StartCoroutine(RewardUI());
                 }
+            }
 
 
             yield return new WaitForSeconds(3f);
