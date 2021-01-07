@@ -117,10 +117,11 @@ namespace Caps
                 if (currentCap.isDone)
                 {
                     StartCoroutine(CapEnd());
+                    initalCamTransform = PlayerMovement.Instance.playerAvatar.transform;
                     yield break;
                 }
             }
-            StartCoroutine(CapEnd());
+
            /* StartCoroutine(FadeManager.Instance.FadeIn(0.15f * 60 / (float)bpm));
             yield return new WaitForSeconds(0.5f * 60 / (float)bpm);*/
             sceneCam.SetActive(true);
@@ -332,11 +333,6 @@ namespace Caps
 
             sceneCam.SetActive(true);
 
-            VcamTarget.transform.position = shipOpening.transform.position;
-            VcamTarget.transform.DOMove(initalCamTransform.position, shipOpening.openingTime * 2).SetEase(Ease.InOutCubic);
-            StartCoroutine(ZoomCam(shipOpening.openingTime, "dezoom"));
-            yield return new WaitForSeconds(shipOpening.openingTime * 2);
-            shipOpening.Close();
 
 
             //REACTIVER LES INPUTS MACRO
@@ -429,7 +425,7 @@ namespace Caps
 
             if (PlayerMovement.Instance.playerIsland.reward.type != RewardType.Resource)
             {
-                PlayerInventory.Instance.SetItemToAdd(PlayerMovement.Instance.playerIsland.reward);
+                PlayerInventory.Instance.SetItemToAdd(PlayerMovement.Instance.playerIsland.reward, true);
             }
             else
             {
@@ -437,6 +433,7 @@ namespace Caps
                 macroUI.SetActive(true);
                 capUI.SetActive(false);
                 PlayerMovement.Instance.ResetFocus();
+                StartCoroutine(UnzoomCam());
             }
         }
 
@@ -457,6 +454,15 @@ namespace Caps
             }
         }
 
+        public IEnumerator UnzoomCam()
+        {
+
+            VcamTarget.transform.position = shipOpening.transform.position;
+            VcamTarget.transform.DOMove(initalCamTransform.position, shipOpening.openingTime * 2).SetEase(Ease.InOutCubic);
+            StartCoroutine(ZoomCam(shipOpening.openingTime, "dezoom"));
+            yield return new WaitForSeconds(shipOpening.openingTime * 2);
+            shipOpening.Close();
+        }
 
         #endregion
     }

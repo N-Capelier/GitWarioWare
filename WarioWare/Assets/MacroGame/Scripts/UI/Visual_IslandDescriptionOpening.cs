@@ -15,14 +15,16 @@ namespace UI
 
         public float openingTime = 1;
 
-
+        public bool cantScaleOnStart;
         private void OnEnable()
         {
+            if(parchemin.transform.localScale.y != openedSize)
             parchemin.DOScaleY(openedSize, openingTime);
         }
 
         private void OnDisable()
         {
+            if(!cantScaleOnStart)
             parchemin.DOScaleY(closedSize, 1);
         }
 
@@ -35,7 +37,7 @@ namespace UI
 
         private IEnumerator WaitToClose()
         {
-            yield return new WaitForSeconds(openingTime);
+            yield return new WaitForSeconds(openingTime*2);
             gameObject.SetActive(false);
 
         }

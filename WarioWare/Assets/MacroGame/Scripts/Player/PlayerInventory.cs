@@ -31,6 +31,7 @@ namespace Player
 
         private Reward rewardToAdd;
 
+        private bool isEndCap;
         private void Awake()
         {
             CreateSingleton();
@@ -91,6 +92,11 @@ namespace Player
                     ShopManager.Instance.shopSlots[0].Select();
                 }
                 PlayerManager.Instance.inInventory = false;
+                if (isEndCap)
+                {
+                    StartCoroutine(Manager.Instance.UnzoomCam());
+                    isEndCap = false;
+                }
             }
         }
 
@@ -166,8 +172,9 @@ namespace Player
             }
         }
 
-        public void SetItemToAdd(Reward item)
+        public void SetItemToAdd(Reward item, bool _isEndCap = false)
         {
+            isEndCap = _isEndCap;
             rewardToAdd = item;
             Show();
         }

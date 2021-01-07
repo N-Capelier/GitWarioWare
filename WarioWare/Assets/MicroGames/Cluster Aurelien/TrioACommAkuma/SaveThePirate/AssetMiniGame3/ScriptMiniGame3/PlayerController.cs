@@ -82,7 +82,7 @@ namespace ACommeAkuma
                     velocityLoss = 1f;
                 }
 
-                else if (Tick > 8)
+                else if (Tick >= 8)
                 {
                     if (asWin)
                     {
