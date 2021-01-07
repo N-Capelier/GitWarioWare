@@ -12,6 +12,7 @@ using Sound;
 using Rewards;
 using DG.Tweening;
 using Cinemachine;
+using Shop;
 
 namespace Caps
 {
@@ -328,19 +329,31 @@ namespace Caps
             {
                 if(PlayerMovement.Instance.playerIsland.type == IslandType.Shop)
                 {
-                    PlayerInventory.Instance.Show();
+                    capUI.SetActive(false);
+                    macroUI.SetActive(true);
+                    PlayerMovement.Instance.ResetFocus();
+
+
+                    transitionCam.enabled = false;
+
+                    sceneCam.SetActive(true);
+                    StartCoroutine(UnzoomCam());
+                    yield return new WaitForSeconds(shipOpening.openingTime * 2);
+
+                    ShopManager.Instance.Show();
                 }
                 else
                 {
                     StartCoroutine(RewardUI());
+                    yield return new WaitForSeconds(3f);
+
+
+                    transitionCam.enabled = false;
+
+                    sceneCam.SetActive(true);
                 }
             }
 
-
-            yield return new WaitForSeconds(3f);
-            transitionCam.enabled = false;
-
-            sceneCam.SetActive(true);
 
 
 
