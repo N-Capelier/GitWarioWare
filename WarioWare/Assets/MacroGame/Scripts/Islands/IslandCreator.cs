@@ -92,6 +92,10 @@ namespace Islands
 
             for (int i = 0; i < islands.Length; i++)
             {
+                if(islands[i].type == IslandType.Shop || islands[i].type == IslandType.Start)
+                {
+                    continue;
+                }
                 if (islands[i].difficulty == IslandDifficulty.Easy || islands[i].difficulty == IslandDifficulty.Medium || islands[i].difficulty == IslandDifficulty.Hard)
                     _generatedIslandsList.Add(islands[i]);
             }
