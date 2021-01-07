@@ -321,6 +321,7 @@ MonoBehaviour:
   shopIslandSprite: {fileID: 21300000, guid: 9a03aedf6c049d54983077fe6ce0539a, type: 3}
   bossIslandSprite: {fileID: 21300000, guid: 9a03aedf6c049d54983077fe6ce0539a, type: 3}
   button: {fileID: 0}
+  eventTrigger: {fileID: 0}
   anchorPoint: {fileID: 3748599129037821376}
   anchorRange: 64
   islandDescriptionContainer: {fileID: 8363130318030232697}
@@ -687,7 +688,7 @@ RectTransform:
   m_GameObject: {fileID: 8363130318030232697}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
+  m_LocalScale: {x: 0.3, y: 0, z: 1}
   m_Children:
   - {fileID: 1091685351060752700}
   m_Father: {fileID: 129138094638283498}
@@ -696,7 +697,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 50}
-  m_SizeDelta: {x: 1022, y: 890}
+  m_SizeDelta: {x: 1022, y: 920.0759}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &6081368414842903739
 CanvasRenderer:
@@ -748,5 +749,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parchemin: {fileID: 1493243663769490256}
-  closedSize: 200
-  openedSize: 890
+  closedSize: 0
+  openedSize: 0.3
+  openingTime: 1
+  cantScaleOnStart: 0

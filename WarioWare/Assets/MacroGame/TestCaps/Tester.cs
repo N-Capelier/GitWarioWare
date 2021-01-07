@@ -19,7 +19,7 @@ namespace Caps
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 var _random = Random.Range(0, Manager.Instance.allIslands.Length);
-                StartCoroutine(Manager.Instance.StartCap(Manager.Instance.allIslands[_random].capList[Random.Range(0, Manager.Instance.allIslands[_random].capList.Count)]));
+                StartCoroutine(Manager.Instance.StartMiniGame(Manager.Instance.allIslands[_random].capList[Random.Range(0, Manager.Instance.allIslands[_random].capList.Count)]));
             }
         }
     }
