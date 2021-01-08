@@ -18,7 +18,19 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 5e8420836d21ce048a5fa140065004bb, type: 3}
   - name: Selected
     volume: 0.5
-    clip: {fileID: 8300000, guid: 3cd81a9afb65dda4cbe9e0b62bb09523, type: 3}
+    clip: {fileID: 8300000, guid: 4dff5a7da1ded2349af6111eda619228, type: 3}
+  - name: Clicked
+    volume: 0.5
+    clip: {fileID: 8300000, guid: 4b784638810592547bd82baefea56e75, type: 3}
+  - name: Cancel
+    volume: 0.5
+    clip: {fileID: 8300000, guid: d3f70995c754ed54d8ba949f076816e8, type: 3}
+  - name: ClickedImpossible
+    volume: 0.5
+    clip: {fileID: 8300000, guid: 18a11f694a2e42c48a4addc586bd3ce7, type: 3}
+  - name: NewGame
+    volume: 0.5
+    clip: {fileID: 8300000, guid: fa9c6337dd68d374584b4e96f0b23b5d, type: 3}
   soundBpms:
   - sounds:
     - name: transition_0

@@ -23,18 +23,18 @@ public class MenuButton : Selectable, ISelectHandler , ISubmitHandler
     //Do this when the selectable UI object is selected.
     public override void OnSelect(BaseEventData eventData)
     {
-        onSelected.PlaySecured();
-        
+        SoundManager.Instance.ApplyAudioClip("Selected", onSelected);
+        onSelected.PlaySecured();   
     }
     public void OnSubmit(BaseEventData eventData)
     {
         if (!IsInteractable())
         {
-           // SoundManager.Instance.ApplyAudioClip("ClikImpossible", playerInputs);
+            SoundManager.Instance.ApplyAudioClip("ClickedImpossible", playerInputs);
         }
         else
         {
-           // SoundManager.Instance.ApplyAudioClip("Clicked", playerInputs);
+            SoundManager.Instance.ApplyAudioClip("Clicked", playerInputs);
         }
         playerInputs.PlaySecured();
     }

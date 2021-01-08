@@ -33,12 +33,24 @@ public class MenuManager : MonoBehaviour
         }*/
     }
 
-    public void Play()
+    public void Play(MenuButton button)
     {
-        StartCoroutine(PlayEnumerator());
+        StartCoroutine(PlayEnumerator(button));
     }
-    private IEnumerator PlayEnumerator()
+
+    public void LoadFreeMode(MenuButton button)
     {
+        StartCoroutine(LoadFreeModeEnumerator(button));
+    }
+
+    public void Quit(MenuButton button)
+    {
+        StartCoroutine(QuitEnumerator(button));
+    }
+
+    private IEnumerator PlayEnumerator(MenuButton button)
+    {
+        yield return new WaitForSeconds(button.playerInputs.clip.length);
         loadingScreen.SetActive(true);
         loading = SceneManager.LoadSceneAsync("Zone1");
         loading.allowSceneActivation = false;
@@ -50,13 +62,14 @@ public class MenuManager : MonoBehaviour
         }
         loading.allowSceneActivation = true;
     }
-    public void Quit()
+    public IEnumerator QuitEnumerator(MenuButton button)
     {
+        yield return new WaitForSeconds(button.playerInputs.clip.length);
         Application.Quit();
     }
-
-    public void LoadFreeMode()
+    public IEnumerator LoadFreeModeEnumerator(MenuButton button)
     {
+        yield return new WaitForSeconds(button.playerInputs.clip.length);
         SceneManager.LoadScene("FreeMode");
     }
 }
