@@ -115,6 +115,7 @@ namespace Shop
             inShop = false;
             shopCanvas.SetActive(false);
             Manager.Instance.macroUI.SetActive(true);
+            Manager.Instance.shipOpening.gameObject.SetActive(false);
             PlayerMovement.Instance.ResetFocus();
         }
 

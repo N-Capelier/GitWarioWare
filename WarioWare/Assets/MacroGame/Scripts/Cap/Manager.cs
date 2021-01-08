@@ -431,7 +431,10 @@ namespace Caps
                     sceneCam.SetActive(true);
                 }
             }
-
+            else
+            {
+                StartCoroutine(UnzoomCam());
+            }
 
 
 
