@@ -3,6 +3,7 @@ using UnityEngine;
 using Rewards;
 using Caps;
 using Player;
+using UnityEngine.EventSystems;
 
 namespace Islands
 {
@@ -33,6 +34,8 @@ namespace Islands
 
         [SerializeField] [Range(0, 100)] [Tooltip("In percentage")] int commonRewardRandomness;
         [SerializeField] [Range(0, 100)] [Tooltip("In percentage")] int rareRewardRandomness;
+
+        public EventSystem eventSystem = null;
 
         private void Awake()
         {
