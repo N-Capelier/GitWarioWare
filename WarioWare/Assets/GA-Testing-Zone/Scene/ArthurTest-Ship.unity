@@ -177,7 +177,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 0633912121d68b148baf3679712407d5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 787c7575c885f88448dc2bd8467c286f, type: 3}
   m_Type: 2
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -287,6 +287,7 @@ GameObject:
   - component: {fileID: 251618603}
   - component: {fileID: 251618605}
   - component: {fileID: 251618604}
+  - component: {fileID: 251618606}
   m_Layer: 5
   m_Name: Bateau
   m_TagString: Untagged
@@ -305,12 +306,12 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 306349297}
+  m_Father: {fileID: 906214280}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.74, y: 0.08}
+  m_AnchoredPosition: {x: 0, y: -0.111}
   m_SizeDelta: {x: 1.3, y: 1.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &251618604
@@ -350,6 +351,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 251618602}
   m_CullTransparentMesh: 0
+--- !u!114 &251618606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 251618602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87b8d44f04c08ad47b67f965683c5a61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeBPM: 0.75
+  rotType: 0
+  rotValue: 15
 --- !u!1 &306349296
 GameObject:
   m_ObjectHideFlags: 0
@@ -380,7 +396,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1233439099}
-  - {fileID: 251618603}
   - {fileID: 906214280}
   m_Father: {fileID: 2117199544}
   m_RootOrder: 0
@@ -572,7 +587,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 906214280}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -598,7 +613,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d97acd26af1f5654787617c731d95913, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 787c7575c885f88448dc2bd8467c286f, type: 3}
   m_Type: 2
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -644,9 +659,10 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 87415098}
+  - {fileID: 251618603}
   - {fileID: 834800385}
   m_Father: {fileID: 306349297}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}

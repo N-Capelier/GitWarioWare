@@ -5,14 +5,13 @@ using UnityEngine;
 public class Visual_GouvernailBttons : MonoBehaviour
 {
     public RectTransform gouvernail = null;
-    [SerializeField] private RectTransform myButton = null;
-    public float gouvAngle;
+    private RectTransform myButton = null;
+    private float gouvAngle;
 
     private void Awake()
     {
         myButton = this.gameObject.GetComponent<RectTransform>();
         gouvAngle = gouvernail.rotation.eulerAngles.z;
-
     }
 
     void Update()
