@@ -10,15 +10,24 @@ namespace Player
     public class PlayerMovement : Singleton<PlayerMovement>
     {
         public GameObject playerAvatar;
-        [HideInInspector] public Island[] islands;
+        
+        [Header("Island Refs")]
         public Island playerIsland;
-
+        [SerializeField] Island bossIsland;
+        
+        [HideInInspector] public Island[] islands;
         private Island lastSelectedIsland;
         private GameObject previousDescription;
-
         Clock transitionTimer;
 
-        [SerializeField] Island bossIsland;
+        [Header("Island UI")]
+        public Sprite resourceSprite;
+        public Sprite shopSprite;
+        public Sprite bossSprite;
+        public Sprite treasureSprite;
+        public Sprite rareTreasureSprite;
+
+
 
         private void Awake()
         {
@@ -173,11 +182,11 @@ namespace Player
                             targetIsland.rewardDescription.text = "Récupérez des ressources!"; 
                             break;
                         case RewardType.Item:
-                            //targetIsland.islandRewardImage.sprite = insérer coffre;
+                            //targetIsland.islandRewardImage.sprite = treasureSprite;
                             targetIsland.rewardDescription.text = "Récupérez un coffre au trésor!"; 
                             break;
                         case RewardType.CursedItem:
-                            //targetIsland.islandRewardImage.sprite = insérer coffre maudit/légendaire;
+                            //targetIsland.islandRewardImage.sprite = rareTreasureSprite;
                             targetIsland.rewardDescription.text = "Récupérez un coffre maudit!";
                             break;
                     }
@@ -185,12 +194,12 @@ namespace Player
                 switch (targetIsland.type)
                 {
                     case IslandType.Shop:
-                        //targetIsland.islandRewardImage.sprite = insérer enseigne du shop;
+                        //targetIsland.islandRewardImage.sprite = shopSprite;
                         targetIsland.rewardDescription.text = "Au bonheur des pirates";
                         break;
 
                     case IslandType.Boss:
-                        //targetIsland.islandRewardImage.sprite = insérer tête de boss;
+                        //targetIsland.islandRewardImage.sprite = bossSprite;
                         targetIsland.rewardDescription.text = "Affrontez le Galion Champion!";
                         break;
                 }
