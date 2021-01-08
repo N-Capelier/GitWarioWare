@@ -17,5 +17,5 @@ MonoBehaviour:
   type: 1
   rarity: 0
   effect: 0
-  price: 5
+  price: 50
   dropRateWeight: 10

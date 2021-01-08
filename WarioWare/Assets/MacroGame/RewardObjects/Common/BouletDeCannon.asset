@@ -9,14 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19c8777c3c27aa74791c3f70f6c42029, type: 3}
-  m_Name: PlancheDeBois
+  m_Script: {fileID: 11500000, guid: 9583e0380afb3ab4889cd2ae0538bcb9, type: 3}
+  m_Name: BouletDeCannon
   m_EditorClassIdentifier: 
-  rewardName: Planche de bois
-  sprite: {fileID: 21300000, guid: 25585f9c32cb8c545bd2f7d4a4241729, type: 3}
+  rewardName: Boulet de cannon
+  sprite: {fileID: 21300000, guid: 34fe5cb0f1660b8498edabf95530e101, type: 3}
   type: 0
   rarity: 0
   effect: 1
-  price: 30
+  price: 50
   dropRateWeight: 25
-  healAmount: 10
+  cannonballAmmount: 10

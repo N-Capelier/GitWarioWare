@@ -32,6 +32,7 @@ namespace Caps
         //int that will be added on the id to make it appear more offen, they all start with a value of 10
         public int idWeightToAdd;
         public int idInitialWeight;
+        [SerializeField] int damagesOnMiniGameLose = 10;
         //barrel
         [Range(1, 90)]
         public int barrelProbality;
@@ -231,13 +232,13 @@ namespace Caps
                 }
                 else
                 {
-                    PlayerManager.Instance.TakeDamage(1);
+                    PlayerManager.Instance.TakeDamage(damagesOnMiniGameLose);
                 }
 
                 if (PlayerManager.Instance.playerHp > 0)
-                    resultText.text = "You Lost!";
+                    resultText.text = "Vous avez perdu !";
                 else
-                    resultText.text = "You are dead!";
+                    resultText.text = "Vous êtes mort !";
                 SoundManager.Instance.ApplyAudioClip("loseJingle", transitionMusic, bpm);
             }
 
