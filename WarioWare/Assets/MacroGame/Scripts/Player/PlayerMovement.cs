@@ -134,7 +134,7 @@ namespace Player
                         {
                             //COUPER LES INPUTS DE LA MACRO
 
-                            StartCoroutine(Manager.Instance.StartMiniGame(playerIsland.capList[i]));
+                            StartCoroutine(Manager.Instance.StartMiniGame(playerIsland.capList[i], targetIsland));
                             if (playerIsland.capList[i].isDone)
                             {
                                 _isCapDone = true;

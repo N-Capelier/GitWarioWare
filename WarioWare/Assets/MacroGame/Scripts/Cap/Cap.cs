@@ -69,7 +69,7 @@ namespace Caps
                     }
                     
                 }
-                //add the selected id to idcards played so they wonte be selected in the next zone
+                //add the selected id to idcards played so they wont be selected in the next zone
             foreach (IDCard idcard in chosenMiniGames)
             {
                 if (sorter.idCards.Contains(idcard))
