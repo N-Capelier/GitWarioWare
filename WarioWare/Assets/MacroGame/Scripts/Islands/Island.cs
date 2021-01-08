@@ -69,23 +69,13 @@ namespace Islands
         {
             image = GetComponent<Image>();
             button = GetComponent<Button>();
-            eventTrigger = GetComponent<EventTrigger>(); 
+            eventTrigger = GetComponent<EventTrigger>();
         }
 
 
 
         private void Start()
         {
-            if (traiList.Count > 0)
-            {
-                for (int i = 0; i < traiList.Count; i++)
-                {
-                    //materials[1] pour le edge material et non le fill material
-                    traiList[i].materials[1].SetInt("bool_Available", 0);
-                    traiList[i].materials[1].SetInt("bool_Selected", 0);
-                }
-            }
-
             switch (type)
             {
                 case IslandType.Start:
@@ -111,6 +101,54 @@ namespace Islands
 
             button.onClick.AddListener(OnClick);
             eventTrigger.triggers.Add(entry);
+        }
+
+        private void Update()
+        {
+            UpdateTrails();
+        }
+
+        #endregion
+
+        #region Private Methods
+
+        void UpdateTrails()
+        {
+            if (traiList.Count > 0)
+            {
+                if (PlayerMovement.Instance.playerIsland == this)
+                {
+                    foreach(Island island in IslandCreator.Instance.islands)
+                    {
+                        island.CleanTrails();
+                    }
+                    
+                    foreach (SpriteShapeRenderer renderer in traiList)
+                    {
+                        renderer.materials[1].SetInt("bool_Available", 1);
+                    }
+                    Island targetIsland = IslandCreator.Instance.eventSystem.currentSelectedGameObject.GetComponent<Island>();
+                    for(int i = 0; i < accessibleNeighbours.Length; i++)
+                    {
+                        if(accessibleNeighbours[i] == targetIsland)
+                        {
+                            traiList[i].materials[1].SetInt("bool_Selected", 1);
+                        }
+                    }
+                }
+            }
+        }
+
+        public void CleanTrails()
+        {
+            if (traiList.Count > 0)
+            {
+                foreach(SpriteShapeRenderer renderer in traiList)
+                {
+                    renderer.materials[1].SetInt("bool_Available", 0);
+                    renderer.materials[1].SetInt("bool_Selected", 0);
+                }
+            }
         }
 
         #endregion
@@ -141,7 +179,7 @@ namespace Islands
 
             image.sprite = _sprite.sprite;
 
-            switch(_sprite.anchorPoint)
+            switch (_sprite.anchorPoint)
             {
                 case IslandAnchorPoint.East:
                     anchorPoint.localPosition = new Vector2(anchorRange, 0);
