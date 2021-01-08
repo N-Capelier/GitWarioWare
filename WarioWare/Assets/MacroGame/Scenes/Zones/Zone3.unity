@@ -1953,6 +1953,11 @@ PrefabInstance:
       propertyPath: islands.Array.data[19]
       value: 
       objectReference: {fileID: 1350365007}
+    - target: {fileID: 2190592433291563160, guid: 27cb8457ccf60b3438238bc2156ab8ca,
+        type: 3}
+      propertyPath: eventSystem
+      value: 
+      objectReference: {fileID: 559843044}
     - target: {fileID: 2190592433291563161, guid: 27cb8457ccf60b3438238bc2156ab8ca,
         type: 3}
       propertyPath: m_LocalPosition.x

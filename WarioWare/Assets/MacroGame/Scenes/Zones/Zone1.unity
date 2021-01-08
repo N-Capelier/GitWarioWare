@@ -835,6 +835,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: c919857bbb36b004889b897d1f87caeb,
         type: 2}
+    - target: {fileID: 2190592433291563160, guid: 27cb8457ccf60b3438238bc2156ab8ca,
+        type: 3}
+      propertyPath: eventSystem
+      value: 
+      objectReference: {fileID: 4982864208064635643}
     - target: {fileID: 2190592433291563161, guid: 27cb8457ccf60b3438238bc2156ab8ca,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7145,6 +7150,12 @@ PrefabInstance:
       propertyPath: type
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7309059693642548127, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: shopIslandSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 00ab65ad49157cf4398aae36160d6aca,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc2f8b499c511b94f934b47245aeb98e, type: 3}
 --- !u!224 &1676958724 stripped
@@ -9192,6 +9203,18 @@ PrefabInstance:
       objectReference: {fileID: 1350365007}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a0ba0962e4b52b40a1f46181b9dd3dc, type: 3}
+--- !u!114 &4982864208064635643 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4982864208588563486, guid: 2a0ba0962e4b52b40a1f46181b9dd3dc,
+    type: 3}
+  m_PrefabInstance: {fileID: 4982864208064635642}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6887194127591594448 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3618939168461007034, guid: f0248967f4b5a624681095c85cfe3631,
