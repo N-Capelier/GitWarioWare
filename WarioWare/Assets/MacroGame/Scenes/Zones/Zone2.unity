@@ -1274,6 +1274,11 @@ PrefabInstance:
       propertyPath: islands.Array.data[16]
       value: 
       objectReference: {fileID: 1350365007}
+    - target: {fileID: 2190592433291563160, guid: 27cb8457ccf60b3438238bc2156ab8ca,
+        type: 3}
+      propertyPath: eventSystem
+      value: 
+      objectReference: {fileID: 354033490}
     - target: {fileID: 2190592433291563161, guid: 27cb8457ccf60b3438238bc2156ab8ca,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2018,6 +2023,18 @@ PrefabInstance:
       objectReference: {fileID: 43212460}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a0ba0962e4b52b40a1f46181b9dd3dc, type: 3}
+--- !u!114 &354033490 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4982864208588563486, guid: 2a0ba0962e4b52b40a1f46181b9dd3dc,
+    type: 3}
+  m_PrefabInstance: {fileID: 354033489}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &432168830
 PrefabInstance:
   m_ObjectHideFlags: 0
