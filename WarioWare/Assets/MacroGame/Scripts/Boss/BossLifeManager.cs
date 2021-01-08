@@ -11,7 +11,7 @@ namespace Boss
         public BossUI bossUI;
         public static int currentLife = 100;
         public  int maxLife = 100;
-        private void Start()
+        private void Awake()
         {
             CreateSingleton();
             currentLife = maxLife;

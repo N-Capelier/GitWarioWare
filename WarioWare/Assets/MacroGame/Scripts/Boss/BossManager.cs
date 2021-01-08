@@ -41,7 +41,7 @@ namespace Boss
         public int differentMiniGameNumber =4;
 
         
-        private void Start()
+        private void Awake()
         {
             CreateSingleton();
         }

@@ -98,14 +98,7 @@ namespace Caps
             initalCamTransform = VcamTarget.transform;
         }
 
-        private void Update()
-        {
-            
-            if(Input.GetButtonDown("Y_Button"))
-            {
-                SceneManager.LoadScene("Zone2");
-            }
-        }
+       
 
         /// <summary>
         /// lunch a cap, if call within a cap, lunch the next mini game. If cap is already done, lunch CapEnd.
