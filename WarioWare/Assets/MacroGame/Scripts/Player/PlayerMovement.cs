@@ -182,11 +182,11 @@ namespace Player
                             targetIsland.rewardDescription.text = "Récupérez des ressources!"; 
                             break;
                         case RewardType.Item:
-                            //targetIsland.islandRewardImage.sprite = treasureSprite;
+                            targetIsland.islandRewardImage.sprite = treasureSprite;
                             targetIsland.rewardDescription.text = "Récupérez un coffre au trésor!"; 
                             break;
                         case RewardType.CursedItem:
-                            //targetIsland.islandRewardImage.sprite = rareTreasureSprite;
+                            targetIsland.islandRewardImage.sprite = rareTreasureSprite;
                             targetIsland.rewardDescription.text = "Récupérez un coffre maudit!";
                             break;
                     }
@@ -194,29 +194,32 @@ namespace Player
                 switch (targetIsland.type)
                 {
                     case IslandType.Shop:
-                        //targetIsland.islandRewardImage.sprite = shopSprite;
+                        targetIsland.islandRewardImage.sprite = shopSprite;
                         targetIsland.rewardDescription.text = "Au bonheur des pirates";
                         break;
 
                     case IslandType.Boss:
-                        //targetIsland.islandRewardImage.sprite = bossSprite;
+                        targetIsland.islandRewardImage.sprite = bossSprite;
                         targetIsland.rewardDescription.text = "Affrontez le Galion Champion!";
                         break;
                 }
 
                 for (int i = 0; i < playerIsland.accessibleNeighbours.Length; i++)
-                 {
+                {
                     if (playerIsland.accessibleNeighbours[i] == targetIsland)
                     {
                         targetIsland.capLength.text = playerIsland.capList[i].length.ToString() + " mini-jeux.";
                         break;
                     }
-                 }
+                }
                 targetIsland.islandDescriptionContainer.SetActive(true);
                 previousDescription = targetIsland.islandDescriptionContainer;
             }
         }
 
+        /// <summary>
+        /// Select the playerIsland Button.
+        /// </summary>
         public void ResetFocus()
         {
             playerIsland.button.Select();
