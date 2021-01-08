@@ -29,7 +29,7 @@ namespace Boss
         /// </summary>
         /// <param name="damageValue"></param>
         /// <returns></returns>
-        public bool TakeDamage (int damageValue, int initialLife, bool isBoss= false)
+        public bool TakeDamage (int damageValue, int initialLife = 100, bool isBoss = false)
         {
             currentLife -= Mathf.Clamp(damageValue, 0, currentLife);
 
