@@ -1,12 +1,12 @@
 ﻿using UnityEngine;
-using Player;
 
 namespace Rewards
 {
-    [CreateAssetMenu(fileName = "New Beatcoin", menuName = "Reward/Resource/Beatcoin", order = 50)]
-    public class BeatcoinReward : Reward
+    [CreateAssetMenu(fileName = "New AC-130", menuName = "Reward/Item/AC-130", order = 50)]
+    public class AC130Reward : Reward
     {
-        [SerializeField] int beatcoinAmount;
+        [SerializeField] int damages = 10;
+
         public override bool ApplyActiveEffect()
         {
             return false;
@@ -14,17 +14,17 @@ namespace Rewards
 
         public override void ApplyPassiveEffect()
         {
-            PlayerManager.Instance.GainCoins(beatcoinAmount);
+            CannonballReward.bonusDamages = damages;
         }
 
         public override string GetDescription()
         {
-            return "Gagnez " + beatcoinAmount + " Beatcoins";
+            return $"Augmente les dégâts du boulet de cannon de {damages}.";
         }
 
         public override void RemovePassiveEffect()
         {
-
+            CannonballReward.bonusDamages = damages;
         }
     }
 }
