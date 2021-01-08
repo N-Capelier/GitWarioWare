@@ -153,6 +153,8 @@ namespace Islands
             Manager.Instance.ResetIDCards();
             Manager.Instance.CapAttribution();
             PlayerMovement.Instance.islands = islands;
+            PlayerMovement.Instance.ClearConnections();
+            PlayerMovement.Instance.GetNeighbors();
         }
 
         private Reward GetRandomReward(Reward[] _rewards)

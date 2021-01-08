@@ -48,7 +48,7 @@ namespace Islands
 
         //Components
         Image image;
-        [HideInInspector] public Button button;
+        public Button button;
         [HideInInspector] public EventTrigger eventTrigger;
 
         [Header("References")]
@@ -68,7 +68,6 @@ namespace Islands
         private void Awake()
         {
             image = GetComponent<Image>();
-            button = GetComponent<Button>();
             eventTrigger = GetComponent<EventTrigger>();
         }
 

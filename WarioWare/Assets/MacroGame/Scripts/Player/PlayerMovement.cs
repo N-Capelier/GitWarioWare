@@ -39,9 +39,6 @@ namespace Player
 
         void Start()
         {
-            //Initialize Connections
-            ClearConnections();
-            GetNeighbors();
             playerAvatar.transform.position = playerIsland.anchorPoint.position;
 
             transitionTimer = new Clock();
@@ -63,7 +60,7 @@ namespace Player
         /// <summary>
         /// Resets all Island UI buttons of the zone to not interactable.
         /// </summary>
-        private void ClearConnections()
+        public void ClearConnections()
         {
             for (int i = 0; i < islands.Length; i++)
             {
@@ -74,7 +71,7 @@ namespace Player
         /// <summary>
         /// Get the player's current island neighbors and set their UI to interactable.
         /// </summary>
-        private void GetNeighbors()
+        public void GetNeighbors()
         {
             playerIsland.button.interactable = true;
             for (int i = 0; i < playerIsland.accessibleNeighbours.Length; i++)

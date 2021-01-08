@@ -309,7 +309,7 @@ MonoBehaviour:
   startIslandSprite: {fileID: 21300000, guid: 9a03aedf6c049d54983077fe6ce0539a, type: 3}
   shopIslandSprite: {fileID: 21300000, guid: 9a03aedf6c049d54983077fe6ce0539a, type: 3}
   bossIslandSprite: {fileID: 21300000, guid: 9a03aedf6c049d54983077fe6ce0539a, type: 3}
-  button: {fileID: 0}
+  button: {fileID: 4765462416859257723}
   eventTrigger: {fileID: 0}
   anchorPoint: {fileID: 3748599129037821376}
   anchorRange: 64
