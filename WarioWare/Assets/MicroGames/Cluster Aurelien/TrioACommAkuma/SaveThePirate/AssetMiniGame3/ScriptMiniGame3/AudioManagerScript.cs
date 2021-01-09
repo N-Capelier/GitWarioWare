@@ -28,6 +28,23 @@ namespace ACommeAkuma
             {
                 sourceList[2].Play();
             }
+
+            public void PlayMusic60()
+            {
+                sourceList[3].Play();
+            }
+            public void PlayMusic90()
+            {
+                sourceList[4].Play();
+            }
+            public void PlayMusic120()
+            {
+                sourceList[5].Play();
+            }
+            public void PlayMusic140()
+            {
+                sourceList[6].Play();
+            }
         }
     }
 }
