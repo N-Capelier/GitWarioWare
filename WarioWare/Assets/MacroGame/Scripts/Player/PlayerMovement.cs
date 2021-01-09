@@ -4,6 +4,7 @@ using Caps;
 using DG.Tweening;
 using Shop;
 using Rewards;
+using NUnit.Framework;
 
 namespace Player
 {
@@ -31,6 +32,8 @@ namespace Player
 
         [SerializeField] int foodPrice = 10;
         [SerializeField] int damagesWhenNoFood = 10;
+
+        [HideInInspector] public bool isMoving = false;
 
         private void Awake()
         {
@@ -78,7 +81,7 @@ namespace Player
             {
                 playerIsland.accessibleNeighbours[i].button.interactable = true;
             }
-            playerIsland.button.Select();
+            playerIsland.button.Select(); 
         }
 
         [HideInInspector] public bool isMainSail = false;
@@ -89,6 +92,7 @@ namespace Player
         /// <param name="targetIsland">Which island is the player going to.</param>
         public void Move(Island targetIsland)
         {
+            isMoving = true;
             Debug.Log(targetIsland.name);
             Debug.Log(playerIsland.name);
             if(targetIsland == playerIsland && playerIsland.type == IslandType.Shop)
@@ -147,6 +151,8 @@ namespace Player
                     playerAvatar.transform.position = targetIsland.anchorPoint.position;
                 else
                     transitionTimer.SetTime(3f);
+
+                isMoving = false;
             }
 
         }

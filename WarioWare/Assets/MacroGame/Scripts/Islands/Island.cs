@@ -7,6 +7,7 @@ using Caps;
 using TMPro;
 using Player;
 using UnityEngine.EventSystems;
+using Sound;
 
 namespace Islands
 {
@@ -61,6 +62,8 @@ namespace Islands
         public TextMeshProUGUI rewardDescription;
         public TextMeshProUGUI capLength;
 
+        private AudioSource audioSource;
+
         #endregion
 
         #region Unity Messages
@@ -69,6 +72,7 @@ namespace Islands
         {
             image = GetComponent<Image>();
             eventTrigger = GetComponent<EventTrigger>();
+            audioSource = GetComponent<AudioSource>();
         }
 
 
@@ -92,6 +96,8 @@ namespace Islands
                 default:
                     break;
             }
+
+
 
             //Set button event click & select
             EventTrigger.Entry entry = new EventTrigger.Entry();
@@ -210,10 +216,21 @@ namespace Islands
         }
         public void OnClick()
         {
+            if(button.interactable)
+                SoundManager.Instance.ApplyAudioClip("StartCap", audioSource);
+            else
+                SoundManager.Instance.ApplyAudioClip("ClickedImpossible", audioSource);
+
+            audioSource.PlaySecured();
             PlayerMovement.Instance.Move(this);
         }
         public void OnSelect()
         {
+            if(!PlayerMovement.Instance.isMoving)
+            {
+                SoundManager.Instance.ApplyAudioClip("Selected", audioSource);
+                audioSource.PlaySecured();
+            }
             PlayerMovement.Instance.ShowSelectedIslandInfo(this);
         }
 

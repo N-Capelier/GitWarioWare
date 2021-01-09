@@ -7,6 +7,9 @@ using UnityEngine.UI;
 using Caps;
 using Player;
 using TMPro;
+using ExampleScene;
+using Sound;
+using SoundManager = Sound.SoundManager;
 
 namespace Shop
 {
@@ -26,16 +29,20 @@ namespace Shop
 
         [HideInInspector] public bool inShop;
 
+        private AudioSource audioSource;
+
 
         private void Awake()
         {
             CreateSingleton();
+            
         }
 
 
         void Start()
         {
             InitializeShop();
+            audioSource = GetComponent<AudioSource>();
         }
 
         private void Update()
@@ -91,6 +98,9 @@ namespace Shop
 
         public void Show()
         {
+            SoundManager.Instance.ApplyAudioClip("Clicked", audioSource);
+            audioSource.PlaySecured();
+
             Manager.Instance.macroUI.SetActive(false);
 
             for (int i = 0; i < shopSlots.Length; i++)
@@ -112,6 +122,9 @@ namespace Shop
 
         public void Hide()
         {
+            SoundManager.Instance.ApplyAudioClip("Cancel", audioSource);
+            audioSource.PlaySecured();
+
             inShop = false;
             shopCanvas.SetActive(false);
             Manager.Instance.macroUI.SetActive(true);
@@ -127,6 +140,9 @@ namespace Shop
                 {
                     if(PlayerManager.Instance.beatcoins >= shopItems[i].price)
                     {
+                        SoundManager.Instance.ApplyAudioClip("CollectItem", audioSource);
+                        audioSource.PlaySecured();
+
                         PlayerManager.Instance.GainCoins(-shopItems[i].price);
                         if(shopItems[i].type == RewardType.Resource)
                         {
@@ -143,7 +159,8 @@ namespace Shop
                     }
                     else
                     {
-                        Debug.Log("Pas assez de Beatcoins");
+                        SoundManager.Instance.ApplyAudioClip("ClickedImpossible", audioSource);
+                        audioSource.PlaySecured();
                     }
                 }
             }
@@ -151,6 +168,9 @@ namespace Shop
 
         public void ShowSelectedInfo(Button selectedSlot)
         {
+            SoundManager.Instance.ApplyAudioClip("Selected", audioSource);
+            audioSource.PlaySecured();
+
             for (int i = 0; i < shopSlots.Length; i++)
             {
                 if (shopSlots[i] == selectedSlot && shopItems[i] != null)
