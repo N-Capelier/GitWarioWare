@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81d13ac4f1c535e48aa77306454ebd28, type: 3}
+  m_Name: QM Visage
+  m_EditorClassIdentifier: 
+  topHair: {fileID: 21300000, guid: aceb0ad24e2c0df4cb3962f724f3cc6d, type: 3}
+  botHair: {fileID: -4107014650262987603, guid: cbeb54101e8163c45b0078578602ac08,
+    type: 3}
+  leftEye: {fileID: -4210457096283314814, guid: cbeb54101e8163c45b0078578602ac08,
+    type: 3}
+  rightEye: {fileID: 1408292717159889671, guid: cbeb54101e8163c45b0078578602ac08,
+    type: 3}
+  leftEyebrow: {fileID: 995703809728050052, guid: cbeb54101e8163c45b0078578602ac08,
+    type: 3}
+  rightEyebrow: {fileID: -8952818601818801747, guid: cbeb54101e8163c45b0078578602ac08,
+    type: 3}
+  mouth: {fileID: 21300000, guid: 42898f2df511f1441aab0dd5197e609a, type: 3}
+  chin: {fileID: -8145519280015955282, guid: cbeb54101e8163c45b0078578602ac08, type: 3}
+  ear: {fileID: 7839610549218760878, guid: cbeb54101e8163c45b0078578602ac08, type: 3}
+  neck: {fileID: 0}

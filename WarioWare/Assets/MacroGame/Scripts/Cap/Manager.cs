@@ -276,6 +276,7 @@ namespace Caps
             
             if (win)
             {
+                transition.PlayAnimation((float)bpm, win);
                 SoundManager.Instance.ApplyAudioClip("victoryJingle", transitionMusic, bpm);
                 resultText.text = "You Won!";
                 if (currentCap.hasBarrel[miniGamePassedNumber])
@@ -285,7 +286,7 @@ namespace Caps
             }
             else
             {
-                transition.PlayAnimation((float)bpm, false);
+                transition.PlayAnimation((float)bpm, win);
 
                 if(isLure)
                 {

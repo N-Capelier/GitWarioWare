@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -2823,6 +2823,11 @@ PrefabInstance:
       propertyPath: cinemachine
       value: 
       objectReference: {fileID: 1754798043}
+    - target: {fileID: 5875710233450723276, guid: 8e6305ac144d8d6478d3d105566a76bc,
+        type: 3}
+      propertyPath: differentMiniGameNumber
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 5875710233450723277, guid: 8e6305ac144d8d6478d3d105566a76bc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5890,6 +5895,16 @@ PrefabInstance:
       propertyPath: cinemachine
       value: 
       objectReference: {fileID: 1754798043}
+    - target: {fileID: 8977992822187955208, guid: 80ac864817d34d641be6448f49de01a3,
+        type: 3}
+      propertyPath: numberBeforeSpeedUp
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8977992822187955208, guid: 80ac864817d34d641be6448f49de01a3,
+        type: 3}
+      propertyPath: barrelProbality
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 8977992822187955210, guid: 80ac864817d34d641be6448f49de01a3,
         type: 3}
       propertyPath: m_LocalPosition.x
