@@ -33,9 +33,6 @@ EditorBuildSettings:
     path: Assets/MicroGames/Cluster Thibaut/TrioSoupe/ServiceRapide/ServiceRapide.unity
     guid: efb7f580f4b53a247ab267d11ae8beef
   - enabled: 1
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 1
     path: Assets/MicroGames/Cluster Theodore/TrioTrapioWare/Spin/Spin.unity
     guid: 7c0f9a28b10ed9a41b377a84331ce307
   - enabled: 1
@@ -89,4 +86,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/MicroGames/Cluster Theodore/TrioTrapioWare/MiniGame1/MiniGame1Scene.unity
     guid: 724ee1f0c0f380b48a1d47eef7d0ee5d
+  - enabled: 1
+    path: Assets/MicroGames/Cluster Thibaut/TrioFleebos/BananaStrip/BananaStrip.unity
+    guid: b1f4bc82dd49fbc408d36f9a0eb2bd9e
+  - enabled: 1
+    path: Assets/MicroGames/Cluster Thibaut/TrioFleebos/LeMusicien/LeMusicien.unity
+    guid: 8f05363fd6691964d858a5a1860cd414
+  - enabled: 1
+    path: Assets/MicroGames/Cluster Thibaut/TrioFleebos/VielleOfTime/VielleOfTime.unity
+    guid: b73f9ad270c138c48aae61cd3d1203c5
   m_configObjects: {}
