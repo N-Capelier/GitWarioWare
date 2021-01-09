@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c2cda822bfa80074f881e6fe0192b4c9, type: 3}
-  m_Name: ID_DeterrageTresor
+  m_Name: ID_Cannonballs
   m_EditorClassIdentifier: 
   cluster: 2
-  trio: Soupe
-  indexEnum: 1
-  verbe: "D\xE9terre"
+  trio: LLL
+  indexEnum: 0
+  verbe: Evite le boulet!
   microGameScene:
-    sceneAsset: {fileID: 102900000, guid: caaac774d79574e459c7a3f0ce8fdb81, type: 3}
+    sceneAsset: {fileID: 102900000, guid: 94c2badfe49d0844fa4a6ec2312f8875, type: 3}
     required: 0
-    buildIndex: 2
-  inputs: {fileID: 21300000, guid: c40c513a52859fb458601d3fa8d91c06, type: 3}
+    buildIndex: 30
+  inputs: {fileID: 0}
   currentDifficulty: 0
   idWeight: 0
   hasBarrel: 0
