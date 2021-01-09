@@ -51,6 +51,7 @@ public class MenuManager : MonoBehaviour
     public void Play()
     {
         SoundManager.Instance.ApplyAudioClip("NewGame", buttonSounds);
+        EventSystem.current.enabled = false;
         buttonSounds.PlaySecured();
         StartCoroutine(PlayEnumerator());
     }

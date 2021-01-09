@@ -15,22 +15,31 @@ MonoBehaviour:
   soundClassic:
   - name: Menu
     volume: 0.5
-    clip: {fileID: 8300000, guid: 5e8420836d21ce048a5fa140065004bb, type: 3}
+    clip: {fileID: 8300000, guid: 3ec108241bc6d6b468da815ca4525800, type: 3}
   - name: Selected
     volume: 0.5
     clip: {fileID: 8300000, guid: 4dff5a7da1ded2349af6111eda619228, type: 3}
   - name: Clicked
     volume: 0.5
-    clip: {fileID: 8300000, guid: 4b784638810592547bd82baefea56e75, type: 3}
+    clip: {fileID: 8300000, guid: 98ae80b4bae12fc49a63f8cd7c679cfd, type: 3}
   - name: Cancel
     volume: 0.5
-    clip: {fileID: 8300000, guid: d3f70995c754ed54d8ba949f076816e8, type: 3}
+    clip: {fileID: 8300000, guid: 196ae96713c86194c857f58355b12d90, type: 3}
   - name: ClickedImpossible
     volume: 0.5
-    clip: {fileID: 8300000, guid: 18a11f694a2e42c48a4addc586bd3ce7, type: 3}
+    clip: {fileID: 8300000, guid: 39734ba370a8c4e43897b82e9ace2ac4, type: 3}
   - name: NewGame
     volume: 0.5
     clip: {fileID: 8300000, guid: fa9c6337dd68d374584b4e96f0b23b5d, type: 3}
+  - name: StartCap
+    volume: 0.5
+    clip: {fileID: 8300000, guid: 1720e0f7ae25ded4f9e27aa52da6b2c2, type: 3}
+  - name: CollectItem
+    volume: 0.5
+    clip: {fileID: 8300000, guid: cf41bf7e1a380b241a87e28ea464032b, type: 3}
+  - name: UseItem
+    volume: 0.5
+    clip: {fileID: 8300000, guid: 5122e0819c5f6fc4fa6e185ce6f3f743, type: 3}
   soundBpms:
   - sounds:
     - name: transition_0
