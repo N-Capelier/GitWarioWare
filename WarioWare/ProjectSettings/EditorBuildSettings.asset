@@ -98,4 +98,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/MicroGames/Cluster Thibaut/TrioLLL/Cannonballs/Cannonballs.unity
     guid: 94c2badfe49d0844fa4a6ec2312f8875
+  - enabled: 1
+    path: Assets/MicroGames/Cluster Thibaut/TrioSoupe/EcraseMouche/EcraseMouche.unity
+    guid: aa16d15e49f3acc45a5544741765399e
   m_configObjects: {}
