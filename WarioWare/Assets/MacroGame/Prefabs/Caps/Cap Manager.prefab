@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5531737780818994168}
   - component: {fileID: 4089557043809736611}
   - component: {fileID: 3253133875818729337}
+  - component: {fileID: 8178796043681177995}
   m_Layer: 5
   m_Name: Fade
   m_TagString: Untagged
@@ -87,6 +88,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 172c618349c86754884683a9eec9b605, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!225 &8178796043681177995
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 501078928218425026}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &555983730039310901
 GameObject:
   m_ObjectHideFlags: 0
@@ -807,6 +820,7 @@ MonoBehaviour:
   numberBeforeSpeedUp: 2
   idWeightToAdd: 0
   idInitialWeight: 0
+  damagesOnMiniGameLose: 10
   barrelProbality: 30
   maxBarrelRessources: 10
   minBarrelRessources: 8
@@ -816,6 +830,7 @@ MonoBehaviour:
   sorter: {fileID: 11400000, guid: 6dc05a15978033047a905a916eb5d27c, type: 2}
   allIslands: []
   zoneNumber: 0
+  macroSceneIndex: 0
   isLoaded: 0
   bpm: 60
   currentDifficulty: 0
@@ -832,7 +847,13 @@ MonoBehaviour:
   transition: {fileID: 3759992420261125817}
   transitionCam: {fileID: 7831178944745030161}
   transitionMusic: {fileID: 789271674013198459}
+  shipOpening: {fileID: 0}
+  VcamTarget: {fileID: 0}
+  cinemachine: {fileID: 0}
   isDebug: 0
+  isLureActive: 0
+  isLure: 0
+  bonusBarrels: 0
 --- !u!1 &8977992822426646414
 GameObject:
   m_ObjectHideFlags: 0
