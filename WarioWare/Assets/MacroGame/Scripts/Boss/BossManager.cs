@@ -66,8 +66,8 @@ namespace Boss
             }
             else
             {
-                PlayerManager.Instance.TakeDamage(1);
-                transition.PlayAnimation((float)Manager.Instance.bpm, false);
+                PlayerManager.Instance.TakeDamage(damageToPlayer);
+                transition.PlayAnimation((float)Manager.Instance.bpm, false, true);
                 SoundManager.Instance.ApplyAudioClip("loseJingle", transitionMusic, Manager.Instance.bpm);
 
             }

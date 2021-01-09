@@ -58,7 +58,7 @@ namespace FreeMode
             Cap cap = new Cap(idcarList);
 
            StartCoroutine( Manager.Instance.StartMiniGame(cap));
-            SetUnSelectable();
+           SetUnSelectable();
     }
         private void SetUnSelectable()
         {

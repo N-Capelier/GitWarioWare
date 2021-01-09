@@ -6,7 +6,9 @@ using DG.Tweening;
 
 public class TransitionAnimations : MonoBehaviour
 {
-    public Animator charaAnimator;
+    public Animator longHairChara;
+    public Animator asianWomenAnimator;
+    public Animator quartierMaitreChara;
     public GameObject ship;
     public Transform startPosition;
     public Transform endPosition;
@@ -31,10 +33,25 @@ public class TransitionAnimations : MonoBehaviour
         var position = Vector3Extensions.AddX(startPosition.position, distance * (capNumber+1) / cap.hasBarrel.Length);
         ship.transform.DOMoveX(position.x,shipMoveTime);
     }
-    public void PlayAnimation( float bpm, bool win)
+    public void PlayAnimation( float bpm, bool win, bool isBoss = false)
     {
-        charaAnimator.speed = 60f / bpm;
-        if(!win)
-        charaAnimator.SetTrigger("Sad");
+        if (!isBoss)
+        {
+            longHairChara.speed = 60f / bpm;
+            asianWomenAnimator.speed = 60f / bpm;
+            quartierMaitreChara.speed = 60f / bpm;
+            if (!win)
+            {
+                longHairChara.SetTrigger("Sad");
+                asianWomenAnimator.SetTrigger("Sad");
+                quartierMaitreChara.SetTrigger("Sad");
+            }
+            else
+            {
+                longHairChara.SetTrigger("Happy");
+                asianWomenAnimator.SetTrigger("Happy");
+                quartierMaitreChara.SetTrigger("Happy");
+            }
+        }       
     }
 }

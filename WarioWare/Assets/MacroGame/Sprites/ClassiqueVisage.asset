@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81d13ac4f1c535e48aa77306454ebd28, type: 3}
+  m_Name: ClassiqueVisage
+  m_EditorClassIdentifier: 
+  topHair: {fileID: 1813005495940858902, guid: a5814ec189763064b96260b1d01acd8c, type: 3}
+  botHair: {fileID: 3873848057200765093, guid: a5814ec189763064b96260b1d01acd8c, type: 3}
+  leftEye: {fileID: 1624124629099995517, guid: 2c8fcb1a190003342b9fb3cad4a795bf, type: 3}
+  rightEye: {fileID: 5657353577631533708, guid: 2c8fcb1a190003342b9fb3cad4a795bf,
+    type: 3}
+  leftEyebrow: {fileID: -9156683090019805981, guid: 2c8fcb1a190003342b9fb3cad4a795bf,
+    type: 3}
+  rightEyebrow: {fileID: 4024531716012474891, guid: 2c8fcb1a190003342b9fb3cad4a795bf,
+    type: 3}
+  mouth: {fileID: 8577864369694735142, guid: 2c8fcb1a190003342b9fb3cad4a795bf, type: 3}
+  chin: {fileID: -2085461598520835033, guid: 2c8fcb1a190003342b9fb3cad4a795bf, type: 3}
+  ear: {fileID: 0}
+  neck: {fileID: 0}

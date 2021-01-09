@@ -5890,6 +5890,16 @@ PrefabInstance:
       propertyPath: cinemachine
       value: 
       objectReference: {fileID: 1754798043}
+    - target: {fileID: 8977992822187955208, guid: 80ac864817d34d641be6448f49de01a3,
+        type: 3}
+      propertyPath: numberBeforeSpeedUp
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8977992822187955208, guid: 80ac864817d34d641be6448f49de01a3,
+        type: 3}
+      propertyPath: barrelProbality
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 8977992822187955210, guid: 80ac864817d34d641be6448f49de01a3,
         type: 3}
       propertyPath: m_LocalPosition.x
