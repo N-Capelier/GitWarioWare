@@ -158,16 +158,7 @@ namespace Caps
 
                 //if zoom is bugging, look at here
                 yield return new WaitForSeconds(shipOpening.openingTime * 2);
-                if (currentCap.isDone)
-                {
-                    if (isLureActive)
-                    {
-                        isLure = true;
-                    }
-                    StartCoroutine(CapEnd());
-                    initalCamTransform = PlayerMovement.Instance.playerAvatar.transform;
-                    yield break;
-                }
+                
             }
 
             /* StartCoroutine(FadeManager.Instance.FadeIn(0.15f * 60 / (float)bpm));
@@ -312,9 +303,6 @@ namespace Caps
                 yield return new WaitForSeconds(transitionMusic.clip.length);
                 #endregion
 
-             
-
-
                 miniGamePassedNumber++;
                 
                 if (miniGamePassedNumber % numberBeforeSpeedUp == 0 && currentCap.length != miniGamePassedNumber)
@@ -346,8 +334,11 @@ namespace Caps
 
             currentAsyncScene = SceneManager.LoadSceneAsync(currentCap.chosenMiniGames[currentMiniGame].microGameScene.BuildIndex, LoadSceneMode.Additive);
             currentAsyncScene.allowSceneActivation = false;
+            if(currentIsland != null)
+                StartCoroutine(StartMiniGame(currentCap, currentIsland));
+            else
+                StartCoroutine(StartMiniGame(currentCap));
 
-            StartCoroutine(StartMiniGame(currentCap, currentIsland));
         }
 
         /// <summary>
