@@ -1493,7 +1493,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5947382540871719664
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1903,6 +1903,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7507425095364906568, guid: 1ad1324dac6871641a86bf44fb6fbc15,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8432729962434990486, guid: 1ad1324dac6871641a86bf44fb6fbc15,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ad1324dac6871641a86bf44fb6fbc15, type: 3}
 --- !u!1 &762444846536478425 stripped
@@ -1927,17 +1937,17 @@ PrefabInstance:
     - target: {fileID: 4639160146577825672, guid: 4be0fd972995e6c438e6e59767985dc9,
         type: 3}
       propertyPath: m_Bounds.m_Center.x
-      value: -0.09387946
+      value: -0.0939405
       objectReference: {fileID: 0}
     - target: {fileID: 4639160146577825672, guid: 4be0fd972995e6c438e6e59767985dc9,
         type: 3}
       propertyPath: m_Bounds.m_Center.y
-      value: 4.408911
+      value: 4.4093995
       objectReference: {fileID: 0}
     - target: {fileID: 4639160146577825672, guid: 4be0fd972995e6c438e6e59767985dc9,
         type: 3}
       propertyPath: m_Bounds.m_Extent.x
-      value: 2.6605518
+      value: 2.6605515
       objectReference: {fileID: 0}
     - target: {fileID: 4639160146577825672, guid: 4be0fd972995e6c438e6e59767985dc9,
         type: 3}

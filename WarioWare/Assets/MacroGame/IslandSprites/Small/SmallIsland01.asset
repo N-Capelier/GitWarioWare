@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: SmallIsland01
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 77cba797eefb08a4d9df2e28e6ee4ad0, type: 3}
-  anchorPoint: 3
+  anchorPoint: 6

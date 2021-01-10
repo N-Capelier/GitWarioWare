@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: MediumIsland01
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 96b38eaa31cd0e447b0b778ffe36079a, type: 3}
-  anchorPoint: 7
+  anchorPoint: 5

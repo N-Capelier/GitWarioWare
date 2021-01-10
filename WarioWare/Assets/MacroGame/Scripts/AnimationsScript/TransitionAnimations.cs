@@ -2,7 +2,7 @@
 using UnityEngine;
 using Caps;
 using DG.Tweening;
-
+using System.Collections.Generic;
 
 public class TransitionAnimations : MonoBehaviour
 {
@@ -13,16 +13,22 @@ public class TransitionAnimations : MonoBehaviour
     public Transform startPosition;
     public Transform endPosition;
     public GameObject barrel;
+    private List<GameObject> barrels = new List<GameObject>();
     public void DisplayBarrel(Cap cap)
     {
+        foreach (var barrel in barrels)
+        {
+            Destroy(barrel);
+        }
+        barrels.Clear();
         var distance = Vector3.Distance(startPosition.position, endPosition.position);
         for (int i = 0; i < cap.hasBarrel.Length; i++)
         {
             if (cap.hasBarrel[i])
             {
                 var position = Vector3Extensions.AddX(startPosition.position, distance * i / cap.hasBarrel.Length);
-                Instantiate(barrel, position, Quaternion.identity, transform);
-
+                var _bareel =Instantiate(barrel, position, Quaternion.identity, transform);
+                barrels.Add(barrel);
             }
         }
         ship.transform.position = startPosition.position;

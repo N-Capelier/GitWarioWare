@@ -248,6 +248,16 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 43212460}
+    - target: {fileID: 3748599129037821376, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -127
+      objectReference: {fileID: 0}
+    - target: {fileID: 3748599129037821376, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -71
+      objectReference: {fileID: 0}
     - target: {fileID: 4031692456795551083, guid: bc2f8b499c511b94f934b47245aeb98e,
         type: 3}
       propertyPath: m_Name
@@ -5290,6 +5300,11 @@ PrefabInstance:
       propertyPath: type
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7309059693642548127, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: anchorRange
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 8363130318030232697, guid: bc2f8b499c511b94f934b47245aeb98e,
         type: 3}
       propertyPath: m_IsActive
@@ -5751,6 +5766,16 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 1350365007}
+    - target: {fileID: 3748599129037821376, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -116
+      objectReference: {fileID: 0}
+    - target: {fileID: 3748599129037821376, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -71
+      objectReference: {fileID: 0}
     - target: {fileID: 4031692456795551083, guid: bc2f8b499c511b94f934b47245aeb98e,
         type: 3}
       propertyPath: m_Name
@@ -7085,6 +7110,16 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 1676958725}
+    - target: {fileID: 3748599129037821376, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -111
+      objectReference: {fileID: 0}
+    - target: {fileID: 3748599129037821376, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -61
+      objectReference: {fileID: 0}
     - target: {fileID: 4031692456795551083, guid: bc2f8b499c511b94f934b47245aeb98e,
         type: 3}
       propertyPath: m_Name

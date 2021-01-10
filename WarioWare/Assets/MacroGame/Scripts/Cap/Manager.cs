@@ -202,10 +202,10 @@ namespace Caps
             sceneCam.SetActive(false);
 
             verbePanel.SetActive(false);
-            clock.SetActive(true);
             isLoaded = true;
             Scene scene = SceneManager.GetSceneByBuildIndex(currentCap.chosenMiniGames[currentMiniGame].microGameScene.BuildIndex);
             SceneManager.SetActiveScene(scene);
+            clock.SetActive(true);
             clock.GetComponent<UI.Clock>().timer = 0;
             clock.GetComponent<UI.Clock>().bpm = (float)bpm;
         }
@@ -522,7 +522,7 @@ namespace Caps
 
         private IEnumerator RewardUI()
         {
-            //PlayerInventory.Instance.rewardImage.sprite = PlayerMovement.Instance.playerIsland.reward.sprite;
+            PlayerInventory.Instance.rewardImage.sprite = PlayerMovement.Instance.playerIsland.reward.sprite;
             PlayerInventory.Instance.rewardCanvas.SetActive(true);
 
             yield return new WaitForSeconds(3);
