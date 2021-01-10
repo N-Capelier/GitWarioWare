@@ -77,7 +77,7 @@ public class ScrollController : MonoBehaviour
         if (targetScrollRect.vertical)
         {
             // move the current scroll rect to correct position
-            float selectionPos = -selection.anchoredPosition.y;
+            float selectionPos = -selection.anchoredPosition.y -50;
 
             //float elementHeight = layoutListGroup.sizeDelta.y / layoutListGroup.transform.childCount;
             //float maskHeight = currentCanvas.sizeDelta.y + scrollWindow.sizeDelta.y;
@@ -88,7 +88,7 @@ public class ScrollController : MonoBehaviour
 
             offlimitsValue = listPixelAnchor - selectionPos;
             // move the target scroll rect
-            targetScrollRect.verticalNormalizedPosition += (offlimitsValue / layoutListGroup.sizeDelta.y) * Time.deltaTime * scrollSpeed;
+            targetScrollRect.verticalNormalizedPosition += (offlimitsValue / layoutListGroup.sizeDelta.y ) * Time.deltaTime * scrollSpeed;
 
             finishedY = Mathf.Abs(offlimitsValue) < 2f;
         }
