@@ -101,4 +101,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/MicroGames/Cluster Thibaut/TrioSoupe/EcraseMouche/EcraseMouche.unity
     guid: aa16d15e49f3acc45a5544741765399e
+  - enabled: 1
+    path: Assets/MicroGames/Cluster Theodore/TrioBrigantin/BouffeLesJoelle/BouffeLesJoelleScene.unity
+    guid: bea4fbd6c75fada45a0d3b23fdf67058
+  - enabled: 1
+    path: Assets/MicroGames/Cluster Theodore/TrioTrapioWare/Climb/Climb.unity
+    guid: 6a00e58c9baf5a2498aaf56c3adb0e60
+  - enabled: 1
+    path: Assets/MicroGames/Cluster Theodore/TrioSpanishInquisition/HisserLeDrapeau/HisserLeDrapeau.unity
+    guid: 828405722dd7dcc4daea158ba59d4771
   m_configObjects: {}
