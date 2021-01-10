@@ -51,9 +51,6 @@ EditorBuildSettings:
     path: Assets/MicroGames/Cluster Aurelien/TrioRadioRTL/CeremonieDeThe/Scene_CeremonieDeThe.unity
     guid: e2547889b0261ae459c8886febd6b951
   - enabled: 1
-    path: Assets/MicroGames/Cluster Aurelien/TrioDragonPeperes/CestNotreTresor/CestNotreTresorScene.unity
-    guid: 2c37fdeff133a12429ae696e1a86f82e
-  - enabled: 1
     path: Assets/MicroGames/Cluster Aurelien/TrioDragonPeperes/ChasseAuTresor/ChasseAuTresorScene.unity
     guid: 5bc049de28ab63348bf6cb99fda67edc
   - enabled: 1
