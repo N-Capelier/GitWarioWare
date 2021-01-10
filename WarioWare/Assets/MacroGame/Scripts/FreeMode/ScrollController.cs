@@ -88,7 +88,8 @@ public class ScrollController : MonoBehaviour
 
             offlimitsValue = listPixelAnchor - selectionPos;
             // move the target scroll rect
-            targetScrollRect.verticalNormalizedPosition += (offlimitsValue / layoutListGroup.sizeDelta.y ) * Time.deltaTime * scrollSpeed;
+            if(layoutListGroup.sizeDelta.y != 0)
+                targetScrollRect.verticalNormalizedPosition += (offlimitsValue / layoutListGroup.sizeDelta.y ) * Time.deltaTime * scrollSpeed;
 
             finishedY = Mathf.Abs(offlimitsValue) < 2f;
         }
