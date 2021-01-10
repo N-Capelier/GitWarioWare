@@ -12,6 +12,11 @@ namespace TrioSoupe
         /// </summary>
         public class ManagerServiceRapide : TimedBehaviour
         {
+            AudioSource source;
+            public AudioClip pickedGreatIngredient;
+            public AudioClip pickedWrongIngredient;
+            public AudioClip backMusic;
+
             int chefMeatInt;
             int chefBreadInt;
             int chefVegetableInt;
@@ -25,26 +30,23 @@ namespace TrioSoupe
             public GameObject looseScreen;
 
             public GameObject sadFace;
-            public GameObject neutralFace;
             public GameObject HappyFace;
+            public GameObject sadFaceD0;
+            public GameObject HappyFaceD0;
 
             GameObject chefBread;
             GameObject chefMeat;
             GameObject chefVegetable;
             GameObject chefBreadBase;
-
             public GameObject[] meat;
             public GameObject[] bread;
             public GameObject[] breadBase;
             public GameObject[] vegetable;
-            public GameObject[] hardMeat;
-            public GameObject[] hardBread;
-            public GameObject hardBreadBase;
-            public GameObject[] hardVegetable;
             public Vector3[] ingredientScreenPositions;
             List<int> ingredientChosedPerPos;
 
             public Vector3 chefBreadPos;
+            public Vector3 EasyChefBreadPos;
             public Vector3 chefMeatPos;
             public Vector3 chefVegetablePos;
             public Vector3 chefBreadBasePos;
@@ -73,7 +75,6 @@ namespace TrioSoupe
 
             public override void Start()
             {
-
                 base.Start();
                 difficulty = (int)currentDifficulty;
                 canChoose = true;
@@ -82,7 +83,7 @@ namespace TrioSoupe
                 ingredientChosingPhase = new GameObject[4];
                 launchPlaceRandomIngredient = true;
                 memorizationOver = false;
-                if (difficulty == 0)
+                if (difficulty < 2)
                 {
                     chefMeatInt = Random.Range(0, 3);
                     chefBreadInt = Random.Range(0, 3);
@@ -99,8 +100,10 @@ namespace TrioSoupe
                     animatorBoutons.SetInteger("Difficulty", 1);
                 }
                 InstantiateChefIngredients();
-
                 
+                source = GetComponent<AudioSource>();
+                source.PlayOneShot(backMusic);
+
             }
 
             public override void FixedUpdate()
@@ -123,26 +126,22 @@ namespace TrioSoupe
                     }
                     if (playerChosedVegetable == false && playerChosedBread == true)
                     {
-                        if(difficulty == 2)
+                        if (difficulty > 0)
                         {
-                            RandomPlaceIngredient(hardVegetable);
+                            RandomPlaceIngredient(vegetable);
+                            PlayerChose(chefVegetableInt, ref playerChosedVegetable);
                         }
                         else
                         {
-                            RandomPlaceIngredient(vegetable);
+                            playerChosedVegetable = true;
                         }
-                        PlayerChose(chefVegetableInt, ref playerChosedVegetable);
+
                     }
                     if (playerChosedMeat == false && playerChosedVegetable == true)
                     {
-                        if (difficulty == 2)
-                        {
-                            RandomPlaceIngredient(hardMeat);
-                        }
-                        else
-                        {
+
                             RandomPlaceIngredient(meat);
-                        }
+                        
                         PlayerChose(chefMeatInt, ref playerChosedMeat);
 
                         if(playerChosedMeat == true)
@@ -150,7 +149,14 @@ namespace TrioSoupe
                             animatorBoutons.SetBool("EndGame", true);
                             victoryScreen.SetActive(true);
                             InstantiateChefIngredients();
-                            HappyFace.SetActive(true);
+                            if(difficulty == 0)
+                            {
+                                HappyFaceD0.SetActive(true);
+                            }
+                            else
+                            {
+                                HappyFace.SetActive(true);
+                            }
                             Destroy(currentSelectionBackGround,0f);
                             win = true;
                         }
@@ -186,19 +192,12 @@ namespace TrioSoupe
                 yield return new WaitForSeconds(memorizationTime);
                 Destroy(chefBread);
                 Destroy(chefMeat);
-                Destroy(chefVegetable);
+                if (difficulty > 0)
+                {
+                    Destroy(chefVegetable);
+                }
                 Destroy(chefBreadBase);
-                neutralFace.SetActive(false);
-
-
-                if (difficulty == 2)
-                {
-                    RandomPlaceIngredient(hardBread);
-                }
-                else
-                {
-                    RandomPlaceIngredient(bread);
-                }
+                RandomPlaceIngredient(bread);
                 memoryBackground.SetActive(false);
                 currentSelectionBackGround = Instantiate(selectionBackground, Vector3.zero, Quaternion.identity);
                 animatorBoutons.SetBool("memorisationOver", true);
@@ -210,7 +209,7 @@ namespace TrioSoupe
                 if (launchPlaceRandomIngredient == true)
                 {
                     int maxi;
-                    if(difficulty == 0)
+                    if(difficulty < 2)
                     {
                         maxi = 3;
                     }
@@ -225,7 +224,7 @@ namespace TrioSoupe
                         int randomIngredient;
                         if (i == 0)
                         {
-                            if(difficulty == 0)
+                            if(difficulty < 2)
                             {
                                 randomIngredient = Random.Range(0, 3);
                                 
@@ -242,7 +241,7 @@ namespace TrioSoupe
                             do
                             {
                                 isIngredientAlreadyIn = false;
-                                if (difficulty == 0)
+                                if (difficulty < 2)
                                 {
                                     randomIngredient = Random.Range(0, 3);
                                 }
@@ -324,6 +323,7 @@ namespace TrioSoupe
                         else
                         {
                             PlayerLoose();
+                            
                         }
 
                     }
@@ -346,41 +346,48 @@ namespace TrioSoupe
 
             void PlayerLoose()
             {
+                source.PlayOneShot(pickedWrongIngredient);
                 DestroyChosedIngredients();
                 animatorBoutons.SetBool("EndGame", true);
                 loose = true;
                 Destroy(currentSelectionBackGround);
                 InstantiateChefIngredients();
-                sadFace.SetActive(true);
+                if(difficulty == 0)
+                {
+                    sadFaceD0.SetActive(true);
+                }
+                else
+                {
+                    sadFace.SetActive(true);
+                }
                 looseScreen.SetActive(true);
             }
             void PlayerPickedCorrect(ref bool checkedIngredient)
             {
                 checkedIngredient = true;
                 ingredientChosedPerPos.Clear();
+                source.PlayOneShot(pickedGreatIngredient);
                 DestroyChosedIngredients();
                 launchPlaceRandomIngredient = true;
             }
             void InstantiateChefIngredients()
             {
-                if (difficulty == 2)
+                if(difficulty == 0)
                 {
-                    chefBread = Instantiate(hardBread[chefBreadInt], chefBreadPos, Quaternion.identity);
-                    chefBreadBase = Instantiate(hardBreadBase, chefBreadBasePos, Quaternion.identity);
-                    chefMeat = Instantiate(hardMeat[chefMeatInt], chefMeatPos, Quaternion.identity);
-                    chefVegetable = Instantiate(hardVegetable[chefVegetableInt], chefVegetablePos, Quaternion.identity);
+                    chefBread = Instantiate(bread[chefBreadInt], EasyChefBreadPos, Quaternion.identity);
                 }
                 else
                 {
                     chefBread = Instantiate(bread[chefBreadInt], chefBreadPos, Quaternion.identity);
+                    chefVegetable = Instantiate(vegetable[chefVegetableInt], chefVegetablePos, Quaternion.identity);
+                }
                     chefBreadBase = Instantiate(breadBase[chefBreadInt], chefBreadBasePos, Quaternion.identity);
                     chefMeat = Instantiate(meat[chefMeatInt], chefMeatPos, Quaternion.identity);
-                    chefVegetable = Instantiate(vegetable[chefVegetableInt], chefVegetablePos, Quaternion.identity);
                 }
             }
         }
 
     }
-}
+
 
 

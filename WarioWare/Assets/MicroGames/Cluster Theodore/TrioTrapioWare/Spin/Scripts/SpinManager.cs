@@ -19,6 +19,8 @@ namespace TrapioWare
             public AudioClip[] canonBreakClips;
             public GameObject playerChara;
             public GameObject hammer;
+            public GameObject ceillingWarn;
+            public GameObject victoireGraph;
 
             [HideInInspector] public bool hasWon;
             [HideInInspector] public bool gameFinished;
@@ -39,6 +41,8 @@ namespace TrapioWare
                 {
                     holes[i].SetActive(false);
                 }
+
+                victoireGraph.SetActive(false);
             }
 
             public override void FixedUpdate()
@@ -49,14 +53,21 @@ namespace TrapioWare
             public override void TimedUpdate()
             {
                 base.TimedUpdate();
-                if(Tick -2 < 7 && Tick - 2>= 0)
+                if(Tick -1 < 7 && Tick - 1>= 0)
                 {
-                    SpawnHole(Tick - 2, false);
+                    SpawnHole(Tick - 1, false);
                 }
 
-                if(Tick - 1 == 8 && !gameFinished && !hasInlimitedTime)
+                if(Tick == 8 && !hasInlimitedTime)
                 {
-                    Lose();
+                    if(!gameFinished)
+                    {
+                        Lose();
+                    }
+                    else if(hasWon)
+                    {
+                        Manager.Instance.Result(true);
+                    }
                 }
             }
 
@@ -72,6 +83,21 @@ namespace TrapioWare
                 difficultySetups[difficulty].target.SetActive(true);
                 difficultySetups[difficulty].background.SetActive(true);
                 difficultySetups[difficulty].boundaries.SetActive(true);
+
+                switch(difficulty)
+                {
+                    case 0:
+                        ceillingWarn.transform.position = new Vector2(ceillingWarn.transform.position.x, 5.2f);
+                        break;
+
+                    case 1:
+                        ceillingWarn.transform.position = new Vector2(ceillingWarn.transform.position.x, 7.28f);
+                        break;
+
+                    case 2:
+                        ceillingWarn.transform.position = new Vector2(ceillingWarn.transform.position.x, 7.28f);
+                        break;
+                }
             }
 
             public void Win()
@@ -81,7 +107,6 @@ namespace TrapioWare
                     gameFinished = true;
                     hasWon = true;
                     StartCoroutine(EndAnim());
-                    Manager.Instance.Result(true);
                 }
             }
 
@@ -116,7 +141,9 @@ namespace TrapioWare
 
             private IEnumerator EndAnim()
             {
-                while(playerChara.transform.position.y < 100)
+                victoireGraph.SetActive(true);
+                ceillingWarn.SetActive(false);
+                while (playerChara.transform.position.y < 100)
                 {
                     yield return new WaitForEndOfFrame();
                     playerChara.transform.position = new Vector2(playerChara.transform.position.x, playerChara.transform.position.y + 0.3f);

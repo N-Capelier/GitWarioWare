@@ -1,5 +1,33 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!244 &-4337887708569740770
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: bf9170adbb131eb45b04bab8e446d41b
+  m_EffectName: Attenuation
+  m_MixLevel: da27ab6b4d48f564a8654815069a99cc
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!244 &-431787257354077358
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 53464807766693448879f360a35998d7
+  m_EffectName: Attenuation
+  m_MixLevel: 4e64043e46679e945badd30445dfb9ef
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
 --- !u!241 &24100000
 AudioMixerController:
   m_ObjectHideFlags: 0
@@ -19,6 +47,8 @@ AudioMixerController:
   m_AudioMixerGroupViews:
   - guids:
     - aa3c7d46ac2bcd9458ed98330f3aad0a
+    - cbbaa449d6d52ab4e99b4bdb6f992f6b
+    - 4652cdcfced8da149b581d340c9a61b9
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500006}
@@ -31,7 +61,9 @@ AudioMixerGroupController:
   m_Name: Master
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: aa3c7d46ac2bcd9458ed98330f3aad0a
-  m_Children: []
+  m_Children:
+  - {fileID: 3235592127009219732}
+  - {fileID: 6228994028401498262}
   m_Volume: 5144e3854aa10b34cb92dd1f4e84a93c
   m_Pitch: df2a19b67b7409946a574ad018cfdde5
   m_Send: 00000000000000000000000000000000
@@ -66,3 +98,41 @@ AudioMixerSnapshotController:
   m_SnapshotID: bc6cc06e530b1cf43b0fcafd6ae3e9f2
   m_FloatValues: {}
   m_TransitionOverrides: {}
+--- !u!243 &3235592127009219732
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: EatingContest
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: cbbaa449d6d52ab4e99b4bdb6f992f6b
+  m_Children: []
+  m_Volume: a04a53c8240f9d543a91db168fcee4dc
+  m_Pitch: bfad2ab561c89194facdf6a325f0f2e0
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: -431787257354077358}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
+--- !u!243 &6228994028401498262
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: CrabeGolf
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: 4652cdcfced8da149b581d340c9a61b9
+  m_Children: []
+  m_Volume: 47d7e3f54db7efd43b040ce58105ea9d
+  m_Pitch: b332ad2fe8f3d03489ec3d81e53ca441
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: -4337887708569740770}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0

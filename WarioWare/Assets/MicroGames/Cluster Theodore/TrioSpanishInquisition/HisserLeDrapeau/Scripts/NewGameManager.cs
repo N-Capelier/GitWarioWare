@@ -7,6 +7,11 @@ namespace SpanishInquisition
 
     namespace HisserLeDrapeau
     {
+
+        /// <summary>
+        /// Adel Ahmed-Yahia
+        /// </summary>
+        
         public class NewGameManager : TimedBehaviour
         {
             private static NewGameManager _instance;
@@ -48,6 +53,8 @@ namespace SpanishInquisition
             public override void Start()
             {
                 base.Start(); //Do not erase this line!
+
+                //currentDifficulty = Difficulty.EASY;
                 feedbackParticle.GetComponent<ParticleSystem>();
                 speed = bpm / 5;
                 score = 0;
@@ -149,6 +156,8 @@ namespace SpanishInquisition
             //TimedUpdate is called once every tick.
             public override void TimedUpdate()
             {
+                base.TimedUpdate();
+
                 if (Tick < 8 && !gameIsWon)
                 {
                     Spawner();

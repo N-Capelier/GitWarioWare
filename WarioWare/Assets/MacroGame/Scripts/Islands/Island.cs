@@ -7,8 +7,8 @@ using Caps;
 using TMPro;
 using Player;
 using UnityEngine.EventSystems;
-using Sound;
-
+using Sound;
+
 namespace Islands
 {
     public enum IslandDifficulty
@@ -71,8 +71,9 @@ namespace Islands
         private void Awake()
         {
             image = GetComponent<Image>();
-            eventTrigger = GetComponent<EventTrigger>();
-            audioSource = GetComponent<AudioSource>();
+            eventTrigger = GetComponent<EventTrigger>();
+            audioSource = GetComponent<AudioSource>();
+            button = GetComponent<Button>();
         }
 
 
@@ -225,12 +226,12 @@ namespace Islands
             PlayerMovement.Instance.Move(this);
         }
         public void OnSelect()
-        {
-            if(!PlayerMovement.Instance.isMoving)
-            {
+        {
+            if(!PlayerMovement.Instance.isMoving)
+            {
                 SoundManager.Instance.ApplyAudioClip("Selected", audioSource);
                 audioSource.PlaySecured();
-            }
+            }
             PlayerMovement.Instance.ShowSelectedIslandInfo(this);
         }
 
