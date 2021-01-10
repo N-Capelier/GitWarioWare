@@ -17,6 +17,7 @@ namespace UI
         void Start()
         {
             PlayerManager.Instance.UpdatePlayerUI += UpdateUI ;
+            UpdateUI();
         }
 
         // Update is called once per frame
