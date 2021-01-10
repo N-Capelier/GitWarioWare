@@ -402,7 +402,7 @@ namespace Caps
                 {
                     capUI.SetActive(false);
                     macroUI.SetActive(true);
-                    BossLifeManager.Instance.bossUI.gameObject.SetActive(false);
+                    BossLifeManager.Instance.bossUI.gameObject.SetActive(true);
                     PlayerMovement.Instance.ResetFocus();
 
 
@@ -538,7 +538,7 @@ namespace Caps
             {
                 PlayerMovement.Instance.playerIsland.reward.ApplyPassiveEffect();
                 macroUI.SetActive(true);
-                BossLifeManager.Instance.bossUI.gameObject.SetActive(false);
+                BossLifeManager.Instance.bossUI.gameObject.SetActive(true);
                 capUI.SetActive(false);
                 PlayerMovement.Instance.ResetFocus();
                 StartCoroutine(UnzoomCam());
