@@ -1813,6 +1813,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 244794333705093152}
     m_Modifications:
+    - target: {fileID: 377213421526379134, guid: 1ad1324dac6871641a86bf44fb6fbc15,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 377213421526379134, guid: 1ad1324dac6871641a86bf44fb6fbc15,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 3860265772629543017, guid: 1ad1324dac6871641a86bf44fb6fbc15,
         type: 3}
       propertyPath: m_IsActive
@@ -1823,6 +1833,11 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 7831178944745030161}
+    - target: {fileID: 3860265773075858883, guid: 1ad1324dac6871641a86bf44fb6fbc15,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3860265773522126522, guid: 1ad1324dac6871641a86bf44fb6fbc15,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1899,6 +1914,11 @@ PrefabInstance:
       value: TransitionBoat
       objectReference: {fileID: 0}
     - target: {fileID: 3860265773522126523, guid: 1ad1324dac6871641a86bf44fb6fbc15,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5246068963598918743, guid: 1ad1324dac6871641a86bf44fb6fbc15,
         type: 3}
       propertyPath: m_IsActive
       value: 1
