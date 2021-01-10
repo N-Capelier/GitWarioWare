@@ -16,7 +16,7 @@ public class TransitionAnimations : MonoBehaviour
     private List<GameObject> barrels = new List<GameObject>();
     public void DisplayBarrel(Cap cap)
     {
-        foreach (var barrel in barrels)
+        foreach (GameObject barrel in barrels)
         {
             Destroy(barrel);
         }
@@ -27,8 +27,8 @@ public class TransitionAnimations : MonoBehaviour
             if (cap.hasBarrel[i])
             {
                 var position = Vector3Extensions.AddX(startPosition.position, distance * i / cap.hasBarrel.Length);
-                var _bareel =Instantiate(barrel, position, Quaternion.identity, transform);
-                barrels.Add(barrel);
+                var _barel =Instantiate(barrel, position, Quaternion.identity, transform);
+                barrels.Add(_barel);
             }
         }
         ship.transform.position = startPosition.position;
@@ -39,10 +39,9 @@ public class TransitionAnimations : MonoBehaviour
         var position = Vector3Extensions.AddX(startPosition.position, distance * (capNumber+1) / cap.hasBarrel.Length);
         ship.transform.DOMoveX(position.x,shipMoveTime);
     }
-    public void PlayAnimation( float bpm, bool win, bool isBoss = false)
+    public void PlayAnimation( float bpm, bool win)
     {
-        if (!isBoss)
-        {
+        
             longHairChara.speed = 60f / bpm;
             asianWomenAnimator.speed = 60f / bpm;
             quartierMaitreChara.speed = 60f / bpm;
@@ -58,6 +57,6 @@ public class TransitionAnimations : MonoBehaviour
                 asianWomenAnimator.SetTrigger("Happy");
                 quartierMaitreChara.SetTrigger("Happy");
             }
-        }       
+              
     }
 }

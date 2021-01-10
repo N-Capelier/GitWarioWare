@@ -60,6 +60,7 @@ namespace Boss
             transitionCam.enabled = true;
             if (win)
             {
+                transition.PlayAnimation((float)Manager.Instance.bpm, true);
                 SoundManager.Instance.ApplyAudioClip("victoryJingle", transitionMusic, Manager.Instance.bpm);
                 BossLifeManager.Instance.TakeDamage(damageToBoss,bossLifeOnStartOfFight, true);
                 phaseBossLife += damageToBoss;
@@ -67,7 +68,7 @@ namespace Boss
             else
             {
                 PlayerManager.Instance.TakeDamage(damageToPlayer);
-                transition.PlayAnimation((float)Manager.Instance.bpm, false, true);
+                transition.PlayAnimation((float)Manager.Instance.bpm, false);
                 SoundManager.Instance.ApplyAudioClip("loseJingle", transitionMusic, Manager.Instance.bpm);
 
             }
