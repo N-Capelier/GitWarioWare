@@ -20,7 +20,7 @@ MonoBehaviour:
     sceneAsset: {fileID: 102900000, guid: 2f3fe7a9fa3e94d42a509dce80a71abe, type: 3}
     required: 0
     buildIndex: 28
-  inputs: {fileID: 21300000, guid: 832294a9a56a63641a4b2fbb48b9a984, type: 3}
+  inputs: {fileID: -4022564551502013907, guid: 6298f68414952e34e88f5abc376e95b9, type: 3}
   currentDifficulty: 0
-  idWeight: 0
+  idWeight: 14
   hasBarrel: 0
