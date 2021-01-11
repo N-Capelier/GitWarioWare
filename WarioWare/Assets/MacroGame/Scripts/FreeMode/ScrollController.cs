@@ -35,7 +35,7 @@ public class ScrollController : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if (Input.GetButtonDown("B_Button") && quiteButton.gameObject.activeSelf && SceneManager.GetActiveScene().name == "FreeMode")
+        if (Input.GetButtonDown("B_Button") && quiteButton.gameObject.activeSelf && SceneManager.GetActiveScene().name == "FreeMode" || Input.GetButtonDown("B_Button") && SceneManager.GetActiveScene().name == "JukeBox")
         {
             quiteButton.Select();
         }

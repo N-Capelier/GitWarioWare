@@ -69,6 +69,12 @@ public class MenuManager : MonoBehaviour
         buttonSounds.PlaySecured();
         StartCoroutine(QuitEnumerator());
     }
+    public void JukeBox()
+    {
+        SoundManager.Instance.ApplyAudioClip("Clicked", buttonSounds);
+        buttonSounds.PlaySecured();
+        StartCoroutine(LoadJukeBoxEnumerator());
+    }
 
     private IEnumerator PlayEnumerator()
     {
@@ -93,5 +99,10 @@ public class MenuManager : MonoBehaviour
     {
         yield return new WaitForSeconds(buttonSounds.clip.length);
         SceneManager.LoadScene("FreeMode");
+    }
+    public IEnumerator LoadJukeBoxEnumerator()
+    {
+        yield return new WaitForSeconds(buttonSounds.clip.length);
+        SceneManager.LoadScene("JukeBox");
     }
 }
