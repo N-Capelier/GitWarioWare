@@ -21,7 +21,8 @@ namespace JukeBox
                 imageToFill.fillAmount = timer / mainAudioSource.clip.length;
                 if(timer>= mainAudioSource.clip.length)
                 {
-                    ResetFilling();
+                    timer = 0;
+                    imageToFill.fillAmount = 0;
                 }
             }
         }

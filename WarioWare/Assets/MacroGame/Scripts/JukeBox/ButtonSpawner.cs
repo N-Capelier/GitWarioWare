@@ -25,10 +25,10 @@ namespace JukeBox
         {
             audioSource = GetComponent<AudioSource>();
 
-            foreach (var sound in soundList.soundBpms)
+            foreach (var sound in soundList.music)
             {
                 var _sound = Instantiate(button, transform);
-                string soundName = sound.name;
+                string soundName = sound.name+ " de " + sound.author;
 
                 _sound.GetComponentInChildren<TextMeshProUGUI>().text = soundName;
                 buttonList.Add(_sound);
@@ -37,7 +37,7 @@ namespace JukeBox
                 entry.callback.AddListener((data) => { PlaySelectedSound(); });
                 _sound.GetComponent<EventTrigger>().triggers.Add(entry);
 
-                _sound.GetComponent<Button>().onClick.AddListener(() => PlayCard(sound.sounds[0].clip, _sound));
+                _sound.GetComponent<Button>().onClick.AddListener(() => PlayCard(sound.clip, _sound));
                 buttons.Add(_sound.GetComponent<Button>());
 
                 if (!doOnce)

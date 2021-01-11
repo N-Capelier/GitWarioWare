@@ -14,120 +14,166 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundClassic:
   - name: Menu
-    volume: 0.5
+    author: 
     clip: {fileID: 8300000, guid: 3ec108241bc6d6b468da815ca4525800, type: 3}
+    volume: 0.5
   - name: Selected
-    volume: 0.5
+    author: 
     clip: {fileID: 8300000, guid: 4dff5a7da1ded2349af6111eda619228, type: 3}
+    volume: 0.5
   - name: Clicked
-    volume: 0.5
+    author: 
     clip: {fileID: 8300000, guid: 98ae80b4bae12fc49a63f8cd7c679cfd, type: 3}
+    volume: 0.5
   - name: Cancel
-    volume: 0.5
+    author: 
     clip: {fileID: 8300000, guid: 196ae96713c86194c857f58355b12d90, type: 3}
+    volume: 0.5
   - name: ClickedImpossible
-    volume: 0.5
+    author: 
     clip: {fileID: 8300000, guid: 39734ba370a8c4e43897b82e9ace2ac4, type: 3}
+    volume: 0.5
   - name: NewGame
-    volume: 0.5
+    author: 
     clip: {fileID: 8300000, guid: fa9c6337dd68d374584b4e96f0b23b5d, type: 3}
+    volume: 0.5
   - name: StartCap
-    volume: 0.5
+    author: 
     clip: {fileID: 8300000, guid: 1720e0f7ae25ded4f9e27aa52da6b2c2, type: 3}
+    volume: 0.5
   - name: CollectItem
-    volume: 0.5
+    author: 
     clip: {fileID: 8300000, guid: cf41bf7e1a380b241a87e28ea464032b, type: 3}
-  - name: UseItem
     volume: 0.5
+  - name: UseItem
+    author: 
     clip: {fileID: 8300000, guid: 5122e0819c5f6fc4fa6e185ce6f3f743, type: 3}
+    volume: 0.5
   soundBpms:
   - sounds:
     - name: transition_0
-      volume: 0.5
+      author: 
       clip: {fileID: 8300000, guid: 5e8420836d21ce048a5fa140065004bb, type: 3}
+      volume: 0.5
     - name: transition_1
-      volume: 0.5
+      author: 
       clip: {fileID: 8300000, guid: 5e8420836d21ce048a5fa140065004bb, type: 3}
+      volume: 0.5
     - name: transition_2
-      volume: 0.5
+      author: 
       clip: {fileID: 8300000, guid: 3cd81a9afb65dda4cbe9e0b62bb09523, type: 3}
+      volume: 0.5
     - name: transition_3
-      volume: 0.5
+      author: 
       clip: {fileID: 8300000, guid: 3cd81a9afb65dda4cbe9e0b62bb09523, type: 3}
+      volume: 0.5
     bpm: 3c0000005a000000780000008c000000
     name: transition
+    foldout: 0
   - sounds:
     - name: gameOverJingle_0
-      volume: 0.5
+      author: 
       clip: {fileID: 8300000, guid: 1a0bce2916308234d92fb7f3c005f372, type: 3}
+      volume: 0.5
     - name: gameOverJingle_1
-      volume: 0.5
+      author: 
       clip: {fileID: 8300000, guid: b65aa85c9b2e22d4c904285cda74edfc, type: 3}
+      volume: 0.5
     - name: gameOverJingle_2
-      volume: 0.5
+      author: 
       clip: {fileID: 8300000, guid: 5a7f0afb2c9383e40b0c6a7eee234b0f, type: 3}
-    - name: gameOverJingle_3
       volume: 0.5
+    - name: gameOverJingle_3
+      author: 
       clip: {fileID: 8300000, guid: e6c569d937d854b438aa0bfe5a7fe85e, type: 3}
+      volume: 0.5
     bpm: 3c0000005a000000780000008c000000
     name: gameOverJingle
+    foldout: 0
   - sounds:
     - name: loseJingle_0
-      volume: 0.5
+      author: 
       clip: {fileID: 8300000, guid: 765a8536ba73ba44788d1146b192e1a8, type: 3}
+      volume: 0.5
     - name: loseJingle_1
-      volume: 0.5
+      author: 
       clip: {fileID: 8300000, guid: 110adf67473f84e4a9616b2a93b7d137, type: 3}
+      volume: 0.5
     - name: loseJingle_2
-      volume: 0.5
+      author: 
       clip: {fileID: 8300000, guid: b8b1245fa7dff4641873dfa16e6041d2, type: 3}
-    - name: loseJingle_3
       volume: 0.5
+    - name: loseJingle_3
+      author: 
       clip: {fileID: 8300000, guid: 97d0b209a0f27ab449e9d64ae5b17745, type: 3}
+      volume: 0.5
     bpm: 3c0000005a000000780000008c000000
     name: loseJingle
+    foldout: 0
   - sounds:
     - name: speedUpJingle_0
-      volume: 0.5
+      author: 
       clip: {fileID: 8300000, guid: a20efa59815b6cd4080dc7f35180558c, type: 3}
+      volume: 0.5
     - name: speedUpJingle_1
-      volume: 0.5
+      author: 
       clip: {fileID: 8300000, guid: 29dd06d59e9362d408f7c35177c510e1, type: 3}
+      volume: 0.5
     - name: speedUpJingle_2
-      volume: 0.5
+      author: 
       clip: {fileID: 8300000, guid: 01095e813d3001747bc740a3b7fe8eda, type: 3}
+      volume: 0.5
     - name: speedUpJingle_3
-      volume: 0.5
+      author: 
       clip: {fileID: 8300000, guid: 01095e813d3001747bc740a3b7fe8eda, type: 3}
+      volume: 0.5
     bpm: 3c0000005a000000780000008c000000
     name: speedUpJingle
+    foldout: 0
   - sounds:
     - name: verbeJingle_0
-      volume: 0.5
+      author: 
       clip: {fileID: 8300000, guid: 1dca43be3d7bd464cbdc8bd939292133, type: 3}
+      volume: 0.5
     - name: verbeJingle_1
-      volume: 0.5
+      author: 
       clip: {fileID: 8300000, guid: 87c560ba042876d41b12412b61a802c8, type: 3}
+      volume: 0.5
     - name: verbeJingle_2
-      volume: 0.5
+      author: 
       clip: {fileID: 8300000, guid: 0bdc4fd587a132b4897497cbfc15ef2e, type: 3}
-    - name: verbeJingle_3
       volume: 0.5
+    - name: verbeJingle_3
+      author: 
       clip: {fileID: 8300000, guid: 5bf13b301f1a1c747be9220e4c3e6b63, type: 3}
+      volume: 0.5
     bpm: 3c0000005a000000780000008c000000
     name: verbeJingle
+    foldout: 0
   - sounds:
     - name: victoryJingle_0
-      volume: 0.5
+      author: 
       clip: {fileID: 8300000, guid: 83b9c012273327f4aaaeb7594785a93a, type: 3}
+      volume: 0.5
     - name: victoryJingle_1
-      volume: 0.5
+      author: 
       clip: {fileID: 8300000, guid: 9dd3fc8f130611f47a2abf4d9f6fdfac, type: 3}
+      volume: 0.5
     - name: victoryJingle_2
-      volume: 0.5
+      author: 
       clip: {fileID: 8300000, guid: 2a6a53eeee1aacd418f79b557eab4357, type: 3}
-    - name: victoryJingle_3
       volume: 0.5
+    - name: victoryJingle_3
+      author: 
       clip: {fileID: 8300000, guid: a4243e4596d918f4da83c072b36def0d, type: 3}
+      volume: 0.5
     bpm: 3c0000005a000000780000008c000000
     name: victoryJingle
+    foldout: 0
+  music:
+  - name: Jingle Bell
+    author: MoiMeme
+    clip: {fileID: 8300000, guid: 24a85e8ad37e7184e9232dacfcd6a93e, type: 3}
+  - name: 
+    author: 
+    clip: {fileID: 8300000, guid: 9927a5c4967a14948a700cefe70b2a1c, type: 3}
