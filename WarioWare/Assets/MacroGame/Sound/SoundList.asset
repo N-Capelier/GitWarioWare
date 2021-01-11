@@ -36,7 +36,7 @@ MonoBehaviour:
   - name: NewGame
     author: 
     clip: {fileID: 8300000, guid: fa9c6337dd68d374584b4e96f0b23b5d, type: 3}
-    volume: 0.5
+    volume: 0.897
   - name: StartCap
     author: 
     clip: {fileID: 8300000, guid: 1720e0f7ae25ded4f9e27aa52da6b2c2, type: 3}
@@ -89,7 +89,7 @@ MonoBehaviour:
       volume: 0.5
     bpm: 3c0000005a000000780000008c000000
     name: gameOverJingle
-    foldout: 0
+    foldout: 1
   - sounds:
     - name: loseJingle_0
       author: 

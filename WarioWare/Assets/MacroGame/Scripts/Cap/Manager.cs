@@ -30,7 +30,7 @@ namespace Caps
         [Header("Playtest variable")]
         public float transitionTime;
       //  public float verbTime;
-        public int numberBeforeSpeedUp;
+        public int numberBeforSpeedUp;
         //int that will be added on the id to make it appear more offen, they all start with a value of 10
         public int idWeightToAdd;
         public int idInitialWeight;
@@ -96,6 +96,7 @@ namespace Caps
         private void Start()
         {
             initalCamTransform = VcamTarget.transform;
+            numberBeforSpeedUp = DebugToolManager.Instance.ChangeVariableValue("numberBeforSpeedUp");
         }
 
        
@@ -305,7 +306,7 @@ namespace Caps
 
                 miniGamePassedNumber++;
                 
-                if (miniGamePassedNumber % numberBeforeSpeedUp == 0 && currentCap.length != miniGamePassedNumber)
+                if (miniGamePassedNumber % numberBeforSpeedUp == 0 && currentCap.length != miniGamePassedNumber)
                 {
                     //play speed up jingle and wait for jingle to finish
                     SoundManager.Instance.ApplyAudioClip("speedUpJingle", transitionMusic, bpm);
