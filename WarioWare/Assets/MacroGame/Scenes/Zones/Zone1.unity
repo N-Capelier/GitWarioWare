@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -6619,6 +6619,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7732852141242574751, guid: 9a784a7e95199cf47b1f43fb6d7aa90d,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7732852141242574751, guid: 9a784a7e95199cf47b1f43fb6d7aa90d,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1572402336}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a784a7e95199cf47b1f43fb6d7aa90d, type: 3}
 --- !u!1001 &1529762785
@@ -7953,11 +7963,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerRessourcesUI
       objectReference: {fileID: 0}
-    - target: {fileID: 2703362669508688505, guid: 6bbebc6197c651f4c8ee1b6918b7c5f7,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -0.0000076293945
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6bbebc6197c651f4c8ee1b6918b7c5f7, type: 3}
 --- !u!1001 &1860211203
@@ -9246,6 +9251,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4982864208588563480, guid: 2a0ba0962e4b52b40a1f46181b9dd3dc,
+        type: 3}
+      propertyPath: m_Name
+      value: EventSystem2
+      objectReference: {fileID: 0}
     - target: {fileID: 4982864208588563486, guid: 2a0ba0962e4b52b40a1f46181b9dd3dc,
         type: 3}
       propertyPath: m_FirstSelected

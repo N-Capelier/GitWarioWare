@@ -5,6 +5,7 @@ using DG.Tweening;
 using Shop;
 using Rewards;
 using NUnit.Framework;
+using UnityEngine.EventSystems;
 
 namespace Player
 {
@@ -137,7 +138,7 @@ namespace Player
                         if (playerIsland.accessibleNeighbours[i] == targetIsland)
                         {
                             //COUPER LES INPUTS DE LA MACRO
-
+                            EventSystem.current.firstSelectedGameObject = targetIsland.gameObject;
                             StartCoroutine(Manager.Instance.StartMiniGame(playerIsland.capList[i], targetIsland));
                             if (playerIsland.capList[i].isDone)
                             {
@@ -150,9 +151,7 @@ namespace Player
                 ClearConnections();
                 GetNeighbors();
 
-                if (_isCapDone)
-                    playerAvatar.transform.position = targetIsland.anchorPoint.position;
-                else
+                if (!_isCapDone)
                     transitionTimer.SetTime(3f);
 
                 isMoving = false;

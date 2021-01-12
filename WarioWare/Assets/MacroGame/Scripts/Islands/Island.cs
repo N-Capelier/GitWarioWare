@@ -126,21 +126,26 @@ namespace Islands
             {
                 if (PlayerMovement.Instance.playerIsland == this)
                 {
-                    foreach(Island island in IslandCreator.Instance.islands)
+                    foreach (Island island in IslandCreator.Instance.islands)
                     {
                         island.CleanTrails();
                     }
-                    
+
                     foreach (SpriteShapeRenderer renderer in traiList)
                     {
                         renderer.materials[1].SetInt("bool_Available", 1);
                     }
-                    Island targetIsland = IslandCreator.Instance.eventSystem.currentSelectedGameObject.GetComponent<Island>();
-                    for(int i = 0; i < accessibleNeighbours.Length; i++)
+
+                    if (EventSystem.current != null && EventSystem.current.enabled)
                     {
-                        if(accessibleNeighbours[i] == targetIsland)
+
+                        Island targetIsland = IslandCreator.Instance.eventSystem.currentSelectedGameObject.GetComponent<Island>();
+                        for (int i = 0; i < accessibleNeighbours.Length; i++)
                         {
-                            traiList[i].materials[1].SetInt("bool_Selected", 1);
+                            if (accessibleNeighbours[i] == targetIsland)
+                            {
+                                traiList[i].materials[1].SetInt("bool_Selected", 1);
+                            }
                         }
                     }
                 }
@@ -151,7 +156,7 @@ namespace Islands
         {
             if (traiList.Count > 0)
             {
-                foreach(SpriteShapeRenderer renderer in traiList)
+                foreach (SpriteShapeRenderer renderer in traiList)
                 {
                     renderer.materials[1].SetInt("bool_Available", 0);
                     renderer.materials[1].SetInt("bool_Selected", 0);
@@ -219,7 +224,7 @@ namespace Islands
         }
         public void OnClick()
         {
-            if(button.interactable)
+            if (button.interactable)
                 SoundManager.Instance.ApplyAudioClip("StartCap", audioSource);
             else
                 SoundManager.Instance.ApplyAudioClip("ClickedImpossible", audioSource);
@@ -229,7 +234,7 @@ namespace Islands
         }
         public void OnSelect()
         {
-            if(!PlayerMovement.Instance.isMoving)
+            if (!PlayerMovement.Instance.isMoving)
             {
                 SoundManager.Instance.ApplyAudioClip("Selected", audioSource);
                 audioSource.PlaySecured();

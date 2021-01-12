@@ -14,7 +14,7 @@ using DG.Tweening;
 using Cinemachine;
 using Shop;
 using Boss;
-
+using UnityEngine.EventSystems;
 
 namespace Caps
 {
@@ -77,7 +77,7 @@ namespace Caps
         public TransitionAnimations transition;
         public Camera transitionCam;
         public AudioSource transitionMusic;
-        private bool cantDoTransition;
+        [HideInInspector] public bool cantDoTransition = true;
         private Transform initalCamTransform;
         public Visual_IslandDescriptionOpening shipOpening;
         public GameObject VcamTarget;
@@ -107,6 +107,7 @@ namespace Caps
             lifeWeight = DebugToolManager.Instance.ChangeVariableValue("lifeWeight");
             goldWeight = DebugToolManager.Instance.ChangeVariableValue("goldWeight");
             foodWeight = DebugToolManager.Instance.ChangeVariableValue("foodWeight");
+            cantDoTransition = true;
         }
 
        
@@ -145,6 +146,7 @@ namespace Caps
                     isLure = true;
                 }
                     StartCoroutine(CapEnd());
+                    PlayerMovement.Instance.playerAvatar.transform.position = _currentIsland.transform.position;
                     initalCamTransform = PlayerMovement.Instance.playerAvatar.transform;
                     yield break;
                 }
@@ -164,7 +166,7 @@ namespace Caps
             {
                 shipOpening.gameObject.SetActive(true);
 
-                StartCoroutine(ZoomCam(shipOpening.openingTime));
+                StartCoroutine(ZoomCam(shipOpening.openingTime*2));
                 transition.DisplayBarrel(_currentCap);
 
                 //if zoom is bugging, look at here
@@ -238,7 +240,7 @@ namespace Caps
         private IEnumerator GlobalTransitionStart(bool win)
         {
             clock.SetActive(false);
-            cantDoTransition = true;
+            
             //little fade
             StartCoroutine(FadeManager.Instance.FadeIn(0.15f * 60 / (float)bpm));
             yield return new WaitForSeconds(0.25f * 60 / (float)bpm);
@@ -559,10 +561,11 @@ namespace Caps
         public IEnumerator ZoomCam(float zoomTime)
         {
             var _position = shipOpening.transform.position + Vector3.left * 13;
-            VcamTarget.transform.DOMove(_position, shipOpening.openingTime * 2).SetEase(Ease.InOutCubic);
-            for (float i = 0; i < zoomTime; i+= 0.01f)
+            VcamTarget.transform.DOMove(_position, shipOpening.openingTime/2).SetEase(Ease.InOutCubic);
+            yield return new WaitForSeconds(zoomTime / 2);
+            for (float i = 0; i < zoomTime/2; i+= 0.01f)
             {
-                cinemachine.m_Lens.OrthographicSize = Mathf.Lerp(400, 72, i/zoomTime);
+                cinemachine.m_Lens.OrthographicSize = Mathf.Lerp(400, 72, i*2/zoomTime);
                 yield return new WaitForSeconds(0.01f);
             }
         }
@@ -577,11 +580,14 @@ namespace Caps
 
         public IEnumerator UnzoomCam()
         {
-
-            VcamTarget.transform.position = shipOpening.transform.position;
+            var _system = EventSystem.current;
+            _system.enabled = false;
+            VcamTarget.transform.position =PlayerMovement.Instance.playerAvatar.transform.position;
             VcamTarget.transform.DOMove(initalCamTransform.position, shipOpening.openingTime * 2).SetEase(Ease.InOutCubic);
             StartCoroutine(ZoomCam(shipOpening.openingTime, "dezoom"));
             yield return new WaitForSeconds(shipOpening.openingTime * 2);
+            _system.enabled = true;
+            cantDoTransition = true;
             shipOpening.Close();
         }
         #endregion
