@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -3395,6 +3395,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f4ab7bb55ae1c8b4c8d6bbbd2b55be1d, type: 3}
+--- !u!114 &721297355 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6495885842654702927, guid: f0248967f4b5a624681095c85cfe3631,
+    type: 3}
+  m_PrefabInstance: {fileID: 7903033868261618026}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e2c832577a21c849a70d50df6399292, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &791814951 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7773080920819929377, guid: f4ab7bb55ae1c8b4c8d6bbbd2b55be1d,
@@ -4044,9 +4056,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerAvatar: {fileID: 6887194127591594448}
-  islands: []
   playerIsland: {fileID: 43212460}
   bossIsland: {fileID: 0}
+  islands: []
+  resourceSprite: {fileID: 0}
+  shopSprite: {fileID: 0}
+  bossSprite: {fileID: 0}
+  treasureSprite: {fileID: 0}
+  rareTreasureSprite: {fileID: 0}
+  foodPrice: 10
+  damagesWhenNoFood: 10
+  isMainSail: 0
 --- !u!4 &1007450610
 Transform:
   m_ObjectHideFlags: 0
@@ -4293,7 +4313,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1067252847
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4318,8 +4338,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1067252846}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -572.5184, y: 10.833406, z: -383}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -572.51843, y: 10.833408, z: -383}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -4949,6 +4969,21 @@ PrefabInstance:
       propertyPath: idWeightToAdd
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 8977992822187955208, guid: 80ac864817d34d641be6448f49de01a3,
+        type: 3}
+      propertyPath: shipOpening
+      value: 
+      objectReference: {fileID: 721297355}
+    - target: {fileID: 8977992822187955208, guid: 80ac864817d34d641be6448f49de01a3,
+        type: 3}
+      propertyPath: VcamTarget
+      value: 
+      objectReference: {fileID: 1754798041}
+    - target: {fileID: 8977992822187955208, guid: 80ac864817d34d641be6448f49de01a3,
+        type: 3}
+      propertyPath: cinemachine
+      value: 
+      objectReference: {fileID: 1754798043}
     - target: {fileID: 8977992822187955210, guid: 80ac864817d34d641be6448f49de01a3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5800,7 +5835,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 0fa5fc17f1c26ab489a5f3bb33a553e6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5822,7 +5857,7 @@ SpriteRenderer:
   m_SortingLayer: -1
   m_SortingOrder: -100
   m_Sprite: {fileID: 21300000, guid: 73eb846a705f4ae4796543a110fdeae7, type: 3}
-  m_Color: {r: 0.20392159, g: 0.5686275, b: 0.6666667, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -5840,8 +5875,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1598375363}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3840, y: 2160, z: 1}
+  m_LocalPosition: {x: -16, y: -7, z: 0}
+  m_LocalScale: {x: 4096, y: 4096, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
