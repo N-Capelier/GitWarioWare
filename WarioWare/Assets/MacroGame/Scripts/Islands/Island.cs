@@ -80,6 +80,8 @@ namespace Islands
 
         private void Start()
         {
+            //set up value from debug
+            anchorRange = DebugToolManager.Instance.ChangeVariableValue("anchorRange");
             switch (type)
             {
                 case IslandType.Start:

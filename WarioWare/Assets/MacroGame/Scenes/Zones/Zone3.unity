@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -7900,6 +7900,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: DebugginToolManager
       objectReference: {fileID: 0}
+    - target: {fileID: 2323500184554195166, guid: 8c97a71149c47314eb2ea622e1271d5f,
+        type: 3}
+      propertyPath: debugingTool
+      value: 
+      objectReference: {fileID: 11400000, guid: 6c1b8aaf82dc3844abf199a566393453,
+        type: 2}
     - target: {fileID: 2323500184554195167, guid: 8c97a71149c47314eb2ea622e1271d5f,
         type: 3}
       propertyPath: m_LocalPosition.x

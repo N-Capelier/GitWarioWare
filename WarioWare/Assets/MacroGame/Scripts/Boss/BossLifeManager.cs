@@ -14,6 +14,8 @@ namespace Boss
         private void Awake()
         {
             CreateSingleton();
+            //set up value from debug
+            maxLife = DebugToolManager.Instance.ChangeVariableValue("maxLife");
             currentLife = maxLife;
         }
 

@@ -45,6 +45,9 @@ namespace Player
             playerAvatar.transform.position = playerIsland.anchorPoint.position;
 
             transitionTimer = new Clock();
+            //set up value from debug
+            foodPrice = DebugToolManager.Instance.ChangeVariableValue("foodPrice");
+            damagesWhenNoFood = DebugToolManager.Instance.ChangeVariableValue("damagesWhenNoFood");
         }
 
         private void Update()
@@ -118,7 +121,7 @@ namespace Player
                 if (PlayerManager.Instance.food > 0)
                 {
                     if(!isMainSail && !_isCapDone)
-                        PlayerManager.Instance.GainFood(foodPrice);
+                        PlayerManager.Instance.GainFood(-foodPrice);
                 }
                 else
                 {

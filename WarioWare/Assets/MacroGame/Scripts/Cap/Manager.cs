@@ -37,7 +37,7 @@ namespace Caps
         [SerializeField] int damagesOnMiniGameLose = 10;
         //barrel
         [Range(1, 90)]
-        public int barrelProbality;
+        public int barrelProbability;
         public int maxBarrelRessources;
         public int minBarrelRessources;
         public int lifeWeight;
@@ -96,7 +96,17 @@ namespace Caps
         private void Start()
         {
             initalCamTransform = VcamTarget.transform;
+            //set up value from debug
             numberBeforSpeedUp = DebugToolManager.Instance.ChangeVariableValue("numberBeforSpeedUp");
+            idWeightToAdd = DebugToolManager.Instance.ChangeVariableValue("idWeightToAdd");
+            idInitialWeight = DebugToolManager.Instance.ChangeVariableValue("idInitialWeight");
+            damagesOnMiniGameLose = DebugToolManager.Instance.ChangeVariableValue("damagesOnMiniGameLose");
+            barrelProbability = DebugToolManager.Instance.ChangeVariableValue("barrelProbability");
+            maxBarrelRessources = DebugToolManager.Instance.ChangeVariableValue("maxBarrelRessources");
+            minBarrelRessources = DebugToolManager.Instance.ChangeVariableValue("minBarrelRessources");
+            lifeWeight = DebugToolManager.Instance.ChangeVariableValue("lifeWeight");
+            goldWeight = DebugToolManager.Instance.ChangeVariableValue("goldWeight");
+            foodWeight = DebugToolManager.Instance.ChangeVariableValue("foodWeight");
         }
 
        
@@ -487,7 +497,7 @@ namespace Caps
                         else
                             island.capList[i].length = (int)_IslandTarget.difficulty + 4 + zoneNumber;
                     }
-                    island.capList[i].ChoseMiniGames(barrelProbality, sorter);
+                    island.capList[i].ChoseMiniGames(barrelProbability, sorter);
                 }
                 
             }

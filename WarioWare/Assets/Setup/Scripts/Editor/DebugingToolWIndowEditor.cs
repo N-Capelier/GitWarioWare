@@ -29,47 +29,47 @@ public class DebugingToolWIndowEditor : Editor {
                 capsManagerFoldout = EditorGUILayout.BeginFoldoutHeaderGroup(capsManagerFoldout, "Cap Manager");               
 
             }
-            else if (i == 11)
+            else if (i == 10)
             {
                 if(capsManagerFoldout)
                     EditorGUILayout.Space(20);
                 playerManagerFoldout = EditorGUILayout.BeginFoldoutHeaderGroup(playerManagerFoldout, "Player Manager");
             }
-            else if(i==15)
+            else if(i==14)
             {
                 if(playerManagerFoldout)
                     EditorGUILayout.Space(20);
                 playerMovementFoldout = EditorGUILayout.BeginFoldoutHeaderGroup(playerMovementFoldout, "Player Movement");
             }
-            else if (i == 17)
+            else if (i == 16)
             {
                 if(playerMovementFoldout)
                     EditorGUILayout.Space(20);
                 islandCreatorFoldout = EditorGUILayout.BeginFoldoutHeaderGroup(islandCreatorFoldout, "Island Creator");
             }
-            else if (i == 22)
+            else if (i == 21)
             {
                 if (islandCreatorFoldout)
                     EditorGUILayout.Space(20);
                 islandFoldout = EditorGUILayout.BeginFoldoutHeaderGroup(islandFoldout, "Island");
             }
-            else if( i == 23)
+            else if( i == 22)
             {
                 if(islandFoldout)
                 EditorGUILayout.Space(20);
                 bossManagerFoldout = EditorGUILayout.BeginFoldoutHeaderGroup(bossManagerFoldout, "Boss Manager");
             }
 
-            if (capsManagerFoldout && i<11||
-                playerManagerFoldout && i>=11 && i<15||
-                playerMovementFoldout && i >= 15 && i < 17 ||
-                islandCreatorFoldout && i >= 17 && i < 22 ||
-                islandFoldout && i >= 22 && i < 23 || 
-                bossManagerFoldout && i>23)
+            if (capsManagerFoldout && i<10||
+                playerManagerFoldout && i>=10 && i<14||
+                playerMovementFoldout && i >= 14 && i < 16 ||
+                islandCreatorFoldout && i >= 16 && i < 21 ||
+                islandFoldout && i >= 21 && i < 22 || 
+                bossManagerFoldout && i>=22)
             {
 
                 EditorGUILayout.BeginHorizontal();
-                debugingTool.names[i] =  EditorGUILayout.TextField(debugingTool.names[i]);
+                EditorGUILayout.LabelField(debugingTool.names[i]);
 
                     if(debugingTool.values[i] <10)
                         debugingTool.values[i] = EditorGUILayout.IntSlider( debugingTool.values[i],0,10);
@@ -95,7 +95,7 @@ public class DebugingToolWIndowEditor : Editor {
         {
             if (GUILayout.Button("OpenAll")) { ActiveAllFoldout(true); }
         }
-
+      
         serializedObject.ApplyModifiedProperties();
         EditorUtility.SetDirty(debugingTool);
         Repaint();

@@ -45,8 +45,16 @@ namespace Boss
         {
             CreateSingleton();
         }
+        private void Start()
+        {
+            //set up value from debug
+            damageToPlayer = DebugToolManager.Instance.ChangeVariableValue("damageToPlayer");
+            damageToBoss = DebugToolManager.Instance.ChangeVariableValue("damageToBoss");
+            differentMiniGameNumber = DebugToolManager.Instance.ChangeVariableValue("differentMiniGameNumber");
+        }
         public IEnumerator StartBoss( )
         {
+
             currentMalediction = maledictionArray[0];
             bossLifeOnStartOfFight = BossLifeManager.currentLife;
             renderText.texture = bossTexture;
