@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using UnityEngine.EventSystems;
 
 namespace UI
 {
@@ -14,6 +15,7 @@ namespace UI
         public RectTransform mapCanvas;
         public Transform targetTransform;
         public Transform playerTransform;
+
         public float cameraSpeed;
         public float joystickDeadZone;
 
@@ -30,7 +32,7 @@ namespace UI
             
             if (Mathf.Abs(horizontalMove) < joystickDeadZone && Mathf.Abs(verticalMove) < joystickDeadZone)
             {
-                targetTransform.position = playerTransform.position;
+                targetTransform.position = EventSystem.current.currentSelectedGameObject.transform.position;
             }
             else
             {
