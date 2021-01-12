@@ -120,12 +120,12 @@ namespace Player
 
                 if (PlayerManager.Instance.food > 0)
                 {
-                    if(!isMainSail && !_isCapDone)
+                    if(!isMainSail )
                         PlayerManager.Instance.GainFood(-foodPrice);
                 }
                 else
                 {
-                    if(!isMainSail && !_isCapDone)
+                    if(!isMainSail)
                         PlayerManager.Instance.TakeDamage(damagesWhenNoFood);
                 }
 
