@@ -10,5 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cbc43939e1a546848a4b0cb76ad6fa7d, type: 3}
-  m_Name: NewMalediciton
+  m_Name: Brume
   m_EditorClassIdentifier: 
+  timer: 4
+  maledictionName: Brume
+  prefabManager: {fileID: 4637573361505306713, guid: 52da76057bc182f4ab3e1558972994de,
+    type: 3}

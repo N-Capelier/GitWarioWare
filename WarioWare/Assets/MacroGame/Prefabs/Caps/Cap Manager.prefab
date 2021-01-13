@@ -821,11 +821,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transitionTime: 4
-  numberBeforeSpeedUp: 2
+  numberBeforSpeedUp: 0
   idWeightToAdd: 0
   idInitialWeight: 0
   damagesOnMiniGameLose: 10
-  barrelProbality: 30
+  barrelProbability: 0
   maxBarrelRessources: 10
   minBarrelRessources: 8
   lifeWeight: 1
@@ -851,6 +851,7 @@ MonoBehaviour:
   transition: {fileID: 3759992420261125817}
   transitionCam: {fileID: 7831178944745030161}
   transitionMusic: {fileID: 789271674013198459}
+  cantDoTransition: 1
   shipOpening: {fileID: 0}
   VcamTarget: {fileID: 0}
   cinemachine: {fileID: 0}
@@ -1034,8 +1035,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -8.3, y: -8.4}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: -8.3, y: -33.77}
+  m_SizeDelta: {x: 200, y: 100.745544}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8977992822820432094
 CanvasRenderer:

@@ -117,7 +117,7 @@ namespace Caps
         /// </summary>
         /// <param name="_currentCap"></param>
         /// <returns></returns>
-        public IEnumerator StartMiniGame(Cap _currentCap, Island _currentIsland)
+        public IEnumerator StartMiniGame(Cap _currentCap, Island _currentIsland, Malediction malediction = null)
         {
             cantDoTransition = false;
             currentCap = _currentCap;
@@ -155,7 +155,7 @@ namespace Caps
             /* StartCoroutine(FadeManager.Instance.FadeIn(0.15f * 60 / (float)bpm));
              yield return new WaitForSeconds(0.5f * 60 / (float)bpm);*/
             
-            StartCoroutine(PlayMiniGame(transitionCam));
+            StartCoroutine(PlayMiniGame(transitionCam, malediction));
         }
         public IEnumerator StartMiniGame(Cap _currentCap)
         {
@@ -180,7 +180,7 @@ namespace Caps
         }
 
 
-        public IEnumerator PlayMiniGame(Camera _transitionCam)
+        public IEnumerator PlayMiniGame(Camera _transitionCam, Malediction malediction = null)
         {
             
             sceneCam.SetActive(true);
@@ -209,6 +209,16 @@ namespace Caps
             //yield return new WaitForSeconds((verbTime-0.25f) * 60 / (float)bpm);
             yield return new WaitForSeconds(transitionMusic.clip.length);
 
+
+            if(malediction != null)
+            {
+                
+                verbeText.text = "Malediction";
+                yield return new WaitForSeconds(malediction.timer * 10 / (float)bpm);
+                verbeText.text = "Malediction " + "     " + malediction.maledictionName;
+                malediction.StartMalediction();
+                yield return new WaitForSeconds(malediction.timer * 50 / (float)bpm);
+            }
             currentAsyncScene.allowSceneActivation = true;
 
             yield return new WaitUntil(() => currentAsyncScene.isDone);
@@ -339,7 +349,7 @@ namespace Caps
             
         }
        
-        public void GlobalTransitionEnd()
+        public void GlobalTransitionEnd(Malediction malediction = null)
         {
             if (currentMiniGame == currentCap.chosenMiniGames.Count)
                 currentMiniGame = 0;
@@ -348,7 +358,7 @@ namespace Caps
             currentAsyncScene = SceneManager.LoadSceneAsync(currentCap.chosenMiniGames[currentMiniGame].microGameScene.BuildIndex, LoadSceneMode.Additive);
             currentAsyncScene.allowSceneActivation = false;
             if(currentIsland != null)
-                StartCoroutine(StartMiniGame(currentCap, currentIsland));
+                StartCoroutine(StartMiniGame(currentCap, currentIsland, malediction));
             else
                 StartCoroutine(StartMiniGame(currentCap));
 
