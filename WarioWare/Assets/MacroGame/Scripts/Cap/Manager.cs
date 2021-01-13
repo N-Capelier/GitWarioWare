@@ -145,9 +145,9 @@ namespace Caps
                 {
                     isLure = true;
                 }
-                    StartCoroutine(CapEnd());
                     PlayerMovement.Instance.playerAvatar.transform.position = _currentIsland.transform.position;
                     initalCamTransform = PlayerMovement.Instance.playerAvatar.transform;
+                    StartCoroutine(CapEnd());
                     yield break;
                 }
             }
