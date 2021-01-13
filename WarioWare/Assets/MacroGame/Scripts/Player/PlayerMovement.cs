@@ -218,7 +218,14 @@ namespace Player
                 {
                     if (playerIsland.accessibleNeighbours[i] == targetIsland)
                     {
-                        targetIsland.capLength.text = playerIsland.capList[i].length.ToString() + " mini-jeux.";
+                        if(targetIsland.type != IslandType.Boss)
+                        { 
+                            targetIsland.capLength.text = playerIsland.capList[i].length.ToString() + " mini-jeux.";
+                        }
+                        else
+                        {
+                            targetIsland.capLength.text = "";
+                        }
                         break;
                     }
                 }
