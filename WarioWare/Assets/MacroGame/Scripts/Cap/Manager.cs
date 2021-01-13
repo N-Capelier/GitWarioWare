@@ -14,7 +14,7 @@ using DG.Tweening;
 using Cinemachine;
 using Shop;
 using Boss;
-
+using UnityEngine.EventSystems;
 
 namespace Caps
 {
@@ -30,14 +30,14 @@ namespace Caps
         [Header("Playtest variable")]
         public float transitionTime;
       //  public float verbTime;
-        public int numberBeforeSpeedUp;
+        public int numberBeforSpeedUp;
         //int that will be added on the id to make it appear more offen, they all start with a value of 10
         public int idWeightToAdd;
         public int idInitialWeight;
         [SerializeField] int damagesOnMiniGameLose = 10;
         //barrel
         [Range(1, 90)]
-        public int barrelProbality;
+        public int barrelProbability;
         public int maxBarrelRessources;
         public int minBarrelRessources;
         public int lifeWeight;
@@ -77,7 +77,7 @@ namespace Caps
         public TransitionAnimations transition;
         public Camera transitionCam;
         public AudioSource transitionMusic;
-        private bool cantDoTransition;
+        [HideInInspector] public bool cantDoTransition = true;
         private Transform initalCamTransform;
         public Visual_IslandDescriptionOpening shipOpening;
         public GameObject VcamTarget;
@@ -96,14 +96,28 @@ namespace Caps
         private void Start()
         {
             initalCamTransform = VcamTarget.transform;
+            //set up value from debug
+            numberBeforSpeedUp = DebugToolManager.Instance.ChangeVariableValue("numberBeforSpeedUp");
+            idWeightToAdd = DebugToolManager.Instance.ChangeVariableValue("idWeightToAdd");
+            idInitialWeight = DebugToolManager.Instance.ChangeVariableValue("idInitialWeight");
+            damagesOnMiniGameLose = DebugToolManager.Instance.ChangeVariableValue("damagesOnMiniGameLose");
+            barrelProbability = DebugToolManager.Instance.ChangeVariableValue("barrelProbability");
+            maxBarrelRessources = DebugToolManager.Instance.ChangeVariableValue("maxBarrelRessources");
+            minBarrelRessources = DebugToolManager.Instance.ChangeVariableValue("minBarrelRessources");
+            lifeWeight = DebugToolManager.Instance.ChangeVariableValue("lifeWeight");
+            goldWeight = DebugToolManager.Instance.ChangeVariableValue("goldWeight");
+            foodWeight = DebugToolManager.Instance.ChangeVariableValue("foodWeight");
+            cantDoTransition = true;
         }
+
+       
 
         /// <summary>
         /// lunch a cap, if call within a cap, lunch the next mini game. If cap is already done, lunch CapEnd.
         /// </summary>
         /// <param name="_currentCap"></param>
         /// <returns></returns>
-        public IEnumerator StartMiniGame(Cap _currentCap, Island _currentIsland)
+        public IEnumerator StartMiniGame(Cap _currentCap, Island _currentIsland, Malediction malediction = null)
         {
             cantDoTransition = false;
             currentCap = _currentCap;
@@ -132,6 +146,7 @@ namespace Caps
                     isLure = true;
                 }
                     StartCoroutine(CapEnd());
+                    PlayerMovement.Instance.playerAvatar.transform.position = _currentIsland.transform.position;
                     initalCamTransform = PlayerMovement.Instance.playerAvatar.transform;
                     yield break;
                 }
@@ -140,7 +155,7 @@ namespace Caps
             /* StartCoroutine(FadeManager.Instance.FadeIn(0.15f * 60 / (float)bpm));
              yield return new WaitForSeconds(0.5f * 60 / (float)bpm);*/
             
-            StartCoroutine(PlayMiniGame(transitionCam));
+            StartCoroutine(PlayMiniGame(transitionCam, malediction));
         }
         public IEnumerator StartMiniGame(Cap _currentCap)
         {
@@ -151,21 +166,12 @@ namespace Caps
             {
                 shipOpening.gameObject.SetActive(true);
 
-                StartCoroutine(ZoomCam(shipOpening.openingTime));
+                StartCoroutine(ZoomCam(shipOpening.openingTime*2));
                 transition.DisplayBarrel(_currentCap);
 
                 //if zoom is bugging, look at here
                 yield return new WaitForSeconds(shipOpening.openingTime * 2);
-                if (currentCap.isDone)
-                {
-                    if (isLureActive)
-                    {
-                        isLure = true;
-                    }
-                    StartCoroutine(CapEnd());
-                    initalCamTransform = PlayerMovement.Instance.playerAvatar.transform;
-                    yield break;
-                }
+                
             }
 
             /* StartCoroutine(FadeManager.Instance.FadeIn(0.15f * 60 / (float)bpm));
@@ -174,7 +180,7 @@ namespace Caps
         }
 
 
-        public IEnumerator PlayMiniGame(Camera _transitionCam)
+        public IEnumerator PlayMiniGame(Camera _transitionCam, Malediction malediction = null)
         {
             
             sceneCam.SetActive(true);
@@ -203,16 +209,26 @@ namespace Caps
             //yield return new WaitForSeconds((verbTime-0.25f) * 60 / (float)bpm);
             yield return new WaitForSeconds(transitionMusic.clip.length);
 
+
+            if(malediction != null)
+            {
+                
+                verbeText.text = "Malediction";
+                yield return new WaitForSeconds(malediction.timer * 10 / (float)bpm);
+                verbeText.text = "Malediction " + "     " + malediction.maledictionName;
+                malediction.StartMalediction();
+                yield return new WaitForSeconds(malediction.timer * 50 / (float)bpm);
+            }
             currentAsyncScene.allowSceneActivation = true;
 
             yield return new WaitUntil(() => currentAsyncScene.isDone);
             sceneCam.SetActive(false);
 
             verbePanel.SetActive(false);
-            clock.SetActive(true);
             isLoaded = true;
             Scene scene = SceneManager.GetSceneByBuildIndex(currentCap.chosenMiniGames[currentMiniGame].microGameScene.BuildIndex);
             SceneManager.SetActiveScene(scene);
+            clock.SetActive(true);
             clock.GetComponent<UI.Clock>().timer = 0;
             clock.GetComponent<UI.Clock>().bpm = (float)bpm;
         }
@@ -234,7 +250,7 @@ namespace Caps
         private IEnumerator GlobalTransitionStart(bool win)
         {
             clock.SetActive(false);
-            cantDoTransition = true;
+            
             //little fade
             StartCoroutine(FadeManager.Instance.FadeIn(0.15f * 60 / (float)bpm));
             yield return new WaitForSeconds(0.25f * 60 / (float)bpm);
@@ -274,6 +290,7 @@ namespace Caps
             
             if (win)
             {
+                transition.PlayAnimation((float)bpm, win);
                 SoundManager.Instance.ApplyAudioClip("victoryJingle", transitionMusic, bpm);
                 resultText.text = "You Won!";
                 if (currentCap.hasBarrel[miniGamePassedNumber])
@@ -283,7 +300,7 @@ namespace Caps
             }
             else
             {
-                transition.PlayAnimation((float)bpm, false);
+                transition.PlayAnimation((float)bpm, win);
 
                 if(isLure)
                 {
@@ -309,12 +326,9 @@ namespace Caps
                 yield return new WaitForSeconds(transitionMusic.clip.length);
                 #endregion
 
-             
-
-
                 miniGamePassedNumber++;
                 
-                if (miniGamePassedNumber % numberBeforeSpeedUp == 0 && currentCap.length != miniGamePassedNumber)
+                if (miniGamePassedNumber % numberBeforSpeedUp == 0 && currentCap.length != miniGamePassedNumber)
                 {
                     //play speed up jingle and wait for jingle to finish
                     SoundManager.Instance.ApplyAudioClip("speedUpJingle", transitionMusic, bpm);
@@ -335,7 +349,7 @@ namespace Caps
             
         }
        
-        public void GlobalTransitionEnd()
+        public void GlobalTransitionEnd(Malediction malediction = null)
         {
             if (currentMiniGame == currentCap.chosenMiniGames.Count)
                 currentMiniGame = 0;
@@ -343,8 +357,11 @@ namespace Caps
 
             currentAsyncScene = SceneManager.LoadSceneAsync(currentCap.chosenMiniGames[currentMiniGame].microGameScene.BuildIndex, LoadSceneMode.Additive);
             currentAsyncScene.allowSceneActivation = false;
+            if(currentIsland != null)
+                StartCoroutine(StartMiniGame(currentCap, currentIsland, malediction));
+            else
+                StartCoroutine(StartMiniGame(currentCap));
 
-            StartCoroutine(StartMiniGame(currentCap, currentIsland));
         }
 
         /// <summary>
@@ -408,7 +425,7 @@ namespace Caps
                 {
                     capUI.SetActive(false);
                     macroUI.SetActive(true);
-                    BossLifeManager.Instance.bossUI.gameObject.SetActive(false);
+                    BossLifeManager.Instance.bossUI.gameObject.SetActive(true);
                     PlayerMovement.Instance.ResetFocus();
 
 
@@ -431,7 +448,10 @@ namespace Caps
                     sceneCam.SetActive(true);
                 }
             }
-
+            else
+            {
+                StartCoroutine(UnzoomCam());
+            }
 
 
 
@@ -489,7 +509,7 @@ namespace Caps
                         else
                             island.capList[i].length = (int)_IslandTarget.difficulty + 4 + zoneNumber;
                     }
-                    island.capList[i].ChoseMiniGames(barrelProbality, sorter);
+                    island.capList[i].ChoseMiniGames(barrelProbability, sorter);
                 }
                 
             }
@@ -525,7 +545,7 @@ namespace Caps
 
         private IEnumerator RewardUI()
         {
-            //PlayerInventory.Instance.rewardImage.sprite = PlayerMovement.Instance.playerIsland.reward.sprite;
+            PlayerInventory.Instance.rewardImage.sprite = PlayerMovement.Instance.playerIsland.reward.sprite;
             PlayerInventory.Instance.rewardCanvas.SetActive(true);
 
             yield return new WaitForSeconds(3);
@@ -541,7 +561,7 @@ namespace Caps
             {
                 PlayerMovement.Instance.playerIsland.reward.ApplyPassiveEffect();
                 macroUI.SetActive(true);
-                BossLifeManager.Instance.bossUI.gameObject.SetActive(false);
+                BossLifeManager.Instance.bossUI.gameObject.SetActive(true);
                 capUI.SetActive(false);
                 PlayerMovement.Instance.ResetFocus();
                 StartCoroutine(UnzoomCam());
@@ -551,10 +571,11 @@ namespace Caps
         public IEnumerator ZoomCam(float zoomTime)
         {
             var _position = shipOpening.transform.position + Vector3.left * 13;
-            VcamTarget.transform.DOMove(_position, shipOpening.openingTime * 2).SetEase(Ease.InOutCubic);
-            for (float i = 0; i < zoomTime; i+= 0.01f)
+            VcamTarget.transform.DOMove(_position, shipOpening.openingTime/2).SetEase(Ease.InOutCubic);
+            yield return new WaitForSeconds(zoomTime / 2);
+            for (float i = 0; i < zoomTime/2; i+= 0.01f)
             {
-                cinemachine.m_Lens.OrthographicSize = Mathf.Lerp(400, 72, i/zoomTime);
+                cinemachine.m_Lens.OrthographicSize = Mathf.Lerp(400, 72, i*2/zoomTime);
                 yield return new WaitForSeconds(0.01f);
             }
         }
@@ -569,11 +590,14 @@ namespace Caps
 
         public IEnumerator UnzoomCam()
         {
-
-            VcamTarget.transform.position = shipOpening.transform.position;
+            var _system = EventSystem.current;
+            _system.enabled = false;
+            VcamTarget.transform.position =PlayerMovement.Instance.playerAvatar.transform.position;
             VcamTarget.transform.DOMove(initalCamTransform.position, shipOpening.openingTime * 2).SetEase(Ease.InOutCubic);
             StartCoroutine(ZoomCam(shipOpening.openingTime, "dezoom"));
             yield return new WaitForSeconds(shipOpening.openingTime * 2);
+            _system.enabled = true;
+            cantDoTransition = true;
             shipOpening.Close();
         }
         #endregion

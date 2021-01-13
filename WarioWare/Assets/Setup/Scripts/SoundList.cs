@@ -8,13 +8,19 @@ public class SoundList : ScriptableObject
 {
     [SerializeField] public List<SoundClassic> soundClassic = new List<SoundClassic>();
     [SerializeField] public List<SoundBpm> soundBpms = new List<SoundBpm>();
+    [SerializeField] public List<Music> music = new List<Music>();
 }
 [System.Serializable]
-public class SoundClassic
+public class Music
 {
     public string name = string.Empty;
-    public float volume = 0.5f;
+    public string author = string.Empty;
     public AudioClip clip = default;
+}
+[System.Serializable]
+public class SoundClassic : Music
+{
+    public float volume = 0.5f;
 }
 [System.Serializable]
 public class SoundBpm
@@ -22,6 +28,7 @@ public class SoundBpm
     public List<SoundClassic> sounds = new List<SoundClassic>();
     public List<BPM> bpm = new List<BPM>();
     public string name;
+    public bool foldout;
     public SoundBpm()
     {
         name = "NewSound";

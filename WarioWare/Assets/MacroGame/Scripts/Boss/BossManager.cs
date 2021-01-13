@@ -9,14 +9,12 @@ using Sound;
 using Player;
 using SD_UsualAction;
 using UnityEngine.SceneManagement;
-
+using TMPro;
 
 namespace Boss
 {
     public class BossManager : Singleton<BossManager>
     {
-
-        
         [Header("Transition")]
         public TransitionAnimations transition;
         public Camera transitionCam;
@@ -35,38 +33,49 @@ namespace Boss
         private int bossLifeOnStartOfFight;
         private int phaseBossLife;
         private int phaseNumber = 1;
-        public Malediciton[] maledictionArray;
-        private Malediciton currentMalediction;
+        public Malediction[] maledictionArray;
+        private Malediction currentMalediction;
         public RenderTexture bossTexture;
         public int differentMiniGameNumber =4;
+        public bool isFinalBoss;
 
-        
-        private void Start()
+
+        private void Awake()
         {
             CreateSingleton();
         }
+        private void Start()
+        {
+            //set up value from debug
+            damageToPlayer = DebugToolManager.Instance.ChangeVariableValue("damageToPlayer");
+            damageToBoss = DebugToolManager.Instance.ChangeVariableValue("damageToBoss");
+            differentMiniGameNumber = DebugToolManager.Instance.ChangeVariableValue("differentMiniGameNumber");
+        }
         public IEnumerator StartBoss( )
         {
-            currentMalediction = maledictionArray[0];
+            if(maledictionArray!= null && maledictionArray.Length !=0)
+            currentMalediction = maledictionArray[Random.Range(0,maledictionArray.Length)];
             bossLifeOnStartOfFight = BossLifeManager.currentLife;
             renderText.texture = bossTexture;
             shipOpening.gameObject.SetActive(true);
             StartCoroutine( Manager.Instance.ZoomCam(shipOpening.openingTime));
             yield return new WaitForSeconds(shipOpening.openingTime * 2);
-            StartCoroutine(Manager.Instance.PlayMiniGame(transitionCam));
+            StartCoroutine(Manager.Instance.PlayMiniGame(transitionCam, currentMalediction));
         }
         public IEnumerator TransitionBoss(bool win)
         {
             transitionCam.enabled = true;
+
             if (win)
             {
+                transition.PlayAnimation((float)Manager.Instance.bpm, true);
                 SoundManager.Instance.ApplyAudioClip("victoryJingle", transitionMusic, Manager.Instance.bpm);
                 BossLifeManager.Instance.TakeDamage(damageToBoss,bossLifeOnStartOfFight, true);
                 phaseBossLife += damageToBoss;
             }
             else
             {
-                PlayerManager.Instance.TakeDamage(1);
+                PlayerManager.Instance.TakeDamage(damageToPlayer);
                 transition.PlayAnimation((float)Manager.Instance.bpm, false);
                 SoundManager.Instance.ApplyAudioClip("loseJingle", transitionMusic, Manager.Instance.bpm);
 
@@ -103,9 +112,24 @@ namespace Boss
                 yield return new WaitForSeconds(transitionMusic.clip.length);
 
                 Manager.Instance.bpm = Manager.Instance.bpm.Next();
-                currentMalediction = maledictionArray[phaseNumber-1];
             }
-            Manager.Instance.GlobalTransitionEnd();
+            if (isFinalBoss)
+            {
+                currentMalediction.StopMalediction();
+                var _malediction = maledictionArray[Random.Range(0, maledictionArray.Length)];
+               while (_malediction == currentMalediction)
+                {
+                    _malediction = maledictionArray[Random.Range(0, maledictionArray.Length)];
+                }
+                currentMalediction = _malediction;
+            }
+            else
+            {
+                currentMalediction = null;
+            }
+
+            
+            Manager.Instance.GlobalTransitionEnd(currentMalediction);
             transitionCam.enabled = false;
         }
     }

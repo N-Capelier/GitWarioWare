@@ -3,6 +3,7 @@ using UnityEngine;
 using Rewards;
 using Caps;
 using Player;
+using UnityEngine.EventSystems;
 
 namespace Islands
 {
@@ -34,6 +35,8 @@ namespace Islands
         [SerializeField] [Range(0, 100)] [Tooltip("In percentage")] int commonRewardRandomness;
         [SerializeField] [Range(0, 100)] [Tooltip("In percentage")] int rareRewardRandomness;
 
+        public EventSystem eventSystem = null;
+
         private void Awake()
         {
             CreateSingleton();
@@ -41,6 +44,12 @@ namespace Islands
 
         private void Start()
         {
+            //set up value from debug
+            commonRewardRateWeight = DebugToolManager.Instance.ChangeVariableValue("commonRewardRateWeight");
+            rareRewardRateWeight = DebugToolManager.Instance.ChangeVariableValue("rareRewardRateWeight");
+            epicRewardRateWeight = DebugToolManager.Instance.ChangeVariableValue("epicRewardRateWeight");
+            commonRewardRandomness = DebugToolManager.Instance.ChangeVariableValue("commonRewardRandomness");
+            rareRewardRandomness = DebugToolManager.Instance.ChangeVariableValue("rareRewardRandomness");
             GenerateIslands();
         }
 
@@ -150,6 +159,8 @@ namespace Islands
             Manager.Instance.ResetIDCards();
             Manager.Instance.CapAttribution();
             PlayerMovement.Instance.islands = islands;
+            PlayerMovement.Instance.ClearConnections();
+            PlayerMovement.Instance.GetNeighbors();
         }
 
         private Reward GetRandomReward(Reward[] _rewards)

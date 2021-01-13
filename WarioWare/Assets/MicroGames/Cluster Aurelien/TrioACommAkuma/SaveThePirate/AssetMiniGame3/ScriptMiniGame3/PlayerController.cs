@@ -45,14 +45,28 @@ namespace ACommeAkuma
             public override void Start()
             {
                 base.Start(); //Do not erase this line!
-                
+
+                audioManagerGO = GameObject.Find("AudioManager");
                 playerRb = GetComponent<Rigidbody2D>();
                 rotationDir = 0f;
                 asWin = false;
                 motorGO = transform.GetChild(1).gameObject;
                 vfxAnchor = motorGO.transform.GetChild(0).gameObject;
-                audioManagerGO = GameObject.Find("AudioManager");
-
+                switch (bpm)
+                {
+                    case 60:
+                        audioManagerGO.GetComponent<AudioManagerScript>().PlayMusic60();
+                        break;
+                    case 90:
+                        audioManagerGO.GetComponent<AudioManagerScript>().PlayMusic90();
+                        break;
+                    case 120:
+                        audioManagerGO.GetComponent<AudioManagerScript>().PlayMusic120();
+                        break;
+                    case 140:
+                        audioManagerGO.GetComponent<AudioManagerScript>().PlayMusic140();
+                        break;
+                }
             }
 
             //FixedUpdate is called on a fixed time.
@@ -82,7 +96,7 @@ namespace ACommeAkuma
                     velocityLoss = 1f;
                 }
 
-                else if (Tick >= 8)
+                else if (Tick > 8)
                 {
                     if (asWin)
                     {

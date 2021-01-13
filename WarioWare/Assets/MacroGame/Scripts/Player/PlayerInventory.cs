@@ -6,6 +6,7 @@ using Rewards;
 using Caps;
 using TMPro;
 using Shop;
+using Sound;
 
 namespace Player
 {
@@ -31,10 +32,14 @@ namespace Player
 
         private Reward rewardToAdd;
 
+        private AudioSource audioSource;
+        private bool useItem = false;
+
         private bool isEndCap;
         private void Awake()
         {
             CreateSingleton();
+            audioSource = GetComponent<AudioSource>();
         }
 
         void Start()
@@ -49,6 +54,9 @@ namespace Player
         
         public void Show()
         {
+            SoundManager.Instance.ApplyAudioClip("Clicked", audioSource);
+            audioSource.PlaySecured();
+
             Manager.Instance.macroUI.SetActive(false);
             PlayerManager.Instance.inInventory = true;
 
@@ -78,6 +86,9 @@ namespace Player
         {
             if(rewardToAdd == null)
             {
+                SoundManager.Instance.ApplyAudioClip("Cancel", audioSource);
+                audioSource.PlaySecured();
+
                 inventoryCanvas.SetActive(false);
                 if(!ShopManager.Instance.inShop)
                 {
@@ -103,7 +114,7 @@ namespace Player
             bool _isApplied = item.ApplyActiveEffect();
             if(_isApplied)
             {
-                //destroy item from inventory
+                SearchAndDestroyItem(item.rewardName);
             }
         }
 
@@ -111,10 +122,14 @@ namespace Player
         {
             for(int i = 0; i < stockedRewards.Length; i++)
             {
-                if(stockedRewards[i].rewardName == _itemName)
+                if(stockedRewards[i]!=null)
                 {
-                    //destroy item at index i from inventory
-                    return;
+                    if (stockedRewards[i].rewardName == _itemName)
+                    {
+                        stockedRewards[i] = null;
+                        rewardImages[i].gameObject.SetActive(false);
+                        return;
+                    }
                 }
             }
             throw new System.Exception("Item not in inventory!");
@@ -128,11 +143,6 @@ namespace Player
             rewardToAdd = null;
             rewardToAddImage.gameObject.SetActive(false);
             ShowSelectedSlotInfo(slots[slot]);
-            /*if(item =passive)
-            {
-             apply passive effect
-            }
-            */
         }
 
         public void OverrideInventorySlot(Reward newItem, int slot)
@@ -143,11 +153,6 @@ namespace Player
             rewardImages[slot].sprite = newItem.sprite;
             rewardToAdd = null;
             rewardToAddImage.gameObject.SetActive(false);
-            /*if(item =passive)
-            {
-             apply passive effect
-            }
-            */
         }
 
         public void SlotActivation(Button clickedButton)
@@ -158,12 +163,23 @@ namespace Player
                 {
                     if(stockedRewards[i] == null && rewardToAdd != null)
                     {
+                        SoundManager.Instance.ApplyAudioClip("Clicked", audioSource);
+                        audioSource.PlaySecured();
                         AddToInventory(rewardToAdd, i);
                         break;
                     }
-                    
-                    if(stockedRewards[i] != null && rewardToAdd != null)
+
+                    if (stockedRewards[i] == null && rewardToAdd == null)
                     {
+                        SoundManager.Instance.ApplyAudioClip("Cancel", audioSource);
+                        audioSource.PlaySecured();
+                        break;
+                    }
+
+                    if (stockedRewards[i] != null && rewardToAdd != null)
+                    {
+                        SoundManager.Instance.ApplyAudioClip("Clicked", audioSource);
+                        audioSource.PlaySecured();
                         indexToOverride = i;
                         overrideConfirmationPanel.SetActive(true);
                         noButton.Select();
@@ -174,9 +190,10 @@ namespace Player
                     {
                         if(stockedRewards[i].effect == RewardEffect.Active)
                         {
+                            SoundManager.Instance.ApplyAudioClip("UseItem", audioSource);
+                            audioSource.PlaySecured();
                             UseActiveItem(stockedRewards[i]);
-                            stockedRewards[i] = null;
-                            rewardImages[i].gameObject.SetActive(false);
+                            useItem = true;
                             ShowSelectedSlotInfo(slots[i]);
                             break;
                         }
@@ -194,13 +211,18 @@ namespace Player
 
         public void ShowSelectedSlotInfo(Button selectedSlot)
         {
+            if(!useItem)
+            {
+                SoundManager.Instance.ApplyAudioClip("Selected", audioSource);
+                audioSource.PlaySecured();
+            }
+
             for (int i = 0; i < slots.Length; i++)
             {
                 if(slots[i] == selectedSlot && stockedRewards[i] != null)
                 {
 
-                    //itemDescription.text = stockedRewards[i].GetDescription();
-                    itemDescription.text = stockedRewards[i].name; //--feature testing
+                    itemDescription.text = stockedRewards[i].GetDescription();
                     itemDescriptionContainer.SetActive(true);
                     break;
                 }
@@ -208,7 +230,9 @@ namespace Player
                 {
                     itemDescriptionContainer.SetActive(false);
                 }
-            }   
+            }
+
+            useItem = false;
         }
 
         public void NoOverride()

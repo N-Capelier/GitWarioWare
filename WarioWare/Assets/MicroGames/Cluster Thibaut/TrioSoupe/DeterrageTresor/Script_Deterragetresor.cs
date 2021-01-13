@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Caps;
+using UnityEngine.Audio;
+
 
 namespace Soupe
 {
@@ -27,9 +29,18 @@ namespace Soupe
 
             public GameObject Halo;
 
+            public GameObject WarioMusic;
+            public GameObject SoundMaker;
+            public AudioClip[] musics;
+            
+            public AudioClip[] crounch;
+            public AudioClip Win;
+
             bool gameEnd;
             bool gameWin;
-            
+
+            public AudioMixer Mixer;
+
 
             public int difficulty;          //Variable temporaire qui va gérer la difficulte
 
@@ -58,8 +69,8 @@ namespace Soupe
 
                 InputSigns[inputToPush].SetActive(true);    //Active la signalisation de l'input sur lequel le joueur doit appuier
 
-                
 
+                SetMusic();
                 SetDifficulty();    //Set la difficule du minijeu
             }
 
@@ -152,6 +163,12 @@ namespace Soupe
 
                 mustAppear = true;
 
+
+                AudioSource source = SoundMaker.AddComponent<AudioSource>();
+                source.clip = crounch[Random.Range(0, crounch.Length - 1)];
+                source.outputAudioMixerGroup = Mixer.outputAudioMixerGroup;
+                source.Play();
+
                 if(Chest.position.y < yMaxChestPos && !gameEnd)
                     Chest.DOMoveY((Chest.position.y + ((yMaxChestPos - yBaseChestPos) / (float)inputNumberToReach)), 0.1f); //Fait monter le coffre
 
@@ -196,7 +213,7 @@ namespace Soupe
                     GoldenChest.SetActive(true);
                 }
 
-                yBaseChestPos = Chest.position.y;
+                
 
 
                 switch(currentDifficulty)
@@ -237,6 +254,32 @@ namespace Soupe
                         Debug.LogError("Difficulty not set");
                         break;
                 }
+                yBaseChestPos = Chest.position.y;
+            }
+
+            void SetMusic()
+            {
+                if (bpm == 60)
+                {
+                    WarioMusic.GetComponent<AudioSource>().clip = musics[0];
+                }
+                else if (bpm == 90)
+                {
+                    WarioMusic.GetComponent<AudioSource>().clip = musics[1];
+                }
+                else if (bpm == 120)
+                {
+                    WarioMusic.GetComponent<AudioSource>().clip = musics[2];
+                }
+                else if (bpm == 140)
+                {
+                    WarioMusic.GetComponent<AudioSource>().clip = musics[3];
+                }
+                else
+                {
+                    Debug.LogWarning("BPM not reconized : no music");
+                }
+                WarioMusic.GetComponent<AudioSource>().Play();
             }
 
             //Fonctions d'animation des pelles
@@ -288,9 +331,18 @@ namespace Soupe
 
             IEnumerator WinAnim()
             {
+
+                WarioMusic.GetComponent<AudioSource>().DOFade(0f, 0.5f);
+
+                AudioSource source = SoundMaker.AddComponent<AudioSource>();
+                source.clip = Win;
+                source.outputAudioMixerGroup = Mixer.outputAudioMixerGroup;
+                source.Play();
+
                 Chest.DOMoveY(0f, 0.2f);
                 Chest.DORotate(new Vector3(0f, 0f, 360f), 0.2f, RotateMode.FastBeyond360);
                 Chest.gameObject.GetComponent<SpriteRenderer>().sortingOrder = 10;
+                Chest.GetChild(0).GetComponent<SpriteRenderer>().sortingOrder = 9;
                 yield return new WaitForSeconds(0.2f);
                 Halo.SetActive(true);
                 Halo.transform.DOScale(new Vector3(1, 1, 1), 0.1f);

@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Sound;
+using UnityEngine.EventSystems;
 public class MenuManager : MonoBehaviour
 {
 
@@ -12,13 +13,22 @@ public class MenuManager : MonoBehaviour
     //private bool canLoad;
     private AsyncOperation loading;
     private AudioSource mainMusic;
+    public AudioSource buttonSounds;
 
-    public MenuButton play;
+    public EventTrigger[] buttonEventTriggers;
     private void Start()
     {
         mainMusic = GetComponent<AudioSource>();
         SoundManager.Instance.ApplyAudioClip("Menu", mainMusic);
         mainMusic.PlaySecured();
+
+        for (int i = 0; i < buttonEventTriggers.Length; i++)//link onSelect to all buttons
+        {
+            EventTrigger.Entry entry = new EventTrigger.Entry();
+            entry.eventID = EventTriggerType.Select;
+            entry.callback.AddListener((data) => { OnSelect(); });
+            buttonEventTriggers[i].triggers.Add(entry);
+        }
     }
 
    
@@ -33,24 +43,42 @@ public class MenuManager : MonoBehaviour
         }*/
     }
 
-    public void Play(MenuButton button)
+    private void OnSelect()
     {
-        StartCoroutine(PlayEnumerator(button));
+        SoundManager.Instance.ApplyAudioClip("Selected", buttonSounds);
+        buttonSounds.PlaySecured();
+    }
+    public void Play()
+    {
+        SoundManager.Instance.ApplyAudioClip("NewGame", buttonSounds);
+        EventSystem.current.enabled = false;
+        buttonSounds.PlaySecured();
+        StartCoroutine(PlayEnumerator());
     }
 
-    public void LoadFreeMode(MenuButton button)
+    public void LoadFreeMode()
     {
-        StartCoroutine(LoadFreeModeEnumerator(button));
+        SoundManager.Instance.ApplyAudioClip("Clicked", buttonSounds);
+        buttonSounds.PlaySecured();
+        StartCoroutine(LoadFreeModeEnumerator());
     }
 
-    public void Quit(MenuButton button)
+    public void Quit()
     {
-        StartCoroutine(QuitEnumerator(button));
+        SoundManager.Instance.ApplyAudioClip("Clicked", buttonSounds);
+        buttonSounds.PlaySecured();
+        StartCoroutine(QuitEnumerator());
+    }
+    public void JukeBox()
+    {
+        SoundManager.Instance.ApplyAudioClip("Clicked", buttonSounds);
+        buttonSounds.PlaySecured();
+        StartCoroutine(LoadJukeBoxEnumerator());
     }
 
-    private IEnumerator PlayEnumerator(MenuButton button)
+    private IEnumerator PlayEnumerator()
     {
-        yield return new WaitForSeconds(button.playerInputs.clip.length);
+        yield return new WaitForSeconds(buttonSounds.clip.length);
         loadingScreen.SetActive(true);
         loading = SceneManager.LoadSceneAsync("Zone1");
         loading.allowSceneActivation = false;
@@ -62,14 +90,19 @@ public class MenuManager : MonoBehaviour
         }
         loading.allowSceneActivation = true;
     }
-    public IEnumerator QuitEnumerator(MenuButton button)
+    public IEnumerator QuitEnumerator()
     {
-        yield return new WaitForSeconds(button.playerInputs.clip.length);
+        yield return new WaitForSeconds(buttonSounds.clip.length);
         Application.Quit();
     }
-    public IEnumerator LoadFreeModeEnumerator(MenuButton button)
+    public IEnumerator LoadFreeModeEnumerator()
     {
-        yield return new WaitForSeconds(button.playerInputs.clip.length);
+        yield return new WaitForSeconds(buttonSounds.clip.length);
         SceneManager.LoadScene("FreeMode");
+    }
+    public IEnumerator LoadJukeBoxEnumerator()
+    {
+        yield return new WaitForSeconds(buttonSounds.clip.length);
+        SceneManager.LoadScene("JukeBox");
     }
 }

@@ -18,9 +18,9 @@ MonoBehaviour:
   verbe: SAUVE-LE !
   microGameScene:
     sceneAsset: {fileID: 102900000, guid: 277f6b617c88de84e98a16bbffeebd11, type: 3}
-    required: 1
-    buildIndex: 9
-  inputs: {fileID: 0}
+    required: 0
+    buildIndex: 30
+  inputs: {fileID: 21300000, guid: d7a90d8ec69a29d4e98746e4faf50c31, type: 3}
   currentDifficulty: 0
-  idWeight: 10
+  idWeight: 20
   hasBarrel: 0

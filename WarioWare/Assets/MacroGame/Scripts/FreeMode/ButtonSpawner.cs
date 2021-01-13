@@ -6,6 +6,9 @@ using TMPro;
 using UnityEngine.Events;
 using Caps;
 using Player;
+using Sound;
+using UnityEngine.EventSystems;
+
 namespace FreeMode
 {
     public class ButtonSpawner : MonoBehaviour
@@ -14,17 +17,26 @@ namespace FreeMode
         public GameObject button;
         private List<Button> buttons = new List<Button>();
         public CapsSorter sorter;
+        public Button mainMenuButton;
+        private AudioSource audioSource;
         private bool doOnce;
 
         private void Start()
         {
-                PlayerManager.Instance.UpdatePlayerUI += FakeDelegate;
+            audioSource = GetComponent<AudioSource>();
+
+            PlayerManager.Instance.UpdatePlayerUI += FakeDelegate;
             foreach (var id in sorter.idCards)
             {
                 var _id = Instantiate(button, transform);
                 string idName = id.name;
                 idName = idName.Replace("ID_", "");
                 _id.GetComponentInChildren<TextMeshProUGUI>().text = idName + " de " + id.trio;
+
+                EventTrigger.Entry entry = new EventTrigger.Entry();
+                entry.eventID = EventTriggerType.Select;
+                entry.callback.AddListener((data) => { PlaySelectedSound(); });
+                _id.GetComponent<EventTrigger>().triggers.Add(entry);
 
                 _id.GetComponent<Button>().onClick.AddListener(() => PlayCard(id));
                 id.currentDifficulty = Difficulty.EASY;
@@ -37,6 +49,12 @@ namespace FreeMode
                 }
             }
 
+            EventTrigger.Entry entry_ = new EventTrigger.Entry();
+            entry_.eventID = EventTriggerType.Select;
+            entry_.callback.AddListener((data) => { PlaySelectedSound(); });
+            mainMenuButton.gameObject.GetComponent<EventTrigger>().triggers.Add(entry_);
+
+            mainMenuButton.onClick.AddListener(() => PlayClickedSound());
 
         }
 
@@ -47,7 +65,7 @@ namespace FreeMode
         }
         private void PlayCard(IDCard card)
         {
-           
+
             List<IDCard> idcarList = new List<IDCard>();
 
             for (int i = 0; i < 100; i++)
@@ -57,9 +75,9 @@ namespace FreeMode
 
             Cap cap = new Cap(idcarList);
 
-           StartCoroutine( Manager.Instance.StartMiniGame(cap));
+            StartCoroutine(Manager.Instance.StartMiniGame(cap));
             SetUnSelectable();
-    }
+        }
         private void SetUnSelectable()
         {
             scrollController.quiteButton.gameObject.SetActive(false);
@@ -71,5 +89,17 @@ namespace FreeMode
 
             }
         }
-}
+
+        private void PlayClickedSound()
+        {
+            SoundManager.Instance.ApplyAudioClip("Clicked", audioSource);
+            audioSource.PlaySecured();
+        }
+
+        private void PlaySelectedSound()
+        {
+            SoundManager.Instance.ApplyAudioClip("Selected", audioSource);
+            audioSource.PlaySecured();
+        }
+    }
 }

@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2cda822bfa80074f881e6fe0192b4c9, type: 3}
+  m_Name: ID_LeMusicien
+  m_EditorClassIdentifier: 
+  cluster: 2
+  trio: Fleebos
+  indexEnum: 2
+  verbe: TOURNEZ
+  microGameScene:
+    sceneAsset: {fileID: 102900000, guid: 8f05363fd6691964d858a5a1860cd414, type: 3}
+    required: 0
+    buildIndex: 26
+  inputs: {fileID: 21300000, guid: 337e46b315f673641a6edd221dbfe58b, type: 3}
+  currentDifficulty: 0
+  idWeight: 12
+  hasBarrel: 0

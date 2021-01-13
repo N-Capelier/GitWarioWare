@@ -35,7 +35,7 @@ public class ScrollController : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if (Input.GetButtonDown("B_Button") && quiteButton.gameObject.activeSelf && SceneManager.GetActiveScene().name == "FreeMode")
+        if (Input.GetButtonDown("B_Button") && quiteButton.gameObject.activeSelf && SceneManager.GetActiveScene().name == "FreeMode" || Input.GetButtonDown("B_Button") && SceneManager.GetActiveScene().name == "JukeBox")
         {
             quiteButton.Select();
         }
@@ -77,7 +77,7 @@ public class ScrollController : MonoBehaviour
         if (targetScrollRect.vertical)
         {
             // move the current scroll rect to correct position
-            float selectionPos = -selection.anchoredPosition.y;
+            float selectionPos = -selection.anchoredPosition.y -50;
 
             //float elementHeight = layoutListGroup.sizeDelta.y / layoutListGroup.transform.childCount;
             //float maskHeight = currentCanvas.sizeDelta.y + scrollWindow.sizeDelta.y;
@@ -88,7 +88,8 @@ public class ScrollController : MonoBehaviour
 
             offlimitsValue = listPixelAnchor - selectionPos;
             // move the target scroll rect
-            targetScrollRect.verticalNormalizedPosition += (offlimitsValue / layoutListGroup.sizeDelta.y) * Time.deltaTime * scrollSpeed;
+            if(layoutListGroup.sizeDelta.y != 0)
+                targetScrollRect.verticalNormalizedPosition += (offlimitsValue / layoutListGroup.sizeDelta.y ) * Time.deltaTime * scrollSpeed;
 
             finishedY = Mathf.Abs(offlimitsValue) < 2f;
         }

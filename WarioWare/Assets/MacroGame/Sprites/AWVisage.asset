@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81d13ac4f1c535e48aa77306454ebd28, type: 3}
+  m_Name: AWVisage
+  m_EditorClassIdentifier: 
+  topHair: {fileID: 21300000, guid: 13421d4f2c4d02541b083534ac2600ef, type: 3}
+  botHair: {fileID: 0}
+  leftEye: {fileID: 3661909810951866520, guid: 0ff34cee91527e244bc9cafc48aadaed, type: 3}
+  rightEye: {fileID: -3685967477414192515, guid: 0ff34cee91527e244bc9cafc48aadaed,
+    type: 3}
+  leftEyebrow: {fileID: 0}
+  rightEyebrow: {fileID: 0}
+  mouth: {fileID: 1988768989547737057, guid: 0ff34cee91527e244bc9cafc48aadaed, type: 3}
+  chin: {fileID: 0}
+  ear: {fileID: 0}
+  neck: {fileID: 0}

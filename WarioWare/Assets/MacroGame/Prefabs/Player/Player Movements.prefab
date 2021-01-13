@@ -66,7 +66,7 @@ MonoBehaviour:
   m_InputActionsPerSecond: 10
   m_RepeatDelay: 0.5
   m_ForceModuleActive: 0
-  m_UseMouse: 0
+  m_UseMouse: 1
   m_UseMouseUnfocus: 0
 --- !u!1 &4982864208669383434
 GameObject:
@@ -117,8 +117,11 @@ MonoBehaviour:
   bossIsland: {fileID: 0}
   islands: []
   resourceSprite: {fileID: 21300000, guid: 69e3d4bae3dc2b94ab38838e9e36f85e, type: 3}
-  shopSprite: {fileID: 21300000, guid: 901f772b512b18d4c9df984189bcbbfa, type: 3}
+  shopSprite: {fileID: 21300000, guid: 8cc740aef5352bf40ac0da5943f98e2d, type: 3}
   bossSprite: {fileID: 21300000, guid: 054049776e1179c41a846c0290532e6f, type: 3}
   treasureSprite: {fileID: 21300000, guid: a599cbc8f5097c34497fc33befd9f81f, type: 3}
   rareTreasureSprite: {fileID: 21300000, guid: cefffbc55a8ce7947bb897038a6c6fa1, type: 3}
+  foodPrice: 10
+  damagesWhenNoFood: 10
+  isMoving: 0
   isMainSail: 0

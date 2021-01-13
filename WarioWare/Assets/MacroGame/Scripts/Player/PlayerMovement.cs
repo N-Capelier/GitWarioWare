@@ -4,6 +4,8 @@ using Caps;
 using DG.Tweening;
 using Shop;
 using Rewards;
+using NUnit.Framework;
+using UnityEngine.EventSystems;
 
 namespace Player
 {
@@ -32,6 +34,8 @@ namespace Player
         [SerializeField] int foodPrice = 10;
         [SerializeField] int damagesWhenNoFood = 10;
 
+        [HideInInspector] public bool isMoving = false;
+
         private void Awake()
         {
             CreateSingleton();
@@ -39,12 +43,12 @@ namespace Player
 
         void Start()
         {
-            //Initialize Connections
-            ClearConnections();
-            GetNeighbors();
             playerAvatar.transform.position = playerIsland.anchorPoint.position;
 
             transitionTimer = new Clock();
+            //set up value from debug
+            foodPrice = DebugToolManager.Instance.ChangeVariableValue("foodPrice");
+            damagesWhenNoFood = DebugToolManager.Instance.ChangeVariableValue("damagesWhenNoFood");
         }
 
         private void Update()
@@ -63,7 +67,7 @@ namespace Player
         /// <summary>
         /// Resets all Island UI buttons of the zone to not interactable.
         /// </summary>
-        private void ClearConnections()
+        public void ClearConnections()
         {
             for (int i = 0; i < islands.Length; i++)
             {
@@ -74,14 +78,14 @@ namespace Player
         /// <summary>
         /// Get the player's current island neighbors and set their UI to interactable.
         /// </summary>
-        private void GetNeighbors()
+        public void GetNeighbors()
         {
             playerIsland.button.interactable = true;
             for (int i = 0; i < playerIsland.accessibleNeighbours.Length; i++)
             {
                 playerIsland.accessibleNeighbours[i].button.interactable = true;
             }
-            playerIsland.button.Select();
+            playerIsland.button.Select(); 
         }
 
         [HideInInspector] public bool isMainSail = false;
@@ -92,6 +96,7 @@ namespace Player
         /// <param name="targetIsland">Which island is the player going to.</param>
         public void Move(Island targetIsland)
         {
+            isMoving = true;
             Debug.Log(targetIsland.name);
             Debug.Log(playerIsland.name);
             if(targetIsland == playerIsland && playerIsland.type == IslandType.Shop)
@@ -116,12 +121,12 @@ namespace Player
 
                 if (PlayerManager.Instance.food > 0)
                 {
-                    if(!isMainSail && !_isCapDone)
-                        PlayerManager.Instance.GainFood(foodPrice);
+                    if(!isMainSail )
+                        PlayerManager.Instance.GainFood(-foodPrice);
                 }
                 else
                 {
-                    if(!isMainSail && !_isCapDone)
+                    if(!isMainSail)
                         PlayerManager.Instance.TakeDamage(damagesWhenNoFood);
                 }
 
@@ -133,7 +138,7 @@ namespace Player
                         if (playerIsland.accessibleNeighbours[i] == targetIsland)
                         {
                             //COUPER LES INPUTS DE LA MACRO
-
+                            EventSystem.current.firstSelectedGameObject = targetIsland.gameObject;
                             StartCoroutine(Manager.Instance.StartMiniGame(playerIsland.capList[i], targetIsland));
                             if (playerIsland.capList[i].isDone)
                             {
@@ -146,10 +151,10 @@ namespace Player
                 ClearConnections();
                 GetNeighbors();
 
-                if (_isCapDone)
-                    playerAvatar.transform.position = targetIsland.anchorPoint.position;
-                else
+                if (!_isCapDone)
                     transitionTimer.SetTime(3f);
+
+                isMoving = false;
             }
 
         }
