@@ -112,7 +112,6 @@ namespace Boss
                 yield return new WaitForSeconds(transitionMusic.clip.length);
 
                 Manager.Instance.bpm = Manager.Instance.bpm.Next();
-                currentMalediction = maledictionArray[phaseNumber-1];
             }
             if (isFinalBoss)
             {
