@@ -15,7 +15,7 @@ public class Visual_GouvernailRotation : MonoBehaviour
     public GameObject[] buttons = null;
     public Ease rotType = Ease.Linear;
 
-    private int buttonSelect = 0;
+    public int buttonSelect = 0;
     //Explicit position
     //public float[] rotButton = null;
 
@@ -25,13 +25,25 @@ public class Visual_GouvernailRotation : MonoBehaviour
 
         for (int i = 0; i < buttons.Length; i++)
         {
-            if (selected == buttons[i])
+            if (selected == buttons[i].transform.GetChild(0).gameObject)
             {
                 buttonSelect = i;
-                gouvernail.DORotate(new Vector3(0, 0, (-30 + i * 30)), rotSpeed).SetEase(rotType);
+                gouvernail.DORotate(new Vector3(0, 0, (i * 30)), rotSpeed).SetEase(rotType);
 
                 //Explicit position
                 //gouvernail.DORotate(new Vector3(0, 0, rotButton[i]), 0.3f);
+            }
+        }
+
+        for (int i = 0; i < buttons.Length; i++)
+        {
+            if (i < (buttonSelect - 2))
+            {
+                buttons[i].SetActive(false);
+            }
+            else
+            {
+                buttons[i].SetActive(true);
             }
         }
     }
