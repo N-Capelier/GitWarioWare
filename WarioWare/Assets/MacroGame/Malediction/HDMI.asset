@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: HDMI
   m_EditorClassIdentifier: 
   timer: 4
-  maledictionName: 
-  prefabManager: {fileID: 0}
+  maledictionName: HDMI
+  prefabManager: {fileID: 7295740097096591075, guid: 111283b488232b24a953e1142ed23d66,
+    type: 3}
