@@ -136,7 +136,7 @@ namespace Islands
                         renderer.materials[1].SetInt("bool_Available", 1);
                     }
 
-                    if (EventSystem.current != null && EventSystem.current.enabled)
+                    if (Manager.Instance.eventSystem != null && Manager.Instance.eventSystem.enabled)
                     {
 
                         Island targetIsland = IslandCreator.Instance.eventSystem.currentSelectedGameObject.GetComponent<Island>();
@@ -224,18 +224,23 @@ namespace Islands
         }
         public void OnClick()
         {
-            if (button.interactable)
+            if (button.interactable && this != PlayerMovement.Instance.playerIsland)
+            {
                 SoundManager.Instance.ApplyAudioClip("StartCap", audioSource);
+                Manager.Instance.eventSystem.enabled = false;
+                PlayerMovement.Instance.selectedIsland.islandDescriptionContainer.SetActive(true);
+                PlayerMovement.Instance.Move(this);
+            }
             else
                 SoundManager.Instance.ApplyAudioClip("ClickedImpossible", audioSource);
 
             audioSource.PlaySecured();
-            PlayerMovement.Instance.Move(this);
+            
         }
         public void OnSelect()
         {
-            if (!PlayerMovement.Instance.isMoving)
-            {
+            if (!PlayerMovement.Instance.isMoving)
+            {
                 SoundManager.Instance.ApplyAudioClip("Selected", audioSource);
                 audioSource.PlaySecured();
             }

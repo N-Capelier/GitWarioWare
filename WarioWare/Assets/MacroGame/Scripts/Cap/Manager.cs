@@ -24,6 +24,7 @@ namespace Caps
         {
             CreateSingleton();
             ResetIDCards();
+            eventSystem = EventSystem.current;
         }
 
         #region Variables
@@ -85,7 +86,7 @@ namespace Caps
         [HideInInspector] public bool cantDisplayVerbe;
         [Header("Debug")]
         [SerializeField] bool isDebug = false;
-
+        [HideInInspector] public EventSystem eventSystem;
 
         //events
         //public delegate void MapUIHandler();
@@ -594,13 +595,12 @@ namespace Caps
 
         public IEnumerator UnzoomCam()
         {
-            var _system = EventSystem.current;
-            _system.enabled = false;
+            eventSystem.enabled = false;
             VcamTarget.transform.position =PlayerMovement.Instance.playerAvatar.transform.position;
             VcamTarget.transform.DOMove(initalCamTransform.position, shipOpening.openingTime * 2).SetEase(Ease.InOutCubic);
             StartCoroutine(ZoomCam(shipOpening.openingTime, "dezoom"));
             yield return new WaitForSeconds(shipOpening.openingTime * 2);
-            _system.enabled = true;
+            eventSystem.enabled = true;
             cantDoTransition = true;
             shipOpening.Close();
         }

@@ -18,6 +18,7 @@ namespace Player
         [SerializeField] Island bossIsland;
         
         [HideInInspector] public Island[] islands;
+        [HideInInspector] public Island selectedIsland;
         private Island lastSelectedIsland;
         private GameObject previousDescription;
         Clock transitionTimer;
@@ -138,7 +139,7 @@ namespace Player
                         if (playerIsland.accessibleNeighbours[i] == targetIsland)
                         {
                             //COUPER LES INPUTS DE LA MACRO
-                            EventSystem.current.firstSelectedGameObject = targetIsland.gameObject;
+                            Manager.Instance.eventSystem.firstSelectedGameObject = targetIsland.gameObject;
                             StartCoroutine(Manager.Instance.StartMiniGame(playerIsland.capList[i], targetIsland));
                             if (playerIsland.capList[i].isDone)
                             {
@@ -166,6 +167,7 @@ namespace Player
         /// <param name="targetIsland">Which island is the player selecting.</param>
         public void ShowSelectedIslandInfo(Island targetIsland)
         {
+            selectedIsland = targetIsland;
             //Selection security
             if (targetIsland.button.interactable)
             {
