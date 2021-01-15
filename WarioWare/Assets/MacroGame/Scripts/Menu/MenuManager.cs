@@ -12,13 +12,12 @@ public class MenuManager : MonoBehaviour
     public Slider loadingBar;
     //private bool canLoad;
     private AsyncOperation loading;
-    private AudioSource mainMusic;
+    public AudioSource mainMusic;
     public AudioSource buttonSounds;
 
     public EventTrigger[] buttonEventTriggers;
     private void Start()
     {
-        mainMusic = GetComponent<AudioSource>();
         SoundManager.Instance.ApplyAudioClip("Menu", mainMusic);
         mainMusic.PlaySecured();
 
@@ -78,7 +77,6 @@ public class MenuManager : MonoBehaviour
 
     private IEnumerator PlayEnumerator()
     {
-        yield return new WaitForSeconds(buttonSounds.clip.length);
         loadingScreen.SetActive(true);
         loading = SceneManager.LoadSceneAsync("Zone1");
         loading.allowSceneActivation = false;
@@ -86,7 +84,7 @@ public class MenuManager : MonoBehaviour
         for (float i = 0; i < 1; i+= 0.01f)
         {
             loadingBar.value = i;
-            yield return new WaitForSeconds(0.01f);
+            yield return new WaitForSeconds(buttonSounds.clip.length/100);
         }
         loading.allowSceneActivation = true;
     }
