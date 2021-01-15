@@ -25,7 +25,6 @@ namespace FreeMode
         {
             audioSource = GetComponent<AudioSource>();
 
-            PlayerManager.Instance.UpdatePlayerUI += FakeDelegate;
             foreach (var id in sorter.idCards)
             {
                 var _id = Instantiate(button, transform);

@@ -39,7 +39,7 @@ namespace Boss
         public int differentMiniGameNumber =4;
         public bool isFinalBoss;
 
-
+        private bool displayMalediction;
         private void Awake()
         {
             CreateSingleton();
@@ -60,7 +60,7 @@ namespace Boss
             shipOpening.gameObject.SetActive(true);
             StartCoroutine( Manager.Instance.ZoomCam(shipOpening.openingTime));
             yield return new WaitForSeconds(shipOpening.openingTime * 2);
-            StartCoroutine(Manager.Instance.PlayMiniGame(transitionCam, currentMalediction));
+            StartCoroutine(Manager.Instance.PlayMiniGame(transitionCam, currentMalediction, true));
         }
         public IEnumerator TransitionBoss(bool win)
         {
@@ -77,16 +77,21 @@ namespace Boss
             {
                 PlayerManager.Instance.TakeDamage(damageToPlayer);
                 transition.PlayAnimation((float)Manager.Instance.bpm, false);
-                SoundManager.Instance.ApplyAudioClip("loseJingle", transitionMusic, Manager.Instance.bpm);
 
+                if (PlayerManager.Instance.playerHp > 0)
+                {
+                    transitionMusic.PlaySecured();
+                    SoundManager.Instance.ApplyAudioClip("loseJingle", transitionMusic, Manager.Instance.bpm);
+                    yield return new WaitForSeconds(transitionMusic.clip.length);
+                }
+                else
+                {
+                    yield break;
+
+                }
             }
 
-            if (PlayerManager.Instance.playerHp > 0)
-            {
-                transitionMusic.PlaySecured();
-                yield return new WaitForSeconds(transitionMusic.clip.length);
-            }
-
+            
             if(phaseBossLife>= bossLifeOnStartOfFight *phaseNumber/ 4)
             {
                 phaseNumber++;
@@ -112,24 +117,27 @@ namespace Boss
                 yield return new WaitForSeconds(transitionMusic.clip.length);
 
                 Manager.Instance.bpm = Manager.Instance.bpm.Next();
-            }
-            if (isFinalBoss)
-            {
-                currentMalediction.StopMalediction();
-                var _malediction = maledictionArray[Random.Range(0, maledictionArray.Length)];
-               while (_malediction == currentMalediction)
+                if (isFinalBoss)
                 {
-                    _malediction = maledictionArray[Random.Range(0, maledictionArray.Length)];
+                    displayMalediction = true;
+                    currentMalediction.StopMalediction();
+                    var _malediction = maledictionArray[Random.Range(0, maledictionArray.Length)];
+                    while (_malediction == currentMalediction)
+                    {
+                        _malediction = maledictionArray[Random.Range(0, maledictionArray.Length)];
+                    }
+                    currentMalediction = _malediction;
                 }
-                currentMalediction = _malediction;
+                else
+                {
+                    displayMalediction = false;
+                    currentMalediction = null;
+                }
             }
-            else
-            {
-                currentMalediction = null;
-            }
-
             
-            Manager.Instance.GlobalTransitionEnd(currentMalediction);
+                       
+            Manager.Instance.GlobalTransitionEnd(currentMalediction, displayMalediction);
+            displayMalediction = false;
             transitionCam.enabled = false;
         }
     }

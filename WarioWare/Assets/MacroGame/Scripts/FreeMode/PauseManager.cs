@@ -21,6 +21,7 @@ namespace FreeMode
             {
                 
                 MenuPause.SetActive(true);
+                AudioListener.pause = true;
                 Time.timeScale = 0;
                 UnPauseButton.Select();
             }
@@ -30,13 +31,14 @@ namespace FreeMode
 
         public void UnPause()
         {
+            AudioListener.pause = false;
             Time.timeScale = 1;
             MenuPause.SetActive(false);
         }
 
         public void FreeMode()
         {
-
+            AudioListener.pause = false;
             Time.timeScale = 1;
             Manager.Instance.EndGame();
             PlayerManager.Instance.EndGame();
@@ -44,6 +46,7 @@ namespace FreeMode
         }
         public void Menu()
         {
+            AudioListener.pause = false;
             Time.timeScale = 1;
             PlayerManager.Instance.EndGame();
             Manager.Instance.EndGame();
