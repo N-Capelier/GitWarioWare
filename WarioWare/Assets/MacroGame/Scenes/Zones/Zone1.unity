@@ -354,6 +354,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 43212458}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &70786072 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7104315236535315070, guid: 6bbebc6197c651f4c8ee1b6918b7c5f7,
+    type: 3}
+  m_PrefabInstance: {fileID: 1839512433}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &101465274
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6575,6 +6581,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerManager
       objectReference: {fileID: 0}
+    - target: {fileID: 5975730464407200854, guid: 9a784a7e95199cf47b1f43fb6d7aa90d,
+        type: 3}
+      propertyPath: death
+      value: 
+      objectReference: {fileID: 70786072}
     - target: {fileID: 5975730464407200855, guid: 9a784a7e95199cf47b1f43fb6d7aa90d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7864,6 +7875,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1717028799354508363, guid: 6bbebc6197c651f4c8ee1b6918b7c5f7,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -14.800049
+      objectReference: {fileID: 0}
     - target: {fileID: 2703362669422701556, guid: 6bbebc6197c651f4c8ee1b6918b7c5f7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7973,6 +7989,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PlayerRessourcesUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 3229139738529405051, guid: 6bbebc6197c651f4c8ee1b6918b7c5f7,
+        type: 3}
+      propertyPath: m_Name
+      value: GameOverText
+      objectReference: {fileID: 0}
+    - target: {fileID: 7104315236535315070, guid: 6bbebc6197c651f4c8ee1b6918b7c5f7,
+        type: 3}
+      propertyPath: m_Name
+      value: Death
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6bbebc6197c651f4c8ee1b6918b7c5f7, type: 3}

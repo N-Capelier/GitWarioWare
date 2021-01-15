@@ -289,7 +289,6 @@ namespace Caps
             transitionCam.enabled = true;
 
             StartCoroutine(FadeManager.Instance.FadeOut(0.15f * 60 / (float)bpm));
-            yield return new WaitForSeconds(0.25f * 60 / (float)bpm);
 
             #region resultConsequences
             //transitionMusic.PlayDelayed((transitionTime - 0.5f) * 60 / (float)bpm);
@@ -332,7 +331,7 @@ namespace Caps
             if (SceneManager.GetActiveScene().name != "FreeMode")
             {
                 //check if not dead and proceed
-                if (PlayerManager.Instance.playerHp > 0)
+                if (PlayerManager.Instance.playerHp <= 0)
                 {
                     yield break;
                 }
