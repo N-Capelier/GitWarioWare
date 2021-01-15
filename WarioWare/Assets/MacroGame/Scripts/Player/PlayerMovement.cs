@@ -241,7 +241,7 @@ namespace Player
         /// </summary>
         public void ResetFocus()
         {
-            playerIsland.button.Select();
+            Manager.Instance.eventSystem.SetSelectedGameObject(playerIsland.gameObject);
         }
     }
 }
