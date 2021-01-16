@@ -31,7 +31,7 @@ namespace Player
         [HideInInspector] public bool inInventory = false;
 
         //Rewards
-        [HideInInspector] public bool isSturdy = false;
+        [HideInInspector] public int isSturdy = 0;
         [HideInInspector] public int sturdyHealAmmount = 3;
 
         #endregion
@@ -75,10 +75,10 @@ namespace Player
             {
                 playerHp = 0;
 
-                if (isSturdy)
+                if (isSturdy > 0)
                 {
                     playerHp = sturdyHealAmmount;
-                    isSturdy = false;
+                    isSturdy = 0;
                     PlayerInventory.Instance.SearchAndDestroyItem("Rattrapage");
                 }
                 else

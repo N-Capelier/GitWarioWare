@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using Rewards;
 using Caps;
@@ -20,6 +18,7 @@ namespace Player
         [HideInInspector] public Reward[] stockedRewards;
         public GameObject itemDescriptionContainer;
         public TextMeshProUGUI itemDescription;
+        public TextMeshProUGUI itemName;
 
         [Header("Override Confirmation")]
         public GameObject overrideConfirmationPanel;
@@ -223,6 +222,7 @@ namespace Player
                 {
 
                     itemDescription.text = stockedRewards[i].GetDescription();
+                    itemName.text = stockedRewards[i].rewardName;
                     itemDescriptionContainer.SetActive(true);
                     break;
                 }
@@ -252,4 +252,3 @@ namespace Player
 
     }
 }
-

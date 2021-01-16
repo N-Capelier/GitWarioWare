@@ -13,7 +13,7 @@ namespace Rewards
 
         public override void ApplyPassiveEffect()
         {
-            PlayerMovement.Instance.isMainSail = true;
+            PlayerMovement.Instance.isMainSail++;
         }
 
         public override string GetDescription()
@@ -23,7 +23,7 @@ namespace Rewards
 
         public override void RemovePassiveEffect()
         {
-            PlayerMovement.Instance.isMainSail = false;
+            PlayerMovement.Instance.isMainSail--;
         }
     }
 }

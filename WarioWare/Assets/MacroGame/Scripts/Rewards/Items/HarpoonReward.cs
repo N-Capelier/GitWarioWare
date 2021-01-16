@@ -15,7 +15,7 @@ namespace Rewards
 
         public override void ApplyPassiveEffect()
         {
-            Manager.Instance.bonusBarrels = bonusBarrels;
+            Manager.Instance.bonusBarrels += bonusBarrels;
         }
 
         public override string GetDescription()
@@ -25,7 +25,7 @@ namespace Rewards
 
         public override void RemovePassiveEffect()
         {
-            Manager.Instance.bonusBarrels = 0;
+            Manager.Instance.bonusBarrels -= 0;
         }
     }
 }

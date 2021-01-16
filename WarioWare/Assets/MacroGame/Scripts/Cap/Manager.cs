@@ -19,7 +19,7 @@ using UnityEngine.EventSystems;
 namespace Caps
 {
     public class Manager : Singleton<Manager>
-    {       
+    {
         private void Awake()
         {
             CreateSingleton();
@@ -29,7 +29,7 @@ namespace Caps
         #region Variables
         [Header("Playtest variable")]
         public float transitionTime;
-      //  public float verbTime;
+        //  public float verbTime;
         public int numberBeforSpeedUp;
         //int that will be added on the id to make it appear more offen, they all start with a value of 10
         public int idWeightToAdd;
@@ -45,16 +45,16 @@ namespace Caps
         public int foodWeight;
 
 
-        [Header ("Parameters")]
+        [Header("Parameters")]
         public CapsSorter sorter;
         [HideInInspector] public Island[] allIslands;
         public int zoneNumber;
-       
+
         private int currentMiniGame;
         private Island currentIsland;
         private int miniGamePassedNumber;
         private AsyncOperation currentAsyncScene;
-       [HideInInspector] public int macroSceneIndex;
+        [HideInInspector] public int macroSceneIndex;
         private Cap currentCap;
         [HideInInspector] public bool isLoaded;
         public BPM bpm = BPM.Slow;
@@ -110,7 +110,7 @@ namespace Caps
             cantDoTransition = true;
         }
 
-       
+
 
         /// <summary>
         /// lunch a cap, if call within a cap, lunch the next mini game. If cap is already done, lunch CapEnd.
@@ -126,25 +126,21 @@ namespace Caps
             if (currentAsyncScene == null)
             {
                 BossLifeManager.Instance.bossUI.gameObject.SetActive(false);
-                if(currentIsland.type == IslandType.Boss)
+                if (currentIsland.type == IslandType.Boss)
                 {
                     StartCoroutine(BossManager.Instance.StartBoss());
                     yield break;
                 }
 
                 shipOpening.gameObject.SetActive(true);
-                
+
                 StartCoroutine(ZoomCam(shipOpening.openingTime));
                 transition.DisplayBarrel(_currentCap);
 
                 //if zoom is bugging, look at here
-                yield return new WaitForSeconds(shipOpening.openingTime*2);
+                yield return new WaitForSeconds(shipOpening.openingTime * 2);
                 if (currentCap.isDone)
                 {
-                if(isLureActive)
-                {
-                    isLure = true;
-                }
                     StartCoroutine(CapEnd());
                     PlayerMovement.Instance.playerAvatar.transform.position = _currentIsland.transform.position;
                     initalCamTransform = PlayerMovement.Instance.playerAvatar.transform;
@@ -154,7 +150,11 @@ namespace Caps
 
             /* StartCoroutine(FadeManager.Instance.FadeIn(0.15f * 60 / (float)bpm));
              yield return new WaitForSeconds(0.5f * 60 / (float)bpm);*/
-            
+
+            if(isLureActive > 0)
+            {
+                isLure = true;
+            }
             StartCoroutine(PlayMiniGame(transitionCam, malediction));
         }
         public IEnumerator StartMiniGame(Cap _currentCap)
@@ -166,23 +166,28 @@ namespace Caps
             {
                 shipOpening.gameObject.SetActive(true);
 
-                StartCoroutine(ZoomCam(shipOpening.openingTime*2));
+                StartCoroutine(ZoomCam(shipOpening.openingTime * 2));
                 transition.DisplayBarrel(_currentCap);
 
                 //if zoom is bugging, look at here
                 yield return new WaitForSeconds(shipOpening.openingTime * 2);
-                
+
             }
 
             /* StartCoroutine(FadeManager.Instance.FadeIn(0.15f * 60 / (float)bpm));
              yield return new WaitForSeconds(0.5f * 60 / (float)bpm);*/
+
+            if (isLureActive > 0)
+            {
+                isLure = true;
+            }
             StartCoroutine(PlayMiniGame(transitionCam));
         }
 
 
         public IEnumerator PlayMiniGame(Camera _transitionCam, Malediction malediction = null)
         {
-            
+
             sceneCam.SetActive(true);
             _transitionCam.enabled = false;
             capUI.SetActive(true);
@@ -210,9 +215,9 @@ namespace Caps
             yield return new WaitForSeconds(transitionMusic.clip.length);
 
 
-            if(malediction != null)
+            if (malediction != null)
             {
-                
+
                 verbeText.text = "Malediction";
                 yield return new WaitForSeconds(malediction.timer * 10 / (float)bpm);
                 verbeText.text = "Malediction " + "     " + malediction.maledictionName;
@@ -245,12 +250,10 @@ namespace Caps
             }
         }
 
-        [HideInInspector] public bool isLureActive = false;
-        [HideInInspector] public bool isLure = false;
         private IEnumerator GlobalTransitionStart(bool win)
         {
             clock.SetActive(false);
-            
+
             //little fade
             StartCoroutine(FadeManager.Instance.FadeIn(0.15f * 60 / (float)bpm));
             yield return new WaitForSeconds(0.25f * 60 / (float)bpm);
@@ -262,8 +265,8 @@ namespace Caps
             currentMiniGame++;
 
             isLoaded = false;
-           
-            if (currentIsland!=null  &&currentIsland.type == IslandType.Boss) 
+
+            if (currentIsland != null && currentIsland.type == IslandType.Boss)
             {
                 StartCoroutine(BossManager.Instance.TransitionBoss(win));
             }
@@ -273,13 +276,16 @@ namespace Caps
             }
         }
 
+        [HideInInspector] public int isLureActive = 0;
+        [HideInInspector] public bool isLure = false;
+
         /// <summary>
         /// make the transition within a cap
         /// </summary>
         /// <returns></returns>
         private IEnumerator Transition(bool win)
         {
-            transition.MoveShip(currentCap, miniGamePassedNumber, transitionMusic.clip.length*3/4);
+            transition.MoveShip(currentCap, miniGamePassedNumber, transitionMusic.clip.length * 3 / 4);
             transitionCam.enabled = true;
 
             StartCoroutine(FadeManager.Instance.FadeOut(0.15f * 60 / (float)bpm));
@@ -287,7 +293,7 @@ namespace Caps
 
             #region resultConsequences
             //transitionMusic.PlayDelayed((transitionTime - 0.5f) * 60 / (float)bpm);
-            
+
             if (win)
             {
                 transition.PlayAnimation((float)bpm, win);
@@ -302,7 +308,7 @@ namespace Caps
             {
                 transition.PlayAnimation((float)bpm, win);
 
-                if(isLure)
+                if (isLure)
                 {
                     isLure = false;
                 }
@@ -319,7 +325,7 @@ namespace Caps
             }
 
             //check if not dead and proceed
-            if (PlayerManager.Instance.playerHp > 0) 
+            if (PlayerManager.Instance.playerHp > 0)
             {
                 //play victory/lose jingle and wait for jingle to finish
                 transitionMusic.PlaySecured();
@@ -327,7 +333,7 @@ namespace Caps
                 #endregion
 
                 miniGamePassedNumber++;
-                
+
                 if (miniGamePassedNumber % numberBeforSpeedUp == 0 && currentCap.length != miniGamePassedNumber)
                 {
                     //play speed up jingle and wait for jingle to finish
@@ -340,15 +346,15 @@ namespace Caps
                 }
                 if ((currentCap.length == miniGamePassedNumber) || (isDebug && Input.GetKey(KeyCode.RightArrow)))
                 {
-                    StartCoroutine( CapEnd());
+                    StartCoroutine(CapEnd());
                     yield break;
                 }
                 GlobalTransitionEnd();
-            }         
+            }
 
-            
+
         }
-       
+
         public void GlobalTransitionEnd(Malediction malediction = null)
         {
             if (currentMiniGame == currentCap.chosenMiniGames.Count)
@@ -357,7 +363,7 @@ namespace Caps
 
             currentAsyncScene = SceneManager.LoadSceneAsync(currentCap.chosenMiniGames[currentMiniGame].microGameScene.BuildIndex, LoadSceneMode.Additive);
             currentAsyncScene.allowSceneActivation = false;
-            if(currentIsland != null)
+            if (currentIsland != null)
                 StartCoroutine(StartMiniGame(currentCap, currentIsland, malediction));
             else
                 StartCoroutine(StartMiniGame(currentCap));
@@ -396,7 +402,7 @@ namespace Caps
             var _islandToGo = _island.accessibleNeighbours[_index];
             for (int i = 0; i < _islandToGo.accessibleNeighbours.Length; i++)
             {
-                if(_islandToGo.accessibleNeighbours[i] == _island)
+                if (_islandToGo.accessibleNeighbours[i] == _island)
                 {
                     _islandToGo.capList[i].isDone = true;
                 }
@@ -421,7 +427,7 @@ namespace Caps
             //reward attribution
             if (_giveReward)
             {
-                if(PlayerMovement.Instance.playerIsland.type == IslandType.Shop)
+                if (PlayerMovement.Instance.playerIsland.type == IslandType.Shop)
                 {
                     capUI.SetActive(false);
                     macroUI.SetActive(true);
@@ -464,11 +470,11 @@ namespace Caps
         public void ResetIDCards()
         {
             foreach (IDCard idCard in sorter.idCards)
-                {
-                    idCard.currentDifficulty = 0;
-                    idCard.idWeight = idInitialWeight;
-                }
-            
+            {
+                idCard.currentDifficulty = 0;
+                idCard.idWeight = idInitialWeight;
+            }
+
         }
 
         /// <summary>
@@ -476,11 +482,11 @@ namespace Caps
         /// </summary>
         public void CapAttribution()
         {
-            if(zoneNumber <=2)
+            if (zoneNumber <= 2)
             {
-                
+
                 sorter.idCardsNotPlayed = sorter.idCards;
-                
+
             }
             else
             {
@@ -498,9 +504,9 @@ namespace Caps
                     island.capList.Add(new Cap());
                     island.capList[i].capWeight = idWeightToAdd;
                     Island _IslandTarget = island.accessibleNeighbours[i];
-                    if(_IslandTarget.type == IslandType.Boss)
+                    if (_IslandTarget.type == IslandType.Boss)
                     {
-                        island.capList[i].length = BossManager.Instance.differentMiniGameNumber*2;
+                        island.capList[i].length = BossManager.Instance.differentMiniGameNumber * 2;
                     }
                     else
                     {
@@ -511,10 +517,10 @@ namespace Caps
                     }
                     island.capList[i].ChoseMiniGames(barrelProbability, sorter);
                 }
-                
+
             }
             transition.DisplayBarrel(allIslands[0].capList[0]);
-            transition.MoveShip(allIslands[0].capList[0], 3,0);
+            transition.MoveShip(allIslands[0].capList[0], 3, 0);
 
         }
 
@@ -571,11 +577,11 @@ namespace Caps
         public IEnumerator ZoomCam(float zoomTime)
         {
             var _position = shipOpening.transform.position + Vector3.left * 13;
-            VcamTarget.transform.DOMove(_position, shipOpening.openingTime/2).SetEase(Ease.InOutCubic);
+            VcamTarget.transform.DOMove(_position, shipOpening.openingTime / 2).SetEase(Ease.InOutCubic);
             yield return new WaitForSeconds(zoomTime / 2);
-            for (float i = 0; i < zoomTime/2; i+= 0.01f)
+            for (float i = 0; i < zoomTime / 2; i += 0.01f)
             {
-                cinemachine.m_Lens.OrthographicSize = Mathf.Lerp(400, 72, i*2/zoomTime);
+                cinemachine.m_Lens.OrthographicSize = Mathf.Lerp(400, 72, i * 2 / zoomTime);
                 yield return new WaitForSeconds(0.01f);
             }
         }
@@ -592,7 +598,7 @@ namespace Caps
         {
             var _system = EventSystem.current;
             _system.enabled = false;
-            VcamTarget.transform.position =PlayerMovement.Instance.playerAvatar.transform.position;
+            VcamTarget.transform.position = PlayerMovement.Instance.playerAvatar.transform.position;
             VcamTarget.transform.DOMove(initalCamTransform.position, shipOpening.openingTime * 2).SetEase(Ease.InOutCubic);
             StartCoroutine(ZoomCam(shipOpening.openingTime, "dezoom"));
             yield return new WaitForSeconds(shipOpening.openingTime * 2);

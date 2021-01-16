@@ -88,7 +88,7 @@ namespace Player
             playerIsland.button.Select(); 
         }
 
-        [HideInInspector] public bool isMainSail = false;
+        [HideInInspector] public int isMainSail = 0;
 
         /// <summary>
         /// Move the player from his current island to the target island. Moving costs 1 food, if 0 food then it costs 1 hp.
@@ -121,12 +121,12 @@ namespace Player
 
                 if (PlayerManager.Instance.food > 0)
                 {
-                    if(!isMainSail )
+                    if(!(isMainSail > 0 && _isCapDone))
                         PlayerManager.Instance.GainFood(-foodPrice);
                 }
                 else
                 {
-                    if(!isMainSail)
+                    if (!(isMainSail > 0 && _isCapDone))
                         PlayerManager.Instance.TakeDamage(damagesWhenNoFood);
                 }
 
