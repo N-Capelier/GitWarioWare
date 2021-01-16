@@ -185,7 +185,7 @@ namespace Player
 
                 if(targetIsland.reward != null)
                 {
-                    switch (targetIsland.reward.type)
+                    /*switch (targetIsland.reward.type)
                     {
                         case RewardType.Resource:
                             targetIsland.islandRewardImage.sprite = targetIsland.reward.sprite;
@@ -198,6 +198,21 @@ namespace Player
                         case RewardType.CursedItem:
                             targetIsland.islandRewardImage.sprite = rareTreasureSprite;
                             targetIsland.rewardDescription.text = "Récupérez un coffre maudit!";
+                            break;
+                    }*/
+                    switch(targetIsland.difficulty)
+                    {
+                        case IslandDifficulty.Easy:
+                            targetIsland.islandRewardImage.sprite = targetIsland.reward.sprite;
+                            targetIsland.rewardDescription.text = "Gagnez quelques ressources !";
+                            break;
+                        case IslandDifficulty.Medium:
+                            targetIsland.islandRewardImage.sprite = targetIsland.reward.sprite;
+                            targetIsland.rewardDescription.text = "Gagnez beaucoup de ressources !";
+                            break;
+                        case IslandDifficulty.Hard:
+                            targetIsland.islandRewardImage.sprite = treasureSprite;
+                            targetIsland.rewardDescription.text = "Découvrez un coffre au trésor !";
                             break;
                     }
                 }
