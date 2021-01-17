@@ -59,8 +59,10 @@ namespace Caps
         private Cap currentCap;
         [HideInInspector] public bool isLoaded;
         public BPM bpm = BPM.Slow;
-
+        
         public Difficulty currentDifficulty;
+        public bool isNormalMode;
+
 
         [Header("UI Management")]
         public GameObject panel;
@@ -143,10 +145,10 @@ namespace Caps
                 yield return new WaitForSeconds(shipOpening.openingTime * 2);
                 if (currentCap.isDone)
                 {
-                    if (isLureActive)
+                  /*  if (isLureActive)
                     {
                         isLure = true;
-                    }
+                    }*/
                     PlayerMovement.Instance.playerAvatar.transform.position = _currentIsland.transform.position;
                     initalCamTransform = PlayerMovement.Instance.playerAvatar.transform;
                     StartCoroutine(CapEnd());
@@ -304,7 +306,7 @@ namespace Caps
                 transition.PlayAnimation((float)bpm, win);
                 SoundManager.Instance.ApplyAudioClip("victoryJingle", transitionMusic, bpm);
                 resultText.text = "You Won!";
-                if (currentCap.hasBarrel[miniGamePassedNumber] && SceneManager.GetActiveScene().name != "FreeMode")
+                if (currentCap.hasBarrel[miniGamePassedNumber] && isNormalMode)
                 {
                     BarrelRessourcesContent();
                 }
@@ -312,7 +314,7 @@ namespace Caps
             else
             {
                 transition.PlayAnimation((float)bpm, win);
-                if (SceneManager.GetActiveScene().name != "FreeMode")
+                if (isNormalMode)
                 {
                     if (isLure)
                     {
@@ -334,7 +336,7 @@ namespace Caps
 
                 SoundManager.Instance.ApplyAudioClip("loseJingle", transitionMusic, bpm);
             }
-            if (SceneManager.GetActiveScene().name != "FreeMode")
+            if (isNormalMode)
             {
                 //check if not dead and proceed
                 if (PlayerManager.Instance.playerHp <= 0)
