@@ -113,8 +113,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hdmiPanel: {fileID: 7295740097512090904}
-  curseLifeTime: 30
-  flickerRate: 20
+  curseLifeTime: 1000
+  flickerRate: 1300
 --- !u!1 &7295740097512090904
 GameObject:
   m_ObjectHideFlags: 0

@@ -225,11 +225,16 @@ namespace Caps
 
             }
             if (cantDisplayVerbe)
-                verbeText.text = "********";
-            else
-                verbeText.text = currentCap.chosenMiniGames[currentMiniGame].verbe;
+            {
 
-            inputImage.sprite = currentCap.chosenMiniGames[currentMiniGame].inputs;
+                verbeText.text = "********";
+            }
+            else
+            {
+                inputImage.sprite = currentCap.chosenMiniGames[currentMiniGame].inputs;
+                verbeText.text = currentCap.chosenMiniGames[currentMiniGame].verbe;
+            }
+
             idName.text = currentCap.chosenMiniGames[currentMiniGame].name;
 
             //yield return new WaitForSeconds((verbTime-0.25f) * 60 / (float)bpm);
