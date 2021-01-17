@@ -5,6 +5,7 @@ using Cinemachine;
 using UnityEngine.EventSystems;
 using Player;
 using Caps;
+
 namespace UI
 {
     public class UICameraController : MonoBehaviour
@@ -25,9 +26,9 @@ namespace UI
         {
             horizontalMove = Input.GetAxis("Right_Joystick_X");
             verticalMove = Input.GetAxis("Right_Joystick_Y");
-            if (!PlayerInventory.Instance.inventoryCanvas.activeSelf && Manager.Instance.cantDoTransition && Manager.Instance.eventSystem !=null && Manager.Instance.eventSystem.enabled)
+            if (!PlayerInventory.Instance.inventoryCanvas.activeSelf && Manager.Instance.cantDoTransition && EventSystem.current != null && EventSystem.current.enabled)
             {
-                    if (Mathf.Abs(Input.GetAxis("Left_Joystick_X")) > joystickDeadZone || Mathf.Abs(Input.GetAxis("Left_Joystick_Y")) > joystickDeadZone || !IsInsideMap())
+                if (Mathf.Abs(Input.GetAxis("Left_Joystick_X")) > joystickDeadZone || Mathf.Abs(Input.GetAxis("Left_Joystick_Y")) > joystickDeadZone || !IsInsideMap())
                 {
 
                     targetTransform.position = Manager.Instance.eventSystem.currentSelectedGameObject.transform.position;
@@ -36,7 +37,7 @@ namespace UI
 
                 if (Mathf.Abs(horizontalMove) < joystickDeadZone && Mathf.Abs(verticalMove) < joystickDeadZone)
                 {
-                    targetTransform.position = Manager.Instance.eventSystem.currentSelectedGameObject.transform.position;
+                    targetTransform.position = EventSystem.current.currentSelectedGameObject.transform.position;
                 }
                 else
                 {

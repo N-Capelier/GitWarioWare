@@ -22,7 +22,11 @@ namespace Islands
 
         [Space]
 
-        [SerializeField] public Reward[] gameRewards;
+        public Reward[] gameRewards;
+
+        public Reward[] islandRewards;
+
+        public Reward[] treasureItems;
 
         [Header("Procedural Generation")]
 
@@ -78,18 +82,18 @@ namespace Islands
             List<Reward> _rareRewards = new List<Reward>();
             List<Reward> _epicRewards = new List<Reward>();
 
-            for (int i = 0; i < gameRewards.Length; i++)
+            for (int i = 0; i < islandRewards.Length; i++)
             {
-                switch (gameRewards[i].rarity)
+                switch (islandRewards[i].rarity)
                 {
                     case RewardRarity.Common:
-                        _commonRewards.Add(gameRewards[i]);
+                        _commonRewards.Add(islandRewards[i]);
                         break;
                     case RewardRarity.Rare:
-                        _rareRewards.Add(gameRewards[i]);
+                        _rareRewards.Add(islandRewards[i]);
                         break;
                     case RewardRarity.Epic:
-                        _epicRewards.Add(gameRewards[i]);
+                        _epicRewards.Add(islandRewards[i]);
                         break;
                     default:
                         break;

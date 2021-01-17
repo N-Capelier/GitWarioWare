@@ -15,7 +15,7 @@ namespace Rewards
 
         public override void ApplyPassiveEffect()
         {
-            Manager.Instance.isLureActive = true;
+            Manager.Instance.isLureActive++;
             Manager.Instance.isLure = true;
         }
 
@@ -26,7 +26,7 @@ namespace Rewards
 
         public override void RemovePassiveEffect()
         {
-            Manager.Instance.isLureActive = false;
+            Manager.Instance.isLureActive--;
             Manager.Instance.isLure = false;
         }
     }

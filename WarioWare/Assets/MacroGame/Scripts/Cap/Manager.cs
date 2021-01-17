@@ -178,6 +178,11 @@ namespace Caps
 
             /* StartCoroutine(FadeManager.Instance.FadeIn(0.15f * 60 / (float)bpm));
              yield return new WaitForSeconds(0.5f * 60 / (float)bpm);*/
+
+            if (isLureActive > 0)
+            {
+                isLure = true;
+            }
             StartCoroutine(PlayMiniGame(transitionCam));
         }
 
@@ -251,8 +256,6 @@ namespace Caps
             }
         }
 
-        [HideInInspector] public bool isLureActive = false;
-        [HideInInspector] public bool isLure = false;
         private IEnumerator GlobalTransitionStart(bool win)
         {
             clock.SetActive(false);
@@ -278,6 +281,9 @@ namespace Caps
                 StartCoroutine(Transition(win));
             }
         }
+
+        [HideInInspector] public int isLureActive = 0;
+        [HideInInspector] public bool isLure = false;
 
         /// <summary>
         /// make the transition within a cap
