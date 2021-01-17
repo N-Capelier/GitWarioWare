@@ -9,10 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cbc43939e1a546848a4b0cb76ad6fa7d, type: 3}
-  m_Name: HDMI
+  m_Script: {fileID: 11500000, guid: 6d41a21802e92364188aca046a786a96, type: 3}
+  m_Name: Silence
   m_EditorClassIdentifier: 
   timer: 4
-  maledictionName: HDMI
-  prefabManager: {fileID: 7295740097096591075, guid: 111283b488232b24a953e1142ed23d66,
-    type: 3}
+  maledictionName: Silence
+  prefabManager: {fileID: 0}

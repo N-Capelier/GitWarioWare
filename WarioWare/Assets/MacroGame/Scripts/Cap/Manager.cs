@@ -24,6 +24,7 @@ namespace Caps
         {
             CreateSingleton();
             ResetIDCards();
+            eventSystem = EventSystem.current;
         }
 
         #region Variables
@@ -82,9 +83,10 @@ namespace Caps
         public Visual_IslandDescriptionOpening shipOpening;
         public GameObject VcamTarget;
         public CinemachineVirtualCamera cinemachine;
+        [HideInInspector] public bool cantDisplayVerbe;
         [Header("Debug")]
         [SerializeField] bool isDebug = false;
-
+        [HideInInspector] public EventSystem eventSystem;
 
         //events
         //public delegate void MapUIHandler();
@@ -145,9 +147,9 @@ namespace Caps
                 {
                     isLure = true;
                 }
-                    StartCoroutine(CapEnd());
                     PlayerMovement.Instance.playerAvatar.transform.position = _currentIsland.transform.position;
                     initalCamTransform = PlayerMovement.Instance.playerAvatar.transform;
+                    StartCoroutine(CapEnd());
                     yield break;
                 }
             }
@@ -189,6 +191,16 @@ namespace Caps
             macroUI.SetActive(false);
             panel.SetActive(false);
             verbePanel.SetActive(true);
+
+            if (malediction != null)
+            {
+                verbeText.text = "Malediction";
+                yield return new WaitForSeconds(malediction.timer * 10 / (float)bpm);
+                verbeText.text = "Malediction " + "     " + malediction.maledictionName;
+                malediction.StartMalediction();
+                yield return new WaitForSeconds(malediction.timer * 50 / (float)bpm);
+            }
+
             FadeManager.Instance.NoPanel();
             SoundManager.Instance.ApplyAudioClip("verbeJingle", transitionMusic, bpm);
             transitionMusic.PlaySecured();
@@ -201,8 +213,11 @@ namespace Caps
                 macroSceneIndex = SceneManager.GetActiveScene().buildIndex;
 
             }
+            if (cantDisplayVerbe)
+                verbeText.text = "********";
+            else
+                verbeText.text = currentCap.chosenMiniGames[currentMiniGame].verbe;
 
-            verbeText.text = currentCap.chosenMiniGames[currentMiniGame].verbe;
             inputImage.sprite = currentCap.chosenMiniGames[currentMiniGame].inputs;
             idName.text = currentCap.chosenMiniGames[currentMiniGame].name;
 
@@ -210,17 +225,7 @@ namespace Caps
             yield return new WaitForSeconds(transitionMusic.clip.length);
 
 
-            if(malediction != null)
-            {
-                
-                verbeText.text = "Malediction";
-                yield return new WaitForSeconds(malediction.timer * 10 / (float)bpm);
-                verbeText.text = "Malediction " + "     " + malediction.maledictionName;
-                malediction.StartMalediction();
-                yield return new WaitForSeconds(malediction.timer * 50 / (float)bpm);
-            }
             currentAsyncScene.allowSceneActivation = true;
-
             yield return new WaitUntil(() => currentAsyncScene.isDone);
             sceneCam.SetActive(false);
 
@@ -590,13 +595,12 @@ namespace Caps
 
         public IEnumerator UnzoomCam()
         {
-            var _system = EventSystem.current;
-            _system.enabled = false;
+            eventSystem.enabled = false;
             VcamTarget.transform.position =PlayerMovement.Instance.playerAvatar.transform.position;
             VcamTarget.transform.DOMove(initalCamTransform.position, shipOpening.openingTime * 2).SetEase(Ease.InOutCubic);
             StartCoroutine(ZoomCam(shipOpening.openingTime, "dezoom"));
             yield return new WaitForSeconds(shipOpening.openingTime * 2);
-            _system.enabled = true;
+            eventSystem.enabled = true;
             cantDoTransition = true;
             shipOpening.Close();
         }

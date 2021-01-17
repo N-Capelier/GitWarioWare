@@ -36,6 +36,7 @@ namespace Player
         private bool useItem = false;
 
         private bool isEndCap;
+        [HideInInspector] public bool fromInventory;
         private void Awake()
         {
             CreateSingleton();
@@ -86,6 +87,7 @@ namespace Player
         {
             if(rewardToAdd == null)
             {
+                fromInventory = true;
                 SoundManager.Instance.ApplyAudioClip("Cancel", audioSource);
                 audioSource.PlaySecured();
 
