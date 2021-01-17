@@ -3,7 +3,7 @@ using DG.Tweening;
 
 public class Visual_BoatSideViewUI : MonoBehaviour
 {
-    private RectTransform boat;
+    private Transform boat;
     public float timeBPM = 0.3f;
     private bool left = false;
     public Ease rotType;

@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ShadMat-SeaTopView
-  m_Shader: {fileID: -6465566751694194690, guid: 2061f048ff64eda41a505af5b1ffbacc,
+  m_Name: Shader Graphs_TopSea-Zone2
+  m_Shader: {fileID: -6465566751694194690, guid: e6be2fce7a0bd564ca4be652058b5ff1,
     type: 3}
   m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
   m_LightmapFlags: 4
@@ -20,13 +20,16 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - Texture2D_B45DC717:
+        m_Texture: {fileID: 2800000, guid: f5b3f24a30c06cf4882dbc360eee82a3, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: 0633912121d68b148baf3679712407d5, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _Texture2DAsset_53B1F6AE_Out_0:
-        m_Texture: {fileID: 2800000, guid: 0633912121d68b148baf3679712407d5, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats: []
+    m_Floats:
+    - Vector1_1B316688: 0.01
+    - Vector1_8C0A8663: 0.27
+    - Vector1_FB70F08C: 0.21
     m_Colors: []

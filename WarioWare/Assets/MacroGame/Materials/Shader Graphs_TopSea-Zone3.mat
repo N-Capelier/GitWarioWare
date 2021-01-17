@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Shader Graphs_CartoonSeaTopViewDistField
+  m_Name: Shader Graphs_TopSea-Zone3
   m_Shader: {fileID: -6465566751694194690, guid: e6be2fce7a0bd564ca4be652058b5ff1,
     type: 3}
   m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
@@ -21,7 +21,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - Texture2D_B45DC717:
-        m_Texture: {fileID: 2800000, guid: 867744368dad99c40b9bb061bd711300, type: 3}
+        m_Texture: {fileID: 2800000, guid: bdeabf050e60e444887654924c3845cc, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
