@@ -7,10 +7,10 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Shader Graphs_CartoonSeaTopViewDistField
-  m_Shader: {fileID: -6465566751694194690, guid: e6be2fce7a0bd564ca4be652058b5ff1,
+  m_Name: ShadMat_UI_FrontSea
+  m_Shader: {fileID: -6465566751694194690, guid: d1767ff116b4e63428f45e5c9c74ddb0,
     type: 3}
-  m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
+  m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -20,16 +20,21 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - Texture2D_B45DC717:
-        m_Texture: {fileID: 2800000, guid: 867744368dad99c40b9bb061bd711300, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: 0633912121d68b148baf3679712407d5, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_1B316688: 0.01
-    - Vector1_8C0A8663: 0.27
-    - Vector1_FB70F08C: 0.21
-    m_Colors: []
+    - Vector1_2955E56D: 0.005
+    - Vector1_475E2A6A: 1
+    - Vector1_6A50461D: 2
+    - _BPM: 60
+    - _OffSet: 0
+    - _ShaderHeight: 0.11
+    - _WaveQuantity: 4
+    - _WaveSize: 1
+    - _WaveSpeed: 1
+    m_Colors:
+    - Color_2FA990F3: {r: 0.8274511, g: 0.9058824, b: 0.8705883, a: 1}
+    - _WaveColor: {r: 0.15, g: 0.42584744, b: 0.5, a: 1}
+    - _WaveColorProfond: {r: 0.19215685, g: 0.38431373, b: 0.47450978, a: 1}

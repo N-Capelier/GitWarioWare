@@ -11749,7 +11749,7 @@ GameObject:
   - component: {fileID: 456493445}
   - component: {fileID: 456493446}
   m_Layer: 0
-  m_Name: BackGround
+  m_Name: Fond
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13661,6 +13661,7 @@ MonoBehaviour:
   playerIsland: {fileID: 43212460}
   bossIsland: {fileID: 0}
   islands: []
+  selectedIsland: {fileID: 0}
   resourceSprite: {fileID: 0}
   shopSprite: {fileID: 0}
   bossSprite: {fileID: 0}
@@ -13668,6 +13669,7 @@ MonoBehaviour:
   rareTreasureSprite: {fileID: 0}
   foodPrice: 10
   damagesWhenNoFood: 10
+  isMoving: 0
   isMainSail: 0
 --- !u!4 &1007450610
 Transform:
@@ -14179,7 +14181,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 10
+      scalar: 502.79
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -14754,7 +14756,7 @@ ParticleSystem:
     m_TextureAlphaAffectsParticles: 1
     m_TextureBilinearFiltering: 0
     randomDirectionAmount: 0
-    sphericalDirectionAmount: 1
+    sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
       value: 1
@@ -19180,7 +19182,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 10
+      scalar: 502.79
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -19755,7 +19757,7 @@ ParticleSystem:
     m_TextureAlphaAffectsParticles: 1
     m_TextureBilinearFiltering: 0
     randomDirectionAmount: 0
-    sphericalDirectionAmount: 1
+    sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
       value: 1
@@ -29702,7 +29704,7 @@ GameObject:
   - component: {fileID: 1598375365}
   - component: {fileID: 1598375364}
   m_Layer: 0
-  m_Name: BackGround
+  m_Name: Sea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
