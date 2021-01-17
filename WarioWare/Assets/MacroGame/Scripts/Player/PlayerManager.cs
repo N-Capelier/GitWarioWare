@@ -124,10 +124,8 @@ namespace Player
             SoundManager.Instance.ApplyAudioClip("gameOverJingle", audioSource, Manager.Instance.bpm);
             audioSource.PlaySecured();
 
-            StartCoroutine(FadeManager.Instance.FadeIn(0.3f));
-            yield return new WaitForSeconds(0.5f);
             death.SetActive(true);
-            yield return new WaitForSeconds(audioSource.clip.length -0.5f);
+            yield return new WaitForSeconds(audioSource.clip.length);
             Manager.Instance.EndGame();
             Instance.EndGame();
             if (SceneManager.GetActiveScene().name == "FreeMode")
