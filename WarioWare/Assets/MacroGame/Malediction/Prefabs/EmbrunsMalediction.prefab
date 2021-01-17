@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.5283019, b: 0.5283018, a: 1}
+  m_Color: {r: 0, g: 0.5283019, b: 0.5283018, a: 0.7058824}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -190,6 +190,6 @@ MonoBehaviour:
   waveImage: {fileID: 1840668795502701018}
   waveColor: {r: 0, g: 0.43921572, b: 0.43921572, a: 1}
   waveDuration: 2
-  temp: 1
+  timeWaveToFade: 0
   waveFadeDuration: 2
   loop: 1
