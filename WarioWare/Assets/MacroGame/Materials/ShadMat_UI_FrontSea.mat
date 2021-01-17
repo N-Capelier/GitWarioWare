@@ -27,14 +27,14 @@ Material:
     m_Floats:
     - Vector1_2955E56D: 0.005
     - Vector1_475E2A6A: 1
-    - Vector1_6A50461D: 5
+    - Vector1_6A50461D: 2
     - _BPM: 60
     - _OffSet: 0
-    - _ShaderHeight: 0.1
-    - _WaveQuantity: 3
-    - _WaveSize: -2
+    - _ShaderHeight: 0.11
+    - _WaveQuantity: 4
+    - _WaveSize: 1
     - _WaveSpeed: 1
     m_Colors:
     - Color_2FA990F3: {r: 0.8274511, g: 0.9058824, b: 0.8705883, a: 1}
-    - _WaveColor: {r: 0.19215688, g: 0.38431376, b: 0.47450984, a: 1}
+    - _WaveColor: {r: 0.15, g: 0.42584744, b: 0.5, a: 1}
     - _WaveColorProfond: {r: 0.19215685, g: 0.38431373, b: 0.47450978, a: 1}
