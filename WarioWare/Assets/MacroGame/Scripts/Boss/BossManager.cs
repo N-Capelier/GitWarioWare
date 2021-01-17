@@ -114,6 +114,7 @@ namespace Boss
                 }
                 SoundManager.Instance.ApplyAudioClip("speedUpJingle", transitionMusic, Manager.Instance.bpm);
                 transitionMusic.PlaySecured();
+                Manager.Instance.speedUp.SetActive(true);
                 yield return new WaitForSeconds(transitionMusic.clip.length);
 
                 Manager.Instance.bpm = Manager.Instance.bpm.Next();

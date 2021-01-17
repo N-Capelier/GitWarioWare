@@ -86,10 +86,11 @@ namespace Caps
         public GameObject VcamTarget;
         public CinemachineVirtualCamera cinemachine;
         [HideInInspector] public bool cantDisplayVerbe;
+        public GameObject speedUp;
+
         [Header("Debug")]
         [SerializeField] bool isDebug = false;
         [HideInInspector] public EventSystem eventSystem;
-
         //events
         //public delegate void MapUIHandler();
         //public event MapUIHandler ResetFocus;
@@ -194,6 +195,8 @@ namespace Caps
 
             sceneCam.SetActive(true);
             _transitionCam.enabled = false;
+            if (speedUp.activeSelf)
+                speedUp.SetActive(false);
             capUI.SetActive(true);
             macroUI.SetActive(false);
             panel.SetActive(false);
@@ -356,7 +359,7 @@ namespace Caps
                 //play speed up jingle and wait for jingle to finish
                 SoundManager.Instance.ApplyAudioClip("speedUpJingle", transitionMusic, bpm);
                 transitionMusic.PlaySecured();
-                resultText.text = "Speed Up!";
+                speedUp.SetActive(true);
 
                 yield return new WaitForSeconds(transitionMusic.clip.length);
                 bpm = bpm.Next();
