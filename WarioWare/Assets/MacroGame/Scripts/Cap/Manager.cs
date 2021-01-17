@@ -87,6 +87,7 @@ namespace Caps
         public CinemachineVirtualCamera cinemachine;
         [HideInInspector] public bool cantDisplayVerbe;
         public GameObject speedUp;
+        [HideInInspector] public bool zoomed;
 
         [Header("Debug")]
         [SerializeField] bool isDebug = false;
@@ -583,17 +584,27 @@ namespace Caps
             }
             else
             {
-                PlayerMovement.Instance.playerIsland.reward.ApplyPassiveEffect();
-                macroUI.SetActive(true);
-                BossLifeManager.Instance.bossUI.gameObject.SetActive(true);
                 capUI.SetActive(false);
-                PlayerMovement.Instance.ResetFocus();
-                StartCoroutine(UnzoomCam());
+
+                if(PlayerMovement.Instance.playerIsland.reward.name != "TreasureChest")
+                {
+                    macroUI.SetActive(true);
+                    BossLifeManager.Instance.bossUI.gameObject.SetActive(true);
+                    PlayerMovement.Instance.ResetFocus();
+                    StartCoroutine(UnzoomCam());
+                }
+                else
+                {
+                    eventSystem.enabled = true;
+                }
+
+                PlayerMovement.Instance.playerIsland.reward.ApplyPassiveEffect();
             }
         }
         #region Cameras
         public IEnumerator ZoomCam(float zoomTime)
         {
+            zoomed = true;
             var _position = shipOpening.transform.position + Vector3.left * 13;
             VcamTarget.transform.DOMove(_position, shipOpening.openingTime / 2).SetEase(Ease.InOutCubic);
             yield return new WaitForSeconds(zoomTime / 2);
@@ -622,6 +633,7 @@ namespace Caps
             eventSystem.enabled = true;
             cantDoTransition = true;
             shipOpening.Close();
+            zoomed = false;
         }
         #endregion
 
