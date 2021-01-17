@@ -11515,6 +11515,11 @@ PrefabInstance:
       propertyPath: cinemachine
       value: 
       objectReference: {fileID: 1754798043}
+    - target: {fileID: 5875710233450723276, guid: 8e6305ac144d8d6478d3d105566a76bc,
+        type: 3}
+      propertyPath: isFinalBoss
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5875710233450723277, guid: 8e6305ac144d8d6478d3d105566a76bc,
         type: 3}
       propertyPath: m_LocalPosition.x

@@ -2781,7 +2781,7 @@ PrefabInstance:
     - target: {fileID: 5875710233450723276, guid: 8e6305ac144d8d6478d3d105566a76bc,
         type: 3}
       propertyPath: maledictionArray.Array.size
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5875710233450723276, guid: 8e6305ac144d8d6478d3d105566a76bc,
         type: 3}
@@ -2807,7 +2807,7 @@ PrefabInstance:
         type: 3}
       propertyPath: maledictionArray.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: eec22ec4762b02540b22b7f11bf0b170,
+      objectReference: {fileID: 11400000, guid: 2e4b7d225fa933f44801c5d1257cff1f,
         type: 2}
     - target: {fileID: 5875710233450723277, guid: 8e6305ac144d8d6478d3d105566a76bc,
         type: 3}

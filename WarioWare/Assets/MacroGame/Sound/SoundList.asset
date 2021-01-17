@@ -89,7 +89,7 @@ MonoBehaviour:
       volume: 0.5
     bpm: 3c0000005a000000780000008c000000
     name: gameOverJingle
-    foldout: 1
+    foldout: 0
   - sounds:
     - name: loseJingle_0
       author: 

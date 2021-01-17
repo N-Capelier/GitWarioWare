@@ -15,3 +15,4 @@ MonoBehaviour:
   timer: 4
   maledictionName: Silence
   prefabManager: {fileID: 0}
+  fakeImage: {fileID: 21300000, guid: a132f56e3c1d810409926e699c2bd7f8, type: 3}

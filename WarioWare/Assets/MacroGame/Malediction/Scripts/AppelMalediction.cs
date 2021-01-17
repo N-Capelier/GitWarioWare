@@ -10,8 +10,9 @@ public class AppelMalediction : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //SoundManager.Instance.ApplyAudioClip("AppelCurse", audioSource);
-        //audioSource.PlaySecured();
+        SoundManager.Instance.ApplyAudioClip("Menu", audioSource);
+       // SoundManager.Instance.ApplyAudioClip("AppelCurse", audioSource);
+        audioSource.PlaySecured();
     }
 
 }
