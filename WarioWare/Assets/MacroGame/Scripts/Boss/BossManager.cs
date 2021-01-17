@@ -72,6 +72,8 @@ namespace Boss
                 SoundManager.Instance.ApplyAudioClip("victoryJingle", transitionMusic, Manager.Instance.bpm);
                 BossLifeManager.Instance.TakeDamage(damageToBoss, bossLifeOnStartOfFight, true);
                 phaseBossLife += damageToBoss;
+                transitionMusic.PlaySecured();
+                yield return new WaitForSeconds(transitionMusic.clip.length);
             }
             else
             {
@@ -91,14 +93,18 @@ namespace Boss
                 }
             }
 
-
+          
             if (phaseBossLife >= bossLifeOnStartOfFight * phaseNumber / 4)
             {
                 phaseNumber++;
 
                 SoundManager.Instance.ApplyAudioClip("speedUpJingle", transitionMusic, Manager.Instance.bpm);
                 transitionMusic.PlaySecured();
-                Manager.Instance.speedUp.SetActive(true);
+                if(phaseNumber == 5)
+                {
+                    Manager.Instance.speedUp.SetActive(true);
+                    Manager.Instance.speedUp.GetComponentInChildren<TextMeshProUGUI>().text = "Victory!!!";
+                }
                 yield return new WaitForSeconds(transitionMusic.clip.length);
                 if (phaseNumber == 5)
                 {

@@ -544,12 +544,14 @@ MonoBehaviour:
   damageToPlayer: 10
   damageToBoss: 10
   maledictionArray:
-  - {fileID: 11400000, guid: 57b3f847f3f24364789b32b52472d7c2, type: 2}
-  - {fileID: 11400000, guid: 36f478e852fa5304a86aea076439b5cb, type: 2}
-  - {fileID: 11400000, guid: 830eadeac1332e2429fe1f02afb0fa64, type: 2}
-  - {fileID: 11400000, guid: 356259f4181521f4680e1307e1740e73, type: 2}
+  - {fileID: 11400000, guid: 2e4b7d225fa933f44801c5d1257cff1f, type: 2}
+  - {fileID: 11400000, guid: eec22ec4762b02540b22b7f11bf0b170, type: 2}
+  - {fileID: 11400000, guid: 4a6d0ddd15a27d945ac387234cc90c62, type: 2}
+  - {fileID: 11400000, guid: 451673c8ae2b43a479342e262f7e1bd0, type: 2}
+  - {fileID: 11400000, guid: 62883c40490951d479783e6f892270da, type: 2}
   bossTexture: {fileID: 8400000, guid: ae8679ad4834c894bba6a887e7b38dae, type: 2}
   differentMiniGameNumber: 5
+  isFinalBoss: 0
 --- !u!114 &5875710233450723279
 MonoBehaviour:
   m_ObjectHideFlags: 0
