@@ -5,6 +5,7 @@ using Caps;
 using TMPro;
 using Shop;
 using Sound;
+using Boss;
 
 namespace Player
 {
@@ -107,6 +108,11 @@ namespace Player
                     StartCoroutine(Manager.Instance.UnzoomCam());
                     isEndCap = false;
                 }
+                if(Manager.Instance.zoomed)
+                {
+                    StartCoroutine(Manager.Instance.UnzoomCam());
+                }
+                BossLifeManager.Instance.bossUI.gameObject.SetActive(true);
             }
         }
 
