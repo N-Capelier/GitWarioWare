@@ -7,8 +7,10 @@ using Caps;
 using TMPro;
 using Player;
 using UnityEngine.EventSystems;
-using Sound;
-
+using Sound;
+
+
+
 namespace Islands
 {
     public enum IslandDifficulty
@@ -71,8 +73,10 @@ namespace Islands
         private void Awake()
         {
             image = GetComponent<Image>();
-            eventTrigger = GetComponent<EventTrigger>();
-            audioSource = GetComponent<AudioSource>();
+            eventTrigger = GetComponent<EventTrigger>();
+
+            audioSource = GetComponent<AudioSource>();
+
             button = GetComponent<Button>();
         }
 
@@ -224,27 +228,36 @@ namespace Islands
         }
         public void OnClick()
         {
-            if (button.interactable && this != PlayerMovement.Instance.playerIsland)
+            if(this != PlayerMovement.Instance.playerIsland)
             {
                 SoundManager.Instance.ApplyAudioClip("StartCap", audioSource);
                 Manager.Instance.eventSystem.enabled = false;
-                PlayerMovement.Instance.selectedIsland.islandDescriptionContainer.SetActive(true);
+                islandDescriptionContainer.SetActive(false);
                 PlayerMovement.Instance.Move(this);
+                audioSource.PlaySecured();
             }
             else
-                SoundManager.Instance.ApplyAudioClip("ClickedImpossible", audioSource);
-
-            audioSource.PlaySecured();
+            {
+                if (PlayerMovement.Instance.playerIsland.type != IslandType.Shop)
+                {
+                    SoundManager.Instance.ApplyAudioClip("ClickedImpossible", audioSource);
+                    audioSource.PlaySecured();          
+                }
+            }
+            
             
         }
         public void OnSelect()
-        {
-            if (!PlayerMovement.Instance.isMoving)
+        {
+
+            if (!PlayerMovement.Instance.isMoving )
             {
                 SoundManager.Instance.ApplyAudioClip("Selected", audioSource);
                 audioSource.PlaySecured();
-            }
-            PlayerMovement.Instance.ShowSelectedIslandInfo(this);
+                PlayerMovement.Instance.ShowSelectedIslandInfo(this);
+                PlayerInventory.Instance.fromInventory = false;
+            }
+
         }
 
         #endregion

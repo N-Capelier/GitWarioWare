@@ -14,7 +14,7 @@ namespace Rewards
 
         public override void ApplyPassiveEffect()
         {
-            CannonballReward.bonusDamages = damages;
+            CannonballReward.bonusDamages += damages;
         }
 
         public override string GetDescription()
@@ -24,7 +24,7 @@ namespace Rewards
 
         public override void RemovePassiveEffect()
         {
-            CannonballReward.bonusDamages = damages;
+            CannonballReward.bonusDamages -= damages;
         }
     }
 }

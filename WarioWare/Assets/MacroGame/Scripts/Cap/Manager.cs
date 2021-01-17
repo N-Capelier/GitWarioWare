@@ -59,8 +59,10 @@ namespace Caps
         private Cap currentCap;
         [HideInInspector] public bool isLoaded;
         public BPM bpm = BPM.Slow;
-
+        
         public Difficulty currentDifficulty;
+        public bool isNormalMode;
+
 
         [Header("UI Management")]
         public GameObject panel;
@@ -84,10 +86,11 @@ namespace Caps
         public GameObject VcamTarget;
         public CinemachineVirtualCamera cinemachine;
         [HideInInspector] public bool cantDisplayVerbe;
+        public GameObject speedUp;
+
         [Header("Debug")]
         [SerializeField] bool isDebug = false;
         [HideInInspector] public EventSystem eventSystem;
-
         //events
         //public delegate void MapUIHandler();
         //public event MapUIHandler ResetFocus;
@@ -143,7 +146,7 @@ namespace Caps
                 yield return new WaitForSeconds(shipOpening.openingTime * 2);
                 if (currentCap.isDone)
                 {
-                    if (isLureActive)
+                    if (isLureActive >0)
                     {
                         isLure = true;
                     }
@@ -178,6 +181,11 @@ namespace Caps
 
             /* StartCoroutine(FadeManager.Instance.FadeIn(0.15f * 60 / (float)bpm));
              yield return new WaitForSeconds(0.5f * 60 / (float)bpm);*/
+
+            if (isLureActive > 0)
+            {
+                isLure = true;
+            }
             StartCoroutine(PlayMiniGame(transitionCam));
         }
 
@@ -187,6 +195,8 @@ namespace Caps
 
             sceneCam.SetActive(true);
             _transitionCam.enabled = false;
+            if (speedUp.activeSelf)
+                speedUp.SetActive(false);
             capUI.SetActive(true);
             macroUI.SetActive(false);
             panel.SetActive(false);
@@ -251,8 +261,6 @@ namespace Caps
             }
         }
 
-        [HideInInspector] public bool isLureActive = false;
-        [HideInInspector] public bool isLure = false;
         private IEnumerator GlobalTransitionStart(bool win)
         {
             clock.SetActive(false);
@@ -279,6 +287,9 @@ namespace Caps
             }
         }
 
+        [HideInInspector] public int isLureActive = 0;
+        [HideInInspector] public bool isLure = false;
+
         /// <summary>
         /// make the transition within a cap
         /// </summary>
@@ -298,7 +309,7 @@ namespace Caps
                 transition.PlayAnimation((float)bpm, win);
                 SoundManager.Instance.ApplyAudioClip("victoryJingle", transitionMusic, bpm);
                 resultText.text = "You Won!";
-                if (currentCap.hasBarrel[miniGamePassedNumber] && SceneManager.GetActiveScene().name != "FreeMode")
+                if (currentCap.hasBarrel[miniGamePassedNumber] && isNormalMode)
                 {
                     BarrelRessourcesContent();
                 }
@@ -306,7 +317,7 @@ namespace Caps
             else
             {
                 transition.PlayAnimation((float)bpm, win);
-                if (SceneManager.GetActiveScene().name != "FreeMode")
+                if (isNormalMode)
                 {
                     if (isLure)
                     {
@@ -328,7 +339,7 @@ namespace Caps
 
                 SoundManager.Instance.ApplyAudioClip("loseJingle", transitionMusic, bpm);
             }
-            if (SceneManager.GetActiveScene().name != "FreeMode")
+            if (isNormalMode)
             {
                 //check if not dead and proceed
                 if (PlayerManager.Instance.playerHp <= 0)
@@ -348,7 +359,7 @@ namespace Caps
                 //play speed up jingle and wait for jingle to finish
                 SoundManager.Instance.ApplyAudioClip("speedUpJingle", transitionMusic, bpm);
                 transitionMusic.PlaySecured();
-                resultText.text = "Speed Up!";
+                speedUp.SetActive(true);
 
                 yield return new WaitForSeconds(transitionMusic.clip.length);
                 bpm = bpm.Next();

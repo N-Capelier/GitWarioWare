@@ -8,6 +8,7 @@ public class EmbrunsMalediction : MonoBehaviour
     private RectTransform canvasTransform;
     public GameObject wave;
     public Image waveImage;
+    private float baseAlpha;
 
     public Color waveColor;
 
@@ -16,10 +17,15 @@ public class EmbrunsMalediction : MonoBehaviour
     public float waveFadeDuration;
     public bool loop = false;
 
+    private void Awake()
+    {
+        baseAlpha = waveColor.a;
+    }
     // Start is called before the first frame update
     void Start()
     {
-        waveColor.a = 1;
+        
+        waveColor.a = baseAlpha;
         waveImage.color = waveColor;
         canvasTransform = GetComponent<RectTransform>();
         wave.transform.position = new Vector3(canvasTransform.rect.width/2, -canvasTransform.rect.height/2,0);

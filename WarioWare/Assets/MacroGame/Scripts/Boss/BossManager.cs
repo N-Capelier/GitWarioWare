@@ -36,7 +36,7 @@ namespace Boss
         public Malediction[] maledictionArray;
         private Malediction currentMalediction;
         public RenderTexture bossTexture;
-        public int differentMiniGameNumber =4;
+        public int differentMiniGameNumber = 4;
         public bool isFinalBoss;
 
         private bool displayMalediction;
@@ -51,14 +51,14 @@ namespace Boss
             damageToBoss = DebugToolManager.Instance.ChangeVariableValue("damageToBoss");
             differentMiniGameNumber = DebugToolManager.Instance.ChangeVariableValue("differentMiniGameNumber");
         }
-        public IEnumerator StartBoss( )
+        public IEnumerator StartBoss()
         {
-            if(maledictionArray!= null && maledictionArray.Length !=0)
-            currentMalediction = maledictionArray[Random.Range(0,maledictionArray.Length)];
+            if (maledictionArray != null && maledictionArray.Length != 0)
+                currentMalediction = maledictionArray[Random.Range(0, maledictionArray.Length)];
             bossLifeOnStartOfFight = BossLifeManager.currentLife;
             renderText.texture = bossTexture;
             shipOpening.gameObject.SetActive(true);
-            StartCoroutine( Manager.Instance.ZoomCam(shipOpening.openingTime));
+            StartCoroutine(Manager.Instance.ZoomCam(shipOpening.openingTime));
             yield return new WaitForSeconds(shipOpening.openingTime * 2);
             StartCoroutine(Manager.Instance.PlayMiniGame(transitionCam, currentMalediction, true));
         }
@@ -70,8 +70,10 @@ namespace Boss
             {
                 transition.PlayAnimation((float)Manager.Instance.bpm, true);
                 SoundManager.Instance.ApplyAudioClip("victoryJingle", transitionMusic, Manager.Instance.bpm);
-                BossLifeManager.Instance.TakeDamage(damageToBoss,bossLifeOnStartOfFight, true);
+                BossLifeManager.Instance.TakeDamage(damageToBoss, bossLifeOnStartOfFight, true);
                 phaseBossLife += damageToBoss;
+                transitionMusic.PlaySecured();
+                yield return new WaitForSeconds(transitionMusic.clip.length);
             }
             else
             {
@@ -80,8 +82,8 @@ namespace Boss
 
                 if (PlayerManager.Instance.playerHp > 0)
                 {
-                    transitionMusic.PlaySecured();
                     SoundManager.Instance.ApplyAudioClip("loseJingle", transitionMusic, Manager.Instance.bpm);
+                    transitionMusic.PlaySecured();
                     yield return new WaitForSeconds(transitionMusic.clip.length);
                 }
                 else
@@ -91,31 +93,36 @@ namespace Boss
                 }
             }
 
-            
-            if(phaseBossLife>= bossLifeOnStartOfFight *phaseNumber/ 4)
+          
+            if (phaseBossLife >= bossLifeOnStartOfFight * phaseNumber / 4)
             {
                 phaseNumber++;
+
+                SoundManager.Instance.ApplyAudioClip("speedUpJingle", transitionMusic, Manager.Instance.bpm);
+                transitionMusic.PlaySecured();
+                if(phaseNumber == 5)
+                {
+                    Manager.Instance.speedUp.SetActive(true);
+                    Manager.Instance.speedUp.GetComponentInChildren<TextMeshProUGUI>().text = "Victory!!!";
+                }
+                yield return new WaitForSeconds(transitionMusic.clip.length);
                 if (phaseNumber == 5)
                 {
                     int _sceneIndex = Manager.Instance.macroSceneIndex;
-                    if(SceneManager.GetSceneByBuildIndex(_sceneIndex).name == "Zone1")
+                    if (SceneManager.GetSceneByBuildIndex(_sceneIndex).name == "Zone1")
                     {
                         SceneManager.LoadScene("Zone2");
                     }
-                   else if (SceneManager.GetSceneByBuildIndex(_sceneIndex).name == "Zone2")
+                    else if (SceneManager.GetSceneByBuildIndex(_sceneIndex).name == "Zone2")
                     {
                         SceneManager.LoadScene("Zone3");
                     }
-                   else if (SceneManager.GetSceneByBuildIndex(_sceneIndex).name == "Zone3")
+                    else if (SceneManager.GetSceneByBuildIndex(_sceneIndex).name == "Zone3")
                     {
                         SceneManager.LoadScene("Menu");
                     }
                     yield break;
                 }
-                SoundManager.Instance.ApplyAudioClip("speedUpJingle", transitionMusic, Manager.Instance.bpm);
-                transitionMusic.PlaySecured();
-                yield return new WaitForSeconds(transitionMusic.clip.length);
-
                 Manager.Instance.bpm = Manager.Instance.bpm.Next();
                 if (isFinalBoss)
                 {
@@ -134,8 +141,8 @@ namespace Boss
                     currentMalediction = null;
                 }
             }
-            
-                       
+
+
             Manager.Instance.GlobalTransitionEnd(currentMalediction, displayMalediction);
             displayMalediction = false;
             transitionCam.enabled = false;

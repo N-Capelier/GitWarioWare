@@ -32,7 +32,7 @@ namespace Player
         [HideInInspector] public bool inInventory = false;
 
         //Rewards
-        [HideInInspector] public bool isSturdy = false;
+        [HideInInspector] public int isSturdy = 0;
         [HideInInspector] public int sturdyHealAmmount = 3;
 
         #endregion
@@ -76,10 +76,10 @@ namespace Player
             {
                 playerHp = 0;
 
-                if (isSturdy)
+                if (isSturdy > 0)
                 {
                     playerHp = sturdyHealAmmount;
-                    isSturdy = false;
+                    isSturdy = 0;
                     PlayerInventory.Instance.SearchAndDestroyItem("Rattrapage");
                 }
                 else
@@ -112,6 +112,10 @@ namespace Player
             {
                 food = maxFood;
             }
+            else if(food + f <= 0)
+            {
+                food = 0;
+            }
             else
             {
                 food += f;
@@ -124,10 +128,8 @@ namespace Player
             SoundManager.Instance.ApplyAudioClip("gameOverJingle", audioSource, Manager.Instance.bpm);
             audioSource.PlaySecured();
 
-            StartCoroutine(FadeManager.Instance.FadeIn(0.3f));
-            yield return new WaitForSeconds(0.5f);
             death.SetActive(true);
-            yield return new WaitForSeconds(audioSource.clip.length -0.5f);
+            yield return new WaitForSeconds(audioSource.clip.length);
             Manager.Instance.EndGame();
             Instance.EndGame();
             if (SceneManager.GetActiveScene().name == "FreeMode")

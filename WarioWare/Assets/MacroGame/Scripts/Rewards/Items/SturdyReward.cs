@@ -14,7 +14,7 @@ namespace Rewards
 
         public override void ApplyPassiveEffect()
         {
-            PlayerManager.Instance.isSturdy = true;
+            PlayerManager.Instance.isSturdy++;
             PlayerManager.Instance.sturdyHealAmmount = healAmmount;
         }
 
@@ -25,7 +25,7 @@ namespace Rewards
 
         public override void RemovePassiveEffect()
         {
-            PlayerManager.Instance.isSturdy = false;
+            PlayerManager.Instance.isSturdy--;
         }
     }
 }

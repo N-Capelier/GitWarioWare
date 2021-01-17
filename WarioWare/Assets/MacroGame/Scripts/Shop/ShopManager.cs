@@ -22,6 +22,7 @@ namespace Shop
         public GameObject itemDescriptionContainer;
         public TextMeshProUGUI itemDescription;
         public TextMeshProUGUI itemPrice;
+        public TextMeshProUGUI itemName;
 
         [HideInInspector] public List<Reward> shopItems = new List<Reward>();
         private List<Reward> allResources = new List<Reward>();
@@ -177,8 +178,8 @@ namespace Shop
                 {
 
                     itemDescription.text = shopItems[i].GetDescription();
-                    //itemDescription.text = shopItems[i].name; //--Feature testing
                     itemPrice.text = shopItems[i].price.ToString();
+                    itemName.text = shopItems[i].rewardName;
                     itemDescriptionContainer.SetActive(true);
                     break;
                 }

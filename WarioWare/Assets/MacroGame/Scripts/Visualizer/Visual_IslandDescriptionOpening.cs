@@ -19,9 +19,9 @@ namespace UI
         public bool cantScaleOnStart;
         private void OnEnable()
         {
-            if(parchemin.transform.localScale.y != openedSize)
-            parchemin.DOScaleY(openedSize, openingTime);
-            if (willClose)             
+            if (parchemin.transform.localScale.y != openedSize)
+                parchemin.DOScaleY(openedSize, openingTime);
+            if (willClose)
             {
                 willClose = false;
                 parchemin.DOScaleY(closedSize, 1);
@@ -31,14 +31,14 @@ namespace UI
 
         private void OnDisable()
         {
-            if(!cantScaleOnStart)
-            parchemin.DOScaleY(closedSize, 1);
+            if (!cantScaleOnStart)
+                parchemin.DOScaleY(closedSize, 1);
         }
 
         public void Close()
         {
             willClose = true;
-            parchemin.transform.localScale = new Vector3(1, openedSize,0) ; 
+            parchemin.transform.localScale = new Vector3(1, openedSize, 0);
             parchemin.DOScaleY(closedSize, openingTime);
             StartCoroutine(WaitToClose());
         }

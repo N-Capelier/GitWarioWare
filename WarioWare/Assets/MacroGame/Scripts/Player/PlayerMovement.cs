@@ -89,7 +89,7 @@ namespace Player
             playerIsland.button.Select(); 
         }
 
-        [HideInInspector] public bool isMainSail = false;
+        [HideInInspector] public int isMainSail = 0;
 
         /// <summary>
         /// Move the player from his current island to the target island. Moving costs 1 food, if 0 food then it costs 1 hp.
@@ -122,12 +122,12 @@ namespace Player
 
                 if (PlayerManager.Instance.food > 0)
                 {
-                    if(!isMainSail )
+                    if(!(isMainSail > 0 && _isCapDone))
                         PlayerManager.Instance.GainFood(-foodPrice);
                 }
                 else
                 {
-                    if(!isMainSail)
+                    if (!(isMainSail > 0 && _isCapDone))
                         PlayerManager.Instance.TakeDamage(damagesWhenNoFood);
                 }
 
@@ -187,7 +187,7 @@ namespace Player
 
                 if(targetIsland.reward != null)
                 {
-                    switch (targetIsland.reward.type)
+                    /*switch (targetIsland.reward.type)
                     {
                         case RewardType.Resource:
                             targetIsland.islandRewardImage.sprite = targetIsland.reward.sprite;
@@ -200,6 +200,21 @@ namespace Player
                         case RewardType.CursedItem:
                             targetIsland.islandRewardImage.sprite = rareTreasureSprite;
                             targetIsland.rewardDescription.text = "Récupérez un coffre maudit!";
+                            break;
+                    }*/
+                    switch(targetIsland.difficulty)
+                    {
+                        case IslandDifficulty.Easy:
+                            targetIsland.islandRewardImage.sprite = targetIsland.reward.sprite;
+                            targetIsland.rewardDescription.text = "Gagnez quelques ressources !";
+                            break;
+                        case IslandDifficulty.Medium:
+                            targetIsland.islandRewardImage.sprite = targetIsland.reward.sprite;
+                            targetIsland.rewardDescription.text = "Gagnez beaucoup de ressources !";
+                            break;
+                        case IslandDifficulty.Hard:
+                            targetIsland.islandRewardImage.sprite = treasureSprite;
+                            targetIsland.rewardDescription.text = "Découvrez un coffre au trésor !";
                             break;
                     }
                 }
@@ -241,7 +256,7 @@ namespace Player
         /// </summary>
         public void ResetFocus()
         {
-            playerIsland.button.Select();
+            Manager.Instance.eventSystem.SetSelectedGameObject(playerIsland.gameObject);
         }
     }
 }
