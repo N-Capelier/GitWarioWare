@@ -112,6 +112,10 @@ namespace Player
             {
                 food = maxFood;
             }
+            else if(food + f <= 0)
+            {
+                food = 0;
+            }
             else
             {
                 food += f;
