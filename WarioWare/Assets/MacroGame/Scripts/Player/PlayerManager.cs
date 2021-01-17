@@ -27,7 +27,8 @@ namespace Player
         [Header("Sound")]
         public AudioSource audioSource;
 
-
+        [Header("Death")]
+        public GameObject death;
         [HideInInspector] public bool inInventory = false;
 
         //Rewards
@@ -123,8 +124,10 @@ namespace Player
             SoundManager.Instance.ApplyAudioClip("gameOverJingle", audioSource, Manager.Instance.bpm);
             audioSource.PlaySecured();
 
-            StartCoroutine(FadeManager.Instance.FadeIn(1));
-            yield return new WaitForSeconds(audioSource.clip.length);
+            StartCoroutine(FadeManager.Instance.FadeIn(0.3f));
+            yield return new WaitForSeconds(0.5f);
+            death.SetActive(true);
+            yield return new WaitForSeconds(audioSource.clip.length -0.5f);
             Manager.Instance.EndGame();
             Instance.EndGame();
             if (SceneManager.GetActiveScene().name == "FreeMode")
