@@ -146,10 +146,10 @@ namespace Caps
                 yield return new WaitForSeconds(shipOpening.openingTime * 2);
                 if (currentCap.isDone)
                 {
-                  /*  if (isLureActive)
+                    if (isLureActive >0)
                     {
                         isLure = true;
-                    }*/
+                    }
                     PlayerMovement.Instance.playerAvatar.transform.position = _currentIsland.transform.position;
                     initalCamTransform = PlayerMovement.Instance.playerAvatar.transform;
                     StartCoroutine(CapEnd());

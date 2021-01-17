@@ -959,7 +959,7 @@ MonoBehaviour:
   idWeightToAdd: 0
   idInitialWeight: 0
   damagesOnMiniGameLose: 10
-  barrelProbability: 0
+  barrelProbability: 30
   maxBarrelRessources: 10
   minBarrelRessources: 8
   lifeWeight: 1
