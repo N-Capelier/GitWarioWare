@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4f70265fd44b0e54e8bada63270b172e, type: 3}
-  m_Name: New Reward Debug
+  m_Name: RewardsVariable
   m_EditorClassIdentifier: 
   rewardsList:
   - {fileID: 11400000, guid: 71bbe153d92fdfc4092323ec9e1304be, type: 2}

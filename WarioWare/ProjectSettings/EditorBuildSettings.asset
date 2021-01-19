@@ -45,9 +45,6 @@ EditorBuildSettings:
     path: Assets/MicroGames/Cluster Thibaut/TrioLLL/Basho/BashoScene.unity
     guid: 33c6109aede51ef499077dd2a758d634
   - enabled: 1
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 1
     path: Assets/MicroGames/Cluster Thibaut/TrioLLL/Cannonballs/Cannonballs.unity
     guid: 94c2badfe49d0844fa4a6ec2312f8875
   - enabled: 1
@@ -59,9 +56,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/MicroGames/Cluster Theodore/TrioLeRafiot/Choppe_02/Choppe2Scene.unity
     guid: 10c7c78062ee58540b288431812e4126
-  - enabled: 1
-    path: 
-    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/MicroGames/Cluster Aurelien/TrioRadioRTL/CrabeGolf/Scene/CrabeGolf.unity
     guid: 447cdb5bb911ccc4e94457ef6a5baabd
@@ -80,9 +74,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/MicroGames/Cluster Theodore/TrioBrigantin/FantomeSousLesProjecteurs/FantomeSousLesProjecteurs.unity
     guid: 3ee12d34d8ef07e45ba3205c88c24f63
-  - enabled: 1
-    path: 
-    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/MicroGames/Cluster Thibaut/TrioFleebos/LeMusicien/LeMusicien.unity
     guid: 8f05363fd6691964d858a5a1860cd414
@@ -128,4 +119,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/MicroGames/Cluster Thibaut/TrioSAS/50m!/50m!.unity
     guid: aa3e65aa857524040a23b39a4299f06e
+  - enabled: 1
+    path: Assets/MicroGames/Cluster Theodore/TrioBrigantin/MiniGame1/MiniGame1Scene.unity
+    guid: d9c5ac4f20f3d714782b9336bedde35a
+  - enabled: 1
+    path: Assets/MicroGames/Cluster Theodore/TrioSpanishInquisition/MiniGame1/MiniGame1Scene.unity
+    guid: d1d641469f4b9814fba98db1b859e31e
   m_configObjects: {}

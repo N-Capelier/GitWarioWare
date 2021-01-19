@@ -181,10 +181,7 @@ namespace TrioTrapioWare
             }
             public void RandomSorting()
             {
-                tinderProfile = GameObject.FindGameObjectsWithTag("Button1");
-                tinderPaper = GameObject.FindGameObjectsWithTag("Button2");
-                tinderPaperDirty = GameObject.FindGameObjectsWithTag("Wall");
-                greenCircle = GameObject.FindGameObjectsWithTag("Finish");
+               
                 for (int positionOfArray = 0; positionOfArray < tinderProfile.Length; positionOfArray++)
                 {
                     GameObject obj = tinderProfile[positionOfArray];
