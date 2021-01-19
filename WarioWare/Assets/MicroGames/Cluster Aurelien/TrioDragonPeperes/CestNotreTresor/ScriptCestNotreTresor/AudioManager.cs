@@ -15,22 +15,39 @@ namespace Dragons_Peperes
             private AudioSource[] sounds;
             public AudioSource audioSource;
 
+            #region sons audiosource
             private AudioSource running;
             private AudioSource ambiance;
             private AudioSource catched;
 
+            private AudioSource music60;
+            private AudioSource music80;
+            private AudioSource music100;
+            private AudioSource music120;
+            #endregion
             [SerializeField] AudioClip[] audioClipArray;
             AudioClip lastClip;
 
+            EnemyManager gameManager;
+
             private void Start()
             {
+                gameManager = FindObjectOfType<EnemyManager>();
                 sounds = GetComponents<AudioSource>();
-
+                #region sons
                 running = sounds[0];
                 ambiance = sounds[1];
                 catched = sounds[2];
-                
-                
+
+                music60 = sounds[3];
+                music80 = sounds[4];
+                music100 = sounds[5];
+                music120 = sounds[6];
+                #endregion
+
+
+                PlayMusic();
+
             }
 
             AudioClip RandomClip()
@@ -68,6 +85,29 @@ namespace Dragons_Peperes
             {
                 audioSource.PlayOneShot(RandomClip());
             }
+
+            public void PlayMusic()
+            {
+                if(gameManager.bpm == 60)
+                {
+                    music60.Play();
+                }
+
+                if (gameManager.bpm == 80)
+                {
+                    music80.Play();
+                }
+
+                if (gameManager.bpm == 100)
+                {
+                    music100.Play();
+                }
+
+                if (gameManager.bpm == 120)
+                {
+                    music120.Play();
+                }
+            }
             #endregion
 
             #region Functions pour arreter les sons
@@ -84,6 +124,29 @@ namespace Dragons_Peperes
             public void StopCatched()
             {
                 catched.Stop();
+            }
+
+            public void StopMusic()
+            {
+                if (gameManager.bpm == 60)
+                {
+                    music60.Stop();
+                }
+
+                if (gameManager.bpm == 80)
+                {
+                    music80.Stop();
+                }
+
+                if (gameManager.bpm == 100)
+                {
+                    music100.Stop();
+                }
+
+                if (gameManager.bpm == 120)
+                {
+                    music120.Stop();
+                }
             }
             #endregion
         }

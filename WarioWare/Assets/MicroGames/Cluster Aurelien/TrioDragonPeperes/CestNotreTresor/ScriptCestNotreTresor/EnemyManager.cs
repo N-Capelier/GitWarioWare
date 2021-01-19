@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Caps;
 
 namespace Dragons_Peperes
 {
@@ -90,9 +91,12 @@ namespace Dragons_Peperes
                         {
                             YouLost();
                         }
-                        else
+                        
+
+                        if (!playerLost)
                         {
-                            Caps.Manager.Instance.Result(true);
+                                audioManager.StopMusic();
+                                Manager.Instance.Result(true);
                         }
                         
                     }
@@ -107,7 +111,6 @@ namespace Dragons_Peperes
                     if (Tick == 1)
                     {
                         showInput.SetActive(true);
-                        Debug.Log("audio: COME BACK HERE");
                     }
                         
 
@@ -128,10 +131,6 @@ namespace Dragons_Peperes
                         Instantiate(enemy, spot1.transform);
                     }
 
-                    if (Tick == 7)
-                    {
-                        Debug.Log("la poupe du bateau apparait + end of scrolling");
-                    }
                         
 
                     if (Tick == 8)
@@ -141,9 +140,11 @@ namespace Dragons_Peperes
                         {
                             YouLost();
                         }
-                        else
+
+                        if (!playerLost)
                         {
-                            Caps.Manager.Instance.Result(true);
+                            audioManager.StopMusic();
+                            Manager.Instance.Result(true);
                         }
                     }
                 }
@@ -154,7 +155,7 @@ namespace Dragons_Peperes
                 if(currentDifficulty == Difficulty.HARD)
                 {
                     if (Tick == 1)
-                        Debug.Log("audio: COME BACK HERE");
+                        
 
                     if (Tick == 2)
                     {
@@ -175,10 +176,6 @@ namespace Dragons_Peperes
                     }
 
 
-                    if (Tick == 7)
-                    {
-                        Debug.Log("la poupe du bateau apparait + end of scrolling");
-                    }
 
                     if (Tick == 8)
                     {
@@ -187,9 +184,11 @@ namespace Dragons_Peperes
                         {
                             YouLost();
                         }
-                        else
+
+                        if (!playerLost)
                         {
-                            Caps.Manager.Instance.Result(true);
+                            audioManager.StopMusic();
+                            Manager.Instance.Result(true);
                         }
                     }
                 }
@@ -198,7 +197,7 @@ namespace Dragons_Peperes
 
             public void YouLost()
             {
-                Caps.Manager.Instance.Result(false);              
+                Manager.Instance.Result(false);              
             }           
         }
     }

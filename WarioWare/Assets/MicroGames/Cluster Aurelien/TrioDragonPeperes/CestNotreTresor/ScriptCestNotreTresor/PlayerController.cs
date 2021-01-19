@@ -36,13 +36,11 @@ namespace Dragons_Peperes
 
                 if(Mathf.Abs(moveInput) < 0.5 && Mathf.Abs(moveInput) > -0.5)
                 {
-                    Debug.Log("You can't move mothafacka");
                     speed = 0f;
                 }
                 else
                 {
                     speed = 10f;
-                    Debug.Log("puto va la tens de mexer");
                 }
             }
 
