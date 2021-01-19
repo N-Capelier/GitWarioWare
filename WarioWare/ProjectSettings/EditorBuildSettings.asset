@@ -125,4 +125,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/MicroGames/Cluster Thibaut/TrioSAS/Footboom/Footboom.unity
     guid: 7f7304bf946a1d24199f3c94e2370846
+  - enabled: 1
+    path: Assets/MicroGames/Cluster Thibaut/TrioSAS/50m!/50m!.unity
+    guid: aa3e65aa857524040a23b39a4299f06e
   m_configObjects: {}
