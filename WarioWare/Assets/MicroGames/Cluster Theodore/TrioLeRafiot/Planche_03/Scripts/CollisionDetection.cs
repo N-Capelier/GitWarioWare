@@ -13,24 +13,43 @@ namespace LeRafiot
         /// This script trigger the detection of player
         /// </summary>
 
-        public class CollisionDetection : MonoBehaviour
+        public class CollisionDetection : TimedBehaviour
         {
             public bool enemyInZone;
             public bool playerInZone;
 
-            private void Start()
+            private bool playerTouched;
+
+            public override void Start()
             {
+                base.Start();
                 enemyInZone = false;
                 playerInZone = false;
 
             }
 
+            public override void FixedUpdate()
+            {
+                base.FixedUpdate();
+            }
+
+            public override void TimedUpdate()
+            {
+                if (Tick == 8 && !Manager.Instance.panel.activeSelf && playerTouched)
+                {
+                    Manager.Instance.Result(false);
+                }
+            }
+
             private void Update()
             {
-                if(playerInZone && enemyInZone && !Manager.Instance.panel.activeSelf)
+                if(playerInZone && enemyInZone && !Manager.Instance.panel.activeSelf && !playerTouched)
                 {
+                    playerTouched = true;
+                    RandomEnemySpawn.Instance.spawnDisabled = true;
+
                     PlayerController.Instance.canMove = false;
-                    Manager.Instance.Result(false);
+                    //Manager.Instance.Result(false);
                     SoundManagerPlanche.Instance.sfxSound[1].Play();
                 }
             }

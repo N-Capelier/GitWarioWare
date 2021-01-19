@@ -626,7 +626,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 7c431a2822314da42b1569214f3d4e08, type: 3}
+  m_audioClip: {fileID: 8300000, guid: bcc7c991501229e41a545090a6d32d37, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -722,7 +722,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 4e971c4bc0161234cbcf6a0bb845b2ad, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 6c8690ac83ddffb4e84650a5bde37c19, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -818,7 +818,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 51f8b83938bf06e4a9bde5f09537622c, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 4e971c4bc0161234cbcf6a0bb845b2ad, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -974,8 +974,11 @@ MonoBehaviour:
   timer: 0
   currentTime: 0
   parryButton1: {fileID: 0}
+  parryButtonTransparent1: {fileID: 0}
   parryButton2: {fileID: 0}
+  parryButtonTransparent2: {fileID: 0}
   parryButton3: {fileID: 0}
+  parryButtonTransparent3: {fileID: 0}
   victoryFeedback: {fileID: 0}
   defeatFeedback: {fileID: 0}
   parentButton: {fileID: 0}

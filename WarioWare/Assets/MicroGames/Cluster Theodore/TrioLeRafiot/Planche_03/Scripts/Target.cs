@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Testing;
 
 namespace LeRafiot
 {
@@ -24,6 +25,7 @@ namespace LeRafiot
             [Header("Enemy")]
             public GameObject enemy;
             public int tickEnemyToTravel;
+            public float timeBeforeSpawn;
 
             private GameObject actualEnemy;
 
@@ -61,7 +63,12 @@ namespace LeRafiot
                     if (coolDown == false)
                     {
                         coolDown = true;
+
+                        //Increase scale target
                         StartCoroutine(IncreaseScale(startScale, finalScale, (tickToIncrase * (60 / bpm))));
+
+                        //Spawn enemy 
+                        StartCoroutine(WaitSpawnEnemy());
                     }
                 }
             }
@@ -71,21 +78,11 @@ namespace LeRafiot
   
             }
 
-            public IEnumerator IncreaseScale(Vector2 scale, Vector2 endScale, float timeToFade)
+            public IEnumerator WaitSpawnEnemy()
             {
-                Vector2 currentScale = scale;
-                float t = 0;
-                while (t < 1)
-                {
-                    t += Time.deltaTime / timeToFade;
-                    transform.localScale = Vector3.Lerp(currentScale, endScale, t);
-                    yield return null;
-                }
-                activate = false;
-                coolDown = false;
-                transform.localScale = startScale;
+                yield return new WaitForSeconds(timeBeforeSpawn);
 
-                RandomEnemySpawn.Instance.numberToChose.Add(numberPicked);
+                //RandomEnemySpawn.Instance.numberToChose.Add(numberPicked);
 
                 if (enemy != null)
                 {
@@ -107,7 +104,22 @@ namespace LeRafiot
                             break;
                     }
                 }
+            }
 
+            public IEnumerator IncreaseScale(Vector2 scale, Vector2 endScale, float timeToFade)
+            {
+                Vector2 currentScale = scale;
+                float t = 0;
+                while (t < 1)
+                {
+                    t += Time.deltaTime / timeToFade;
+                    transform.localScale = Vector3.Lerp(currentScale, endScale, t);
+                    yield return null;
+                }
+                RandomEnemySpawn.Instance.numberToChose.Add(numberPicked);
+                activate = false;
+                coolDown = false;
+                transform.localScale = startScale;              
             }
 
             public IEnumerator MoveToPositioninCurve(Transform transform, float timeToMove)
