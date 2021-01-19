@@ -21,6 +21,7 @@ namespace RadioRTL
             public bool isShot;
             bool isFlying;
             int collisionState;
+            public GameObject exploPlume;
             AudioSource volePerroquet;
 
             public override void Start()
@@ -64,7 +65,8 @@ namespace RadioRTL
                     CrabSpawner.cs.lose = true;
                     if (!isFlying)
                     {
-                        target = new Vector3(Random.Range(-8f, 8f),Random.Range(2f, 5f), 0f);
+                        gameObject.GetComponent<SpriteRenderer>().enabled = false;
+                        Instantiate(exploPlume, gameObject.transform.position, Quaternion.identity);
                         isFlying = true;
                     }
 

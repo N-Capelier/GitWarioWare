@@ -29,6 +29,8 @@ namespace Dragons_Peperes
             public GameObject mouetteGauche;
             public GameObject mouetteDroite;
 
+            public bool inputsChosen;
+
             private int inputNumber;
 
             public float distance;            
@@ -37,7 +39,7 @@ namespace Dragons_Peperes
             {
                 base.Start(); //Do not erase this line!              
 
-
+                inputsChosen = false;
 
                 distance = player.GetComponent<PlayerTimedController>().distance;
 
@@ -408,6 +410,7 @@ namespace Dragons_Peperes
                         Destroy(inputInstantiated[i]);
                         
                     }
+                    inputsChosen = true;
                     player.SetActive(true);
                     mouetteGauche.SetActive(true);
                     mouetteDroite.SetActive(true);

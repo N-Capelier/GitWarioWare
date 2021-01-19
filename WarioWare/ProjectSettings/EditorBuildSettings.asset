@@ -107,4 +107,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/MicroGames/Cluster Thibaut/TrioFleebos/VielleOfTime/VielleOfTime.unity
     guid: b73f9ad270c138c48aae61cd3d1203c5
+  - enabled: 1
+    path: Assets/MicroGames/Cluster Aurelien/TrioDragonPeperes/CestNotreTresor/CestNotreTresorScene.unity
+    guid: 2c37fdeff133a12429ae696e1a86f82e
+  - enabled: 1
+    path: Assets/MicroGames/Cluster Aurelien/TrioDragonPeperes/Les4Pieces/Les4Pieces.unity
+    guid: ee805ebf41f89d14db53ebe44537e234
   m_configObjects: {}

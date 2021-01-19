@@ -19,6 +19,7 @@ namespace RadioRTL
             bool isInAnim;
             public bool canShoot = true;
             public bool hit;
+            public GameObject sable;
 
             private void Start()
             {
@@ -57,7 +58,7 @@ namespace RadioRTL
             
             private void OnTriggerStay2D(Collider2D other)
             {
-                if (canShoot)
+                if (hit)
                 {
                         NormalCrabBehaviour ncb = other.GetComponent<NormalCrabBehaviour>();
                         CrabParrotBehavior cpb = other.GetComponent<CrabParrotBehavior>();
@@ -66,7 +67,8 @@ namespace RadioRTL
                         {
                             ncb.isShot = true;
                             FindObjectOfType<AudioManager>().Play("Coup de Golf");
-                        }
+                            Instantiate(sable, new Vector3(gameObject.transform.position.x-1.5f,gameObject.transform.position.y,0), Quaternion.identity);
+                    }
                         else if (cpb != null)
                         {
                             cpb.isShot = true;

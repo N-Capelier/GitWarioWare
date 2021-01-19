@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Caps;
 
 namespace Dragons_Peperes
 {
@@ -13,6 +14,7 @@ namespace Dragons_Peperes
         {
             public bool enableInput;
 
+            private SoundManager soundManager;
             private CoinManager coinManager;
             private CarteManager carteManager;
             public CoinController[] coinController;
@@ -22,8 +24,13 @@ namespace Dragons_Peperes
             public GameObject winScreen;
             public GameObject lostScreen;
 
-            bool playerLost;
             bool playerWon;
+
+            public GameObject hideCoin;
+            public Transform spot1;
+            public Transform spot2;
+            public Transform spot3;
+            public Transform spot4;
 
             public override void Start()
             {
@@ -31,6 +38,7 @@ namespace Dragons_Peperes
 
                 coinManager = FindObjectOfType<CoinManager>();
                 carteManager = FindObjectOfType<CarteManager>();
+                soundManager = FindObjectOfType<SoundManager>();
 
                 #region Spawn Coins
                 if(currentDifficulty == Difficulty.EASY)
@@ -76,28 +84,23 @@ namespace Dragons_Peperes
                     if(Tick == 5)
                     {
                         enableInput = true;
-                        for (int i = 0; i < coinController.Length; i++)
-                        {
-                            coinController[i].hideCoins = true;
-                        }
+                        HideCoins();
                         carteManager.SpawnRandomCarteEasy();
                     }
 
-                    if(Tick == 7)
-                    {
-                        //destroy hiddencoins
-                    }
 
                     if(Tick == 8)
                     {
+                        soundManager.StopMusic();
                         //le joueur n'a pas trouvé la bonne pièce à temps, il loose
                         if (playerWon)
                         {
-                            Caps.Manager.Instance.Result(true);
+                            Manager.Instance.Result(true);
                         }
-                        else
+
+                        if(!playerWon)
                         {
-                            Caps.Manager.Instance.Result(false);
+                            Manager.Instance.Result(false);
                         }
                     }
                 }
@@ -108,33 +111,28 @@ namespace Dragons_Peperes
                 if(currentDifficulty == Difficulty.MEDIUM)
                 {
 
+
                     if (Tick == 5)
                     {
                         enableInput = true;
-                        for (int i = 0; i < coinController.Length; i++)
-                        {
-                            coinController[i].hideCoins = true;
-                        }
+                        HideCoins();
                         carteManager.SpawnRandomCarteMedium();
                     }
 
-                    if (Tick == 7)
-                    {
-                        //destroy hiddencoins
-                    }
 
                     if (Tick == 8)
                     {
+                        soundManager.StopMusic();
                         //le joueur n'a pas trouvé la bonne pièce à temps, il loose
                         if (playerWon)
                         {
-                            Caps.Manager.Instance.Result(true);
-                        }
-                        else
-                        {
-                            Caps.Manager.Instance.Result(false);
+                            Manager.Instance.Result(true);
                         }
 
+                        if (!playerWon)
+                        {
+                            Manager.Instance.Result(false);
+                        }
                     }
                 }
 
@@ -144,42 +142,32 @@ namespace Dragons_Peperes
 
                 if (currentDifficulty == Difficulty.HARD)
                 {
-                    if (Tick == 0)
+                   /* if (Tick == 0)
                     {
                         coinManager.SpawnCoinsHard();
                         coinController = FindObjectsOfType<CoinController>();
-                    }
+                    }*/
 
                     if (Tick == 5)
                     {
                         enableInput = true;
-                        for (int i = 0; i < coinController.Length; i++)
-                        {
-                            coinController[i].hideCoins = true;
-                        }
+                        HideCoins();
                         carteManager.SpawnRandomCarteHard();
                     }
 
-                    if (Tick == 7)
-                    {
-                        //destroy hiddencoins
-                    }
 
                     if (Tick == 8)
                     {
+                        soundManager.StopMusic();
                         //le joueur n'a pas trouvé la bonne pièce à temps, il loose
                         if (playerWon)
                         {
-                            Caps.Manager.Instance.Result(true);
-                        }
-                        else
-                        {
-                            Caps.Manager.Instance.Result(false);
+                            Manager.Instance.Result(true);
                         }
 
-                        if (playerLost)
+                        if (!playerWon)
                         {
-                            //Caps.Manager.Instance.Result(false);
+                            Manager.Instance.Result(false);
                         }
                     }
                 }
@@ -189,17 +177,31 @@ namespace Dragons_Peperes
 
             public void YouWIn()
             {
-                //ptite bool pour signifier la victoire
+                soundManager.PlayFoule_P();
                 playerWon = true;
-                //boom winScreen
                 winScreen.SetActive(true);
             }
 
             public void YouLost()
             {
-                playerLost = false;
-                //boom looseScreen
+                soundManager.PlayFoule_N();
                 lostScreen.SetActive(true);
+                soundManager.StopMusic();
+            }
+
+            public void HideCoins()
+            {
+                soundManager.PlayCoin();
+
+                Instantiate(hideCoin, spot1);
+                Instantiate(hideCoin, spot2);
+                Instantiate(hideCoin, spot3);
+
+                if(fourthSpot == true)
+                {
+                    Instantiate(hideCoin, spot4);
+                }
+                
             }
         }
     }

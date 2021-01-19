@@ -20,8 +20,10 @@ namespace Dragons_Peperes
 
             public GameObject treasure;
             public GameObject target;
+            public GameObject bulle;
 
             private SpriteRenderer spriteRenderer;
+            private AudioSource audiosource;
 
             public Sprite upSprite;
             public Sprite downSprite;
@@ -41,12 +43,15 @@ namespace Dragons_Peperes
 
                 spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
 
+                audiosource = gameObject.GetComponent<AudioSource>();
+
                 bpmAccelerator = bpm / 60;
 
                 target.transform.position = new Vector3(0, 0, 0);
 
                 speed = 5f;
 
+                bulle.SetActive(false);
             }
 
             //FixedUpdate is called on a fixed time.
@@ -63,6 +68,7 @@ namespace Dragons_Peperes
                         canMove = true;
                     }
                 }
+                
 
                 if (canMove == true)
                 {
@@ -72,11 +78,13 @@ namespace Dragons_Peperes
                         {
                             target.transform.position += new Vector3(distance, 0, 0);                            
                             spriteRenderer.sprite = rightSprite;
+                            audiosource.Play();
                         }
                         if (Input.GetAxisRaw("Left_Joystick_X") < 0f)
                         {
                             target.transform.position += new Vector3(-distance, 0, 0);
                             spriteRenderer.sprite = leftSprite;
+                            audiosource.Play();
                         }
 
                         canMove = false;
@@ -88,14 +96,26 @@ namespace Dragons_Peperes
                         {
                             target.transform.position += new Vector3(0, distance, 0);
                             spriteRenderer.sprite = upSprite;
+                            audiosource.Play();
                         }
                         if (Input.GetAxisRaw("Left_Joystick_Y") < 0f)
                         {
                             target.transform.position += new Vector3(0, -distance, 0);
                             spriteRenderer.sprite = downSprite;
+                            audiosource.Play();
                         }
                         canMove = false;
                     }
+                }
+
+                if(transform.position == target.transform.position)
+                {
+                    audiosource.Stop();
+                }
+
+                if(transform.position == treasure.transform.position)
+                {
+                    bulle.SetActive(true);
                 }
 
                 if (treasure.GetComponent<WinOrLooseScript>().finished == true)
