@@ -71,7 +71,10 @@ namespace Shop
             {
                 if(IslandCreator.Instance.gameRewards[i].type == RewardType.Resource)
                 {
-                    allResources.Add(IslandCreator.Instance.gameRewards[i]);
+                    if(IslandCreator.Instance.gameRewards[i].price != 0)
+                    {
+                        allResources.Add(IslandCreator.Instance.gameRewards[i]);
+                    }
                 }
                 else
                 {
@@ -82,13 +85,13 @@ namespace Shop
             //Initialize shop stocked items
             Reward _reward = IslandCreator.Instance.FisherYates(allItems.ToArray())[0];
             shopItems.Add(_reward);
-            allResources.Remove(_reward);
+            allItems.Remove(_reward);
             
             for(int i = 0; i < 2; i++)
             {
                 _reward = IslandCreator.Instance.FisherYates(allResources.ToArray())[0];
                 shopItems.Add(_reward);
-                allItems.Remove(_reward);
+                allResources.Remove(_reward);
             }
             
             for (int i = 0; i < shopSlots.Length; i++)
