@@ -17,10 +17,10 @@ MonoBehaviour:
   indexEnum: 1
   verbe: Hissez !
   microGameScene:
-    sceneAsset: {fileID: 102900000, guid: 828405722dd7dcc4daea158ba59d4771, type: 3}
+    sceneAsset: {fileID: 102900000, guid: d1d641469f4b9814fba98db1b859e31e, type: 3}
     required: 0
-    buildIndex: 25
-  inputs: {fileID: 21300000, guid: aae03176476a32243b467f617c99e22f, type: 3}
+    buildIndex: 2
+  inputs: {fileID: 21300000, guid: 9f718a553c7104049bb0cfd21b0c9378, type: 3}
   currentDifficulty: 0
-  idWeight: 16
+  idWeight: 0
   hasBarrel: 0
