@@ -21,6 +21,9 @@ namespace Soupe
             public GameObject[] InputSigns; //indication des inputs sur lesquelles appuier
 
             public ParticleSystem[] SandFX;
+            public ParticleSystem FastWinV;
+            public AudioSource FastWinS;
+            public GameObject FastWinHalo;
 
             Transform Chest;         //Declaration du coffre
             public GameObject RustyChest;
@@ -177,9 +180,19 @@ namespace Soupe
 
                 if (currentInputNumber == inputNumberToReach)   //Check la victoire
                 {
-                    gameEnd = true;
-                    gameWin = true;
-                    StartCoroutine(WinAnim());
+                    if (Tick == 7 && timer > (60 / bpm)*0.5)
+                    {
+                        StartCoroutine(FastWin());
+                        gameEnd = true;
+                        gameWin = true;
+                    }
+                    else
+                    {
+                        gameEnd = true;
+                        gameWin = true;
+                        StartCoroutine(WinAnim());
+                    }
+                    
                     
                 }   
             }
@@ -263,17 +276,25 @@ namespace Soupe
                 {
                     WarioMusic.GetComponent<AudioSource>().clip = musics[0];
                 }
-                else if (bpm == 90)
+                else if (bpm == 80)
                 {
                     WarioMusic.GetComponent<AudioSource>().clip = musics[1];
                 }
-                else if (bpm == 120)
+                else if (bpm == 90)
                 {
                     WarioMusic.GetComponent<AudioSource>().clip = musics[2];
                 }
-                else if (bpm == 140)
+                else if (bpm == 100)
                 {
                     WarioMusic.GetComponent<AudioSource>().clip = musics[3];
+                }
+                else if (bpm == 120)
+                {
+                    WarioMusic.GetComponent<AudioSource>().clip = musics[4];
+                }
+                else if (bpm == 140)
+                {
+                    WarioMusic.GetComponent<AudioSource>().clip = musics[5];
                 }
                 else
                 {
@@ -348,6 +369,30 @@ namespace Soupe
                 Halo.transform.DOScale(new Vector3(1, 1, 1), 0.1f);
                 Halo.transform.DORotate(new Vector3(0, 0, 720f), 8f, RotateMode.FastBeyond360);
 
+                if (Tick == 7 && timer > (60 / bpm) * 0.5)
+                {
+                    yield return new WaitForSeconds(0.4f);
+                    source.DOFade(source.volume, 0f);
+                }
+                    
+
+            }
+
+            IEnumerator FastWin()
+            {
+                Debug.Log("FastWin");
+                Chest.DOMoveY(0f, 0.2f);
+                Chest.DORotate(new Vector3(0f, 0f, 360f), 0.2f, RotateMode.FastBeyond360);
+                Chest.gameObject.GetComponent<SpriteRenderer>().sortingOrder = 10;
+                Chest.GetChild(0).GetComponent<SpriteRenderer>().sortingOrder = 9;
+                FastWinS.Play();
+                FastWinV.Play();
+
+                FastWinHalo.SetActive(true);
+                FastWinHalo.transform.DOScale(new Vector3(5f, 5f, 5f), 0.05f);
+                FastWinHalo.transform.DORotate(new Vector3(0, 0, 720f), 8f, RotateMode.FastBeyond360);
+                
+                yield return null;
             }
         }
     }

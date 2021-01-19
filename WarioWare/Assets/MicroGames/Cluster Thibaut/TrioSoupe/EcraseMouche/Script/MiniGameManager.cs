@@ -35,6 +35,8 @@ namespace Soupe
 
                 SoundManagerMouche.Instance.globalMusic.Play();
 
+                jam.Clear();
+
                 switch (currentDifficulty)
                 {
                     case Difficulty.EASY:
