@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c2cda822bfa80074f881e6fe0192b4c9, type: 3}
-  m_Name: ID_Spin
+  m_Name: ID_Swipe
   m_EditorClassIdentifier: 
   cluster: 0
   trio: TrapioWare
   indexEnum: 2
-  verbe: "Tourne et l\xE2che"
+  verbe: Swipe
   microGameScene:
-    sceneAsset: {fileID: 102900000, guid: 7c0f9a28b10ed9a41b377a84331ce307, type: 3}
+    sceneAsset: {fileID: 102900000, guid: 535ec2bb8a65f414fb9c9315cba272c2, type: 3}
     required: 0
-    buildIndex: 31
-  inputs: {fileID: 21300000, guid: 761c0b5481ea5c340a463530f344c7b4, type: 3}
+    buildIndex: 37
+  inputs: {fileID: 21300000, guid: b86c0a6009dfb1247bd860956ae248ef, type: 3}
   currentDifficulty: 0
   idWeight: 0
   hasBarrel: 0

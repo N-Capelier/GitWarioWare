@@ -116,4 +116,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/MicroGames/Cluster Theodore/TrioTrapioWare/MiniGame1/MiniGame1Scene.unity
     guid: 724ee1f0c0f380b48a1d47eef7d0ee5d
+  - enabled: 1
+    path: Assets/MicroGames/Cluster Theodore/TrioTrapioWare/MiniGame3/Swipe.unity
+    guid: 535ec2bb8a65f414fb9c9315cba272c2
   m_configObjects: {}
