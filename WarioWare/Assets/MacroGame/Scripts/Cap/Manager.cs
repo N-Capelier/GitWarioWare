@@ -92,6 +92,7 @@ namespace Caps
         [Header("Debug")]
         [SerializeField] bool isDebug = false;
         [HideInInspector] public EventSystem eventSystem;
+        public int miniGameNumberPerCap = 4;
         //events
         //public delegate void MapUIHandler();
         //public event MapUIHandler ResetFocus;
@@ -113,6 +114,7 @@ namespace Caps
             lifeWeight = DebugToolManager.Instance.ChangeVariableValue("lifeWeight");
             goldWeight = DebugToolManager.Instance.ChangeVariableValue("goldWeight");
             foodWeight = DebugToolManager.Instance.ChangeVariableValue("foodWeight");
+            miniGameNumberPerCap = DebugToolManager.Instance.ChangeVariableValue("miniGameNumberPerCap");
             cantDoTransition = true;
         }
 
@@ -537,7 +539,7 @@ namespace Caps
                         if ((int)_IslandTarget.difficulty > 2)
                             island.capList[i].length = 6 + zoneNumber;
                         else
-                            island.capList[i].length = (int)_IslandTarget.difficulty + 4 + zoneNumber;
+                            island.capList[i].length = (int)_IslandTarget.difficulty + miniGameNumberPerCap + zoneNumber;
                     }
                     island.capList[i].ChoseMiniGames(barrelProbability, sorter);
                 }

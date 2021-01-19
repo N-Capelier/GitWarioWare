@@ -6,7 +6,7 @@ namespace Rewards
     [CreateAssetMenu(fileName = "New Beatcoin", menuName = "Reward/Resource/Beatcoin", order = 50)]
     public class BeatcoinReward : Reward
     {
-        [SerializeField] int beatcoinAmount;
+        [SerializeField] public int beatcoinAmount;
         public override bool ApplyActiveEffect()
         {
             return false;

@@ -6,7 +6,7 @@ namespace Rewards
     [CreateAssetMenu(fileName = "New Harpoon", menuName = "Reward/Item/Harpoon", order = 50)]
     public class HarpoonReward : Reward
     {
-        [SerializeField] int bonusBarrels;
+        [SerializeField] public int bonusBarrels;
 
         public override bool ApplyActiveEffect()
         {
