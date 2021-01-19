@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Testing;
 
 namespace LeRafiot
 {
@@ -33,16 +34,21 @@ namespace LeRafiot
             public bool canSpawn;
 
             [Header("UI")]
-            public Image drinkUi;
-            public Image bulle;
+            public GameObject drinkUi;
+            public GameObject bulle;
 
             [Header("Difficulty")]
             public bool vanishUi;
             [HideInInspector] public int tickToFade;
 
+            public int tickToIncrase;
+            public Vector2 startScale;
+            public Vector2 finalScale;
+
             private GameObject spawnDrink;
             private int rateStock;
             private int numberOfSpawn;
+            private bool canScale = true;
             //private Color alphaColor;
             #endregion
 
@@ -55,6 +61,7 @@ namespace LeRafiot
                 //alphaColor.a = 0;
                 rateStock = goodSpawnRate;
                 canSpawn = true;
+                canScale = true;
 
                 DrinkChoice();
                 UiSystem();
@@ -67,6 +74,11 @@ namespace LeRafiot
                 base.FixedUpdate(); //Do not erase this line!
 
                 actualDrink.RemoveAll(list_item => list_item == null);
+
+                /*if (canScale == true)
+                {
+                    UiScale(startScale, finalScale, (tickToIncrase * (60 / bpm)));
+                }*/
             }
 
             //TimedUpdate is called once every tick.
@@ -132,14 +144,50 @@ namespace LeRafiot
 
             void UiSystem()
             {
-                drinkUi.sprite = chosenOne.GetComponent<SpriteRenderer>().sprite;
-                drinkUi.color = chosenOne.GetComponent<SpriteRenderer>().color;
+                drinkUi.GetComponent<SpriteRenderer>().sprite = chosenOne.GetComponent<SpriteRenderer>().sprite;
 
                 if (vanishUi)
                 {
                     StartCoroutine(CleanUI());
                 }
+
+                
             }
+
+
+            void UiScale(Vector2 scale, Vector2 endScale, float timeToFade)
+            {
+                canScale = false;
+                bool switchLock = false;
+
+                Vector2 currentScale = scale;
+                float t = 0;
+
+                if (switchLock == false)
+                {
+                    while (t < 1)
+                    {
+                        Debug.LogWarning("je rentre");
+                        t += Time.deltaTime / timeToFade;
+                        drinkUi.gameObject.transform.localScale = Vector3.Lerp(currentScale, endScale, t);
+                    }
+                    //switchLock = true;
+                }
+                
+                if (switchLock == true)
+                {
+                    t = 0;
+                    while (t < 1)
+                    {
+                        t += Time.deltaTime / timeToFade;
+                        drinkUi.gameObject.transform.localScale = Vector3.Lerp(endScale, scale, t);
+                    }
+                }
+
+                
+                canScale = true;
+            }
+
 
             public IEnumerator MoveToPosition(Transform transform, Vector3 position, float timeToMove)
             {

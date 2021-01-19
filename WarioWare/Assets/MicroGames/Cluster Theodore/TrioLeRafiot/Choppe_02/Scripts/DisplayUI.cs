@@ -25,6 +25,9 @@ namespace LeRafiot
             public TextMeshProUGUI bpmText;
             public Slider timerUI;
             public TextMeshProUGUI tickNumber;
+
+            [Header("Script")]
+            public CatchSystem catchScript;
             #endregion
 
             public override void Start()
@@ -44,10 +47,10 @@ namespace LeRafiot
             //TimedUpdate is called once every tick.
             public override void TimedUpdate()
             {
-                if (Tick == 8 && !Manager.Instance.panel.activeSelf)               
+                if (Tick == 8 && !Manager.Instance.panel.activeSelf && !catchScript.catchedGoodDrink)               
                 {
                     Manager.Instance.Result(false);
-                    SoundManagerChoppe.Instance.sfxSound[1].Play();
+                    //SoundManagerChoppe.Instance.sfxSound[1].Play();
                 }
 
                 if (Tick <= 8)
