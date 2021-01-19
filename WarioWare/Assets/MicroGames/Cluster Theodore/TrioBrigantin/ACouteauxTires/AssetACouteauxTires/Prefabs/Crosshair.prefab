@@ -102,7 +102,7 @@ MonoBehaviour:
     type: 3}
   wrongLock: {fileID: 5691323229861465857, guid: f01b1de8957621046944bc4b1bc04418,
     type: 3}
-  anyLockSound: LockMade
+  anyLockSound: Throw
 --- !u!50 &8309379637526457515
 Rigidbody2D:
   serializedVersion: 4

@@ -6,7 +6,7 @@ using UnityEngine;
 /// DEUTSCHMANN Lucas
 /// </summary>
 
-namespace TrioRadioRTL
+namespace RadioRTL
 {
     namespace EatingContest
     {

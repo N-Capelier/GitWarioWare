@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Caps;
 
-namespace TrioRadioRTL
+namespace RadioRTL
 {
     namespace EatingContest
     {

@@ -16,7 +16,7 @@ namespace Brigantin
 
             void Update()
             {
-                transform.Rotate(new Vector3(0, 0, rotateSpeed * Time.deltaTime));
+                transform.Rotate(new Vector3(0, 0, rotateSpeed * Time.deltaTime)); //
             }
         }
     }

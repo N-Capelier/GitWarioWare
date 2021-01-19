@@ -123,13 +123,13 @@ namespace Brigantin
                 {
                     case 60:
                         break;
-                    case 90:
+                    case 80:
                         break;
-                    case 120:
+                    case 100:
                         dashCooldown *= 0.7f;
                         dashTime *= 0.7f;
                         break;
-                    case 140:
+                    case 120:
                         dashCooldown *= 0.5f;
                         dashTime *= 0.6f;
                         break;
