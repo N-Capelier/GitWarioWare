@@ -60,7 +60,8 @@ namespace TrioLLL
                 if (Tick == 7)
                 {
                     Explosion.SetActive(true);
-                    //Audiomanager.PlaySFX(boom,volumeBoom);
+                    
+                    Debug.Log("boom");
                 }
             }
 

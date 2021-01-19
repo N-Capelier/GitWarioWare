@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -677,6 +677,11 @@ PrefabInstance:
       propertyPath: Audiomanager
       value: 
       objectReference: {fileID: 1138950731}
+    - target: {fileID: 3292392492318861226, guid: b51e62d4fdeb1304b95264c4de2a26c0,
+        type: 3}
+      propertyPath: footPrints
+      value: 
+      objectReference: {fileID: 8300000, guid: c6aa09b6ed8e9cb45a69cca216032b3d, type: 3}
     - target: {fileID: 3292392492318861227, guid: b51e62d4fdeb1304b95264c4de2a26c0,
         type: 3}
       propertyPath: m_Name
@@ -926,6 +931,31 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8162564400880155264, guid: 279e2478f0c497f428a1ba01e9065d82,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8162564400880155266, guid: 279e2478f0c497f428a1ba01e9065d82,
+        type: 3}
+      propertyPath: musiqueSpeed4
+      value: 
+      objectReference: {fileID: 8300000, guid: c440574f8f0c4ee43ba5be0122cb6cc4, type: 3}
+    - target: {fileID: 8162564400880155266, guid: 279e2478f0c497f428a1ba01e9065d82,
+        type: 3}
+      propertyPath: musiqueSpeed3
+      value: 
+      objectReference: {fileID: 8300000, guid: 6b9c8fff3f4a3784cab1a098d29fe1a2, type: 3}
+    - target: {fileID: 8162564400880155266, guid: 279e2478f0c497f428a1ba01e9065d82,
+        type: 3}
+      propertyPath: musiqueSpeed2
+      value: 
+      objectReference: {fileID: 8300000, guid: 6ef7fddcfb58d3a4fa793d3cb8530457, type: 3}
+    - target: {fileID: 8162564400880155266, guid: 279e2478f0c497f428a1ba01e9065d82,
+        type: 3}
+      propertyPath: musiqueSpeed1
+      value: 
+      objectReference: {fileID: 8300000, guid: 56f5bc9152d4e1545ae46c4d53c73f04, type: 3}
     - target: {fileID: 8162564400880155269, guid: 279e2478f0c497f428a1ba01e9065d82,
         type: 3}
       propertyPath: m_LocalPosition.x

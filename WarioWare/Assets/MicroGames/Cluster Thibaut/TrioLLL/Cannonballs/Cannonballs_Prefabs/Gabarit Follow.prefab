@@ -63,9 +63,10 @@ MonoBehaviour:
   max_y: 10
   nextPosition: {x: 0, y: 0}
   Explosion: {fileID: 5681934861450562301}
-  boom: {fileID: 0}
-  splatter: {fileID: 0}
-  Audiomanager: {fileID: 0}
+  boom: {fileID: 8300000, guid: 9deaf01932c29bb488b0fbd67e7cec2d, type: 3}
+  splatter: {fileID: 8300000, guid: 3e4bb4249525ba7428dff417bb503116, type: 3}
+  Audiomanager: {fileID: 8162564400880155266, guid: 279e2478f0c497f428a1ba01e9065d82,
+    type: 3}
   volumeBoom: 1
   volumeSplatter: 1
 --- !u!50 &7812062708568942595

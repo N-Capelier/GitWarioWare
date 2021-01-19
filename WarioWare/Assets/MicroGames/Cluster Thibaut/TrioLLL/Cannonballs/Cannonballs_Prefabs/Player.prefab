@@ -77,6 +77,13 @@ MonoBehaviour:
   bpmDiviser: 30
   Face: {fileID: 3157132866023392098}
   Dos: {fileID: 9171531515343479061}
+  footPrints: {fileID: 8300000, guid: c6aa09b6ed8e9cb45a69cca216032b3d, type: 3}
+  boom: {fileID: 8300000, guid: 9deaf01932c29bb488b0fbd67e7cec2d, type: 3}
+  splatter: {fileID: 8300000, guid: b9cb8dc443472d04faef22383cd3231e, type: 3}
+  footPrintVolume: 0
+  boomVolume: 0
+  splatterVolume: 0
+  Audiomanager: {fileID: 0}
 --- !u!70 &-8889531342827996285
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
