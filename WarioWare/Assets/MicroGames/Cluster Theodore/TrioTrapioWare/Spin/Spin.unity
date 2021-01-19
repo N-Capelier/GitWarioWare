@@ -997,6 +997,7 @@ GameObject:
   m_Component:
   - component: {fileID: 303412272}
   - component: {fileID: 303412271}
+  - component: {fileID: 303412273}
   m_Layer: 0
   m_Name: MusiqueDeFond
   m_TagString: Untagged
@@ -1015,7 +1016,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 7544391687955548036, guid: 1563158b98acda3409a8b625799c013b,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: 99821374a02768a4c9a8861e483320ba, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 0.283
   m_Pitch: 1
@@ -1115,6 +1116,31 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &303412273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 303412270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63e16bf71b5b2c84a9169a852f410c44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bpm: 60
+  currentDifficulty: 0
+  timer: 0
+  currentTime: 0
+  musics:
+  - music: {fileID: 8300000, guid: 2fc875631a4951e4cb04ca10bf616b56, type: 3}
+    bpm: 60
+  - music: {fileID: 8300000, guid: 3beb0ab5b18be4c4eab97ea420d1ae77, type: 3}
+    bpm: 90
+  - music: {fileID: 8300000, guid: 3beb0ab5b18be4c4eab97ea420d1ae77, type: 3}
+    bpm: 120
+  - music: {fileID: 8300000, guid: 6b81b4ab95137154abe37a7f06c804a8, type: 3}
+    bpm: 140
 --- !u!1 &353970626
 GameObject:
   m_ObjectHideFlags: 0

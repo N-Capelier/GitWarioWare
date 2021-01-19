@@ -15,12 +15,12 @@ MonoBehaviour:
   cluster: 0
   trio: TrapioWare
   indexEnum: 2
-  verbe: Climb!
+  verbe: Grimpe !
   microGameScene:
-    sceneAsset: {fileID: 102900000, guid: 6a00e58c9baf5a2498aaf56c3adb0e60, type: 3}
+    sceneAsset: {fileID: 102900000, guid: 724ee1f0c0f380b48a1d47eef7d0ee5d, type: 3}
     required: 0
-    buildIndex: 18
-  inputs: {fileID: 21300000, guid: 7a17302304b984b4892c1f0bfa46bbe8, type: 3}
+    buildIndex: 36
+  inputs: {fileID: 21300000, guid: f15ac7a9c371e9244a6e0b2837185dfc, type: 3}
   currentDifficulty: 0
-  idWeight: 12
+  idWeight: 0
   hasBarrel: 0

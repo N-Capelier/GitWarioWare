@@ -33,7 +33,7 @@ namespace TrapioWare
 
             IEnumerator SpawnBirds()
             {
-                fireRateLevel = Random.Range(2f, 4f);
+                fireRateLevel = Random.Range(1f, 2f);
 
                 GameObject storedBird = Instantiate(bird, transform.position, Quaternion.identity);
                 storedBird.transform.parent = ClimbGameManager.Instance.transform;
