@@ -39,6 +39,7 @@ namespace SpanishInquisition
             public GameObject defeatFeedback;
             public GameObject explosionSprite;
             public GameObject button;
+            public GameObject buttonTransparent;
             public Animator animatorPlayer;
             public Animator animatorThrower;
             public int objectsNumber;
@@ -85,15 +86,15 @@ namespace SpanishInquisition
                         soundManager.PlayFlagMusicSlow();
                         break;
 
-                    case 90:
+                    case 80:
                         soundManager.PlayFlagMusicMedium();
                         break;
 
-                    case 120:
+                    case 100:
                         soundManager.PlayFlagMusicFast();
                         break;
 
-                    case 140:
+                    case 120:
                         soundManager.PlayFlagMusicSuperFast();
                         break;
                 }
@@ -137,6 +138,7 @@ namespace SpanishInquisition
                 {
                     gameIsFinished = true;
                     gameIsWon = true;
+                    canCut = false;
                     if (!endFeedbackPlayed)
                     {
                         EndOfGameFeedback();
@@ -160,11 +162,6 @@ namespace SpanishInquisition
                 if (Tick == 8)
                 {
                     Manager.Instance.Result (gameIsWon);
-                }
-
-                if ((Tick == 8 && !gameIsWon) || gameIsFinished)
-                {
-                    
                 }
             }
              
@@ -210,6 +207,7 @@ namespace SpanishInquisition
                         neutralCursor.SetActive(false);
                         activeCursor.SetActive(true);
                         button.SetActive(true);
+                        buttonTransparent.SetActive(false);
 
                         if (Input.GetButtonDown("X_Button") || Input.GetKeyDown(KeyCode.X))
                         {
@@ -238,6 +236,7 @@ namespace SpanishInquisition
                     }
 
                     button.SetActive(false);
+                    buttonTransparent.SetActive(true);
                     activeCursor.SetActive(false);
                     neutralCursor.SetActive(true);                    
                     //Cooldown 0.5 tick
