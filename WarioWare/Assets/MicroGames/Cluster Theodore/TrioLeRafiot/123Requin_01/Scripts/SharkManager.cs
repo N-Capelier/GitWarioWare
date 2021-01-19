@@ -31,6 +31,9 @@ namespace LeRafiot
             [Header ("UI")]
             public Image sign;
 
+            [Header("Script")]
+            public RopeController ropeControllerScript;
+
             private GameObject actualShark;
 
             private float counterTick;
@@ -53,12 +56,19 @@ namespace LeRafiot
                 counterTickShark = 0;
             }
 
+
             //FixedUpdate is called on a fixed time.
             public override void FixedUpdate()
             {
                 base.FixedUpdate(); //Do not erase this line!    
 
                 SharkFlash();
+
+                if (ropeControllerScript.win)
+                {
+                    canFlash = false;
+                    sign.gameObject.SetActive(false);
+                }
             }
 
             //TimedUpdate is called once every tick.
@@ -111,12 +121,12 @@ namespace LeRafiot
                         {
                             counterTickShark++;
 
-                            if (lockSpawn == false)
+                            if (lockSpawn == false && !ropeControllerScript.win)
                             {
                                 SoundManager123Requin.Instance.sfxSound[3].Play();
                                 sign.gameObject.SetActive(true);
                                 lockSpawn = true;
-                                sharkIsHere = true;
+                                //sharkIsHere = true;
                                 actualShark = Instantiate(sharkPrefab, spawnStart.transform.position, spawnStart.transform.rotation);
                                 StartCoroutine(MoveToPosition(actualShark.transform, spawnEnd.transform.position, (tickSharkStay * (60 / bpm))));
                             }
@@ -124,7 +134,7 @@ namespace LeRafiot
                         else
                         {
                             sign.gameObject.SetActive(false);
-                            sharkIsHere = false;
+                            //sharkIsHere = false;
                             Destroy(actualShark);
                         }
                     }
@@ -140,6 +150,21 @@ namespace LeRafiot
                 else
                 {
                     Destroy(gameObject);
+                }
+            }
+
+            private void OnTriggerEnter2D(Collider2D col)
+            {
+                if (col.CompareTag("Enemy1"))
+                {
+                    sharkIsHere = true;
+                }
+            }
+            private void OnTriggerExit2D(Collider2D col)
+            {
+                if (col.CompareTag("Enemy1"))
+                {
+                    sharkIsHere = false;
                 }
             }
 

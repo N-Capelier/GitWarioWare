@@ -30,6 +30,7 @@ namespace Brigantin
             private GameObject ghost { get; set; }
             private GameObject area { get; set; }
             private GhostMovement ghostMovement { get; set; }
+            private AreaMovement areaMovement { get; set; }
             private GameObject blackScreen { get; set; }
 
             private SoundManager soundManager;
@@ -44,6 +45,7 @@ namespace Brigantin
                 ghost = GameObject.Find("Ghost");
                 area = GameObject.Find("Middle Collider");
                 ghostMovement = ghost.GetComponent<GhostMovement>();
+                areaMovement = area.GetComponent<AreaMovement>();
                 soundManager = GameObject.Find("Sound Manager").GetComponent<SoundManager>();
                 blackScreen = GameObject.Find("Black Screen");
 
@@ -119,9 +121,21 @@ namespace Brigantin
 
             private void OnAButton()
             {
-                ghost.GetComponent<GhostMovement>().canMove = false;
+                ghostMovement.canMove = false;
+                areaMovement.canMove = false;
                 hasInput = true;
                 blackScreen.SetActive(false);
+                Manager.Instance.Result(ghostMovement.inArea);
+                if (ghostMovement.inArea)
+                {
+                    soundManager.StopMusic();
+                    soundManager.PlayVictory();
+                }
+                else
+                {
+                    soundManager.StopMusic();
+                    soundManager.PlayDefeat();
+                }
             }
         }
     }

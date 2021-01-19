@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Testing;
 
 namespace LeRafiot
 {
@@ -30,10 +31,10 @@ namespace LeRafiot
                         globalMusic[0].Play();
                         break;
                     case (float)BPM.Medium:
-                        //globalMusic[1].Play();
+                        globalMusic[1].Play();
                         break;
                     case (float)BPM.Fast:
-                        //globalMusic[2].Play();
+                        globalMusic[2].Play();
                         break;
                     case (float)BPM.SuperFast:
                         globalMusic[3].Play();
