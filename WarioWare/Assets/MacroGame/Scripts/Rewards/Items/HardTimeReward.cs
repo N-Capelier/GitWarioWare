@@ -6,15 +6,15 @@ namespace Rewards
     [CreateAssetMenu(fileName = "New HardTime", menuName = "Reward/Item/Hard Time", order = 50)]
     public class HardTimeReward : Reward
     {
-        [SerializeField] int beatcoinAmmount = 2;
-        [SerializeField] int foodAmmount = 1;
+        [SerializeField] public int beatcoinAmount = 2;
+        [SerializeField] public int foodAmount = 1;
 
         public override bool ApplyActiveEffect()
         {
-            if(PlayerManager.Instance.beatcoins >= beatcoinAmmount)
+            if(PlayerManager.Instance.beatcoins >= beatcoinAmount)
             {
-                PlayerManager.Instance.GainCoins(-beatcoinAmmount);
-                PlayerManager.Instance.GainFood(foodAmmount);
+                PlayerManager.Instance.GainCoins(-beatcoinAmount);
+                PlayerManager.Instance.GainFood(foodAmount);
                 return true;
             }
             return false;
@@ -27,7 +27,7 @@ namespace Rewards
 
         public override string GetDescription()
         {
-            return $"Convertit {beatcoinAmmount} beatcoins en {foodAmmount} rations.";
+            return $"Convertit {beatcoinAmount} beatcoins en {foodAmount} rations.";
         }
 
         public override void RemovePassiveEffect()

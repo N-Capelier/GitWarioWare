@@ -5,7 +5,7 @@ namespace Rewards
     [CreateAssetMenu(fileName = "New AC-130", menuName = "Reward/Item/AC-130", order = 50)]
     public class AC130Reward : Reward
     {
-        [SerializeField] int damages = 10;
+        [SerializeField] public int damages = 10;
 
         public override bool ApplyActiveEffect()
         {
