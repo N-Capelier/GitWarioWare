@@ -604,8 +604,6 @@ namespace Caps
                 {
                     eventSystem.enabled = true;
                 }
-
-                PlayerMovement.Instance.playerIsland.reward.ApplyPassiveEffect();
             }
         }
         #region Cameras
