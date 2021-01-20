@@ -150,6 +150,10 @@ namespace Player
             rewardToAdd = null;
             rewardToAddImage.gameObject.SetActive(false);
             ShowSelectedSlotInfo(slots[slot]);
+            if(stockedRewards[slot].effect == RewardEffect.Passive)
+            {
+                stockedRewards[slot].ApplyPassiveEffect();
+            }
         }
 
         public void OverrideInventorySlot(Reward newItem, int slot)
@@ -160,6 +164,10 @@ namespace Player
             rewardImages[slot].sprite = newItem.sprite;
             rewardToAdd = null;
             rewardToAddImage.gameObject.SetActive(false);
+            if (stockedRewards[slot].effect == RewardEffect.Passive)
+            {
+                stockedRewards[slot].ApplyPassiveEffect();
+            }
         }
 
         public void SlotActivation(Button clickedButton)

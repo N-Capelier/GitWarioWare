@@ -243,9 +243,11 @@ namespace Islands
                     SoundManager.Instance.ApplyAudioClip("ClickedImpossible", audioSource);
                     audioSource.PlaySecured();          
                 }
-            }
-            
-            
+                else
+                {
+                    PlayerMovement.Instance.Move(this);
+                }
+            }          
         }
         public void OnSelect()
         {
