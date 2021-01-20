@@ -13,8 +13,19 @@ MonoBehaviour:
   m_Name: RewardsVariable
   m_EditorClassIdentifier: 
   rewardsList:
+  - {fileID: 11400000, guid: a071db58001bc8e41a9f7ad8335826f6, type: 2}
+  - {fileID: 11400000, guid: 60a954d86eeb042478f0772ed7c712e7, type: 2}
+  - {fileID: 11400000, guid: 9dc5129f4a193194a98e6083a51d55e9, type: 2}
+  - {fileID: 11400000, guid: fe3133e4d8c1b6f498696fa748b0722a, type: 2}
+  - {fileID: 11400000, guid: cc1f97a27efd048439d1113d6453cfe3, type: 2}
   - {fileID: 11400000, guid: 71bbe153d92fdfc4092323ec9e1304be, type: 2}
   - {fileID: 11400000, guid: 9f73c8aa69d192841a5546b75bb191be, type: 2}
   - {fileID: 11400000, guid: 37935399610e0e74e947d3061bbbf60f, type: 2}
   - {fileID: 11400000, guid: 1d86f5ea0affd0543b1b502f193c6f4b, type: 2}
-  - {fileID: 11400000, guid: cc1f97a27efd048439d1113d6453cfe3, type: 2}
+  - {fileID: 11400000, guid: 09331f74b0b549847bc45deefa636e59, type: 2}
+  - {fileID: 11400000, guid: 63d4cb7777ab32140a6b982862001195, type: 2}
+  - {fileID: 11400000, guid: df83f0dab1c17a649b648463b426e029, type: 2}
+  - {fileID: 11400000, guid: 661394c88206bcd4c8f665c8fe00f6e2, type: 2}
+  - {fileID: 11400000, guid: d832e88f9e00ea84facab18bfd5ded84, type: 2}
+  - {fileID: 11400000, guid: 6dec0bbc5160c2f4fa7e879b6300e779, type: 2}
+  - {fileID: 11400000, guid: 2f684db8bda80474ca24817d7dfba8ac, type: 2}

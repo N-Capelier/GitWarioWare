@@ -125,4 +125,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/MicroGames/Cluster Theodore/TrioSpanishInquisition/MiniGame1/MiniGame1Scene.unity
     guid: d1d641469f4b9814fba98db1b859e31e
+  - enabled: 1
+    path: Assets/MicroGames/Cluster Theodore/TrioBrigantin/BouffeLesJoelle/BouffeLesJoelleScene.unity
+    guid: fdc83bc14bab17542a29b8e17cd9a089
+  - enabled: 1
+    path: Assets/MicroGames/Cluster Theodore/TrioSpanishInquisition/HisserLeDrapeau/HisserLeDrapeau.unity
+    guid: a93fa0b526381fa4db8f94611a20605a
   m_configObjects: {}
