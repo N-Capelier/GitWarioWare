@@ -75,9 +75,6 @@ EditorBuildSettings:
     path: Assets/MicroGames/Cluster Theodore/TrioBrigantin/FantomeSousLesProjecteurs/FantomeSousLesProjecteurs.unity
     guid: 3ee12d34d8ef07e45ba3205c88c24f63
   - enabled: 1
-    path: Assets/MicroGames/Cluster Thibaut/TrioFleebos/LeMusicien/LeMusicien.unity
-    guid: 8f05363fd6691964d858a5a1860cd414
-  - enabled: 1
     path: Assets/MicroGames/Cluster Aurelien/TrioACommAkuma/PirateGrog/PirateGrogTestScene.unity
     guid: 2f3fe7a9fa3e94d42a509dce80a71abe
   - enabled: 1
@@ -131,4 +128,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/MicroGames/Cluster Theodore/TrioSpanishInquisition/HisserLeDrapeau/HisserLeDrapeau.unity
     guid: a93fa0b526381fa4db8f94611a20605a
+  - enabled: 1
+    path: Assets/MicroGames/Cluster Theodore/TrioTrapioWare/Climb/Climb.unity
+    guid: 2a521c29776767247b76af8782eaa783
+  - enabled: 1
+    path: Assets/MicroGames/Cluster Thibaut/TrioFleebos/LeMusicien/LeMusicien.unity
+    guid: 8f05363fd6691964d858a5a1860cd414
   m_configObjects: {}
