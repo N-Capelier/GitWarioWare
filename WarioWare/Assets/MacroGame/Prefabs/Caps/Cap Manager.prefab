@@ -542,7 +542,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6059838946475421701}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -500, z: 0}
+  m_LocalPosition: {x: 0, y: -1000, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2328416759500185766}
@@ -993,7 +993,6 @@ MonoBehaviour:
   cantDisplayVerbe: 0
   speedUp: {fileID: 6915276350177544496}
   zoomed: 0
-  verbeSource: {fileID: 873898292098370113}
   isDebug: 0
   eventSystem: {fileID: 0}
   miniGameNumberPerCap: 4
@@ -2207,7 +2206,7 @@ PrefabInstance:
     - target: {fileID: 4639160146577825672, guid: 4be0fd972995e6c438e6e59767985dc9,
         type: 3}
       propertyPath: m_Bounds.m_Center.y
-      value: 4.4093995
+      value: 4.408911
       objectReference: {fileID: 0}
     - target: {fileID: 4639160146577825672, guid: 4be0fd972995e6c438e6e59767985dc9,
         type: 3}
