@@ -38,9 +38,9 @@ public enum Difficulty
 public enum BPM
 {
     Slow = 60,
-    Medium = 90,
-    Fast = 120,
-    SuperFast = 140
+    Medium = 80,
+    Fast = 100,
+    SuperFast = 120
 }
 #endregion
 
