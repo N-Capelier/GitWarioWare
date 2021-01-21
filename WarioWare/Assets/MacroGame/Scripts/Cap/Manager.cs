@@ -606,6 +606,7 @@ namespace Caps
                 else
                 {
                     eventSystem.enabled = true;
+                    PlayerMovement.Instance.playerIsland.reward.ApplyPassiveEffect();
                 }
             }
         }
