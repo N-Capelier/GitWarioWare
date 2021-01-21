@@ -9,16 +9,38 @@ namespace UI
     {
         [HideInInspector] public float timer;
         [HideInInspector] public float bpm;
-        private Image clockImage;
+        public Slider rope;
+        public Sprite explosionBarel;
+        public Sprite initialBarrel;
+        public Image barrel;
+        private bool doOnce;
         private void Start()
         {
-            clockImage = GetComponent<Image>();
             bpm = (float)Manager.Instance.bpm;
+            
+            
         }
         private void Update()
         {
-            timer += Time.deltaTime;
-            clockImage.fillAmount = timer * bpm / 60 / 8;
+            if (!doOnce)
+            {
+                timer += Time.deltaTime;
+                rope.value =1- timer * bpm / 60 / 8;
+                if(timer*bpm/60 >= 7.8f)
+                {
+                    doOnce = true;
+                    barrel.sprite = explosionBarel;
+                }
+            }
+        }
+
+        public void Reset()
+        {
+            doOnce = false;
+            barrel.sprite = initialBarrel;
+            doOnce = false;
+            bpm = (float)Manager.Instance.bpm;
+            timer = 0;
         }
 
     }
