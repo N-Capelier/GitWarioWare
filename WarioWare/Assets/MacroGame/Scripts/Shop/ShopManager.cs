@@ -19,10 +19,11 @@ namespace Shop
         public GameObject shopCanvas;
         public Button[] shopSlots;
         public Image[] shopItemImages;
+        public TextMeshProUGUI[] itemPrices;
         public GameObject itemDescriptionContainer;
         public TextMeshProUGUI itemDescription;
-        public TextMeshProUGUI itemPrice;
         public TextMeshProUGUI itemName;
+
 
         [HideInInspector] public List<Reward> shopItems = new List<Reward>();
         private List<Reward> allResources = new List<Reward>();
@@ -97,6 +98,7 @@ namespace Shop
             for (int i = 0; i < shopSlots.Length; i++)
             {
                 shopItemImages[i].sprite = shopItems[i].sprite;
+                itemPrices[i].text = shopItems[i].price.ToString();
             }
         }
 
@@ -112,10 +114,12 @@ namespace Shop
                 if (shopItems[i] == null)
                 {
                     shopItemImages[i].gameObject.SetActive(false);
+                    itemPrices[i].gameObject.SetActive(false);
                 }
                 else
                 {
                     shopItemImages[i].gameObject.SetActive(true);
+                    itemPrices[i].gameObject.SetActive(true);
                 }
             }
 
@@ -160,6 +164,7 @@ namespace Shop
 
                         shopItems[i] = null;
                         shopItemImages[i].gameObject.SetActive(false);
+                        itemPrices[i].gameObject.SetActive(false);
                     }
                     else
                     {
@@ -181,7 +186,6 @@ namespace Shop
                 {
 
                     itemDescription.text = shopItems[i].GetDescription();
-                    itemPrice.text = shopItems[i].price.ToString();
                     itemName.text = shopItems[i].rewardName;
                     itemDescriptionContainer.SetActive(true);
                     break;
