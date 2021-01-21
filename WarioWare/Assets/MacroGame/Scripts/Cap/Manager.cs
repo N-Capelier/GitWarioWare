@@ -76,6 +76,7 @@ namespace Caps
         public TextMeshProUGUI idName;
         public GameObject clock;
 
+
         [Header("Transition")]
         public TransitionAnimations transition;
         public Camera transitionCam;
@@ -256,8 +257,7 @@ namespace Caps
             Scene scene = SceneManager.GetSceneByBuildIndex(currentCap.chosenMiniGames[currentMiniGame].microGameScene.BuildIndex);
             SceneManager.SetActiveScene(scene);
             clock.SetActive(true);
-            clock.GetComponent<UI.Clock>().timer = 0;
-            clock.GetComponent<UI.Clock>().bpm = (float)bpm;
+            clock.GetComponent<UI.Clock>().Reset();
         }
 
         /// <summary>
