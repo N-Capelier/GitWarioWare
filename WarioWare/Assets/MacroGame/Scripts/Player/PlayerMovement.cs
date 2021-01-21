@@ -152,8 +152,8 @@ namespace Player
                 ClearConnections();
                 GetNeighbors();
 
-                if (!_isCapDone)
-                    transitionTimer.SetTime(3f);
+                
+                transitionTimer.SetTime(3f);
 
                 isMoving = false;
             }
