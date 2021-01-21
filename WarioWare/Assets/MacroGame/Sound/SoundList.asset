@@ -77,17 +77,17 @@ MonoBehaviour:
       volume: 0.5
     - name: gameOverJingle_1
       author: 
-      clip: {fileID: 8300000, guid: b65aa85c9b2e22d4c904285cda74edfc, type: 3}
+      clip: {fileID: 8300000, guid: 7cce853a7ad4683428cedcab6175a9ba, type: 3}
       volume: 0.5
     - name: gameOverJingle_2
       author: 
-      clip: {fileID: 8300000, guid: 5a7f0afb2c9383e40b0c6a7eee234b0f, type: 3}
+      clip: {fileID: 8300000, guid: af9653eb566d2e641af21604c2d45dd2, type: 3}
       volume: 0.5
     - name: gameOverJingle_3
       author: 
-      clip: {fileID: 8300000, guid: e6c569d937d854b438aa0bfe5a7fe85e, type: 3}
+      clip: {fileID: 8300000, guid: 5a7f0afb2c9383e40b0c6a7eee234b0f, type: 3}
       volume: 0.5
-    bpm: 3c0000005a000000780000008c000000
+    bpm: 3c000000500000006400000078000000
     name: gameOverJingle
     foldout: 0
   - sounds:
@@ -97,37 +97,37 @@ MonoBehaviour:
       volume: 0.5
     - name: loseJingle_1
       author: 
-      clip: {fileID: 8300000, guid: 110adf67473f84e4a9616b2a93b7d137, type: 3}
+      clip: {fileID: 8300000, guid: db0d27dadc8351c4bb709c3ef414522a, type: 3}
       volume: 0.5
     - name: loseJingle_2
       author: 
-      clip: {fileID: 8300000, guid: b8b1245fa7dff4641873dfa16e6041d2, type: 3}
+      clip: {fileID: 8300000, guid: 0eac4f2829228534ab44aff953380602, type: 3}
       volume: 0.5
     - name: loseJingle_3
       author: 
-      clip: {fileID: 8300000, guid: 97d0b209a0f27ab449e9d64ae5b17745, type: 3}
+      clip: {fileID: 8300000, guid: b8b1245fa7dff4641873dfa16e6041d2, type: 3}
       volume: 0.5
-    bpm: 3c0000005a000000780000008c000000
+    bpm: 3c000000500000006400000078000000
     name: loseJingle
     foldout: 0
   - sounds:
     - name: speedUpJingle_0
       author: 
-      clip: {fileID: 8300000, guid: a20efa59815b6cd4080dc7f35180558c, type: 3}
+      clip: {fileID: 8300000, guid: 9cf96d6de5b0001429cd6ea3ae4d6683, type: 3}
       volume: 0.5
     - name: speedUpJingle_1
       author: 
-      clip: {fileID: 8300000, guid: 29dd06d59e9362d408f7c35177c510e1, type: 3}
+      clip: {fileID: 8300000, guid: fc03c1a2a251ee4439c9bcfa289b5cfe, type: 3}
       volume: 0.5
     - name: speedUpJingle_2
       author: 
-      clip: {fileID: 8300000, guid: 01095e813d3001747bc740a3b7fe8eda, type: 3}
+      clip: {fileID: 8300000, guid: 56443016ab76a4d449092eac08303343, type: 3}
       volume: 0.5
     - name: speedUpJingle_3
       author: 
       clip: {fileID: 8300000, guid: 01095e813d3001747bc740a3b7fe8eda, type: 3}
       volume: 0.5
-    bpm: 3c0000005a000000780000008c000000
+    bpm: 3c000000500000006400000078000000
     name: speedUpJingle
     foldout: 0
   - sounds:
@@ -137,17 +137,17 @@ MonoBehaviour:
       volume: 0.5
     - name: verbeJingle_1
       author: 
-      clip: {fileID: 8300000, guid: 87c560ba042876d41b12412b61a802c8, type: 3}
+      clip: {fileID: 8300000, guid: 4e7689b29a43c7345a5417432928fdff, type: 3}
       volume: 0.5
     - name: verbeJingle_2
       author: 
-      clip: {fileID: 8300000, guid: 0bdc4fd587a132b4897497cbfc15ef2e, type: 3}
+      clip: {fileID: 8300000, guid: b2191a74e6024964086256d28af7ecbe, type: 3}
       volume: 0.5
     - name: verbeJingle_3
       author: 
-      clip: {fileID: 8300000, guid: 5bf13b301f1a1c747be9220e4c3e6b63, type: 3}
+      clip: {fileID: 8300000, guid: 0bdc4fd587a132b4897497cbfc15ef2e, type: 3}
       volume: 0.5
-    bpm: 3c0000005a000000780000008c000000
+    bpm: 3c000000500000006400000078000000
     name: verbeJingle
     foldout: 0
   - sounds:
@@ -157,19 +157,119 @@ MonoBehaviour:
       volume: 0.5
     - name: victoryJingle_1
       author: 
-      clip: {fileID: 8300000, guid: 9dd3fc8f130611f47a2abf4d9f6fdfac, type: 3}
+      clip: {fileID: 8300000, guid: 3dfd0742b5390b24f8e9c8c4fb59bf2f, type: 3}
       volume: 0.5
     - name: victoryJingle_2
       author: 
-      clip: {fileID: 8300000, guid: 2a6a53eeee1aacd418f79b557eab4357, type: 3}
+      clip: {fileID: 8300000, guid: cd2b1ea36f01c92408a6d62a549009c7, type: 3}
       volume: 0.5
     - name: victoryJingle_3
       author: 
-      clip: {fileID: 8300000, guid: a4243e4596d918f4da83c072b36def0d, type: 3}
+      clip: {fileID: 8300000, guid: 2a6a53eeee1aacd418f79b557eab4357, type: 3}
       volume: 0.5
-    bpm: 3c0000005a000000780000008c000000
+    bpm: 3c000000500000006400000078000000
     name: victoryJingle
     foldout: 0
+  - sounds:
+    - name: gameOverJingleBoss_0
+      author: 
+      clip: {fileID: 8300000, guid: e73022e40c6dd874cbfcdcbbf3b770ec, type: 3}
+      volume: 0.5
+    - name: gameOverJingleBoss_1
+      author: 
+      clip: {fileID: 8300000, guid: e73022e40c6dd874cbfcdcbbf3b770ec, type: 3}
+      volume: 0.5
+    - name: gameOverJingleBoss_2
+      author: 
+      clip: {fileID: 8300000, guid: 75a8b0315bd03684b91102995d391a5f, type: 3}
+      volume: 0.5
+    - name: gameOverJingleBoss_3
+      author: 
+      clip: {fileID: 8300000, guid: 111a9a852c3522e42b785920c6bd773e, type: 3}
+      volume: 0.5
+    bpm: 3c000000500000006400000078000000
+    name: gameOverJingleBoss
+    foldout: 1
+  - sounds:
+    - name: loseJingleBoss_0
+      author: 
+      clip: {fileID: 8300000, guid: cb7de3ea7c5930d45a984853de0f656d, type: 3}
+      volume: 0.5
+    - name: loseJingleBoss_1
+      author: 
+      clip: {fileID: 8300000, guid: 336b7e74c4172a94db396d98c072a8d6, type: 3}
+      volume: 0.5
+    - name: loseJingleBoss_2
+      author: 
+      clip: {fileID: 8300000, guid: 5ad72e669b524a44793bdfeb9e32e690, type: 3}
+      volume: 0.5
+    - name: loseJingleBoss_3
+      author: 
+      clip: {fileID: 8300000, guid: 303d16af17cc01e458cd96a24826dc0a, type: 3}
+      volume: 0.5
+    bpm: 3c000000500000006400000078000000
+    name: loseJingleBoss
+    foldout: 1
+  - sounds:
+    - name: speedUpJingleBoss_0
+      author: 
+      clip: {fileID: 8300000, guid: 4d9851bd1ebfa1746a6c09401aa249da, type: 3}
+      volume: 0.5
+    - name: speedUpJingleBoss_1
+      author: 
+      clip: {fileID: 8300000, guid: 4dc19195ec800584cb12766133aa9173, type: 3}
+      volume: 0.5
+    - name: speedUpJingleBoss_2
+      author: 
+      clip: {fileID: 8300000, guid: 3f28759c03436aa4e89f10d01056c3db, type: 3}
+      volume: 0.5
+    - name: speedUpJingleBoss_3
+      author: 
+      clip: {fileID: 0}
+      volume: 0.5
+    bpm: 3c000000500000006400000078000000
+    name: speedUpJingleBoss
+    foldout: 0
+  - sounds:
+    - name: verbeJingleBoss_0
+      author: 
+      clip: {fileID: 8300000, guid: d1816d722060aec42ad1b4adcacb5cb4, type: 3}
+      volume: 0.5
+    - name: verbeJingleBoss_1
+      author: 
+      clip: {fileID: 8300000, guid: fb11e80ad79026845b692ace6b9eaffe, type: 3}
+      volume: 0.5
+    - name: verbeJingleBoss_2
+      author: 
+      clip: {fileID: 8300000, guid: f0b7f5fbd602fd940ab4d6d9d746d39a, type: 3}
+      volume: 0.5
+    - name: verbeJingleBoss_3
+      author: 
+      clip: {fileID: 8300000, guid: a6558cd99c8ab384890a430af8cdbe9f, type: 3}
+      volume: 0.5
+    bpm: 3c000000500000006400000078000000
+    name: verbeJingleBoss
+    foldout: 1
+  - sounds:
+    - name: victoryJingleBoss_0
+      author: 
+      clip: {fileID: 8300000, guid: 2c64a78c76914b049970713b5e742584, type: 3}
+      volume: 0.5
+    - name: victoryJingleBoss_1
+      author: 
+      clip: {fileID: 8300000, guid: fae7c7bd0a531a442abed5eb1ca220e5, type: 3}
+      volume: 0.5
+    - name: victoryJingleBoss_2
+      author: 
+      clip: {fileID: 8300000, guid: aadeaf28e7f796940affd21662f8625d, type: 3}
+      volume: 0.5
+    - name: victoryJingleBoss_3
+      author: 
+      clip: {fileID: 8300000, guid: 07577dd93df08384a9d3c605cbaffc9b, type: 3}
+      volume: 0.5
+    bpm: 3c000000500000006400000078000000
+    name: victoryJingleBoss
+    foldout: 1
   music:
   - name: Jingle Bell
     author: MoiMeme

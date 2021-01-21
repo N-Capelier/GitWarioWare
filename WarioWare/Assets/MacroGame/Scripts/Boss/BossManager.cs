@@ -60,7 +60,7 @@ namespace Boss
             shipOpening.gameObject.SetActive(true);
             StartCoroutine(Manager.Instance.ZoomCam(shipOpening.openingTime));
             yield return new WaitForSeconds(shipOpening.openingTime * 2);
-            StartCoroutine(Manager.Instance.PlayMiniGame(transitionCam, currentMalediction, true));
+            StartCoroutine(Manager.Instance.PlayMiniGame(transitionCam, currentMalediction, true, true));
         }
         public IEnumerator TransitionBoss(bool win)
         {
@@ -69,7 +69,7 @@ namespace Boss
             if (win)
             {
                 transition.PlayAnimation((float)Manager.Instance.bpm, true);
-                SoundManager.Instance.ApplyAudioClip("victoryJingle", transitionMusic, Manager.Instance.bpm);
+                SoundManager.Instance.ApplyAudioClip("victoryJingleBoss", transitionMusic, Manager.Instance.bpm);
                 BossLifeManager.Instance.TakeDamage(damageToBoss, bossLifeOnStartOfFight, true);
                 phaseBossLife += damageToBoss;
                 transitionMusic.PlaySecured();
@@ -77,12 +77,12 @@ namespace Boss
             }
             else
             {
-                PlayerManager.Instance.TakeDamage(damageToPlayer);
+                PlayerManager.Instance.TakeDamage(damageToPlayer, true);
                 transition.PlayAnimation((float)Manager.Instance.bpm, false);
 
                 if (PlayerManager.Instance.playerHp > 0)
                 {
-                    SoundManager.Instance.ApplyAudioClip("loseJingle", transitionMusic, Manager.Instance.bpm);
+                    SoundManager.Instance.ApplyAudioClip("loseJingleBoss", transitionMusic, Manager.Instance.bpm);
                     transitionMusic.PlaySecured();
                     yield return new WaitForSeconds(transitionMusic.clip.length);
                 }
@@ -98,7 +98,7 @@ namespace Boss
             {
                 phaseNumber++;
 
-                SoundManager.Instance.ApplyAudioClip("speedUpJingle", transitionMusic, Manager.Instance.bpm);
+                SoundManager.Instance.ApplyAudioClip("speedUpJingleBoss", transitionMusic, Manager.Instance.bpm);
                 transitionMusic.PlaySecured();
                 if(phaseNumber == 5)
                 {
@@ -143,7 +143,7 @@ namespace Boss
             }
 
 
-            Manager.Instance.GlobalTransitionEnd(currentMalediction, displayMalediction);
+            Manager.Instance.GlobalTransitionEnd(currentMalediction, displayMalediction,true);
             displayMalediction = false;
             transitionCam.enabled = false;
         }

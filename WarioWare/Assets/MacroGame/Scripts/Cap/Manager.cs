@@ -125,7 +125,7 @@ namespace Caps
         /// </summary>
         /// <param name="_currentCap"></param>
         /// <returns></returns>
-        public IEnumerator StartMiniGame(Cap _currentCap, Island _currentIsland, Malediction malediction = null, bool displayMalediction = false)
+        public IEnumerator StartMiniGame(Cap _currentCap, Island _currentIsland, Malediction malediction = null, bool displayMalediction = false, bool isBoss = false)
         {
             cantDoTransition = false;
             currentCap = _currentCap;
@@ -163,7 +163,7 @@ namespace Caps
             /* StartCoroutine(FadeManager.Instance.FadeIn(0.15f * 60 / (float)bpm));
              yield return new WaitForSeconds(0.5f * 60 / (float)bpm);*/
 
-            StartCoroutine(PlayMiniGame(transitionCam, malediction, displayMalediction));
+            StartCoroutine(PlayMiniGame(transitionCam, malediction, displayMalediction, isBoss ));
         }
         public IEnumerator StartMiniGame(Cap _currentCap)
         {
@@ -193,7 +193,7 @@ namespace Caps
         }
 
 
-        public IEnumerator PlayMiniGame(Camera _transitionCam, Malediction malediction = null, bool displayMalediction =false)
+        public IEnumerator PlayMiniGame(Camera _transitionCam, Malediction malediction = null, bool displayMalediction =false,bool isBoss = false)
         {
 
             sceneCam.SetActive(true);
@@ -216,7 +216,10 @@ namespace Caps
             }
 
             FadeManager.Instance.NoPanel();
-            SoundManager.Instance.ApplyAudioClip("verbeJingle", transitionMusic, bpm);
+            if(!isBoss)
+                SoundManager.Instance.ApplyAudioClip("verbeJingle", transitionMusic, bpm);
+            else
+                SoundManager.Instance.ApplyAudioClip("verbeJingleBoss", transitionMusic, bpm);
             transitionMusic.PlaySecured();
             if (currentAsyncScene == null)
             {
@@ -381,7 +384,7 @@ namespace Caps
 
         }
 
-        public void GlobalTransitionEnd(Malediction malediction = null, bool displayMalediction = false)
+        public void GlobalTransitionEnd(Malediction malediction = null, bool displayMalediction = false, bool isBoss = false)
         {
             if (currentMiniGame == currentCap.chosenMiniGames.Count)
                 currentMiniGame = 0;
@@ -390,7 +393,7 @@ namespace Caps
             currentAsyncScene = SceneManager.LoadSceneAsync(currentCap.chosenMiniGames[currentMiniGame].microGameScene.BuildIndex, LoadSceneMode.Additive);
             currentAsyncScene.allowSceneActivation = false;
             if (currentIsland != null)
-                StartCoroutine(StartMiniGame(currentCap, currentIsland, malediction, displayMalediction));
+                StartCoroutine(StartMiniGame(currentCap, currentIsland, malediction, displayMalediction, isBoss));
             else
                 StartCoroutine(StartMiniGame(currentCap));
 
