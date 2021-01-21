@@ -67,6 +67,10 @@ namespace Shop
 
         public void InitializeShop()
         {
+            allItems.Clear();
+            allResources.Clear();
+            shopItems.Clear();
+
             //Part resources from other item types;
             for (int i = 0; i < IslandCreator.Instance.gameRewards.Length; i++)
             {
