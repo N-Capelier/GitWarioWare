@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Caps;
 
 namespace RadioRTL
 {
@@ -34,6 +34,7 @@ namespace RadioRTL
             {
 
                 coolDown = 1 / waterDropBySeconds;
+                FindObjectOfType<Script_SoundManager>().Play("EauQuiCoule", 2);
 
             }
 
@@ -46,9 +47,13 @@ namespace RadioRTL
                 if (coolDown <= 0)
                 {
 
-                    Instantiate(waterDrop, spawner.position, Quaternion.identity);
+                    Rigidbody2D waterDropRb = Instantiate(waterDrop, spawner.position, Quaternion.identity).GetComponent<Rigidbody2D>();
+
+                    waterDropRb.AddForce(new Vector2(-1, 1).normalized * 200f);
 
                     currentCoolDown = coolDown;
+                    
+
 
                 }
 

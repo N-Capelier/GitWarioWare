@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Testing;
+using Caps;
 
 namespace LeRafiot
 {
@@ -13,7 +13,7 @@ namespace LeRafiot
 
             private void OnTriggerEnter2D(Collider2D collision)
             {
-                if (collision.gameObject.CompareTag("Enemy2"))
+                if (collision.gameObject.CompareTag("Enemy2") && !catchScript.catchedBadDrink)
                 {
                     catchScript.canCatch = false;
                     DrinkManager.Instance.canSpawn = false;

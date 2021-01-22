@@ -53,10 +53,10 @@ MonoBehaviour:
   musicSource: {fileID: 8162564400880155267}
   musicSource2: {fileID: 8162564400880155264}
   sfxSource: {fileID: 8162564400880155265}
-  musiqueSpeed1: {fileID: 0}
-  musiqueSpeed2: {fileID: 0}
-  musiqueSpeed3: {fileID: 0}
-  musiqueSpeed4: {fileID: 0}
+  musiqueSpeed1: {fileID: 8300000, guid: 4fe6d9f9de942c241a1d78765079307c, type: 3}
+  musiqueSpeed2: {fileID: 8300000, guid: 6ef7fddcfb58d3a4fa793d3cb8530457, type: 3}
+  musiqueSpeed3: {fileID: 8300000, guid: 6b9c8fff3f4a3784cab1a098d29fe1a2, type: 3}
+  musiqueSpeed4: {fileID: 8300000, guid: c440574f8f0c4ee43ba5be0122cb6cc4, type: 3}
 --- !u!82 &8162564400880155267
 AudioSource:
   m_ObjectHideFlags: 0

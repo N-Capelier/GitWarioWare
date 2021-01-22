@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using Testing;
+using Caps;
 
 namespace LeRafiot
 {
@@ -48,7 +48,7 @@ namespace LeRafiot
             private GameObject spawnDrink;
             private int rateStock;
             private int numberOfSpawn;
-            private bool canScale = true;
+            //private bool canScale = true;
             //private Color alphaColor;
             #endregion
 
@@ -61,7 +61,7 @@ namespace LeRafiot
                 //alphaColor.a = 0;
                 rateStock = goodSpawnRate;
                 canSpawn = true;
-                canScale = true;
+                //canScale = true;
 
                 DrinkChoice();
                 UiSystem();
@@ -157,7 +157,7 @@ namespace LeRafiot
 
             void UiScale(Vector2 scale, Vector2 endScale, float timeToFade)
             {
-                canScale = false;
+                //canScale = false;
                 bool switchLock = false;
 
                 Vector2 currentScale = scale;
@@ -185,7 +185,7 @@ namespace LeRafiot
                 }
 
                 
-                canScale = true;
+                //canScale = true;
             }
 
 

@@ -12,7 +12,7 @@ namespace Soupe
         /// </summary>
         public class SoundManagerMouche : Singleton<SoundManagerMouche>
         {
-            public AudioSource globalMusic;
+            public AudioSource []globalMusic;
             public AudioSource[] sfxSound;
 
             private void Awake()

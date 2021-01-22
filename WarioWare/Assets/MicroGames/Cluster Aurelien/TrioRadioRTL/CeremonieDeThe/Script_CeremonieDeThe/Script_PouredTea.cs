@@ -23,6 +23,9 @@ namespace RadioRTL
             public int pouredTea;
             int quantityToVictory;
             float quantityLevel;
+            float teaPouringTimer;
+
+            private bool cupSoundPlaying = false;
 
             //1.3- Bool
             private bool isTouchingCup = false;
@@ -59,10 +62,20 @@ namespace RadioRTL
             //3.1- Verification on Enter
             private void OnTriggerEnter2D(Collider2D waterCollider)
             {
-
+                //Debug.Log("PouredTea . OnTriggerEnter2D");
+                teaPouringTimer = 0f;
                 isTouchingCup = true;
                 pouredTea += 1;
                 Destroy(waterCollider.gameObject);
+
+                if (cupSoundPlaying == false)
+                {
+                    FindObjectOfType<Script_SoundManager>().Play("EauDansUneTasse", 4);
+                }
+
+                cupSoundPlaying = true;
+
+                
 
             }
 
@@ -114,6 +127,27 @@ namespace RadioRTL
                     pouredTea = pouredTea + 0;
 
                 }
+            }
+
+            public void Update()
+            {
+                if (cupSoundPlaying)
+                {
+                    teaPouringTimer += Time.deltaTime;
+
+                    if (teaPouringTimer > 0.1f)
+                    {
+
+                        //Debug.Log("sound stopped");
+                        FindObjectOfType<Script_SoundManager>().Stop("EauDansUneTasse");
+                        cupSoundPlaying = false;
+
+                    }
+
+                    //Debug.Log("teaPouringTimer:" + teaPouringTimer);
+                }
+
+
             }
         }
     }

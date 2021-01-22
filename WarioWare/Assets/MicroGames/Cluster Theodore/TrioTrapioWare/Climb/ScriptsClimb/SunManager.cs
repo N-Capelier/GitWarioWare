@@ -75,12 +75,15 @@ namespace TrapioWare
             {
                 base.FixedUpdate(); //Do not erase this line!
 
-                if (ClimbGameManager.Instance.animationDone)
+                if (ClimbGameManager.Instance.win && timerDead == 8)
                 {
+                    timerDead = 0;
+                    ClimbGameManager.Instance.win = false;
+                    Debug.Log("Win");
                     Manager.Instance.Result(true);
                 }
 
-                if (ClimbGameManager.Instance.lose && ClimbGameManager.Instance.win == false)
+                if (ClimbGameManager.Instance.lose && ClimbGameManager.Instance.win == false && timerDead == 8)
                 {
                     Manager.Instance.Result(false);
                 }
@@ -101,9 +104,10 @@ namespace TrapioWare
                 {
                     //Manager.Instance.Result(false);
                     Debug.Log("You Lose");
+                    TrapioWare.Climb.ClimbGameManager.Instance.deadSound.Play();
                     TrapioWare.Climb.ClimbGameManager.Instance.lose = true;
                     TrapioWare.Climb.ClimbGameManager.Instance.needToStop = true;
-                    TrapioWare.Climb.ClimbGameManager.Instance.GetComponent<AudioSource>().Play();
+                    
                 }
 
             }

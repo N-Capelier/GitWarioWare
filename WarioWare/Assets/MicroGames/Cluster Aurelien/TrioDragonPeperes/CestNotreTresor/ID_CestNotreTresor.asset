@@ -15,7 +15,7 @@ MonoBehaviour:
   cluster: 1
   trio: "DragonsP\xE9p\xE8res"
   indexEnum: 2
-  verbe: Esquivez !
+  verbe: Esquivez!
   microGameScene:
     sceneAsset: {fileID: 102900000, guid: 2c37fdeff133a12429ae696e1a86f82e, type: 3}
     required: 1

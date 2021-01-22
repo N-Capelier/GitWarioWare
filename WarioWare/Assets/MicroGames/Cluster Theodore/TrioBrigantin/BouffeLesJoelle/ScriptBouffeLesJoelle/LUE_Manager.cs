@@ -104,7 +104,7 @@ namespace Brigantin
                 SetSpawnerStats();
 
                 numberOFEnemiesToEat = spawner.numberOfEnemiesToSpawn;
-                resultWaitTime = TtT(0.5f);
+                resultWaitTime = TtT(0.3f);
 
                 gameIsRunning = true;
             }
@@ -248,7 +248,7 @@ namespace Brigantin
                         spawner.cloudEndAlpha = 0.5f;
                         break;
                     case Difficulty.HARD:
-                        spawner.minimumDistanceBetween2Spawns = 7f;
+                        spawner.minimumDistanceBetween2Spawns = 8f;
                         spawner.lastEnemyDeathTime = TtT(6);
                         spawner.minimumDistanceFromApparitionToSpawn = 7f;
                         spawner.maximumDistanceFromApparitionToSpawn = 15f;
@@ -256,7 +256,7 @@ namespace Brigantin
                         {
                             case 60:
                                 spawner.maximumDistanceBetween2Spawns = 13f;
-                                spawner.numberOfEnemiesToSpawn = 4;
+                                spawner.numberOfEnemiesToSpawn = 3;
                                 spawner.timeBetweenEnemyDeaths = TtT(1);
                                 break;
                             case 80:
@@ -265,12 +265,12 @@ namespace Brigantin
                                 spawner.timeBetweenEnemyDeaths = TtT(1);
                                 break;
                             case 100:
-                                spawner.maximumDistanceBetween2Spawns = 9f;
+                                spawner.maximumDistanceBetween2Spawns = 11f;
                                 spawner.numberOfEnemiesToSpawn = 2;
                                 spawner.timeBetweenEnemyDeaths = TtT(2);
                                 break;
                             case 120:
-                                spawner.maximumDistanceBetween2Spawns = 9f;
+                                spawner.maximumDistanceBetween2Spawns = 11f;
                                 spawner.numberOfEnemiesToSpawn = 2;
                                 spawner.timeBetweenEnemyDeaths = TtT(2);
                                 break;

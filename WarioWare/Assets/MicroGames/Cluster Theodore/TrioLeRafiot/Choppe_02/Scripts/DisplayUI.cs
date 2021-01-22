@@ -49,7 +49,7 @@ namespace LeRafiot
             {
                 if (Tick == 8 && !Manager.Instance.panel.activeSelf && !catchScript.catchedGoodDrink)               
                 {
-                    Manager.Instance.Result(false);
+                    //Manager.Instance.Result(false);
                     //SoundManagerChoppe.Instance.sfxSound[1].Play();
                 }
 

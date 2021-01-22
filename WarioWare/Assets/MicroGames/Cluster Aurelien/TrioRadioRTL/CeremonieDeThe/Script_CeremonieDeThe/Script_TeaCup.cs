@@ -22,7 +22,11 @@ namespace RadioRTL
             public int mouvementTeaCupX;
             public float maxTeaCupSpeed;
             public float teaCupSpeedTimer;
-            public float teaCupTimeSwing = 1.5f;
+            public float teaCupTimeSwing;
+            public GameObject boatObject;
+
+            float rotationDegree;
+            public float maxRotationDegree;
 
             //2- Récupération du component et positionement de la Tea Cup
             public override void Start()
@@ -42,63 +46,65 @@ namespace RadioRTL
                 base.FixedUpdate(); //Do not erase this line!
 
                 //3.1- Un petit delay pour pas que ça commence directe
-                if (Tick > 1)
+                //if (Tick > 1)
+                //{
+
+                //3.1.1- Mouvement vers la gauche
+                if (isGoingLeft == true)
                 {
 
-                    //3.1.1- Mouvement vers la gauche
-                    if (isGoingLeft == true)
+                    FindObjectOfType<Script_SoundManager>().Play("BateauQuiTangue1", 3);
+
+                    teaCupSpeedTimer += Time.fixedDeltaTime * 3f;
+
+                    currentTeaCupSpeed = Mathf.Lerp(maxTeaCupSpeed, -maxTeaCupSpeed, teaCupSpeedTimer);
+
+                    rotationDegree = Mathf.Lerp(rotationDegree, maxRotationDegree, teaCupSpeedTimer);
+
+                    boatObject.transform.eulerAngles = Vector3.forward * rotationDegree;
+
+                    if (teaCupSpeedTimer > teaCupTimeSwing)
                     {
 
-                        //teaCupRigidbody.velocity = new Vector2(0, 0);
+                        isGoingLeft = false;
 
-                        teaCupSpeedTimer += Time.fixedDeltaTime *3f;
-
-                        currentTeaCupSpeed = Mathf.Lerp(maxTeaCupSpeed, -maxTeaCupSpeed, teaCupSpeedTimer);
-                        
-                        if (teaCupSpeedTimer > teaCupTimeSwing)
-                        {
-
-                            isGoingLeft = false;
-
-                            teaCupSpeedTimer = 0f;
-
-                        }
-
-
-                    }
-                    //3.1.2- Mouvement vers la droite
-                    else
-                    {
-
-                        //teaCupRigidbody.velocity = new Vector2(0, 0);
-
-
-                        //mouvementTeaCup = new Vector2(mouvementTeaCupX, 0);
-
-                        //teaCupRigidbody.AddForce(mouvementTeaCup * teaCupSpeed);
-
-                        teaCupSpeedTimer += Time.fixedDeltaTime *3f;
-
-                                                                                         //0 to 1 
-                        currentTeaCupSpeed = Mathf.Lerp(-maxTeaCupSpeed, maxTeaCupSpeed, teaCupSpeedTimer);
-
-                        if (teaCupSpeedTimer > teaCupTimeSwing)
-                        {
-
-                            isGoingLeft = true;
-
-                            teaCupSpeedTimer = 0f;
-
-                        }
+                        teaCupSpeedTimer = 0f;
 
                     }
 
-                    Vector2 targetVector = mouvementTeaCup * currentTeaCupSpeed;
-                    //Debug.Log("targetVector= " + targetVector);
-                    //teaCupRigidbody.AddForce(targetVector , ForceMode2D.Force);
-                    teaCupRigidbody.velocity = targetVector;
 
                 }
+                //3.1.2- Mouvement vers la droite
+                else
+                {
+
+                    FindObjectOfType<Script_SoundManager>().Play("BateauQuiTangue2", 3);
+
+                    teaCupSpeedTimer += Time.fixedDeltaTime * 3f;
+
+                    //0 to 1 
+                    currentTeaCupSpeed = Mathf.Lerp(-maxTeaCupSpeed, maxTeaCupSpeed, teaCupSpeedTimer);
+
+                    rotationDegree = Mathf.Lerp(rotationDegree, -maxRotationDegree, teaCupSpeedTimer);
+
+                    boatObject.transform.eulerAngles = Vector3.forward * rotationDegree;
+
+                    if (teaCupSpeedTimer > teaCupTimeSwing)
+                    {
+
+                        isGoingLeft = true;
+
+                        teaCupSpeedTimer = 0f;
+
+                    }
+
+                }
+
+                Vector2 targetVector = mouvementTeaCup * currentTeaCupSpeed;
+
+                teaCupRigidbody.velocity = targetVector;
+
+                //}
 
             }
 

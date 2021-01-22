@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -240,7 +240,7 @@ ParticleSystem:
   startDelay:
     serializedVersion: 2
     minMaxState: 0
-    scalar: 0.7
+    scalar: 0.5
     minScalar: 0
     maxCurve:
       serializedVersion: 2
@@ -5185,7 +5185,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 194661452}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.89, y: 0.72, z: 0}
+  m_LocalPosition: {x: 0.03, y: 0.72, z: 0}
   m_LocalScale: {x: 0.2, y: 0.2, z: 1}
   m_Children:
   - {fileID: 1460533492}
@@ -5214,6 +5214,7 @@ MonoBehaviour:
   rb2d: {fileID: 194661456}
   myCollider: {fileID: 194661457}
   myAudio: {fileID: 1076160315}
+  myMat: {fileID: 2100000, guid: 6a2eac52a9c12ca4688489713d2308d9, type: 2}
 --- !u!212 &194661455
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5253,7 +5254,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 2a0689be3493eb143b890ef9c5b15fc2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 15fe494770c2e07419071e08d5270798, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -5302,7 +5303,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 1}
-    oldSize: {x: 6.19, y: 11.33}
+    oldSize: {x: 8.55, y: 11.33}
     newSize: {x: 6.19, y: 11.33}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -10922,7 +10923,7 @@ ParticleSystem:
   startDelay:
     serializedVersion: 2
     minMaxState: 0
-    scalar: 0.7
+    scalar: 0.5
     minScalar: 0
     maxCurve:
       serializedVersion: 2
@@ -20498,7 +20499,7 @@ MonoBehaviour:
   isOnMyPrivateScene: 0
   isUsingMyOwnUI: 0
   notTestingSceneDifficulty: 2
-  notTestingSceneBpm: 60
+  notTestingSceneBpm: 100
   mapBoundariesX: 8
   mapBoundariesY: 4
   spawner: {fileID: 782705539}
@@ -20669,7 +20670,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &988626412
 Transform:
   m_ObjectHideFlags: 0
@@ -21131,7 +21132,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1460533492
 Transform:
   m_ObjectHideFlags: 0
@@ -21540,7 +21541,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1667008332
 Transform:
   m_ObjectHideFlags: 0

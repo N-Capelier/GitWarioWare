@@ -25,7 +25,9 @@ namespace LeRafiot
             public int playerSprite;
             public bool canMove;
 
-            private bool playerDrowned;
+            [HideInInspector] public bool playerDrowned;
+            [HideInInspector] public bool playerTouched;
+
             #endregion 
 
             public override void Start()
@@ -46,6 +48,10 @@ namespace LeRafiot
             public override void TimedUpdate()
             {
                 if (Tick == 8 && !Manager.Instance.panel.activeSelf && playerDrowned)
+                {
+                    Manager.Instance.Result(false);
+                }
+                else if (Tick == 8 && !Manager.Instance.panel.activeSelf && playerTouched)
                 {
                     Manager.Instance.Result(false);
                 }
@@ -82,8 +88,6 @@ namespace LeRafiot
                         {
                             gameObject.GetComponentInChildren<SpriteRenderer>().sprite = sprites[playerSprite + 1];
                             playerSprite++;
-
-                            SoundManagerPlanche.Instance.sfxSound[6].Play();
                         }
                         else
                         {
@@ -106,8 +110,6 @@ namespace LeRafiot
                         {
                             gameObject.GetComponentInChildren<SpriteRenderer>().sprite = sprites[playerSprite - 1];
                             playerSprite--;
-
-                            SoundManagerPlanche.Instance.sfxSound[6].Play();
                         }
                         else
                         {

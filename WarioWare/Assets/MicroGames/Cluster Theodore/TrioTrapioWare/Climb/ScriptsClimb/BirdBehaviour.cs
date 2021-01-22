@@ -36,9 +36,11 @@ namespace TrapioWare
             {
                 if (collision.gameObject.CompareTag("Player"))
                 {
+                    ClimbGameManager.Instance.deadSound.Play();
                     Debug.Log("You lose");
                     ClimbGameManager.Instance.lose = true;
                     ClimbGameManager.Instance.needToStop = true;
+                    
                 }
             }
         }

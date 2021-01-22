@@ -22,12 +22,16 @@ namespace LeRafiot
 			private GameObject drinkTriggered;
             public bool goodDrink;
 
+            public Transform drinkCatch;
+            private GameObject drinkInHand;
+
             [Header("Arms")]
             public GameObject armDown;
             public GameObject armUp;
 
             [HideInInspector] public bool canCatch = true;
             [HideInInspector] public bool catchedGoodDrink;
+            [HideInInspector] public bool catchedBadDrink;
             #endregion
 
             // Start is called before the first frame update
@@ -81,16 +85,24 @@ namespace LeRafiot
                                 catchedGoodDrink = true;
                                 canCatch = false;
                                 DrinkManager.Instance.canSpawn = false;
+                                
+                                drinkInHand = Instantiate(drinkTriggered, drinkCatch);
+                                drinkInHand.GetComponent<BoxCollider2D>().enabled = false;
                                 Destroy(drinkTriggered);
+
                                 //Manager.Instance.Result(true);
                                 SoundManagerChoppe.Instance.sfxSound[4].Play();
                                 SoundManagerChoppe.Instance.sfxSound[0].Play();
                             }
                             else
                             {
+                                catchedBadDrink = true;
                                 catchedGoodDrink = false;
                                 canCatch = false;
                                 DrinkManager.Instance.canSpawn = false;
+
+                                drinkInHand = Instantiate(drinkTriggered, drinkCatch);
+                                drinkInHand.GetComponent<BoxCollider2D>().enabled = false;
                                 Destroy(drinkTriggered);
                                 //Manager.Instance.Result(false);
                                 SoundManagerChoppe.Instance.sfxSound[5].Play();

@@ -45,7 +45,7 @@ namespace LeRafiot
             //TimedUpdate is called once every tick.
             public override void TimedUpdate()
             {
-                if (Tick == 8 && !Manager.Instance.panel.activeSelf)
+                if (Tick == 8 && !Manager.Instance.panel.activeSelf && !PlayerController.Instance.playerDrowned && !PlayerController.Instance.playerTouched)
                 {
                     Manager.Instance.Result(true);
                     SoundManagerPlanche.Instance.sfxSound[0].Play();

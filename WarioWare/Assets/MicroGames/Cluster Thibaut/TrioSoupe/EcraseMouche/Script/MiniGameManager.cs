@@ -32,10 +32,27 @@ namespace Soupe
             public override void Start()
             {
                 base.Start(); //Do not erase this line!
-
-                SoundManagerMouche.Instance.globalMusic.Play();
-
                 jam.Clear();
+
+                switch (bpm)
+                {
+                    case (float)BPM.Slow:
+                        SoundManagerMouche.Instance.globalMusic[0].Play();
+                        break;
+
+                    case (float)BPM.Medium:
+                        SoundManagerMouche.Instance.globalMusic[1].Play();
+                        break;
+
+                    case (float)BPM.Fast:
+                        SoundManagerMouche.Instance.globalMusic[2].Play();
+                        break;
+
+                    case (float)BPM.SuperFast:
+                        SoundManagerMouche.Instance.globalMusic[3].Play();
+                        break;
+                }
+               
 
                 switch (currentDifficulty)
                 {

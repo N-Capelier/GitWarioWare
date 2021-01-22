@@ -25,11 +25,11 @@ namespace ACommeAkuma
 
             private void InputDetection()
             {
-                if (Input.GetAxisRaw("Left_Joystick_Y") < 0)
+                if (Input.GetAxisRaw("Left_Joystick_Y") < -0.1)
                 {
                     manivelleAnim.SetBool("isManivelle", true);
                 }
-                else if (Input.GetAxisRaw("Left_Joystick_Y") >= 0)
+                else if (Input.GetAxisRaw("Left_Joystick_Y") > -0.01)
                 {
                     manivelleAnim.SetBool("isManivelle", false);
                 }

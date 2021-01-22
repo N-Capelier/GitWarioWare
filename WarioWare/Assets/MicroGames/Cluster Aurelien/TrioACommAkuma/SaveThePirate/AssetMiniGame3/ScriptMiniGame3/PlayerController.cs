@@ -25,6 +25,7 @@ namespace ACommeAkuma
             [SerializeField] private float rotationDir;
             public bool asWin;
             [SerializeField] private GameObject audioManagerGO;
+            [SerializeField] private GameObject speedOverlayGO;
 
             [Header("Prefab References")]
             public GameObject exploVfx;
@@ -47,6 +48,8 @@ namespace ACommeAkuma
                 base.Start(); //Do not erase this line!
 
                 audioManagerGO = GameObject.Find("AudioManager");
+                speedOverlayGO = GameObject.Find("SpeedOverlay");
+
                 playerRb = GetComponent<Rigidbody2D>();
                 rotationDir = 0f;
                 asWin = false;
@@ -89,14 +92,14 @@ namespace ACommeAkuma
             //TimedUpdate is called once every tick.
             public override void TimedUpdate()
             {
-                if (Tick <= 8 && !asWin)
+                if (Tick < 8 && !asWin)
                 {
                     ActivateExplo();
                     canApplyForce = true;
                     velocityLoss = 1f;
                 }
 
-                else if (Tick > 8)
+                else if (Tick == 8)
                 {
                     if (asWin)
                     {
@@ -171,9 +174,11 @@ namespace ACommeAkuma
             {
                 //VFX
                 Instantiate(exploVfx, vfxAnchor.transform.position, Quaternion.identity, vfxAnchor.transform);
+                speedOverlayGO.GetComponent<SpeedLinesScript>().StartAnim();
 
                 //SFX
                 audioManagerGO.GetComponent<AudioManagerScript>().PlayExploSFX();
+                audioManagerGO.GetComponent<AudioManagerScript>().PlayMoveSound();
             }
 
 
@@ -183,9 +188,15 @@ namespace ACommeAkuma
                 {
                     asWin = true;
 
+                    //VFX
                     goalGO.transform.GetChild(0).GetComponent<Animator>().SetBool("AsWin", true);
 
+                    //SFX
+                    //audioManagerGO.GetComponent<AudioManagerScript>().PlayThanksVoice();
+
                     playerRb.velocity = Vector2.zero;
+                    playerRb.angularVelocity = 0f;
+                    playerRb.isKinematic = true;
                 }
                 
             }
