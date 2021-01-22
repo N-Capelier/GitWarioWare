@@ -29,6 +29,7 @@ namespace Soupe
                 base.Start(); //Do not erase this line!
 
                 flyCanMove = false;
+                SwatterBehevior.flyIsDead = false;
                 countOfJam = 0;
 
                 jamToGoPoints = MiniGameManager.jam; //copie of the jam list for the movement

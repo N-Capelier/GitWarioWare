@@ -22,15 +22,15 @@ namespace TrioLLL
                 switch (currentDifficulty)
                 {
                     case Difficulty.EASY:
-                        Instantiate(GabaritRandomD1, Player.transform.position, Quaternion.identity);
+                        Instantiate(GabaritRandomD1, Player.transform.position, Quaternion.identity, transform);
                         break;
                     case Difficulty.MEDIUM:
-                        Instantiate(GabaritRandomD2, Player.transform.position, Quaternion.identity);
-                        Instantiate(GabaritFollow, GabaritPosition.transform.position, Quaternion.identity);
+                        Instantiate(GabaritRandomD2, Player.transform.position, Quaternion.identity, transform);
+                        Instantiate(GabaritFollow, GabaritPosition.transform.position, Quaternion.identity, transform);
                         break;
                     case Difficulty.HARD:
-                        Instantiate(GabaritRandomD2, Player.transform.position, Quaternion.identity);
-                        Instantiate(GabaritFollow, Player.transform.position, Quaternion.identity);
+                        Instantiate(GabaritRandomD2, Player.transform.position, Quaternion.identity, transform);
+                        Instantiate(GabaritFollow, Player.transform.position, Quaternion.identity, transform);
                         break;
                 }
             }

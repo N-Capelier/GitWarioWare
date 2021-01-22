@@ -240,6 +240,13 @@ namespace Fleebos
                     monkey2.SetTrigger("Transition");
                     banana.SetTrigger("Transition");
                 }
+                else if (peelCounter == 4)
+                {
+                    peeled = true;
+                    monkey1.SetTrigger("Transition");
+                    monkey2.SetTrigger("Transition");
+                    banana.SetTrigger("Transition");
+                }
             }
             public void PeelMEDIUM()
             {
@@ -255,7 +262,7 @@ namespace Fleebos
                     peelP2.SetActive(true);
                     box = null;
                 }
-                else if (peelCounter == 4)
+                else if (peelCounter >= 4)
                 {
                     peeled = true;
                     monkey1.SetTrigger("Transition");
