@@ -10,6 +10,7 @@ namespace Sound
         private void Awake()
         {
             CreateSingleton(true);
+            Cursor.visible = false;
         }
         public void ApplyAudioClip(string name, AudioSource audioSource)
         {

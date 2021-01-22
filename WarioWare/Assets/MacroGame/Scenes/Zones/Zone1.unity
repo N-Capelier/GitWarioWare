@@ -33170,6 +33170,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: EventSystem2
       objectReference: {fileID: 0}
+    - target: {fileID: 4982864208588563481, guid: 2a0ba0962e4b52b40a1f46181b9dd3dc,
+        type: 3}
+      propertyPath: m_UseMouse
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4982864208588563486, guid: 2a0ba0962e4b52b40a1f46181b9dd3dc,
         type: 3}
       propertyPath: m_FirstSelected

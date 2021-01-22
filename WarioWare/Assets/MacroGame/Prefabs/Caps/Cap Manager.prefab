@@ -486,7 +486,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2163877699052633322}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -292.73, y: -1000.9, z: -300}
+  m_LocalPosition: {x: -292.94, y: -1000.9, z: -300}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 244794333705093152}
@@ -519,7 +519,7 @@ Camera:
   far clip plane: 1001.3
   field of view: 60
   orthographic: 1
-  orthographic size: 5.033322
+  orthographic size: 5.4
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -2402,48 +2402,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 244794333705093152}
     m_Modifications:
-    - target: {fileID: 377213421526379134, guid: 1ad1324dac6871641a86bf44fb6fbc15,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 377213421526379134, guid: 1ad1324dac6871641a86bf44fb6fbc15,
-        type: 3}
-      propertyPath: m_SortingOrder
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2349450134090782012, guid: 1ad1324dac6871641a86bf44fb6fbc15,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.33
-      objectReference: {fileID: 0}
-    - target: {fileID: 3860265772629543017, guid: 1ad1324dac6871641a86bf44fb6fbc15,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3860265772629543018, guid: 1ad1324dac6871641a86bf44fb6fbc15,
-        type: 3}
-      propertyPath: m_Camera
-      value: 
-      objectReference: {fileID: 7831178944745030161}
-    - target: {fileID: 3860265772932112543, guid: 1ad1324dac6871641a86bf44fb6fbc15,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 5c39850e0c475304f947e9350636bf48,
-        type: 3}
-    - target: {fileID: 3860265773075858883, guid: 1ad1324dac6871641a86bf44fb6fbc15,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3860265773075858941, guid: 1ad1324dac6871641a86bf44fb6fbc15,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 952531f9a2708c64f983990effa6cd6a,
-        type: 3}
     - target: {fileID: 3860265773522126522, guid: 1ad1324dac6871641a86bf44fb6fbc15,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2499,45 +2457,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3860265773522126522, guid: 1ad1324dac6871641a86bf44fb6fbc15,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3860265773522126522, guid: 1ad1324dac6871641a86bf44fb6fbc15,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3860265773522126522, guid: 1ad1324dac6871641a86bf44fb6fbc15,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3860265773522126523, guid: 1ad1324dac6871641a86bf44fb6fbc15,
         type: 3}
       propertyPath: m_Name
       value: TransitionBoat
-      objectReference: {fileID: 0}
-    - target: {fileID: 3860265773522126523, guid: 1ad1324dac6871641a86bf44fb6fbc15,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5246068963598918743, guid: 1ad1324dac6871641a86bf44fb6fbc15,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8267178676123217300, guid: 1ad1324dac6871641a86bf44fb6fbc15,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8432729962434990486, guid: 1ad1324dac6871641a86bf44fb6fbc15,
-        type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ad1324dac6871641a86bf44fb6fbc15, type: 3}
