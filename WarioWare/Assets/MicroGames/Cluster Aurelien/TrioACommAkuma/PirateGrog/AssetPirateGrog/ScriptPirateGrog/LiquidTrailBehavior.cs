@@ -37,8 +37,8 @@ namespace ACommeAkuma
 
             private void GetInput()
             {
-                bool spaceIsPressed = Input.GetAxisRaw("Left_Joystick_Y") < 0;
-                bool spaceIsReleased = Input.GetAxisRaw("Left_Joystick_Y") >= 0;
+                bool spaceIsPressed = Input.GetAxisRaw("Left_Joystick_Y") < -0.1f;
+                bool spaceIsReleased = Input.GetAxisRaw("Left_Joystick_Y") > -0.01f;
 
 
                 if (spaceIsPressed && canCallStart)

@@ -18,17 +18,14 @@ namespace ACommeAkuma
             {
                 sourceList[0].Play();
             }
-
             public void PlayImpactSFX()
             {
                 sourceList[1].Play();
             }
-
             public void PlayHelpSFX()
             {
                 sourceList[2].Play();
             }
-
             public void PlayMusic60()
             {
                 sourceList[3].Play();
@@ -44,6 +41,14 @@ namespace ACommeAkuma
             public void PlayMusic140()
             {
                 sourceList[6].Play();
+            }
+            public void PlayMoveSound()
+            {
+                sourceList[7].Play();
+            }
+            public void PlayThanksVoice()
+            {
+                sourceList[8].Play();
             }
         }
     }

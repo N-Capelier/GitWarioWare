@@ -51,6 +51,11 @@ namespace ACommeAkuma
             bool liquidSFX;
             bool beerTapSFX;
 
+            [SerializeField]
+            private GameObject inputImage;
+            [SerializeField]
+            private GameObject inputArrowImage;
+
             #endregion
 
             public override void Start()
@@ -77,18 +82,19 @@ namespace ACommeAkuma
             public override void TimedUpdate()
             {
                 WinLose();
+                ShowInput();
             }
 
             void FillGrog()
             {
                 yJoystickRight = -Input.GetAxisRaw("Left_Joystick_Y");
 
-                if (gameplayIsOver == true)
-                {
-                    yJoystickRight = 0f;    // Reset Controller if player already used input
-                }
+                //if (gameplayIsOver == true)
+                //{
+                //    yJoystickRight = 0f;    // Reset Controller if player already used input
+                //}
 
-                if (yJoystickRight > 0 && canFill == true)
+                if (yJoystickRight > 0.1f && canFill == true)
                 {
                     grogAmount += Time.fixedDeltaTime * fillSpeed * yJoystickRight; //Controller
                     fillTimer += Time.fixedDeltaTime;
@@ -113,16 +119,6 @@ namespace ACommeAkuma
 
                 grog.fillAmount = grogAmount / overFillAmount;
                 fillSpeed = (int)(fillGrog.Evaluate(grogAmount / overFillAmount) * baseFillSpeed);
-                //Debug.Log("fillSpeed = " + fillSpeed);
-
-
-                //for (int i = 0; i < whenToChangeSpeed.Length; i++)
-                //{
-                //    if (grogAmount >= whenToChangeSpeed[i])
-                //    {
-                //        fillSpeed = changeFillSpeed[i];
-                //    }
-                //}
             }
 
             /// <summary>
@@ -130,7 +126,7 @@ namespace ACommeAkuma
             /// </summary>
             void stopFillGrog()
             {
-                if (Input.GetAxisRaw("Left_Joystick_Y") < -0.1f)
+                if (-Input.GetAxisRaw("Left_Joystick_Y") > 0.1f)
                 {
                     inputDetected = true;
                 }
@@ -149,6 +145,7 @@ namespace ACommeAkuma
 
                 if (Tick == 8)
                 {
+                    Debug.Log("End Time");
                     canFill = false;
                     Debug.Log(Tick);
                     if (grogAmount >= minGrogAmount && grogAmount <= maxGrogAmount)     //Make the player win or lose at Tick 8
@@ -163,6 +160,16 @@ namespace ACommeAkuma
                     }
                 }
             }
+
+            void ShowInput()
+            {
+                if(Tick == 3)
+                {
+                    inputImage.SetActive(false);
+                    inputArrowImage.SetActive(false);
+                }
+            }
+
 
             private void PlaySoundSFX()
             {

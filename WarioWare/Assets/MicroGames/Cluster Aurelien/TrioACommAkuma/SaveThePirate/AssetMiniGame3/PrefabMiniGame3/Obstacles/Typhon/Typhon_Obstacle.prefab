@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5407624465670885444}
   - component: {fileID: 5407624465670885445}
   - component: {fileID: 5407624465670885442}
+  - component: {fileID: -7569291759471555084}
   m_Layer: 0
   m_Name: Typhon_Obstacle
   m_TagString: Untagged
@@ -72,7 +73,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1315980465
   m_SortingLayer: -1
-  m_SortingOrder: 10
+  m_SortingOrder: 20
   m_Sprite: {fileID: 21300000, guid: 401a0f12933c83d4b9141f353f2d89b9, type: 3}
   m_Color: {r: 0.6179246, g: 0.94275707, b: 1, a: 1}
   m_FlipX: 0
@@ -139,3 +140,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-7569291759471555084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5407624465670885447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60a5743274dc5a94c9446230e4969b90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bpm: 60
+  currentDifficulty: 0
+  timer: 0
+  currentTime: 0
+  attractionForceBase: -11.5

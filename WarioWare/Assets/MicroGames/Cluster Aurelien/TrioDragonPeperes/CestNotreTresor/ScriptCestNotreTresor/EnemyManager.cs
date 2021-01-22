@@ -81,22 +81,23 @@ namespace Dragons_Peperes
                     }
 
 
-                    if (Tick == 7)
+                    
 
 
                     if (Tick == 8)
                     {
+                            Debug.Log(playerLost);
 
                         if (playerLost)
                         {
-                            YouLost();
+                             Manager.Instance.Result(false);
                         }
                         
 
                         if (!playerLost)
                         {
-                                audioManager.StopMusic();
-                                Manager.Instance.Result(true);
+                             audioManager.StopMusic();
+                             Manager.Instance.Result(true);
                         }
                         
                     }
@@ -138,7 +139,7 @@ namespace Dragons_Peperes
 
                         if (playerLost)
                         {
-                            YouLost();
+                            Manager.Instance.Result(false);
                         }
 
                         if (!playerLost)
@@ -182,7 +183,7 @@ namespace Dragons_Peperes
 
                         if (playerLost)
                         {
-                            YouLost();
+                            Manager.Instance.Result(false);
                         }
 
                         if (!playerLost)
@@ -195,10 +196,7 @@ namespace Dragons_Peperes
                 #endregion
             }
 
-            public void YouLost()
-            {
-                Manager.Instance.Result(false);              
-            }           
+            
         }
     }
 }
