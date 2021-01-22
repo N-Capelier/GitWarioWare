@@ -13,8 +13,8 @@ namespace RadioRTL
     {
         public class DifficultyManager : TimedBehaviour
         {
-            public CrabParrotBehavior crabParrotBehavior;
-            public NormalCrabBehaviour normalCrabBehaviour;
+            public ParrotBehaviour crabParrotBehavior;
+            public CrabBehaviour normalCrabBehaviour;
             public float easySpeed;
             public float mediumSpeed;
             public float hardSpeed;

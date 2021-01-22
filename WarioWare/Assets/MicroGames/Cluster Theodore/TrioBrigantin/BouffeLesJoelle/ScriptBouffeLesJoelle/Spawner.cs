@@ -88,7 +88,7 @@ namespace Brigantin
                 if (spawningFirstEnemy)
                 {
                     while ((Vector2.Distance(position, previousSpawnPos) > maximumDistanceBetween2Spawns || Vector2.Distance(position, previousSpawnPos) < minimumDistanceBetween2Spawns) &&
-                        Vector2.Distance(position, Vector2.zero) > 2.5f && iterations < 12)
+                        Vector2.Distance(position, Vector2.zero) > 3.5f && iterations < 12)
                     {
                         iterations++;
                         position = new Vector3(Random.Range(-spawnBoundaries.x, spawnBoundaries.x), Random.Range(-spawnBoundaries.y, spawnBoundaries.y));
@@ -100,8 +100,6 @@ namespace Brigantin
                     {
                         iterations++;
                         position = new Vector3(Random.Range(-spawnBoundaries.x, spawnBoundaries.x), Random.Range(-spawnBoundaries.y, spawnBoundaries.y));
-                        //MARCHE PAS
-
                     }
                 }
                 else
@@ -112,7 +110,7 @@ namespace Brigantin
 
                 if (iterations > 10)
                 {
-                    //Debug.LogWarning("impossible de trouver un spawn, le dernier spawn était : " + previousSpawnPos);
+                    //Debug.LogWarning("impossible de trouver un spawn, le dernier spawn était " + previousSpawnPos + " et l'actuel est " + position);
                 }
                 previousSpawnPos = position;
                 return position;

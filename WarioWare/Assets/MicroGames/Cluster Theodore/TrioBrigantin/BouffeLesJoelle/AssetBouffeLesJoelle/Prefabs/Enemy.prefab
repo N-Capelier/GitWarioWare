@@ -9,11 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2591753304805636781}
-  - component: {fileID: 2591753304805636780}
   - component: {fileID: 2591753304805636783}
-  - component: {fileID: 2591753304805636782}
+  - component: {fileID: 2591753304805636780}
   - component: {fileID: 5618214715645875269}
   - component: {fileID: 5565120176491615317}
+  - component: {fileID: 2591753304805636782}
   m_Layer: 9
   m_Name: Enemy
   m_TagString: Enemy1
@@ -38,6 +38,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2591753304805636783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2591753304805636777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4d0354a0c771184fb7a173180ff85ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  col2D: {fileID: 2591753304805636782}
+  dashReceptor: {fileID: 5195244105359227895}
+  sprRend: {fileID: 2591753304805636780}
+  sprColored: {fileID: 2591753306060253693}
+  deathAnimation: {fileID: 0}
+  timeUntilVulnerable: 2
+  vulnerableTime: 1
+  worldTimeOfDeath: 1
+  source: {fileID: 5618214715645875269}
+  fallSource: {fileID: 5565120176491615317}
+  fall1: {fileID: 8300000, guid: 5860b61cedbf5d7479525570a84fde4e, type: 3}
+  fall2: {fileID: 8300000, guid: af4321d8d9243384e9115d75392c6d76, type: 3}
+  airHiss: {fileID: 8300000, guid: c6467424b5ecb80469e43a5ffeb34908, type: 3}
+  vulnerablePosition: {x: 0, y: 0}
 --- !u!212 &2591753304805636780
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -88,58 +114,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2591753304805636783
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2591753304805636777}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4d0354a0c771184fb7a173180ff85ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  col2D: {fileID: 2591753304805636782}
-  dashReceptor: {fileID: 5195244105359227895}
-  sprRend: {fileID: 2591753304805636780}
-  sprColored: {fileID: 2591753306060253693}
-  deathAnimation: {fileID: 0}
-  timeUntilVulnerable: 2
-  vulnerableTime: 1
-  worldTimeOfDeath: 1
-  source: {fileID: 5618214715645875269}
-  fallSource: {fileID: 5565120176491615317}
-  fall1: {fileID: 8300000, guid: 5860b61cedbf5d7479525570a84fde4e, type: 3}
-  fall2: {fileID: 8300000, guid: af4321d8d9243384e9115d75392c6d76, type: 3}
-  airHiss: {fileID: 8300000, guid: 9e97f90f96742c04da3d266b1487cf7b, type: 3}
-  vulnerablePosition: {x: 0, y: 0}
---- !u!61 &2591753304805636782
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2591753304805636777}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 18.36, y: 23.89}
-    newSize: {x: 18.36, y: 23.89}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 18.36, y: 23.89}
-  m_EdgeRadius: 0
 --- !u!82 &5618214715645875269
 AudioSource:
   m_ObjectHideFlags: 0
@@ -248,7 +222,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 8112574735537103263, guid: 84c6f08ae7de7cb4a8da3b71a40a1b65,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: 9e97f90f96742c04da3d266b1487cf7b, type: 3}
+  m_audioClip: {fileID: 8300000, guid: c6467424b5ecb80469e43a5ffeb34908, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.1
   m_Pitch: 1
@@ -334,6 +308,32 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!61 &2591753304805636782
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2591753304805636777}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 18.36, y: 23.89}
+    newSize: {x: 18.36, y: 23.89}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 18.36, y: 23.89}
+  m_EdgeRadius: 0
 --- !u!1 &2591753306060253695
 GameObject:
   m_ObjectHideFlags: 0

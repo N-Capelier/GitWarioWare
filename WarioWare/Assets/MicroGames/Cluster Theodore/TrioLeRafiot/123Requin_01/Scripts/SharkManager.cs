@@ -30,6 +30,12 @@ namespace LeRafiot
 
             [Header ("UI")]
             public Image sign;
+            public Image signStroke;
+            public Image warningSign;
+
+            [Header("Alert")]
+            public Vector2 startScale;
+            public Vector2 finalScale;
 
             [Header("Script")]
             public RopeController ropeControllerScript;
@@ -51,7 +57,9 @@ namespace LeRafiot
 
                 canFlash = false;
                 sign.gameObject.SetActive(false);
-                
+                signStroke.gameObject.SetActive(false);
+                warningSign.gameObject.SetActive(false);
+
                 counterTick = 0;
                 counterTickShark = 0;
             }
@@ -68,6 +76,8 @@ namespace LeRafiot
                 {
                     canFlash = false;
                     sign.gameObject.SetActive(false);
+                    signStroke.gameObject.SetActive(false);
+                    warningSign.gameObject.SetActive(false);
                 }
             }
 
@@ -79,24 +89,17 @@ namespace LeRafiot
 
             void SharkFlash()
             {              
-                if (counterTick > 0 && counterTick != tickBeforeSpawn)                  //For 2 flashs
+                if (counterTick > 0 && counterTick != tickBeforeSpawn)                
                 {
-                    if (timer >= 60 / bpm)
+                    if (canFlash)
                     {
-                        if (canFlash)
-                        {
-                            SoundManager123Requin.Instance.sfxSound[3].Play();
-                            sign.gameObject.SetActive(true);
-                            canFlash = false;
-                        }
-                    }
-                    else if (timer >= (60 / bpm) / 2)
-                    {
-                        if (!canFlash)
-                        {
-                            sign.gameObject.SetActive(false);
-                            canFlash = true;
-                        }
+                        canFlash = false;
+
+                        sign.gameObject.SetActive(true);
+                        signStroke.gameObject.SetActive(true);
+                        warningSign.gameObject.SetActive(true);
+
+                        StartCoroutine(IncreaseScale(warningSign ,startScale, finalScale, (1f * (60 / bpm))));
                     }
                 }
             }
@@ -124,7 +127,7 @@ namespace LeRafiot
                             if (lockSpawn == false && !ropeControllerScript.win)
                             {
                                 SoundManager123Requin.Instance.sfxSound[3].Play();
-                                sign.gameObject.SetActive(true);
+                                //sign.gameObject.SetActive(true);
                                 lockSpawn = true;
                                 //sharkIsHere = true;
                                 actualShark = Instantiate(sharkPrefab, spawnStart.transform.position, spawnStart.transform.rotation);
@@ -134,6 +137,8 @@ namespace LeRafiot
                         else
                         {
                             sign.gameObject.SetActive(false);
+                            signStroke.gameObject.SetActive(false);
+                            warningSign.gameObject.SetActive(false);
                             //sharkIsHere = false;
                             Destroy(actualShark);
                         }
@@ -179,7 +184,19 @@ namespace LeRafiot
                     yield return null;
                 }
             }
-            
+
+            public IEnumerator IncreaseScale(Image objectToScale, Vector2 scale, Vector2 endScale, float timeToFade)
+            {
+                objectToScale.rectTransform.localScale = startScale;
+                Vector2 currentScale = scale;
+                float t = 0;
+                while (t < 1)
+                {
+                    t += Time.deltaTime / timeToFade;
+                    objectToScale.rectTransform.localScale = Vector3.Lerp(currentScale, endScale, t);
+                    yield return null;
+                }
+            }
         }
     }
 }

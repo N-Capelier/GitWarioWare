@@ -49,7 +49,6 @@ namespace Brigantin
                 soundManager = GameObject.Find("Sound Manager").GetComponent<SoundManager>();
                 blackScreen = GameObject.Find("Black Screen");
 
-                //soundManager.PlayMusic();
                 area.SetActive(false);
                 blackScreen.SetActive(false);
 
@@ -95,27 +94,24 @@ namespace Brigantin
 
                 if(Tick == 1)
                 {
+                    soundManager.PlayMusic();
                     ghost.SetActive(true);
                 }
                 else if(Tick == blackScreenDelay)
                 {
                     blackScreen.SetActive(true);
                     area.SetActive(true);
+                    soundManager.PlayGhost();
                 }
                 else if(Tick == 8)
                 {
                     Manager.Instance.Result(ghostMovement.inArea && hasInput);
-                    if(ghostMovement.inArea)
-                    {
-                        soundManager.StopMusic();
-                        soundManager.PlayVictory();
-                    }
-                    else
+                    blackScreen.SetActive(false);
+                    if (!hasInput)
                     {
                         soundManager.StopMusic();
                         soundManager.PlayDefeat();
                     }
-                    blackScreen.SetActive(false);
                 }
             }
 
@@ -125,7 +121,6 @@ namespace Brigantin
                 areaMovement.canMove = false;
                 hasInput = true;
                 blackScreen.SetActive(false);
-                Manager.Instance.Result(ghostMovement.inArea);
                 if (ghostMovement.inArea)
                 {
                     soundManager.StopMusic();

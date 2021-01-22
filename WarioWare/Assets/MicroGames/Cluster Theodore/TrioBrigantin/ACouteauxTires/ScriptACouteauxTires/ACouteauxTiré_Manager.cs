@@ -65,22 +65,27 @@ namespace TrioBrigantin
             {
                 base.Start(); //Do not erase this line!
                 
+                //speed and music
                 switch (bpm)
                 {
                     case 60:
                         CrosshairController.instance.movementSpeed = slowSpeed;
+                        soundManager.Play("CouteauxTires_60BPM");
                         break;
 
                     case 80:
                         CrosshairController.instance.movementSpeed = medSpeed;
+                        soundManager.Play("CouteauxTires_80BPM");
                         break;
 
                     case 100:
                         CrosshairController.instance.movementSpeed = fastSpeed;
+                        soundManager.Play("CouteauxTires_100BPM");
                         break;
 
                     case 120:
-                        CrosshairController.instance.movementSpeed = superSpeed;
+                        CrosshairController.instance.movementSpeed = superSpeed; 
+                        soundManager.Play("CouteauxTires_120BPM");
                         break;
 
                     default:
@@ -192,6 +197,7 @@ namespace TrioBrigantin
             public void MinusAmmo()
             {
                 ammo--;
+                ammoCount.DiscountKnife(ammo);
                 Debug.Log("Ammo left: " + ammo);
             }
             public void PlusMiss()

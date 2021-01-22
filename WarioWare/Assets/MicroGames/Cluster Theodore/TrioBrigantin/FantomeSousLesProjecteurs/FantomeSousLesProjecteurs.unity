@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -714,9 +714,9 @@ MonoBehaviour:
   currentDifficulty: 0
   timer: 0
   currentTime: 0
-  _easyGhostSpeed: 10
-  _mediumGhostSpeed: 12
-  _hardGhostSpeed: 15
+  _easyGhostSpeed: 8
+  _mediumGhostSpeed: 10
+  _hardGhostSpeed: 12
   _easyBlackScreenDelay: 5
   _mediumBlackScreenDelay: 4
   _hardBlackScreenDelay: 3
@@ -1103,9 +1103,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76989d2004d0dbb4086bf78bc9651afd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  backgroundMusic: {fileID: 8300000, guid: fb6af46f31d79b14a86ee86465a61adf, type: 3}
-  victorySound: {fileID: 8300000, guid: 66f94b55ebfebce4f977ce37977fdd43, type: 3}
-  defeatSound: {fileID: 8300000, guid: 66f94b55ebfebce4f977ce37977fdd43, type: 3}
+  slowBackgroundMusic: {fileID: 8300000, guid: d9ed7cf4e4639144b98b8bd89cc34c96, type: 3}
+  mediumBackgroundMusic: {fileID: 8300000, guid: 698faf19d1f0feb4a8718a344009c681,
+    type: 3}
+  fastBackgroundMusic: {fileID: 8300000, guid: 35d7bc3ea6c8f4846a3e112ecb642dc3, type: 3}
+  veryFastBackgroundMusic: {fileID: 8300000, guid: a3d07ce66f8a08f40ad76b8cfe732787,
+    type: 3}
+  ghostSound: {fileID: 8300000, guid: 89f8205442803a843a4bb731c7f3ec2a, type: 3}
+  lightSound: {fileID: 8300000, guid: 6ce83fd0742243a4e98cd4afb984cdcd, type: 3}
+  victorySound: {fileID: 8300000, guid: 81f595a7ebcae574dbd279d3d2354ce3, type: 3}
+  defeatSound: {fileID: 8300000, guid: 0ba94f755edd76946ade7b5f25408e6e, type: 3}
 --- !u!4 &1139358765
 Transform:
   m_ObjectHideFlags: 0
@@ -1129,10 +1136,10 @@ AudioSource:
   m_GameObject: {fileID: 1139358763}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -3224564305709196364, guid: 84c6f08ae7de7cb4a8da3b71a40a1b65,
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 84c6f08ae7de7cb4a8da3b71a40a1b65,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: fb6af46f31d79b14a86ee86465a61adf, type: 3}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -1530,3 +1537,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   areaSize: 1.25
   moveSpeed: 8
+  canMove: 0

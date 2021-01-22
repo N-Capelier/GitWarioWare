@@ -82,7 +82,7 @@ namespace Brigantin
                             transform.position = Vector2.Lerp(apparitionPosition, vulnerablePosition, lerpValue);
                             sprRend.color = GetColor(0, 0, 0, alpha);
                             source.volume = Mathf.Lerp(0, 0.5f, lerpValue);
-                            fallSource.volume = Mathf.Lerp(0, 0.05f, lerpValue);
+                            fallSource.volume = Mathf.Lerp(0, 0.03f, lerpValue);
                             transform.localScale = Vector2.Lerp(Vector2.zero, startScale, lerpValue);
                         }
                         else if (!amNoLongerMoving)
@@ -106,7 +106,7 @@ namespace Brigantin
                             if (!amVulnerable)
                             {
                                 source.volume = Mathf.Lerp(0.5f, 1, lerpValue);
-                                fallSource.volume = Mathf.Lerp(0.05f, 0.1f, lerpValue);
+                                fallSource.volume = Mathf.Lerp(0.03f, 0.06f, lerpValue);
                                 sprRend.color = GetColor(0, 0, 0, Mathf.Lerp(0.8f, 1, lerpValue));
 
                                 if (lerpValue > 0.8f)
