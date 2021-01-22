@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1572f6d97b987e14fa34d6e3db9b6bc1, type: 3}
+  m_Name: Cloth_Binoclard
+  m_EditorClassIdentifier: 
+  hat: {fileID: -6806786304396186041, guid: aca0672d97d95794281d913923d774f3, type: 3}
+  chest: {fileID: -1840388935202100395, guid: aca0672d97d95794281d913923d774f3, type: 3}
+  leftArm: {fileID: 6039516032958046295, guid: aca0672d97d95794281d913923d774f3, type: 3}
+  rightArm: {fileID: -7350588977395826826, guid: aca0672d97d95794281d913923d774f3,
+    type: 3}
+  legs: {fileID: 7497491986385057468, guid: aca0672d97d95794281d913923d774f3, type: 3}

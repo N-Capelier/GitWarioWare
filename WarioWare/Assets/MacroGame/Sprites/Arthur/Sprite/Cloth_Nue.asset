@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1572f6d97b987e14fa34d6e3db9b6bc1, type: 3}
-  m_Name: Gabarit_nue
+  m_Name: Cloth_Nue
   m_EditorClassIdentifier: 
   hat: {fileID: 0}
   chest: {fileID: 0}
