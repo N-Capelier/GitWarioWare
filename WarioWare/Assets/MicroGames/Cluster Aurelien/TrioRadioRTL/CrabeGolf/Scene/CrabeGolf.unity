@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -154,9 +154,9 @@ MonoBehaviour:
   currentDifficulty: 0
   timer: 0
   currentTime: 0
-  crabParrotBehavior: {fileID: 383649019946708977, guid: 6a794288744a62641997d292b0d230cf,
+  crabParrotBehavior: {fileID: 1351076930854386038, guid: 6a794288744a62641997d292b0d230cf,
     type: 3}
-  normalCrabBehaviour: {fileID: 2920304919071724466, guid: ede4acfa78b6939428adb2307d7ad118,
+  normalCrabBehaviour: {fileID: 3129615708821016259, guid: ede4acfa78b6939428adb2307d7ad118,
     type: 3}
   easySpeed: 0.06
   mediumSpeed: 0.06

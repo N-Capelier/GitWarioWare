@@ -1,9 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using Testing;
-
-namespace RadioRTL
+﻿namespace RadioRTL
 {
     /// <summary>
     /// Théo Valet

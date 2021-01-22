@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 383649019946708990}
   - component: {fileID: 383649019946708991}
   - component: {fileID: 383649019946708976}
-  - component: {fileID: 383649019946708977}
+  - component: {fileID: 1351076930854386038}
   - component: {fileID: 1959262057476991304}
   - component: {fileID: -3840397452187076187}
   m_Layer: 0
@@ -111,7 +111,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.51, y: 2.91}
   m_EdgeRadius: 0
---- !u!114 &383649019946708977
+--- !u!114 &1351076930854386038
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -120,7 +120,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 383649019946708978}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6ce5d95e0e34194ea0c0e221d6f23b2, type: 3}
+  m_Script: {fileID: 11500000, guid: e7c256c9598bd2e439c5a5b2c6edcac4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   bpm: 60
@@ -129,7 +129,8 @@ MonoBehaviour:
   currentTime: 0
   speed: 0.1
   isShot: 0
-  volePerroquet: {fileID: 0}
+  exploPlume: {fileID: 7471892550995990999, guid: 6bff2c79c00772043b46a73372f8cbfa,
+    type: 3}
 --- !u!50 &1959262057476991304
 Rigidbody2D:
   serializedVersion: 4
