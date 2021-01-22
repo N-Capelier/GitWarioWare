@@ -26,6 +26,7 @@ namespace TrapioWare
             public AudioClip whooshLaunchClip;
             public GameObject joystickGizmo;
             public GameObject bumperGizmo;
+            public GameObject takeBackHammer;
 
             [Header("Difficulty Settings")]
             public SpinManager spinManager;
@@ -64,7 +65,7 @@ namespace TrapioWare
             {
                 if(!spinManager.gameFinished)
                 {
-                    bumperPressed = Input.GetButtonDown("Right_Bumper" ) || Input.GetButton("Left_Bumper");
+                    bumperPressed = Input.GetButtonDown("Right_Bumper" ) || Input.GetButtonDown("Left_Bumper");
 
                     currentJoystickDirection = new Vector2(isUsingRightJoystick ? Input.GetAxis("Right_Joystick_X") : Input.GetAxis("Left_Joystick_X"),
                         (isUsingRightJoystick ? Input.GetAxis("Right_Joystick_Y") : Input.GetAxis("Left_Joystick_Y")));
@@ -193,8 +194,8 @@ namespace TrapioWare
                     showJoystick = true;
                 }
 
-                joystickGizmo.SetActive(showJoystick);
-                bumperGizmo.SetActive(!showJoystick && !hammerReleased);
+                joystickGizmo.SetActive(showJoystick && !spinManager.gameFinished);
+                bumperGizmo.SetActive((!showJoystick && !hammerReleased) || (hammerReleased && hammerRb.velocity.magnitude < 5f) && !spinManager.gameFinished);
 
                 if(spinManager.hasWon && hammerReleased)
                 {
@@ -216,6 +217,8 @@ namespace TrapioWare
                         TakeHammer();
                     }
                 }
+
+                takeBackHammer.SetActive(hammerReleased && hammerRb.velocity.magnitude < 0.1f);
             }
 
             private void HammerAddForce(bool clockwise)
