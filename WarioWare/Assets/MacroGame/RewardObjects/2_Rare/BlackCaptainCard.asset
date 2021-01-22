@@ -18,5 +18,5 @@ MonoBehaviour:
   rarity: 1
   effect: 1
   price: 0
-  dropRateWeight: 25
+  dropRateWeight: 0
   beatcoinAmount: 50

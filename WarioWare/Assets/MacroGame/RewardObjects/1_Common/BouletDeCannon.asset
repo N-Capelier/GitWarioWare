@@ -18,5 +18,5 @@ MonoBehaviour:
   rarity: 0
   effect: 1
   price: 50
-  dropRateWeight: 25
-  cannonDamage: 0
+  dropRateWeight: 50
+  cannonDamage: 10

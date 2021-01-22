@@ -89,7 +89,12 @@ public class RewardsDebugEditor : Editor
 
 
         Repaint();
+        foreach (var reward in rewardDebug.rewardsList)
+        {
+            EditorUtility.SetDirty(reward);
+        }
         EditorUtility.SetDirty(rewardDebug);
+        Repaint();
         serializedObject.ApplyModifiedProperties();
     }
 }

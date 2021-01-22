@@ -22,16 +22,16 @@ namespace Rewards
         Active,
         Passive
     }
-
+    [System.Serializable]
     public abstract class Reward : ScriptableObject
     {
-        public string rewardName;
-        public Sprite sprite;
-        public RewardType type;
-        public RewardRarity rarity;
-        public RewardEffect effect;
-        public int price;
-        [Range(0, 100)] public int dropRateWeight;
+        [SerializeField] public string rewardName;
+        [SerializeField] public Sprite sprite;
+        [SerializeField] public RewardType type;
+        [SerializeField] public RewardRarity rarity;
+        [SerializeField] public RewardEffect effect;
+        [SerializeField] public int price;
+        [SerializeField] [Range(0, 100)] public int dropRateWeight;
 
         /// <summary>
         /// Use this method when the player gets the item.

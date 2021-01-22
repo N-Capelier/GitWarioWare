@@ -18,5 +18,5 @@ MonoBehaviour:
   rarity: 1
   effect: 1
   price: 100
-  dropRateWeight: 10
+  dropRateWeight: 100
   healAmmount: 30
