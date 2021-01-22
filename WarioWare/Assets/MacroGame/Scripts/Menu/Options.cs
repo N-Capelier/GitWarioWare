@@ -23,7 +23,7 @@ public class Options : MonoBehaviour
         if(isFullSCreen)
             Screen.fullScreenMode = FullScreenMode.ExclusiveFullScreen;
         else
-            Screen.fullScreenMode = FullScreenMode.Windowed;
+            Screen.fullScreenMode = FullScreenMode.FullScreenWindow;
     }
 
     public void Volume(float volume)
