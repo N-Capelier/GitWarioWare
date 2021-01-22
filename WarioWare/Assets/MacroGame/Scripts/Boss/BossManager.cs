@@ -100,6 +100,7 @@ namespace Boss
 
                 SoundManager.Instance.ApplyAudioClip("speedUpJingleBoss", transitionMusic, Manager.Instance.bpm);
                 transitionMusic.PlaySecured();
+                transition.SpeedUp((float)Manager.Instance.bpm);
                 if(phaseNumber == 5)
                 {
                     Manager.Instance.speedUp.SetActive(true);

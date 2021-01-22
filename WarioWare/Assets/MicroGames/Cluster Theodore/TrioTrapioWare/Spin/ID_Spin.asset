@@ -22,5 +22,5 @@ MonoBehaviour:
     buildIndex: 27
   inputs: {fileID: 21300000, guid: 761c0b5481ea5c340a463530f344c7b4, type: 3}
   currentDifficulty: 0
-  idWeight: 0
+  idWeight: 18
   hasBarrel: 0

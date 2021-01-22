@@ -6,9 +6,10 @@ using System.Collections.Generic;
 
 public class TransitionAnimations : MonoBehaviour
 {
-    public Animator longHairChara;
-    public Animator asianWomenAnimator;
-    public Animator quartierMaitreChara;
+    public Animator ghost;
+    public Animator cat;
+    public Animator nerde;
+    public Animator coolGirl;
     public GameObject ship;
     public Transform startPosition;
     public Transform endPosition;
@@ -42,21 +43,37 @@ public class TransitionAnimations : MonoBehaviour
     public void PlayAnimation( float bpm, bool win)
     {
         
-            longHairChara.speed = 60f / bpm;
-            asianWomenAnimator.speed = 60f / bpm;
-            quartierMaitreChara.speed = 60f / bpm;
+            ghost.speed = 60f / bpm;
+            cat.speed = 60f / bpm;
+            nerde.speed = 60f / bpm;
+            coolGirl.speed = 60f / bpm;
             if (!win)
             {
-                longHairChara.SetTrigger("Sad");
-                asianWomenAnimator.SetTrigger("Sad");
-                quartierMaitreChara.SetTrigger("Sad");
+                ghost.SetTrigger("Sad");
+                cat.SetTrigger("Sad");
+                nerde.SetTrigger("Sad");
+                coolGirl.SetTrigger("Sad");
             }
             else
             {
-                longHairChara.SetTrigger("Happy");
-                asianWomenAnimator.SetTrigger("Happy");
-                quartierMaitreChara.SetTrigger("Happy");
+                ghost.SetTrigger("Happy");
+                nerde.SetTrigger("Happy");
+                cat.SetTrigger("Happy");
+                coolGirl.SetTrigger("Happy");
             }
               
+    }
+
+    public void SpeedUp(float bpm)
+    {
+        ghost.speed = 60f / bpm;
+        cat.speed = 60f / bpm;
+        nerde.speed = 60f / bpm;
+        coolGirl.speed = 60f / bpm;
+
+        ghost.SetTrigger("SpeedUp");
+        cat.SetTrigger("SpeedUp");
+        nerde.SetTrigger("SpeedUp");
+        coolGirl.SetTrigger("SpeedUp");
     }
 }

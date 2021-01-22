@@ -371,7 +371,7 @@ namespace Caps
                 SoundManager.Instance.ApplyAudioClip("speedUpJingle", transitionMusic, bpm);
                 transitionMusic.PlaySecured();
                 speedUp.SetActive(true);
-
+                transition.SpeedUp((float) bpm);
                 yield return new WaitForSeconds(transitionMusic.clip.length);
                 bpm = bpm.Next();
             }
