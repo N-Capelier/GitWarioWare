@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1572f6d97b987e14fa34d6e3db9b6bc1, type: 3}
+  m_Name: Cloth_BelleGosse
+  m_EditorClassIdentifier: 
+  hat: {fileID: 5004134486832050391, guid: bee03a783cde819448bfa2b072ac8599, type: 3}
+  chest: {fileID: 5951790977640321435, guid: bee03a783cde819448bfa2b072ac8599, type: 3}
+  leftArm: {fileID: 8130317924073378506, guid: bee03a783cde819448bfa2b072ac8599, type: 3}
+  rightArm: {fileID: 8841640312435394662, guid: bee03a783cde819448bfa2b072ac8599,
+    type: 3}
+  legs: {fileID: 5468569567183744522, guid: bee03a783cde819448bfa2b072ac8599, type: 3}
