@@ -39,8 +39,12 @@ namespace TrapioWare
             [SerializeField] private AudioClip[] inputSounds;
             [SerializeField] private int nextSound = 0;
 
+            [SerializeField] public AudioSource deadSound;
+
             [Header("Parrot")]
             [SerializeField] private GameObject parrot;
+            public bool animationDone = false;
+            public bool loseDone = false;
 
             public bool setDifficulty = false;
             public int myDifficulty;
@@ -56,6 +60,7 @@ namespace TrapioWare
                 if (lose)
                 {
                     playerSkin.GetComponent<Animator>().SetTrigger("Lose");
+                    gameObject.GetComponent<AudioSource>().Play();
                 }
                 
 

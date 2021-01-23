@@ -19,11 +19,11 @@ namespace TrapioWare
             {
                 if (goLeft && ClimbGameManager.Instance.needToStop == false)
                 {
-                    transform.Translate(Vector3.left * (ClimbGameManager.Instance.mySpeed / 5) * Time.deltaTime, Space.World);
+                    transform.Translate(Vector3.left * (ClimbGameManager.Instance.mySpeed / 7) * Time.deltaTime, Space.World);
                 }
                 else if (goRight && ClimbGameManager.Instance.needToStop == false)
                 {
-                    transform.Translate(Vector3.right * (ClimbGameManager.Instance.mySpeed / 5) * Time.deltaTime, Space.World);
+                    transform.Translate(Vector3.right * (ClimbGameManager.Instance.mySpeed / 7) * Time.deltaTime, Space.World);
                 }
                 else
                 {
@@ -36,9 +36,11 @@ namespace TrapioWare
             {
                 if (collision.gameObject.CompareTag("Player"))
                 {
+                    ClimbGameManager.Instance.deadSound.Play();
                     Debug.Log("You lose");
                     ClimbGameManager.Instance.lose = true;
                     ClimbGameManager.Instance.needToStop = true;
+                    
                 }
             }
         }

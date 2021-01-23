@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Testing;
 
 namespace RadioRTL
 {
@@ -18,6 +17,9 @@ namespace RadioRTL
             public bool isShot;
             bool isFlying;
             int collisionState;
+            public GameObject etoile;
+            public GameObject goutte;
+            public GameObject explosion;
 
             public override void Start()
             {
@@ -31,7 +33,12 @@ namespace RadioRTL
             {
                 float step = (speed * Time.deltaTime)* bpm;
                 transform.position = Vector3.MoveTowards(transform.position, target, step);
-               // FindObjectOfType<AudioManager>().Play("Déplacement Crabe");
+
+                if (gameObject.transform.position.x >= 1.5f && !isShot)
+                {
+                    CrabSpawner.cs.lose = true;
+                    Debug.Log("perd");
+                }
 
                 if (gameObject.transform.position == target)
                 {
@@ -39,20 +46,18 @@ namespace RadioRTL
                     {
                         case 1:
                             FindObjectOfType<AudioManager>().Play("Explosion Bateau");
+                            Instantiate(explosion, gameObject.transform.position, Quaternion.identity);
 
                             break;
                         case 2:
                             FindObjectOfType<AudioManager>().Play("Crabe dans l'eau");
+                            Instantiate(goutte, gameObject.transform.position, Quaternion.identity);
                             break;
 
                         case 3:
                             FindObjectOfType<AudioManager>().Play("Crabe dans le ciel");
+                            Instantiate(etoile, gameObject.transform.position, Quaternion.identity);
                             break;
-                    }
-
-                    if (!isShot)
-                    {
-                        CrabSpawner.cs.lose = true;
                     }
 
                     Destroy(gameObject);

@@ -21,11 +21,18 @@ namespace Brigantin
             [SerializeField] [Range(0f, 0.8f)] float dashTime = 0.2f;
             [SerializeField] [Range(0f, 0.8f)] float dashCooldown = 0.2f;
             [SerializeField] [Range(0f, 50f)] float boundariesPushStrength = 3f;
+            float wobbleSpeedMinimum = -0.7f;
+            float wobbleSpeedMaximum = 12f;
+            float wobbleSpeed = 100f;
+            float wobbleAmplitudeMinimum = -.3f;
+            float wobbleAmplitudeMaximum = .5f;
+
             Vector2 input = Vector3.zero;
 
             [SerializeField] Rigidbody2D rb2d;
             [SerializeField] Collider2D myCollider;
             [SerializeField] PlayerSounds myAudio;
+            [SerializeField] Material myMat;
 
             bool inControl = true;
             bool canDash = true;
@@ -41,6 +48,7 @@ namespace Brigantin
             {
                 rb2d = rb2d ? rb2d : GetComponent<Rigidbody2D>();
                 myAudio = myAudio ? myAudio : transform.GetChild(0).GetComponent<PlayerSounds>();
+                myMat = myMat ? myMat : transform.GetComponent<Material>();
                 inControl = true;
                 canDash = true;
                 managerDependantInitDone = false;
@@ -72,6 +80,9 @@ namespace Brigantin
                             }
                         }
                     }
+                    wobbleSpeed += Mathf.Lerp(wobbleSpeedMinimum, wobbleSpeedMaximum, Mathf.InverseLerp(0, dashSpeed, rb2d.velocity.magnitude))*Time.deltaTime;
+                    myMat.SetFloat("V1_WobbleSpeed", wobbleSpeed);
+                    myMat.SetFloat("V1_AmplitudeReduction", Mathf.Lerp(wobbleAmplitudeMaximum, wobbleAmplitudeMinimum, Mathf.InverseLerp(0, dashSpeed, rb2d.velocity.magnitude)));
                 }
             }
 
@@ -122,14 +133,22 @@ namespace Brigantin
                 switch (LUE_Manager.Instance.bpm)
                 {
                     case 60:
+                        speed *= 0.5f;
+                        dashSpeed *= 0.5f;
+                        maxSpeed *= 0.6f;
+                        wobbleSpeedMaximum *= 0.5f;
                         break;
-                    case 90:
+                    case 80:
+                        speed *= 0.8f;
+                        dashSpeed *= 0.8f;
+                        maxSpeed *= 0.8f;
+                        wobbleSpeedMaximum *= 0.8f;
                         break;
-                    case 120:
+                    case 100:
                         dashCooldown *= 0.7f;
                         dashTime *= 0.7f;
                         break;
-                    case 140:
+                    case 120:
                         dashCooldown *= 0.5f;
                         dashTime *= 0.6f;
                         break;
@@ -256,10 +275,6 @@ namespace Brigantin
                             rb2d.AddForce(Vector2.down * (float)(Math.Pow(Mathf.Abs(transform.position.y - (LUE_Manager.Instance.mapBoundariesY - 1f)), power) * boundariesPushStrength));
                         }
                     }
-                    /*if (outX)
-                    {
-                        rb2d.velocity = (Vector2.down - (Vector2)transform.position).normalized * minimumSpeed;
-                    }*/
                 }
             }
 
@@ -286,30 +301,6 @@ namespace Brigantin
                     }
                 }
             }
-
-            /*private void OnCollisionEnter2D(Collision2D collision)
-            {
-                if (collision.gameObject.CompareTag("Wall"))
-                {
-                    float teleportDistance = 0.7f;
-                    if (collision.transform.name == "Haut")
-                    {
-                        transform.position += Vector3.down * teleportDistance;
-                    }
-                    else if (collision.transform.name == "Bas")
-                    {
-                        transform.position += Vector3.up * teleportDistance;
-                    }
-                    else if (collision.transform.name == "Gauche")
-                    {
-                        transform.position += Vector3.right * teleportDistance;
-                    }
-                    else// (collision.transform.name == "Droite")
-                    {
-                        transform.position += Vector3.left * teleportDistance;
-                    }
-                }
-            }*/
         }
     }
 }

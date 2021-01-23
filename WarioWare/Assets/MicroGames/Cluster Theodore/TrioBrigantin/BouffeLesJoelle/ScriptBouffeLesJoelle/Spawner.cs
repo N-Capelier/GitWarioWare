@@ -23,10 +23,12 @@ namespace Brigantin
             [HideInInspector] public int numberOfCloudsToSpawn = 1;
             [HideInInspector] public float cloudDistance = 2f;
             [HideInInspector] public float cloudAlpha = 2f;
+            [HideInInspector] public float cloudEndAlpha = 2f;
 
-            bool amActive = false;
+            //bool amActive = false;
             bool enemiesSpawned = false;
-            bool firstEnemySpawned = false;
+            bool lastEnemySpawned = false;
+            bool spawningFirstEnemy = false;
             private Vector2 previousSpawnPos;
             int enemyIndex = 0;
             #endregion
@@ -45,6 +47,7 @@ namespace Brigantin
                 {
                     for (int i = 0; i < numberOfEnemiesToSpawn; i++)
                     {
+                        if (i >= numberOfEnemiesToSpawn - 1) spawningFirstEnemy = true;
                         SpawnOneEnemy(lastEnemyDeathTime - timeBetweenEnemyDeaths * i);
                     }
                     enemiesSpawned = true;
@@ -59,7 +62,7 @@ namespace Brigantin
             void SpawnOneCloud()
             {
                 Vector2 spawnBoundaries = new Vector2(LUE_Manager.Instance.mapBoundariesX, LUE_Manager.Instance.mapBoundariesY);
-                Clouds cloud = Instantiate(cloudToSpawn, RandomPositionWithinBoundaries(spawnBoundaries) + Vector3.up * 2, Quaternion.identity).GetComponent<Clouds>();
+                Clouds cloud = Instantiate(cloudToSpawn, RandomPositionWithinBoundariesCloudsEdition(spawnBoundaries) + Vector3.up * 2, Quaternion.identity, transform).GetComponent<Clouds>();
                 cloud.GetComponent<SpriteRenderer>().flipX = Random.Range(0, 2) > 0 ? true : false;
                 cloud.cloudDistance = cloud.transform.position.x < 0 ? cloudDistance : -cloudDistance;
                 cloud.alpha = cloudAlpha;
@@ -70,7 +73,7 @@ namespace Brigantin
             {
                 Vector2 spawnBoundaries = new Vector2(LUE_Manager.Instance.mapBoundariesX - 1, LUE_Manager.Instance.mapBoundariesY - 1);
                 Vector2 vulnerablePosition = RandomPositionWithinBoundaries(spawnBoundaries);
-                Enemy enemy = Instantiate(enemyToSpawn, RandomPositionOverBoundaries(spawnBoundaries, vulnerablePosition), Quaternion.identity).GetComponent<Enemy>();
+                Enemy enemy = Instantiate(enemyToSpawn, RandomPositionOverBoundaries(spawnBoundaries, vulnerablePosition), Quaternion.identity, transform).GetComponent<Enemy>();
                 enemy.vulnerablePosition = vulnerablePosition;
                 enemy.transform.name = "Enemy" + enemyIndex;
                 enemyIndex++;
@@ -81,8 +84,17 @@ namespace Brigantin
             {
                 int iterations = 0;
                 Vector3 position = new Vector3(Random.Range(-spawnBoundaries.x, spawnBoundaries.x), Random.Range(-spawnBoundaries.y, spawnBoundaries.y));
-
-                if (firstEnemySpawned)
+                
+                if (spawningFirstEnemy)
+                {
+                    while ((Vector2.Distance(position, previousSpawnPos) > maximumDistanceBetween2Spawns || Vector2.Distance(position, previousSpawnPos) < minimumDistanceBetween2Spawns) &&
+                        Vector2.Distance(position, Vector2.zero) > 3.5f && iterations < 12)
+                    {
+                        iterations++;
+                        position = new Vector3(Random.Range(-spawnBoundaries.x, spawnBoundaries.x), Random.Range(-spawnBoundaries.y, spawnBoundaries.y));
+                    }
+                }
+                else if (lastEnemySpawned)
                 {
                     while ((Vector2.Distance(position, previousSpawnPos) > maximumDistanceBetween2Spawns || Vector2.Distance(position, previousSpawnPos) < minimumDistanceBetween2Spawns) && iterations < 12)
                     {
@@ -92,14 +104,20 @@ namespace Brigantin
                 }
                 else
                 {
-                    firstEnemySpawned = true;
+                    position = new Vector3(Random.Range(0, 2) > 0 ? -spawnBoundaries.x * .5f : spawnBoundaries.x * .5f, Random.Range(0, 2) > 0 ? -spawnBoundaries.y * .5f : spawnBoundaries.y * .5f);
+                    lastEnemySpawned = true;
                 }
 
                 if (iterations > 10)
                 {
-                    Debug.LogWarning("impossible de trouver un spawn, le dernier spawn était : " + previousSpawnPos);
+                    //Debug.LogWarning("impossible de trouver un spawn, le dernier spawn était " + previousSpawnPos + " et l'actuel est " + position);
                 }
                 previousSpawnPos = position;
+                return position;
+            }
+            Vector3 RandomPositionWithinBoundariesCloudsEdition(Vector2 spawnBoundaries)
+            {
+                Vector3 position = new Vector3(Random.Range(-spawnBoundaries.x - 3, spawnBoundaries.x + 3), Random.Range(0, spawnBoundaries.y));
                 return position;
             }
             Vector3 RandomPositionOverBoundaries(Vector2 spawnBoundaries, Vector2 spawnPosition)
@@ -107,7 +125,7 @@ namespace Brigantin
                 int iterations = 0;
                 Vector3 position = new Vector3(Random.Range(-spawnBoundaries.x - 4, spawnBoundaries.x + 4), spawnBoundaries.y + 3);
 
-                if (firstEnemySpawned)
+                if (lastEnemySpawned)
                 {
                     while ((Vector2.Distance(position, spawnPosition) > maximumDistanceFromApparitionToSpawn || Vector2.Distance(position, spawnPosition) < minimumDistanceFromApparitionToSpawn) && iterations < 15)
                     {
@@ -117,7 +135,7 @@ namespace Brigantin
                 }
                 else
                 {
-                    firstEnemySpawned = true;
+                    lastEnemySpawned = true;
                 }
                 return position;
             }

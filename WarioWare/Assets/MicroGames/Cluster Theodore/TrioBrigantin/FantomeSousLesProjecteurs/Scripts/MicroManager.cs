@@ -30,6 +30,7 @@ namespace Brigantin
             private GameObject ghost { get; set; }
             private GameObject area { get; set; }
             private GhostMovement ghostMovement { get; set; }
+            private AreaMovement areaMovement { get; set; }
             private GameObject blackScreen { get; set; }
 
             private SoundManager soundManager;
@@ -44,10 +45,10 @@ namespace Brigantin
                 ghost = GameObject.Find("Ghost");
                 area = GameObject.Find("Middle Collider");
                 ghostMovement = ghost.GetComponent<GhostMovement>();
+                areaMovement = area.GetComponent<AreaMovement>();
                 soundManager = GameObject.Find("Sound Manager").GetComponent<SoundManager>();
                 blackScreen = GameObject.Find("Black Screen");
 
-                //soundManager.PlayMusic();
                 area.SetActive(false);
                 blackScreen.SetActive(false);
 
@@ -93,35 +94,43 @@ namespace Brigantin
 
                 if(Tick == 1)
                 {
+                    soundManager.PlayMusic();
                     ghost.SetActive(true);
                 }
                 else if(Tick == blackScreenDelay)
                 {
                     blackScreen.SetActive(true);
                     area.SetActive(true);
+                    soundManager.PlayGhost();
                 }
                 else if(Tick == 8)
                 {
                     Manager.Instance.Result(ghostMovement.inArea && hasInput);
-                    if(ghostMovement.inArea)
-                    {
-                        soundManager.StopMusic();
-                        soundManager.PlayVictory();
-                    }
-                    else
+                    blackScreen.SetActive(false);
+                    if (!hasInput)
                     {
                         soundManager.StopMusic();
                         soundManager.PlayDefeat();
                     }
-                    blackScreen.SetActive(false);
                 }
             }
 
             private void OnAButton()
             {
-                ghost.GetComponent<GhostMovement>().canMove = false;
+                ghostMovement.canMove = false;
+                areaMovement.canMove = false;
                 hasInput = true;
                 blackScreen.SetActive(false);
+                if (ghostMovement.inArea)
+                {
+                    soundManager.StopMusic();
+                    soundManager.PlayVictory();
+                }
+                else
+                {
+                    soundManager.StopMusic();
+                    soundManager.PlayDefeat();
+                }
             }
         }
     }

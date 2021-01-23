@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using Caps;
 
 namespace RadioRTL
@@ -29,6 +27,7 @@ namespace RadioRTL
                 base.Start(); //Do not erase this line!
 
                 cs = this;
+                PlayerBehavior.Instance.BPM = bpm;
             }
 
             //FixedUpdate is called on a fixed time.
@@ -59,7 +58,7 @@ namespace RadioRTL
 
                 if (Tick == 2)
                 {
-                    NormalCrabBehaviour currentCrab = Instantiate(crab, new Vector3(-8, -3, 0), Quaternion.identity).GetComponent<NormalCrabBehaviour>();
+                    CrabBehaviour currentCrab = Instantiate(crab, new Vector3(-8, -3, 0), Quaternion.identity).GetComponent<CrabBehaviour>();
 
                 }
                 if (Tick == 3)
@@ -82,7 +81,6 @@ namespace RadioRTL
                     {
                         Instantiate(crabParrot, new Vector3(-8, -3, 0), Quaternion.identity);
                         CP += 1;
-
                     }
                 }
 
@@ -105,7 +103,6 @@ namespace RadioRTL
                     {
                         Instantiate(crabParrot, new Vector3(-8, -3, 0), Quaternion.identity);
                         CP += 1;
-
                     }
                 }
 
@@ -129,9 +126,9 @@ namespace RadioRTL
                     {
                         Instantiate(crabParrot, new Vector3(-8, -3, 0), Quaternion.identity);
                         CP += 1;
-
                     }
                 }
+
                 if (Tick == 8 && !lose)
                 {
                     Manager.Instance.Result(true);

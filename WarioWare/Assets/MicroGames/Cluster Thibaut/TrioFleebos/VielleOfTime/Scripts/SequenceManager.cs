@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Caps;
 using UnityEngine.UI;
 using DG.Tweening;
 
@@ -20,6 +21,9 @@ namespace Fleebos
             public GameObject[] NotesUI;
             public List<GameObject> MusicNotes;
             public GameObject solo;
+
+            public Image turnSignal;
+            public GameObject winrgParticle;
 
             public GameObject fire;
             bool isOnFire = false;
@@ -78,12 +82,20 @@ namespace Fleebos
                         {
                             PlayNote();
                         }
+                        else if (MusicNotes[NoteOrder].name == "B_Button_Sequence" || MusicNotes[NoteOrder].name == "X_Button_Sequence" || MusicNotes[NoteOrder].name == "Y_Button_Sequence")
+                        {
+                            WrongNote();
+                        }
                     }
                     if (Input.GetButtonDown("B_Button"))
                     {
                         if (MusicNotes[NoteOrder].name == "B_Button_Sequence")
                         {
                             PlayNote();
+                        }
+                        else if (MusicNotes[NoteOrder].name == "A_Button_Sequence" || MusicNotes[NoteOrder].name == "X_Button_Sequence" || MusicNotes[NoteOrder].name == "Y_Button_Sequence")
+                        {
+                            WrongNote();
                         }
                     }
                     if (Input.GetButtonDown("X_Button"))
@@ -92,12 +104,20 @@ namespace Fleebos
                         {
                             PlayNote();
                         }
+                        else if (MusicNotes[NoteOrder].name == "B_Button_Sequence" || MusicNotes[NoteOrder].name == "A_Button_Sequence" || MusicNotes[NoteOrder].name == "Y_Button_Sequence")
+                        {
+                            WrongNote();
+                        }
                     }
                     if (Input.GetButtonDown("Y_Button"))
                     {
                         if (MusicNotes[NoteOrder].name == "Y_Button_Sequence")
                         {
                             PlayNote();
+                        }
+                        else if (MusicNotes[NoteOrder].name == "B_Button_Sequence" || MusicNotes[NoteOrder].name == "X_Button_Sequence" || MusicNotes[NoteOrder].name == "A_Button_Sequence")
+                        {
+                            WrongNote();
                         }
                     }
                 }
@@ -170,6 +190,12 @@ namespace Fleebos
                 NoteOrder++;
             }
 
+            public void WrongNote()
+            {
+                turnSignal.fillAmount -= 0.8f;
+                Instantiate(winrgParticle, turnSignal.transform);
+            }
+
             public void AnimateNote()
             {
                 switch (NoteOrder)
@@ -223,7 +249,7 @@ namespace Fleebos
             {
                 Image im = go.GetComponent<Image>();
 
-                for (float i = 0; i < 1; i += 0.01f)
+                for (float i = 0; i < 1; i += 0.05f)
                 {
                     im.color = new Color(im.color.r, im.color.g, im.color.b, i);
                     yield return new WaitForSeconds(0.01f);
@@ -234,7 +260,7 @@ namespace Fleebos
             {
                 Material mr = child.GetComponent<MeshRenderer>().materials[0];
 
-                for (float i = 0; i < 1; i += 0.01f)
+                for (float i = 0; i < 1; i += 0.05f)
                 {
                     mr.SetFloat(Shader.PropertyToID("_Magic"), i);
                     yield return new WaitForSeconds(0.01f);

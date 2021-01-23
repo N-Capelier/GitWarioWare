@@ -23,6 +23,9 @@ public class DebugingTool : ScriptableObject
             names.Add("lifeWeight"); values.Add(1);
             names.Add("goldWeight"); values.Add(5);
             names.Add("foodWeight"); values.Add(3);
+            names.Add("miniGameNumberPerCap"); values.Add(4);
+            names.Add("winingStreakNumber"); values.Add(2);
+            names.Add("losingStreakNumber"); values.Add(2);
         //PlayerManager
             names.Add("playerHp"); values.Add(100);
             names.Add("beatcoins"); values.Add(200);

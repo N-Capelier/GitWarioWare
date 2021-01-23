@@ -9,6 +9,9 @@ public class MenuManager : MonoBehaviour
 {
 
     public GameObject loadingScreen;
+    public Button playButton;
+    public GameObject optionScreen;
+    public Visual_GouvernailRotation gouvernail;
     public Slider loadingBar;
     //private bool canLoad;
     private AsyncOperation loading;
@@ -102,5 +105,18 @@ public class MenuManager : MonoBehaviour
     {
         yield return new WaitForSeconds(buttonSounds.clip.length);
         SceneManager.LoadScene("JukeBox");
+    }
+
+    public void OptionOn()
+    {
+        optionScreen.SetActive(true);
+        gouvernail.gameObject.SetActive(false);
+    }
+
+    public void OptionOff()
+    {
+        optionScreen.SetActive(false);
+        gouvernail.gameObject.SetActive(true);
+        playButton.Select();
     }
 }

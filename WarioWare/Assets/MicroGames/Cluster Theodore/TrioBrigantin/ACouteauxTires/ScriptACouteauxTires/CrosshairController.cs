@@ -84,6 +84,7 @@ namespace TrioBrigantin
                     else
                     {
 						Instantiate(wrongLock, transform.position, Quaternion.identity).transform.SetParent(ACouteauxTiré_Manager.instance.spawnSetAnchor.transform);
+						ACouteauxTiré_Manager.instance.PlusMiss();
 					}
 
 					ACouteauxTiré_Manager.instance.soundManager.Play(anyLockSound);

@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using Caps;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -10,7 +11,12 @@ namespace Brigantin
         {
             #region Variables
 
-            public AudioClip backgroundMusic;
+            public AudioClip slowBackgroundMusic;
+            public AudioClip mediumBackgroundMusic;
+            public AudioClip fastBackgroundMusic;
+            public AudioClip veryFastBackgroundMusic;
+            public AudioClip ghostSound;
+            public AudioClip lightSound;
             public AudioClip victorySound;
             public AudioClip defeatSound;
 
@@ -22,12 +28,31 @@ namespace Brigantin
 
             private void Awake()
             {
-
+                
             }
 
             private void Start()
             {
                 source = GetComponent<AudioSource>();
+
+                switch (Manager.Instance.bpm)
+                {
+                    case BPM.Slow:
+                        source.clip = slowBackgroundMusic;
+                        break;
+
+                    case BPM.Medium:
+                        source.clip = mediumBackgroundMusic;
+                        break;
+
+                    case BPM.Fast:
+                        source.clip = fastBackgroundMusic;
+                        break;
+
+                    case BPM.SuperFast:
+                        source.clip = veryFastBackgroundMusic;
+                        break;
+                }
             }
 
             private void Update()
@@ -41,11 +66,7 @@ namespace Brigantin
 
             public void PlayMusic()
             {
-                if(!source.isPlaying && backgroundMusic != null)
-                {
-                    source.clip = backgroundMusic;
-                    source.Play();
-                }
+                source.Play();
             }
 
             public void StopMusic()
@@ -70,6 +91,24 @@ namespace Brigantin
                 if (!source.isPlaying)
                 {
                     source.clip = defeatSound;
+                    source.Play();
+                }
+            }
+
+            public void PlayLight()
+            {
+                if (!source.isPlaying)
+                {
+                    source.clip = lightSound;
+                    source.Play();
+                }
+            }
+
+            public void PlayGhost()
+            {
+                if (!source.isPlaying)
+                {
+                    source.clip = ghostSound;
                     source.Play();
                 }
             }

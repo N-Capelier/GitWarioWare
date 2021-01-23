@@ -1,8 +1,9 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-namespace Soupe
+    namespace Soupe
 {
     namespace EcraseMouche
     {
@@ -39,12 +40,11 @@ namespace Soupe
                 if (Input.GetButtonDown("A_Button") && canSmash)
                 {
                     StartCoroutine(SwatterAnimation());
-                    SoundManagerMouche.Instance.sfxSound[1].Play();
-
+                   //SoundManagerMouche.Instance.sfxSound[3].Play();
                     if (flyIsUnder || flyIsDead)
                     {
                         //sound when swatter hit the fly
-                        SoundManagerMouche.Instance.sfxSound[2].Play();
+                        SoundManagerMouche.Instance.sfxSound[1].Play();
                         if (!flyIsDead)
                         {
                             Instantiate(flySmashed, flyObject.transform);
@@ -55,7 +55,7 @@ namespace Soupe
                     else
                     {
                         //sound when swatter hit the jam
-                        SoundManagerMouche.Instance.sfxSound[3].Play();
+                        SoundManagerMouche.Instance.sfxSound[2].Play();
                         sprite.sortingOrder = 2; //the fly sprite is above the swatter 
                         canSmash = false; //if the player don't time the smash right he can't smash again
                     }

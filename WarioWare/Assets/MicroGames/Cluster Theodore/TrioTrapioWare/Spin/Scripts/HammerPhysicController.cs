@@ -26,6 +26,7 @@ namespace TrapioWare
             public AudioClip whooshLaunchClip;
             public GameObject joystickGizmo;
             public GameObject bumperGizmo;
+            public GameObject takeBackHammer;
 
             [Header("Difficulty Settings")]
             public SpinManager spinManager;
@@ -64,18 +65,25 @@ namespace TrapioWare
             {
                 if(!spinManager.gameFinished)
                 {
-                    bumperPressed = Input.GetButton("Right_Bumper" ) || Input.GetButton("Left_Bumper");
+                    bumperPressed = Input.GetButtonDown("Right_Bumper" ) || Input.GetButtonDown("Left_Bumper");
 
                     currentJoystickDirection = new Vector2(isUsingRightJoystick ? Input.GetAxis("Right_Joystick_X") : Input.GetAxis("Left_Joystick_X"),
-                        -(isUsingRightJoystick ? Input.GetAxis("Right_Joystick_Y") : Input.GetAxis("Left_Joystick_Y")));
+                        (isUsingRightJoystick ? Input.GetAxis("Right_Joystick_Y") : Input.GetAxis("Left_Joystick_Y")));
                     currentJoystickAngle = Vector2.SignedAngle(Vector2.right, currentJoystickDirection);
                     if (currentJoystickAngle < 0)
                     {
                         currentJoystickAngle += 360;
                     }
                 }
+                else
+                {
+                    bumperGizmo.SetActive(false);
+                    joystickGizmo.SetActive(false);
+                }
 
                 RotateSprite();
+
+                UpdateHammerHold();
             }
 
 
@@ -162,19 +170,6 @@ namespace TrapioWare
                 debugText[1].text = "Joystick Angle Progression : " + joystickAngleProgression;
                 debugText[2].text = "Joystick Angle Back Progression : " + joystickAngleBackwardProgression;
 
-
-                if (bumperPressed && hammerStartedSpinning)
-                {
-                    if(!hammerReleased)
-                    {
-                        ReleaseHammer();
-                    }
-                    else
-                    {
-                        //TakeHammer();
-                    }
-                }
-
                 Vector2 hammerDirectionFromCenter = transform.position - joint.transform.position;
                 if (!canPlayWhoosh)
                 {
@@ -199,14 +194,31 @@ namespace TrapioWare
                     showJoystick = true;
                 }
 
-                joystickGizmo.SetActive(showJoystick);
-                bumperGizmo.SetActive(!showJoystick && !hammerReleased);
+                joystickGizmo.SetActive(showJoystick && !spinManager.gameFinished);
+                bumperGizmo.SetActive((!showJoystick && !hammerReleased) || (hammerReleased && hammerRb.velocity.magnitude < 5f) && !spinManager.gameFinished);
 
                 if(spinManager.hasWon && hammerReleased)
                 {
                     hammerRb.gravityScale = 0;
                 }
 
+            }
+
+            private void UpdateHammerHold()
+            {
+                if (bumperPressed && hammerStartedSpinning)
+                {
+                    if (!hammerReleased)
+                    {
+                        ReleaseHammer();
+                    }
+                    else
+                    {
+                        TakeHammer();
+                    }
+                }
+
+                takeBackHammer.SetActive(hammerReleased && hammerRb.velocity.magnitude < 0.1f);
             }
 
             private void HammerAddForce(bool clockwise)
@@ -247,7 +259,6 @@ namespace TrapioWare
 
             private void TakeHammer()
             {
-                Debug.Log("Taijb");
                 joint.enabled = true;
                 hammerReleased = false;
             }

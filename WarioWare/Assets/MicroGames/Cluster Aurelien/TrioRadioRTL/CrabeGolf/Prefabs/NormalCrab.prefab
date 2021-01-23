@@ -10,10 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 2920304919071724464}
   - component: {fileID: 2920304919071724467}
-  - component: {fileID: 2920304919071724466}
+  - component: {fileID: 3129615708821016259}
   - component: {fileID: 2920304919071724461}
   - component: {fileID: 4426822509023849127}
   - component: {fileID: -1803295003719379373}
+  - component: {fileID: -8889560272859236559}
   m_Layer: 0
   m_Name: NormalCrab
   m_TagString: Untagged
@@ -30,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 2920304919071724460}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -85,7 +86,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2920304919071724466
+--- !u!114 &3129615708821016259
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -94,15 +95,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 2920304919071724460}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d97d6fee5d52ebc4abe0af9d5a1a7d40, type: 3}
+  m_Script: {fileID: 11500000, guid: 4fdbe5a832c21d34cb6c4c2cfb96b3db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   bpm: 60
   currentDifficulty: 0
   timer: 0
   currentTime: 0
-  speed: 0.1
+  speed: 0.05
   isShot: 0
+  etoile: {fileID: 455418548044117863, guid: c8f8ba02562476f429246e529a1b95f1, type: 3}
+  goutte: {fileID: 5639086100684087664, guid: 55911bfebe4067f46b74a4db4f2a4b91, type: 3}
+  explosion: {fileID: 2131053203680328520, guid: 08f767544aa2e9f4f8963e08b0eebe8e,
+    type: 3}
 --- !u!61 &2920304919071724461
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -138,7 +143,7 @@ AudioSource:
   m_GameObject: {fileID: 2920304919071724460}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 549373367417259296, guid: 56ff0d82ce7c9ff448a60e648692faff,
+  OutputAudioMixerGroup: {fileID: 6228994028401498262, guid: 56ff0d82ce7c9ff448a60e648692faff,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 8ba3710d36af64046a80a1817a71be17, type: 3}
   m_PlayOnAwake: 1
@@ -247,3 +252,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!95 &-8889560272859236559
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2920304919071724460}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ce8b370cefcfab146b81a5be8ca470c9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

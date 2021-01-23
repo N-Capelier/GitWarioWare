@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Testing;
 
 namespace RadioRTL
 {
@@ -11,7 +10,7 @@ namespace RadioRTL
 
     namespace CrabGolf
     {
-        public class PlayerBehavior : MonoBehaviour
+        public class PlayerBehavior : Singleton<PlayerBehavior>
         {
             Animator animator;
             public bool strikeUnlock = false;
@@ -19,6 +18,14 @@ namespace RadioRTL
             bool isInAnim;
             public bool canShoot = true;
             public bool hit;
+            public GameObject sable;
+
+            [HideInInspector] public float BPM;
+
+            private void Awake()
+            {
+                CreateSingleton();
+            }
 
             private void Start()
             {
@@ -57,24 +64,26 @@ namespace RadioRTL
             
             private void OnTriggerStay2D(Collider2D other)
             {
-                if (canShoot)
+                if (hit)
                 {
-                        NormalCrabBehaviour ncb = other.GetComponent<NormalCrabBehaviour>();
-                        CrabParrotBehavior cpb = other.GetComponent<CrabParrotBehavior>();
+                        CrabBehaviour ncb = other.GetComponent<CrabBehaviour>();
+                        ParrotBehaviour cpb = other.GetComponent<ParrotBehaviour>();
 
                         if (ncb != null)
                         {
                             ncb.isShot = true;
                             FindObjectOfType<AudioManager>().Play("Coup de Golf");
+                            Instantiate(sable, new Vector3(gameObject.transform.position.x-1.5f,gameObject.transform.position.y,0), Quaternion.identity);
                         }
                         else if (cpb != null)
                         {
                             cpb.isShot = true;
                             FindObjectOfType<AudioManager>().Play("Frappe Perroquet");
                             canShoot = false;
-                            StartCoroutine(Lose());
 
+                            StartCoroutine(Lose());
                         }
+
                     IEnumerator Lose()
                     {
                         yield return new WaitForSeconds(1);

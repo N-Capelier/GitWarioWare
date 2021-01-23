@@ -30,8 +30,11 @@ namespace SpanishInquisition
 
             //public GameObject[] scoreDisplays;
             public GameObject parryButton1;
+            public GameObject parryButtonTransparent1;
             public GameObject parryButton2;
+            public GameObject parryButtonTransparent2;
             public GameObject parryButton3;
+            public GameObject parryButtonTransparent3;
             public GameObject victoryFeedback;
             public GameObject defeatFeedback;
             public GameObject parentButton;
@@ -229,8 +232,11 @@ namespace SpanishInquisition
                 if(currentParryButton >= 1 && currentParryButton <= 3 && Input.GetButtonDown("X_Button") || Input.GetButtonDown("Y_Button") || Input.GetButtonDown("B_Button"))
                 {
                     parryButton1.SetActive(false);
+                    parryButtonTransparent1.SetActive(true);
                     parryButton2.SetActive(false);
+                    parryButtonTransparent2.SetActive(true);
                     parryButton3.SetActive(false);
+                    parryButtonTransparent3.SetActive(true);
                     currentParryButton = 0;
                     tickBeforeNextParry = neutralTime;
                 }
@@ -261,19 +267,22 @@ namespace SpanishInquisition
                 if (currentParryButton == 1)
                 {
                     soundManager.PlayPrepareAttack();
-                    parryButton1.SetActive(true);                  
+                    parryButton1.SetActive(true);
+                    parryButtonTransparent1.SetActive(false);
                 }
 
                 if (currentParryButton == 2)
                 {
                     soundManager.PlayPrepareAttack();
                     parryButton2.SetActive(true);
+                    parryButtonTransparent2.SetActive(false);
                 }
 
                 if (currentParryButton == 3)
                 {
                     soundManager.PlayPrepareAttack();
                     parryButton3.SetActive(true);
+                    parryButtonTransparent3.SetActive(false);
                 }
             }
 
@@ -281,8 +290,11 @@ namespace SpanishInquisition
             public void EndOfGameFeedback()
             {
                 parryButton1.SetActive(false);
+                parryButtonTransparent1.SetActive(true);
                 parryButton2.SetActive(false);
+                parryButtonTransparent2.SetActive(true);
                 parryButton3.SetActive(false);
+                parryButtonTransparent3.SetActive(true);
 
                 if (gameIsWon)
                 {

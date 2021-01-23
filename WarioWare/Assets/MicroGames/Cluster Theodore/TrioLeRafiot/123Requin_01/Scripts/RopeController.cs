@@ -17,7 +17,7 @@ namespace LeRafiot
             #region Variables
             private LineRenderer rope;
             private LoseConditions loseScript;
-            private bool win;
+            [HideInInspector] public bool win;
 
             [Header("Object attached")]
             public GameObject attachedTo;
@@ -38,6 +38,7 @@ namespace LeRafiot
             [HideInInspector] public int pullingDownRopeSize = 1;
 
             private int countAnim;
+            [HideInInspector] public bool controllerDisabled;
 
             #endregion
 
@@ -67,7 +68,7 @@ namespace LeRafiot
 
                 if (rope.GetPosition(1).y > 0.5)
                 {
-                    if ((Input.GetButtonDown("A_Button") || Input.GetKeyDown(KeyCode.Space)) && !Manager.Instance.panel.activeSelf)
+                    if ((Input.GetButtonDown("A_Button") || Input.GetKeyDown(KeyCode.Space)) && !Manager.Instance.panel.activeSelf && !controllerDisabled)
                     {
                         attachedTo.transform.position -= new Vector3(0, -pullingUpRopeSize);            //Pulling up the chest
                         SoundManager123Requin.Instance.sfxSound[2].Play();
@@ -81,7 +82,7 @@ namespace LeRafiot
                     {
                         win = true;
                         rope.SetPosition(1, new Vector3(0, 0));
-                        Manager.Instance.Result(true);
+                        //Manager.Instance.Result(true);
                         playerAnimator.gameObject.SetActive(false);
                         camPlayer.SetActive(false);
                         camBoat.SetActive(true);
@@ -94,6 +95,11 @@ namespace LeRafiot
             //TimedUpdate is called once every tick.
             public override void TimedUpdate()
             {
+                if (Tick == 8 && win &&!Manager.Instance.panel.activeSelf)
+                {
+                    Manager.Instance.Result(true);
+                }
+
                 if (win)                                                                        //animation update with ticks
                 {
                     countAnim++;

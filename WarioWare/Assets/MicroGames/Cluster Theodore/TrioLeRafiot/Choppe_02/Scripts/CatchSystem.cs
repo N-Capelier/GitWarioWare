@@ -12,8 +12,8 @@ namespace LeRafiot
 		/// This script is use to detect drink in catch zone and by pressing A, catch the drink
 		/// </summary>
 
-		public class CatchSystem : MonoBehaviour
-		{
+		public class CatchSystem : TimedBehaviour
+        {
 			#region Variables
 			public Color colorTriggered;
 			private Color colorBase;
@@ -22,25 +22,51 @@ namespace LeRafiot
 			private GameObject drinkTriggered;
             public bool goodDrink;
 
+            public Transform drinkCatch;
+            private GameObject drinkInHand;
+
             [Header("Arms")]
             public GameObject armDown;
             public GameObject armUp;
 
-            private bool canCatch = true;
-			#endregion
+            [HideInInspector] public bool canCatch = true;
+            [HideInInspector] public bool catchedGoodDrink;
+            [HideInInspector] public bool catchedBadDrink;
+            #endregion
 
-			// Start is called before the first frame update
-			void Start()
+            // Start is called before the first frame update
+            public override void Start()
 			{
-				colorBase = GetComponent<SpriteRenderer>().color;
+                base.Start();
+                colorBase = GetComponent<SpriteRenderer>().color;
 				drinkInZone = false;
 
                 armDown.SetActive(true);
                 armUp.SetActive(false);
             }
 
-			// Update is called once per frame
-			void Update()
+            public override void FixedUpdate()
+            {
+                base.FixedUpdate();
+            }
+
+            public override void TimedUpdate()
+            {
+                if (Tick == 8 && !Manager.Instance.panel.activeSelf)
+                {
+                    if (catchedGoodDrink)
+                    {
+                        Manager.Instance.Result(true);
+                    }
+                    else
+                    {
+                        Manager.Instance.Result(false);
+                    }
+                }
+            }
+
+            // Update is called once per frame
+            void Update()
 			{
                 if (canCatch == true)
                 {
@@ -56,19 +82,29 @@ namespace LeRafiot
 
                             if (goodDrink)
                             {
+                                catchedGoodDrink = true;
                                 canCatch = false;
                                 DrinkManager.Instance.canSpawn = false;
+                                
+                                drinkInHand = Instantiate(drinkTriggered, drinkCatch);
+                                drinkInHand.GetComponent<BoxCollider2D>().enabled = false;
                                 Destroy(drinkTriggered);
-                                Manager.Instance.Result(true);
+
+                                //Manager.Instance.Result(true);
                                 SoundManagerChoppe.Instance.sfxSound[4].Play();
                                 SoundManagerChoppe.Instance.sfxSound[0].Play();
                             }
                             else
                             {
+                                catchedBadDrink = true;
+                                catchedGoodDrink = false;
                                 canCatch = false;
                                 DrinkManager.Instance.canSpawn = false;
+
+                                drinkInHand = Instantiate(drinkTriggered, drinkCatch);
+                                drinkInHand.GetComponent<BoxCollider2D>().enabled = false;
                                 Destroy(drinkTriggered);
-                                Manager.Instance.Result(false);
+                                //Manager.Instance.Result(false);
                                 SoundManagerChoppe.Instance.sfxSound[5].Play();
                                 SoundManagerChoppe.Instance.sfxSound[1].Play();
                             }

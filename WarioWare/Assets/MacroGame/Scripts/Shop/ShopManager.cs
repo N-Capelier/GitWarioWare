@@ -19,10 +19,11 @@ namespace Shop
         public GameObject shopCanvas;
         public Button[] shopSlots;
         public Image[] shopItemImages;
+        public TextMeshProUGUI[] itemPrices;
         public GameObject itemDescriptionContainer;
         public TextMeshProUGUI itemDescription;
-        public TextMeshProUGUI itemPrice;
         public TextMeshProUGUI itemName;
+
 
         [HideInInspector] public List<Reward> shopItems = new List<Reward>();
         private List<Reward> allResources = new List<Reward>();
@@ -66,12 +67,19 @@ namespace Shop
 
         public void InitializeShop()
         {
+            allItems.Clear();
+            allResources.Clear();
+            shopItems.Clear();
+
             //Part resources from other item types;
             for (int i = 0; i < IslandCreator.Instance.gameRewards.Length; i++)
             {
                 if(IslandCreator.Instance.gameRewards[i].type == RewardType.Resource)
                 {
-                    allResources.Add(IslandCreator.Instance.gameRewards[i]);
+                    if(IslandCreator.Instance.gameRewards[i].price != 0)
+                    {
+                        allResources.Add(IslandCreator.Instance.gameRewards[i]);
+                    }
                 }
                 else
                 {
@@ -82,18 +90,19 @@ namespace Shop
             //Initialize shop stocked items
             Reward _reward = IslandCreator.Instance.FisherYates(allItems.ToArray())[0];
             shopItems.Add(_reward);
-            allResources.Remove(_reward);
+            allItems.Remove(_reward);
             
             for(int i = 0; i < 2; i++)
             {
                 _reward = IslandCreator.Instance.FisherYates(allResources.ToArray())[0];
                 shopItems.Add(_reward);
-                allItems.Remove(_reward);
+                allResources.Remove(_reward);
             }
             
             for (int i = 0; i < shopSlots.Length; i++)
             {
                 shopItemImages[i].sprite = shopItems[i].sprite;
+                itemPrices[i].text = shopItems[i].price.ToString();
             }
         }
 
@@ -109,10 +118,12 @@ namespace Shop
                 if (shopItems[i] == null)
                 {
                     shopItemImages[i].gameObject.SetActive(false);
+                    itemPrices[i].gameObject.SetActive(false);
                 }
                 else
                 {
                     shopItemImages[i].gameObject.SetActive(true);
+                    itemPrices[i].gameObject.SetActive(true);
                 }
             }
 
@@ -157,6 +168,7 @@ namespace Shop
 
                         shopItems[i] = null;
                         shopItemImages[i].gameObject.SetActive(false);
+                        itemPrices[i].gameObject.SetActive(false);
                     }
                     else
                     {
@@ -178,7 +190,6 @@ namespace Shop
                 {
 
                     itemDescription.text = shopItems[i].GetDescription();
-                    itemPrice.text = shopItems[i].price.ToString();
                     itemName.text = shopItems[i].rewardName;
                     itemDescriptionContainer.SetActive(true);
                     break;

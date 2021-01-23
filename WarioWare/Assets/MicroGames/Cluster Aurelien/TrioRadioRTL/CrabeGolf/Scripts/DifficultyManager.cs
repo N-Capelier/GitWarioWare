@@ -1,9 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using Testing;
-
-namespace RadioRTL
+﻿namespace RadioRTL
 {
     /// <summary>
     /// Théo Valet
@@ -13,8 +8,8 @@ namespace RadioRTL
     {
         public class DifficultyManager : TimedBehaviour
         {
-            public CrabParrotBehavior crabParrotBehavior;
-            public NormalCrabBehaviour normalCrabBehaviour;
+            public ParrotBehaviour crabParrotBehavior;
+            public CrabBehaviour normalCrabBehaviour;
             public float easySpeed;
             public float mediumSpeed;
             public float hardSpeed;

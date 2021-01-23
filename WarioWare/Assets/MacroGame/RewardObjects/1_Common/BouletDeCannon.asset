@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: BouletDeCannon
   m_EditorClassIdentifier: 
   rewardName: Boulet de cannon
-  sprite: {fileID: 21300000, guid: 34fe5cb0f1660b8498edabf95530e101, type: 3}
+  sprite: {fileID: 21300000, guid: 086bf2348f3e1f94e9c005624d2d9ecb, type: 3}
   type: 0
   rarity: 0
   effect: 1
   price: 50
-  dropRateWeight: 25
-  cannonballAmmount: 10
+  dropRateWeight: 50
+  cannonDamage: 10

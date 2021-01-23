@@ -11,6 +11,9 @@ namespace TrapioWare
         public class SunManager : TimedBehaviour
         {
             [SerializeField] private int timerDead = 0;
+            
+            public AudioClip[] bpmSounds;
+            [SerializeField] private GameObject musiqueDeFond;
 
             public override void Start()
             {
@@ -20,15 +23,25 @@ namespace TrapioWare
                 {
                     case BPM.Slow:
                         ClimbGameManager.Instance.mySpeed = 60;
+                        musiqueDeFond.GetComponent<AudioSource>().clip = bpmSounds[0];
+                        musiqueDeFond.GetComponent<AudioSource>().Play();
+
                         break;
                     case BPM.Medium:
                         ClimbGameManager.Instance.mySpeed = 90;
+                        musiqueDeFond.GetComponent<AudioSource>().clip = bpmSounds[1];
+                        musiqueDeFond.GetComponent<AudioSource>().Play();
+
                         break;
                     case BPM.Fast:
                         ClimbGameManager.Instance.mySpeed = 120;
+                        musiqueDeFond.GetComponent<AudioSource>().clip = bpmSounds[2];
+                        musiqueDeFond.GetComponent<AudioSource>().Play();
                         break;
                     case BPM.SuperFast:
                         ClimbGameManager.Instance.mySpeed = 140;
+                        musiqueDeFond.GetComponent<AudioSource>().clip = bpmSounds[3];
+                        musiqueDeFond.GetComponent<AudioSource>().Play();
                         break;
                     default:
                         break;
@@ -62,12 +75,15 @@ namespace TrapioWare
             {
                 base.FixedUpdate(); //Do not erase this line!
 
-                if (ClimbGameManager.Instance.win)
+                if (ClimbGameManager.Instance.win && timerDead == 8)
                 {
+                    timerDead = 0;
+                    ClimbGameManager.Instance.win = false;
+                    Debug.Log("Win");
                     Manager.Instance.Result(true);
                 }
 
-                if (ClimbGameManager.Instance.lose && ClimbGameManager.Instance.win == false)
+                if (ClimbGameManager.Instance.lose && ClimbGameManager.Instance.win == false && timerDead == 8)
                 {
                     Manager.Instance.Result(false);
                 }
@@ -88,8 +104,10 @@ namespace TrapioWare
                 {
                     //Manager.Instance.Result(false);
                     Debug.Log("You Lose");
+                    TrapioWare.Climb.ClimbGameManager.Instance.deadSound.Play();
                     TrapioWare.Climb.ClimbGameManager.Instance.lose = true;
                     TrapioWare.Climb.ClimbGameManager.Instance.needToStop = true;
+                    
                 }
 
             }

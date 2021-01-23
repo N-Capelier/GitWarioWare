@@ -281,6 +281,7 @@ MonoBehaviour:
   velocityLossSpeed: 1.5
   rotationDir: 0
   asWin: 0
+  audioManagerGO: {fileID: 0}
   exploVfx: {fileID: 7088970016861127003, guid: fe216c910880e60408c277798ebe3dbf,
     type: 3}
   goalGO: {fileID: 5619958200219598512, guid: efa61cd16ebe06e4f9fe14ce4339ce2e, type: 3}

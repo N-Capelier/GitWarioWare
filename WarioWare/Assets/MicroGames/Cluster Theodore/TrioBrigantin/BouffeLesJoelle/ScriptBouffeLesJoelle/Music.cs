@@ -35,13 +35,13 @@ namespace Brigantin
                         case 60:
                             source.clip = musicSlow;
                             break;
-                        case 90:
+                        case 80:
                             source.clip = musicMedium;
                             break;
-                        case 120:
+                        case 100:
                             source.clip = musicFast;
                             break;
-                        case 140:
+                        case 120:
                             source.clip = musicSuperFast;
                             break;
                     }

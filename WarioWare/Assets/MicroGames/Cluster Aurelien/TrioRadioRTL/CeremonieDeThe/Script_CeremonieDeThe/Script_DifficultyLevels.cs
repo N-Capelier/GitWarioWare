@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Caps;
 
 namespace RadioRTL
 {
@@ -23,6 +24,7 @@ namespace RadioRTL
             //1.2- Int
             public int difficultyTeaPotSpeed;
             public int difficultyMouvementTeaCup;
+            public float difficultyMaxRotation;
 
 
             public override void Start()
@@ -38,6 +40,8 @@ namespace RadioRTL
                 Script_TeaCup teaCupManager = teaCup.GetComponent<Script_TeaCup>();
                 difficultyMouvementTeaCup = teaCupManager.mouvementTeaCupX;
 
+                difficultyMaxRotation = teaCupManager.maxRotationDegree;
+
 
                 //3- Niveau de difficulté
                 switch (currentDifficulty)
@@ -45,37 +49,37 @@ namespace RadioRTL
 
                     case Difficulty.EASY:
 
-                        teaPotController.teaPotSpeed = 10;
+                        teaCupManager.mouvementTeaCupX = 0;
 
-                        teaCupManager.mouvementTeaCupX = 2;
+                        teaCupManager.maxRotationDegree = 0f;
 
                         teaPot.transform.position = new Vector3(-2f, 0f, 0.0f);
 
-                        guirlande.transform.position = new Vector3(0f, -4.2f, 0f);
+                        guirlande.transform.position = new Vector3(0f, -3.5f, 0f);
 
                         break;
 
                     case Difficulty.MEDIUM:
 
-                        teaPotController.teaPotSpeed = 5;
+                        teaCupManager.mouvementTeaCupX = 10;
 
-                        teaCupManager.mouvementTeaCupX = 3;
+                        teaCupManager.maxRotationDegree = 2.5f;
 
                         teaPot.transform.position = new Vector3(-2f, 1.5f, 0.0f);
 
-                        guirlande.transform.position = new Vector3(0f, -2.7f, 0f);
+                        guirlande.transform.position = new Vector3(0f, -3.5f, 0f);
 
                         break;
 
                     case Difficulty.HARD:
 
-                        teaPotController.teaPotSpeed = 20;
+                        teaCupManager.mouvementTeaCupX = 10;
 
-                        teaCupManager.mouvementTeaCupX = 4;
+                        teaCupManager.maxRotationDegree = 2.5f;
 
-                        teaPot.transform.position = new Vector3(-2f, 3f, 0.0f);
+                        teaPot.transform.position = new Vector3(-2f, 2.75f, 0.0f);
 
-                        guirlande.transform.position = new Vector3(0f, -1.4f, 0f);
+                        guirlande.transform.position = new Vector3(0f, -1.5f, 0f);
 
                         break;
 

@@ -104,13 +104,32 @@ namespace Brigantin
                 SetSpawnerStats();
 
                 numberOFEnemiesToEat = spawner.numberOfEnemiesToSpawn;
-                resultWaitTime = TtT(0.5f);
+                resultWaitTime = TtT(0.3f);
 
                 gameIsRunning = true;
             }
             public void Update()
             {
                 CheckVictoryAndDefeatConditions();
+            }
+
+            public override void TimedUpdate()
+            {
+                if (Tick > 7)
+                {
+                    if (!isOnMyPrivateScene)
+                    {
+                        if (oneEnemyMissed)
+                        {
+                            Manager.Instance.Result(false);
+                        }
+
+                        if (numberOFEnemiesToEat == 0)
+                        {
+                            Manager.Instance.Result(true);
+                        }
+                    }
+                }
             }
 
             private void CheckVictoryAndDefeatConditions()
@@ -156,10 +175,6 @@ namespace Brigantin
                 victoryScene.SetActive(true);
                 levelCamera.enabled = false;
                 victoryCamera.enabled = true;
-                if (!isOnMyPrivateScene)
-                {
-                    Manager.Instance.Result(true);
-                }
             }
 
             void Defeat()
@@ -174,10 +189,6 @@ namespace Brigantin
                 defeatScene.SetActive(true);
                 levelCamera.enabled = false;
                 defeatCamera.enabled = true;
-                if (!isOnMyPrivateScene)
-                {
-                    Manager.Instance.Result(false);
-                }
             }
 
             private void SetSpawnerStats()
@@ -191,12 +202,12 @@ namespace Brigantin
                         spawner.maximumDistanceFromApparitionToSpawn = 9f;
                         switch (bpm)
                         {
-                            case 120:
+                            case 100:
                                 spawner.lastEnemyDeathTime = TtT(5);
                                 spawner.numberOfEnemiesToSpawn = 1;
                                 spawner.timeBetweenEnemyDeaths = TtT(3);
                                 break;
-                            case 140:
+                            case 120:
                                 spawner.lastEnemyDeathTime = TtT(5);
                                 spawner.numberOfEnemiesToSpawn = 1;
                                 spawner.timeBetweenEnemyDeaths = TtT(3);
@@ -211,6 +222,7 @@ namespace Brigantin
                         spawner.numberOfCloudsToSpawn = 1;
                         spawner.cloudDistance = 3;
                         spawner.cloudAlpha = 0.5f;
+                        spawner.cloudEndAlpha = 0.4f;
                         break;
                     case Difficulty.MEDIUM:
                         spawner.lastEnemyDeathTime = TtT(6);
@@ -220,26 +232,23 @@ namespace Brigantin
                         spawner.maximumDistanceFromApparitionToSpawn = 12f;
                         switch (bpm)
                         {
-                            case 120:
-                                spawner.numberOfEnemiesToSpawn = 2;
-                                spawner.timeBetweenEnemyDeaths = TtT(2);
-                                break;
-                            case 140:
-                                spawner.numberOfEnemiesToSpawn = 2;
-                                spawner.timeBetweenEnemyDeaths = TtT(2);
-                                break;
-                            default:
+                            case 60:
                                 spawner.numberOfEnemiesToSpawn = 3;
                                 spawner.timeBetweenEnemyDeaths = TtT(1);
+                                break;
+                            default:
+                                spawner.numberOfEnemiesToSpawn = 2;
+                                spawner.timeBetweenEnemyDeaths = TtT(2);
                                 break;
                         }
 
                         spawner.numberOfCloudsToSpawn = 3;
                         spawner.cloudDistance = 5;
                         spawner.cloudAlpha = 0.7f;
+                        spawner.cloudEndAlpha = 0.5f;
                         break;
                     case Difficulty.HARD:
-                        spawner.minimumDistanceBetween2Spawns = 7f;
+                        spawner.minimumDistanceBetween2Spawns = 8f;
                         spawner.lastEnemyDeathTime = TtT(6);
                         spawner.minimumDistanceFromApparitionToSpawn = 7f;
                         spawner.maximumDistanceFromApparitionToSpawn = 15f;
@@ -247,21 +256,21 @@ namespace Brigantin
                         {
                             case 60:
                                 spawner.maximumDistanceBetween2Spawns = 13f;
-                                spawner.numberOfEnemiesToSpawn = 4;
+                                spawner.numberOfEnemiesToSpawn = 3;
                                 spawner.timeBetweenEnemyDeaths = TtT(1);
                                 break;
-                            case 90:
+                            case 80:
                                 spawner.maximumDistanceBetween2Spawns = 13f;
                                 spawner.numberOfEnemiesToSpawn = 3;
                                 spawner.timeBetweenEnemyDeaths = TtT(1);
                                 break;
-                            case 120:
-                                spawner.maximumDistanceBetween2Spawns = 9f;
+                            case 100:
+                                spawner.maximumDistanceBetween2Spawns = 11f;
                                 spawner.numberOfEnemiesToSpawn = 2;
                                 spawner.timeBetweenEnemyDeaths = TtT(2);
                                 break;
-                            case 140:
-                                spawner.maximumDistanceBetween2Spawns = 9f;
+                            case 120:
+                                spawner.maximumDistanceBetween2Spawns = 11f;
                                 spawner.numberOfEnemiesToSpawn = 2;
                                 spawner.timeBetweenEnemyDeaths = TtT(2);
                                 break;
@@ -269,9 +278,10 @@ namespace Brigantin
                                 break;
                         }
 
-                        spawner.numberOfCloudsToSpawn = 5;
+                        spawner.numberOfCloudsToSpawn = 30;
                         spawner.cloudDistance = 8;
-                        spawner.cloudAlpha = 0.8f;
+                        spawner.cloudAlpha = 0.9f;
+                        spawner.cloudEndAlpha = 0.4f;
                         break;
                 }
 

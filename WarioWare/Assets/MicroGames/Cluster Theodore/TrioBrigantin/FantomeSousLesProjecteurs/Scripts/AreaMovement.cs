@@ -11,6 +11,7 @@ namespace Brigantin
 
             public float areaSize;
             public float moveSpeed;
+            public bool canMove;
 
             #endregion
 
@@ -18,7 +19,7 @@ namespace Brigantin
 
             private void Awake()
             {
-
+                canMove = true;
             }
 
             private void Start()
@@ -28,6 +29,12 @@ namespace Brigantin
 
             private void Update()
             {
+                if(!canMove)
+                {
+                    return;
+                }
+
+
                 float inputHorizontal = Mathf.Abs(Input.GetAxis("Left_Joystick_X")) > 0.1 ? Input.GetAxis("Left_Joystick_X") : 0f;
                 float inputVertical = Mathf.Abs(Input.GetAxis("Left_Joystick_Y")) > 0.1 ? Input.GetAxis("Left_Joystick_Y") : 0f;
 

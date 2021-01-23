@@ -9,20 +9,12 @@ using System.Linq;
 /// DEUTSCHMANN Lucas
 /// </summary>
 
-namespace TrioRadioRTL
+namespace RadioRTL
 {
     namespace EatingContest
     {
         public class PlayerController : MonoBehaviour
         {
-            public AudioSource mySource;
-
-            [Header("Sound Effects")]
-            public AudioClip finishPlateAudio;
-            public AudioClip chompAudio;
-            public AudioClip badPlateAudio;
-            public AudioClip SwitchPlateAudio;
-            public AudioClip winAudio;
 
             [Header ("Parameters")]
             public int chomp; //the number of chomps the player has currently had
@@ -67,6 +59,12 @@ namespace TrioRadioRTL
             public float speed;
             public bool movePlate = true;
             public GameObject platesManager;
+            int i = 0;
+            bool hasLost;
+
+            public GameObject fireworks;
+            public GameObject tears;
+            bool hasEnded;
             // Start is called before the first frame update
             void Start()
             {
@@ -103,61 +101,65 @@ namespace TrioRadioRTL
             {
                 totalPlates = numberOfPlates + numberOfRottenPlates;
 
-                if (totalPlates > 0)
+                if (!hasEnded)
                 {
-                    if (movePlate)
+                    if (totalPlates > 0)
                     {
-                        mySource.clip = SwitchPlateAudio;
-                        mySource.Play();
-                        platesManager.transform.position += Vector3.right * speed * Time.deltaTime;
+                        if (movePlate)
+                        {
 
-                        if (platesManager.transform.position.x >= 0)
-                        {
-                            movePlate = false;
-                        }
-                    }
-                    if (!rottenPlate) //plate isn't rotten
-                    {
-                        if (/*Input.GetButtonDown("A_Button")*/Input.GetKeyDown("e"))
-                        {
-                            chomp += 1;
-                            mySource.clip = chompAudio;
-                            mySource.Play();
-                        }
+                            platesManager.transform.position += Vector3.right * speed * Time.deltaTime;
 
-                        if (chomp == numberOfChomps && numberOfPlates != 0) //if the player eats everything in the plate
-                        {
-                            chomp = 0;
-                            numberOfPlates -= 1;
-                            mySource.clip = chompAudio;
-                            mySource.Play();
-                            NextPlate(); //Changing Plates
+                            if (platesManager.transform.position.x >= 0)
+                            {
+                                movePlate = false;
+                            }
                         }
-                        if (Input.GetKeyDown("a")|| Input.GetButtonDown("X_Button"))
+                        if (!rottenPlate) //plate isn't rotten
                         {
-                            print("poop");
-                            chomp = 0;
-                            platesQueue.Insert(0,true);
-                            NextPlate();
+                            if (Input.GetButtonDown("A_Button") || Input.GetKeyDown("e"))
+                            {
+                                chomp += 1;
+                                FindObjectOfType<AudioManagerLucas>().Play("Eat", 0);
+                            }
+
+                            if (chomp == numberOfChomps && numberOfPlates != 0) //if the player eats everything in the plate
+                            {
+                                chomp = 0;
+                                numberOfPlates -= 1;
+                                FindObjectOfType<AudioManagerLucas>().Play("Burp", 0);
+                                NextPlate(); //Changing Plates
+                            }
+                            if (Input.GetKeyDown("a") || Input.GetButtonDown("X_Button"))
+                            {
+
+                                chomp = 0;
+                                platesQueue.Insert(0, true);
+
+                                NextPlate();
+                            }
                         }
-                    }
-                    else if (rottenPlate)//plate is rotten
-                    {
-                        if (Input.GetButtonDown("X_Button") || Input.GetKeyDown("a"))
+                        else if (rottenPlate)//plate is rotten
                         {
-                            Debug.Log("WTFFFFFFFFFFF");
-                            numberOfRottenPlates -= 1;
-                            NextPlate();
-                            
-                        }
-                        if (Input.GetButtonDown("A_Button")|| Input.GetKeyDown("e"))
-                        {
-                            mySource.clip = badPlateAudio;
-                            mySource.Play();
-                            win = false;
+                            if (Input.GetButtonDown("X_Button") || Input.GetKeyDown("a"))
+                            {
+                                FindObjectOfType<AudioManagerLucas>().Play("Yarr", 0);
+                                numberOfRottenPlates -= 1;
+                                NextPlate();
+
+                            }
+                            if (Input.GetButtonDown("A_Button") || Input.GetKeyDown("e"))
+                            {
+                                Debug.Log("loooooser");
+                                win = false;
+                                hasLost = true;
+                                EndMinigame();
+
+                            }
                         }
                     }
                 }
+                
                 
 
                 if (totalPlates == 0) //if there are no more plates the player wins
@@ -229,7 +231,8 @@ namespace TrioRadioRTL
             }
             void NextPlate()//changing the plate once its empty
             {
-                PrintQueue();
+                //PrintQueue();
+                FindObjectOfType<AudioManagerLucas>().Play("Swap", 1);
                 platesManager.transform.position = basePosition;
 
 
@@ -273,9 +276,25 @@ namespace TrioRadioRTL
 
             void EndMinigame()//ending the mini game
             {
-                mySource.clip = winAudio;
-                mySource.Play();
-                win = true;
+                hasEnded = true;
+                if (hasLost)
+                {
+                    win = false;
+                    FindObjectOfType<AudioManagerLucas>().Play("Lose", 1);
+                    tears.SetActive(true);
+                }
+                else
+                {
+                    if (i == 0)
+                    {
+                        fireworks.SetActive(true);
+                        FindObjectOfType<AudioManagerLucas>().Play("Win", 0);
+                        i += 1;
+                    }
+
+                    win = true;
+                }
+                
                 
             }
         }

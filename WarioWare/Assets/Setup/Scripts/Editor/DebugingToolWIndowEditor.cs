@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Rewards;
 using UnityEditor;
 
 [CustomEditor(typeof(DebugingTool))]
@@ -13,6 +14,7 @@ public class DebugingToolWIndowEditor : Editor {
     private bool islandFoldout;
     private bool bossManagerFoldout;
     private DebugingTool debugingTool;
+    
     private void OnEnable()
     {
         debugingTool = target as DebugingTool;
@@ -29,56 +31,58 @@ public class DebugingToolWIndowEditor : Editor {
                 capsManagerFoldout = EditorGUILayout.BeginFoldoutHeaderGroup(capsManagerFoldout, "Cap Manager");               
 
             }
-            else if (i == 10)
+            else if (i == 13)
             {
                 if(capsManagerFoldout)
                     EditorGUILayout.Space(20);
                 playerManagerFoldout = EditorGUILayout.BeginFoldoutHeaderGroup(playerManagerFoldout, "Player Manager");
             }
-            else if(i==14)
+            else if(i==17)
             {
                 if(playerManagerFoldout)
                     EditorGUILayout.Space(20);
                 playerMovementFoldout = EditorGUILayout.BeginFoldoutHeaderGroup(playerMovementFoldout, "Player Movement");
             }
-            else if (i == 16)
+            else if (i == 19)
             {
                 if(playerMovementFoldout)
                     EditorGUILayout.Space(20);
                 islandCreatorFoldout = EditorGUILayout.BeginFoldoutHeaderGroup(islandCreatorFoldout, "Island Creator");
             }
-            else if (i == 21)
+            else if (i == 24)
             {
                 if (islandCreatorFoldout)
                     EditorGUILayout.Space(20);
                 islandFoldout = EditorGUILayout.BeginFoldoutHeaderGroup(islandFoldout, "Island");
             }
-            else if( i == 22)
+            else if( i == 25)
             {
                 if(islandFoldout)
                 EditorGUILayout.Space(20);
                 bossManagerFoldout = EditorGUILayout.BeginFoldoutHeaderGroup(bossManagerFoldout, "Boss Manager");
             }
 
-            if (capsManagerFoldout && i<10||
-                playerManagerFoldout && i>=10 && i<14||
-                playerMovementFoldout && i >= 14 && i < 16 ||
-                islandCreatorFoldout && i >= 16 && i < 21 ||
-                islandFoldout && i >= 21 && i < 22 || 
-                bossManagerFoldout && i>=22)
+            if (capsManagerFoldout && i<13||
+                playerManagerFoldout && i>=13 && i<17||
+                playerMovementFoldout && i >= 17&& i < 19 ||
+                islandCreatorFoldout && i >= 19 && i < 24 ||
+                islandFoldout && i >= 24 && i < 25 || 
+                bossManagerFoldout && i>=25)
             {
 
+                if (i == 10)
+                    EditorGUILayout.HelpBox("The number of mini game per cap is equal to = size of the island + number of the zone + miniGameNumberPerCap",MessageType.Warning);
                 EditorGUILayout.BeginHorizontal();
-                EditorGUILayout.LabelField(debugingTool.names[i]);
+                    EditorGUILayout.LabelField(debugingTool.names[i]);
 
-                    if(debugingTool.values[i] <10)
-                        debugingTool.values[i] = EditorGUILayout.IntSlider( debugingTool.values[i],0,10);
+                        if(debugingTool.values[i] <10)
+                            debugingTool.values[i] = EditorGUILayout.IntSlider( debugingTool.values[i],0,10);
 
-                    else if(debugingTool.values[i] < 100 && debugingTool.values[i] >=10)
-                        debugingTool.values[i] = EditorGUILayout.IntSlider(debugingTool.values[i], 0, 100);
+                        else if(debugingTool.values[i] < 100 && debugingTool.values[i] >=10)
+                            debugingTool.values[i] = EditorGUILayout.IntSlider(debugingTool.values[i], 0, 100);
 
-                    else
-                        debugingTool.values[i] = EditorGUILayout.IntSlider(debugingTool.values[i], 0, 1000);
+                        else
+                            debugingTool.values[i] = EditorGUILayout.IntSlider(debugingTool.values[i], 0, 1000);
                 EditorGUILayout.EndHorizontal();
 
             }

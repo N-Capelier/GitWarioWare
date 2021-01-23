@@ -14,6 +14,7 @@ namespace Brigantin
             public float alpha = 2f;
 
             float startAlpha = 0f;
+            float endAlpha = 0f;
             float startScale = 0f;
             float endScale = 0f;
 
@@ -43,7 +44,7 @@ namespace Brigantin
                 transform.position = Vector2.Lerp(startPos, endPos, currentTime / timing);
 
                 transform.localScale = Vector3.Lerp(new Vector3(startScale, startScale), new Vector3(endScale, endScale), currentTime / timing);
-                spr.color = new Color(0, 0, 0, Mathf.Lerp(startAlpha, 0.4f, currentTime / timing));
+                spr.color = new Color(0, 0, 0, Mathf.Lerp(startAlpha, endAlpha, currentTime / timing));
             }
             float TtT(float tickNumber)
             {

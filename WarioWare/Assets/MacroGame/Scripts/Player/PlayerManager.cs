@@ -70,7 +70,7 @@ namespace Player
 
 
         #region CustomMethods
-        public void TakeDamage(int damage)
+        public void TakeDamage(int damage, bool isBoss = false)
         {
             if(playerHp - damage <= 0)
             {
@@ -84,7 +84,7 @@ namespace Player
                 }
                 else
                 {
-                    StartCoroutine(DeathCoroutine());
+                    StartCoroutine(DeathCoroutine(isBoss));
                     Debug.Log("You are dead");
                 }
             }
@@ -123,9 +123,13 @@ namespace Player
             UpdatePlayerUI.Invoke();
         }
 
-        private IEnumerator DeathCoroutine()
+        private IEnumerator DeathCoroutine(bool isBoss = false)
         {
-            SoundManager.Instance.ApplyAudioClip("gameOverJingle", audioSource, Manager.Instance.bpm);
+            if(!isBoss)
+                SoundManager.Instance.ApplyAudioClip("gameOverJingle", audioSource, Manager.Instance.bpm);
+            else
+                SoundManager.Instance.ApplyAudioClip("gameOverJingleBoss", audioSource, Manager.Instance.bpm);
+
             audioSource.PlaySecured();
             PlayerInventory.Instance.rewardCanvas.SetActive(true);
             death.SetActive(true);

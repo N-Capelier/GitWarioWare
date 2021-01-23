@@ -8,7 +8,7 @@ namespace Rewards
     [CreateAssetMenu(fileName = "New Heal", menuName = "Reward/Resource/Heal", order = 50)]
     public class HealReward : Reward
     {
-        [SerializeField] int healAmount;
+        [SerializeField]public  int healAmount;
         public override bool ApplyActiveEffect()
         {
             return false;

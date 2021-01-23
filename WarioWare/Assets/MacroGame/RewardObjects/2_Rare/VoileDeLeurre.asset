@@ -18,4 +18,4 @@ MonoBehaviour:
   rarity: 1
   effect: 1
   price: 80
-  dropRateWeight: 10
+  dropRateWeight: 80

@@ -20,6 +20,7 @@ namespace Dragons_Peperes
 
             EnemyManager minigameManager;
             AudioManager audioManager;
+            DockScrolling dockScrolling;
 
 
             public GameObject looseScreen;
@@ -31,13 +32,14 @@ namespace Dragons_Peperes
                 minigameManager = FindObjectOfType<EnemyManager>();
 
                 audioManager = FindObjectOfType<AudioManager>();
+                dockScrolling = FindObjectOfType<DockScrolling>();
 
-                if (minigameManager.bpm > 90)
+                    if (minigameManager.bpm > 80)
                 {
                     enemySpeed = enemySpeed * 1.2f;
                 }
 
-                if(minigameManager.bpm >= 140f)
+                if(minigameManager.bpm >= 120)
                 {
                     enemySpeed = enemySpeed * 1.5f;
                 }
@@ -68,16 +70,17 @@ namespace Dragons_Peperes
             {
                 if (other.name == "Player")
                 {
-                    Debug.Log("Game Lost");
-
+                    audioManager.StopMusic();
                     audioManager.StopRunning();
+                    dockScrolling.scrollSpeed = 0f;
+                    enemySpeed = 0f;
 
                     if(minigameManager.playerLost != true)
                     {
                         audioManager.PlayCatched();
                     }
 
-                    //okok alors là on fous une bool pour indiquer que le joueur a touché un enemi comme ac au 8eme tic on verifera cette bool pour voir si c win or loose
+                    
                     minigameManager.playerLost = true;
 
                 }

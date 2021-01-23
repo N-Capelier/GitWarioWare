@@ -6,7 +6,7 @@ namespace Rewards
     [CreateAssetMenu(fileName = "New Sturdy", menuName = "Reward/Item/Sturdy", order = 50)]
     public class SturdyReward : Reward
     {
-        [SerializeField] int healAmmount = 3;
+        [SerializeField] public int healAmmount = 3;
         public override bool ApplyActiveEffect()
         {
             return false;
