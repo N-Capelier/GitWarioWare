@@ -36,7 +36,7 @@ namespace Caps
         public int idWeightToAdd;
         public int idInitialWeight;
         [SerializeField] int damagesOnMiniGameLose = 10;
-        //barrel
+     /*   //barrel
         [Range(1, 90)]
         public int barrelProbability;
         public int maxBarrelRessources;
@@ -44,7 +44,7 @@ namespace Caps
         public int lifeWeight;
         public int goldWeight;
         public int foodWeight;
-
+     */
 
         [Header("Parameters")]
         public CapsSorter sorter;
@@ -109,12 +109,12 @@ namespace Caps
             idWeightToAdd = DebugToolManager.Instance.ChangeVariableValue("idWeightToAdd");
             idInitialWeight = DebugToolManager.Instance.ChangeVariableValue("idInitialWeight");
             damagesOnMiniGameLose = DebugToolManager.Instance.ChangeVariableValue("damagesOnMiniGameLose");
-            barrelProbability = DebugToolManager.Instance.ChangeVariableValue("barrelProbability");
+           /* barrelProbability = DebugToolManager.Instance.ChangeVariableValue("barrelProbability");
             maxBarrelRessources = DebugToolManager.Instance.ChangeVariableValue("maxBarrelRessources");
             minBarrelRessources = DebugToolManager.Instance.ChangeVariableValue("minBarrelRessources");
             lifeWeight = DebugToolManager.Instance.ChangeVariableValue("lifeWeight");
             goldWeight = DebugToolManager.Instance.ChangeVariableValue("goldWeight");
-            foodWeight = DebugToolManager.Instance.ChangeVariableValue("foodWeight");
+            foodWeight = DebugToolManager.Instance.ChangeVariableValue("foodWeight");*/
             miniGameNumberPerCap = DebugToolManager.Instance.ChangeVariableValue("miniGameNumberPerCap");
             cantDoTransition = true;
         }
@@ -128,12 +128,14 @@ namespace Caps
         /// <returns></returns>
         public IEnumerator StartMiniGame(Cap _currentCap, Island _currentIsland, Malediction malediction = null, bool displayMalediction = false, bool isBoss = false)
         {
+            
             cantDoTransition = false;
             currentCap = _currentCap;
             currentIsland = _currentIsland;
 
             if (currentAsyncScene == null)
             {
+                _currentCap.ChoseMiniGames( sorter);
                 BossLifeManager.Instance.bossUI.gameObject.SetActive(false);
                 if (currentIsland.type == IslandType.Boss)
                 {
@@ -168,6 +170,8 @@ namespace Caps
         }
         public IEnumerator StartMiniGame(Cap _currentCap)
         {
+            _currentCap.ChoseMiniGames( sorter);
+
             cantDoTransition = false;
             currentCap = _currentCap;
 
@@ -320,10 +324,10 @@ namespace Caps
                 transition.PlayAnimation((float)bpm, win);
                 SoundManager.Instance.ApplyAudioClip("victoryJingle", transitionMusic, bpm);
                 resultText.text = "You Won!";
-                if (currentCap.hasBarrel[miniGamePassedNumber] && isNormalMode)
+               /* if (currentCap.hasBarrel[miniGamePassedNumber] && isNormalMode)
                 {
                     BarrelRessourcesContent();
-                }
+                }*/
             }
             else
             {
@@ -511,7 +515,7 @@ namespace Caps
         /// </summary>
         public void CapAttribution()
         {
-            if (zoneNumber <= 2)
+           if (zoneNumber <= 2)
             {
 
                 sorter.idCardsNotPlayed = sorter.idCards;
@@ -528,34 +532,35 @@ namespace Caps
             }
             foreach (Island island in allIslands)
             {
+                
                 for (int i = 0; i < island.accessibleNeighbours.Length; i++)
                 {
-                    island.capList.Add(new Cap());
-                    island.capList[i].capWeight = idWeightToAdd;
-                    Island _IslandTarget = island.accessibleNeighbours[i];
-                    if (_IslandTarget.type == IslandType.Boss)
-                    {
-                        island.capList[i].length = BossManager.Instance.differentMiniGameNumber * 2;
-                    }
-                    else
-                    {
-                        if ((int)_IslandTarget.difficulty > 2)
-                            island.capList[i].length = 6 + zoneNumber;
+                    
+                        island.capList.Add(new Cap());
+                        Island _IslandTarget = island.accessibleNeighbours[i];
+                        if (_IslandTarget.type == IslandType.Boss)
+                        {
+                            island.capList[i].length = BossManager.Instance.differentMiniGameNumber * 2;
+                        }
                         else
-                            island.capList[i].length = (int)_IslandTarget.difficulty + miniGameNumberPerCap + zoneNumber;
-                    }
-                    island.capList[i].ChoseMiniGames(barrelProbability, sorter);
+                        {
+                            if ((int)_IslandTarget.difficulty > 2)
+                                island.capList[i].length = 6 + zoneNumber;
+                            else
+                                island.capList[i].length = (int)_IslandTarget.difficulty + miniGameNumberPerCap + zoneNumber;
+                        }
+                    
+                    island.capList[i].capWeight = idWeightToAdd;                   
+                    
                 }
 
             }
-            transition.DisplayBarrel(allIslands[0].capList[0]);
             transition.MoveShip(allIslands[0].capList[0], 3, 0);
-
         }
 
         [HideInInspector] public int bonusBarrels = 0;
 
-        private void BarrelRessourcesContent()
+      /*  private void BarrelRessourcesContent()
         {
             var _size = Random.Range(minBarrelRessources + bonusBarrels, maxBarrelRessources + bonusBarrels);
             int _goldAmount = 0;
@@ -575,7 +580,7 @@ namespace Caps
             PlayerManager.Instance.GainCoins(_goldAmount);
             PlayerManager.Instance.GainFood(_foodAmount);
             PlayerManager.Instance.Heal(_lifeAmount);
-        }
+        }*/
 
 
         private IEnumerator RewardUI()

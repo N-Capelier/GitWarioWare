@@ -20,7 +20,7 @@ namespace Caps
         public int capWeight;
 
         
-        public void ChoseMiniGames(int barrelProbabilty, CapsSorter sorter)
+        public void ChoseMiniGames(CapsSorter sorter,int barrelProbabilty = 0)
         {
             
                 //number of different game calculated by devided the lenght by 2 (it's int so it's fine 5/2 = 2)
