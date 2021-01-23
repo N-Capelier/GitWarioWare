@@ -94,6 +94,8 @@ namespace Caps
         [SerializeField] bool isDebug = false;
         [HideInInspector] public EventSystem eventSystem;
         public int miniGameNumberPerCap = 4;
+        public int winingStreakNumber = 2;
+        public int losingStreakNumber = 2;
         //events
         //public delegate void MapUIHandler();
         //public event MapUIHandler ResetFocus;
@@ -109,6 +111,8 @@ namespace Caps
             idWeightToAdd = DebugToolManager.Instance.ChangeVariableValue("idWeightToAdd");
             idInitialWeight = DebugToolManager.Instance.ChangeVariableValue("idInitialWeight");
             damagesOnMiniGameLose = DebugToolManager.Instance.ChangeVariableValue("damagesOnMiniGameLose");
+            winingStreakNumber = DebugToolManager.Instance.ChangeVariableValue("winingStreakNumber");
+            losingStreakNumber = DebugToolManager.Instance.ChangeVariableValue("losingStreakNumber");
            /* barrelProbability = DebugToolManager.Instance.ChangeVariableValue("barrelProbability");
             maxBarrelRessources = DebugToolManager.Instance.ChangeVariableValue("maxBarrelRessources");
             minBarrelRessources = DebugToolManager.Instance.ChangeVariableValue("minBarrelRessources");
@@ -286,10 +290,32 @@ namespace Caps
             //panel.SetActive(true);
             sceneCam.SetActive(true);
             SceneManager.UnloadSceneAsync(currentCap.chosenMiniGames[currentMiniGame].microGameScene.BuildIndex);
-            if (currentCap.chosenMiniGames[currentMiniGame].currentDifficulty != Difficulty.HARD)
-                currentCap.chosenMiniGames[currentMiniGame].currentDifficulty++;
-            currentMiniGame++;
+           
+            // difficutly chnage ever wining or losing streak
+            if (win)
+            {
+                currentCap.chosenMiniGames[currentMiniGame].winningStreak++;
+                currentCap.chosenMiniGames[currentMiniGame].losingStreak=0;
+                if (currentCap.chosenMiniGames[currentMiniGame].winningStreak == winingStreakNumber   && currentCap.chosenMiniGames[currentMiniGame].currentDifficulty != Difficulty.HARD)
+                {
+                    currentCap.chosenMiniGames[currentMiniGame].currentDifficulty++;
+                    currentCap.chosenMiniGames[currentMiniGame].winningStreak=0;
+                }
+            }
+            else
+            {
+                currentCap.chosenMiniGames[currentMiniGame].winningStreak=0;
+                currentCap.chosenMiniGames[currentMiniGame].losingStreak++;
+                if (currentCap.chosenMiniGames[currentMiniGame].losingStreak == losingStreakNumber && currentCap.chosenMiniGames[currentMiniGame].currentDifficulty != Difficulty.EASY)
+                {
+                    currentCap.chosenMiniGames[currentMiniGame].currentDifficulty--;
+                    currentCap.chosenMiniGames[currentMiniGame].losingStreak = 0;
+                }
+            }
 
+
+            currentMiniGame++;
+            
             isLoaded = false;
 
             if (currentIsland != null && currentIsland.type == IslandType.Boss)
@@ -506,6 +532,8 @@ namespace Caps
             {
                 idCard.currentDifficulty = 0;
                 idCard.idWeight = idInitialWeight;
+                idCard.winningStreak = 0;
+                idCard.losingStreak = 0;
             }
 
         }
