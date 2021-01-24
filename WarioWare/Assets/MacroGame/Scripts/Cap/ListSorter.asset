@@ -78,6 +78,17 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b938def9c6f117149aee14f9897c45df, type: 2}
   - {fileID: 11400000, guid: 91c177e103bba424c994c04c9003b1e0, type: 2}
   - {fileID: 11400000, guid: 5324ce4cc8da3694198c15dc6236e9bf, type: 2}
-  iDCardsPlayed:
+  iDCardsPlayed: []
+  bossList:
+  - {fileID: 11400000, guid: 3dba8d1d0f954754ba20d75ce09c19c4, type: 2}
+  - {fileID: 11400000, guid: cd910fc9f5e19e74fb52451584372b4e, type: 2}
+  - {fileID: 11400000, guid: 88c5595674c271a4a9c82ee2bbda0346, type: 2}
+  - {fileID: 11400000, guid: 5f86e37fb2be95a40bbb4de236a58e65, type: 2}
+  - {fileID: 11400000, guid: 102982026120ba646ad8944fb5e5235f, type: 2}
+  - {fileID: 11400000, guid: 5324ce4cc8da3694198c15dc6236e9bf, type: 2}
+  - {fileID: 11400000, guid: 36f021f553ad88443928fde88b1d1f83, type: 2}
   - {fileID: 11400000, guid: f16b0bc231d8a6a4aae66067529d47cd, type: 2}
-  - {fileID: 11400000, guid: e41b81fa1cfcf6647bc81afc56e29d38, type: 2}
+  - {fileID: 11400000, guid: 5e6f9fdfd78ddff44ae4d3763dca18c0, type: 2}
+  - {fileID: 11400000, guid: 05644ea7512677c458925ebed1927cf4, type: 2}
+  - {fileID: 11400000, guid: 93db97767b7e2e047a7f3ed80ae0e993, type: 2}
+  - {fileID: 11400000, guid: 91c177e103bba424c994c04c9003b1e0, type: 2}

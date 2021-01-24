@@ -122,7 +122,11 @@ namespace Player
             }
             UpdatePlayerUI.Invoke();
         }
-
+        public void GainKeyStone()
+        {
+            keyStoneNumber++;
+            Manager.Instance.KeyStoneReset();
+        }
         private IEnumerator DeathCoroutine(bool isBoss = false)
         {
             if(!isBoss)
