@@ -15,6 +15,7 @@ using Cinemachine;
 using Shop;
 using Boss;
 using UnityEngine.EventSystems;
+using System.Net;
 
 namespace Caps
 {
@@ -417,7 +418,16 @@ namespace Caps
         public void GlobalTransitionEnd(Malediction malediction = null, bool displayMalediction = false, bool isBoss = false)
         {
             if (currentMiniGame == currentCap.chosenMiniGames.Count)
+            {
+               for (int i = 0; i < currentCap.chosenMiniGames.Count - 1; i++)
+                {
+                    int j = Random.Range(i, currentCap.chosenMiniGames.Count);
+                    var temp = currentCap.chosenMiniGames[i];
+                    currentCap.chosenMiniGames[i] = currentCap.chosenMiniGames[j];
+                    currentCap.chosenMiniGames[j] = temp;
+                }
                 currentMiniGame = 0;
+            }
             currentDifficulty = currentCap.chosenMiniGames[currentMiniGame].currentDifficulty;
 
             currentAsyncScene = SceneManager.LoadSceneAsync(currentCap.chosenMiniGames[currentMiniGame].microGameScene.BuildIndex, LoadSceneMode.Additive);
@@ -572,10 +582,7 @@ namespace Caps
                         }
                         else
                         {
-                            if ((int)_IslandTarget.difficulty > 2)
-                                island.capList[i].length = 6 + zoneNumber;
-                            else
-                                island.capList[i].length = (int)_IslandTarget.difficulty + miniGameNumberPerCap + zoneNumber;
+                            island.capList[i].length = ((int)_IslandTarget.difficulty + miniGameNumberPerCap + PlayerManager.Instance.keyStoneNumber)*2;
                         }
                     
                     island.capList[i].capWeight = idWeightToAdd;                   

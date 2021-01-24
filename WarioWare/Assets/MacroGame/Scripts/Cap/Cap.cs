@@ -22,9 +22,10 @@ namespace Caps
         
         public void ChoseMiniGames(CapsSorter sorter,int barrelProbabilty = 0)
         {
-            
-                //number of different game calculated by devided the lenght by 2 (it's int so it's fine 5/2 = 2)
-                int differentGameNumber = length / (int)2;
+
+            //number of different game calculated by devided the lenght by 2 (it's int so it's fine 5/2 = 2)
+                float _differentGameNumberFloat = (length + Player.PlayerManager.Instance.keyStoneNumber) / 1.3f;
+                int differentGameNumber =(int)_differentGameNumberFloat ;
                 //purcentage will ad every value if each game to creat a global procentage
                 int purcentage =0;
                 for (int i = 0; i < sorter.idCardsNotPlayed.Count; i++)
@@ -56,7 +57,11 @@ namespace Caps
                                 chosenMiniGames.Add(sorter.idCardsNotPlayed[x]);
                                 _indexAlreadyTaken.Add(x);
                                 //this number is what will be needed to be calculated
+                                
                                 sorter.idCardsNotPlayed[x].idWeight += capWeight;
+                                if (sorter.idCardsNotPlayed[x].idWeight >= 20)
+                                    sorter.idCardsNotPlayed[x].idWeight = 20;
+
                                 break;
                             }
                             else
