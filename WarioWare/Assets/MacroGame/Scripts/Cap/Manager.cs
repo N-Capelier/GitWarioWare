@@ -500,7 +500,7 @@ namespace Caps
                     StartCoroutine(UnzoomCam());
                     yield return new WaitForSeconds(shipOpening.openingTime * 2);
 
-                    ShopManager.Instance.Show();
+                    ShopManager.Instance.Show(PlayerMovement.Instance.playerIsland);
                 }
                 else
                 {

@@ -10,7 +10,8 @@ namespace Rewards
     {
         public override bool ApplyActiveEffect()
         {
-            ShopManager.Instance.Show();
+            float r = Random.Range(0, ShopManager.Instance.shopIslands.Length);
+            ShopManager.Instance.Show(ShopManager.Instance.shopIslands[(int)Mathf.Floor(r)]);
             return true;
         }
 

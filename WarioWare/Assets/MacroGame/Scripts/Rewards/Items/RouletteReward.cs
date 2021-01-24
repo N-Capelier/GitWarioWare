@@ -10,6 +10,7 @@ namespace Rewards
     {
         public override bool ApplyActiveEffect()
         {
+            ShopManager.Instance.ClearShops();
             ShopManager.Instance.InitializeShop();
             return true;
         }
