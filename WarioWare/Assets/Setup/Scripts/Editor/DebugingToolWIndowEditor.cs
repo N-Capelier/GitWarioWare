@@ -31,43 +31,43 @@ public class DebugingToolWIndowEditor : Editor {
                 capsManagerFoldout = EditorGUILayout.BeginFoldoutHeaderGroup(capsManagerFoldout, "Cap Manager");               
 
             }
-            else if (i == 11)
+            else if (i == 13)
             {
                 if(capsManagerFoldout)
                     EditorGUILayout.Space(20);
                 playerManagerFoldout = EditorGUILayout.BeginFoldoutHeaderGroup(playerManagerFoldout, "Player Manager");
             }
-            else if(i==15)
+            else if(i==17)
             {
                 if(playerManagerFoldout)
                     EditorGUILayout.Space(20);
                 playerMovementFoldout = EditorGUILayout.BeginFoldoutHeaderGroup(playerMovementFoldout, "Player Movement");
             }
-            else if (i == 17)
+            else if (i == 19)
             {
                 if(playerMovementFoldout)
                     EditorGUILayout.Space(20);
                 islandCreatorFoldout = EditorGUILayout.BeginFoldoutHeaderGroup(islandCreatorFoldout, "Island Creator");
             }
-            else if (i == 22)
+            else if (i == 24)
             {
                 if (islandCreatorFoldout)
                     EditorGUILayout.Space(20);
                 islandFoldout = EditorGUILayout.BeginFoldoutHeaderGroup(islandFoldout, "Island");
             }
-            else if( i == 23)
+            else if( i == 25)
             {
                 if(islandFoldout)
                 EditorGUILayout.Space(20);
                 bossManagerFoldout = EditorGUILayout.BeginFoldoutHeaderGroup(bossManagerFoldout, "Boss Manager");
             }
 
-            if (capsManagerFoldout && i<11||
-                playerManagerFoldout && i>=11 && i<15||
-                playerMovementFoldout && i >= 15&& i < 17 ||
-                islandCreatorFoldout && i >= 17 && i < 22 ||
-                islandFoldout && i >= 22 && i < 23 || 
-                bossManagerFoldout && i>=23)
+            if (capsManagerFoldout && i<13||
+                playerManagerFoldout && i>=13 && i<17||
+                playerMovementFoldout && i >= 17&& i < 19 ||
+                islandCreatorFoldout && i >= 19 && i < 24 ||
+                islandFoldout && i >= 24 && i < 25 || 
+                bossManagerFoldout && i>=25)
             {
 
                 if (i == 10)

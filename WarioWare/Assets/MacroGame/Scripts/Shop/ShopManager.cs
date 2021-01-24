@@ -24,8 +24,10 @@ namespace Shop
         public TextMeshProUGUI itemDescription;
         public TextMeshProUGUI itemName;
 
+        public Island[] shopIslands;
+        private int loadedShopIndex;
 
-        [HideInInspector] public List<Reward> shopItems = new List<Reward>();
+        [HideInInspector] public List<Reward>[] shopItems = new List<Reward>[10];
         private List<Reward> allResources = new List<Reward>();
         private List<Reward> allItems = new List<Reward>();
 
@@ -36,8 +38,7 @@ namespace Shop
 
         private void Awake()
         {
-            CreateSingleton();
-            
+            CreateSingleton();       
         }
 
 
@@ -49,11 +50,6 @@ namespace Shop
 
         private void Update()
         {
-            if (Input.GetButtonDown("Y_Button"))
-            {
-                //Show(); //--Feature testing
-            }
-
             if (inShop && (Input.GetButtonDown("B_Button")) && !PlayerManager.Instance.inInventory)
             {
                 Hide();
@@ -65,18 +61,14 @@ namespace Shop
             }
         }
 
-        public void InitializeShop()
+        private void InitializeRewardLists()
         {
-            allItems.Clear();
-            allResources.Clear();
-            shopItems.Clear();
-
             //Part resources from other item types;
             for (int i = 0; i < IslandCreator.Instance.gameRewards.Length; i++)
             {
-                if(IslandCreator.Instance.gameRewards[i].type == RewardType.Resource)
+                if (IslandCreator.Instance.gameRewards[i].type == RewardType.Resource)
                 {
-                    if(IslandCreator.Instance.gameRewards[i].price != 0)
+                    if (IslandCreator.Instance.gameRewards[i].price != 0)
                     {
                         allResources.Add(IslandCreator.Instance.gameRewards[i]);
                     }
@@ -86,33 +78,34 @@ namespace Shop
                     allItems.Add(IslandCreator.Instance.gameRewards[i]);
                 }
             }
-
-            //Initialize shop stocked items
-            Reward _reward = IslandCreator.Instance.FisherYates(allItems.ToArray())[0];
-            shopItems.Add(_reward);
-            allItems.Remove(_reward);
-            
-            for(int i = 0; i < 2; i++)
-            {
-                _reward = IslandCreator.Instance.FisherYates(allResources.ToArray())[0];
-                shopItems.Add(_reward);
-                allResources.Remove(_reward);
-            }
-            
-            for (int i = 0; i < shopSlots.Length; i++)
-            {
-                shopItemImages[i].sprite = shopItems[i].sprite;
-                itemPrices[i].text = shopItems[i].price.ToString();
-            }
         }
 
-        public void Show()
+        public void InitializeShop()
         {
-            SoundManager.Instance.ApplyAudioClip("Clicked", audioSource);
-            audioSource.PlaySecured();
+            InitializeRewardLists();
+            
+            for (int i = 0; i < shopIslands.Length; i++)
+            {
+                shopItems[i] = new List<Reward>();
 
-            Manager.Instance.macroUI.SetActive(false);
+                //Initialize shop stocked items
+                Reward _reward = IslandCreator.Instance.FisherYates(allItems.ToArray())[0];
+                shopItems[i].Add(_reward);
+                allItems.Remove(_reward);
 
+                //Initialize shop stocked ressources
+                for (int j = 0; j < 2; j++)
+                {
+                    _reward = IslandCreator.Instance.FisherYates(allResources.ToArray())[0];
+                    shopItems[i].Add(_reward);
+                }
+            }    
+        }
+
+        private void LoadShopItems(int index)
+        {
+            loadedShopIndex = index;
+            //Load images and price text
             for (int i = 0; i < shopSlots.Length; i++)
             {
                 if (shopItems[i] == null)
@@ -124,9 +117,35 @@ namespace Shop
                 {
                     shopItemImages[i].gameObject.SetActive(true);
                     itemPrices[i].gameObject.SetActive(true);
+                    shopItemImages[i].sprite = shopItems[index][i].sprite;
+                    itemPrices[i].text = shopItems[index][i].price.ToString();
                 }
             }
+        }
 
+        public void ClearShops()
+        {
+            allItems.Clear();
+            allResources.Clear();
+            for (int i = 0; i < shopIslands.Length; i++)
+            {
+                shopItems[i].Clear();
+            }
+        }
+
+        public void Show(Island shop)
+        {
+            SoundManager.Instance.ApplyAudioClip("Clicked", audioSource);
+            audioSource.PlaySecured();
+
+            Manager.Instance.macroUI.SetActive(false);
+
+            for (int i = 0; i < shopIslands.Length; i++)
+            {
+                if(shop == shopIslands[i])
+                    LoadShopItems(i);
+            }
+            
             shopCanvas.SetActive(true);
             shopSlots[0].Select();
             inShop = true;
@@ -150,20 +169,20 @@ namespace Shop
             {
                 if (clickedButton == shopSlots[i] && shopItems[i] != null)
                 {
-                    if(PlayerManager.Instance.beatcoins >= shopItems[i].price)
+                    if(PlayerManager.Instance.beatcoins >= shopItems[loadedShopIndex][i].price)
                     {
                         SoundManager.Instance.ApplyAudioClip("CollectItem", audioSource);
                         audioSource.PlaySecured();
 
-                        PlayerManager.Instance.GainCoins(-shopItems[i].price);
-                        if(shopItems[i].type == RewardType.Resource)
+                        PlayerManager.Instance.GainCoins(-shopItems[loadedShopIndex][i].price);
+                        if(shopItems[loadedShopIndex][i].type == RewardType.Resource)
                         {
-                            shopItems[i].ApplyPassiveEffect();
+                            shopItems[loadedShopIndex][i].ApplyPassiveEffect();
                         }
                         else
                         {
                             shopCanvas.SetActive(false);
-                            PlayerInventory.Instance.SetItemToAdd(shopItems[i]);
+                            PlayerInventory.Instance.SetItemToAdd(shopItems[loadedShopIndex][i]);
                         }
 
                         shopItems[i] = null;
@@ -189,8 +208,8 @@ namespace Shop
                 if (shopSlots[i] == selectedSlot && shopItems[i] != null)
                 {
 
-                    itemDescription.text = shopItems[i].GetDescription();
-                    itemName.text = shopItems[i].rewardName;
+                    itemDescription.text = shopItems[loadedShopIndex][i].GetDescription();
+                    itemName.text = shopItems[loadedShopIndex][i].rewardName;
                     itemDescriptionContainer.SetActive(true);
                     break;
                 }

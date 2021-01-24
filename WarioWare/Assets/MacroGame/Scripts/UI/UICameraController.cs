@@ -35,14 +35,7 @@ namespace UI
 
                 }
 
-                if (Mathf.Abs(horizontalMove) < joystickDeadZone && Mathf.Abs(verticalMove) < joystickDeadZone)
-                {
-                    targetTransform.position = EventSystem.current.currentSelectedGameObject.transform.position;
-                }
-                else
-                {
-                    MoveTarget();
-                }
+                MoveTarget();
 
             }
         }

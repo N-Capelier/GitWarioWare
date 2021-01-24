@@ -11,6 +11,7 @@ public class IDCard : ScriptableObject
     public Cluster cluster;
     [SerializeField] public string trio;
 
+
     public int indexEnum;
     public string verbe = string.Empty;
     [SerializeField]  public SceneField microGameScene;
@@ -19,6 +20,8 @@ public class IDCard : ScriptableObject
 
     // will be used later on the macro;
     [SerializeField] public Difficulty currentDifficulty;
+    public int winningStreak = 0;
+    public float losingStreak = 0;
     [SerializeField]  public int idWeight;
     public bool hasBarrel;
 }

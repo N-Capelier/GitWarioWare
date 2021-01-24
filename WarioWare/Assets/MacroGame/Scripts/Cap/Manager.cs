@@ -36,7 +36,7 @@ namespace Caps
         public int idWeightToAdd;
         public int idInitialWeight;
         [SerializeField] int damagesOnMiniGameLose = 10;
-        //barrel
+     /*   //barrel
         [Range(1, 90)]
         public int barrelProbability;
         public int maxBarrelRessources;
@@ -44,7 +44,7 @@ namespace Caps
         public int lifeWeight;
         public int goldWeight;
         public int foodWeight;
-
+     */
 
         [Header("Parameters")]
         public CapsSorter sorter;
@@ -94,6 +94,8 @@ namespace Caps
         [SerializeField] bool isDebug = false;
         [HideInInspector] public EventSystem eventSystem;
         public int miniGameNumberPerCap = 4;
+        public int winingStreakNumber = 2;
+        public int losingStreakNumber = 2;
         //events
         //public delegate void MapUIHandler();
         //public event MapUIHandler ResetFocus;
@@ -109,12 +111,14 @@ namespace Caps
             idWeightToAdd = DebugToolManager.Instance.ChangeVariableValue("idWeightToAdd");
             idInitialWeight = DebugToolManager.Instance.ChangeVariableValue("idInitialWeight");
             damagesOnMiniGameLose = DebugToolManager.Instance.ChangeVariableValue("damagesOnMiniGameLose");
-            barrelProbability = DebugToolManager.Instance.ChangeVariableValue("barrelProbability");
+            winingStreakNumber = DebugToolManager.Instance.ChangeVariableValue("winingStreakNumber");
+            losingStreakNumber = DebugToolManager.Instance.ChangeVariableValue("losingStreakNumber");
+           /* barrelProbability = DebugToolManager.Instance.ChangeVariableValue("barrelProbability");
             maxBarrelRessources = DebugToolManager.Instance.ChangeVariableValue("maxBarrelRessources");
             minBarrelRessources = DebugToolManager.Instance.ChangeVariableValue("minBarrelRessources");
             lifeWeight = DebugToolManager.Instance.ChangeVariableValue("lifeWeight");
             goldWeight = DebugToolManager.Instance.ChangeVariableValue("goldWeight");
-            foodWeight = DebugToolManager.Instance.ChangeVariableValue("foodWeight");
+            foodWeight = DebugToolManager.Instance.ChangeVariableValue("foodWeight");*/
             miniGameNumberPerCap = DebugToolManager.Instance.ChangeVariableValue("miniGameNumberPerCap");
             cantDoTransition = true;
         }
@@ -128,12 +132,14 @@ namespace Caps
         /// <returns></returns>
         public IEnumerator StartMiniGame(Cap _currentCap, Island _currentIsland, Malediction malediction = null, bool displayMalediction = false, bool isBoss = false)
         {
+            
             cantDoTransition = false;
             currentCap = _currentCap;
             currentIsland = _currentIsland;
 
             if (currentAsyncScene == null)
             {
+                _currentCap.ChoseMiniGames( sorter);
                 BossLifeManager.Instance.bossUI.gameObject.SetActive(false);
                 if (currentIsland.type == IslandType.Boss)
                 {
@@ -168,6 +174,8 @@ namespace Caps
         }
         public IEnumerator StartMiniGame(Cap _currentCap)
         {
+            _currentCap.ChoseMiniGames( sorter);
+
             cantDoTransition = false;
             currentCap = _currentCap;
 
@@ -282,10 +290,32 @@ namespace Caps
             //panel.SetActive(true);
             sceneCam.SetActive(true);
             SceneManager.UnloadSceneAsync(currentCap.chosenMiniGames[currentMiniGame].microGameScene.BuildIndex);
-            if (currentCap.chosenMiniGames[currentMiniGame].currentDifficulty != Difficulty.HARD)
-                currentCap.chosenMiniGames[currentMiniGame].currentDifficulty++;
-            currentMiniGame++;
+           
+            // difficutly chnage ever wining or losing streak
+            if (win)
+            {
+                currentCap.chosenMiniGames[currentMiniGame].winningStreak++;
+                currentCap.chosenMiniGames[currentMiniGame].losingStreak=0;
+                if (currentCap.chosenMiniGames[currentMiniGame].winningStreak == winingStreakNumber   && currentCap.chosenMiniGames[currentMiniGame].currentDifficulty != Difficulty.HARD)
+                {
+                    currentCap.chosenMiniGames[currentMiniGame].currentDifficulty++;
+                    currentCap.chosenMiniGames[currentMiniGame].winningStreak=0;
+                }
+            }
+            else
+            {
+                currentCap.chosenMiniGames[currentMiniGame].winningStreak=0;
+                currentCap.chosenMiniGames[currentMiniGame].losingStreak++;
+                if (currentCap.chosenMiniGames[currentMiniGame].losingStreak == losingStreakNumber && currentCap.chosenMiniGames[currentMiniGame].currentDifficulty != Difficulty.EASY)
+                {
+                    currentCap.chosenMiniGames[currentMiniGame].currentDifficulty--;
+                    currentCap.chosenMiniGames[currentMiniGame].losingStreak = 0;
+                }
+            }
 
+
+            currentMiniGame++;
+            
             isLoaded = false;
 
             if (currentIsland != null && currentIsland.type == IslandType.Boss)
@@ -320,10 +350,10 @@ namespace Caps
                 transition.PlayAnimation((float)bpm, win);
                 SoundManager.Instance.ApplyAudioClip("victoryJingle", transitionMusic, bpm);
                 resultText.text = "You Won!";
-                if (currentCap.hasBarrel[miniGamePassedNumber] && isNormalMode)
+               /* if (currentCap.hasBarrel[miniGamePassedNumber] && isNormalMode)
                 {
                     BarrelRessourcesContent();
-                }
+                }*/
             }
             else
             {
@@ -470,7 +500,7 @@ namespace Caps
                     StartCoroutine(UnzoomCam());
                     yield return new WaitForSeconds(shipOpening.openingTime * 2);
 
-                    ShopManager.Instance.Show();
+                    ShopManager.Instance.Show(PlayerMovement.Instance.playerIsland);
                 }
                 else
                 {
@@ -502,6 +532,8 @@ namespace Caps
             {
                 idCard.currentDifficulty = 0;
                 idCard.idWeight = idInitialWeight;
+                idCard.winningStreak = 0;
+                idCard.losingStreak = 0;
             }
 
         }
@@ -511,7 +543,7 @@ namespace Caps
         /// </summary>
         public void CapAttribution()
         {
-            if (zoneNumber <= 2)
+           if (zoneNumber <= 2)
             {
 
                 sorter.idCardsNotPlayed = sorter.idCards;
@@ -528,34 +560,35 @@ namespace Caps
             }
             foreach (Island island in allIslands)
             {
+                
                 for (int i = 0; i < island.accessibleNeighbours.Length; i++)
                 {
-                    island.capList.Add(new Cap());
-                    island.capList[i].capWeight = idWeightToAdd;
-                    Island _IslandTarget = island.accessibleNeighbours[i];
-                    if (_IslandTarget.type == IslandType.Boss)
-                    {
-                        island.capList[i].length = BossManager.Instance.differentMiniGameNumber * 2;
-                    }
-                    else
-                    {
-                        if ((int)_IslandTarget.difficulty > 2)
-                            island.capList[i].length = 6 + zoneNumber;
+                    
+                        island.capList.Add(new Cap());
+                        Island _IslandTarget = island.accessibleNeighbours[i];
+                        if (_IslandTarget.type == IslandType.Boss)
+                        {
+                            island.capList[i].length = BossManager.Instance.differentMiniGameNumber * 2;
+                        }
                         else
-                            island.capList[i].length = (int)_IslandTarget.difficulty + miniGameNumberPerCap + zoneNumber;
-                    }
-                    island.capList[i].ChoseMiniGames(barrelProbability, sorter);
+                        {
+                            if ((int)_IslandTarget.difficulty > 2)
+                                island.capList[i].length = 6 + zoneNumber;
+                            else
+                                island.capList[i].length = (int)_IslandTarget.difficulty + miniGameNumberPerCap + zoneNumber;
+                        }
+                    
+                    island.capList[i].capWeight = idWeightToAdd;                   
+                    
                 }
 
             }
-            transition.DisplayBarrel(allIslands[0].capList[0]);
             transition.MoveShip(allIslands[0].capList[0], 3, 0);
-
         }
 
         [HideInInspector] public int bonusBarrels = 0;
 
-        private void BarrelRessourcesContent()
+      /*  private void BarrelRessourcesContent()
         {
             var _size = Random.Range(minBarrelRessources + bonusBarrels, maxBarrelRessources + bonusBarrels);
             int _goldAmount = 0;
@@ -575,7 +608,7 @@ namespace Caps
             PlayerManager.Instance.GainCoins(_goldAmount);
             PlayerManager.Instance.GainFood(_foodAmount);
             PlayerManager.Instance.Heal(_lifeAmount);
-        }
+        }*/
 
 
         private IEnumerator RewardUI()

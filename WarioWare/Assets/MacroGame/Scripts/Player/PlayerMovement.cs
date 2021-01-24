@@ -102,7 +102,7 @@ namespace Player
             Debug.Log(playerIsland.name);
             if(targetIsland == playerIsland && playerIsland.type == IslandType.Shop)
             {
-                ShopManager.Instance.Show();            
+                ShopManager.Instance.Show(playerIsland);            
             }
 
             bool _isCapDone = false;

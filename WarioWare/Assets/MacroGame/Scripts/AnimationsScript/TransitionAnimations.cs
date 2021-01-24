@@ -37,7 +37,7 @@ public class TransitionAnimations : MonoBehaviour
     public void MoveShip(Cap cap, int capNumber, float shipMoveTime)
     {
         var distance = Vector3.Distance(startPosition.position, endPosition.position);
-        var position = Vector3Extensions.AddX(startPosition.position, distance * (capNumber+1) / cap.hasBarrel.Length);
+        var position = Vector3Extensions.AddX(startPosition.position, distance * (capNumber+1) / cap.length);
         ship.transform.DOMoveX(position.x,shipMoveTime);
     }
     public void PlayAnimation( float bpm, bool win)
