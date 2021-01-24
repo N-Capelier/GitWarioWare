@@ -26,6 +26,12 @@
         },
         {
             "typeInfo": {
+                "fullName": "UnityEditor.ShaderGraph.Internal.Vector1ShaderProperty"
+            },
+            "JSONnodeData": "{\n    \"m_Guid\": {\n        \"m_GuidSerialized\": \"412e6d0a-0418-4b80-9107-a3eaae5aa2ab\"\n    },\n    \"m_Name\": \"DefilSpeed\",\n    \"m_DefaultReferenceName\": \"Vector1_C9297B8\",\n    \"m_OverrideReferenceName\": \"_defilSpeed\",\n    \"m_GeneratePropertyBlock\": true,\n    \"m_Precision\": 0,\n    \"m_GPUInstanced\": false,\n    \"m_Hidden\": false,\n    \"m_Value\": 1.0,\n    \"m_FloatType\": 1,\n    \"m_RangeValues\": {\n        \"x\": 0.0,\n        \"y\": 3.0\n    }\n}"
+        },
+        {
+            "typeInfo": {
                 "fullName": "UnityEditor.ShaderGraph.Internal.ColorShaderProperty"
             },
             "JSONnodeData": "{\n    \"m_Guid\": {\n        \"m_GuidSerialized\": \"61ff13eb-af8c-4afb-ab6c-d9e633bf0ce1\"\n    },\n    \"m_Name\": \"SelectedHighlightColor\",\n    \"m_DefaultReferenceName\": \"Color_8B093B9B\",\n    \"m_OverrideReferenceName\": \"Col_AvSelectedCenter\",\n    \"m_GeneratePropertyBlock\": true,\n    \"m_Precision\": 0,\n    \"m_GPUInstanced\": false,\n    \"m_Hidden\": false,\n    \"m_Value\": {\n        \"r\": 1.4901961088180543,\n        \"g\": 0.5098039507865906,\n        \"b\": 0.5333333611488342,\n        \"a\": 1.0\n    },\n    \"m_ColorMode\": 1\n}"
@@ -41,12 +47,6 @@
                 "fullName": "UnityEditor.ShaderGraph.Internal.ColorShaderProperty"
             },
             "JSONnodeData": "{\n    \"m_Guid\": {\n        \"m_GuidSerialized\": \"b74644cb-9fcf-43c4-afd5-acab51818143\"\n    },\n    \"m_Name\": \"InsideColor\",\n    \"m_DefaultReferenceName\": \"Color_E33FD6E1\",\n    \"m_OverrideReferenceName\": \"Col_AvailableCenter\",\n    \"m_GeneratePropertyBlock\": true,\n    \"m_Precision\": 0,\n    \"m_GPUInstanced\": false,\n    \"m_Hidden\": false,\n    \"m_Value\": {\n        \"r\": 0.9372549653053284,\n        \"g\": 0.9372549653053284,\n        \"b\": 0.6549019813537598,\n        \"a\": 1.0\n    },\n    \"m_ColorMode\": 0\n}"
-        },
-        {
-            "typeInfo": {
-                "fullName": "UnityEditor.ShaderGraph.Internal.Vector1ShaderProperty"
-            },
-            "JSONnodeData": "{\n    \"m_Guid\": {\n        \"m_GuidSerialized\": \"412e6d0a-0418-4b80-9107-a3eaae5aa2ab\"\n    },\n    \"m_Name\": \"DefilSpeed\",\n    \"m_DefaultReferenceName\": \"Vector1_C9297B8\",\n    \"m_OverrideReferenceName\": \"_defilSpeed\",\n    \"m_GeneratePropertyBlock\": true,\n    \"m_Precision\": 0,\n    \"m_GPUInstanced\": false,\n    \"m_Hidden\": false,\n    \"m_Value\": 1.0,\n    \"m_FloatType\": 0,\n    \"m_RangeValues\": {\n        \"x\": 0.0,\n        \"y\": 1.0\n    }\n}"
         },
         {
             "typeInfo": {
@@ -76,12 +76,6 @@
             "typeInfo": {
                 "fullName": "UnityEditor.ShaderGraph.Internal.Vector1ShaderProperty"
             },
-            "JSONnodeData": "{\n    \"m_Guid\": {\n        \"m_GuidSerialized\": \"f6a9b8f5-200d-469c-ad73-ca2ef62a8a90\"\n    },\n    \"m_Name\": \"Scale\",\n    \"m_DefaultReferenceName\": \"Vector1_306781CA\",\n    \"m_OverrideReferenceName\": \"_scale\",\n    \"m_GeneratePropertyBlock\": true,\n    \"m_Precision\": 0,\n    \"m_GPUInstanced\": false,\n    \"m_Hidden\": false,\n    \"m_Value\": 1.0,\n    \"m_FloatType\": 1,\n    \"m_RangeValues\": {\n        \"x\": 1.0,\n        \"y\": 3.0\n    }\n}"
-        },
-        {
-            "typeInfo": {
-                "fullName": "UnityEditor.ShaderGraph.Internal.Vector1ShaderProperty"
-            },
             "JSONnodeData": "{\n    \"m_Guid\": {\n        \"m_GuidSerialized\": \"5dee13e2-4ca0-4c5e-876c-bf309311f761\"\n    },\n    \"m_Name\": \"EpaisseurBord\",\n    \"m_DefaultReferenceName\": \"Vector1_A8F2983E\",\n    \"m_OverrideReferenceName\": \"_borderThickness\",\n    \"m_GeneratePropertyBlock\": true,\n    \"m_Precision\": 0,\n    \"m_GPUInstanced\": false,\n    \"m_Hidden\": false,\n    \"m_Value\": 0.07999999821186066,\n    \"m_FloatType\": 1,\n    \"m_RangeValues\": {\n        \"x\": 0.0,\n        \"y\": 0.1599999964237213\n    }\n}"
         },
         {
@@ -89,6 +83,12 @@
                 "fullName": "UnityEditor.ShaderGraph.Internal.Vector1ShaderProperty"
             },
             "JSONnodeData": "{\n    \"m_Guid\": {\n        \"m_GuidSerialized\": \"ea4f7bc7-e2f1-4253-892a-2b5b566e2874\"\n    },\n    \"m_Name\": \"Rondeur\",\n    \"m_DefaultReferenceName\": \"Vector1_9F857B3B\",\n    \"m_OverrideReferenceName\": \"_roundness\",\n    \"m_GeneratePropertyBlock\": true,\n    \"m_Precision\": 0,\n    \"m_GPUInstanced\": false,\n    \"m_Hidden\": false,\n    \"m_Value\": 0.05000000074505806,\n    \"m_FloatType\": 1,\n    \"m_RangeValues\": {\n        \"x\": 0.0,\n        \"y\": 0.10000000149011612\n    }\n}"
+        },
+        {
+            "typeInfo": {
+                "fullName": "UnityEditor.ShaderGraph.Internal.Vector1ShaderProperty"
+            },
+            "JSONnodeData": "{\n    \"m_Guid\": {\n        \"m_GuidSerialized\": \"f6a9b8f5-200d-469c-ad73-ca2ef62a8a90\"\n    },\n    \"m_Name\": \"Scale\",\n    \"m_DefaultReferenceName\": \"Vector1_306781CA\",\n    \"m_OverrideReferenceName\": \"_scale\",\n    \"m_GeneratePropertyBlock\": true,\n    \"m_Precision\": 0,\n    \"m_GPUInstanced\": false,\n    \"m_Hidden\": false,\n    \"m_Value\": 1.0,\n    \"m_FloatType\": 1,\n    \"m_RangeValues\": {\n        \"x\": 0.5,\n        \"y\": 3.0\n    }\n}"
         }
     ],
     "m_SerializedKeywords": [],
