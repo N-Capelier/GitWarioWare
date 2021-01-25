@@ -306,7 +306,6 @@ namespace Player
                 {
                     switch (farNeighbors[i].reward.rewardName)
                     {
-
                         case "Sac de Beatcoins":
                             farNeighbors[i].icon.sprite = goldRessource;
                             break;
@@ -330,6 +329,9 @@ namespace Player
                             break;
                         case "Coffre au trésor"://a changer avec rhum
                             farNeighbors[i].icon.sprite = treasureSprite;
+                            break;
+                        case "Rien":
+                            farNeighbors[i].icon.gameObject.SetActive(false);
                             break;
 
                         default:

@@ -42,6 +42,7 @@ namespace Islands
         public List<SpriteShapeRenderer> traiList = new List<SpriteShapeRenderer>();
 
         [HideInInspector] public List<Cap> capList = new List<Cap>();
+        [HideInInspector] public bool isDone;
 
         [Header("Special Islands")]
         [SerializeField] Sprite legendaryIslandSprite;

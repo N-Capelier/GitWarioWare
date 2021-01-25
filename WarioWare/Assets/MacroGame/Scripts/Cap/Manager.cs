@@ -462,7 +462,7 @@ namespace Caps
             #region resetValue;
 
             bool _giveReward = true;
-            if (currentCap.isDone)
+            if (currentCap.isDone || PlayerMovement.Instance.playerIsland.isDone)
                 _giveReward = false;
 
             currentCap.isDone = true;
@@ -512,6 +512,7 @@ namespace Caps
             //reward attribution
             if (_giveReward)
             {
+                PlayerMovement.Instance.playerIsland.isDone = true;
                 capUI.SetActive(false);
                 macroUI.SetActive(true);
                 BossLifeManager.Instance.bossUI.gameObject.SetActive(true);
