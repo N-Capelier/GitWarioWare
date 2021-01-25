@@ -409,7 +409,7 @@ namespace Caps
 
             miniGamePassedNumber++;
 
-            
+
 
             if (miniGamePassedNumber % numberBeforSpeedUp == 0 && currentCap.length != miniGamePassedNumber)
             {
@@ -460,7 +460,7 @@ namespace Caps
         private IEnumerator CapEnd()
         {
             #region resetValue;
-            
+
             bool _giveReward = true;
             if (currentCap.isDone)
                 _giveReward = false;
@@ -495,7 +495,7 @@ namespace Caps
 
             currentAsyncScene = null;
 
-           
+
             resultText.text = "GG";
             bpm = BPM.Slow;
             miniGamePassedNumber = 0;
@@ -521,10 +521,11 @@ namespace Caps
 
                 transitionCam.enabled = false;
 
-                    sceneCam.SetActive(true);
-                    StartCoroutine(UnzoomCam());
-                    yield return new WaitForSeconds(shipOpening.openingTime * 2);
-
+                sceneCam.SetActive(true);
+                StartCoroutine(UnzoomCam());
+                yield return new WaitForSeconds(shipOpening.openingTime * 2);
+                if (PlayerMovement.Instance.playerIsland.type == IslandType.Shop)
+                {
                     ShopManager.Instance.Show(PlayerMovement.Instance.playerIsland);
                 }
                 else
@@ -603,7 +604,7 @@ namespace Caps
                     else
                     {
                         int keyStoneImpact = PlayerManager.Instance.keyStoneNumber / 2;
-                        island.capList[i].length = 4 * ((int)_IslandTarget.difficulty+1) + miniGameNumberPerCap + 2 * PlayerManager.Instance.keyStoneNumber - 2 * keyStoneImpact;
+                        island.capList[i].length = 4 * ((int)_IslandTarget.difficulty + 1) + miniGameNumberPerCap + 2 * PlayerManager.Instance.keyStoneNumber - 2 * keyStoneImpact;
                     }
 
                     island.capList[i].capWeight = idWeightToAdd;
@@ -676,8 +677,8 @@ namespace Caps
                         else
                             break;
                     }
-                } 
-                
+                }
+
                 if (sorter.iDCardsPlayed[i].idWeight > _strongerId[2].idWeight)
                 {
                     _strongerId[0] = _strongerId[1];
@@ -739,13 +740,13 @@ namespace Caps
 
         private IEnumerator RewardUI()
         {
-            eventSystem =EventSystem.current;
+            eventSystem = EventSystem.current;
             eventSystem.enabled = false;
             PlayerInventory.Instance.rewardImage.sprite = PlayerMovement.Instance.playerIsland.reward.sprite;
             PlayerInventory.Instance.rewardCanvas.SetActive(true);
             CompletionAttribution();
 
-            yield return new WaitUntil(()=>Input.GetButtonDown("A_Button"));
+            yield return new WaitUntil(() => Input.GetButtonDown("A_Button"));
             CloseReward();
         }
         public void CloseReward()
@@ -761,7 +762,7 @@ namespace Caps
             {
                 if (PlayerMovement.Instance.playerIsland.reward.name != "TreasureChest")
                 {
-                    
+
                 }
                 else
                 {
@@ -820,12 +821,12 @@ namespace Caps
                             break;
                     }
                 }
-               
+
             }
-            else if(pourcentageCompleted >= 0.5f)
+            else if (pourcentageCompleted >= 0.5f)
             {
-                if(pourcentageCompleted >= 0.75f)
-                     currentMonnaie = monnaieSilver;
+                if (pourcentageCompleted >= 0.75f)
+                    currentMonnaie = monnaieSilver;
                 else
                     currentMonnaie = monnaieBronze;
                 while (currentMonnaie > 0)
@@ -851,7 +852,7 @@ namespace Caps
                                     currentMonnaie--;
                                 }
                             }
-                            break;                        
+                            break;
                         default:
                             break;
                     }
@@ -862,10 +863,10 @@ namespace Caps
             PlayerManager.Instance.Heal(woodToAdd);
             miniGameWon = 0;
 
-            PlayerInventory.Instance.completion.text = "Completion : " + pourcentageCompleted *100 +"%";
+            PlayerInventory.Instance.completion.text = "Completion : " + pourcentageCompleted * 100 + "%";
             PlayerInventory.Instance.goldCompletion.text = "beatcoin + " + goldToAdd;
             PlayerInventory.Instance.foodCompletion.text = "rations + " + foodToAdd;
-            PlayerInventory.Instance.woodCompletion.text = "planches + " +woodToAdd;
+            PlayerInventory.Instance.woodCompletion.text = "planches + " + woodToAdd;
             currentCap = null;
 
         }
@@ -907,7 +908,7 @@ namespace Caps
 
         #endregion
 
-        
+
     }
 
 }

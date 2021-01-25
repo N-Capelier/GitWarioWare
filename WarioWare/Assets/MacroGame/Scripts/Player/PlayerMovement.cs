@@ -348,7 +348,7 @@ namespace Player
                         islands[i].icon.sprite = shopSprite;
                         islands[i].icon.gameObject.SetActive(true);
                         break;
-                    case IslandType.Legendary:
+                    case IslandType.Keystone:
                         //afficher icone keystone
                         islands[i].icon.sprite = keystoneSprite;
                         islands[i].icon.gameObject.SetActive(true);
