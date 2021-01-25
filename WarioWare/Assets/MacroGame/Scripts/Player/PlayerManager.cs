@@ -17,7 +17,7 @@ namespace Player
         public int playerHp;
         public int beatcoins;
         public int food;
-
+        public int keyStoneNumber;
         [Header("MaxRessources")]
         public int maxFood;
 
@@ -122,7 +122,11 @@ namespace Player
             }
             UpdatePlayerUI.Invoke();
         }
-
+        public void GainKeyStone()
+        {
+            keyStoneNumber++;
+            Manager.Instance.KeyStoneReset();
+        }
         private IEnumerator DeathCoroutine(bool isBoss = false)
         {
             if(!isBoss)

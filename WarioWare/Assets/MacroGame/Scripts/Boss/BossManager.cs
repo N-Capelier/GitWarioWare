@@ -50,6 +50,8 @@ namespace Boss
             damageToPlayer = DebugToolManager.Instance.ChangeVariableValue("damageToPlayer");
             damageToBoss = DebugToolManager.Instance.ChangeVariableValue("damageToBoss");
             differentMiniGameNumber = DebugToolManager.Instance.ChangeVariableValue("differentMiniGameNumber");
+            
+            
         }
         public IEnumerator StartBoss()
         {

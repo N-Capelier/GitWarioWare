@@ -22,8 +22,13 @@ public class IDCard : ScriptableObject
     [SerializeField] public Difficulty currentDifficulty;
     public int winningStreak = 0;
     public float losingStreak = 0;
-    [SerializeField]  public int idWeight;
+    [SerializeField]  public int idWeight = 0;
     public bool hasBarrel;
+
+    public IDCard()
+    {
+
+    }
 }
 
 
