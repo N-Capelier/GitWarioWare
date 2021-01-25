@@ -25,9 +25,12 @@ namespace LeRafiot
             public int playerSprite;
             public bool canMove;
 
-            [HideInInspector] public bool playerDrowned;
+            public GameObject[] deathSprite;
+
+            /*[HideInInspector]*/ public bool playerDrowned;
             [HideInInspector] public bool playerTouched;
 
+            private bool animLock;
             #endregion 
 
             public override void Start()
@@ -62,6 +65,14 @@ namespace LeRafiot
                 PlayerMouvement();
 
                 TriggerBoxPosition();
+
+                if (playerDrowned == true || playerTouched ==  true)
+                {
+                    if (animLock == false)
+                    {
+                        StartCoroutine(DeathAnimation());
+                    }
+                }
             }
 
 
@@ -89,6 +100,7 @@ namespace LeRafiot
                             gameObject.GetComponentInChildren<SpriteRenderer>().sprite = sprites[playerSprite + 1];
                             playerSprite++;
                         }
+
                         else
                         {
                             if(!Manager.Instance.panel.activeSelf)
@@ -96,7 +108,7 @@ namespace LeRafiot
                                 playerDrowned = true;
                                 RandomEnemySpawn.Instance.spawnDisabled = true;
                                 canMove = false;
-                                //Manager.Instance.Result(false);
+
                                 SoundManagerPlanche.Instance.sfxSound[1].Play();
                                 SoundManagerPlanche.Instance.sfxSound[4].Play();
                             }
@@ -149,6 +161,44 @@ namespace LeRafiot
                 {
                     gameObject.GetComponent<CapsuleCollider2D>().offset = new Vector2(9.48f, 3.65f);
                 }
+            }
+
+            IEnumerator DeathAnimation()
+            {
+                animLock = true;
+
+                if (playerSprite >= 2) // Gestion droite
+                {
+                    
+                    deathSprite[0].gameObject.SetActive(false);
+                    deathSprite[1].gameObject.SetActive(true);
+
+                    yield return new WaitForSeconds(0.5f);
+
+                    deathSprite[1].gameObject.SetActive(false);
+                    deathSprite[2].gameObject.SetActive(true);
+
+                    yield return new WaitForSeconds(0.5f);
+
+                    deathSprite[2].gameObject.SetActive(false);
+
+                }
+
+                if (playerSprite < 2) //Gestion gauche
+                {
+                    deathSprite[0].gameObject.SetActive(false);
+                    deathSprite[3].gameObject.SetActive(true);
+
+                    yield return new WaitForSeconds(0.5f);
+
+                    deathSprite[3].gameObject.SetActive(false);
+                    deathSprite[4].gameObject.SetActive(true);
+
+                    yield return new WaitForSeconds(0.5f);
+
+                    deathSprite[4].gameObject.SetActive(false);
+                }
+
             }
         }
     }

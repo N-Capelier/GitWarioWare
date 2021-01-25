@@ -140,7 +140,10 @@ namespace LeRafiot
                             signStroke.gameObject.SetActive(false);
                             warningSign.gameObject.SetActive(false);
                             //sharkIsHere = false;
-                            Destroy(actualShark);
+                            if (actualShark != null)
+                            {
+                                Destroy(actualShark);
+                            }
                         }
                     }
                 }
@@ -154,7 +157,10 @@ namespace LeRafiot
                 }
                 else
                 {
-                    Destroy(gameObject);
+                    if (actualShark != null)
+                    {
+                        Destroy(gameObject);
+                    }
                 }
             }
 
@@ -175,14 +181,17 @@ namespace LeRafiot
 
             public IEnumerator MoveToPosition(Transform transform, Vector3 position, float timeToMove)
             {
-                Vector3 currentPos = transform.position;
-                float t = 0;
-                while (t < 1)
+                if(transform != null)
                 {
-                    t += Time.deltaTime / timeToMove;
-                    transform.position = Vector3.Lerp(currentPos, position, t);
-                    yield return null;
-                }
+                    Vector3 currentPos = transform.position;
+                    float t = 0;
+                    while (t < 1)
+                    {
+                        t += Time.deltaTime / timeToMove;
+                        transform.position = Vector3.Lerp(currentPos, position, t);
+                        yield return null;
+                    }
+                }             
             }
 
             public IEnumerator IncreaseScale(Image objectToScale, Vector2 scale, Vector2 endScale, float timeToFade)

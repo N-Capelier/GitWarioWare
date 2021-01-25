@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Caps;
+using Testing;
 using UnityEngine.UI;
 using DG.Tweening;
 
@@ -15,6 +15,8 @@ namespace Fleebos
 
         public class SequenceManager : TimedBehaviour
         {
+            public AudioSource drone;
+
             public GameObject particleWin;
 
             public GameObject[] Inputs;
