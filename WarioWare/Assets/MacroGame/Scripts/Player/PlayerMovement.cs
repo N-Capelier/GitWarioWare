@@ -6,6 +6,7 @@ using Shop;
 using Rewards;
 using NUnit.Framework;
 using UnityEngine.EventSystems;
+using System.Collections.Generic;
 
 namespace Player
 {
@@ -17,7 +18,7 @@ namespace Player
         public Island playerIsland;
         [SerializeField] Island bossIsland;
         
-        [HideInInspector] public Island[] islands;
+        public Island[] islands;
         [HideInInspector] public Island selectedIsland;
         private Island lastSelectedIsland;
         private GameObject previousDescription;
@@ -28,7 +29,12 @@ namespace Player
         public Sprite shopSprite;
         public Sprite bossSprite;
         public Sprite treasureSprite;
-        public Sprite rareTreasureSprite;
+        public Sprite keystoneSprite;
+
+        public Sprite goldRessource;
+        public Sprite foodRessource;
+        public Sprite cannonball;
+        public Sprite healthRessource;
 
 
 
@@ -36,6 +42,8 @@ namespace Player
         [SerializeField] int damagesWhenNoFood = 10;
 
         [HideInInspector] public bool isMoving = false;
+
+        [HideInInspector] public List<Island> farNeighbors = new List<Island>();
 
         private void Awake()
         {
@@ -257,6 +265,113 @@ namespace Player
         public void ResetFocus()
         {
             Manager.Instance.eventSystem.SetSelectedGameObject(playerIsland.gameObject);
+        }
+
+        private void GetFarNeighbours()
+        {
+            List<Island> tempList = new List<Island>();
+
+            for (int i = 0; i < playerIsland.accessibleNeighbours.Length; i++)
+            {
+                tempList.Add(playerIsland.accessibleNeighbours[i]);
+
+                for (int j = 0; j < playerIsland.accessibleNeighbours[i].accessibleNeighbours.Length; j++)
+                {
+                    tempList.Add(playerIsland.accessibleNeighbours[i].accessibleNeighbours[j]);
+
+                    for (int k = 0; k < playerIsland.accessibleNeighbours[i].accessibleNeighbours[j].accessibleNeighbours.Length; k++)
+                    {
+                        tempList.Add(playerIsland.accessibleNeighbours[i].accessibleNeighbours[j].accessibleNeighbours[k]);
+                    }
+                }
+            }
+
+            //Remove duplicate and playerIsland from temp List and add to farNeighbors
+            var noDupes = new HashSet<Island>(tempList);
+            foreach (var item in noDupes)
+            {
+                if(item != playerIsland)
+                    farNeighbors.Add(item);
+            }
+        }
+
+        public void ShowFarNeighboursIcon()
+        {
+            GetFarNeighbours();
+
+            for (int i = 0; i < farNeighbors.Count; i++)
+            {
+                farNeighbors[i].icon.gameObject.SetActive(true);
+                if(farNeighbors[i].reward!=null)
+                {
+                    switch (farNeighbors[i].reward.rewardName)
+                    {
+
+                        case "Sac de Beatcoins":
+                            farNeighbors[i].icon.sprite = goldRessource;
+                            break;
+                        case "Ration"://a changer avec rhum
+                            farNeighbors[i].icon.sprite = foodRessource;
+                            break;
+                        case "Boulet de cannon":
+                            farNeighbors[i].icon.sprite = cannonball;
+                            break;
+                        case "Planche de bois":
+                            farNeighbors[i].icon.sprite = healthRessource;
+                            break;
+                        case "Black Captain-Card":
+                            farNeighbors[i].icon.sprite = goldRessource;
+                            break;
+                        case "Kaisse en kit":
+                            farNeighbors[i].icon.sprite = healthRessource;
+                            break;
+                        case "Pack de rations"://a changer avec rhum
+                            farNeighbors[i].icon.sprite = foodRessource;
+                            break;
+                        case "Coffre au trésor"://a changer avec rhum
+                            farNeighbors[i].icon.sprite = treasureSprite;
+                            break;
+
+                        default:
+                            break;
+                    }
+                }
+            }
+
+            //Show persistent icons
+            for (int i = 0; i < islands.Length; i++)
+            {
+                switch (islands[i].type)
+                {
+                    case IslandType.Shop:
+                        //afficher icone shop
+                        islands[i].icon.sprite = shopSprite;
+                        islands[i].icon.gameObject.SetActive(true);
+                        break;
+                    case IslandType.Legendary:
+                        //afficher icone keystone
+                        islands[i].icon.sprite = keystoneSprite;
+                        islands[i].icon.gameObject.SetActive(true);
+                        break;
+                    case IslandType.Boss:
+                        //Afficher icone boss
+                        islands[i].icon.sprite = bossSprite;
+                        islands[i].icon.gameObject.SetActive(true);
+                        break;
+                    default:
+                        //Debug.Log("Error : Island has no type !" + islands[i].gameObject.name);
+                        break;
+                }
+            }
+
+        }
+
+        public void HideIcons()
+        {
+            for (int i = 0; i < islands.Length; i++)
+            {
+                islands[i].icon.gameObject.SetActive(false);
+            }
         }
     }
 }
