@@ -126,14 +126,28 @@ namespace ACommeAkuma
 
             private void DirManager()
             {
-                if (lBumperHold > 0 && rBumperHold <= 0)
+                if (lBumperHold > rBumperHold)
+                {
+                    rotationDir = -1f * (Mathf.Exp(lBumperHold - rBumperHold) - 1f);
+                }
+                else if (rBumperHold > lBumperHold)
+                {
+                    rotationDir = 1f * (Mathf.Exp(rBumperHold - lBumperHold) - 1f);
+                }
+                else if (rBumperHold == lBumperHold)
+                {
+                    rotationDir = 0f;
+                }
+
+
+                /*if (lBumperHold > 0.05 && rBumperHold <= 0.05)
                     rotationDir = -1f * (Mathf.Exp(lBumperHold) - 1f);
 
-                else if (lBumperHold <= 0 && rBumperHold > 0)
+                else if (lBumperHold <= 0.05 && rBumperHold > 0.05)
                     rotationDir = 1f * (Mathf.Exp(rBumperHold) - 1f);
 
-                else if ((lBumperHold > 0 && rBumperHold > 0) || (lBumperHold <= 0 && rBumperHold <= 0))
-                    rotationDir = 0f;
+                else if ((lBumperHold > 0.05 && rBumperHold > 0.05) || (lBumperHold <= 0.05 && rBumperHold <= 0.05))
+                    rotationDir = 0f*/
             }
 
             private void ApplyTorque()

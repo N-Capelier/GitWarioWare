@@ -21,25 +21,41 @@ namespace Dragons_Peperes
             EnemyManager minigameManager;
             AudioManager audioManager;
             DockScrolling dockScrolling;
-
+            PlayerController playerController;
 
             public GameObject looseScreen;
 
+            [SerializeField] bool isEnemy2;
+
+
+            public GameObject particule;
 
             private void Start()
             {
                 target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
                 minigameManager = FindObjectOfType<EnemyManager>();
+                particule = GameObject.Find("Particle");
 
                 audioManager = FindObjectOfType<AudioManager>();
                 dockScrolling = FindObjectOfType<DockScrolling>();
+                playerController = FindObjectOfType<PlayerController>();
 
-                    if (minigameManager.bpm > 80)
+                if (minigameManager.bpm == 60)
+                {
+                    enemySpeed = enemySpeed * 1.1f;
+                }
+
+                if (minigameManager.bpm == 80)
                 {
                     enemySpeed = enemySpeed * 1.2f;
                 }
 
-                if(minigameManager.bpm >= 120)
+                if (minigameManager.bpm == 100)
+                {
+                    enemySpeed = enemySpeed * 1.3f;
+                }
+
+                if(minigameManager.bpm == 120)
                 {
                     enemySpeed = enemySpeed * 1.5f;
                 }
@@ -48,7 +64,15 @@ namespace Dragons_Peperes
 
             private void Update()
             {
-                MoveEnemy();
+                if (!isEnemy2)
+                {
+                    MoveEnemy();
+                }
+
+                if (isEnemy2)
+                {
+                    MoveEnemy2();
+                }
             }
 
             void MoveEnemy()
@@ -66,24 +90,41 @@ namespace Dragons_Peperes
                     Destroy(gameObject, 1);
             }
 
+            public void MoveEnemy2()
+            {
+                //se déplace sur l'axe Y en négatif
+                Vector2 temp = transform.position;
+                temp.y -= enemySpeed * Time.deltaTime;
+                transform.position = temp;
+
+                //si l'ennemi dépasse un certain axe, se fait détruire
+                if (temp.y < bound_Y)
+                    Destroy(gameObject, 1);
+            }
+
             private void OnTriggerEnter2D(Collider2D other)
             {
                 if (other.name == "Player")
                 {
-                    audioManager.StopMusic();
-                    audioManager.StopRunning();
-                    dockScrolling.scrollSpeed = 0f;
-                    enemySpeed = 0f;
+                    EndGame();
 
                     if(minigameManager.playerLost != true)
                     {
                         audioManager.PlayCatched();
                     }
-
                     
                     minigameManager.playerLost = true;
-
                 }
+            }
+
+            public void EndGame()
+            {
+                particule.SetActive(false);
+                audioManager.StopMusic();
+                audioManager.StopRunning();
+                dockScrolling.scrollSpeed = 0f;
+                enemySpeed = 0f;
+                playerController.speed = 0f;
             }
         }
 

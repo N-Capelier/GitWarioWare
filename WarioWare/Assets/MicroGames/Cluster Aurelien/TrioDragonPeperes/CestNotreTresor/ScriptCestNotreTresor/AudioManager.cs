@@ -43,10 +43,7 @@ namespace Dragons_Peperes
                 music80 = sounds[4];
                 music100 = sounds[5];
                 music120 = sounds[6];
-                #endregion
-
-
-                PlayMusic();
+                #endregion               
 
             }
 
@@ -88,7 +85,8 @@ namespace Dragons_Peperes
 
             public void PlayMusic()
             {
-                if(gameManager.bpm == 60)
+
+                if (gameManager.bpm == 60)
                 {
                     music60.Play();
                 }

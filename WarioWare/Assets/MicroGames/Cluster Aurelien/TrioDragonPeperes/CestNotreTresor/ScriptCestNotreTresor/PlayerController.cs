@@ -13,7 +13,7 @@ namespace Dragons_Peperes
         public class PlayerController : MonoBehaviour
         {
 
-            [SerializeField] float speed = 10f;
+            public float speed = 10f;
             private float moveInput;
 
             //[SerializeField]bool canMove;

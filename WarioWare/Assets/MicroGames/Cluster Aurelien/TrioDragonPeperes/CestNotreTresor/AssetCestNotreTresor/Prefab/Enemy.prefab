@@ -102,6 +102,8 @@ MonoBehaviour:
   target: {fileID: 0}
   bound_Y: -7
   looseScreen: {fileID: 0}
+  isEnemy2: 0
+  particule: {fileID: 0}
 --- !u!61 &1854291854959990353
 BoxCollider2D:
   m_ObjectHideFlags: 0
