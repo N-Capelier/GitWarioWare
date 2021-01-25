@@ -20,7 +20,9 @@ namespace TrioSAS
             private bool endGame;
             public FailAnimate failure;
             public Animator explosion;
-
+            public Animator kick;
+            public GetMusic music;
+            public bool youWinner;
             public override void Start()
             {
                 base.Start(); //Do not erase this line!
@@ -41,15 +43,19 @@ namespace TrioSAS
                 switch(bpm)
                 {
                     case (float)BPM.Slow:
+                        music.Maestro60();
                         speedBpm.speedSlow();
                         break;
                     case (float)BPM.Medium:
+                        music.Maestro80();
                         speedBpm.speedMedium();
                         break;
                     case (float)BPM.Fast:
+                        music.Maestro100();
                         speedBpm.speedFast();
                         break;
                     case (float)BPM.SuperFast:
+                        music.Maestro120();
                         speedBpm.speedVeryFast();
                         break;
                 }
@@ -65,15 +71,18 @@ namespace TrioSAS
                     gameObject.GetComponent<BarMovement>().barSpeed = 0;
                     if (winningCondition == true)
                     {
-                        Manager.Instance.Result(true);
                         anim.ActivateAnimation();
                         explosion.SetBool("setActive", true);
-                        ///explosion.SetBool("setActive", false);
+                        kick.SetBool("kick", true);
+                        youWinner = true;
                     }
                     else
                     {
-                        Manager.Instance.Result(false);
+                        kick.SetBool("kick", true);
                         failure.ActivateFail();
+                        kick.SetBool("breakFail", true);
+                        youWinner = false;
+
                     }
                     endGame = true;
                 }
@@ -82,26 +91,36 @@ namespace TrioSAS
                     gameObject.GetComponent<BarMovement>().barSpeed = 0;
                     if (winningCondition == true)
                     {
-                        Manager.Instance.Result(true);
+                        kick.SetBool("kick", true);
                         anim.ActivateAnimation();
                         explosion.SetBool("setActive", true);
+                        youWinner = true;
+
                         ///explosion.SetBool("setActive", false);
 
                     }
                     else
                     {
-                        
-                        Manager.Instance.Result(false);
+                        kick.SetBool("kick", true);
                         failure.ActivateFail();
+                        kick.SetBool("breakFail", true);
+                        youWinner = false;
+
                     }
                     endGame = true;
+
                 }
-                if (Tick == 8 && endGame == false)
+                if (Tick == 8 && youWinner == false)
                 {
+                    endGame = true;
                     gameObject.GetComponent<BarMovement>().barSpeed = 0;
                     Manager.Instance.Result(false);
-                    failure.ActivateFail();
+
+                }
+                else if (Tick == 8 && youWinner == true)
+                {
                     endGame = true;
+                    Manager.Instance.Result(true);
                 }
 
             }
