@@ -9,9 +9,8 @@ namespace UI
 {
     public class PlayerRessourcesUI : MonoBehaviour
     {
-        public TextMeshProUGUI playerHp;
+        public Image playerHpFillBar;
         public TextMeshProUGUI beatcoinsCount;
-        public TextMeshProUGUI foodCount;
 
         // Start is called before the first frame update
         void Start()
@@ -28,10 +27,9 @@ namespace UI
 
         public void UpdateUI()
         {
+            playerHpFillBar.fillAmount = (float)PlayerManager.Instance.playerHp / 300f;
             beatcoinsCount.text = PlayerManager.Instance.beatcoins.ToString();
-            foodCount.text = PlayerManager.Instance.food.ToString();
-            playerHp.text = PlayerManager.Instance.playerHp.ToString();
-        }
+        }   
     }
 }
 
