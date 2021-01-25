@@ -30,9 +30,9 @@ Material:
     - Vector1_6A50461D: 5
     - _BPM: 60
     - _OffSet: 0
-    - _ShaderHeight: 0.5
+    - _ShaderHeight: 1.04
     - _WaveQuantity: 10
-    - _WaveSize: 2
+    - _WaveSize: -1.2
     - _WaveSpeed: 2
     m_Colors:
     - Color_2FA990F3: {r: 0.8274511, g: 0.9058824, b: 0.8705883, a: 1}
