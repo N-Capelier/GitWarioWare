@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Caps;
-
+using UnityEditor.Build.Reporting;
+using TrioSAS.Cinquante;
+using UnityEditor;
+using TrioName.MiniGameName;
 
 namespace SAS
 {
@@ -26,17 +29,22 @@ namespace SAS
             public GameObject piedD;
 
             public Controller controllerScript;
+            public AudioManagerScript Audio;
+            public AnimationScript InputAnimation;
+            public CameraShakeScript Shake;
 
             public override void Start()
             {
                 base.Start(); //Do not erase this line!
 
-                startPositionZ = transform.position.z;
 
                 p1 = false;
                 p2 = false;
                 win = false;
                 lose = false;
+
+                InputAnimation.StartScene();
+                Audio.StartScene();
             }
 
             //FixedUpdate is called on a fixed time.
@@ -49,6 +57,9 @@ namespace SAS
                     controllerScript.PlayerInput();
                     p1 = true;
                     p2 = false;
+                    piedG.SetActive(true);
+                    piedD.SetActive(false);
+                    Audio.Running();
                     //Debug.Log("Pas gauche");
                 }
 
@@ -58,12 +69,18 @@ namespace SAS
                     controllerScript.PlayerInput();
                     p2 = true;
                     p1 = false;
+                    piedG.SetActive(false);
+                    piedD.SetActive(true);
+                    
+                    Audio.Running();
                     //Debug.Log("Pas droit");
                 }
 
                 if (Input.GetAxis("Left_Trigger")== 1f && Input.GetAxis("Right_Trigger") == 1f)
                 {
                     controllerScript.PlayerStop();
+                    Audio.StopRunning();
+                    StartCoroutine(Shake.Shake(0.1f, 0.05f));
                 }
 
                 FootManagement();
@@ -71,24 +88,7 @@ namespace SAS
 
             private void FootManagement()
             {
-                if (transform.position.z > startPositionZ + (stepDistance * stepCount))
-                {
-                    stepCount++;
-
-                    if (currentStepRight)
-                    {
-                      piedG.SetActive(true);
-                      piedD.SetActive(false);
-                    }
-
-                    else
-                    {
-                       piedG.SetActive(false);
-                       piedD.SetActive(true);
-                    }
-
-                    currentStepRight = !currentStepRight;
-                }
+                
             }
 
             #region Winning Condition
@@ -115,7 +115,7 @@ namespace SAS
                 if (Tick == 8 && win == false)
                 {
                     lose = true;
-                    //YouLose.SetActive(true);
+                    Audio.EndScene();
                     Manager.Instance.Result(false);
                     controllerScript.PlayerStop();
                 }

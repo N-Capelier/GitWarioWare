@@ -40,6 +40,11 @@ namespace RadioRTL
             public Sprite platesFull3;
             public Sprite platesFull2;
             public Sprite platesFull1;
+            public Sprite platesFull5Dirty;
+            public Sprite platesFull4Dirty;
+            public Sprite platesFull3Dirty;
+            public Sprite platesFull2Dirty;
+            public Sprite platesFull1Dirty;
 
             public SpriteRenderer platesEmptyStackDisplay;
 
@@ -65,6 +70,8 @@ namespace RadioRTL
             public GameObject fireworks;
             public GameObject tears;
             bool hasEnded;
+            public bool isEating;
+            public int foodtype;
             // Start is called before the first frame update
             void Start()
             {
@@ -121,8 +128,9 @@ namespace RadioRTL
                             {
                                 chomp += 1;
                                 FindObjectOfType<AudioManagerLucas>().Play("Eat", 0);
+                                StartCoroutine(EatAnim());
                             }
-
+                           
                             if (chomp == numberOfChomps && numberOfPlates != 0) //if the player eats everything in the plate
                             {
                                 chomp = 0;
@@ -137,6 +145,8 @@ namespace RadioRTL
                                 platesQueue.Insert(0, true);
 
                                 NextPlate();
+                                hasLost = true;
+                                EndMinigame();
                             }
                         }
                         else if (rottenPlate)//plate is rotten
@@ -168,30 +178,64 @@ namespace RadioRTL
                     
                     EndMinigame();
                 }
-
-
-                switch (totalPlates-1)
+                if (platesQueue.Count>0)
                 {
-                    case 0:
-                        platesFullStackDisplay.sprite = null;
-                        break;
-                    case 1:
-                        platesFullStackDisplay.sprite = platesFull1;
-                        break;
-                    case 2:
-                        platesFullStackDisplay.sprite = platesFull2;
-                        break;
-                    case 3:
-                        platesFullStackDisplay.sprite = platesFull3;
-                        break;
-                    case 4:
-                        platesFullStackDisplay.sprite = platesFull4;
-                        break;
-                    case 5:
-                        platesFullStackDisplay.sprite = platesFull5;
-                        break;
-                    default:
-                        break;
+                    if (platesQueue.First())
+                    {
+                        switch (totalPlates - 1)
+                        {
+                            case 0:
+                                platesFullStackDisplay.sprite = null;
+                                break;
+                            case 1:
+                                platesFullStackDisplay.sprite = platesFull1;
+                                break;
+                            case 2:
+                                platesFullStackDisplay.sprite = platesFull2;
+                                break;
+                            case 3:
+                                platesFullStackDisplay.sprite = platesFull3;
+                                break;
+                            case 4:
+                                platesFullStackDisplay.sprite = platesFull4;
+                                break;
+                            case 5:
+                                platesFullStackDisplay.sprite = platesFull5;
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                    else if (!platesQueue.First())
+                    {
+                        switch (totalPlates - 1)
+                        {
+                            case 0:
+                                platesFullStackDisplay.sprite = null;
+                                break;
+                            case 1:
+                                platesFullStackDisplay.sprite = platesFull1Dirty;
+                                break;
+                            case 2:
+                                platesFullStackDisplay.sprite = platesFull2Dirty;
+                                break;
+                            case 3:
+                                platesFullStackDisplay.sprite = platesFull3Dirty;
+                                break;
+                            case 4:
+                                platesFullStackDisplay.sprite = platesFull4Dirty;
+                                break;
+                            case 5:
+                                platesFullStackDisplay.sprite = platesFull5Dirty;
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                }
+                else
+                {
+                    platesFullStackDisplay.sprite = null;
                 }
 
                 switch (basePlates-(totalPlates))
@@ -219,7 +263,17 @@ namespace RadioRTL
                 }
             }
 
-
+            IEnumerator EatAnim()
+            {
+                foodtype += 1;
+                if (foodtype > 3)
+                {
+                    foodtype = foodtype - 3;
+                }
+                isEating = true;
+                yield return new WaitForSeconds(.2f);
+                isEating = false;
+            }
             void PrintQueue()
             {
                 string result = "queue : ";

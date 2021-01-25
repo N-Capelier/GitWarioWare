@@ -87,8 +87,8 @@ namespace TrioTrapioWare
 
                 source = GetComponent<AudioSource>();
                 musique = GetComponent<AudioSource>();
-                source.volume = 1f;
-                musique.volume = 0.1f;
+                source.volume = 1.7f;
+                musique.volume = 0.8f;
                 source.PlayOneShot(paperSound);
                 RandomSorting();
                 ecranNoir.SetActive(false);

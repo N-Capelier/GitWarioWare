@@ -81,6 +81,36 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 596906485845843361, guid: 0ac2a07bc6ba3654aa03c1fe9dda6186,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1519578129633754437, guid: 0ac2a07bc6ba3654aa03c1fe9dda6186,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2008153386247426524, guid: 0ac2a07bc6ba3654aa03c1fe9dda6186,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2225963094942606644, guid: 0ac2a07bc6ba3654aa03c1fe9dda6186,
+        type: 3}
+      propertyPath: m_Name
+      value: Verre3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3140417588747076189, guid: 0ac2a07bc6ba3654aa03c1fe9dda6186,
+        type: 3}
+      propertyPath: m_Name
+      value: Verre3Line
+      objectReference: {fileID: 0}
+    - target: {fileID: 4326740033100920055, guid: 0ac2a07bc6ba3654aa03c1fe9dda6186,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 8499643544735056753, guid: 0ac2a07bc6ba3654aa03c1fe9dda6186,
         type: 3}
       propertyPath: m_LocalPosition.x

@@ -16,7 +16,7 @@ namespace TrioLLL
             [HideInInspector]public float enemyLife;
             [HideInInspector] public float currentEnemyLife;
             public bool victory = false;
-            private AudioSource source;
+            public AudioSource source;
             public AudioClip victoryClip;
             public AudioClip failClip;
             public Image healthBar;
@@ -24,7 +24,6 @@ namespace TrioLLL
             public GraphManager graph;
             public override void Start()
             {
-                source = GetComponent<AudioSource>();
                 gameFinished = false;
                 base.Start();
 
@@ -51,6 +50,32 @@ namespace TrioLLL
                 if (currentEnemyLife <= 0)
                 {
                     victory = true;
+                }
+                Debug.Log("lol");
+                StopCoroutine("BossDamageFeedback");
+                StartCoroutine("BossDamageFeedback");
+            }
+
+            IEnumerator BossDamageFeedback()
+            {
+                Color baseColor = graph.currentBoss.color;
+                //baseColor.a = 1f;
+                baseColor = new Color(baseColor.a, baseColor.g, baseColor.b, 1f);
+                Debug.Log("baseColor= " + baseColor);
+                Color targetColor = new Color(baseColor.r, baseColor.g, baseColor.b, 0.5f);
+                float t = 0f;
+                while (t < 1)
+                {
+                    t += Time.deltaTime * 10;
+                    graph.currentBoss.color = Color.Lerp(baseColor, targetColor, t);
+                    yield return 0;
+                }
+                t = 0f;
+                while (t < 1)
+                {
+                    t += Time.deltaTime * 10;
+                    graph.currentBoss.color = Color.Lerp(targetColor, baseColor, t);
+                    yield return 0;
                 }
             }
 

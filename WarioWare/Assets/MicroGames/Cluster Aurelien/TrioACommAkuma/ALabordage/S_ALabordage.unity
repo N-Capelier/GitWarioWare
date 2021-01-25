@@ -603,7 +603,7 @@ SpriteShapeRenderer:
   m_SortingOrder: -1
   m_Color: {r: 0.19215687, g: 0.4745098, b: 0.85882354, a: 1}
   m_MaskInteraction: 0
-  m_ShapeTexture: {fileID: 2800000, guid: 0633912121d68b148baf3679712407d5, type: 3}
+  m_ShapeTexture: {fileID: 2800000, guid: c51eac7a997912c49b27785654d406b8, type: 3}
   m_Sprites: []
   m_LocalAABB:
     m_Center: {x: 0.0028538704, y: 0.270746, z: 0}
@@ -899,7 +899,7 @@ SpriteShapeRenderer:
   m_SortingOrder: -1
   m_Color: {r: 0.19215687, g: 0.4745098, b: 0.85882354, a: 1}
   m_MaskInteraction: 0
-  m_ShapeTexture: {fileID: 2800000, guid: 0633912121d68b148baf3679712407d5, type: 3}
+  m_ShapeTexture: {fileID: 2800000, guid: c51eac7a997912c49b27785654d406b8, type: 3}
   m_Sprites: []
   m_LocalAABB:
     m_Center: {x: 0.0028538704, y: 0.270746, z: 0}
@@ -1651,9 +1651,9 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 6440540139613522830, guid: ac2a98d0c43c72842ba3d4123304601f,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: 52da90a39adbad14b9ba4f05d437ae57, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 520decd9679bad74ea75d44f6cdb1dff, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.25
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1748,9 +1748,9 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 6440540139613522830, guid: ac2a98d0c43c72842ba3d4123304601f,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: 520decd9679bad74ea75d44f6cdb1dff, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 6013d7bd789ef3240a69d5877be84525, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.25
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1845,9 +1845,9 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 6440540139613522830, guid: ac2a98d0c43c72842ba3d4123304601f,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: 66276e80f3750b54ebf7ce108f38bd4d, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 30b6802fa0ba3184dbfdd42f81e0186d, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.25
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1944,7 +1944,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 8fd124d607f25dd4da69b58971985c8d, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.25
   m_Pitch: 1
   Loop: 1
   Mute: 0
