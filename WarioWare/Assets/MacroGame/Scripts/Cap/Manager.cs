@@ -187,7 +187,7 @@ namespace Caps
         }
         public IEnumerator StartMiniGame(Cap _currentCap)
         {
-            _currentCap.ChoseMiniGames(sorter);
+            //_currentCap.ChoseMiniGames(sorter);
 
             cantDoTransition = false;
             currentCap = _currentCap;
@@ -197,7 +197,7 @@ namespace Caps
                 shipOpening.gameObject.SetActive(true);
 
                 StartCoroutine(ZoomCam(shipOpening.openingTime * 2));
-                transition.DisplayBarrel(_currentCap);
+                //transition.DisplayBarrel(_currentCap);
 
                 //if zoom is bugging, look at here
                 yield return new WaitForSeconds(shipOpening.openingTime * 2);
@@ -350,7 +350,10 @@ namespace Caps
         /// <returns></returns>
         private IEnumerator Transition(bool win)
         {
-            transition.MoveShip(currentCap, miniGamePassedNumber, transitionMusic.clip.length * 3 / 4,win);
+            if (isNormalMode)
+            {
+                transition.MoveShip(currentCap, miniGamePassedNumber, transitionMusic.clip.length * 3 / 4, win);
+            }
             transitionCam.enabled = true;
 
             StartCoroutine(FadeManager.Instance.FadeOut(0.15f * 60 / (float)bpm));
@@ -361,7 +364,10 @@ namespace Caps
             if (win)
             {
                 miniGameWon++;
-                transition.CompletionBar(miniGameWon / currentCap.length, 60f / (float)bpm);
+                if(isNormalMode)
+                {
+                    transition.CompletionBar(miniGameWon / currentCap.length, 60f / (float)bpm);
+                }
                 transition.PlayAnimation((float)bpm, win);
                 SoundManager.Instance.ApplyAudioClip("victoryJingle", transitionMusic, bpm);
                 resultText.text = "You Won!";
