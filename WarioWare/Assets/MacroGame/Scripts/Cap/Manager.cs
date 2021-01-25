@@ -604,7 +604,7 @@ namespace Caps
                     else
                     {
                         int keyStoneImpact = PlayerManager.Instance.keyStoneNumber / 2;
-                        island.capList[i].length = 4 * (int)_IslandTarget.difficulty + miniGameNumberPerCap + 2 * PlayerManager.Instance.keyStoneNumber - 2 * keyStoneImpact;
+                        island.capList[i].length = 4 * ((int)_IslandTarget.difficulty+1) + miniGameNumberPerCap + 2 * PlayerManager.Instance.keyStoneNumber - 2 * keyStoneImpact;
                     }
 
                     island.capList[i].capWeight = idWeightToAdd;
@@ -651,7 +651,8 @@ namespace Caps
                     if (_IslandTarget.type != IslandType.Boss)
                     {
                         int keyStoneImpact = PlayerManager.Instance.keyStoneNumber / 2;
-                        island.capList[i].length = 4 * (int)island.difficulty + miniGameNumberPerCap + 2 * PlayerManager.Instance.keyStoneNumber - 2 * keyStoneImpact;
+                        island.capList[i].length = 4 * ((int)_IslandTarget.difficulty + 1) + miniGameNumberPerCap + 2 * PlayerManager.Instance.keyStoneNumber - 2 * keyStoneImpact;
+
                     }
                 }
             }
@@ -766,8 +767,9 @@ namespace Caps
                 else
                 {
                     eventSystem.enabled = true;
-                    PlayerMovement.Instance.playerIsland.reward.ApplyPassiveEffect();
                 }
+
+                PlayerMovement.Instance.playerIsland.reward.ApplyPassiveEffect();
             }
 
             eventSystem.enabled = true;

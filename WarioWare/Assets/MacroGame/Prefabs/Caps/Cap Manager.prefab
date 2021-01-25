@@ -1532,7 +1532,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 929ec21256aef6047a476f05623e638b, type: 3}
   m_Color: {r: 0, g: 1, b: 0.09392524, a: 1}
   m_FlipX: 0
@@ -1596,6 +1596,9 @@ MonoBehaviour:
   idWeightToAdd: 0
   idInitialWeight: 0
   damagesOnMiniGameLose: 10
+  monnaieBronze: 3
+  monnaieSilver: 6
+  monnaieGold: 9
   sorter: {fileID: 11400000, guid: 6dc05a15978033047a905a916eb5d27c, type: 2}
   allIslands: []
   zoneNumber: 0
