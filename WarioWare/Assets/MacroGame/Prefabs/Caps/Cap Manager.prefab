@@ -1596,9 +1596,10 @@ MonoBehaviour:
   idWeightToAdd: 0
   idInitialWeight: 0
   damagesOnMiniGameLose: 10
+  moralCost: -10
   monnaieBronze: 3
-  monnaieSilver: 6
-  monnaieGold: 9
+  monnaieSilver: 4
+  monnaieGold: 6
   sorter: {fileID: 11400000, guid: 6dc05a15978033047a905a916eb5d27c, type: 2}
   allIslands: []
   zoneNumber: 0
