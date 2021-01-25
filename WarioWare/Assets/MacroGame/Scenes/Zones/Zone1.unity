@@ -5550,6 +5550,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2190592433291563160, guid: 27cb8457ccf60b3438238bc2156ab8ca,
         type: 3}
+      propertyPath: islandRewards.Array.size
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2190592433291563160, guid: 27cb8457ccf60b3438238bc2156ab8ca,
+        type: 3}
       propertyPath: islands.Array.data[0]
       value: 
       objectReference: {fileID: 43212460}
@@ -5691,6 +5696,12 @@ PrefabInstance:
     - target: {fileID: 2190592433291563160, guid: 27cb8457ccf60b3438238bc2156ab8ca,
         type: 3}
       propertyPath: gameRewards.Array.data[15]
+      value: 
+      objectReference: {fileID: 11400000, guid: 9d57476815a71104194b38b7c5674338,
+        type: 2}
+    - target: {fileID: 2190592433291563160, guid: 27cb8457ccf60b3438238bc2156ab8ca,
+        type: 3}
+      propertyPath: islandRewards.Array.data[8]
       value: 
       objectReference: {fileID: 11400000, guid: 9d57476815a71104194b38b7c5674338,
         type: 2}

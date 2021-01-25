@@ -840,9 +840,9 @@ namespace Caps
                             currentMonnaie--;
                             break;
                         case 1:
-                            if (currentMonnaie >= 3)
+                            if (currentMonnaie >= 2)
                             {
-                                currentMonnaie -= 3;
+                                currentMonnaie -= 2;
                                 moralCost += 5;
                             }
                             else
