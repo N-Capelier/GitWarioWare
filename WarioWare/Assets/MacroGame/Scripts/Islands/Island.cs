@@ -63,8 +63,8 @@ namespace Islands
         public Image islandRewardImage;
         public TextMeshProUGUI rewardDescription;
         public TextMeshProUGUI capLength;
-
         private AudioSource audioSource;
+        public Image icon;
 
         #endregion
 

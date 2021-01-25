@@ -521,12 +521,11 @@ namespace Caps
 
                 transitionCam.enabled = false;
 
-                sceneCam.SetActive(true);
-                StartCoroutine(UnzoomCam());
-                yield return new WaitForSeconds(shipOpening.openingTime * 2);
-                if (PlayerMovement.Instance.playerIsland.type == IslandType.Shop)
-                {
-                    ShopManager.Instance.Show();
+                    sceneCam.SetActive(true);
+                    StartCoroutine(UnzoomCam());
+                    yield return new WaitForSeconds(shipOpening.openingTime * 2);
+
+                    ShopManager.Instance.Show(PlayerMovement.Instance.playerIsland);
                 }
                 else
                 {

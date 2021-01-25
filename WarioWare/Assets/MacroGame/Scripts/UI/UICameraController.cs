@@ -5,6 +5,7 @@ using Cinemachine;
 using UnityEngine.EventSystems;
 using Player;
 using Caps;
+using UnityEngine.UI;
 
 namespace UI
 {
@@ -21,30 +22,49 @@ namespace UI
         public float cameraSpeed;
         public float joystickDeadZone;
 
+        public CinemachineVirtualCamera uiVcam;
+        public CinemachineVirtualCamera tacticalVcam;
+        public Button invisibleButton;
+
         // Update is called once per frame
         void Update()
         {
-            horizontalMove = Input.GetAxis("Right_Joystick_X");
-            verticalMove = Input.GetAxis("Right_Joystick_Y");
-            if (!PlayerInventory.Instance.inventoryCanvas.activeSelf && Manager.Instance.cantDoTransition && EventSystem.current != null && EventSystem.current.enabled)
+            if(uiVcam.gameObject.activeSelf)
             {
-                if (Mathf.Abs(Input.GetAxis("Left_Joystick_X")) > joystickDeadZone || Mathf.Abs(Input.GetAxis("Left_Joystick_Y")) > joystickDeadZone || !IsInsideMap())
+                horizontalMove = Input.GetAxis("Right_Joystick_X");
+                verticalMove = Input.GetAxis("Right_Joystick_Y");
+                if (!PlayerInventory.Instance.inventoryCanvas.activeSelf && Manager.Instance.cantDoTransition && EventSystem.current != null && EventSystem.current.enabled)
                 {
+                    if (Mathf.Abs(Input.GetAxis("Left_Joystick_X")) > joystickDeadZone || Mathf.Abs(Input.GetAxis("Left_Joystick_Y")) > joystickDeadZone || !IsInsideMap())
+                    {
 
-                    targetTransform.position = Manager.Instance.eventSystem.currentSelectedGameObject.transform.position;
+                        targetTransform.position = Manager.Instance.eventSystem.currentSelectedGameObject.transform.position;
 
-                }
+                    }
 
-                if (Mathf.Abs(horizontalMove) < joystickDeadZone && Mathf.Abs(verticalMove) < joystickDeadZone)
-                {
-                    targetTransform.position = EventSystem.current.currentSelectedGameObject.transform.position;
-                }
-                else
-                {
                     MoveTarget();
                 }
-
             }
+
+            if(Input.GetButtonDown("Back_Button"))
+            {
+                if (uiVcam.gameObject.activeSelf)
+                {
+                    PlayerMovement.Instance.ShowSelectedIslandInfo(PlayerMovement.Instance.playerIsland);
+                    uiVcam.gameObject.SetActive(false);
+                    tacticalVcam.gameObject.SetActive(true);
+                    invisibleButton.Select();
+                    PlayerMovement.Instance.ShowFarNeighboursIcon();
+                }
+                else if(!uiVcam.gameObject.activeSelf)
+                {
+                    uiVcam.gameObject.SetActive(true);
+                    tacticalVcam.gameObject.SetActive(false);
+                    PlayerMovement.Instance.playerIsland.button.Select();
+                    PlayerMovement.Instance.HideIcons();
+                }
+            }
+
         }
 
         void MoveTarget()
