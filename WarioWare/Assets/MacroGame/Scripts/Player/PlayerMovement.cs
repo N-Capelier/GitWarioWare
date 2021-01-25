@@ -56,8 +56,8 @@ namespace Player
 
             transitionTimer = new Clock();
             //set up value from debug
-            foodPrice = DebugToolManager.Instance.ChangeVariableValue("foodPrice");
-            damagesWhenNoFood = DebugToolManager.Instance.ChangeVariableValue("damagesWhenNoFood");
+            foodPrice = (int)DebugToolManager.Instance.ChangeVariableValue("foodPrice");
+            damagesWhenNoFood = (int)DebugToolManager.Instance.ChangeVariableValue("damagesWhenNoFood");
         }
 
         private void Update()

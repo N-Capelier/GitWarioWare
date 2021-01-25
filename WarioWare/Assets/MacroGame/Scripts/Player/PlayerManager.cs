@@ -47,10 +47,10 @@ namespace Player
             //Initialisation de l'UI du player
             UpdatePlayerUI.Invoke();
             //set up value from debug
-            playerHp = DebugToolManager.Instance.ChangeVariableValue("playerHp");
-            beatcoins = DebugToolManager.Instance.ChangeVariableValue("beatcoins");
-            food = DebugToolManager.Instance.ChangeVariableValue("food");
-            maxFood = DebugToolManager.Instance.ChangeVariableValue("maxFood");
+            playerHp = (int)DebugToolManager.Instance.ChangeVariableValue("playerHp");
+            beatcoins = (int)DebugToolManager.Instance.ChangeVariableValue("beatcoins");
+            food = (int)DebugToolManager.Instance.ChangeVariableValue("food");
+            maxFood = (int)DebugToolManager.Instance.ChangeVariableValue("maxFood");
         }
 
         void Update()

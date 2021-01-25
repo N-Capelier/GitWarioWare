@@ -28,8 +28,8 @@ namespace Boss
 
 
         [Header("Boss parameters")]
-        public int damageToPlayer = 10;
-        public int damageToBoss = 10;
+        public float damageToPlayer = 10;
+        public float damageToBoss = 10;
         private int bossLifeOnStartOfFight;
         private int phaseBossLife;
         private int phaseNumber = 1;
@@ -38,7 +38,7 @@ namespace Boss
         public RenderTexture bossTexture;
         public int differentMiniGameNumber = 4;
         public bool isFinalBoss;
-
+        public float damageMultiplier = 1.2f;
         private bool displayMalediction;
         private void Awake()
         {
@@ -47,9 +47,10 @@ namespace Boss
         private void Start()
         {
             //set up value from debug
-            damageToPlayer = DebugToolManager.Instance.ChangeVariableValue("damageToPlayer");
-            damageToBoss = DebugToolManager.Instance.ChangeVariableValue("damageToBoss");
-            differentMiniGameNumber = DebugToolManager.Instance.ChangeVariableValue("differentMiniGameNumber");
+            damageToPlayer = (float)DebugToolManager.Instance.ChangeVariableValue("damageToPlayer");
+            damageToBoss = (float)DebugToolManager.Instance.ChangeVariableValue("damageToBoss");
+            differentMiniGameNumber = (int)DebugToolManager.Instance.ChangeVariableValue("differentMiniGameNumber");
+            damageMultiplier = DebugToolManager.Instance.ChangeVariableValue("damageMultiplier");
             
             
         }
@@ -72,14 +73,18 @@ namespace Boss
             {
                 transition.PlayAnimation((float)Manager.Instance.bpm, true);
                 SoundManager.Instance.ApplyAudioClip("victoryJingleBoss", transitionMusic, Manager.Instance.bpm);
-                BossLifeManager.Instance.TakeDamage(damageToBoss, bossLifeOnStartOfFight, true);
-                phaseBossLife += damageToBoss;
+
+                int _damageToBoss =Mathf.RoundToInt( damageToBoss / Mathf.Pow(damageMultiplier, (float) PlayerManager.Instance.keyStoneNumber));
+                BossLifeManager.Instance.TakeDamage(_damageToBoss, bossLifeOnStartOfFight, true);
+                phaseBossLife += _damageToBoss;
                 transitionMusic.PlaySecured();
                 yield return new WaitForSeconds(transitionMusic.clip.length);
             }
             else
             {
-                PlayerManager.Instance.TakeDamage(damageToPlayer, true);
+                int _damageToPlayer = Mathf.RoundToInt(damageToBoss * Mathf.Pow(damageMultiplier, (float)PlayerManager.Instance.keyStoneNumber));
+
+                PlayerManager.Instance.TakeDamage(_damageToPlayer, true);
                 transition.PlayAnimation((float)Manager.Instance.bpm, false);
 
                 if (PlayerManager.Instance.playerHp > 0)

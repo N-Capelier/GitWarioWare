@@ -9,7 +9,7 @@ public class DebugingTool : ScriptableObject
 
 
     [SerializeField] public List<string> names = new List<string>();
-    [SerializeField] public List<int> values = new List<int>();
+    [SerializeField] public List<float> values = new List<float>();
     public DebugingTool()
         {
         //CapsManager
@@ -47,6 +47,7 @@ public class DebugingTool : ScriptableObject
             names.Add("damageToBoss"); values.Add(10);
             names.Add("differentMiniGameNumber"); values.Add(5);
             names.Add("maxLife"); values.Add(100);
+            names.Add("damageMultiplier"); values.Add(1.2f);
         }
 }
 

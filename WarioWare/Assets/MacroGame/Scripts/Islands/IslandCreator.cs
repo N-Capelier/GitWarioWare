@@ -54,11 +54,11 @@ namespace Islands
         private void Start()
         {
             //set up value from debug
-            commonRewardRateWeight = DebugToolManager.Instance.ChangeVariableValue("commonRewardRateWeight");
-            rareRewardRateWeight = DebugToolManager.Instance.ChangeVariableValue("rareRewardRateWeight");
-            epicRewardRateWeight = DebugToolManager.Instance.ChangeVariableValue("epicRewardRateWeight");
-            commonRewardRandomness = DebugToolManager.Instance.ChangeVariableValue("commonRewardRandomness");
-            rareRewardRandomness = DebugToolManager.Instance.ChangeVariableValue("rareRewardRandomness");
+            commonRewardRateWeight = (int)DebugToolManager.Instance.ChangeVariableValue("commonRewardRateWeight");
+            rareRewardRateWeight = (int)DebugToolManager.Instance.ChangeVariableValue("rareRewardRateWeight");
+            epicRewardRateWeight = (int)DebugToolManager.Instance.ChangeVariableValue("epicRewardRateWeight");
+            commonRewardRandomness = (int)DebugToolManager.Instance.ChangeVariableValue("commonRewardRandomness");
+            rareRewardRandomness = (int)DebugToolManager.Instance.ChangeVariableValue("rareRewardRandomness");
             GenerateIslands();
         }
 

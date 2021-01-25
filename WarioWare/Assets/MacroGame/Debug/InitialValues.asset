@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: de5a332ef836b1e4d9f28377d4c0b652, type: 3}
-  m_Name: InitalValues
+  m_Name: InitialValues
   m_EditorClassIdentifier: 
   names:
   - numberBeforSpeedUp
@@ -42,4 +42,35 @@ MonoBehaviour:
   - damageToBoss
   - differentMiniGameNumber
   - maxLife
-  values: 02000000010000000a0000000a0000001e0000000a0000000800000001000000050000000300000002000000020000000200000064000000c800000032000000640000000a0000000a00000032000000230000000f0000001400000014000000400000000a0000000a0000000500000064000000
+  - damageMultiplier
+  values:
+  - 2
+  - 2
+  - 10
+  - 10
+  - 30
+  - 10
+  - 8
+  - 1
+  - 5
+  - 3
+  - 4
+  - 2
+  - 2
+  - 100
+  - 200
+  - 50
+  - 100
+  - 10
+  - 10
+  - 50
+  - 35
+  - 15
+  - 20
+  - 20
+  - 64
+  - 10
+  - 10
+  - 5
+  - 100
+  - 1.2

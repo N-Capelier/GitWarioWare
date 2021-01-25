@@ -115,19 +115,19 @@ namespace Caps
         {
             initalCamTransform = VcamTarget.transform;
             //set up value from debug
-            numberBeforSpeedUp = DebugToolManager.Instance.ChangeVariableValue("numberBeforSpeedUp");
-            idWeightToAdd = DebugToolManager.Instance.ChangeVariableValue("idWeightToAdd");
-            idInitialWeight = DebugToolManager.Instance.ChangeVariableValue("idInitialWeight");
-            damagesOnMiniGameLose = DebugToolManager.Instance.ChangeVariableValue("damagesOnMiniGameLose");
-            winingStreakNumber = DebugToolManager.Instance.ChangeVariableValue("winingStreakNumber");
-            losingStreakNumber = DebugToolManager.Instance.ChangeVariableValue("losingStreakNumber");
+            numberBeforSpeedUp = (int)DebugToolManager.Instance.ChangeVariableValue("numberBeforSpeedUp");
+            idWeightToAdd = (int)DebugToolManager.Instance.ChangeVariableValue("idWeightToAdd");
+            idInitialWeight = (int)DebugToolManager.Instance.ChangeVariableValue("idInitialWeight");
+            damagesOnMiniGameLose = (int)DebugToolManager.Instance.ChangeVariableValue("damagesOnMiniGameLose");
+            winingStreakNumber = (int)DebugToolManager.Instance.ChangeVariableValue("winingStreakNumber");
+            losingStreakNumber = (int)DebugToolManager.Instance.ChangeVariableValue("losingStreakNumber");
             /* barrelProbability = DebugToolManager.Instance.ChangeVariableValue("barrelProbability");
              maxBarrelRessources = DebugToolManager.Instance.ChangeVariableValue("maxBarrelRessources");
              minBarrelRessources = DebugToolManager.Instance.ChangeVariableValue("minBarrelRessources");
              lifeWeight = DebugToolManager.Instance.ChangeVariableValue("lifeWeight");
              goldWeight = DebugToolManager.Instance.ChangeVariableValue("goldWeight");
              foodWeight = DebugToolManager.Instance.ChangeVariableValue("foodWeight");*/
-            miniGameNumberPerCap = DebugToolManager.Instance.ChangeVariableValue("miniGameNumberPerCap");
+            miniGameNumberPerCap = (int)DebugToolManager.Instance.ChangeVariableValue("miniGameNumberPerCap");
             cantDoTransition = true;
         }
 
@@ -349,7 +349,7 @@ namespace Caps
         /// <returns></returns>
         private IEnumerator Transition(bool win)
         {
-            transition.MoveShip(currentCap, miniGamePassedNumber, transitionMusic.clip.length * 3 / 4);
+            transition.MoveShip(currentCap, miniGamePassedNumber, transitionMusic.clip.length * 3 / 4,win);
             transitionCam.enabled = true;
 
             StartCoroutine(FadeManager.Instance.FadeOut(0.15f * 60 / (float)bpm));
@@ -749,6 +749,7 @@ namespace Caps
             yield return new WaitUntil(() => Input.GetButtonDown("A_Button"));
             CloseReward();
         }
+
         public void CloseReward()
         {
             //apply object effect if ressource
@@ -862,8 +863,8 @@ namespace Caps
             PlayerManager.Instance.GainFood(foodToAdd);
             PlayerManager.Instance.Heal(woodToAdd);
             miniGameWon = 0;
-
-            PlayerInventory.Instance.completion.text = "Completion : " + pourcentageCompleted * 100 + "%";
+            transition.completionBar.fillAmount= 0;
+            PlayerInventory.Instance.completion.text = "Completion : " + Mathf.RoundToInt( pourcentageCompleted *100 )+"%";
             PlayerInventory.Instance.goldCompletion.text = "beatcoin + " + goldToAdd;
             PlayerInventory.Instance.foodCompletion.text = "rations + " + foodToAdd;
             PlayerInventory.Instance.woodCompletion.text = "planches + " + woodToAdd;
