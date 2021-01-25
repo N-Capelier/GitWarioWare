@@ -20,6 +20,11 @@ namespace Islands
         [SerializeField] IslandSprite[] mediumIslandSprites;
         [SerializeField] IslandSprite[] hardIslandSprites;
 
+        [SerializeField] IslandSprite startIslandSprite;
+        [SerializeField] IslandSprite shopIslandSprite;
+        [SerializeField] IslandSprite keystoneIslandSprite;
+        [SerializeField] IslandSprite bossIslandSprite;
+
         [Space]
 
         public Reward[] gameRewards;
@@ -102,18 +107,21 @@ namespace Islands
 
             //Filter and keep "classic" islands
             List<Island> _generatedIslandsList = new List<Island>();
+            List<Island> _specialIslandList = new List<Island>();
 
             for (int i = 0; i < islands.Length; i++)
             {
-                if(islands[i].type == IslandType.Shop || islands[i].type == IslandType.Start)
+                if(islands[i].type == IslandType.Shop || islands[i].type == IslandType.Start || islands[i].type == IslandType.Boss || islands[i].type == IslandType.Keystone)
                 {
+                    _specialIslandList.Add(islands[i]);
                     continue;
                 }
-                if (islands[i].difficulty == IslandDifficulty.Easy || islands[i].difficulty == IslandDifficulty.Medium || islands[i].difficulty == IslandDifficulty.Hard)
+                if (islands[i].type == IslandType.Common)
                     _generatedIslandsList.Add(islands[i]);
             }
 
             Island[] _generatedIslands = _generatedIslandsList.ToArray();
+            Island[] _specialIslands = _specialIslandList.ToArray();
 
             //Generate the rewards depending on their drop rate
             Reward[] _generatedReward = new Reward[_generatedIslands.Length];
@@ -156,9 +164,34 @@ namespace Islands
                     default:
                         throw new System.Exception("Island difficulty not set!");
                 }
-
                 _generatedIslands[i].SetReward(_generatedReward[i], _islandSprite);
             }
+
+            //Spread the rewards through the SPECIAL islands
+            for (int i = 0; i < _specialIslands.Length; i++)
+            {
+                IslandSprite _islandSprite;
+
+                switch (_specialIslandList[i].type)
+                {
+                    case IslandType.Start:
+                        _islandSprite = startIslandSprite;
+                        break;
+                    case IslandType.Shop:
+                        _islandSprite = shopIslandSprite;
+                        break;
+                    case IslandType.Boss:
+                        _islandSprite = bossIslandSprite;
+                        break;
+                    case IslandType.Keystone:
+                        _islandSprite = keystoneIslandSprite;
+                        break;
+                    default:
+                        throw new System.Exception("Special Island type not set!");
+                }
+                _specialIslands[i].SetSprite(_islandSprite);
+            }
+
             Manager.Instance.allIslands = islands;
             Manager.Instance.ResetIDCards();
             Manager.Instance.CapAttribution();

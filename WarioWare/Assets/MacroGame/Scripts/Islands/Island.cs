@@ -23,8 +23,8 @@ namespace Islands
     {
         Common,
         Shop,
+        Keystone,
         Start,
-        Legendary,
         Boss
     }
 
@@ -86,25 +86,6 @@ namespace Islands
         {
             //set up value from debug
             anchorRange = DebugToolManager.Instance.ChangeVariableValue("anchorRange");
-            switch (type)
-            {
-                case IslandType.Start:
-                    image.sprite = startIslandSprite;
-                    break;
-                case IslandType.Shop:
-                    image.sprite = shopIslandSprite;
-                    break;
-                case IslandType.Boss:
-                    image.sprite = bossIslandSprite;
-                    break;
-                case IslandType.Legendary:
-                    image.sprite = legendaryIslandSprite;
-                    break;
-                default:
-                    break;
-            }
-
-
 
             //Set button event click & select
             EventTrigger.Entry entry = new EventTrigger.Entry();
@@ -196,6 +177,18 @@ namespace Islands
 
             image.sprite = _sprite.sprite;
 
+            SetAnchor(_sprite);
+        }
+
+        public void SetSprite(IslandSprite _sprite)
+        {
+            difficulty = IslandDifficulty.Hard;
+            image.sprite = _sprite.sprite;
+            SetAnchor(_sprite);
+        }
+
+        void SetAnchor(IslandSprite _sprite)
+        {
             switch (_sprite.anchorPoint)
             {
                 case IslandAnchorPoint.East:
@@ -226,6 +219,7 @@ namespace Islands
                     break;
             }
         }
+
         public void OnClick()
         {
             if(this != PlayerMovement.Instance.playerIsland)
