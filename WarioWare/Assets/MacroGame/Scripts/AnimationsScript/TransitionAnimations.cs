@@ -3,7 +3,6 @@ using UnityEngine;
 using Caps;
 using DG.Tweening;
 using System.Collections.Generic;
-
 public class TransitionAnimations : MonoBehaviour
 {
     public Animator ghost;
@@ -15,6 +14,17 @@ public class TransitionAnimations : MonoBehaviour
     public Transform endPosition;
     public GameObject barrel;
     private List<GameObject> barrels = new List<GameObject>();
+    public GameObject completionBar;
+    private Vector3 initialCompletionScale;
+
+    public void Start()
+    {
+        if(completionBar != null)
+        {
+            initialCompletionScale = completionBar.transform.localScale;
+            completionBar.transform.localScale = new Vector3(0, initialCompletionScale.y, initialCompletionScale.z);
+        }
+    }
     public void DisplayBarrel(Cap cap)
     {
         foreach (GameObject barrel in barrels)
@@ -75,5 +85,10 @@ public class TransitionAnimations : MonoBehaviour
         cat.SetTrigger("SpeedUp");
         nerde.SetTrigger("SpeedUp");
         coolGirl.SetTrigger("SpeedUp");
+    }
+
+    public void CompletionBar(float pourcentageCompleted, float duration)
+    {
+        completionBar.transform.DOScaleX(pourcentageCompleted * initialCompletionScale.x, duration);
     }
 }

@@ -37,6 +37,13 @@ namespace Caps
         public int idWeightToAdd;
         public int idInitialWeight;
         [SerializeField] int damagesOnMiniGameLose = 10;
+        [Header("BronzeChest")]
+        [SerializeField] int monnaieBronze = 3;
+        [Header("SilverChest")]
+        [SerializeField] int monnaieSilver = 6;
+        [Header("GoldChest")]
+        [SerializeField] int monnaieGold = 9;
+        private int currentCompletionChest;
         /*   //barrel
            [Range(1, 90)]
            public int barrelProbability;
@@ -63,7 +70,7 @@ namespace Caps
 
         public Difficulty currentDifficulty;
         public bool isNormalMode;
-
+        private float miniGameWon;
 
         [Header("UI Management")]
         public GameObject panel;
@@ -352,6 +359,8 @@ namespace Caps
 
             if (win)
             {
+                miniGameWon++;
+                transition.CompletionBar(miniGameWon / currentCap.length, 60f / (float)bpm);
                 transition.PlayAnimation((float)bpm, win);
                 SoundManager.Instance.ApplyAudioClip("victoryJingle", transitionMusic, bpm);
                 resultText.text = "You Won!";
@@ -399,6 +408,8 @@ namespace Caps
             #endregion
 
             miniGamePassedNumber++;
+
+            
 
             if (miniGamePassedNumber % numberBeforSpeedUp == 0 && currentCap.length != miniGamePassedNumber)
             {
@@ -449,6 +460,7 @@ namespace Caps
         private IEnumerator CapEnd()
         {
             #region resetValue;
+            
             bool _giveReward = true;
             if (currentCap.isDone)
                 _giveReward = false;
@@ -483,7 +495,7 @@ namespace Caps
 
             currentAsyncScene = null;
 
-            currentCap = null;
+           
             resultText.text = "GG";
             bpm = BPM.Slow;
             miniGamePassedNumber = 0;
@@ -500,38 +512,33 @@ namespace Caps
             //reward attribution
             if (_giveReward)
             {
+                capUI.SetActive(false);
+                macroUI.SetActive(true);
+                BossLifeManager.Instance.bossUI.gameObject.SetActive(true);
+                PlayerMovement.Instance.ResetFocus();
+                eventSystem.enabled = false;
+
+
+                transitionCam.enabled = false;
+
+                sceneCam.SetActive(true);
+                StartCoroutine(UnzoomCam());
+                yield return new WaitForSeconds(shipOpening.openingTime * 2);
                 if (PlayerMovement.Instance.playerIsland.type == IslandType.Shop)
                 {
-                    capUI.SetActive(false);
-                    macroUI.SetActive(true);
-                    BossLifeManager.Instance.bossUI.gameObject.SetActive(true);
-                    PlayerMovement.Instance.ResetFocus();
-
-
-                    transitionCam.enabled = false;
-
-                    sceneCam.SetActive(true);
-                    StartCoroutine(UnzoomCam());
-                    yield return new WaitForSeconds(shipOpening.openingTime * 2);
-
                     ShopManager.Instance.Show();
                 }
                 else
                 {
                     StartCoroutine(RewardUI());
-                    yield return new WaitForSeconds(3f);
-
-
-                    transitionCam.enabled = false;
-
-                    sceneCam.SetActive(true);
                 }
             }
             else
             {
                 StartCoroutine(UnzoomCam());
-            }
+                currentCap = null;
 
+            }
 
 
             //REACTIVER LES INPUTS MACRO
@@ -732,11 +739,17 @@ namespace Caps
 
         private IEnumerator RewardUI()
         {
+            eventSystem =EventSystem.current;
+            eventSystem.enabled = false;
             PlayerInventory.Instance.rewardImage.sprite = PlayerMovement.Instance.playerIsland.reward.sprite;
             PlayerInventory.Instance.rewardCanvas.SetActive(true);
+            CompletionAttribution();
 
-            yield return new WaitForSeconds(3);
-
+            yield return new WaitUntil(()=>Input.GetButtonDown("A_Button"));
+            CloseReward();
+        }
+        public void CloseReward()
+        {
             //apply object effect if ressource
             PlayerInventory.Instance.rewardCanvas.SetActive(false);
 
@@ -746,14 +759,9 @@ namespace Caps
             }
             else
             {
-                capUI.SetActive(false);
-
                 if (PlayerMovement.Instance.playerIsland.reward.name != "TreasureChest")
                 {
-                    macroUI.SetActive(true);
-                    BossLifeManager.Instance.bossUI.gameObject.SetActive(true);
-                    PlayerMovement.Instance.ResetFocus();
-                    StartCoroutine(UnzoomCam());
+                    
                 }
                 else
                 {
@@ -761,6 +769,104 @@ namespace Caps
                     PlayerMovement.Instance.playerIsland.reward.ApplyPassiveEffect();
                 }
             }
+
+            eventSystem.enabled = true;
+
+        }
+
+        private void CompletionAttribution()
+        {
+            float pourcentageCompleted = miniGameWon / currentCap.length;
+            int currentMonnaie;
+            int goldToAdd = 0;
+            int foodToAdd = 0;
+            int woodToAdd = 0;
+            if (pourcentageCompleted >= 1f)
+            {
+                currentMonnaie = monnaieGold;
+                while (currentMonnaie > 0)
+                {
+                    int random = Random.Range(0, 3);
+                    switch (random)
+                    {
+                        case 0:
+                            goldToAdd += 5;
+                            currentMonnaie--;
+                            break;
+                        case 1:
+                            if (currentMonnaie >= 3)
+                            {
+                                currentMonnaie -= 3;
+                                foodToAdd += 5;
+                            }
+                            else
+                            {
+                                while (currentMonnaie > 0)
+                                {
+                                    goldToAdd += 5;
+                                    currentMonnaie--;
+                                }
+                            }
+                            break;
+                        case 2:
+                            if (currentMonnaie >= 6)
+                            {
+                                currentMonnaie -= 6;
+                                woodToAdd += 5;
+                            }
+                            break;
+                        default:
+                            break;
+                    }
+                }
+               
+            }
+            else if(pourcentageCompleted >= 0.5f)
+            {
+                if(pourcentageCompleted >= 0.75f)
+                     currentMonnaie = monnaieSilver;
+                else
+                    currentMonnaie = monnaieBronze;
+                while (currentMonnaie > 0)
+                {
+                    int random = Random.Range(0, 2);
+                    switch (random)
+                    {
+                        case 0:
+                            goldToAdd += 5;
+                            currentMonnaie--;
+                            break;
+                        case 1:
+                            if (currentMonnaie >= 3)
+                            {
+                                currentMonnaie -= 3;
+                                foodToAdd += 5;
+                            }
+                            else
+                            {
+                                while (currentMonnaie > 0)
+                                {
+                                    goldToAdd += 5;
+                                    currentMonnaie--;
+                                }
+                            }
+                            break;                        
+                        default:
+                            break;
+                    }
+                }
+            }
+            PlayerManager.Instance.GainCoins(goldToAdd);
+            PlayerManager.Instance.GainFood(foodToAdd);
+            PlayerManager.Instance.Heal(woodToAdd);
+            miniGameWon = 0;
+
+            PlayerInventory.Instance.completion.text = "Completion : " + pourcentageCompleted *100 +"%";
+            PlayerInventory.Instance.goldCompletion.text = "beatcoin + " + goldToAdd;
+            PlayerInventory.Instance.foodCompletion.text = "rations + " + foodToAdd;
+            PlayerInventory.Instance.woodCompletion.text = "planches + " +woodToAdd;
+            currentCap = null;
+
         }
         #region Cameras
         public IEnumerator ZoomCam(float zoomTime)
@@ -799,6 +905,8 @@ namespace Caps
         #endregion
 
         #endregion
+
+        
     }
 
 }
