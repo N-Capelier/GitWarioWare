@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class Controller : TimedBehaviour
 {
-    private float speed;
+    public float speed;
     private float speedIncrementation;
+    
 
     public override void Start()
     {
         base.Start(); //Do not erase this line!
 
-        speed = 0f; 
+        speed = 0f;
 
         switch (currentDifficulty)
         {
