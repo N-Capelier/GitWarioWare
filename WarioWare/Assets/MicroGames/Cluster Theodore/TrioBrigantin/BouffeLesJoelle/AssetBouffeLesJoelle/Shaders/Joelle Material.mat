@@ -71,8 +71,8 @@ Material:
     m_Floats:
     - Boolean_B00C3C02: 1
     - PixelSnap: 0
-    - V1_AmplitudeReduction: 0.5
-    - V1_WobbleSpeed: 97.713104
+    - V1_AmplitudeReduction: 0.48290175
+    - V1_WobbleSpeed: 98.11249
     - Vector1_46DE495D: 1
     - Vector1_47CBF5E5: 0.3
     - Vector1_5335E0D2: 2
