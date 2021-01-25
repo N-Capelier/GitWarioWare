@@ -37,6 +37,7 @@ namespace Caps
         public int idWeightToAdd;
         public int idInitialWeight;
         [SerializeField] int damagesOnMiniGameLose = 10;
+        [SerializeField] int moralCost = 10;
         [Header("BronzeChest")]
         [SerializeField] int monnaieBronze = 3;
         [Header("SilverChest")]
@@ -462,7 +463,7 @@ namespace Caps
             #region resetValue;
 
             bool _giveReward = true;
-            if (currentCap.isDone)
+            if (currentCap.isDone || PlayerMovement.Instance.playerIsland.isDone)
                 _giveReward = false;
 
             currentCap.isDone = true;
@@ -512,6 +513,7 @@ namespace Caps
             //reward attribution
             if (_giveReward)
             {
+                PlayerMovement.Instance.playerIsland.isDone = true;
                 capUI.SetActive(false);
                 macroUI.SetActive(true);
                 BossLifeManager.Instance.bossUI.gameObject.SetActive(true);
@@ -740,7 +742,7 @@ namespace Caps
 
         private IEnumerator RewardUI()
         {
-            eventSystem = EventSystem.current;
+           // eventSystem = EventSystem.current;
             eventSystem.enabled = false;
             PlayerInventory.Instance.rewardImage.sprite = PlayerMovement.Instance.playerIsland.reward.sprite;
             PlayerInventory.Instance.rewardCanvas.SetActive(true);
@@ -782,7 +784,6 @@ namespace Caps
             float pourcentageCompleted = miniGameWon / currentCap.length;
             int currentMonnaie;
             int goldToAdd = 0;
-            int foodToAdd = 0;
             int woodToAdd = 0;
             if (pourcentageCompleted >= 1f)
             {
@@ -797,10 +798,10 @@ namespace Caps
                             currentMonnaie--;
                             break;
                         case 1:
-                            if (currentMonnaie >= 3)
+                            if (currentMonnaie >= 2)
                             {
-                                currentMonnaie -= 3;
-                                foodToAdd += 5;
+                                currentMonnaie -= 2;
+                                moralCost += 5;
                             }
                             else
                             {
@@ -815,7 +816,7 @@ namespace Caps
                             if (currentMonnaie >= 6)
                             {
                                 currentMonnaie -= 6;
-                                woodToAdd += 5;
+                                woodToAdd +=10;
                             }
                             break;
                         default:
@@ -840,10 +841,10 @@ namespace Caps
                             currentMonnaie--;
                             break;
                         case 1:
-                            if (currentMonnaie >= 3)
+                            if (currentMonnaie >= 2)
                             {
-                                currentMonnaie -= 3;
-                                foodToAdd += 5;
+                                currentMonnaie -= 2;
+                                moralCost += 5;
                             }
                             else
                             {
@@ -859,18 +860,38 @@ namespace Caps
                     }
                 }
             }
+
+            //add moral based gold
+            if(PlayerManager.Instance.moral > 0 && PlayerManager.Instance.moral < 25)
+            {
+                goldToAdd += 0;
+            }
+            else if (PlayerManager.Instance.moral >= 25 && PlayerManager.Instance.moral < 50)
+            {
+                goldToAdd += 5;
+
+            }
+            else if (PlayerManager.Instance.moral >= 50 && PlayerManager.Instance.moral < 75)
+            {
+                goldToAdd += 10;
+            }
+            else if (PlayerManager.Instance.moral >= 75 && PlayerManager.Instance.moral < 100)
+            {
+                goldToAdd += 15;
+            }
+
             PlayerManager.Instance.GainCoins(goldToAdd);
-            PlayerManager.Instance.GainFood(foodToAdd);
             PlayerManager.Instance.Heal(woodToAdd);
+            PlayerManager.Instance.GainMoral(moralCost);
             miniGameWon = 0;
             transition.completionBar.fillAmount= 0;
             PlayerInventory.Instance.completion.text = "Completion : " + Mathf.RoundToInt( pourcentageCompleted *100 )+"%";
             PlayerInventory.Instance.goldCompletion.text = "beatcoin + " + goldToAdd;
-            PlayerInventory.Instance.foodCompletion.text = "rations + " + foodToAdd;
             PlayerInventory.Instance.woodCompletion.text = "planches + " + woodToAdd;
+            PlayerInventory.Instance.moralCompletion.text = "moral + " + moralCost;
             currentCap = null;
-
         }
+
         #region Cameras
         public IEnumerator ZoomCam(float zoomTime)
         {

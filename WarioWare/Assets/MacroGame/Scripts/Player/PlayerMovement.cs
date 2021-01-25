@@ -25,11 +25,11 @@ namespace Player
         Clock transitionTimer;
 
         [Header("Island UI")]
-        public Sprite resourceSprite;
         public Sprite shopSprite;
         public Sprite bossSprite;
         public Sprite treasureSprite;
         public Sprite keystoneSprite;
+        public Sprite emptySprite;
 
         public Sprite goldRessource;
         public Sprite foodRessource;
@@ -302,11 +302,11 @@ namespace Player
             for (int i = 0; i < farNeighbors.Count; i++)
             {
                 farNeighbors[i].icon.gameObject.SetActive(true);
+                farNeighbors[i].icon.SetNativeSize();
                 if(farNeighbors[i].reward!=null)
                 {
                     switch (farNeighbors[i].reward.rewardName)
                     {
-
                         case "Sac de Beatcoins":
                             farNeighbors[i].icon.sprite = goldRessource;
                             break;
@@ -331,6 +331,9 @@ namespace Player
                         case "Coffre au trésor"://a changer avec rhum
                             farNeighbors[i].icon.sprite = treasureSprite;
                             break;
+                        case "Rien":
+                            farNeighbors[i].icon.sprite = emptySprite;
+                            break;
 
                         default:
                             break;
@@ -347,20 +350,28 @@ namespace Player
                         //afficher icone shop
                         islands[i].icon.sprite = shopSprite;
                         islands[i].icon.gameObject.SetActive(true);
+                        islands[i].icon.SetNativeSize();
                         break;
                     case IslandType.Keystone:
                         //afficher icone keystone
                         islands[i].icon.sprite = keystoneSprite;
                         islands[i].icon.gameObject.SetActive(true);
+                        islands[i].icon.SetNativeSize();
                         break;
                     case IslandType.Boss:
                         //Afficher icone boss
                         islands[i].icon.sprite = bossSprite;
                         islands[i].icon.gameObject.SetActive(true);
+                        islands[i].icon.SetNativeSize();
                         break;
                     default:
                         //Debug.Log("Error : Island has no type !" + islands[i].gameObject.name);
                         break;
+                }
+
+                if(islands[i].isDone)
+                {
+                    islands[i].redCross.gameObject.SetActive(true);
                 }
             }
 
@@ -371,6 +382,7 @@ namespace Player
             for (int i = 0; i < islands.Length; i++)
             {
                 islands[i].icon.gameObject.SetActive(false);
+                islands[i].redCross.gameObject.SetActive(false);
             }
         }
     }

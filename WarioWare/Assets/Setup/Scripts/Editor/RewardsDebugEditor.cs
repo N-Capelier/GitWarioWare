@@ -41,7 +41,7 @@ public class RewardsDebugEditor : Editor
                     break;
                 case "Ration":
                     rationReward = rewardDebug.rewardsList[i] as RationReward;
-                    rationReward.foodAmount = EditorGUILayout.IntField("     Food Amount", rationReward.foodAmount);
+                    rationReward.moralAmount = EditorGUILayout.IntField("     Moral Amount", rationReward.moralAmount);
                     break;
                 case "Planche de bois":
                     healReward = rewardDebug.rewardsList[i] as HealReward;
@@ -71,7 +71,7 @@ public class RewardsDebugEditor : Editor
                     break;
                 case "Pack de rations":
                     rationReward = rewardDebug.rewardsList[i] as RationReward;
-                    rationReward.foodAmount = EditorGUILayout.IntField("     Food Amount", rationReward.foodAmount);
+                    rationReward.moralAmount = EditorGUILayout.IntField("     Moral Amount", rationReward.moralAmount);
                     break;
                 case "Kaisse en kit":
                     healReward = rewardDebug.rewardsList[i] as HealReward;

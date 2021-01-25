@@ -407,7 +407,7 @@ PrefabInstance:
     - target: {fileID: 7309059693642548127, guid: bc2f8b499c511b94f934b47245aeb98e,
         type: 3}
       propertyPath: type
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7309059693642548127, guid: bc2f8b499c511b94f934b47245aeb98e,
         type: 3}
@@ -5550,6 +5550,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2190592433291563160, guid: 27cb8457ccf60b3438238bc2156ab8ca,
         type: 3}
+      propertyPath: islandRewards.Array.size
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2190592433291563160, guid: 27cb8457ccf60b3438238bc2156ab8ca,
+        type: 3}
       propertyPath: islands.Array.data[0]
       value: 
       objectReference: {fileID: 43212460}
@@ -5691,6 +5696,12 @@ PrefabInstance:
     - target: {fileID: 2190592433291563160, guid: 27cb8457ccf60b3438238bc2156ab8ca,
         type: 3}
       propertyPath: gameRewards.Array.data[15]
+      value: 
+      objectReference: {fileID: 11400000, guid: 9d57476815a71104194b38b7c5674338,
+        type: 2}
+    - target: {fileID: 2190592433291563160, guid: 27cb8457ccf60b3438238bc2156ab8ca,
+        type: 3}
+      propertyPath: islandRewards.Array.data[8]
       value: 
       objectReference: {fileID: 11400000, guid: 9d57476815a71104194b38b7c5674338,
         type: 2}
@@ -29812,7 +29823,7 @@ PrefabInstance:
         type: 3}
       propertyPath: cinemachine
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2001844456}
     - target: {fileID: 8977992822187955208, guid: 80ac864817d34d641be6448f49de01a3,
         type: 3}
       propertyPath: numberBeforeSpeedUp
@@ -29827,6 +29838,11 @@ PrefabInstance:
         type: 3}
       propertyPath: barrelProbability
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 8977992822187955208, guid: 80ac864817d34d641be6448f49de01a3,
+        type: 3}
+      propertyPath: isDebug
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8977992822187955210, guid: 80ac864817d34d641be6448f49de01a3,
         type: 3}
@@ -30397,6 +30413,11 @@ PrefabInstance:
       propertyPath: death
       value: 
       objectReference: {fileID: 70786072}
+    - target: {fileID: 5975730464407200854, guid: 9a784a7e95199cf47b1f43fb6d7aa90d,
+        type: 3}
+      propertyPath: moral
+      value: 70
+      objectReference: {fileID: 0}
     - target: {fileID: 5975730464407200855, guid: 9a784a7e95199cf47b1f43fb6d7aa90d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -32544,6 +32565,18 @@ SpriteShapeRenderer:
     type: 3}
   m_PrefabInstance: {fileID: 1998023687}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2001844456 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4425091559097141104, guid: 44ce734831448f74f8249d0ec54e9655,
+    type: 3}
+  m_PrefabInstance: {fileID: 2084266982}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &2018281495 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7773080920819929377, guid: f4ab7bb55ae1c8b4c8d6bbbd2b55be1d,
@@ -33096,6 +33129,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CameraController
       objectReference: {fileID: 0}
+    - target: {fileID: 4425091559097141104, guid: 44ce734831448f74f8249d0ec54e9655,
+        type: 3}
+      propertyPath: m_Follow
+      value: 
+      objectReference: {fileID: 1226804598}
     - target: {fileID: 4425091559166213897, guid: 44ce734831448f74f8249d0ec54e9655,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -33113,7 +33151,7 @@ PrefabInstance:
     - target: {fileID: 4982864208588563480, guid: 2a0ba0962e4b52b40a1f46181b9dd3dc,
         type: 3}
       propertyPath: m_Name
-      value: EventSystem2
+      value: EventSystem
       objectReference: {fileID: 0}
     - target: {fileID: 4982864208588563481, guid: 2a0ba0962e4b52b40a1f46181b9dd3dc,
         type: 3}

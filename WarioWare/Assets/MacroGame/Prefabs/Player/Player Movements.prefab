@@ -118,14 +118,15 @@ MonoBehaviour:
   islands: []
   selectedIsland: {fileID: 0}
   resourceSprite: {fileID: 21300000, guid: 69e3d4bae3dc2b94ab38838e9e36f85e, type: 3}
-  shopSprite: {fileID: 21300000, guid: 8cc740aef5352bf40ac0da5943f98e2d, type: 3}
-  bossSprite: {fileID: 21300000, guid: 054049776e1179c41a846c0290532e6f, type: 3}
-  treasureSprite: {fileID: 21300000, guid: a599cbc8f5097c34497fc33befd9f81f, type: 3}
-  keystoneSprite: {fileID: 21300000, guid: cefffbc55a8ce7947bb897038a6c6fa1, type: 3}
-  goldRessource: {fileID: 21300000, guid: f82f7c735eb745d498f2e477a31e46a8, type: 3}
-  foodRessource: {fileID: 21300000, guid: 7072eb98516315f42b7236e7f4c8cc1e, type: 3}
-  cannonball: {fileID: 21300000, guid: 7b2b19d270bb00940bdb051df457b3b6, type: 3}
-  healthRessource: {fileID: 21300000, guid: 00073df8ec6aa2247b5971d8bfa9ccf9, type: 3}
+  shopSprite: {fileID: 21300000, guid: 0bb570a3e3d79054cb660ea51d72abed, type: 3}
+  bossSprite: {fileID: 21300000, guid: d1f69c8160aae5a49a2ebd0804c7658a, type: 3}
+  treasureSprite: {fileID: 21300000, guid: bf348e7eb2682144187eca686d3ed5f3, type: 3}
+  keystoneSprite: {fileID: 21300000, guid: 8fdc5708518757b4596d7cc3764ddbb7, type: 3}
+  emptySprite: {fileID: 21300000, guid: 5575c41a030de4c4180a3ffeb30fbfbc, type: 3}
+  goldRessource: {fileID: 21300000, guid: 8bc07c5b1dd10224db164b1ce473e998, type: 3}
+  foodRessource: {fileID: 21300000, guid: 2d55203f89af6994b9e831986cbd6187, type: 3}
+  cannonball: {fileID: 21300000, guid: caa42089f59a20b4d8f0eeb8253053a0, type: 3}
+  healthRessource: {fileID: 21300000, guid: 38828fd39d500e441adee75ad7b083d7, type: 3}
   foodPrice: 10
   damagesWhenNoFood: 10
   isMoving: 0

@@ -47,6 +47,10 @@ MonoBehaviour:
   easyIslandSprites: []
   mediumIslandSprites: []
   hardIslandSprites: []
+  startIslandSprite: {fileID: 0}
+  shopIslandSprite: {fileID: 0}
+  keystoneIslandSprite: {fileID: 0}
+  bossIslandSprite: {fileID: 0}
   gameRewards:
   - {fileID: 11400000, guid: a071db58001bc8e41a9f7ad8335826f6, type: 2}
   - {fileID: 11400000, guid: 60a954d86eeb042478f0772ed7c712e7, type: 2}
@@ -63,6 +67,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 661394c88206bcd4c8f665c8fe00f6e2, type: 2}
   - {fileID: 11400000, guid: d832e88f9e00ea84facab18bfd5ded84, type: 2}
   - {fileID: 11400000, guid: 6dec0bbc5160c2f4fa7e879b6300e779, type: 2}
+  - {fileID: 11400000, guid: 9d57476815a71104194b38b7c5674338, type: 2}
   islandRewards:
   - {fileID: 11400000, guid: 9dc5129f4a193194a98e6083a51d55e9, type: 2}
   - {fileID: 11400000, guid: 71bbe153d92fdfc4092323ec9e1304be, type: 2}
@@ -72,6 +77,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: df83f0dab1c17a649b648463b426e029, type: 2}
   - {fileID: 11400000, guid: 661394c88206bcd4c8f665c8fe00f6e2, type: 2}
   - {fileID: 11400000, guid: 2f684db8bda80474ca24817d7dfba8ac, type: 2}
+  - {fileID: 11400000, guid: 9d57476815a71104194b38b7c5674338, type: 2}
   treasureItems:
   - {fileID: 11400000, guid: a071db58001bc8e41a9f7ad8335826f6, type: 2}
   - {fileID: 11400000, guid: 60a954d86eeb042478f0772ed7c712e7, type: 2}

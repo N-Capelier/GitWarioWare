@@ -19,4 +19,4 @@ MonoBehaviour:
   effect: 1
   price: 30
   dropRateWeight: 30
-  foodAmount: 10
+  moralAmount: 10
