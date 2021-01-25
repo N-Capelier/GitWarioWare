@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c2cda822bfa80074f881e6fe0192b4c9, type: 3}
-  m_Name: ID_Pintade
+  m_Name: Basho
   m_EditorClassIdentifier: 
   cluster: 2
   trio: LLL
   indexEnum: 0
-  verbe: Visez la Pintade
+  verbe: Frappe !
   microGameScene:
-    sceneAsset: {fileID: 102900000, guid: 62f158d430b69db49b3829418873778b, type: 3}
+    sceneAsset: {fileID: 102900000, guid: 33c6109aede51ef499077dd2a758d634, type: 3}
     required: 0
     buildIndex: 2
-  inputs: {fileID: 21300000, guid: bbece81bda9df384491697cd7d71f398, type: 3}
+  inputs: {fileID: 0}
   currentDifficulty: 0
   idWeight: 0
   hasBarrel: 0

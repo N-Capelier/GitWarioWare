@@ -318,7 +318,7 @@ Transform:
   m_LocalScale: {x: 0.95, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &374025063 stripped
 GameObject:
@@ -354,7 +354,7 @@ Transform:
   m_LocalScale: {x: 0.95, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &722603047
 GameObject:
@@ -367,7 +367,7 @@ GameObject:
   - component: {fileID: 722603049}
   - component: {fileID: 722603048}
   m_Layer: 0
-  m_Name: TouffeDeco1 (1)
+  m_Name: TouffeDeco5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -436,7 +436,7 @@ Transform:
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &743563307
 GameObject:
@@ -625,7 +625,7 @@ Transform:
   m_LocalScale: {x: 0.22404228, y: 0.22404228, z: 0.22404228}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &910944315 stripped
 GameObject:
@@ -1072,7 +1072,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 1314863136277694696, guid: 4f3599384d447524f9d37c96a0785ba9,
+      objectReference: {fileID: -593010281990550912, guid: 346ebc4eb970c7a42b1c465d92465403,
         type: 3}
     - target: {fileID: 3934624120059000268, guid: 07bf7a0e6d1e58e4698f2fb42a0f093a,
         type: 3}
@@ -1147,12 +1147,12 @@ PrefabInstance:
     - target: {fileID: 7351903938806154320, guid: 07bf7a0e6d1e58e4698f2fb42a0f093a,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 6.735922
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 7351903938806154320, guid: 07bf7a0e6d1e58e4698f2fb42a0f093a,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 6.735922
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 7351903938806154320, guid: 07bf7a0e6d1e58e4698f2fb42a0f093a,
         type: 3}
@@ -1506,7 +1506,7 @@ GameObject:
   - component: {fileID: 2001203997}
   - component: {fileID: 2001203996}
   m_Layer: 0
-  m_Name: TouffeDeco1 (2)
+  m_Name: TouffeDeco6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1575,7 +1575,7 @@ Transform:
   m_LocalScale: {x: -2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2021814621 stripped
 GameObject:
@@ -1812,6 +1812,56 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1318754839073394911, guid: dd00bf5f948b13b4e8ecbbec6690af3b,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 3c5fc7e76d2d7bb4baf321dc3735a63f, type: 3}
+    - target: {fileID: 1318754839205619682, guid: dd00bf5f948b13b4e8ecbbec6690af3b,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 4d5817dcb4f0e044c9e8f71a5ba626c5, type: 3}
+    - target: {fileID: 1318754839308536033, guid: dd00bf5f948b13b4e8ecbbec6690af3b,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 8c33a7fbe0b563c46b6301952aedc15f, type: 3}
+    - target: {fileID: 1318754839891796400, guid: dd00bf5f948b13b4e8ecbbec6690af3b,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 1318754839891796400, guid: dd00bf5f948b13b4e8ecbbec6690af3b,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 9de5f04fed7a1744986bcfdf90dc725f, type: 3}
+    - target: {fileID: 1318754839918264795, guid: dd00bf5f948b13b4e8ecbbec6690af3b,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 3c5fc7e76d2d7bb4baf321dc3735a63f, type: 3}
+    - target: {fileID: 1318754840046028707, guid: dd00bf5f948b13b4e8ecbbec6690af3b,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 1318754840046028707, guid: dd00bf5f948b13b4e8ecbbec6690af3b,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 9de5f04fed7a1744986bcfdf90dc725f, type: 3}
+    - target: {fileID: 1318754840221658822, guid: dd00bf5f948b13b4e8ecbbec6690af3b,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: d3559ef1e9710a0409f29216e6c2bc61, type: 3}
+    - target: {fileID: 1318754840229264400, guid: dd00bf5f948b13b4e8ecbbec6690af3b,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 4746812748ba0fd4b993419f65d12dee, type: 3}
     - target: {fileID: 1318754840637904225, guid: dd00bf5f948b13b4e8ecbbec6690af3b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1872,6 +1922,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: SoundManager
       objectReference: {fileID: 0}
+    - target: {fileID: 1318754840657189437, guid: dd00bf5f948b13b4e8ecbbec6690af3b,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: e1b9fd724c61d8b44b49311fe74c4f87, type: 3}
+    - target: {fileID: 1318754840915090421, guid: dd00bf5f948b13b4e8ecbbec6690af3b,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 469178a30122d344781c45864220d001, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd00bf5f948b13b4e8ecbbec6690af3b, type: 3}
 --- !u!1001 &4692354298073199054
@@ -2286,12 +2346,22 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -8796442726748523048, guid: 4f3599384d447524f9d37c96a0785ba9,
+      objectReference: {fileID: -3420467684573950949, guid: c42e1fcf2efe83d46acc1e24a22f97ab,
         type: 3}
     - target: {fileID: 3934624120059000268, guid: 07bf7a0e6d1e58e4698f2fb42a0f093a,
         type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3934624120059000268, guid: 07bf7a0e6d1e58e4698f2fb42a0f093a,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 0.107
+      objectReference: {fileID: 0}
+    - target: {fileID: 3934624120059000268, guid: 07bf7a0e6d1e58e4698f2fb42a0f093a,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.122
       objectReference: {fileID: 0}
     - target: {fileID: 5874975102540035113, guid: 07bf7a0e6d1e58e4698f2fb42a0f093a,
         type: 3}
@@ -2356,12 +2426,12 @@ PrefabInstance:
     - target: {fileID: 7351903938806154320, guid: 07bf7a0e6d1e58e4698f2fb42a0f093a,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 6.735922
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 7351903938806154320, guid: 07bf7a0e6d1e58e4698f2fb42a0f093a,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 6.735922
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 7351903938806154320, guid: 07bf7a0e6d1e58e4698f2fb42a0f093a,
         type: 3}

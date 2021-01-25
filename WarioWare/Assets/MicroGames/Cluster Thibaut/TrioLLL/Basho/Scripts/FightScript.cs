@@ -23,7 +23,7 @@ namespace TrioLLL
             public bool rightArmIsActivated = false;
             public bool canUseLeftArm = true;
             public bool canUseRightArm = true;
-            private AudioSource source;
+            public AudioSource source;
             public AudioClip leftPunch;
             public AudioClip rightPunch;
             public EnemyLifeSystem enemyLife;
@@ -37,7 +37,6 @@ namespace TrioLLL
                 rightActivatedArm.SetActive(false);
                 leftActivateddArm.SetActive(false);
                 hitDuration = 60 / bpm / 5;
-                source = GetComponent<AudioSource>();
                 gameIsOver = GetComponent<GraphManager>().endOfTheGame;
             }
 

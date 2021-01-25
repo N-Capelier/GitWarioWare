@@ -18,6 +18,7 @@ namespace TrioLLL
             public GameObject bossLevel1;
             public GameObject bossLevel2;
             public GameObject bossLevel3;
+            [HideInInspector] public SpriteRenderer currentBoss;
             public GameObject bossLevel1Defeated;
             public GameObject bossLevel2Defeated;
             public GameObject bossLevel3Defeated;
@@ -39,14 +40,17 @@ namespace TrioLLL
                     case Difficulty.EASY:
                         backgroundLevel1.SetActive(true);
                         bossLevel1.SetActive(true);
+                        currentBoss = bossLevel1.GetComponent<SpriteRenderer>();
                         break;
                     case Difficulty.MEDIUM:
                         backgroundLevel2.SetActive(true);
                         bossLevel2.SetActive(true);
+                        currentBoss = bossLevel2.GetComponent<SpriteRenderer>();
                         break;
                     case Difficulty.HARD:
                         backgroundLevel3.SetActive(true);
                         bossLevel3.SetActive(true);
+                        currentBoss = bossLevel3.GetComponent<SpriteRenderer>();
                         break;
                 }
             }
