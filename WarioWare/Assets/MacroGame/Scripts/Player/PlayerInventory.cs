@@ -33,6 +33,7 @@ namespace Player
         public TextMeshProUGUI goldCompletion;
         public TextMeshProUGUI foodCompletion;
         public TextMeshProUGUI woodCompletion;
+        public TextMeshProUGUI moralCompletion;
         private Reward rewardToAdd;
 
         private AudioSource audioSource;

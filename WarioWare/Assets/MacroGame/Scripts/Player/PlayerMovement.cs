@@ -364,6 +364,11 @@ namespace Player
                         //Debug.Log("Error : Island has no type !" + islands[i].gameObject.name);
                         break;
                 }
+
+                if(islands[i].isDone)
+                {
+                    islands[i].redCross.gameObject.SetActive(true);
+                }
             }
 
         }
@@ -373,6 +378,7 @@ namespace Player
             for (int i = 0; i < islands.Length; i++)
             {
                 islands[i].icon.gameObject.SetActive(false);
+                islands[i].redCross.gameObject.SetActive(false);
             }
         }
     }

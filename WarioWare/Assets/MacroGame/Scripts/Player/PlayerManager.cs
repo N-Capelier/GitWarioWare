@@ -17,6 +17,7 @@ namespace Player
         public int playerHp;
         public int beatcoins;
         public int food;
+        public int moral;
         public int keyStoneNumber;
         [Header("MaxRessources")]
         public int maxFood;
@@ -57,11 +58,11 @@ namespace Player
         {
 
             //Show / Hide Inventory //check micro UI inactive
-            if(!Manager.Instance.capUI.activeSelf && Input.GetButtonDown("Start_Button") && !inInventory)
+            if(!Manager.Instance.capUI.activeSelf && Input.GetButtonDown("Y_Button") && !inInventory)
             {
                 PlayerInventory.Instance.Show();
             }
-            else if(!Manager.Instance.capUI.activeSelf && inInventory && (Input.GetButtonDown("Start_Button") || Input.GetButtonDown("B_Button")))
+            else if(!Manager.Instance.capUI.activeSelf && inInventory && (Input.GetButtonDown("Y_Button") || Input.GetButtonDown("B_Button")))
             {
                 PlayerInventory.Instance.Hide(); 
             }
@@ -121,6 +122,22 @@ namespace Player
                 food += f;
             }
             UpdatePlayerUI.Invoke();
+        }
+
+        public void GainMoral(int _moral)
+        {
+            if(moral + _moral >= 100)
+            {
+                moral = 100;
+            }
+            else if(moral + _moral <= 0)
+            {
+                moral = 0;
+            }
+            else
+            {
+                moral += _moral;
+            }
         }
         public void GainKeyStone()
         {

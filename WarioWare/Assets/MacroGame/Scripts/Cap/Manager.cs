@@ -37,6 +37,7 @@ namespace Caps
         public int idWeightToAdd;
         public int idInitialWeight;
         [SerializeField] int damagesOnMiniGameLose = 10;
+        [SerializeField] int moralCost = 10;
         [Header("BronzeChest")]
         [SerializeField] int monnaieBronze = 3;
         [Header("SilverChest")]
@@ -741,7 +742,7 @@ namespace Caps
 
         private IEnumerator RewardUI()
         {
-            eventSystem = EventSystem.current;
+           // eventSystem = EventSystem.current;
             eventSystem.enabled = false;
             PlayerInventory.Instance.rewardImage.sprite = PlayerMovement.Instance.playerIsland.reward.sprite;
             PlayerInventory.Instance.rewardCanvas.SetActive(true);
@@ -859,15 +860,37 @@ namespace Caps
                     }
                 }
             }
+
+            //add moral based gold
+            if(PlayerManager.Instance.moral > 0 && PlayerManager.Instance.moral < 25)
+            {
+                goldToAdd += 0;
+            }
+            else if (PlayerManager.Instance.moral >= 25 && PlayerManager.Instance.moral < 50)
+            {
+                goldToAdd += 5;
+
+            }
+            else if (PlayerManager.Instance.moral >= 50 && PlayerManager.Instance.moral < 75)
+            {
+                goldToAdd += 10;
+            }
+            else if (PlayerManager.Instance.moral >= 75 && PlayerManager.Instance.moral < 100)
+            {
+                goldToAdd += 15;
+            }
+
             PlayerManager.Instance.GainCoins(goldToAdd);
             PlayerManager.Instance.GainFood(foodToAdd);
             PlayerManager.Instance.Heal(woodToAdd);
+            PlayerManager.Instance.GainMoral(-moralCost);
             miniGameWon = 0;
 
             PlayerInventory.Instance.completion.text = "Completion : " + pourcentageCompleted * 100 + "%";
             PlayerInventory.Instance.goldCompletion.text = "beatcoin + " + goldToAdd;
             PlayerInventory.Instance.foodCompletion.text = "rations + " + foodToAdd;
             PlayerInventory.Instance.woodCompletion.text = "planches + " + woodToAdd;
+            PlayerInventory.Instance.moralCompletion.text = "moral - " + moralCost;
             currentCap = null;
 
         }
