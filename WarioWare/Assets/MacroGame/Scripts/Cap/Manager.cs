@@ -136,7 +136,8 @@ namespace Caps
         /// <returns></returns>
         public IEnumerator StartMiniGame(Cap _currentCap, Island _currentIsland, bool isBoss = false)
         {
-
+            int _keyStoneImpact = Mathf.RoundToInt(PlayerManager.Instance.keyStoneNumber / 2f);
+            numberBeforSpeedUp = 1 + Mathf.RoundToInt(((float)currentIsland.difficulty + 1f) / 5f) + _keyStoneImpact + Mathf.RoundToInt(1f / (1f + _keyStoneImpact));
             cantDoTransition = false;
             currentCap = _currentCap;
             currentIsland = _currentIsland;
@@ -217,7 +218,7 @@ namespace Caps
             panel.SetActive(false);
             verbePanel.SetActive(true);
 
-           
+
             FadeManager.Instance.NoPanel();
             if (!isBoss)
                 SoundManager.Instance.ApplyAudioClip("verbeJingle", transitionMusic, bpm);
@@ -244,7 +245,7 @@ namespace Caps
                 verbeText.text = currentCap.chosenMiniGames[currentMiniGame].verbe;
             }
 
-            idName.text = currentCap.chosenMiniGames[currentMiniGame].name;
+           // idName.text = currentCap.chosenMiniGames[currentMiniGame].name;
 
             //yield return new WaitForSeconds((verbTime-0.25f) * 60 / (float)bpm);
             yield return new WaitForSeconds(transitionMusic.clip.length);
@@ -346,7 +347,7 @@ namespace Caps
             if (win)
             {
                 miniGameWon++;
-                if(isNormalMode)
+                if (isNormalMode)
                 {
                     transition.CompletionBar(miniGameWon / currentCap.length, 60f / (float)bpm);
                 }
@@ -398,7 +399,7 @@ namespace Caps
 
             miniGamePassedNumber++;
 
-
+            
 
             if (miniGamePassedNumber % numberBeforSpeedUp == 0 && currentCap.length != miniGamePassedNumber)
             {
@@ -419,7 +420,7 @@ namespace Caps
 
         }
 
-        public void GlobalTransitionEnd( bool isBoss = false)
+        public void GlobalTransitionEnd(bool isBoss = false)
         {
             if (currentMiniGame == currentCap.chosenMiniGames.Count)
             {
@@ -514,14 +515,9 @@ namespace Caps
                 sceneCam.SetActive(true);
                 StartCoroutine(UnzoomCam());
                 yield return new WaitForSeconds(shipOpening.openingTime * 2);
-                if (PlayerMovement.Instance.playerIsland.type == IslandType.Shop)
-                {
-                    ShopManager.Instance.Show(PlayerMovement.Instance.playerIsland);
-                }
-                else
-                {
-                    StartCoroutine(RewardUI());
-                }
+
+                StartCoroutine(RewardUI());
+
             }
             else
             {
@@ -594,7 +590,7 @@ namespace Caps
                     else
                     {
                         int keyStoneImpact = PlayerManager.Instance.keyStoneNumber / 2;
-                        island.capList[i].length = 4 * ((int)_IslandTarget.difficulty + 1) + miniGameNumberPerCap + 2 * PlayerManager.Instance.keyStoneNumber - 2 * keyStoneImpact;
+                        island.capList[i].length = 3 * ((int)_IslandTarget.difficulty + 1) + miniGameNumberPerCap +  PlayerManager.Instance.keyStoneNumber - 2 * keyStoneImpact;
                     }
 
                     island.capList[i].capWeight = idWeightToAdd;
@@ -619,7 +615,7 @@ namespace Caps
                     if (_IslandTarget.type != IslandType.Boss)
                     {
                         int keyStoneImpact = PlayerManager.Instance.keyStoneNumber / 2;
-                        island.capList[i].length = 4 * ((int)_IslandTarget.difficulty + 1) + miniGameNumberPerCap + 2 * PlayerManager.Instance.keyStoneNumber - 2 * keyStoneImpact;
+                        island.capList[i].length = 3 * ((int)_IslandTarget.difficulty + 1) + miniGameNumberPerCap +  PlayerManager.Instance.keyStoneNumber - 2 * keyStoneImpact;
 
                     }
                 }
@@ -708,48 +704,60 @@ namespace Caps
 
         private IEnumerator RewardUI()
         {
-           // eventSystem = EventSystem.current;
+            // eventSystem = EventSystem.current;
             eventSystem.enabled = false;
-            PlayerInventory.Instance.rewardImage.sprite = PlayerMovement.Instance.playerIsland.reward.sprite;
+            if (PlayerMovement.Instance.playerIsland.type != IslandType.Shop)
+            {
+                PlayerInventory.Instance.rewardImage.sprite = PlayerMovement.Instance.playerIsland.reward.sprite;
+            }
+
             PlayerInventory.Instance.rewardCanvas.SetActive(true);
-            CompletionAttribution();
+                CompletionAttribution();
 
-            yield return new WaitUntil(() => Input.GetButtonDown("A_Button"));
-            CloseReward();
+                yield return new WaitUntil(() => Input.GetButtonDown("A_Button"));
+                CloseReward();
         }
-
         public void CloseReward()
         {
             //apply object effect if ressource
             PlayerInventory.Instance.rewardCanvas.SetActive(false);
-
-            if (PlayerMovement.Instance.playerIsland.reward.type != RewardType.Resource)
+            if (PlayerMovement.Instance.playerIsland.type == IslandType.Shop)
             {
-                PlayerInventory.Instance.SetItemToAdd(PlayerMovement.Instance.playerIsland.reward, true);
+                eventSystem.enabled = true;
+                ShopManager.Instance.Show(PlayerMovement.Instance.playerIsland);
             }
             else
             {
-                if (PlayerMovement.Instance.playerIsland.reward.name != "TreasureChest")
+                if (PlayerMovement.Instance.playerIsland.reward.type != RewardType.Resource)
                 {
-
+                    PlayerInventory.Instance.SetItemToAdd(PlayerMovement.Instance.playerIsland.reward, true);
                 }
                 else
                 {
-                    eventSystem.enabled = true;
+                    if (PlayerMovement.Instance.playerIsland.reward.name != "TreasureChest")
+                    {
+
+                    }
+                    else
+                    {
+                        eventSystem.enabled = true;
+                    }
+
+                    PlayerMovement.Instance.playerIsland.reward.ApplyPassiveEffect();
                 }
-
-                PlayerMovement.Instance.playerIsland.reward.ApplyPassiveEffect();
+                if (isFirstMiniGame)
+                {
+                    DialogueManager.Instance.PlayDialogue(4, 6);
+                    isFirstMiniGame = false;
+                }
+                else
+                    eventSystem.enabled = true;
             }
 
-            if (isFirstMiniGame)
-            {
-                DialogueManager.Instance.PlayDialogue(4,7);
-                isFirstMiniGame = false;
-            }
-            else
-                eventSystem.enabled = true;
 
         }
+
+
 
         private void CompletionAttribution()
         {
@@ -788,7 +796,7 @@ namespace Caps
                             if (currentMonnaie >= 6)
                             {
                                 currentMonnaie -= 6;
-                                woodToAdd +=10;
+                                woodToAdd += 10;
                             }
                             break;
                         default:
@@ -834,7 +842,7 @@ namespace Caps
             }
 
             //add moral based gold
-            if(PlayerManager.Instance.moral > 0 && PlayerManager.Instance.moral < 25)
+            if (PlayerManager.Instance.moral > 0 && PlayerManager.Instance.moral < 25)
             {
                 goldToAdd += 0;
             }
@@ -856,8 +864,8 @@ namespace Caps
             PlayerManager.Instance.Heal(woodToAdd);
             PlayerManager.Instance.GainMoral(moralCost);
             miniGameWon = 0;
-            transition.completionBar.fillAmount= 0;
-            PlayerInventory.Instance.completion.text = "Completion : " + Mathf.RoundToInt( pourcentageCompleted *100 )+"%";
+            transition.completionBar.fillAmount = 0;
+            PlayerInventory.Instance.completion.text = "Completion : " + Mathf.RoundToInt(pourcentageCompleted * 100) + "%";
             PlayerInventory.Instance.goldCompletion.text = "beatcoin + " + goldToAdd;
             PlayerInventory.Instance.woodCompletion.text = "planches + " + woodToAdd;
             PlayerInventory.Instance.moralCompletion.text = "moral + " + moralCost;
