@@ -20,16 +20,22 @@ public class IslandIcone_Showcase : MonoBehaviour
         startPosition = icone.position;
     }
 
-    public void Show(float duration)
+    public void Show(float _duration)
     {
-        icone.DOAnchorPosY(startPosition.y + elevationY, duration).SetEase(easeType);
-        image_icone.DOColor(Color.white, duration).SetEase(easeType);
+        icone.position = startPosition;
+        image_icone.color = transparency;
+        icone.DOMoveY(startPosition.y + elevationY, _duration).SetEase(easeType);
+        image_icone.DOColor(Color.white, _duration).SetEase(easeType);
     }
 
-    public void Hide(float duration)
+    public void Hide(float _duration)
     {
-        icone.DOAnchorPosY(startPosition.y, duration).SetEase(easeType);
-        image_icone.DOColor(transparency, duration).SetEase(easeType);
+        icone.DOAnchorPosY(startPosition.y, _duration).SetEase(easeType);
+        image_icone.DOColor(transparency, _duration).SetEase(easeType);
     }
 
+    private void OnEnable()
+    {
+        Show(duration);
+    }
 }
