@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 28096d7c81a5fdb4db5c0e09cf01e03a
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Mithella
+  fontNames:
+  - Mithella
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 3183486351db35d49adc65c1bc65054d, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
