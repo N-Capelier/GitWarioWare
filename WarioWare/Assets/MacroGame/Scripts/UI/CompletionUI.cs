@@ -86,7 +86,7 @@ public class CompletionUI : MonoBehaviour
         ShowRewards();
         yield return new WaitForSeconds(2);
         StartCoroutine(ShowCompletion());
-        yield return new WaitForSeconds(5);
+        yield return new WaitUntil(() => Input.GetButtonDown("A_Button"));
         ResetAllItems();
     }
 
