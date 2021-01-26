@@ -98,6 +98,8 @@ public class CompletionUI : MonoBehaviour
         rewardCanvas.SetActive(false);
         completionText.SetActive(false);
         chestImage.gameObject.SetActive(true);
+        UI.UICameraController.canSelect = true;
+
     }
 
 }

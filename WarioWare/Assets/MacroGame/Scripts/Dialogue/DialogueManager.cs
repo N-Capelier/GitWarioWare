@@ -40,6 +40,8 @@ public class DialogueManager : Singleton<DialogueManager>
                     currentTarget = null;
                 }
                 Manager.Instance.eventSystem.enabled = true;
+                UI.UICameraController.canSelect = false;
+
             }
         }
     }
@@ -47,6 +49,7 @@ public class DialogueManager : Singleton<DialogueManager>
 
     public void PlayDialogue(int dialogueNumber, int _dialogueInRow = 0, GameObject target= null, Transform direction = null)
     {
+        UI.UICameraController.canSelect = false;
         canSkip = true;
         dialogueInRow = _dialogueInRow;
         currenDialogue = Instantiate(dialogues[dialogueNumber], transform.position, Quaternion.identity);

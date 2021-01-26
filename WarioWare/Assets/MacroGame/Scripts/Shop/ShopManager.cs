@@ -146,6 +146,8 @@ namespace Shop
 
         public void Show(Island shop)
         {
+            UI.UICameraController.canSelect = false;
+
             SoundManager.Instance.ApplyAudioClip("Clicked", audioSource);
             audioSource.PlaySecured();
 
@@ -172,6 +174,8 @@ namespace Shop
             Manager.Instance.macroUI.SetActive(true);
             Manager.Instance.shipOpening.gameObject.SetActive(false);
             PlayerMovement.Instance.ResetFocus();
+            UI.UICameraController.canSelect = true;
+
         }
 
         public void BuyItem(Button clickedButton)
