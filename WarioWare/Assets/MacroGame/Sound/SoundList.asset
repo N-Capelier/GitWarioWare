@@ -49,6 +49,10 @@ MonoBehaviour:
     author: 
     clip: {fileID: 8300000, guid: 5122e0819c5f6fc4fa6e185ce6f3f743, type: 3}
     volume: 0.5
+  - name: ShopMusic
+    author: 
+    clip: {fileID: 8300000, guid: 4e564be7a52c11b4db1c1b01f1ead2b7, type: 3}
+    volume: 0.5
   soundBpms:
   - sounds:
     - name: transition_0

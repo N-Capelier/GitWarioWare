@@ -34,7 +34,7 @@ namespace Shop
         [HideInInspector] public bool inShop;
 
         private AudioSource audioSource;
-
+        public AudioSource ambianceSource;
 
         private void Awake()
         {
@@ -46,6 +46,7 @@ namespace Shop
         {
             InitializeShop();
             audioSource = GetComponent<AudioSource>();
+            SoundManager.Instance.ApplyAudioClip("ShopMusic", ambianceSource);
         }
 
         private void Update()
