@@ -16,6 +16,7 @@ using Shop;
 using Boss;
 using UnityEngine.EventSystems;
 using System.Net;
+using UnityEngine.U2D;
 
 namespace Caps
 {
@@ -492,8 +493,22 @@ namespace Caps
                 }
             }
 
-            currentAsyncScene = null;
+            //new isDone trails
+            SpriteShapeRenderer[] _islandTrails = _island.traiList.ToArray();
+            SpriteShapeRenderer[] _islandToGoTrails = _islandToGo.traiList.ToArray();
 
+            for (int i = 0; i < _islandTrails.Length; i++)
+            {
+                for (int j = 0; j < _islandToGoTrails.Length; j++)
+                {
+                    if(_islandTrails[i] == _islandToGoTrails[j])
+                    {
+                        _islandTrails[i].materials[1].SetInt("bool_IsDone", 1);
+                    }
+                }
+            }
+
+            currentAsyncScene = null;
 
             resultText.text = "GG";
             bpm = BPM.Slow;

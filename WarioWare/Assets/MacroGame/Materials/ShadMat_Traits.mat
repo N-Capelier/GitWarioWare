@@ -24,12 +24,21 @@ Material:
         m_Texture: {fileID: 2800000, guid: 73eb846a705f4ae4796543a110fdeae7, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_22B7F15E_Out_0:
+        m_Texture: {fileID: 2800000, guid: 0d8da2c24224f744a8544c6414cec5af, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _Texture2DAsset_26494871_Out_0:
         m_Texture: {fileID: 2800000, guid: dd9db90370f7e494e8629a01149558fe, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_5CF1D497_Out_0:
+        m_Texture: {fileID: 2800000, guid: b1dc79c25502605439c0770a4d4c840a, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Floats:
     - Boolean_3DBC902B: 1
+    - Boolean_790C4F8D: 0
     - Boolean_AB56FF33: 0
     - ENUM_STATE: 2
     - _DefilSpeed: 0.3
@@ -41,6 +50,7 @@ Material:
     - _scale: 1.2
     - _width: 0.8
     - bool_Available: 1
+    - bool_IsDone: 0
     - bool_Selected: 1
     m_Colors:
     - Col_AvSelectedCenter: {r: 1.8745098, g: 1.8745098, b: 1.309804, a: 1}
