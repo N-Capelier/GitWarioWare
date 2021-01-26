@@ -752,7 +752,7 @@ namespace Caps
 
             if (isFirstMiniGame)
             {
-                DialogueManager.Instance.PlayDialogue(4);
+                DialogueManager.Instance.PlayDialogue(4,0,VcamTarget, allIslands[5].transform);
                 isFirstMiniGame = false;
             }
             else

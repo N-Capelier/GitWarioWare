@@ -44,7 +44,7 @@ MonoBehaviour:
   - maxLife
   - damageMultiplier
   values:
-  - 2
+  - 1
   - 2
   - 10
   - 10

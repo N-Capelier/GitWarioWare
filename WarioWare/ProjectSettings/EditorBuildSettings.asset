@@ -125,4 +125,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/MicroGames/Cluster Theodore/TrioTrapioWare/Climb/Climb.unity
     guid: c44208f402e730447a72f08376bc02bd
+  - enabled: 1
+    path: Assets/MicroGames/Cluster Theodore/TrioSpanishInquisition/HisserLeDrapeau/HisserLeDrapeau.unity
+    guid: d04ea5955228be240b01b9005794d450
   m_configObjects: {}
