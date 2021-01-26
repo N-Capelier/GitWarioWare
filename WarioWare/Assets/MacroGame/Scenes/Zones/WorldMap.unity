@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -29959,7 +29959,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1572402334}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1862.6487, y: 710.3578, z: -3626.9966}
+  m_LocalPosition: {x: -1862.6487, y: 710.3578, z: -1863.4983}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -31720,7 +31720,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1958824538}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -1763.4983}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.4953271, y: 1.4953271, z: 1.4953271}
   m_Children:
   - {fileID: 43212459}
@@ -32084,6 +32084,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4425091558233280461, guid: 44ce734831448f74f8249d0ec54e9655,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -500
+      objectReference: {fileID: 0}
     - target: {fileID: 4425091558691189060, guid: 44ce734831448f74f8249d0ec54e9655,
         type: 3}
       propertyPath: targetTransform
@@ -32177,14 +32182,16 @@ PrefabInstance:
     - target: {fileID: 4425091559097141111, guid: 44ce734831448f74f8249d0ec54e9655,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2377.4697
+      value: -613.9713
       objectReference: {fileID: 0}
     - target: {fileID: 4425091559166213897, guid: 44ce734831448f74f8249d0ec54e9655,
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4425091558749786616, guid: 44ce734831448f74f8249d0ec54e9655, type: 3}
+    - {fileID: 4425091558749786623, guid: 44ce734831448f74f8249d0ec54e9655, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 44ce734831448f74f8249d0ec54e9655, type: 3}
 --- !u!1001 &2111837428
 PrefabInstance:

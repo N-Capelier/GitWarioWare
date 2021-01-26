@@ -59,7 +59,7 @@ namespace UI
                     uiVcam.gameObject.SetActive(false);
                     tacticalVcam.gameObject.SetActive(true);
                     invisibleButton.Select();
-                    PlayerMovement.Instance.ShowFarNeighboursIcon();
+                    //PlayerMovement.Instance.ShowFarNeighboursIcon();
                 }
                 else if(!uiVcam.gameObject.activeSelf)
                 {
