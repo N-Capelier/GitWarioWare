@@ -271,9 +271,15 @@ MonoBehaviour:
     name: victoryJingleBoss
     foldout: 0
   music:
-  - name: Jingle Bell
-    author: MoiMeme
-    clip: {fileID: 8300000, guid: 24a85e8ad37e7184e9232dacfcd6a93e, type: 3}
-  - name: 
-    author: 
-    clip: {fileID: 8300000, guid: 9927a5c4967a14948a700cefe70b2a1c, type: 3}
+  - name: ABadDay
+    author: MathieuVanCapellen
+    clip: {fileID: 8300000, guid: 54bad7354f815b14d937a557800b0040, type: 3}
+  - name: APirateLife
+    author: MathieuVanCapellen
+    clip: {fileID: 8300000, guid: f8a6539e438514349a7c92dc772e3280, type: 3}
+  - name: TheLastJourney
+    author: WilliamSchmitt
+    clip: {fileID: 8300000, guid: 97843520a0b1c5146ac825297789abc6, type: 3}
+  - name: TheLastJourney(NoPercu)
+    author: WilliamSchmitt
+    clip: {fileID: 8300000, guid: 7d82aa881e47d1549a9a801c2c12f265, type: 3}
