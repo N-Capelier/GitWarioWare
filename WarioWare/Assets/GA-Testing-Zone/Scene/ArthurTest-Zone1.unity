@@ -5359,7 +5359,10 @@ VisualEffect:
     m_NamedObject:
       m_Array: []
     m_Bool:
-      m_Array: []
+      m_Array:
+      - m_Value: 0
+        m_Name: IsZoneActivate
+        m_Overridden: 1
 --- !u!4 &121232283
 Transform:
   m_ObjectHideFlags: 0
