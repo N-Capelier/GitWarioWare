@@ -82,6 +82,7 @@ namespace Caps
         public GameObject sceneCam;
         public GameObject capUI;
         public GameObject macroUI;
+        public GameObject ressourcesUI;
         public TextMeshProUGUI idName;
         public GameObject clock;
 
@@ -122,12 +123,6 @@ namespace Caps
             damagesOnMiniGameLose = (int)DebugToolManager.Instance.ChangeVariableValue("damagesOnMiniGameLose");
             winingStreakNumber = (int)DebugToolManager.Instance.ChangeVariableValue("winingStreakNumber");
             losingStreakNumber = (int)DebugToolManager.Instance.ChangeVariableValue("losingStreakNumber");
-            /* barrelProbability = DebugToolManager.Instance.ChangeVariableValue("barrelProbability");
-             maxBarrelRessources = DebugToolManager.Instance.ChangeVariableValue("maxBarrelRessources");
-             minBarrelRessources = DebugToolManager.Instance.ChangeVariableValue("minBarrelRessources");
-             lifeWeight = DebugToolManager.Instance.ChangeVariableValue("lifeWeight");
-             goldWeight = DebugToolManager.Instance.ChangeVariableValue("goldWeight");
-             foodWeight = DebugToolManager.Instance.ChangeVariableValue("foodWeight");*/
             miniGameNumberPerCap = (int)DebugToolManager.Instance.ChangeVariableValue("miniGameNumberPerCap");
             cantDoTransition = true;
         }
@@ -180,9 +175,6 @@ namespace Caps
                 }
             }
 
-            /* StartCoroutine(FadeManager.Instance.FadeIn(0.15f * 60 / (float)bpm));
-             yield return new WaitForSeconds(0.5f * 60 / (float)bpm);*/
-
             StartCoroutine(PlayMiniGame(transitionCam, malediction, displayMalediction, isBoss));
         }
         public IEnumerator StartMiniGame(Cap _currentCap)
@@ -204,9 +196,6 @@ namespace Caps
 
             }
 
-            /* StartCoroutine(FadeManager.Instance.FadeIn(0.15f * 60 / (float)bpm));
-             yield return new WaitForSeconds(0.5f * 60 / (float)bpm);*/
-
             if (isLureActive > 0)
             {
                 isLure = true;
@@ -224,6 +213,7 @@ namespace Caps
                 speedUp.SetActive(false);
             capUI.SetActive(true);
             macroUI.SetActive(false);
+            ressourcesUI.SetActive(false);
             panel.SetActive(false);
             verbePanel.SetActive(true);
 
@@ -303,6 +293,7 @@ namespace Caps
             //panel.SetActive(true);
             sceneCam.SetActive(true);
             SceneManager.UnloadSceneAsync(currentCap.chosenMiniGames[currentMiniGame].microGameScene.BuildIndex);
+            ressourcesUI.SetActive(true);
 
             // difficutly chnage ever wining or losing streak
             if (win)
@@ -624,28 +615,6 @@ namespace Caps
         }
 
         [HideInInspector] public int bonusBarrels = 0;
-
-        /*  private void BarrelRessourcesContent()
-          {
-              var _size = Random.Range(minBarrelRessources + bonusBarrels, maxBarrelRessources + bonusBarrels);
-              int _goldAmount = 0;
-              int _lifeAmount = 0;
-              int _foodAmount = 0;
-              for (int i = 0; i < _size; i++)
-              {
-                  int _weight = goldWeight + lifeWeight + foodWeight;
-                  var _random = Random.Range(0, _weight);
-                  if (_random < goldWeight)
-                      _goldAmount++;
-                  else if (_random < goldWeight + lifeWeight)
-                      _lifeAmount++;
-                  else if (_random < goldWeight + lifeWeight + foodWeight)
-                      _foodAmount++;
-              }
-              PlayerManager.Instance.GainCoins(_goldAmount);
-              PlayerManager.Instance.GainFood(_foodAmount);
-              PlayerManager.Instance.Heal(_lifeAmount);
-          }*/
 
 
         public void KeyStoneReset()
