@@ -381,7 +381,7 @@ namespace Player
         {
             for (int i = 0; i < islands.Length; i++)
             {
-                islands[i].icon.gameObject.SetActive(false);
+                islands[i].iconTransition.Hide();
                 islands[i].redCross.gameObject.SetActive(false);
             }
         }

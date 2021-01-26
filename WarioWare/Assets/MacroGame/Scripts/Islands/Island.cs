@@ -66,6 +66,7 @@ namespace Islands
         public TextMeshProUGUI capLength;
         private AudioSource audioSource;
         public Image icon;
+        public IslandIcone_Showcase iconTransition;
         public Image redCross;
 
         #endregion

@@ -28,14 +28,20 @@ public class IslandIcone_Showcase : MonoBehaviour
         image_icone.DOColor(Color.white, _duration).SetEase(easeType);
     }
 
-    public void Hide(float _duration)
+    public void Hide()
     {
-        icone.DOAnchorPosY(startPosition.y, _duration).SetEase(easeType);
-        image_icone.DOColor(transparency, _duration).SetEase(easeType);
+        icone.DOMoveY(startPosition.y, duration).SetEase(easeType);
+        image_icone.DOColor(transparency, duration).SetEase(easeType);
+        Invoke("Disable", duration);
     }
 
     private void OnEnable()
     {
         Show(duration);
+    }
+
+    private void Disable()
+    {
+        gameObject.SetActive(false);
     }
 }
