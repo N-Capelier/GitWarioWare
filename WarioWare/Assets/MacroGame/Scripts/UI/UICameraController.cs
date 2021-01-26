@@ -26,6 +26,11 @@ namespace UI
         public CinemachineVirtualCamera tacticalVcam;
         public Button invisibleButton;
 
+        private void Start()
+        {
+            targetTransform.position = Manager.Instance.eventSystem.firstSelectedGameObject.transform.position; ; ;
+        }
+
         // Update is called once per frame
         void Update()
         {
