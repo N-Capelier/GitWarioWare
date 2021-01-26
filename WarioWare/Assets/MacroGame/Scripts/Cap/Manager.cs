@@ -710,7 +710,10 @@ namespace Caps
             {
                 PlayerInventory.Instance.rewardImage.sprite = PlayerMovement.Instance.playerIsland.reward.sprite;
             }
-
+            else
+            {
+                PlayerInventory.Instance.rewardImage.enabled = false;
+            }
             PlayerInventory.Instance.rewardCanvas.SetActive(true);
                 CompletionAttribution();
 
@@ -725,6 +728,7 @@ namespace Caps
             {
                 eventSystem.enabled = true;
                 ShopManager.Instance.Show(PlayerMovement.Instance.playerIsland);
+                PlayerInventory.Instance.rewardImage.enabled = true;
             }
             else
             {
