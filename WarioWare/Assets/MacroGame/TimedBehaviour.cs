@@ -22,7 +22,7 @@ public class TimedBehaviour : MonoBehaviour
     public virtual void Start()
     {
         //please dont ask any question
-        if (SceneManager.GetActiveScene().name == "TestingScene" || SceneManager.GetActiveScene().name == "SceneCap" || SceneManager.GetActiveScene().name == "Zone1" || SceneManager.GetActiveScene().name == "FreeMode" || SceneManager.GetActiveScene().name == "Zone2" || SceneManager.GetActiveScene().name == "Zone3")
+        if (SceneManager.GetActiveScene().name == "TestingScene" || SceneManager.GetActiveScene().name == "Zone1" || SceneManager.GetActiveScene().name == "FreeMode" ||  SceneManager.GetActiveScene().name == "WorldMap")
         {
             bpm =(float) Manager.Instance.bpm;
             currentDifficulty = Manager.Instance.currentDifficulty;
