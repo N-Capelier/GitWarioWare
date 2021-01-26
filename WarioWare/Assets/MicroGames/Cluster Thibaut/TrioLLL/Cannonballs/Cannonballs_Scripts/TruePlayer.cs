@@ -22,12 +22,10 @@ namespace TrioLLL
             public AudioClip footPrints;
             public AudioClip boom;
             public AudioClip splatter;
-            public TrioLLL.Cannonballs.Soundmanager Audiomanager;
-            private TrioLLL.Cannonballs.Gabarits[] gabarits;
+            public Soundmanager Audiomanager;
+            [HideInInspector] public List<Gabarits> gabarits = new List<Gabarits>();
             private bool hasExploded = false;
             private bool footprintOn = false;
-            private bool horizontal0;
-            private bool vertical0;
 
             public override void Start()
             {
@@ -35,7 +33,7 @@ namespace TrioLLL
                 speedModifier = bpm/bpmDiviser ;
                 base.Start(); //Do not erase this line!
                 rb = GetComponent<Rigidbody2D>();
-                gabarits = FindObjectsOfType<TrioLLL.Cannonballs.Gabarits>();
+                //gabarits = FindObjectsOfType<TrioLLL.Cannonballs.Gabarits>();
             }
 
             //FixedUpdate is called on a fixed time.
@@ -51,8 +49,8 @@ namespace TrioLLL
                 {
 
                     rb.velocity = new Vector2(0, 0);
-
-                    foreach (TrioLLL.Cannonballs.Gabarits gabarit in gabarits)
+                    print(gabarits.Count);
+                    foreach (Gabarits gabarit in gabarits)
                     {
 
                         if (!gabarit.isPlayerOut && !hasExploded)

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GrandVoile
   m_EditorClassIdentifier: 
   rewardName: Grand voile
-  sprite: {fileID: 21300000, guid: df547bc70465afd4c88ad82dff4cca63, type: 3}
+  sprite: {fileID: 21300000, guid: fee1f75494514344880c5bc025d82520, type: 3}
   type: 1
   rarity: 1
   effect: 1

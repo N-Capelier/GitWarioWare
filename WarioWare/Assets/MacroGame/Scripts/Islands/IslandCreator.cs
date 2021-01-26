@@ -204,26 +204,30 @@ namespace Islands
         {
             //Convert weights to percentages
             int _totalWeight = 0;
-            foreach(Reward _reward in _rewards)
+            foreach (Reward _reward in _rewards)
             {
                 _totalWeight += _reward.dropRateWeight;
             }
 
             int[] _percentages = new int[_rewards.Length];
 
-            if(_totalWeight != 100)
+            if (_totalWeight != 100)
             {
                 for (int i = 0; i < _rewards.Length; i++)
                 {
                     int _push = 0;
-                    if(i > 0)
+                    if (i > 0)
                     {
-                        for (int j = 0; j < i; j++)
+                        /*for (int j = 0; j < i; j++)
                         {
                             _push += _percentages[j];
-                        }
+                        } FIXED NICO STUPIDITY*/
+                        _push = _percentages[i - 1];
                     }
                     _percentages[i] = _push + (_rewards[i].dropRateWeight * 100 / _totalWeight);
+
+                    /*if (_rewards[0].rarity == RewardRarity.Common)
+                        print($"!=100 : {_rewards[i].rewardName} at push{_percentages[i]}.");*/
                 }
             }
             else
@@ -233,14 +237,18 @@ namespace Islands
                     int _push = 0;
                     if (i > 0)
                     {
-                        for (int j = 0; j < i; j++)
+                        /*for (int j = 0; j < i; j++)
                         {
                             _push += _percentages[j];
-                        }
+                        } FIXED NICO STUPIDITY*/
+                        _push = _percentages[i - 1];
                     }
                     _percentages[i] = _push + _rewards[i].dropRateWeight;
                 }
             }
+
+            //Dodge math remap imprecision
+            _percentages[_percentages.Length - 1] = 100;
 
             //Generate the rewards depending on their drop weight
             int index = Random.Range(0, 100);

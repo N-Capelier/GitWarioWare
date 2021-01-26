@@ -25,7 +25,7 @@ namespace UI
         public CinemachineVirtualCamera uiVcam;
         public CinemachineVirtualCamera tacticalVcam;
         public Button invisibleButton;
-
+        public static bool canSelect;
         private void Start()
         {
             targetTransform.position = Manager.Instance.eventSystem.firstSelectedGameObject.transform.position; ; ;
@@ -51,7 +51,7 @@ namespace UI
                 }
             }
 
-            if(Input.GetButtonDown("Back_Button"))
+            if(Input.GetButtonDown("Back_Button") && canSelect)
             {
                 if (uiVcam.gameObject.activeSelf)
                 {
@@ -59,7 +59,7 @@ namespace UI
                     uiVcam.gameObject.SetActive(false);
                     tacticalVcam.gameObject.SetActive(true);
                     invisibleButton.Select();
-                    PlayerMovement.Instance.ShowFarNeighboursIcon();
+                    //PlayerMovement.Instance.ShowFarNeighboursIcon();
                 }
                 else if(!uiVcam.gameObject.activeSelf)
                 {

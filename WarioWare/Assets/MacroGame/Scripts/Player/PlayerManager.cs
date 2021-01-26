@@ -24,6 +24,7 @@ namespace Player
 
         public delegate void PlayerUIHandler();
         public event PlayerUIHandler UpdatePlayerUI;
+        public CompletionUI completionUI;
 
         [Header("Sound")]
         public AudioSource audioSource;
@@ -138,6 +139,7 @@ namespace Player
             {
                 moral += _moral;
             }
+            UpdatePlayerUI.Invoke();
         }
         public void GainKeyStone()
         {
@@ -152,7 +154,7 @@ namespace Player
                 SoundManager.Instance.ApplyAudioClip("gameOverJingleBoss", audioSource, Manager.Instance.bpm);
 
             audioSource.PlaySecured();
-            PlayerInventory.Instance.rewardCanvas.SetActive(true);
+          //  PlayerInventory.Instance.rewardCanvas.SetActive(true);
             death.SetActive(true);
             yield return new WaitForSeconds(audioSource.clip.length);
             Manager.Instance.EndGame();

@@ -95,6 +95,61 @@ namespace Caps
                 }
             
         }
+        public void ChoseMiniGames(List<IDCard> sorter, int lenght)
+        {
+
+            int differentGameNumber = lenght;
+            //purcentage will ad every value if each game to creat a global procentage
+            int purcentage = 0;
+            for (int i = 0; i < sorter.Count; i++)
+            {
+                purcentage += sorter[i].idWeight;
+            }
+
+            // this reference all the differente mini game stocked in the cap
+            List<int> _indexAlreadyTaken = new List<int>(differentGameNumber);
+            for (int i = 0; i < differentGameNumber; i++)
+            {
+                // random is the number selected in the global pool of value
+                int _random = Random.Range(0, purcentage);
+                //for each slot of different mini game avaible, test if random is between the previous purecentage
+                // and this id card purcentage with the previous value added 
+                // for exemple first id has a purcentage of 10 and  the second of 5, purcentage = 15
+                // lets say random = 12, its between the previous value (10) and the current id purcentage +the previous (5+10=15)
+                //if this id isnt in _indexAlreadyTaken, then the id is selected and is stocked in _indexAlreadyTaken
+                // if its taken, redue this iteration by doing i--
+                int _currentChance = 0;
+                int _previousChance = 0;
+                for (int x = 0; x < sorter.Count; x++)
+                {
+                    _currentChance += sorter[x].idWeight;
+                    if (_random >= _previousChance && _random < _currentChance)
+                    {
+                        if (!_indexAlreadyTaken.Contains(x))
+                        {
+                            chosenMiniGames.Add(sorter[x]);
+                            _indexAlreadyTaken.Add(x);
+                            //this number is what will be needed to be calculated
+
+                            sorter[x].idWeight += capWeight;
+                            if (sorter[x].idWeight >= 20)
+                                sorter[x].idWeight = 20;
+
+                            break;
+                        }
+                        else
+                        {
+                            i--;
+                            break;
+                        }
+                    }
+                    _previousChance = _currentChance;
+                }
+
+            }
+         
+
+        }
 
         public Cap()
         {
