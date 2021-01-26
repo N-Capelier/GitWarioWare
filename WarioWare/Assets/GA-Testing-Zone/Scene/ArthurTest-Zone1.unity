@@ -13662,14 +13662,19 @@ MonoBehaviour:
   bossIsland: {fileID: 0}
   islands: []
   selectedIsland: {fileID: 0}
-  resourceSprite: {fileID: 0}
   shopSprite: {fileID: 0}
   bossSprite: {fileID: 0}
   treasureSprite: {fileID: 0}
-  rareTreasureSprite: {fileID: 0}
+  keystoneSprite: {fileID: 0}
+  emptySprite: {fileID: 0}
+  goldRessource: {fileID: 0}
+  foodRessource: {fileID: 0}
+  cannonball: {fileID: 0}
+  healthRessource: {fileID: 0}
   foodPrice: 10
   damagesWhenNoFood: 10
   isMoving: 0
+  farNeighbors: []
   isMainSail: 0
 --- !u!4 &1007450610
 Transform:
@@ -24174,6 +24179,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cap Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 8977992822187955211, guid: 80ac864817d34d641be6448f49de01a3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8977992822539135367, guid: 80ac864817d34d641be6448f49de01a3,
         type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -29355,10 +29365,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2712765997138401047, guid: 9a784a7e95199cf47b1f43fb6d7aa90d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5975730464407200853, guid: 9a784a7e95199cf47b1f43fb6d7aa90d,
         type: 3}
       propertyPath: m_Name
       value: PlayerManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 5975730464407200853, guid: 9a784a7e95199cf47b1f43fb6d7aa90d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5975730464407200855, guid: 9a784a7e95199cf47b1f43fb6d7aa90d,
         type: 3}
@@ -29944,6 +29964,9 @@ MonoBehaviour:
   playerTransform: {fileID: 6887194127591594449}
   cameraSpeed: 325
   joystickDeadZone: 0.2
+  uiVcam: {fileID: 0}
+  tacticalVcam: {fileID: 0}
+  invisibleButton: {fileID: 0}
 --- !u!114 &1754798043
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30357,12 +30380,12 @@ PrefabInstance:
     - target: {fileID: 1717028799354508363, guid: 6bbebc6197c651f4c8ee1b6918b7c5f7,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -14.799927
+      value: -14.800049
       objectReference: {fileID: 0}
     - target: {fileID: 1717028799354508363, guid: 6bbebc6197c651f4c8ee1b6918b7c5f7,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -24.49997
+      value: -24.5
       objectReference: {fileID: 0}
     - target: {fileID: 2703362669422701556, guid: 6bbebc6197c651f4c8ee1b6918b7c5f7,
         type: 3}
