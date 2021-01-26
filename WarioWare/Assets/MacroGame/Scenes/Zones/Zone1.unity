@@ -30513,6 +30513,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3299624670619868226, guid: 9a784a7e95199cf47b1f43fb6d7aa90d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5975730464407200853, guid: 9a784a7e95199cf47b1f43fb6d7aa90d,
         type: 3}
       propertyPath: m_Name
@@ -31853,6 +31858,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PlayerRessourcesUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 2703362669422701560, guid: 6bbebc6197c651f4c8ee1b6918b7c5f7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3229139738529405051, guid: 6bbebc6197c651f4c8ee1b6918b7c5f7,
         type: 3}
