@@ -138,6 +138,7 @@ namespace Player
             {
                 moral += _moral;
             }
+            UpdatePlayerUI.Invoke();
         }
         public void GainKeyStone()
         {
