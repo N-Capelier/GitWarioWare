@@ -134,7 +134,7 @@ namespace Caps
         /// </summary>
         /// <param name="_currentCap"></param>
         /// <returns></returns>
-        public IEnumerator StartMiniGame(Cap _currentCap, Island _currentIsland, Malediction malediction = null, bool displayMalediction = false, bool isBoss = false)
+        public IEnumerator StartMiniGame(Cap _currentCap, Island _currentIsland, bool isBoss = false)
         {
 
             cantDoTransition = false;
@@ -146,7 +146,7 @@ namespace Caps
                 BossLifeManager.Instance.bossUI.gameObject.SetActive(false);
                 if (currentIsland.type == IslandType.Boss)
                 {
-                    StartCoroutine(BossManager.Instance.StartBoss());
+                    StartCoroutine(BossManager.Instance.StartBoss(sorter, currentCap));
                     yield break;
                 }
                 else
@@ -175,7 +175,7 @@ namespace Caps
                 }
             }
 
-            StartCoroutine(PlayMiniGame(transitionCam, malediction, displayMalediction, isBoss));
+            StartCoroutine(PlayMiniGame(transitionCam, isBoss));
         }
         public IEnumerator StartMiniGame(Cap _currentCap)
         {
@@ -204,7 +204,7 @@ namespace Caps
         }
 
 
-        public IEnumerator PlayMiniGame(Camera _transitionCam, Malediction malediction = null, bool displayMalediction = false, bool isBoss = false)
+        public IEnumerator PlayMiniGame(Camera _transitionCam, bool isBoss = false)
         {
 
             sceneCam.SetActive(true);
@@ -217,16 +217,7 @@ namespace Caps
             panel.SetActive(false);
             verbePanel.SetActive(true);
 
-            if (malediction != null && displayMalediction)
-            {
-                displayMalediction = false;
-                verbeText.text = "Malediction";
-                yield return new WaitForSeconds(malediction.timer * 10 / (float)bpm);
-                verbeText.text = "Malediction " + "     " + malediction.maledictionName;
-                malediction.StartMalediction();
-                yield return new WaitForSeconds(malediction.timer * 50 / (float)bpm);
-            }
-
+           
             FadeManager.Instance.NoPanel();
             if (!isBoss)
                 SoundManager.Instance.ApplyAudioClip("verbeJingle", transitionMusic, bpm);
@@ -428,7 +419,7 @@ namespace Caps
 
         }
 
-        public void GlobalTransitionEnd(Malediction malediction = null, bool displayMalediction = false, bool isBoss = false)
+        public void GlobalTransitionEnd( bool isBoss = false)
         {
             if (currentMiniGame == currentCap.chosenMiniGames.Count)
             {
@@ -446,7 +437,7 @@ namespace Caps
             currentAsyncScene = SceneManager.LoadSceneAsync(currentCap.chosenMiniGames[currentMiniGame].microGameScene.BuildIndex, LoadSceneMode.Additive);
             currentAsyncScene.allowSceneActivation = false;
             if (currentIsland != null)
-                StartCoroutine(StartMiniGame(currentCap, currentIsland, malediction, displayMalediction, isBoss));
+                StartCoroutine(StartMiniGame(currentCap, currentIsland, isBoss));
             else
                 StartCoroutine(StartMiniGame(currentCap));
 

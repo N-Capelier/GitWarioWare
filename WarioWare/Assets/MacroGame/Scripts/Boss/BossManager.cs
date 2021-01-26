@@ -33,13 +33,10 @@ namespace Boss
         private int bossLifeOnStartOfFight;
         private int phaseBossLife;
         private int phaseNumber = 1;
-        public Malediction[] maledictionArray;
-        private Malediction currentMalediction;
         public RenderTexture bossTexture;
         public int differentMiniGameNumber = 4;
         public bool isFinalBoss;
         public float damageMultiplier = 1.2f;
-        private bool displayMalediction;
         private void Awake()
         {
             CreateSingleton();
@@ -54,16 +51,15 @@ namespace Boss
             
             
         }
-        public IEnumerator StartBoss()
+        public IEnumerator StartBoss(CapsSorter sorter, Cap currentCap)
         {
-            if (maledictionArray != null && maledictionArray.Length != 0)
-                currentMalediction = maledictionArray[Random.Range(0, maledictionArray.Length)];
+            currentCap.ChoseMiniGames(sorter.bossList, differentMiniGameNumber);
             bossLifeOnStartOfFight = BossLifeManager.currentLife;
             renderText.texture = bossTexture;
             shipOpening.gameObject.SetActive(true);
             StartCoroutine(Manager.Instance.ZoomCam(shipOpening.openingTime));
             yield return new WaitForSeconds(shipOpening.openingTime * 2);
-            StartCoroutine(Manager.Instance.PlayMiniGame(transitionCam, currentMalediction, true, true));
+            StartCoroutine(Manager.Instance.PlayMiniGame(transitionCam,true));
         }
         public IEnumerator TransitionBoss(bool win)
         {
@@ -119,40 +115,16 @@ namespace Boss
                     int _sceneIndex = Manager.Instance.macroSceneIndex;
                     if (SceneManager.GetSceneByBuildIndex(_sceneIndex).name == "Zone1")
                     {
-                        SceneManager.LoadScene("Zone2");
-                    }
-                    else if (SceneManager.GetSceneByBuildIndex(_sceneIndex).name == "Zone2")
-                    {
-                        SceneManager.LoadScene("Zone3");
-                    }
-                    else if (SceneManager.GetSceneByBuildIndex(_sceneIndex).name == "Zone3")
-                    {
                         SceneManager.LoadScene("Menu");
                     }
-                    yield break;
+                    
                 }
                 Manager.Instance.bpm = Manager.Instance.bpm.Next();
-                if (isFinalBoss)
-                {
-                    displayMalediction = true;
-                    currentMalediction.StopMalediction();
-                    var _malediction = maledictionArray[Random.Range(0, maledictionArray.Length)];
-                    while (_malediction == currentMalediction)
-                    {
-                        _malediction = maledictionArray[Random.Range(0, maledictionArray.Length)];
-                    }
-                    currentMalediction = _malediction;
-                }
-                else
-                {
-                    displayMalediction = false;
-                    currentMalediction = null;
-                }
+               
             }
 
 
-            Manager.Instance.GlobalTransitionEnd(currentMalediction, displayMalediction,true);
-            displayMalediction = false;
+            Manager.Instance.GlobalTransitionEnd(true);
             transitionCam.enabled = false;
         }
     }

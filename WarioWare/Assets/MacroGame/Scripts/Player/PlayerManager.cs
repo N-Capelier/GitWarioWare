@@ -153,7 +153,7 @@ namespace Player
                 SoundManager.Instance.ApplyAudioClip("gameOverJingleBoss", audioSource, Manager.Instance.bpm);
 
             audioSource.PlaySecured();
-            PlayerInventory.Instance.rewardCanvas.SetActive(true);
+          //  PlayerInventory.Instance.rewardCanvas.SetActive(true);
             death.SetActive(true);
             yield return new WaitForSeconds(audioSource.clip.length);
             Manager.Instance.EndGame();
