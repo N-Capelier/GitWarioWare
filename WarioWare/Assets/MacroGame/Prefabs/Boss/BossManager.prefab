@@ -599,7 +599,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -680,6 +680,7 @@ MonoBehaviour:
   bossTexture: {fileID: 8400000, guid: ae8679ad4834c894bba6a887e7b38dae, type: 2}
   differentMiniGameNumber: 5
   isFinalBoss: 0
+  damageMultiplier: 1.2
 --- !u!114 &5875710233450723279
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -754,7 +755,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -828,7 +829,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -903,7 +904,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0.049950123, a: 1}
+  m_Color: {r: 1, g: 0, b: 0.049950123, a: 0}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1092,7 +1093,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1297,7 +1298,10 @@ MonoBehaviour:
   ship: {fileID: 1244851797799707632}
   startPosition: {fileID: 314574347808935316}
   endPosition: {fileID: 6772012857425745238}
-  barrel: {fileID: 6505388416514792159, guid: d9477487a84c60f45bbcdf0a1b0f1a53, type: 3}
+  dot: {fileID: 0}
+  dotWin: {fileID: 0}
+  dotLose: {fileID: 0}
+  completionBar: {fileID: 0}
 --- !u!1 &8950875544139096074
 GameObject:
   m_ObjectHideFlags: 0

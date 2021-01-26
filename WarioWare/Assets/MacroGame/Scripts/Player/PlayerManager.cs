@@ -24,6 +24,7 @@ namespace Player
 
         public delegate void PlayerUIHandler();
         public event PlayerUIHandler UpdatePlayerUI;
+        public CompletionUI completionUI;
 
         [Header("Sound")]
         public AudioSource audioSource;

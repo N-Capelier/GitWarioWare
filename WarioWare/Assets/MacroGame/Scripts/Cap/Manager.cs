@@ -16,6 +16,7 @@ using Shop;
 using Boss;
 using UnityEngine.EventSystems;
 using System.Net;
+using UnityEngine.U2D;
 
 namespace Caps
 {
@@ -37,7 +38,8 @@ namespace Caps
         public int idWeightToAdd;
         public int idInitialWeight;
         [SerializeField] int damagesOnMiniGameLose = 10;
-        [SerializeField] int moralCost = 10;
+        [SerializeField] public int moralCost = 10;
+        [HideInInspector]public int _moralCost = 10;
         [Header("BronzeChest")]
         [SerializeField] int monnaieBronze = 3;
         [Header("SilverChest")]
@@ -483,8 +485,22 @@ namespace Caps
                 }
             }
 
-            currentAsyncScene = null;
+            //new isDone trails
+            SpriteShapeRenderer[] _islandTrails = _island.traiList.ToArray();
+            SpriteShapeRenderer[] _islandToGoTrails = _islandToGo.traiList.ToArray();
 
+            for (int i = 0; i < _islandTrails.Length; i++)
+            {
+                for (int j = 0; j < _islandToGoTrails.Length; j++)
+                {
+                    if(_islandTrails[i] == _islandToGoTrails[j])
+                    {
+                        _islandTrails[i].materials[1].SetInt("bool_IsDone", 1);
+                    }
+                }
+            }
+
+            currentAsyncScene = null;
 
             resultText.text = "GG";
             bpm = BPM.Slow;
@@ -769,6 +785,7 @@ namespace Caps
             int currentMonnaie;
             int goldToAdd = 0;
             int woodToAdd = 0;
+            int _moralCost = moralCost;
             if (pourcentageCompleted >= 1f)
             {
                 currentMonnaie = monnaieGold;
@@ -785,7 +802,7 @@ namespace Caps
                             if (currentMonnaie >= 2)
                             {
                                 currentMonnaie -= 2;
-                                moralCost += 5;
+                                _moralCost += 5;
                             }
                             else
                             {
@@ -828,7 +845,7 @@ namespace Caps
                             if (currentMonnaie >= 2)
                             {
                                 currentMonnaie -= 2;
-                                moralCost += 5;
+                                _moralCost += 5;
                             }
                             else
                             {
@@ -866,13 +883,14 @@ namespace Caps
 
             PlayerManager.Instance.GainCoins(goldToAdd);
             PlayerManager.Instance.Heal(woodToAdd);
-            PlayerManager.Instance.GainMoral(moralCost);
+            PlayerManager.Instance.GainMoral(_moralCost);
+            PlayerManager.Instance.completionUI.StartCompletion();
             miniGameWon = 0;
             transition.completionBar.fillAmount = 0;
             PlayerInventory.Instance.completion.text = "Completion : " + Mathf.RoundToInt(pourcentageCompleted * 100) + "%";
             PlayerInventory.Instance.goldCompletion.text = "beatcoin + " + goldToAdd;
             PlayerInventory.Instance.woodCompletion.text = "planches + " + woodToAdd;
-            PlayerInventory.Instance.moralCompletion.text = "moral + " + moralCost;
+            PlayerInventory.Instance.moralCompletion.text = "moral + " + _moralCost;
             currentCap = null;
         }
 
