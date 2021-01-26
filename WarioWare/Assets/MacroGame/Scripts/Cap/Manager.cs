@@ -99,7 +99,7 @@ namespace Caps
         [HideInInspector] public bool cantDisplayVerbe;
         public GameObject speedUp;
         [HideInInspector] public bool zoomed;
-
+        private bool isFirstMiniGame = true;
         [Header("Debug")]
         [SerializeField] bool isDebug = false;
         [HideInInspector] public EventSystem eventSystem;
@@ -750,7 +750,13 @@ namespace Caps
                 PlayerMovement.Instance.playerIsland.reward.ApplyPassiveEffect();
             }
 
-            eventSystem.enabled = true;
+            if (isFirstMiniGame)
+            {
+                DialogueManager.Instance.PlayDialogue(4);
+                isFirstMiniGame = false;
+            }
+            else
+                eventSystem.enabled = true;
 
         }
 
