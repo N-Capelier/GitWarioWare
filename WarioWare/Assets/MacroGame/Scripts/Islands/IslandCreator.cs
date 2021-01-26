@@ -164,7 +164,6 @@ namespace Islands
                     default:
                         throw new System.Exception("Island difficulty not set!");
                 }
-                print(_generatedReward[i]);
                 _generatedIslands[i].SetReward(_generatedReward[i], _islandSprite);
             }
 

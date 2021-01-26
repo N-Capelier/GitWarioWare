@@ -50,6 +50,11 @@ namespace Shop
 
         private void Update()
         {
+            if(Input.GetKeyDown(KeyCode.A))
+            {
+                Show(shopIslands[0]);
+            }
+
             if (inShop && (Input.GetButtonDown("B_Button")) && !PlayerManager.Instance.inInventory)
             {
                 Hide();
@@ -99,7 +104,12 @@ namespace Shop
                     _reward = IslandCreator.Instance.FisherYates(allResources.ToArray())[0];
                     shopItems[i].Add(_reward);
                 }
-            }    
+            }
+
+            for (int i = 0; i < shopItems[0].Count; i++)
+            {
+                print(shopItems[0][i].name);
+            }
         }
 
         private void LoadShopItems(int index)
@@ -108,7 +118,7 @@ namespace Shop
             //Load images and price text
             for (int i = 0; i < shopSlots.Length; i++)
             {
-                if (shopItems[i] == null)
+                if (shopItems[index] == null)
                 {
                     shopItemImages[i].gameObject.SetActive(false);
                     itemPrices[i].gameObject.SetActive(false);
