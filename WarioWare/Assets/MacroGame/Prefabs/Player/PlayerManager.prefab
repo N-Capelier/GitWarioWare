@@ -145,7 +145,6 @@ GameObject:
   - component: {fileID: 5941372474394092654}
   - component: {fileID: 8497297241993319887}
   - component: {fileID: 7359765580933813043}
-  - component: {fileID: 5726437090977011068}
   m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
@@ -161,15 +160,15 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 532149089697629188}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 353.2694}
+  m_LocalScale: {x: 0.4953125, y: 0.4953125, z: 0.4953125}
   m_Children: []
-  m_Father: {fileID: 6508258418900969775}
+  m_Father: {fileID: 3631578002438691918}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000030517578, y: 0}
+  m_AnchoredPosition: {x: -90.08188, y: -13.018303}
   m_SizeDelta: {x: 396.6, y: 76}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8497297241993319887
@@ -209,27 +208,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!223 &5726437090977011068
-Canvas:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 532149089697629188}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_RenderMode: 2
-  m_Camera: {fileID: 0}
-  m_PlaneDistance: 100
-  m_PixelPerfect: 0
-  m_ReceivesEvents: 1
-  m_OverrideSorting: 1
-  m_OverridePixelPerfect: 0
-  m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
-  m_SortingLayerID: 0
-  m_SortingOrder: 1
-  m_TargetDisplay: 0
 --- !u!1 &634514564565500779
 GameObject:
   m_ObjectHideFlags: 0
@@ -1167,7 +1145,7 @@ RectTransform:
   m_Children:
   - {fileID: 4378805224232992682}
   - {fileID: 4412832744943606847}
-  - {fileID: 6508258418900969775}
+  - {fileID: 3631578002438691918}
   m_Father: {fileID: 5975730464407200855}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1738,7 +1716,6 @@ GameObject:
   - component: {fileID: 3498162407717514996}
   - component: {fileID: 6678190633211801114}
   - component: {fileID: 9064601402573531312}
-  - component: {fileID: 4029693459187187392}
   m_Layer: 5
   m_Name: FillBarMoral
   m_TagString: Untagged
@@ -1754,15 +1731,15 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4831294169808783978}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 353.2694}
+  m_LocalScale: {x: 0.4953125, y: 0.4953125, z: 0.4953125}
   m_Children: []
-  m_Father: {fileID: 6508258418900969775}
+  m_Father: {fileID: 3631578002438691918}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000030517578, y: 0}
+  m_AnchoredPosition: {x: -90.08188, y: -13.018303}
   m_SizeDelta: {x: 385.6, y: 76}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6678190633211801114
@@ -1802,27 +1779,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!223 &4029693459187187392
-Canvas:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4831294169808783978}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_RenderMode: 2
-  m_Camera: {fileID: 0}
-  m_PlaneDistance: 100
-  m_PixelPerfect: 0
-  m_ReceivesEvents: 1
-  m_OverrideSorting: 1
-  m_OverridePixelPerfect: 0
-  m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
-  m_SortingLayerID: 0
-  m_SortingOrder: 2
-  m_TargetDisplay: 0
 --- !u!1 &4870777317120696625
 GameObject:
   m_ObjectHideFlags: 0
@@ -2607,9 +2563,10 @@ MonoBehaviour:
   completionText: {fileID: 5172246268383131380}
   chestImage: {fileID: 6002284537647770760}
   chestParticle: {fileID: 8635724269518131894}
-  moralBar: {fileID: 6413450887304608731}
+  moralBar: {fileID: 6725267155903589648}
   moralFillBar: {fileID: 9064601402573531312}
   rewardDescription: {fileID: 8813772659858375549}
+  goldText: {fileID: 0}
   rewardImage: {fileID: 5222682271991938464}
 --- !u!1 &6235937978563694259
 GameObject:
@@ -2962,14 +2919,13 @@ GameObject:
   - component: {fileID: 6508258418900969775}
   - component: {fileID: 7918582567099379751}
   - component: {fileID: 4170107446124061797}
-  - component: {fileID: 8647937784399441979}
   m_Layer: 5
   m_Name: MoralBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &6508258418900969775
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2978,18 +2934,15 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6413450887304608731}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 5941372474394092654}
-  - {fileID: 3498162407717514996}
-  - {fileID: 2048391765665710854}
-  m_Father: {fileID: 6905330913453467244}
+  m_LocalPosition: {x: 0, y: 0, z: 353.2694}
+  m_LocalScale: {x: 0.4953125, y: 0.4953125, z: 0.4953125}
+  m_Children: []
+  m_Father: {fileID: 3631578002438691918}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 489, y: -527}
+  m_AnchoredPosition: {x: -192.31439, y: 5.9521484}
   m_SizeDelta: {x: 412.8, y: 76.6}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &7918582567099379751
@@ -3029,27 +2982,40 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!223 &8647937784399441979
-Canvas:
+--- !u!1 &6725267155903589648
+GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6413450887304608731}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_RenderMode: 2
-  m_Camera: {fileID: 0}
-  m_PlaneDistance: 100
-  m_PixelPerfect: 0
-  m_ReceivesEvents: 1
-  m_OverrideSorting: 1
-  m_OverridePixelPerfect: 0
-  m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
-  m_SortingLayerID: 0
-  m_SortingOrder: 5
-  m_TargetDisplay: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3631578002438691918}
+  m_Layer: 0
+  m_Name: MoralBar
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &3631578002438691918
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6725267155903589648}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -82.73123, y: 1.0460616, z: -713.2253}
+  m_LocalScale: {x: 2.0189273, y: 2.0189273, z: 2.0189273}
+  m_Children:
+  - {fileID: 5941372474394092654}
+  - {fileID: 3498162407717514996}
+  - {fileID: 6508258418900969775}
+  - {fileID: 2048391765665710854}
+  m_Father: {fileID: 6905330913453467244}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7029221019710138132
 GameObject:
   m_ObjectHideFlags: 0
@@ -3964,16 +3930,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8543309626556475934}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 353.2694}
+  m_LocalScale: {x: 0.4953125, y: 0.4953125, z: 0.4953125}
   m_Children: []
-  m_Father: {fileID: 6508258418900969775}
-  m_RootOrder: 2
+  m_Father: {fileID: 3631578002438691918}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 251, y: 0}
+  m_AnchoredPosition: {x: 34.241547, y: -13.018303}
   m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5235334157298300349
