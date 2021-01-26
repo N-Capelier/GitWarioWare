@@ -11,7 +11,7 @@ public class CharaClothSwap : MonoBehaviour
     [SerializeField]
     private SpriteRenderer chest, leftArm, rightArm, legs;
 
-    void FixedUpdate()
+    void Awake()
     {
         ChangeCloth(ClothPack);
     }
