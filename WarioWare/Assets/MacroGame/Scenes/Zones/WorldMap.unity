@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -670,12 +670,12 @@ PrefabInstance:
     - target: {fileID: 129138094638283498, guid: bc2f8b499c511b94f934b47245aeb98e,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -2711
+      value: -1911
       objectReference: {fileID: 0}
     - target: {fileID: 129138094638283498, guid: bc2f8b499c511b94f934b47245aeb98e,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -375
+      value: -389
       objectReference: {fileID: 0}
     - target: {fileID: 129138094638283498, guid: bc2f8b499c511b94f934b47245aeb98e,
         type: 3}
@@ -775,7 +775,7 @@ PrefabInstance:
     - target: {fileID: 7309059693642548127, guid: bc2f8b499c511b94f934b47245aeb98e,
         type: 3}
       propertyPath: accessibleNeighbours.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7309059693642548127, guid: bc2f8b499c511b94f934b47245aeb98e,
         type: 3}
@@ -791,12 +791,12 @@ PrefabInstance:
         type: 3}
       propertyPath: accessibleNeighbours.Array.data[0]
       value: 
-      objectReference: {fileID: 1165643162}
+      objectReference: {fileID: 1301013433}
     - target: {fileID: 7309059693642548127, guid: bc2f8b499c511b94f934b47245aeb98e,
         type: 3}
       propertyPath: accessibleNeighbours.Array.data[1]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1301013433}
     - target: {fileID: 7309059693642548127, guid: bc2f8b499c511b94f934b47245aeb98e,
         type: 3}
       propertyPath: traiList.Array.data[0]
@@ -32863,12 +32863,12 @@ PrefabInstance:
     - target: {fileID: 5446168453982271406, guid: f0248967f4b5a624681095c85cfe3631,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -2940
+      value: -2140
       objectReference: {fileID: 0}
     - target: {fileID: 5446168453982271406, guid: f0248967f4b5a624681095c85cfe3631,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -430
+      value: -444
       objectReference: {fileID: 0}
     - target: {fileID: 5446168453982271406, guid: f0248967f4b5a624681095c85cfe3631,
         type: 3}
