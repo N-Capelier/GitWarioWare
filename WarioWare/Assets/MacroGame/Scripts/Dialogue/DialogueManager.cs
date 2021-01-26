@@ -40,7 +40,7 @@ public class DialogueManager : Singleton<DialogueManager>
                     currentTarget = null;
                 }
                 Manager.Instance.eventSystem.enabled = true;
-                UI.UICameraController.canSelect = false;
+                UI.UICameraController.canSelect = true;
 
             }
         }
