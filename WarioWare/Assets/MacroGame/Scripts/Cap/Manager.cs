@@ -139,7 +139,7 @@ namespace Caps
         public IEnumerator StartMiniGame(Cap _currentCap, Island _currentIsland, bool isBoss = false)
         {
             int _keyStoneImpact = Mathf.RoundToInt(PlayerManager.Instance.keyStoneNumber / 2f);
-            numberBeforSpeedUp = 1 + Mathf.RoundToInt(((float)currentIsland.difficulty + 1f) / 5f) + _keyStoneImpact + Mathf.RoundToInt(1f / (1f + _keyStoneImpact));
+            numberBeforSpeedUp = 1 + Mathf.RoundToInt(((float)_currentIsland.difficulty + 1f) / 5f) + _keyStoneImpact + Mathf.RoundToInt(1f / (1f + _keyStoneImpact));
             cantDoTransition = false;
             currentCap = _currentCap;
             currentIsland = _currentIsland;
