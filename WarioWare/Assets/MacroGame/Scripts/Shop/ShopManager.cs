@@ -119,7 +119,7 @@ namespace Shop
             //Load images and price text
             for (int i = 0; i < shopSlots.Length; i++)
             {
-                if (shopItems[index] == null)
+                if (shopItems[index][i] == null)
                 {
                     shopItemImages[i].gameObject.SetActive(false);
                     itemPrices[i].gameObject.SetActive(false);
@@ -182,7 +182,7 @@ namespace Shop
         {
             for (int i = 0; i < shopSlots.Length; i++)
             {
-                if (clickedButton == shopSlots[i] && shopItems[i] != null)
+                if (clickedButton == shopSlots[i] && shopItems[loadedShopIndex][i] != null)
                 {
                     if(PlayerManager.Instance.beatcoins >= shopItems[loadedShopIndex][i].price)
                     {
@@ -200,7 +200,7 @@ namespace Shop
                             PlayerInventory.Instance.SetItemToAdd(shopItems[loadedShopIndex][i]);
                         }
 
-                        shopItems[i] = null;
+                        shopItems[loadedShopIndex][i] = null;
                         shopItemImages[i].gameObject.SetActive(false);
                         itemPrices[i].gameObject.SetActive(false);
                     }
@@ -220,7 +220,8 @@ namespace Shop
 
             for (int i = 0; i < shopSlots.Length; i++)
             {
-                if (shopSlots[i] == selectedSlot && shopItems[i] != null)
+                print(shopItems[loadedShopIndex][i]);
+                if (shopSlots[i] == selectedSlot && shopItems[loadedShopIndex][i] != null)
                 {
 
                     itemDescription.text = shopItems[loadedShopIndex][i].GetDescription();

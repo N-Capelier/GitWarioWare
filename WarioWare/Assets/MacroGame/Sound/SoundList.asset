@@ -173,7 +173,7 @@ MonoBehaviour:
       volume: 0.5
     bpm: 3c000000500000006400000078000000
     name: victoryJingle
-    foldout: 1
+    foldout: 0
   - sounds:
     - name: gameOverJingleBoss_0
       author: 
@@ -274,6 +274,106 @@ MonoBehaviour:
     bpm: 3c000000500000006400000078000000
     name: victoryJingleBoss
     foldout: 0
+  - sounds:
+    - name: gameOverJingleMiniBoss_0
+      author: 
+      clip: {fileID: 8300000, guid: 69f70117cd89a8448bb93f18d2a45869, type: 3}
+      volume: 0.5
+    - name: gameOverJingleMiniBoss_1
+      author: 
+      clip: {fileID: 8300000, guid: b6b711555286c3840b0a344358f258a7, type: 3}
+      volume: 0.5
+    - name: gameOverJingleMiniBoss_2
+      author: 
+      clip: {fileID: 8300000, guid: 20d0f1afdb7baf04f87d45b9200126fd, type: 3}
+      volume: 0.5
+    - name: gameOverJingleMiniBoss_3
+      author: 
+      clip: {fileID: 8300000, guid: 81919c6dd97797746a6b559117987708, type: 3}
+      volume: 0.5
+    bpm: 3c000000500000006400000078000000
+    name: gameOverJingleMiniBoss
+    foldout: 0
+  - sounds:
+    - name: loseJingleMiniBoss_0
+      author: 
+      clip: {fileID: 8300000, guid: 87f7493079d4b8841a8df6c340e46e50, type: 3}
+      volume: 0.5
+    - name: loseJingleMiniBoss_1
+      author: 
+      clip: {fileID: 8300000, guid: a97b16943bf8f4b4694b2fccedd3bc26, type: 3}
+      volume: 0.5
+    - name: loseJingleMiniBoss_2
+      author: 
+      clip: {fileID: 8300000, guid: 593510964e14217498d394c64f0be879, type: 3}
+      volume: 0.5
+    - name: loseJingleMiniBoss_3
+      author: 
+      clip: {fileID: 8300000, guid: 0bdb7db87360f7c4aaa24009bd0964c8, type: 3}
+      volume: 0.5
+    bpm: 3c000000500000006400000078000000
+    name: loseJingleMiniBoss
+    foldout: 0
+  - sounds:
+    - name: speedUpJingleMiniBoss_0
+      author: 
+      clip: {fileID: 8300000, guid: 7dc3a21e50d8f16439e5b1c929cfefd7, type: 3}
+      volume: 0.5
+    - name: speedUpJingleMiniBoss_1
+      author: 
+      clip: {fileID: 8300000, guid: da0a161fa62d369448ffdf7c1a089e8f, type: 3}
+      volume: 0.5
+    - name: speedUpJingleMiniBoss_2
+      author: 
+      clip: {fileID: 8300000, guid: 18bd6f210ddc4e947b32e84c459c1d6c, type: 3}
+      volume: 0.5
+    - name: speedUpJingleMiniBoss_3
+      author: 
+      clip: {fileID: 0}
+      volume: 0.5
+    bpm: 3c000000500000006400000078000000
+    name: speedUpJingleMiniBoss
+    foldout: 0
+  - sounds:
+    - name: verbeJingleMiniBoss_0
+      author: 
+      clip: {fileID: 8300000, guid: 1cdf967947f86104bb1868fa7120f55a, type: 3}
+      volume: 0.5
+    - name: verbeJingleMiniBoss_1
+      author: 
+      clip: {fileID: 8300000, guid: c1b5933dc4c96db4facb26539a66c1dc, type: 3}
+      volume: 0.5
+    - name: verbeJingleMiniBoss_2
+      author: 
+      clip: {fileID: 8300000, guid: 7c0b773c455a4bb40b0116a125f60689, type: 3}
+      volume: 0.5
+    - name: verbeJingleMiniBoss_3
+      author: 
+      clip: {fileID: 8300000, guid: 4b02ed27bc98fc74b91bd7a0abbfac77, type: 3}
+      volume: 0.5
+    bpm: 3c000000500000006400000078000000
+    name: verbeJingleMiniBoss
+    foldout: 0
+  - sounds:
+    - name: victoryJingleMiniBoss_0
+      author: 
+      clip: {fileID: 8300000, guid: 08e5d924782efd04f9ff4730da120528, type: 3}
+      volume: 0.5
+    - name: victoryJingleMiniBoss_1
+      author: 
+      clip: {fileID: 8300000, guid: 081d2008bfcea4e4cbf8ca39aaf018be, type: 3}
+      volume: 0.5
+    - name: victoryJingleMiniBoss_2
+      author: 
+      clip: {fileID: 8300000, guid: 1154572b442e4a846b455743f2b04e3b, type: 3}
+      volume: 0.5
+    - name: victoryJingleMiniBoss_3
+      author: 
+      clip: {fileID: 8300000, guid: 1e3599d93c0f9ca4a81fdc069480951d, type: 3}
+      volume: 0.5
+    bpm: 3c000000500000006400000078000000
+    name: victoryJingleMiniBoss
+    foldout: 1
   music:
   - name: ABadDay
     author: MathieuVanCapellen

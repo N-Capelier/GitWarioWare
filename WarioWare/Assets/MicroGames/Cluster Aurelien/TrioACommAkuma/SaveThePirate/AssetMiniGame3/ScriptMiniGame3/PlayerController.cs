@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Caps;
 
@@ -47,7 +46,7 @@ namespace ACommeAkuma
             {
                 base.Start(); //Do not erase this line!
 
-                audioManagerGO = GameObject.Find("AudioManager");
+                audioManagerGO = GameObject.Find("AudioManagerSTP");
                 speedOverlayGO = GameObject.Find("SpeedOverlay");
 
                 playerRb = GetComponent<Rigidbody2D>();
@@ -55,18 +54,19 @@ namespace ACommeAkuma
                 asWin = false;
                 motorGO = transform.GetChild(1).gameObject;
                 vfxAnchor = motorGO.transform.GetChild(0).gameObject;
+
                 switch (bpm)
                 {
                     case 60:
                         audioManagerGO.GetComponent<AudioManagerScript>().PlayMusic60();
                         break;
-                    case 90:
+                    case 80:
                         audioManagerGO.GetComponent<AudioManagerScript>().PlayMusic90();
                         break;
-                    case 120:
+                    case 100:
                         audioManagerGO.GetComponent<AudioManagerScript>().PlayMusic120();
                         break;
-                    case 140:
+                    case 120:
                         audioManagerGO.GetComponent<AudioManagerScript>().PlayMusic140();
                         break;
                 }
@@ -103,12 +103,10 @@ namespace ACommeAkuma
                 {
                     if (asWin)
                     {
-                        Debug.Log("You won");
                         Manager.Instance.Result(true);
                     }
                     else
                     {
-                        Debug.Log("You lost");
                         Manager.Instance.Result(false);
                     }
                 }
@@ -138,16 +136,6 @@ namespace ACommeAkuma
                 {
                     rotationDir = 0f;
                 }
-
-
-                /*if (lBumperHold > 0.05 && rBumperHold <= 0.05)
-                    rotationDir = -1f * (Mathf.Exp(lBumperHold) - 1f);
-
-                else if (lBumperHold <= 0.05 && rBumperHold > 0.05)
-                    rotationDir = 1f * (Mathf.Exp(rBumperHold) - 1f);
-
-                else if ((lBumperHold > 0.05 && rBumperHold > 0.05) || (lBumperHold <= 0.05 && rBumperHold <= 0.05))
-                    rotationDir = 0f*/
             }
 
             private void ApplyTorque()
@@ -204,9 +192,6 @@ namespace ACommeAkuma
 
                     //VFX
                     goalGO.transform.GetChild(0).GetComponent<Animator>().SetBool("AsWin", true);
-
-                    //SFX
-                    //audioManagerGO.GetComponent<AudioManagerScript>().PlayThanksVoice();
 
                     playerRb.velocity = Vector2.zero;
                     playerRb.angularVelocity = 0f;

@@ -105,22 +105,22 @@ namespace Soupe
             {
                 //Check si le joueur appuie sur le bon Input
 
-                if ((Input.GetButtonDown("A_Button") || Input.GetKeyDown(KeyCode.DownArrow)) && inputCurrent[inputToPush] == "A" && !gameEnd)   //
+                if ((Input.GetButtonDown("A_Button") /*|| Input.GetKeyDown(KeyCode.DownArrow)*/) && inputCurrent[inputToPush] == "A" && !gameEnd)   //
                 {
                     StartCoroutine(BottomShovelAnim()); //Lance l'animation de la pelle associée à l'input A
                     NextInput();    //Le joueur devra appuier sur la pelle suivante
                 }
-                if ((Input.GetButtonDown("B_Button") || Input.GetKeyDown(KeyCode.RightArrow)) && inputCurrent[inputToPush] == "B" && !gameEnd)
+                if ((Input.GetButtonDown("B_Button") /*|| Input.GetKeyDown(KeyCode.RightArrow)*/) && inputCurrent[inputToPush] == "B" && !gameEnd)
                 {
                     StartCoroutine(RightShovelAnim());
                     NextInput();
                 }
-                if ((Input.GetButtonDown("X_Button") || Input.GetKeyDown(KeyCode.LeftArrow)) && inputCurrent[inputToPush] == "X" && !gameEnd)
+                if ((Input.GetButtonDown("X_Button") /*|| Input.GetKeyDown(KeyCode.LeftArrow)*/) && inputCurrent[inputToPush] == "X" && !gameEnd)
                 {
                     StartCoroutine(LeftShovelAnim());
                     NextInput();
                 }
-                if ((Input.GetButtonDown("Y_Button") || Input.GetKeyDown(KeyCode.UpArrow)) && inputCurrent[inputToPush] == "Y" && !gameEnd)
+                if ((Input.GetButtonDown("Y_Button") /*|| Input.GetKeyDown(KeyCode.UpArrow)*/) && inputCurrent[inputToPush] == "Y" && !gameEnd)
                 {
                     StartCoroutine(TopShovelAnim());
                     NextInput();
@@ -264,7 +264,7 @@ namespace Soupe
                         break;
 
                     default:
-                        Debug.LogError("Difficulty not set");
+                        //Debug.LogError("Difficulty not set");
                         break;
                 }
                 yBaseChestPos = Chest.position.y;
@@ -298,7 +298,7 @@ namespace Soupe
                 }
                 else
                 {
-                    Debug.LogWarning("BPM not reconized : no music");
+                    //Debug.LogWarning("BPM not reconized : no music");
                 }
                 WarioMusic.GetComponent<AudioSource>().Play();
             }
@@ -380,7 +380,7 @@ namespace Soupe
 
             IEnumerator FastWin()
             {
-                Debug.Log("FastWin");
+                //Debug.Log("FastWin");
                 Chest.DOMoveY(0f, 0.2f);
                 Chest.DORotate(new Vector3(0f, 0f, 360f), 0.2f, RotateMode.FastBeyond360);
                 Chest.gameObject.GetComponent<SpriteRenderer>().sortingOrder = 10;

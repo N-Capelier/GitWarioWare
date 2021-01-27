@@ -72,7 +72,7 @@ namespace Player
 
 
         #region CustomMethods
-        public void TakeDamage(int damage, bool isBoss = false)
+        public void TakeDamage(int damage, bool isBoss = false, bool isMiniBoss= false)
         {
             if(playerHp - damage <= 0)
             {
@@ -86,7 +86,7 @@ namespace Player
                 }
                 else
                 {
-                    StartCoroutine(DeathCoroutine(isBoss));
+                    StartCoroutine(DeathCoroutine(isBoss, isMiniBoss));
                     Debug.Log("You are dead");
                 }
             }
@@ -146,12 +146,17 @@ namespace Player
             keyStoneNumber++;
             Manager.Instance.KeyStoneReset();
         }
-        private IEnumerator DeathCoroutine(bool isBoss = false)
+        private IEnumerator DeathCoroutine(bool isBoss = false, bool isMiniBoss = false)
         {
             if(!isBoss)
                 SoundManager.Instance.ApplyAudioClip("gameOverJingle", audioSource, Manager.Instance.bpm);
             else
+            {
+                if(!isMiniBoss)
                 SoundManager.Instance.ApplyAudioClip("gameOverJingleBoss", audioSource, Manager.Instance.bpm);
+                else
+                SoundManager.Instance.ApplyAudioClip("gameOverJingleMiniBoss", audioSource, Manager.Instance.bpm);
+            }
 
             audioSource.PlaySecured();
           //  PlayerInventory.Instance.rewardCanvas.SetActive(true);

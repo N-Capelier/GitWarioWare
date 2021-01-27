@@ -70,7 +70,7 @@ namespace TrioBrigantin
 					detectZone.enabled = false;
 					CrosshairController.instance.targetEnemy = null;
 					ACouteauxTiré_Manager.instance.enemiesKilled.Add(this);
-					Instantiate(CrosshairController.instance.goodLock, transform.position, Quaternion.identity).transform.SetParent(gameObject.transform);
+					Instantiate(CrosshairController.instance.goodLock, transform.position, Quaternion.identity);
 					mySprite.color = Color.magenta;
 					ACouteauxTiré_Manager.instance.soundManager.Play(goodLockSound);
 				}

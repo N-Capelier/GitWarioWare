@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using Caps;
 
 namespace Dragons_Peperes
@@ -15,12 +13,15 @@ namespace Dragons_Peperes
         {
             public GameObject target;
             public GameObject inputAppearance;
+            public GameObject player;
 
             private SpriteRenderer spriteRenderer;
             public Sprite chest;
 
             public bool finished;
             private bool treasureFound;
+            public int inputMinNumber;
+            public int inputNumber;
 
             private AudioSource audiosource;
 
@@ -34,21 +35,24 @@ namespace Dragons_Peperes
                 finished = false;
 
                 treasureFound = false;
+
+                inputMinNumber = inputAppearance.GetComponent<InputsChoiceScript>().inputMinNumber;
             }
 
             private void Update()
             {
                 if (Input.GetKeyDown(KeyCode.Joystick1Button0) && inputAppearance.GetComponent<InputsChoiceScript>().inputsChosen == true)
                 {
-                    if (transform.position == target.transform.position)
+                    if (transform.position == target.transform.position && finished == false && inputNumber >= inputMinNumber)
                     {
                         audiosource.Play();
-                        Debug.Log("Gagné !");
                         spriteRenderer.sprite = chest;
                         finished = true;
                         treasureFound = true;
                     }
                 }
+
+                inputNumber = player.GetComponent<PlayerTimedController>().inputNumber;
             }
 
             //FixedUpdate is called on a fixed time.

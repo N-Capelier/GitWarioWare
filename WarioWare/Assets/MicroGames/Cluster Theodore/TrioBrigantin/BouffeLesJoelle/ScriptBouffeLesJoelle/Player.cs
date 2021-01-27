@@ -74,7 +74,7 @@ namespace Brigantin
 
                         if (canDash)
                         {
-                            if (Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("A_Button"))
+                            if (/*Input.GetKeyDown(KeyCode.Space) || */Input.GetButtonDown("A_Button"))
                             {
                                 StartCoroutine(Dash(input));
                             }
@@ -210,7 +210,7 @@ namespace Brigantin
             void GetInput()
             {
                 input = Vector3.zero;
-                if (LUE_Manager.Instance.isOnMyPrivateScene)
+                /*if (LUE_Manager.Instance.isOnMyPrivateScene)
                 {
                     if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
                     {
@@ -228,7 +228,7 @@ namespace Brigantin
                     {
                         input.y++;
                     }
-                }
+                }*/
 
                 if (Input.GetAxis("Left_Joystick_X") != 0 || Input.GetAxis("Left_Joystick_Y") != 0)
                 {

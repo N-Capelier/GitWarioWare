@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using UnityEngine;
 using Caps;
 
@@ -75,12 +74,12 @@ namespace Brigantin
                 //sources[1] est l'ambiance
 
                 #region Victory and defeat objects enabled to false
-                if (!victoryScreen) Debug.LogError("You must reference the Victory Text");
+                /*if (!victoryScreen) Debug.LogError("You must reference the Victory Text");
                 if (!defeatScreen) Debug.LogError("You must reference the Loss Text");
                 if (!victoryScene) Debug.LogError("You must reference the Victory Scene");
                 if (!defeatScene) Debug.LogError("You must reference the Loss Scene");
                 if (!victoryCamera) Debug.LogError("You must reference the Victory Camera");
-                if (!defeatCamera) Debug.LogError("You must reference the Loss Camera");
+                if (!defeatCamera) Debug.LogError("You must reference the Loss Camera");*/
                 victoryScreen.enabled = false;
                 defeatScreen.enabled = false;
                 victoryScreen.transform.root.gameObject.SetActive(false);

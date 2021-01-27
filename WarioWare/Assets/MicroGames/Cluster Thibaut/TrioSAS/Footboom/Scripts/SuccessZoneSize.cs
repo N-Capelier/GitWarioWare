@@ -16,6 +16,7 @@ namespace TrioSAS
             public float heightModifierEasy;
             public float heightModifierHard;
             public BoxCollider2D boxColli;
+            
 
             void Start()
             {

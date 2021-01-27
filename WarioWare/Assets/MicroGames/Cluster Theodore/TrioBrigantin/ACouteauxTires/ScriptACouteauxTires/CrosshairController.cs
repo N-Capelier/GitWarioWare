@@ -59,7 +59,7 @@ namespace TrioBrigantin
 
 				if (horizontal < -0.15 || horizontal > 0.15 || vertical < -0.15 || vertical > 0.15)
                 {
-					movementVector = new Vector2(horizontal, -vertical);
+					movementVector = new Vector2(horizontal, vertical);
 				}
                 else
                 {
@@ -83,8 +83,7 @@ namespace TrioBrigantin
 					}
                     else
                     {
-						Instantiate(wrongLock, transform.position, Quaternion.identity).transform.SetParent(ACouteauxTiré_Manager.instance.spawnSetAnchor.transform);
-						ACouteauxTiré_Manager.instance.PlusMiss();
+						Instantiate(wrongLock, transform.position, Quaternion.identity);
 					}
 
 					ACouteauxTiré_Manager.instance.soundManager.Play(anyLockSound);

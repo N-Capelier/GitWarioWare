@@ -48,7 +48,6 @@ namespace TrioLLL
                 base.Start(); //Do not erase this line!
 
                 bigChoice = Random.Range(0,2);
-                Debug.Log(bigChoice);
                 inputPressed = false;
                 pintadeEaten = false;
                 frogEaten = false;
@@ -66,7 +65,7 @@ namespace TrioLLL
 
                 if (inputPressed == false && leftInputActivated == true || rightInputActivated == true && inputPressed == false)
                 {
-                    if (Input.GetKey(KeyCode.LeftArrow) || Input.GetButton("X_Button"))
+                    if (Input.GetButton("X_Button"))
                     {
                         if (leftGrass.GetComponent<TouffeManager>().pintadeON == true)
                         {
@@ -91,7 +90,7 @@ namespace TrioLLL
                         inputPressed = true;
                     }
 
-                    if (Input.GetKey(KeyCode.RightArrow) || Input.GetButton("B_Button"))
+                    if (Input.GetButton("B_Button"))
                     {
                         if (rightGrass.GetComponent<TouffeManager>().pintadeON == true)
                         {
@@ -122,7 +121,6 @@ namespace TrioLLL
             //TimedUpdate is called once every tick.
             public override void TimedUpdate()
             {
-                Debug.Log(Tick);
 
                 if (Tick == 2)
                 {

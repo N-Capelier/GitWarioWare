@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 
 namespace ACommeAkuma
@@ -31,7 +29,6 @@ namespace ACommeAkuma
                 {
 
                     anchorRb.velocity = Vector2.up * playerForce;
-                    Debug.Log(anchorRb.velocity);
                     soundNum = Random.Range(1, 2);
                     switch (soundNum) 
                     {

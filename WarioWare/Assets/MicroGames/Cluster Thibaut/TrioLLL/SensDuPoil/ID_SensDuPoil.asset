@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cluster: 2
   trio: LLL
+  asSecondSprite: 0
+  secondSprite: {fileID: 0}
   indexEnum: 0
   verbe: PET THE CAT
   microGameScene:
