@@ -31,6 +31,7 @@ namespace LeRafiot
 
             [Header("Script")]
             public RopeController robeControllerScript;
+            public Animator loseAnimator;
             #endregion
 
             public override void Start()
@@ -85,6 +86,7 @@ namespace LeRafiot
                         if (Input.GetButtonDown("A_Button") || Input.GetKeyDown(KeyCode.Space))
                         {
                             playerCatchByShark = true;
+                            loseAnimator.SetBool("Lose", true);
                             //Manager.Instance.Result(false);
                             SoundManager123Requin.Instance.sfxSound[1].Play();
                             robeControllerScript.controllerDisabled = true;

@@ -33,6 +33,7 @@ namespace Player
         public TextMeshProUGUI goldCompletion;
         public TextMeshProUGUI foodCompletion;
         public TextMeshProUGUI woodCompletion;
+        public TextMeshProUGUI moralCompletion;
         private Reward rewardToAdd;
 
         private AudioSource audioSource;
@@ -58,6 +59,8 @@ namespace Player
         
         public void Show()
         {
+            UI.UICameraController.canSelect = false;
+
             SoundManager.Instance.ApplyAudioClip("Clicked", audioSource);
             audioSource.PlaySecured();
 
@@ -116,6 +119,8 @@ namespace Player
                     StartCoroutine(Manager.Instance.UnzoomCam());
                 }
                 BossLifeManager.Instance.bossUI.gameObject.SetActive(true);
+                UI.UICameraController.canSelect = true;
+
             }
         }
 

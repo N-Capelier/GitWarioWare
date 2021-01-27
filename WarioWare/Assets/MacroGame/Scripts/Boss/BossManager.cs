@@ -28,18 +28,15 @@ namespace Boss
 
 
         [Header("Boss parameters")]
-        public int damageToPlayer = 10;
-        public int damageToBoss = 10;
+        public float damageToPlayer = 10;
+        public float damageToBoss = 10;
         private int bossLifeOnStartOfFight;
         private int phaseBossLife;
         private int phaseNumber = 1;
-        public Malediction[] maledictionArray;
-        private Malediction currentMalediction;
         public RenderTexture bossTexture;
         public int differentMiniGameNumber = 4;
         public bool isFinalBoss;
-
-        private bool displayMalediction;
+        public float damageMultiplier = 1.2f;
         private void Awake()
         {
             CreateSingleton();
@@ -47,22 +44,22 @@ namespace Boss
         private void Start()
         {
             //set up value from debug
-            damageToPlayer = DebugToolManager.Instance.ChangeVariableValue("damageToPlayer");
-            damageToBoss = DebugToolManager.Instance.ChangeVariableValue("damageToBoss");
-            differentMiniGameNumber = DebugToolManager.Instance.ChangeVariableValue("differentMiniGameNumber");
+            damageToPlayer = (float)DebugToolManager.Instance.ChangeVariableValue("damageToPlayer");
+            damageToBoss = (float)DebugToolManager.Instance.ChangeVariableValue("damageToBoss");
+            differentMiniGameNumber = (int)DebugToolManager.Instance.ChangeVariableValue("differentMiniGameNumber");
+            damageMultiplier = DebugToolManager.Instance.ChangeVariableValue("damageMultiplier");
             
             
         }
-        public IEnumerator StartBoss()
+        public IEnumerator StartBoss(CapsSorter sorter, Cap currentCap)
         {
-            if (maledictionArray != null && maledictionArray.Length != 0)
-                currentMalediction = maledictionArray[Random.Range(0, maledictionArray.Length)];
+            currentCap.ChoseMiniGames(sorter.bossList, differentMiniGameNumber);
             bossLifeOnStartOfFight = BossLifeManager.currentLife;
             renderText.texture = bossTexture;
             shipOpening.gameObject.SetActive(true);
             StartCoroutine(Manager.Instance.ZoomCam(shipOpening.openingTime));
             yield return new WaitForSeconds(shipOpening.openingTime * 2);
-            StartCoroutine(Manager.Instance.PlayMiniGame(transitionCam, currentMalediction, true, true));
+            StartCoroutine(Manager.Instance.PlayMiniGame(transitionCam,true));
         }
         public IEnumerator TransitionBoss(bool win)
         {
@@ -72,14 +69,18 @@ namespace Boss
             {
                 transition.PlayAnimation((float)Manager.Instance.bpm, true);
                 SoundManager.Instance.ApplyAudioClip("victoryJingleBoss", transitionMusic, Manager.Instance.bpm);
-                BossLifeManager.Instance.TakeDamage(damageToBoss, bossLifeOnStartOfFight, true);
-                phaseBossLife += damageToBoss;
+
+                int _damageToBoss =Mathf.RoundToInt( damageToBoss / Mathf.Pow(damageMultiplier, (float) PlayerManager.Instance.keyStoneNumber));
+                BossLifeManager.Instance.TakeDamage(_damageToBoss, bossLifeOnStartOfFight, true);
+                phaseBossLife += _damageToBoss;
                 transitionMusic.PlaySecured();
                 yield return new WaitForSeconds(transitionMusic.clip.length);
             }
             else
             {
-                PlayerManager.Instance.TakeDamage(damageToPlayer, true);
+                int _damageToPlayer = Mathf.RoundToInt(damageToBoss * Mathf.Pow(damageMultiplier, (float)PlayerManager.Instance.keyStoneNumber));
+
+                PlayerManager.Instance.TakeDamage(_damageToPlayer, true);
                 transition.PlayAnimation((float)Manager.Instance.bpm, false);
 
                 if (PlayerManager.Instance.playerHp > 0)
@@ -114,40 +115,16 @@ namespace Boss
                     int _sceneIndex = Manager.Instance.macroSceneIndex;
                     if (SceneManager.GetSceneByBuildIndex(_sceneIndex).name == "Zone1")
                     {
-                        SceneManager.LoadScene("Zone2");
-                    }
-                    else if (SceneManager.GetSceneByBuildIndex(_sceneIndex).name == "Zone2")
-                    {
-                        SceneManager.LoadScene("Zone3");
-                    }
-                    else if (SceneManager.GetSceneByBuildIndex(_sceneIndex).name == "Zone3")
-                    {
                         SceneManager.LoadScene("Menu");
                     }
-                    yield break;
+                    
                 }
                 Manager.Instance.bpm = Manager.Instance.bpm.Next();
-                if (isFinalBoss)
-                {
-                    displayMalediction = true;
-                    currentMalediction.StopMalediction();
-                    var _malediction = maledictionArray[Random.Range(0, maledictionArray.Length)];
-                    while (_malediction == currentMalediction)
-                    {
-                        _malediction = maledictionArray[Random.Range(0, maledictionArray.Length)];
-                    }
-                    currentMalediction = _malediction;
-                }
-                else
-                {
-                    displayMalediction = false;
-                    currentMalediction = null;
-                }
+               
             }
 
 
-            Manager.Instance.GlobalTransitionEnd(currentMalediction, displayMalediction,true);
-            displayMalediction = false;
+            Manager.Instance.GlobalTransitionEnd(true);
             transitionCam.enabled = false;
         }
     }

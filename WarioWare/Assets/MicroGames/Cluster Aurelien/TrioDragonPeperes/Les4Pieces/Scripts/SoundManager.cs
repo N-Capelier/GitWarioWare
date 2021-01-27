@@ -47,8 +47,6 @@ namespace Dragons_Peperes
                 #endregion
 
 
-                PlayMusic();
-
             }
 
 
@@ -95,6 +93,7 @@ namespace Dragons_Peperes
                 {
                     music120.Play();
                 }
+
             }
             #endregion
 

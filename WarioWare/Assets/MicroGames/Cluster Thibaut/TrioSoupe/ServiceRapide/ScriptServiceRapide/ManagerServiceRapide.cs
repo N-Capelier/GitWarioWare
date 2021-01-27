@@ -15,7 +15,6 @@ namespace TrioSoupe
             AudioSource source;
             public AudioClip pickedGreatIngredient;
             public AudioClip pickedWrongIngredient;
-            public AudioClip backMusic;
 
             int chefMeatInt;
             int chefBreadInt;
@@ -102,7 +101,6 @@ namespace TrioSoupe
                 InstantiateChefIngredients();
                 
                 source = GetComponent<AudioSource>();
-                source.PlayOneShot(backMusic);
 
             }
 

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: LaGalere
   m_EditorClassIdentifier: 
   rewardName: "La gal\xE8re"
-  sprite: {fileID: 21300000, guid: df547bc70465afd4c88ad82dff4cca63, type: 3}
+  sprite: {fileID: 21300000, guid: 29819c152c5d20c458c24396079e36d6, type: 3}
   type: 1
   rarity: 0
   effect: 0

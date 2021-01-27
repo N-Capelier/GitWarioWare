@@ -16,6 +16,7 @@ namespace Dragons_Peperes
             public GameObject showInput;
 
             public GameObject enemy;
+            public GameObject enemy2;
             public GameObject lostScreen;
 
             [Space]
@@ -31,11 +32,14 @@ namespace Dragons_Peperes
 
             public bool playerLost;
 
+            public GameObject particule;
+
             public override void Start()
             {
                 base.Start(); //Do not erase this line!
                 enemyController = FindObjectOfType<EnemyController>();
                 audioManager = FindObjectOfType<AudioManager>();
+
             }
 
             //FixedUpdate is called on a fixed time.
@@ -58,9 +62,14 @@ namespace Dragons_Peperes
             {
                 //base.TimedUpdate();
 
+                if (Tick == 1)
+                {
+                    audioManager.PlayMusic();
+                }
+
                 #region EasyMode
 
-                if(currentDifficulty == Difficulty.EASY)
+                if (currentDifficulty == Difficulty.EASY)
                 {
                     if (Tick == 1)
                     {
@@ -86,7 +95,7 @@ namespace Dragons_Peperes
 
                     if (Tick == 8)
                     {
-                            Debug.Log(playerLost);
+                        particule.SetActive(false);
 
                         if (playerLost)
                         {
@@ -130,12 +139,14 @@ namespace Dragons_Peperes
                     if (Tick == 5)
                     {
                         Instantiate(enemy, spot1.transform);
+                        audioManager.PlayRandomReplique();
                     }
 
                         
 
                     if (Tick == 8)
                     {
+                        particule.SetActive(false);
 
                         if (playerLost)
                         {
@@ -156,7 +167,9 @@ namespace Dragons_Peperes
                 if(currentDifficulty == Difficulty.HARD)
                 {
                     if (Tick == 1)
-                        
+                    {
+                        showInput.SetActive(true);
+                    }
 
                     if (Tick == 2)
                     {
@@ -172,14 +185,21 @@ namespace Dragons_Peperes
                     if (Tick == 5)
                     {
                         Instantiate(enemy, spot2.transform);
-                        //son random
+                        Instantiate(enemy2, spot2.transform);
+                        audioManager.PlayRandomReplique();
 
+                    }
+
+                    if(Tick == 6)
+                    {
+                        Instantiate(enemy2, spot3.transform);
                     }
 
 
 
                     if (Tick == 8)
                     {
+                        particule.SetActive(false);
 
                         if (playerLost)
                         {

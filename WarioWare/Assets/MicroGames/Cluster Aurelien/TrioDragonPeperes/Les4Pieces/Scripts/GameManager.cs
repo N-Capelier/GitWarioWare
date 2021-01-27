@@ -76,6 +76,12 @@ namespace Dragons_Peperes
             //TimedUpdate is called once every tick.
             public override void TimedUpdate()
             {
+
+                if(Tick == 1)
+                {
+                    soundManager.PlayMusic();
+                }
+
                 #region EasyMode
 
                 if(currentDifficulty == Difficulty.EASY)

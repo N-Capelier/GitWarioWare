@@ -16,6 +16,7 @@ using Shop;
 using Boss;
 using UnityEngine.EventSystems;
 using System.Net;
+using UnityEngine.U2D;
 
 namespace Caps
 {
@@ -37,6 +38,8 @@ namespace Caps
         public int idWeightToAdd;
         public int idInitialWeight;
         [SerializeField] int damagesOnMiniGameLose = 10;
+        [SerializeField] public int moralCost = 10;
+        [HideInInspector]public int _moralCost = 10;
         [Header("BronzeChest")]
         [SerializeField] int monnaieBronze = 3;
         [Header("SilverChest")]
@@ -81,6 +84,7 @@ namespace Caps
         public GameObject sceneCam;
         public GameObject capUI;
         public GameObject macroUI;
+        public GameObject ressourcesUI;
         public TextMeshProUGUI idName;
         public GameObject clock;
 
@@ -97,7 +101,7 @@ namespace Caps
         [HideInInspector] public bool cantDisplayVerbe;
         public GameObject speedUp;
         [HideInInspector] public bool zoomed;
-
+        private bool isFirstMiniGame = true;
         [Header("Debug")]
         [SerializeField] bool isDebug = false;
         [HideInInspector] public EventSystem eventSystem;
@@ -115,19 +119,13 @@ namespace Caps
         {
             initalCamTransform = VcamTarget.transform;
             //set up value from debug
-            numberBeforSpeedUp = DebugToolManager.Instance.ChangeVariableValue("numberBeforSpeedUp");
-            idWeightToAdd = DebugToolManager.Instance.ChangeVariableValue("idWeightToAdd");
-            idInitialWeight = DebugToolManager.Instance.ChangeVariableValue("idInitialWeight");
-            damagesOnMiniGameLose = DebugToolManager.Instance.ChangeVariableValue("damagesOnMiniGameLose");
-            winingStreakNumber = DebugToolManager.Instance.ChangeVariableValue("winingStreakNumber");
-            losingStreakNumber = DebugToolManager.Instance.ChangeVariableValue("losingStreakNumber");
-            /* barrelProbability = DebugToolManager.Instance.ChangeVariableValue("barrelProbability");
-             maxBarrelRessources = DebugToolManager.Instance.ChangeVariableValue("maxBarrelRessources");
-             minBarrelRessources = DebugToolManager.Instance.ChangeVariableValue("minBarrelRessources");
-             lifeWeight = DebugToolManager.Instance.ChangeVariableValue("lifeWeight");
-             goldWeight = DebugToolManager.Instance.ChangeVariableValue("goldWeight");
-             foodWeight = DebugToolManager.Instance.ChangeVariableValue("foodWeight");*/
-            miniGameNumberPerCap = DebugToolManager.Instance.ChangeVariableValue("miniGameNumberPerCap");
+            numberBeforSpeedUp = (int)DebugToolManager.Instance.ChangeVariableValue("numberBeforSpeedUp");
+            idWeightToAdd = (int)DebugToolManager.Instance.ChangeVariableValue("idWeightToAdd");
+            idInitialWeight = (int)DebugToolManager.Instance.ChangeVariableValue("idInitialWeight");
+            damagesOnMiniGameLose = (int)DebugToolManager.Instance.ChangeVariableValue("damagesOnMiniGameLose");
+            winingStreakNumber = (int)DebugToolManager.Instance.ChangeVariableValue("winingStreakNumber");
+            losingStreakNumber = (int)DebugToolManager.Instance.ChangeVariableValue("losingStreakNumber");
+            miniGameNumberPerCap = (int)DebugToolManager.Instance.ChangeVariableValue("miniGameNumberPerCap");
             cantDoTransition = true;
         }
 
@@ -138,9 +136,12 @@ namespace Caps
         /// </summary>
         /// <param name="_currentCap"></param>
         /// <returns></returns>
-        public IEnumerator StartMiniGame(Cap _currentCap, Island _currentIsland, Malediction malediction = null, bool displayMalediction = false, bool isBoss = false)
+        public IEnumerator StartMiniGame(Cap _currentCap, Island _currentIsland, bool isBoss = false)
         {
+            UI.UICameraController.canSelect = false;
 
+            int _keyStoneImpact = Mathf.RoundToInt(PlayerManager.Instance.keyStoneNumber / 2f);
+            numberBeforSpeedUp = 1 + Mathf.RoundToInt(((float)_currentIsland.difficulty + 1f) / 5f) + _keyStoneImpact + Mathf.RoundToInt(1f / (1f + _keyStoneImpact));
             cantDoTransition = false;
             currentCap = _currentCap;
             currentIsland = _currentIsland;
@@ -150,7 +151,7 @@ namespace Caps
                 BossLifeManager.Instance.bossUI.gameObject.SetActive(false);
                 if (currentIsland.type == IslandType.Boss)
                 {
-                    StartCoroutine(BossManager.Instance.StartBoss());
+                    StartCoroutine(BossManager.Instance.StartBoss(sorter, currentCap));
                     yield break;
                 }
                 else
@@ -179,14 +180,11 @@ namespace Caps
                 }
             }
 
-            /* StartCoroutine(FadeManager.Instance.FadeIn(0.15f * 60 / (float)bpm));
-             yield return new WaitForSeconds(0.5f * 60 / (float)bpm);*/
-
-            StartCoroutine(PlayMiniGame(transitionCam, malediction, displayMalediction, isBoss));
+            StartCoroutine(PlayMiniGame(transitionCam, isBoss));
         }
         public IEnumerator StartMiniGame(Cap _currentCap)
         {
-            _currentCap.ChoseMiniGames(sorter);
+            //_currentCap.ChoseMiniGames(sorter);
 
             cantDoTransition = false;
             currentCap = _currentCap;
@@ -196,15 +194,12 @@ namespace Caps
                 shipOpening.gameObject.SetActive(true);
 
                 StartCoroutine(ZoomCam(shipOpening.openingTime * 2));
-                transition.DisplayBarrel(_currentCap);
+                //transition.DisplayBarrel(_currentCap);
 
                 //if zoom is bugging, look at here
                 yield return new WaitForSeconds(shipOpening.openingTime * 2);
 
             }
-
-            /* StartCoroutine(FadeManager.Instance.FadeIn(0.15f * 60 / (float)bpm));
-             yield return new WaitForSeconds(0.5f * 60 / (float)bpm);*/
 
             if (isLureActive > 0)
             {
@@ -214,7 +209,7 @@ namespace Caps
         }
 
 
-        public IEnumerator PlayMiniGame(Camera _transitionCam, Malediction malediction = null, bool displayMalediction = false, bool isBoss = false)
+        public IEnumerator PlayMiniGame(Camera _transitionCam, bool isBoss = false)
         {
 
             sceneCam.SetActive(true);
@@ -223,18 +218,10 @@ namespace Caps
                 speedUp.SetActive(false);
             capUI.SetActive(true);
             macroUI.SetActive(false);
+            ressourcesUI.SetActive(false);
             panel.SetActive(false);
             verbePanel.SetActive(true);
 
-            if (malediction != null && displayMalediction)
-            {
-                displayMalediction = false;
-                verbeText.text = "Malediction";
-                yield return new WaitForSeconds(malediction.timer * 10 / (float)bpm);
-                verbeText.text = "Malediction " + "     " + malediction.maledictionName;
-                malediction.StartMalediction();
-                yield return new WaitForSeconds(malediction.timer * 50 / (float)bpm);
-            }
 
             FadeManager.Instance.NoPanel();
             if (!isBoss)
@@ -262,7 +249,7 @@ namespace Caps
                 verbeText.text = currentCap.chosenMiniGames[currentMiniGame].verbe;
             }
 
-            idName.text = currentCap.chosenMiniGames[currentMiniGame].name;
+           // idName.text = currentCap.chosenMiniGames[currentMiniGame].name;
 
             //yield return new WaitForSeconds((verbTime-0.25f) * 60 / (float)bpm);
             yield return new WaitForSeconds(transitionMusic.clip.length);
@@ -302,6 +289,7 @@ namespace Caps
             //panel.SetActive(true);
             sceneCam.SetActive(true);
             SceneManager.UnloadSceneAsync(currentCap.chosenMiniGames[currentMiniGame].microGameScene.BuildIndex);
+            ressourcesUI.SetActive(true);
 
             // difficutly chnage ever wining or losing streak
             if (win)
@@ -349,7 +337,10 @@ namespace Caps
         /// <returns></returns>
         private IEnumerator Transition(bool win)
         {
-            transition.MoveShip(currentCap, miniGamePassedNumber, transitionMusic.clip.length * 3 / 4);
+            if (isNormalMode)
+            {
+                transition.MoveShip(currentCap, miniGamePassedNumber, transitionMusic.clip.length * 3 / 4, win);
+            }
             transitionCam.enabled = true;
 
             StartCoroutine(FadeManager.Instance.FadeOut(0.15f * 60 / (float)bpm));
@@ -360,7 +351,10 @@ namespace Caps
             if (win)
             {
                 miniGameWon++;
-                transition.CompletionBar(miniGameWon / currentCap.length, 60f / (float)bpm);
+                if (isNormalMode)
+                {
+                    transition.CompletionBar(miniGameWon / currentCap.length, 60f / (float)bpm);
+                }
                 transition.PlayAnimation((float)bpm, win);
                 SoundManager.Instance.ApplyAudioClip("victoryJingle", transitionMusic, bpm);
                 resultText.text = "You Won!";
@@ -409,7 +403,7 @@ namespace Caps
 
             miniGamePassedNumber++;
 
-
+            
 
             if (miniGamePassedNumber % numberBeforSpeedUp == 0 && currentCap.length != miniGamePassedNumber)
             {
@@ -430,7 +424,7 @@ namespace Caps
 
         }
 
-        public void GlobalTransitionEnd(Malediction malediction = null, bool displayMalediction = false, bool isBoss = false)
+        public void GlobalTransitionEnd(bool isBoss = false)
         {
             if (currentMiniGame == currentCap.chosenMiniGames.Count)
             {
@@ -448,7 +442,7 @@ namespace Caps
             currentAsyncScene = SceneManager.LoadSceneAsync(currentCap.chosenMiniGames[currentMiniGame].microGameScene.BuildIndex, LoadSceneMode.Additive);
             currentAsyncScene.allowSceneActivation = false;
             if (currentIsland != null)
-                StartCoroutine(StartMiniGame(currentCap, currentIsland, malediction, displayMalediction, isBoss));
+                StartCoroutine(StartMiniGame(currentCap, currentIsland, isBoss));
             else
                 StartCoroutine(StartMiniGame(currentCap));
 
@@ -462,7 +456,7 @@ namespace Caps
             #region resetValue;
 
             bool _giveReward = true;
-            if (currentCap.isDone)
+            if (currentCap.isDone || PlayerMovement.Instance.playerIsland.isDone)
                 _giveReward = false;
 
             currentCap.isDone = true;
@@ -493,8 +487,22 @@ namespace Caps
                 }
             }
 
-            currentAsyncScene = null;
+            //new isDone trails
+            SpriteShapeRenderer[] _islandTrails = _island.traiList.ToArray();
+            SpriteShapeRenderer[] _islandToGoTrails = _islandToGo.traiList.ToArray();
 
+            for (int i = 0; i < _islandTrails.Length; i++)
+            {
+                for (int j = 0; j < _islandToGoTrails.Length; j++)
+                {
+                    if(_islandTrails[i] == _islandToGoTrails[j])
+                    {
+                        _islandTrails[i].materials[1].SetInt("bool_IsDone", 1);
+                    }
+                }
+            }
+
+            currentAsyncScene = null;
 
             resultText.text = "GG";
             bpm = BPM.Slow;
@@ -512,6 +520,7 @@ namespace Caps
             //reward attribution
             if (_giveReward)
             {
+                PlayerMovement.Instance.playerIsland.isDone = true;
                 capUI.SetActive(false);
                 macroUI.SetActive(true);
                 BossLifeManager.Instance.bossUI.gameObject.SetActive(true);
@@ -524,19 +533,15 @@ namespace Caps
                 sceneCam.SetActive(true);
                 StartCoroutine(UnzoomCam());
                 yield return new WaitForSeconds(shipOpening.openingTime * 2);
-                if (PlayerMovement.Instance.playerIsland.type == IslandType.Shop)
-                {
-                    ShopManager.Instance.Show(PlayerMovement.Instance.playerIsland);
-                }
-                else
-                {
-                    StartCoroutine(RewardUI());
-                }
+
+                StartCoroutine(RewardUI());
+
             }
             else
             {
                 StartCoroutine(UnzoomCam());
                 currentCap = null;
+                UI.UICameraController.canSelect = true;
 
             }
 
@@ -604,7 +609,7 @@ namespace Caps
                     else
                     {
                         int keyStoneImpact = PlayerManager.Instance.keyStoneNumber / 2;
-                        island.capList[i].length = 4 * ((int)_IslandTarget.difficulty + 1) + miniGameNumberPerCap + 2 * PlayerManager.Instance.keyStoneNumber - 2 * keyStoneImpact;
+                        island.capList[i].length = 3 * ((int)_IslandTarget.difficulty + 1) + miniGameNumberPerCap +  PlayerManager.Instance.keyStoneNumber - 2 * keyStoneImpact;
                     }
 
                     island.capList[i].capWeight = idWeightToAdd;
@@ -616,28 +621,6 @@ namespace Caps
         }
 
         [HideInInspector] public int bonusBarrels = 0;
-
-        /*  private void BarrelRessourcesContent()
-          {
-              var _size = Random.Range(minBarrelRessources + bonusBarrels, maxBarrelRessources + bonusBarrels);
-              int _goldAmount = 0;
-              int _lifeAmount = 0;
-              int _foodAmount = 0;
-              for (int i = 0; i < _size; i++)
-              {
-                  int _weight = goldWeight + lifeWeight + foodWeight;
-                  var _random = Random.Range(0, _weight);
-                  if (_random < goldWeight)
-                      _goldAmount++;
-                  else if (_random < goldWeight + lifeWeight)
-                      _lifeAmount++;
-                  else if (_random < goldWeight + lifeWeight + foodWeight)
-                      _foodAmount++;
-              }
-              PlayerManager.Instance.GainCoins(_goldAmount);
-              PlayerManager.Instance.GainFood(_foodAmount);
-              PlayerManager.Instance.Heal(_lifeAmount);
-          }*/
 
 
         public void KeyStoneReset()
@@ -651,7 +634,7 @@ namespace Caps
                     if (_IslandTarget.type != IslandType.Boss)
                     {
                         int keyStoneImpact = PlayerManager.Instance.keyStoneNumber / 2;
-                        island.capList[i].length = 4 * ((int)_IslandTarget.difficulty + 1) + miniGameNumberPerCap + 2 * PlayerManager.Instance.keyStoneNumber - 2 * keyStoneImpact;
+                        island.capList[i].length = 3 * ((int)_IslandTarget.difficulty + 1) + miniGameNumberPerCap +  PlayerManager.Instance.keyStoneNumber - 2 * keyStoneImpact;
 
                     }
                 }
@@ -740,49 +723,72 @@ namespace Caps
 
         private IEnumerator RewardUI()
         {
-            eventSystem = EventSystem.current;
+            // eventSystem = EventSystem.current;
             eventSystem.enabled = false;
-            PlayerInventory.Instance.rewardImage.sprite = PlayerMovement.Instance.playerIsland.reward.sprite;
+            if (PlayerMovement.Instance.playerIsland.type != IslandType.Shop)
+            {
+                PlayerInventory.Instance.rewardImage.sprite = PlayerMovement.Instance.playerIsland.reward.sprite;
+            }
+            else
+            {
+                PlayerInventory.Instance.rewardImage.enabled = false;
+            }
             PlayerInventory.Instance.rewardCanvas.SetActive(true);
-            CompletionAttribution();
+                CompletionAttribution();
 
-            yield return new WaitUntil(() => Input.GetButtonDown("A_Button"));
-            CloseReward();
+                yield return new WaitUntil(() => Input.GetButtonDown("A_Button"));
+                CloseReward();
         }
         public void CloseReward()
         {
             //apply object effect if ressource
             PlayerInventory.Instance.rewardCanvas.SetActive(false);
-
-            if (PlayerMovement.Instance.playerIsland.reward.type != RewardType.Resource)
+            if (PlayerMovement.Instance.playerIsland.type == IslandType.Shop)
             {
-                PlayerInventory.Instance.SetItemToAdd(PlayerMovement.Instance.playerIsland.reward, true);
+                eventSystem.enabled = true;
+                ShopManager.Instance.Show(PlayerMovement.Instance.playerIsland);
+                PlayerInventory.Instance.rewardImage.enabled = true;
             }
             else
             {
-                if (PlayerMovement.Instance.playerIsland.reward.name != "TreasureChest")
+                if (PlayerMovement.Instance.playerIsland.reward.type != RewardType.Resource)
                 {
-
+                    PlayerInventory.Instance.SetItemToAdd(PlayerMovement.Instance.playerIsland.reward, true);
                 }
                 else
                 {
-                    eventSystem.enabled = true;
-                }
+                    if (PlayerMovement.Instance.playerIsland.reward.name != "TreasureChest")
+                    {
 
-                PlayerMovement.Instance.playerIsland.reward.ApplyPassiveEffect();
+                    }
+                    else
+                    {
+                        eventSystem.enabled = true;
+                    }
+
+                    PlayerMovement.Instance.playerIsland.reward.ApplyPassiveEffect();
+                }
+                if (isFirstMiniGame)
+                {
+                    DialogueManager.Instance.PlayDialogue(4, 6);
+                    isFirstMiniGame = false;
+                }
+                else
+                    eventSystem.enabled = true;
             }
 
-            eventSystem.enabled = true;
 
         }
+
+
 
         private void CompletionAttribution()
         {
             float pourcentageCompleted = miniGameWon / currentCap.length;
             int currentMonnaie;
             int goldToAdd = 0;
-            int foodToAdd = 0;
             int woodToAdd = 0;
+            int _moralCost = moralCost;
             if (pourcentageCompleted >= 1f)
             {
                 currentMonnaie = monnaieGold;
@@ -796,10 +802,10 @@ namespace Caps
                             currentMonnaie--;
                             break;
                         case 1:
-                            if (currentMonnaie >= 3)
+                            if (currentMonnaie >= 2)
                             {
-                                currentMonnaie -= 3;
-                                foodToAdd += 5;
+                                currentMonnaie -= 2;
+                                _moralCost += 5;
                             }
                             else
                             {
@@ -814,7 +820,7 @@ namespace Caps
                             if (currentMonnaie >= 6)
                             {
                                 currentMonnaie -= 6;
-                                woodToAdd += 5;
+                                woodToAdd += 10;
                             }
                             break;
                         default:
@@ -839,10 +845,10 @@ namespace Caps
                             currentMonnaie--;
                             break;
                         case 1:
-                            if (currentMonnaie >= 3)
+                            if (currentMonnaie >= 2)
                             {
-                                currentMonnaie -= 3;
-                                foodToAdd += 5;
+                                currentMonnaie -= 2;
+                                _moralCost += 5;
                             }
                             else
                             {
@@ -858,18 +864,39 @@ namespace Caps
                     }
                 }
             }
+
+            //add moral based gold
+            if (PlayerManager.Instance.moral > 0 && PlayerManager.Instance.moral < 25)
+            {
+                goldToAdd += 0;
+            }
+            else if (PlayerManager.Instance.moral >= 25 && PlayerManager.Instance.moral < 50)
+            {
+                goldToAdd += 5;
+
+            }
+            else if (PlayerManager.Instance.moral >= 50 && PlayerManager.Instance.moral < 75)
+            {
+                goldToAdd += 10;
+            }
+            else if (PlayerManager.Instance.moral >= 75 && PlayerManager.Instance.moral < 100)
+            {
+                goldToAdd += 15;
+            }
+
             PlayerManager.Instance.GainCoins(goldToAdd);
-            PlayerManager.Instance.GainFood(foodToAdd);
             PlayerManager.Instance.Heal(woodToAdd);
+            PlayerManager.Instance.GainMoral(_moralCost);
+            PlayerManager.Instance.completionUI.StartCompletion();
             miniGameWon = 0;
-
-            PlayerInventory.Instance.completion.text = "Completion : " + pourcentageCompleted * 100 + "%";
+            transition.completionBar.fillAmount = 0;
+            PlayerInventory.Instance.completion.text = "Completion : " + Mathf.RoundToInt(pourcentageCompleted * 100) + "%";
             PlayerInventory.Instance.goldCompletion.text = "beatcoin + " + goldToAdd;
-            PlayerInventory.Instance.foodCompletion.text = "rations + " + foodToAdd;
             PlayerInventory.Instance.woodCompletion.text = "planches + " + woodToAdd;
+            PlayerInventory.Instance.moralCompletion.text = "moral + " + _moralCost;
             currentCap = null;
-
         }
+
         #region Cameras
         public IEnumerator ZoomCam(float zoomTime)
         {

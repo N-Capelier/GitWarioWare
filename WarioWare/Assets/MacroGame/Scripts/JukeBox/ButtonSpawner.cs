@@ -31,6 +31,7 @@ namespace JukeBox
                 string soundName = sound.name+ " de " + sound.author;
 
                 _sound.GetComponentInChildren<TextMeshProUGUI>().text = soundName;
+              //  _sound.GetComponentInChildren<TextMeshProUGUI>().transform.localScale = soundName;
                 buttonList.Add(_sound);
                 EventTrigger.Entry entry = new EventTrigger.Entry();
                 entry.eventID = EventTriggerType.Select;

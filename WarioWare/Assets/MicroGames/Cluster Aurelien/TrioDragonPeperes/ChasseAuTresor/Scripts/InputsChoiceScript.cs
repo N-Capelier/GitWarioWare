@@ -15,19 +15,20 @@ namespace Dragons_Peperes
             
             private int possibilityNumber;
 
-            private Vector3[] inputLocationList = { new Vector3(-3.7f, 0, 0), new Vector3(0, 0, 0), new Vector3(3.7f, 0, 0), new Vector3(-5, 0, 0), new Vector3(-2.5f, 0, 0), new Vector3(2.5f, 0, 0), new Vector3(5, 0, 0), new Vector3(-7.4f, 0, 0), new Vector3(-3.7f, 0, 0), new Vector3(0, 0, 0), new Vector3(3.7f, 0, 0), new Vector3(7.4f, 0, 0) };           
+            private Vector3[] inputLocationList = { new Vector3(-3.7f, 0, 0), new Vector3(0, 0, 0), new Vector3(3.7f, 0, 0), new Vector3(-6, 0, 0), new Vector3(-2.5f, 0, 0), new Vector3(2.5f, 0, 0), new Vector3(6, 0, 0), new Vector3(-3.7f, 2, 0), new Vector3(0, 2, 0), new Vector3(3.7f, 2, 0), new Vector3(-2.5f, -2, 0), new Vector3(2.5f, -2, 0) };           
 
             private List<GameObject> inputInstantiated = new List<GameObject>();
 
             public GameObject upArrow;
             public GameObject downArrow;
             public GameObject leftArrow;
-            public GameObject rightArrow;
+            public GameObject rightArrow;            
 
             public GameObject player;
             public GameObject treasure;
             public GameObject mouetteGauche;
             public GameObject mouetteDroite;
+            public GameObject map;           
 
             public bool inputsChosen;
 
@@ -410,6 +411,7 @@ namespace Dragons_Peperes
                         Destroy(inputInstantiated[i]);
                         
                     }
+                    map.SetActive(false);
                     inputsChosen = true;
                     player.SetActive(true);
                     mouetteGauche.SetActive(true);

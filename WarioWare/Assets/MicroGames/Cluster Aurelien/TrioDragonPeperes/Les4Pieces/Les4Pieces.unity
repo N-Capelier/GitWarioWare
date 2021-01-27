@@ -1918,7 +1918,7 @@ MonoBehaviour:
   fourthSpot: {fileID: 137820695}
   winScreen: {fileID: 1462424900}
   lostScreen: {fileID: 1977541958}
-  hideCoin: {fileID: 4471764575349486080, guid: 7988a79b17ed67e4889d47b8c16a635a,
+  hideCoin: {fileID: 4270815792174803758, guid: fae8d20729f606d4fad475b9dcafd5f4,
     type: 3}
   spot1: {fileID: 1296034777}
   spot2: {fileID: 156484715}

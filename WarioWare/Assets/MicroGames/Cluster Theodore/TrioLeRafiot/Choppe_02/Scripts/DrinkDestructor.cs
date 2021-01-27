@@ -15,11 +15,12 @@ namespace LeRafiot
             {
                 if (collision.gameObject.CompareTag("Enemy2") && !catchScript.catchedBadDrink)
                 {
+                    catchScript.drinkExit = true;
                     catchScript.canCatch = false;
                     DrinkManager.Instance.canSpawn = false;
                     Destroy(collision.gameObject);
                     //Manager.Instance.Result(false);
-                    SoundManagerChoppe.Instance.sfxSound[1].Play();
+                    //SoundManagerChoppe.Instance.sfxSound[1].Play();
                 }
                 else
                 {

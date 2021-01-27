@@ -42,6 +42,7 @@ namespace Islands
         public List<SpriteShapeRenderer> traiList = new List<SpriteShapeRenderer>();
 
         [HideInInspector] public List<Cap> capList = new List<Cap>();
+        [HideInInspector] public bool isDone;
 
         [Header("Special Islands")]
         [SerializeField] Sprite legendaryIslandSprite;
@@ -65,6 +66,8 @@ namespace Islands
         public TextMeshProUGUI capLength;
         private AudioSource audioSource;
         public Image icon;
+        public IslandIcone_Showcase iconTransition;
+        public Image redCross;
 
         #endregion
 

@@ -68,15 +68,15 @@ namespace SpanishInquisition
                         soundManager.PlayFlagMusicSlow();
                         break;
 
-                    case 90:
+                    case 80:
                         soundManager.PlayFlagMusicMedium();
                         break;
 
-                    case 120:
+                    case 100:
                         soundManager.PlayFlagMusicFast();
                         break;
 
-                    case 140:
+                    case 120:
                         soundManager.PlayFlagMusicSuperFast();
                         break;
                 }

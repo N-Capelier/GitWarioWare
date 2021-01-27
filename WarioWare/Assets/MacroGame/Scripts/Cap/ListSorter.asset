@@ -42,7 +42,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2844dc6dcee3cbc4584320a1efa62f5f, type: 2}
   - {fileID: 11400000, guid: d28c8efbe7a86af4fae3c20ee068ab6c, type: 2}
   - {fileID: 11400000, guid: cc8533ccfaa62744b808416dbc99a767, type: 2}
-  - {fileID: 11400000, guid: b938def9c6f117149aee14f9897c45df, type: 2}
+  - {fileID: 11400000, guid: 529696a86d8b61c4692db1ded3ca69f7, type: 2}
   - {fileID: 11400000, guid: 91c177e103bba424c994c04c9003b1e0, type: 2}
   - {fileID: 11400000, guid: 5324ce4cc8da3694198c15dc6236e9bf, type: 2}
   idCardsNotPlayed:
@@ -75,7 +75,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2844dc6dcee3cbc4584320a1efa62f5f, type: 2}
   - {fileID: 11400000, guid: d28c8efbe7a86af4fae3c20ee068ab6c, type: 2}
   - {fileID: 11400000, guid: cc8533ccfaa62744b808416dbc99a767, type: 2}
-  - {fileID: 11400000, guid: b938def9c6f117149aee14f9897c45df, type: 2}
+  - {fileID: 0}
   - {fileID: 11400000, guid: 91c177e103bba424c994c04c9003b1e0, type: 2}
   - {fileID: 11400000, guid: 5324ce4cc8da3694198c15dc6236e9bf, type: 2}
   iDCardsPlayed: []

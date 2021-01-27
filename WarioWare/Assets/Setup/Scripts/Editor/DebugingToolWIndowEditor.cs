@@ -67,7 +67,7 @@ public class DebugingToolWIndowEditor : Editor {
                 playerMovementFoldout && i >= 17&& i < 19 ||
                 islandCreatorFoldout && i >= 19 && i < 24 ||
                 islandFoldout && i >= 24 && i < 25 || 
-                bossManagerFoldout && i>=25)
+                bossManagerFoldout && i>=25 &&i<29)
             {
 
                 if (i == 10)
@@ -76,15 +76,30 @@ public class DebugingToolWIndowEditor : Editor {
                     EditorGUILayout.LabelField(debugingTool.names[i]);
 
                         if(debugingTool.values[i] <10)
-                            debugingTool.values[i] = EditorGUILayout.IntSlider( debugingTool.values[i],0,10);
+                            debugingTool.values[i] = EditorGUILayout.IntSlider((int)debugingTool.values[i],0,10);
 
                         else if(debugingTool.values[i] < 100 && debugingTool.values[i] >=10)
-                            debugingTool.values[i] = EditorGUILayout.IntSlider(debugingTool.values[i], 0, 100);
+                            debugingTool.values[i] = EditorGUILayout.IntSlider((int)debugingTool.values[i], 0, 100);
 
                         else
-                            debugingTool.values[i] = EditorGUILayout.IntSlider(debugingTool.values[i], 0, 1000);
+                            debugingTool.values[i] = EditorGUILayout.IntSlider((int)debugingTool.values[i], 0, 1000);
                 EditorGUILayout.EndHorizontal();
 
+            }
+            if (bossManagerFoldout && i == 29)
+            {
+                EditorGUILayout.BeginHorizontal();
+                EditorGUILayout.LabelField(debugingTool.names[i]);
+
+                if (debugingTool.values[i] < 10)
+                    debugingTool.values[i] = EditorGUILayout.Slider(debugingTool.values[i], 0, 10);
+
+                else if (debugingTool.values[i] < 100 && debugingTool.values[i] >= 10)
+                    debugingTool.values[i] = EditorGUILayout.Slider(debugingTool.values[i], 0, 100);
+
+                else
+                    debugingTool.values[i] = EditorGUILayout.Slider(debugingTool.values[i], 0, 1000);
+                EditorGUILayout.EndHorizontal();
             }
             EditorGUILayout.EndFoldoutHeaderGroup();
 

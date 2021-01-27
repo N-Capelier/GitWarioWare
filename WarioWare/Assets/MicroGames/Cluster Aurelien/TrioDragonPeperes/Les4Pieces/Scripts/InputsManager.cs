@@ -66,11 +66,13 @@ namespace Dragons_Peperes
                                 {
                                     //destroy hiddencoins
                                     gameManager.YouWIn();
+                                    gameManager.enableInput = false;
                                 }
                                 else
                                 {
                                     //destroy hiddencoins
                                     gameManager.YouLost();
+                                    gameManager.enableInput = false;
                                 }
 
                             }
@@ -82,11 +84,13 @@ namespace Dragons_Peperes
                                     
                                     //destroy hiddencoins
                                     gameManager.YouWIn();
+                                    gameManager.enableInput = false;
                                 }
                                 else
                                 {
                                     //destroy hiddencoins
                                     gameManager.YouLost();
+                                    gameManager.enableInput = false;
                                 }
                             }
 
@@ -97,28 +101,29 @@ namespace Dragons_Peperes
                                     
                                     //destroy hiddencoins
                                     gameManager.YouWIn();
+                                    gameManager.enableInput = false;
                                 }
                                 else
-                                {
-                                    
+                                {                                    
                                     //destroy hiddencoins
                                     gameManager.YouLost();
+                                    gameManager.enableInput = false;
                                 }
                             }
 
                             if (coin4OnSpot1)
                             {
                                 if (carteManager.weWantCoin4 == true)
-                                {
-                                    
+                                {                                   
                                     //destroy hiddencoins
                                     gameManager.YouWIn();
+                                    gameManager.enableInput = false;
                                 }
                                 else
-                                {
-                                    
+                                {                                   
                                     //destroy hiddencoins
                                     gameManager.YouLost();
+                                    gameManager.enableInput = false;
                                 }
                             }
                         }
@@ -133,64 +138,64 @@ namespace Dragons_Peperes
                             if (coin1OnSpot2)
                             {
                                 if (carteManager.weWantCoin1 == true)
-                                {
-                                
+                                {                                
                                     //destroy hiddencoins
                                     gameManager.YouWIn();
+                                    gameManager.enableInput = false;
                                 }
                                 else
-                                {
-                                
+                                {                               
                                     //destroy hiddencoins
                                     gameManager.YouLost();
+                                    gameManager.enableInput = false;
                                 }
                             }
 
                             if (coin2OnSpot2)
                             {
                                 if (carteManager.weWantCoin2 == true)
-                                {
-                                
+                                {                               
                                     //destroy hiddencoins
                                     gameManager.YouWIn();
+                                    gameManager.enableInput = false;
                                 }
                                 else
-                                {
-                                
+                                {                               
                                     //destroy hiddencoins
                                     gameManager.YouLost();
+                                    gameManager.enableInput = false;
                                 }
                             }
 
                             if (coin3OnSpot2)
                             {
                                 if (carteManager.weWantCoin3 == true)
-                                {
-                                
+                                {                                
                                     //destroy hiddencoins
                                     gameManager.YouWIn();
+                                    gameManager.enableInput = false;
                                 }
                                 else
-                                {
-                                
+                                {                               
                                     //destroy hiddencoins
                                     gameManager.YouLost();
+                                    gameManager.enableInput = false;
                                 }
                             }
 
                             if (coin4OnSpot2)
                             {
                                 if (carteManager.weWantCoin4 == true)
-                                {
-                                
+                                {                                
                                     //destroy hiddencoins
                                     gameManager.YouWIn();
+                                    gameManager.enableInput = false;
                                 }
                                 else
-                                {
-                                
+                                {                                
                                     //destroy hiddencoins
                                     gameManager.YouLost();
+                                    gameManager.enableInput = false;
                                 }
                             }
                         }
@@ -205,64 +210,64 @@ namespace Dragons_Peperes
                             if (coin1OnSpot3)
                             {
                                 if (carteManager.weWantCoin1 == true)
-                                {
-                                    
+                                {                                    
                                     //destroy hiddencoins
                                     gameManager.YouWIn();
+                                    gameManager.enableInput = false;
                                 }
                                 else
-                                {
-                                    
+                                {                                   
                                     //destroy hiddencoins
                                     gameManager.YouLost();
+                                    gameManager.enableInput = false;
                                 }
                             }
 
                             if (coin2OnSpot3)
                             {
                                 if (carteManager.weWantCoin2 == true)
-                                {
-                                    
+                                {                                  
                                     //destroy hiddencoins
                                     gameManager.YouWIn();
+                                    gameManager.enableInput = false;
                                 }
                                 else
-                                {
-                                    
+                                {                                    
                                     //destroy hiddencoins
                                     gameManager.YouLost();
+                                    gameManager.enableInput = false;
                                 }
                             }
 
                             if (coin3OnSpot3)
                             {
                                 if (carteManager.weWantCoin3 == true)
-                                {
-                                    
+                                {                                   
                                     //destroy hiddencoins
                                     gameManager.YouWIn();
+                                    gameManager.enableInput = false;
                                 }
                                 else
-                                {
-                                    
+                                {                                  
                                     //destroy hiddencoins
                                     gameManager.YouLost();
+                                    gameManager.enableInput = false;
                                 }
                             }
 
                             if (coin4OnSpot3)
                             {
                                 if (carteManager.weWantCoin4 == true)
-                                {
-                                    
+                                {                                   
                                     //destroy hiddencoins
                                     gameManager.YouWIn();
+                                    gameManager.enableInput = false;
                                 }
                                 else
-                                {
-                                    
+                                {                                    
                                     //destroy hiddencoins
                                     gameManager.YouLost();
+                                    gameManager.enableInput = false;
                                 }
                             }
                         }
@@ -277,64 +282,65 @@ namespace Dragons_Peperes
                             if (coin1OnSpot4)
                             {
                                 if (carteManager.weWantCoin1 == true)
-                                {
-                            
+                                {                           
                                     //destroy hiddencoins
                                     gameManager.YouWIn();
+                                    gameManager.enableInput = false;
                                 }
                                 else
-                                {
-                            
+                                {                            
                                     //destroy hiddencoins
                                     gameManager.YouLost();
+                                    gameManager.enableInput = false;
                                 }
                             }
 
                             if (coin2OnSpot4)
                             {
                                 if (carteManager.weWantCoin2 == true)
-                                {
-                            
+                                {                           
                                     //destroy hiddencoins
                                     gameManager.YouWIn();
+                                    gameManager.enableInput = false;
+
                                 }
                                 else
-                                {
-                            
+                                {                          
                                     //destroy hiddencoins
                                     gameManager.YouLost();
+                                    gameManager.enableInput = false;
                                 }
                             }
 
                             if (coin3OnSpot4)
                             {
                                 if (carteManager.weWantCoin3 == true)
-                                {
-                            
+                                {                          
                                     //destroy hiddencoins
                                     gameManager.YouWIn();
+                                    gameManager.enableInput = false;
                                 }
                                 else
-                                {
-                                    
+                                {                                    
                                     //destroy hiddencoins
                                     gameManager.YouLost();
+                                    gameManager.enableInput = false;
                                 }
                             }
 
                             if (coin4OnSpot4)
                             {
                                 if (carteManager.weWantCoin4 == true)
-                                {
-                                    
+                                {                                   
                                     //destroy hiddencoins
                                     gameManager.YouWIn();
+                                    gameManager.enableInput = false;
                                 }
                                 else
-                                {
-                                    
+                                {                                  
                                     //destroy hiddencoins
                                     gameManager.YouLost();
+                                    gameManager.enableInput = false;
                                 }
                             }
                         }

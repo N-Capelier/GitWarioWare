@@ -29,9 +29,23 @@ namespace LeRafiot
             public GameObject armDown;
             public GameObject armUp;
 
+            [Header("Win & Lose Sprites")]
+            public GameObject winScreen;
+            public GameObject loseScreen;
+            public GameObject pirate;
+            public GameObject pirateWin;
+            public GameObject pirateLose;
+            public GameObject fondLvl1;
+            public GameObject fondLvl2;
+            public GameObject fondLvl3;
+
             [HideInInspector] public bool canCatch = true;
             [HideInInspector] public bool catchedGoodDrink;
             [HideInInspector] public bool catchedBadDrink;
+            [HideInInspector] public bool drinkExit;
+
+            private int tickCounter;
+            private bool cantCount;
             #endregion
 
             // Start is called before the first frame update
@@ -43,6 +57,11 @@ namespace LeRafiot
 
                 armDown.SetActive(true);
                 armUp.SetActive(false);
+
+                winScreen.SetActive(false);
+                loseScreen.SetActive(false);
+                pirateWin.SetActive(false);
+                pirateLose.SetActive(false);
             }
 
             public override void FixedUpdate()
@@ -61,6 +80,47 @@ namespace LeRafiot
                     else
                     {
                         Manager.Instance.Result(false);
+                    }
+                }
+
+                if (!canCatch && !cantCount)
+                {
+                    tickCounter++;
+                }
+
+                if(tickCounter == 1 && !cantCount)
+                {
+                    cantCount = true;
+
+                    if (catchedGoodDrink)
+                    {
+                        winScreen.SetActive(true);
+                        pirateWin.SetActive(true);
+
+                        fondLvl1.SetActive(false);
+                        fondLvl2.SetActive(false);
+                        fondLvl3.SetActive(false);
+                        pirate.SetActive(false);
+                        armDown.SetActive(false);
+                        armUp.SetActive(false);
+
+                        SoundManagerChoppe.Instance.sfxSound[4].Play();
+                        SoundManagerChoppe.Instance.sfxSound[0].Play();
+                    }
+                    else if (catchedBadDrink || drinkExit)
+                    {
+                        loseScreen.SetActive(true);
+                        pirateLose.SetActive(true);
+
+                        fondLvl1.SetActive(false);
+                        fondLvl2.SetActive(false);
+                        fondLvl3.SetActive(false);
+                        pirate.SetActive(false);
+                        armDown.SetActive(false);
+                        armUp.SetActive(false);
+
+                        SoundManagerChoppe.Instance.sfxSound[5].Play();
+                        SoundManagerChoppe.Instance.sfxSound[1].Play();
                     }
                 }
             }
@@ -91,8 +151,8 @@ namespace LeRafiot
                                 Destroy(drinkTriggered);
 
                                 //Manager.Instance.Result(true);
-                                SoundManagerChoppe.Instance.sfxSound[4].Play();
-                                SoundManagerChoppe.Instance.sfxSound[0].Play();
+                                //SoundManagerChoppe.Instance.sfxSound[4].Play();
+                                //SoundManagerChoppe.Instance.sfxSound[0].Play();
                             }
                             else
                             {
@@ -105,8 +165,8 @@ namespace LeRafiot
                                 drinkInHand.GetComponent<BoxCollider2D>().enabled = false;
                                 Destroy(drinkTriggered);
                                 //Manager.Instance.Result(false);
-                                SoundManagerChoppe.Instance.sfxSound[5].Play();
-                                SoundManagerChoppe.Instance.sfxSound[1].Play();
+                                //SoundManagerChoppe.Instance.sfxSound[5].Play();
+                                //SoundManagerChoppe.Instance.sfxSound[1].Play();
                             }
 					    }
 				    }

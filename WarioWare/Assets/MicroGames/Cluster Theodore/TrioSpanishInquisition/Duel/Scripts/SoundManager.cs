@@ -44,6 +44,9 @@ namespace SpanishInquisition
             [SerializeField]
             private AudioSource musicSuperFast;
 
+            [SerializeField]
+            private AudioSource backgroundNoise;
+
 
             // Start is called before the first frame update
             void Start()
@@ -59,6 +62,7 @@ namespace SpanishInquisition
                 musicMedium = gameSounds[6];
                 musicFast = gameSounds[7];
                 musicSuperFast = gameSounds[8];
+                backgroundNoise = gameSounds[9];
             }
 
             public void PlayParry()
@@ -109,6 +113,11 @@ namespace SpanishInquisition
             public void PlayDuelMusicSuperFast()
             {
                 musicSuperFast.Play();
+            }
+
+            public void PlayBackgroundNoise()
+            {
+                backgroundNoise.Play();
             }
         }
     }

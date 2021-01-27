@@ -19,18 +19,27 @@ namespace TrioLLL
             public override void Start()
             {
                 base.Start(); //Do not erase this line!
+
+                TruePlayer tp = Player.GetComponent<TruePlayer>();
+                GameObject gb = null;
+
                 switch (currentDifficulty)
                 {
                     case Difficulty.EASY:
-                        Instantiate(GabaritRandomD1, Player.transform.position, Quaternion.identity, transform);
+                        gb = Instantiate(GabaritRandomD1, Player.transform.position, Quaternion.identity, transform);
+                        tp.gabarits.Add(gb.GetComponent<Gabarits>());
                         break;
                     case Difficulty.MEDIUM:
-                        Instantiate(GabaritRandomD2, Player.transform.position, Quaternion.identity, transform);
-                        Instantiate(GabaritFollow, GabaritPosition.transform.position, Quaternion.identity, transform);
+                        gb = Instantiate(GabaritRandomD2, Player.transform.position, Quaternion.identity, transform);
+                        tp.gabarits.Add(gb.GetComponent<Gabarits>());
+                        gb = Instantiate(GabaritFollow, GabaritPosition.transform.position, Quaternion.identity, transform);
+                        tp.gabarits.Add(gb.GetComponent<Gabarits>());
                         break;
                     case Difficulty.HARD:
-                        Instantiate(GabaritRandomD2, Player.transform.position, Quaternion.identity, transform);
-                        Instantiate(GabaritFollow, Player.transform.position, Quaternion.identity, transform);
+                        gb = Instantiate(GabaritRandomD2, Player.transform.position, Quaternion.identity, transform);
+                        tp.gabarits.Add(gb.GetComponent<Gabarits>());
+                        gb = Instantiate(GabaritFollow, Player.transform.position, Quaternion.identity, transform);
+                        tp.gabarits.Add(gb.GetComponent<Gabarits>());
                         break;
                 }
             }

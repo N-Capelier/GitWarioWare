@@ -55,6 +55,8 @@ namespace ACommeAkuma
             private GameObject inputImage;
             [SerializeField]
             private GameObject inputArrowImage;
+            [SerializeField]
+            private GameObject stopImage;
 
             #endregion
 
@@ -67,6 +69,14 @@ namespace ACommeAkuma
             public void Update()
             {
                 PlaySoundSFX();
+                if(currentDifficulty == Difficulty.EASY)
+                {
+                    if (grogAmount >= minGrogAmount && grogAmount <= maxGrogAmount)
+                    {
+                        stopImage.SetActive(true);
+                    }
+                    else stopImage.SetActive(false);
+                }
             }
 
             //FixedUpdate is called on a fixed time.
@@ -87,7 +97,9 @@ namespace ACommeAkuma
 
             void FillGrog()
             {
+                LiquidWidthcontroler.Instance.lineWidth.widthMultiplier = yJoystickRight;
                 yJoystickRight = -Input.GetAxisRaw("Left_Joystick_Y");
+                beerTapSFX = false;
 
                 //if (gameplayIsOver == true)
                 //{
@@ -98,6 +110,7 @@ namespace ACommeAkuma
                 {
                     grogAmount += Time.fixedDeltaTime * fillSpeed * yJoystickRight; //Controller
                     fillTimer += Time.fixedDeltaTime;
+                    beerTapSFX = true;
                 }
                 else if (inputDetected == true)
                 {
@@ -176,12 +189,11 @@ namespace ACommeAkuma
                 if (inputDetected)
                 {
                     liquidSFX = true;
-                    beerTapSFX = true;
+
                 }
                 else if (!inputDetected)
                 {
                     liquidSFX = false;
-                    beerTapSFX = false;
                 }
 
                 if (liquidSFX == true && PGAudioSource.Instance.sourceList[0].isPlaying == false)

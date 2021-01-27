@@ -7,6 +7,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 672145095311582072, guid: 60347e3d66535aa4cbcedccb12df652c,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e1880a37134fa71439584ca2b89fc98d,
+        type: 3}
+    - target: {fileID: 1754271002674609598, guid: 60347e3d66535aa4cbcedccb12df652c,
+        type: 3}
+      propertyPath: m_Name
+      value: Verre2
+      objectReference: {fileID: 0}
     - target: {fileID: 2043418487632310771, guid: 60347e3d66535aa4cbcedccb12df652c,
         type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -27,12 +38,27 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0.15560639
       objectReference: {fileID: 0}
+    - target: {fileID: 2117322222696155478, guid: 60347e3d66535aa4cbcedccb12df652c,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -960.57
+      objectReference: {fileID: 0}
+    - target: {fileID: 2117322222696155478, guid: 60347e3d66535aa4cbcedccb12df652c,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -541.561
+      objectReference: {fileID: 0}
     - target: {fileID: 3212760345390616930, guid: 60347e3d66535aa4cbcedccb12df652c,
         type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: b430421f5f272c947b1136c0a7b11612,
         type: 3}
+    - target: {fileID: 3254229658840226519, guid: 60347e3d66535aa4cbcedccb12df652c,
+        type: 3}
+      propertyPath: m_Name
+      value: Verre2Line
+      objectReference: {fileID: 0}
     - target: {fileID: 3580626118490593815, guid: 60347e3d66535aa4cbcedccb12df652c,
         type: 3}
       propertyPath: m_Sprite

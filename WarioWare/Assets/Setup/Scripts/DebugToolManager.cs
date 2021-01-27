@@ -10,10 +10,10 @@ public class DebugToolManager : Singleton<DebugToolManager>
         CreateSingleton(true);
     }
 
-    public int  ChangeVariableValue(object variable) 
+    public float  ChangeVariableValue(object variable) 
     {
         bool canAttriute = false;
-        int _currentVariable = 0;
+        float _currentVariable = 0;
         for (int i = 0; i < debugingTool.names.Count; i++)
         {
             if(debugingTool.names[i] == variable.ToString())

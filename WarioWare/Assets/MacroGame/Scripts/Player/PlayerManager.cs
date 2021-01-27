@@ -17,12 +17,14 @@ namespace Player
         public int playerHp;
         public int beatcoins;
         public int food;
+        public int moral;
         public int keyStoneNumber;
         [Header("MaxRessources")]
         public int maxFood;
 
         public delegate void PlayerUIHandler();
         public event PlayerUIHandler UpdatePlayerUI;
+        public CompletionUI completionUI;
 
         [Header("Sound")]
         public AudioSource audioSource;
@@ -47,21 +49,21 @@ namespace Player
             //Initialisation de l'UI du player
             UpdatePlayerUI.Invoke();
             //set up value from debug
-            playerHp = DebugToolManager.Instance.ChangeVariableValue("playerHp");
-            beatcoins = DebugToolManager.Instance.ChangeVariableValue("beatcoins");
-            food = DebugToolManager.Instance.ChangeVariableValue("food");
-            maxFood = DebugToolManager.Instance.ChangeVariableValue("maxFood");
+            playerHp = (int)DebugToolManager.Instance.ChangeVariableValue("playerHp");
+            beatcoins = (int)DebugToolManager.Instance.ChangeVariableValue("beatcoins");
+            food = (int)DebugToolManager.Instance.ChangeVariableValue("food");
+            maxFood = (int)DebugToolManager.Instance.ChangeVariableValue("maxFood");
         }
 
         void Update()
         {
 
             //Show / Hide Inventory //check micro UI inactive
-            if(!Manager.Instance.capUI.activeSelf && Input.GetButtonDown("Start_Button") && !inInventory)
+            if(!Manager.Instance.capUI.activeSelf && Input.GetButtonDown("Y_Button") && !inInventory)
             {
                 PlayerInventory.Instance.Show();
             }
-            else if(!Manager.Instance.capUI.activeSelf && inInventory && (Input.GetButtonDown("Start_Button") || Input.GetButtonDown("B_Button")))
+            else if(!Manager.Instance.capUI.activeSelf && inInventory && (Input.GetButtonDown("Y_Button") || Input.GetButtonDown("B_Button")))
             {
                 PlayerInventory.Instance.Hide(); 
             }
@@ -122,6 +124,23 @@ namespace Player
             }
             UpdatePlayerUI.Invoke();
         }
+
+        public void GainMoral(int _moral)
+        {
+            if(moral + _moral >= 100)
+            {
+                moral = 100;
+            }
+            else if(moral + _moral <= 0)
+            {
+                moral = 0;
+            }
+            else
+            {
+                moral += _moral;
+            }
+            UpdatePlayerUI.Invoke();
+        }
         public void GainKeyStone()
         {
             keyStoneNumber++;
@@ -135,7 +154,7 @@ namespace Player
                 SoundManager.Instance.ApplyAudioClip("gameOverJingleBoss", audioSource, Manager.Instance.bpm);
 
             audioSource.PlaySecured();
-            PlayerInventory.Instance.rewardCanvas.SetActive(true);
+          //  PlayerInventory.Instance.rewardCanvas.SetActive(true);
             death.SetActive(true);
             yield return new WaitForSeconds(audioSource.clip.length);
             Manager.Instance.EndGame();
