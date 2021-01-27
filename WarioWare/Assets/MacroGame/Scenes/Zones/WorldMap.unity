@@ -29508,6 +29508,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cap Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 8977992822539135360, guid: 80ac864817d34d641be6448f49de01a3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8977992822539135367, guid: 80ac864817d34d641be6448f49de01a3,
         type: 3}
       propertyPath: m_AnchoredPosition.x

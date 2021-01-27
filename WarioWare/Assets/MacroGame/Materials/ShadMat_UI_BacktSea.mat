@@ -31,9 +31,9 @@ Material:
     - _BPM: 60
     - _OffSet: 0
     - _ShaderHeight: 1.04
-    - _WaveQuantity: 10
-    - _WaveSize: -1.2
-    - _WaveSpeed: 2
+    - _WaveQuantity: 20
+    - _WaveSize: -4
+    - _WaveSpeed: 0
     m_Colors:
     - Color_2FA990F3: {r: 0.8274511, g: 0.9058824, b: 0.8705883, a: 1}
     - _WaveColor: {r: 0.08235294, g: 0.3921569, b: 0.5411765, a: 1}
