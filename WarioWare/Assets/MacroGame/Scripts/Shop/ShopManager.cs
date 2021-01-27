@@ -23,6 +23,7 @@ namespace Shop
         public GameObject itemDescriptionContainer;
         public TextMeshProUGUI itemDescription;
         public TextMeshProUGUI itemName;
+        public RectTransform monkeyHand;
 
         public Island[] shopIslands;
         private int loadedShopIndex;
@@ -219,10 +220,26 @@ namespace Shop
             audioSource.PlaySecured();
 
             for (int i = 0; i < shopSlots.Length; i++)
-            {
-                print(shopItems[loadedShopIndex][i]);
+            { 
                 if (shopSlots[i] == selectedSlot && shopItems[loadedShopIndex][i] != null)
                 {
+
+                    if (i == 0)
+                    {
+                        Vector3 rotate = new Vector3(0,0,10);
+                        monkeyHand.Rotate(rotate);
+
+                    }
+                    else if (i == 1)
+                    {
+                        Vector3 rotate = new Vector3(0, 0, 30);
+                        monkeyHand.Rotate(rotate);
+                    }
+                    else if (i == 2)
+                    {
+                        Vector3 rotate = new Vector3(0, 0, 65);
+                        monkeyHand.Rotate(rotate);
+                    }
 
                     itemDescription.text = shopItems[loadedShopIndex][i].GetDescription();
                     itemName.text = shopItems[loadedShopIndex][i].rewardName;
