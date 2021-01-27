@@ -134,14 +134,18 @@ namespace Boss
             if (phaseBossLife >= bossLifeOnStartOfFight * phaseNumber / 4)
             {
                 phaseNumber++;
-                if (currentType == IslandType.Boss)
-                    SoundManager.Instance.ApplyAudioClip("speedUpJingleBoss", transitionMusic, Manager.Instance.bpm);
+                if(phaseNumber != 5)
+                {
+                    if (currentType == IslandType.Boss)
+                        SoundManager.Instance.ApplyAudioClip("speedUpJingleBoss", transitionMusic, Manager.Instance.bpm);
+                    else
+                        SoundManager.Instance.ApplyAudioClip("speedUpJingleMiniBoss", transitionMusic, Manager.Instance.bpm);
+                    transitionMusic.PlaySecured();
+                    Manager.Instance.speedUp.SetActive(true);
+                    transition.SpeedUp((float)Manager.Instance.bpm);
+
+                }
                 else
-                    SoundManager.Instance.ApplyAudioClip("speedUpJingleMiniBoss", transitionMusic, Manager.Instance.bpm);
-                transitionMusic.PlaySecured();
-                Manager.Instance.speedUp.SetActive(true);
-                transition.SpeedUp((float)Manager.Instance.bpm);
-                if(phaseNumber == 5)
                 {
                     Manager.Instance.victory.SetActive(true);
                 }

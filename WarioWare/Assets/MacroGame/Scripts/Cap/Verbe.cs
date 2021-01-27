@@ -21,7 +21,7 @@ public class Verbe : MonoBehaviour
             images[i].enabled = true;
         }
 
-        for (int i = 0; i < images.Length; i++)
+        for (int i = 0; i < images.Length-1; i++)
         {
             //Debug.Log(Manager.Instance.transitionMusic.clip.length);
             yield return new WaitForSeconds(Manager.Instance.transitionMusic.clip.length / 4);

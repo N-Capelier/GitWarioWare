@@ -52,7 +52,7 @@ namespace Sound
                             audioSource.volume = soundBpm.sounds[2].volume;
                             break;
                         case BPM.SuperFast:
-                            audioSource.clip = soundBpm.sounds[1].clip;
+                            audioSource.clip = soundBpm.sounds[3].clip;
                             audioSource.volume = soundBpm.sounds[3].volume;
                             break;
                         default:

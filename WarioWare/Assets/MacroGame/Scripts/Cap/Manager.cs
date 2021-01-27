@@ -754,7 +754,7 @@ namespace Caps
 
             sorter.iDCardsPlayed = new List<IDCard>();
         }
-
+        private bool isTutoDialogDone;
         private IEnumerator RewardUI()
         {
             // eventSystem = EventSystem.current;
@@ -807,8 +807,9 @@ namespace Caps
                     DialogueManager.Instance.PlayDialogue(4, 6);
                     isFirstMiniGame = false;
                 }
-                else if(KeystoneReward.tutorialCompleted && KeystoneReward.keystoneCount == 0)
+                else if(KeystoneReward.tutorialCompleted && KeystoneReward.keystoneCount == 0 && !isTutoDialogDone)
                 {
+                    isTutoDialogDone = true;
                     DialogueManager.Instance.PlayDialogue(10, 6, VcamTarget, allIslands[16].transform,5);
                 }
                 else if (PlayerMovement.Instance.playerIsland.type == IslandType.Keystone)
