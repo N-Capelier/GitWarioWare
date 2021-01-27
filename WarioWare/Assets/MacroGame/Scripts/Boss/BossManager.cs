@@ -63,7 +63,7 @@ namespace Boss
             }
             else
             {
-                bossLifeOnStartOfFight = 200;
+                bossLifeOnStartOfFight = 150;
             }
             shipOpening.gameObject.SetActive(true);
             StartCoroutine(Manager.Instance.ZoomCam(shipOpening.openingTime));
@@ -77,14 +77,19 @@ namespace Boss
             if (win)
             {
                 transition.PlayAnimation((float)Manager.Instance.bpm, true);
-                SoundManager.Instance.ApplyAudioClip("victoryJingleBoss", transitionMusic, Manager.Instance.bpm);
+                if(currentType == IslandType.Boss)
+                    SoundManager.Instance.ApplyAudioClip("victoryJingleBoss", transitionMusic, Manager.Instance.bpm);
+                else
+                    SoundManager.Instance.ApplyAudioClip("victoryJingleMiniBoss", transitionMusic, Manager.Instance.bpm);
 
                 int _damageToBoss =Mathf.RoundToInt( damageToBoss / Mathf.Pow(damageMultiplier, 5- (float) PlayerManager.Instance.keyStoneNumber));
                 if (currentType != IslandType.Boss)
                 {
                     _damageToBoss = (int)damageToBoss;
+                    BossLifeManager.Instance.TakeDamage(_damageToBoss, bossLifeOnStartOfFight, false);
                 }
-                BossLifeManager.Instance.TakeDamage(_damageToBoss, bossLifeOnStartOfFight, true);
+                else
+                    BossLifeManager.Instance.TakeDamage(_damageToBoss, bossLifeOnStartOfFight, true);
                 phaseBossLife += _damageToBoss;
                 transitionMusic.PlaySecured();
                 yield return new WaitForSeconds(transitionMusic.clip.length);
@@ -96,13 +101,16 @@ namespace Boss
                 {
                     _damageToPlayer = (int)damageToBoss;
                 }
-                PlayerManager.Instance.TakeDamage(_damageToPlayer, true);
+                PlayerManager.Instance.TakeDamage(_damageToPlayer, true, currentType == IslandType.Keystone);
                 transition.PlayAnimation((float)Manager.Instance.bpm, false);
 
                 if (PlayerManager.Instance.playerHp > 0)
                 {
-                    SoundManager.Instance.ApplyAudioClip("loseJingleBoss", transitionMusic, Manager.Instance.bpm);
-                    transitionMusic.PlaySecured();
+                    if (currentType == IslandType.Boss)
+                        SoundManager.Instance.ApplyAudioClip("loseJingleBoss", transitionMusic, Manager.Instance.bpm);
+                   else
+                        SoundManager.Instance.ApplyAudioClip("loseJingleMiniBoss", transitionMusic, Manager.Instance.bpm);
+                        transitionMusic.PlaySecured();
                     yield return new WaitForSeconds(transitionMusic.clip.length);
                 }
                 else
@@ -116,22 +124,35 @@ namespace Boss
             if (phaseBossLife >= bossLifeOnStartOfFight * phaseNumber / 4)
             {
                 phaseNumber++;
-
-                SoundManager.Instance.ApplyAudioClip("speedUpJingleBoss", transitionMusic, Manager.Instance.bpm);
+                if (currentType == IslandType.Boss)
+                    SoundManager.Instance.ApplyAudioClip("speedUpJingleBoss", transitionMusic, Manager.Instance.bpm);
+                else
+                    SoundManager.Instance.ApplyAudioClip("speedUpJingleMiniBoss", transitionMusic, Manager.Instance.bpm);
                 transitionMusic.PlaySecured();
+                Manager.Instance.speedUp.SetActive(true);
                 transition.SpeedUp((float)Manager.Instance.bpm);
                 if(phaseNumber == 5)
                 {
-                    Manager.Instance.speedUp.SetActive(true);
-                    Manager.Instance.speedUp.GetComponentInChildren<TextMeshProUGUI>().text = "Victory!!!";
+                    Manager.Instance.victory.SetActive(true);
                 }
                 yield return new WaitForSeconds(transitionMusic.clip.length);
                 if (phaseNumber == 5)
                 {
                     int _sceneIndex = Manager.Instance.macroSceneIndex;
-                    if (SceneManager.GetSceneByBuildIndex(_sceneIndex).name == "Zone1")
+                    if(currentType == IslandType.Boss)
                     {
-                        SceneManager.LoadScene("Menu");
+                        if (SceneManager.GetSceneByBuildIndex(_sceneIndex).name == "WorldMap")
+                        {
+                            SceneManager.LoadScene("Menu");
+                        }
+                    }
+                    else
+                    {
+                        StartCoroutine(Manager.Instance.CapEnd());
+                        Manager.Instance.victory.SetActive(false);
+                        transitionCam.enabled = false;
+
+                        yield break;
                     }
                     
                 }

@@ -102,6 +102,7 @@ namespace Caps
         public CinemachineVirtualCamera cinemachine;
         [HideInInspector] public bool cantDisplayVerbe;
         public GameObject speedUp;
+        public GameObject victory;
         [HideInInspector] public bool zoomed;
         private bool isFirstMiniGame = true;
         [Header("Debug")]
@@ -227,7 +228,13 @@ namespace Caps
             if (!isBoss)
                 SoundManager.Instance.ApplyAudioClip("verbeJingle", transitionMusic, bpm);
             else
-                SoundManager.Instance.ApplyAudioClip("verbeJingleBoss", transitionMusic, bpm);
+            {
+                if(currentIsland.type == IslandType.Boss)
+                    SoundManager.Instance.ApplyAudioClip("verbeJingleBoss", transitionMusic, bpm);
+                else
+                    SoundManager.Instance.ApplyAudioClip("verbeJingleMiniBoss", transitionMusic, bpm);
+
+            }
             transitionMusic.PlaySecured();
 
             verbePanel.SetActive(true);
@@ -474,7 +481,7 @@ namespace Caps
         /// <summary>
         /// reset values
         /// </summary>
-        private IEnumerator CapEnd()
+        public IEnumerator CapEnd()
         {
             #region resetValue;
 
