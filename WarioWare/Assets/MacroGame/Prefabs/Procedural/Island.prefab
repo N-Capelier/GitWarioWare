@@ -613,7 +613,7 @@ MonoBehaviour:
   rewardDescription: {fileID: 4542137021357128752}
   capLength: {fileID: 8482440694357896432}
   icon: {fileID: 8647337230549292923}
-  iconTransition: {fileID: 3374342704659035494}
+  iconTransition: {fileID: 0}
   redCross: {fileID: 648568365238748163}
 --- !u!114 &2169064544655167480
 MonoBehaviour:
@@ -774,7 +774,6 @@ GameObject:
   - component: {fileID: 6465622181136444381}
   - component: {fileID: 1142403138108415661}
   - component: {fileID: 8647337230549292923}
-  - component: {fileID: 3374342704659035494}
   m_Layer: 5
   m_Name: Icon
   m_TagString: Untagged
@@ -838,22 +837,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &3374342704659035494
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6623465478815451327}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0d74e4255bf2084e8de66e5d66ccf61, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  icone: {fileID: 6465622181136444381}
-  duration: 1
-  easeType: 3
-  elevationY: 100
 --- !u!1 &7637433050556823432
 GameObject:
   m_ObjectHideFlags: 0
