@@ -24,7 +24,7 @@ namespace Caps
         {
 
             //number of different game calculated by devided the lenght by 2 (it's int so it's fine 5/2 = 2)
-                float _differentGameNumberFloat = (length + Player.PlayerManager.Instance.keyStoneNumber) / 1.3f;
+                float _differentGameNumberFloat = (length + Rewards.KeystoneReward.keystoneCount) / 1.3f;
                 int differentGameNumber =(int)_differentGameNumberFloat ;
                 //purcentage will ad every value if each game to creat a global procentage
                 int purcentage =0;
