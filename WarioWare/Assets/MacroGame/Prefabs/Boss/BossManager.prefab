@@ -1020,7 +1020,7 @@ MonoBehaviour:
   lifeRect: {fileID: 0}
   bossUI: {fileID: 5875710234083146123}
   maxLife: 100
-  bossTranstion: {fileID: 0}
+  bossTranstion: {fileID: 5745322738284454236}
 --- !u!1 &5875710233598736713
 GameObject:
   m_ObjectHideFlags: 0
