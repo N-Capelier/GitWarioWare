@@ -152,9 +152,9 @@ namespace Caps
             {
                 
                 BossLifeManager.Instance.bossUI.gameObject.SetActive(false);
-                if (currentIsland.type == IslandType.Boss)
+                if (currentIsland.type == IslandType.Boss || currentIsland.type == IslandType.Keystone)
                 {
-                    StartCoroutine(BossManager.Instance.StartBoss(sorter, currentCap));
+                    StartCoroutine(BossManager.Instance.StartBoss(sorter, currentCap, currentIsland.type));
                     yield break;
                 }
                 else
@@ -214,7 +214,7 @@ namespace Caps
 
         public IEnumerator PlayMiniGame(Camera _transitionCam, bool isBoss = false)
         {
-            transitionCam.enabled = true;
+            _transitionCam.enabled = true;
             sceneCam.SetActive(true);
             if (speedUp.activeSelf)
                 speedUp.SetActive(false);
@@ -341,7 +341,7 @@ namespace Caps
 
             isLoaded = false;
 
-            if (currentIsland != null && currentIsland.type == IslandType.Boss)
+            if (currentIsland != null && currentIsland.type == IslandType.Boss || currentIsland != null && currentIsland.type == IslandType.Keystone)
             {
                 StartCoroutine(BossManager.Instance.TransitionBoss(win));
             }
@@ -802,8 +802,6 @@ namespace Caps
 
 
         }
-
-
 
         private void CompletionAttribution()
         {
