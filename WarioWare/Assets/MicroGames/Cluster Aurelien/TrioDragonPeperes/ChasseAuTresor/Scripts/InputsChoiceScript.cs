@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 namespace Dragons_Peperes
@@ -32,7 +31,7 @@ namespace Dragons_Peperes
 
             public bool inputsChosen;
 
-            private int inputNumber;
+            public int inputMinNumber;
 
             public float distance;            
 
@@ -53,18 +52,18 @@ namespace Dragons_Peperes
 
                 if(currentDifficulty == Difficulty.EASY)
                 {
-                    inputNumber = 3;
+                    inputMinNumber = 3;
                 }
                 else if(currentDifficulty == Difficulty.MEDIUM)
                 {
-                    inputNumber = 4;
+                    inputMinNumber = 4;
                 }
                 else if(currentDifficulty == Difficulty.HARD)
                 {
-                    inputNumber = 5;
+                    inputMinNumber = 5;
                 }
                 
-                for (int i = 0; i < inputNumber; i++)
+                for (int i = 0; i < inputMinNumber; i++)
                 {
                     possibilityNumber = Random.Range(1, 5);
 

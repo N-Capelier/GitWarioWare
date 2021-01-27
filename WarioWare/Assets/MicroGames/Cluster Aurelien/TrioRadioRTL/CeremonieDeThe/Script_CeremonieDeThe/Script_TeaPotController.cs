@@ -67,6 +67,7 @@ namespace RadioRTL
                 {
 
                     mouvementTeaPot = new Vector2(moveHorizontal, moveVertical);
+                    mouvementTeaPot.Normalize();
 
                     teaPotRigidBody.AddForce(mouvementTeaPot * teaPotSpeed * Time.deltaTime);
 

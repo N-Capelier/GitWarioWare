@@ -15,14 +15,12 @@ MonoBehaviour:
   cluster: 0
   trio: Brigantin
   indexEnum: 0
-  verbe: 'NOURIR! '
+  verbe: NOURIS-LE!!!
   microGameScene:
     sceneAsset: {fileID: 102900000, guid: 728fb7f41e85dc243b5a628de9e0a50a, type: 3}
     required: 1
-    buildIndex: 19
-  inputs: {fileID: 21300000, guid: a9b61b93237b65542bc12ba04f141ac6, type: 3}
+    buildIndex: 3
+  inputs: {fileID: 21300000, guid: 4b678c40b95f7da48a6eeb14fab4b2fb, type: 3}
   currentDifficulty: 0
-  winningStreak: 0
-  losingStreak: 0
   idWeight: 0
   hasBarrel: 0

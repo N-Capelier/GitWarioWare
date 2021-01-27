@@ -33,7 +33,7 @@ namespace RadioRTL
             {
                 base.Start(); //Do not erase this line!
 
-                gameObject.transform.Translate(0.0f, 0.0f, 0.0f);
+                gameObject.transform.position = new Vector3 (-2.0f, -4.0f, 0.0f);
                 teaCupRigidbody = gameObject.GetComponent<Rigidbody2D>() as Rigidbody2D;
 
                 mouvementTeaCup = new Vector2(mouvementTeaCupX, 0);
