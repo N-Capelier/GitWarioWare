@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: T Mono 8
+  m_Shader: {fileID: -6465566751694194690, guid: da387908478c28d42813f3df0247409c,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 0633912121d68b148baf3679712407d5, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_160D6FB4_Out_0:
+        m_Texture: {fileID: 2800000, guid: 8fece15c4212505458dd370369a4d1a1, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_22B7F15E_Out_0:
+        m_Texture: {fileID: 2800000, guid: 0d8da2c24224f744a8544c6414cec5af, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_5CF1D497_Out_0:
+        m_Texture: {fileID: 2800000, guid: b1dc79c25502605439c0770a4d4c840a, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_67F3DD52_Out_0:
+        m_Texture: {fileID: 2800000, guid: 0837a7429def2c647b2952532ddfec53, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Boolean_790C4F8D: 0
+    - _DefilSpeed: 0
+    - _Scale: 2
+    - _borderThickness: 0.08
+    - _defilSpeed: 0.65
+    - _height: 0.2
+    - _roundness: 0.05
+    - _scale: 1
+    - _width: 0.6
+    - bool_Available: 1
+    - bool_IsDone: 0
+    - bool_Selected: 0
+    - bool_ToTheRight: 1
+    m_Colors:
+    - Col_AvSelectedCenter: {r: 1.8745098, g: 1.8745098, b: 0.27450982, a: 1}
+    - Col_AvailableBorder: {r: 0.7450981, g: 0.25490186, b: 0.26666668, a: 1}
+    - Col_AvailableCenter: {r: 0.937255, g: 0.937255, b: 0.654902, a: 1}
+    - Color_3BD78C7D: {r: 0.7450981, g: 0.25490198, b: 0.26666668, a: 1}
+    - Color_B4C50F25: {r: 8, g: 0, b: 0, a: 1}
+    - Color_E33FD6E1: {r: 0.937255, g: 0.937255, b: 0.654902, a: 1}
