@@ -294,7 +294,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 58401717}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.359, z: 0}
+  m_LocalPosition: {x: 0, y: 0.46, z: 0}
   m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_Children: []
   m_Father: {fileID: 1435520161}
@@ -707,7 +707,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 968195146}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.235, z: 0}
+  m_LocalPosition: {x: 0, y: 0.33600003, z: 0}
   m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_Children: []
   m_Father: {fileID: 1435520161}
@@ -940,27 +940,33 @@ MonoBehaviour:
     type: 3}
   selectionBackgroundD0: {fileID: 1993304058957618669, guid: 11a8889a6d1600f40a455d0763556a51,
     type: 3}
+  selectionBackgroundEasy: {fileID: 8814155439156895445, guid: d244f6f7a93afda4c9aee718f9edbb89,
+    type: 3}
   victoryScreen: {fileID: 109228283}
   looseScreen: {fileID: 1533650322}
   sadFace: {fileID: 968195146}
   HappyFace: {fileID: 58401717}
   sadFaceD0: {fileID: 577566479}
   HappyFaceD0: {fileID: 1617215326}
+  moreIngredientsDifficultyIncrease: 1
+  baseIngredientNumber: 2
+  moreChoiceDifficultyIncrease: 2
+  baseChoiceNumber: 2
   meat:
   - {fileID: 1878360188669007647, guid: 370d6e8a8dd13ba41a579e41ea6c6238, type: 3}
   - {fileID: 2039084345595153340, guid: f9abb176573d7924f9056ec24ce4ae42, type: 3}
-  - {fileID: 4757234917159492372, guid: ba9acfbdc4b13914bba735c8d5bcc4ce, type: 3}
   - {fileID: 2876965970832116692, guid: 356a25dd5301d5e4bae715847ddf1f53, type: 3}
+  - {fileID: 4757234917159492372, guid: ba9acfbdc4b13914bba735c8d5bcc4ce, type: 3}
   bread:
-  - {fileID: 921665993392344239, guid: e4e34abacbd1f0c42a4612919d1b7f41, type: 3}
   - {fileID: 6053781914012558242, guid: abc8cf70e5a7fd141a282c774acf141f, type: 3}
   - {fileID: 4172074832165178815, guid: 81f13329a70d307429d1d3921203d88a, type: 3}
   - {fileID: 5258639337311963646, guid: 73b304bf07b74954bb675d8c7824e9c4, type: 3}
+  - {fileID: 921665993392344239, guid: e4e34abacbd1f0c42a4612919d1b7f41, type: 3}
   breadBase:
-  - {fileID: 808783319312857270, guid: c0659adfc51649045938d49b567075ab, type: 3}
   - {fileID: 4673092613315109869, guid: fa7be683b4f7dab459a24e6315acecfa, type: 3}
   - {fileID: 8124159731818813771, guid: 569aa8c6ac64d54468d9244234a72fbe, type: 3}
   - {fileID: 6393997425779629852, guid: 4d17d2fee6cae8a488bf4d414df08112, type: 3}
+  - {fileID: 808783319312857270, guid: c0659adfc51649045938d49b567075ab, type: 3}
   vegetable:
   - {fileID: 7977681157249167044, guid: c8bac49e4254a474686eece07713ba50, type: 3}
   - {fileID: 2137048223317132099, guid: e421197b923d6bd4aa8622690e0b08be, type: 3}
@@ -968,8 +974,8 @@ MonoBehaviour:
   - {fileID: 8121029227289399852, guid: b0c3061c891d18948860d8ad1ba9d92e, type: 3}
   ingredientScreenPositions:
   - {x: -6, y: 0, z: 0}
-  - {x: 0, y: 3.5, z: 0}
   - {x: 6, y: 0, z: 0}
+  - {x: 0, y: 3.5, z: 0}
   - {x: 0, y: -3.5, z: 0}
   chefBreadPos: {x: 0, y: 0.7, z: 0}
   EasyChefBreadPos: {x: 0, y: 0.2, z: 0}

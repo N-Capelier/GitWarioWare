@@ -24,11 +24,31 @@ namespace TrioSAS
             public GetMusic music;
             public bool youWinner;
             public Animator buttonPress;
-            public bool eazy;
+
+            private bool eazy;
+            private bool medium;
+            private bool hard;       
+
+            [Header("Win condition")]
+            public int shootNecessaryEasy;
+            public int shootNecessaryMedium;
+            public int shootNecessaryHard;
+            private int ShootCounter;
+
+            private bool cantPress;
+            private bool noInput;
+
+            /*[Header("Life")]
+            public GameObject heart1;
+            public GameObject heart2;
+            public Sprite heartFull;
+            public Sprite heartEmpty;*/
 
             public override void Start()
             {
                 base.Start(); //Do not erase this line!
+
+                ShootCounter = 0;
 
                 switch(currentDifficulty)
                 {
@@ -38,9 +58,11 @@ namespace TrioSAS
                         break;
                     case Difficulty.MEDIUM:
                         difficulty.SizeMedium();
+                        medium = true;
                         break;
                     case Difficulty.HARD:
                         difficulty.SizeHard();
+                        hard = true;
                         break;
                 }
 
@@ -63,6 +85,33 @@ namespace TrioSAS
                         speedBpm.speedVeryFast();
                         break;
                 }
+
+                /*heart1.GetComponent<SpriteRenderer>().sprite = heartFull;
+                heart2.GetComponent<SpriteRenderer>().sprite = heartFull;
+
+                if (eazy)
+                {
+                    heart1.SetActive(false);
+                    heart2.SetActive(true);
+                }
+                else if (medium)
+                {
+                    heart1.SetActive(true);
+                    heart2.SetActive(true);
+                }
+                else if (hard)
+                {
+                    heart1.SetActive(true);
+                    heart2.SetActive(true);
+                }*/
+            }
+
+            private void Update()
+            {
+                if (Input.GetButtonUp("A_Button"))
+                {
+                    noInput = false;
+                }
             }
 
             //FixedUpdate is called on a fixed time.
@@ -70,27 +119,150 @@ namespace TrioSAS
             {
                 base.FixedUpdate(); //Do not erase this line!
 
-                if (Input.GetButton("A_Button") && endGame == false)
+                if (Input.GetButton("A_Button") && endGame == false && !noInput)
                 {
-                    gameObject.GetComponent<BarMovement>().barSpeed = 0;
-                    if (winningCondition == true)
-                    {
-                        anim.ActivateAnimation();
-                        explosion.SetBool("setActive", true);
-                        kick.SetBool("kick", true);
-                        youWinner = true;
-                    }
-                    else
-                    {
-                        kick.SetBool("kick", true);
-                        failure.ActivateFail();
-                        kick.SetBool("breakFail", true);
-                        youWinner = false;
+                    noInput = true;
 
+                    if (eazy)
+                    {
+                        if (winningCondition == true && !cantPress)
+                        {
+                            cantPress = true;
+
+                            ShootCounter++;
+                            //heart2.GetComponent<Animation>().Play();
+                            //heart2.GetComponent<SpriteRenderer>().sprite = heartEmpty;
+
+                            if (ShootCounter == shootNecessaryEasy)
+                            {
+                                anim.ActivateWin();
+                            }
+                            else
+                            {
+                                anim.ActivateAnimation();
+                            }
+
+                            kick.SetTrigger("kick");
+                        }
+                        else if (winningCondition == false)
+                        {
+                            failure.ActivateFail();
+                            kick.SetBool("breakFail", true);
+
+                            youWinner = false;
+                            endGame = true;
+
+                            gameObject.GetComponent<BarMovement>().barSpeed = 0;
+                        }
+
+                        if (ShootCounter == shootNecessaryEasy)
+                        {
+                            explosion.SetBool("lauch", true);
+                            buttonPress.SetBool("PossibleSuccess", false);
+
+                            youWinner = true;
+                            endGame = true;
+
+                            gameObject.GetComponent<BarMovement>().barSpeed = 0;
+                        }
                     }
-                    endGame = true;
-                    buttonPress.SetBool("PossibleSuccess", false);
+
+                    else if (medium)
+                    {
+                        if (winningCondition == true && !cantPress)
+                        {
+                            cantPress = true;
+
+                            ShootCounter++;                           
+
+                            if (ShootCounter == shootNecessaryMedium)
+                            {
+                                anim.ActivateWin();
+                            }
+                            else
+                            {
+                                anim.ActivateAnimation();
+                                //heart2.GetComponent<Animation>().Play();
+                                //heart2.GetComponent<SpriteRenderer>().sprite = heartEmpty;
+                                explosion.SetTrigger("explosion");
+                            }
+
+                            kick.SetTrigger("kick");
+                        }
+                        else if (winningCondition == false)
+                        {
+                            failure.ActivateFail();
+                            kick.SetBool("breakFail", true);
+
+                            youWinner = false;
+                            endGame = true;
+
+                            gameObject.GetComponent<BarMovement>().barSpeed = 0;
+                        }
+
+                        if (ShootCounter == shootNecessaryMedium)
+                        {
+                            //heart1.GetComponent<Animation>().Play();
+                            //heart1.GetComponent<SpriteRenderer>().sprite = heartEmpty;
+                            explosion.SetBool("lauch", true);
+                            buttonPress.SetBool("PossibleSuccess", false);
+
+                            youWinner = true;
+                            endGame = true;
+
+                            gameObject.GetComponent<BarMovement>().barSpeed = 0;
+                        }
+                    }
+
+                    else if (hard)
+                    {
+                        if (winningCondition == true && !cantPress)
+                        {
+                            cantPress = true;
+
+                            ShootCounter++;                          
+
+                            if (ShootCounter == shootNecessaryHard)
+                            {
+                                anim.ActivateWin();
+                            }
+                            else
+                            {
+                                anim.ActivateAnimation();
+                                //heart2.GetComponent<Animation>().Play();
+                                //heart2.GetComponent<SpriteRenderer>().sprite = heartEmpty;
+                                explosion.SetTrigger("explosion");
+                            }
+
+                            kick.SetTrigger("kick");
+                        }
+                        else if (winningCondition == false)
+                        {
+                            failure.ActivateFail();
+                            kick.SetBool("breakFail", true);
+
+                            youWinner = false;
+                            endGame = true;
+
+                            gameObject.GetComponent<BarMovement>().barSpeed = 0;
+                        }
+
+                        if (ShootCounter == shootNecessaryHard)
+                        {
+                            //heart1.GetComponent<Animation>().Play();
+                            //heart1.GetComponent<SpriteRenderer>().sprite = heartEmpty;
+                            explosion.SetBool("lauch", true);
+                            buttonPress.SetBool("PossibleSuccess", false);
+
+                            youWinner = true;
+                            endGame = true;
+
+                            gameObject.GetComponent<BarMovement>().barSpeed = 0;
+                        }
+                    }
                 }
+                
+                
 
                 if (Tick == 8 && youWinner == false)
                 {
@@ -112,21 +284,25 @@ namespace TrioSAS
             void OnTriggerEnter2D(Collider2D col)
             {
                 winningCondition = true;
-                if (eazy == true)
+                /*if (eazy == true)
                 {
                     buttonPress.SetBool("PossibleSuccess", true);
                 }
                 else
                 {
                     buttonPress.SetBool("PossibleSuccess", false);
-                }
-                
+                }*/
+
+                buttonPress.SetBool("PossibleSuccess", true);
+
             }
 
             void OnTriggerExit2D(Collider2D col)
             {
                 winningCondition = false;
                 buttonPress.SetBool("PossibleSuccess", false);
+
+                cantPress = false;
             }
 
         }

@@ -78,14 +78,11 @@ namespace TrioLLL
 
                 float elapsed = 0.0f;
 
-                if (side == 0)
+                if (side != manager.GetComponent<PintadeGlobalManager>().bigChoice)
                 {
                     soundManager.GetComponent<PintadeSoundManager>().grass1 = true;
                 }
-                else if (side == 1)
-                {
-                    soundManager.GetComponent<PintadeSoundManager>().grass2 = true;
-                }
+
 
                 while (elapsed < duration)
                 {

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Caps;
 
 namespace LLL
@@ -9,7 +10,7 @@ namespace LLL
     {
         public class Game_Manager : TimedBehaviour
         {
-            public enum Catstate { IDLE, NEEDY, PET, HAPPY, ANGRY} //Les différents états du chat
+            public enum Catstate { IDLE, NEEDY, PET, HAPPY, ANGRY, VICTORY } //Les différents états du chat
 
             [Header("Cat Mood")] //Etat actuel du chat
             Catstate currentCatState;
@@ -24,10 +25,24 @@ namespace LLL
             public Sprite HandNormal;
             public Sprite HandPet;
             public Sprite HandAngry;
+            public Color angryBgColor;
+            public SpriteRenderer spriteBg;
+            public AudioClip CatAsking;
+            public AudioClip CatAttack;
+            public AudioClip CatDisapointed;
+            public AudioClip CatPurr;
+            public AudioClip Fail;
+            public AudioClip HumanYell;
+            public AudioClip Validation;
+            public AudioClip LittleValidation;
+            public TrioLLL.SensDuPoil.SoundManager Audiomanager;
             public GameObject heartParticle;
             private List<GameObject> heartObjects;
-
-
+            public ParticleSystem victoryParticle;
+            public Slider slider;
+            public GameObject healthbar;
+            public Image hbfill;
+            public float[] petCD;
             private SpriteRenderer srHand;
             private Animator anim;
 
@@ -36,12 +51,33 @@ namespace LLL
             IEnumerator PetTimer(float wait) //Permet au chat de ne pas repasser immédiatement dans l'état Needy (et donc d'éviter le gros spam)
             {
                 yield return new WaitForSeconds(wait);
-                canPet = true;          
+                canPet = true;
+            }
+            IEnumerator AnticipatedWin(float winwait)
+            {
+                yield return new WaitForSeconds(winwait);
+                if (currentCatState == Catstate.HAPPY)
+                {
+                    Audiomanager.PlaySFX2(Validation, 1);
+                    canPet = false;
+                    victoryParticle.Play();
+                }
+            }
+            private void SliderRange()
+            {
+                slider.value = PetCounter;
+            }
+            private void SliderMaxRange()
+            {
+                slider.value = PetCounter;
+                slider.maxValue = PetObjective;
             }
 
             public override void Start()
             {
                 base.Start(); //Do not erase this line!
+
+                slider = healthbar.GetComponent<Slider>();
                 heartObjects = new List<GameObject>();
                 currentCatState = Catstate.IDLE;
                 canPet = true;
@@ -50,15 +86,25 @@ namespace LLL
                 switch (currentDifficulty) //Permet de gérer la difficulté; Le nombre de PatPat requis change à chaque fois. C'est un nombre aléatoire dans une plage déterminée.
                 {
                     case Difficulty.EASY:
-                        PetObjective = Random.Range(5, 7);
+                        PetObjective = Random.Range(15,16);
+                        /*switch (bpm)
+                        {
+                            case 60:
+                                PetObjective = Mathf.FloorToInt(PetObjective * 1.2f);
+                                break;
+                            default:
+                                break;
+                        }*/
                         break;
                     case Difficulty.MEDIUM:
-                        PetObjective = Random.Range(8, 10);
+                        PetObjective = Random.Range(19,20);
                         break;
                     case Difficulty.HARD:
-                        PetObjective = Random.Range(11, 13);
+                        PetObjective = Random.Range(22,23);
                         break;
                 }
+                Audiomanager.PlaySFX(CatDisapointed, 1);
+                SliderMaxRange();
             }
 
             //FixedUpdate is called on a fixed time.
@@ -70,21 +116,28 @@ namespace LLL
             //FixedUpdate is called on a fixed time.
             public void Update()
             {
-
+                SliderRange();
                 if (Input.GetButtonDown("A_Button") && (canPet == true) && (currentCatState != Catstate.ANGRY)) //Appuier sur le bouton A augmente le compteur de pat pat et déclenche l'état associé
                 {
                     canPet = false;
                     PetCounter++;
 
-
-                    if (PetCounter == PetObjective) //Détermine si l'objectif est atteint ou dépassé
+                   if (PetCounter == PetObjective) //Détermine si l'objectif est atteint ou dépassé
                     {
-                        currentCatState = Catstate.HAPPY;
-                        StartCoroutine(PetTimer(0.1f));
+                            currentCatState = Catstate.HAPPY;
+                            Audiomanager.PlaySFX(CatAsking, 1);
+                            StartCoroutine(PetTimer(petCD[(int)currentDifficulty]));
+                            StartCoroutine(AnticipatedWin(1.5f * 60 / bpm));
                     }
                     else if (PetCounter > PetObjective)
                     {
                         currentCatState = Catstate.ANGRY;
+                        Audiomanager.PlaySFX(CatAttack, 1);
+                        Audiomanager.PlaySFX2(HumanYell, 2);
+                        Audiomanager.PlaySFX(Fail, 1);
+                        currentCatState = Catstate.ANGRY;
+                        hbfill.color = Color.red;
+                        spriteBg.color = angryBgColor;
                         for (int i = heartObjects.Count - 1; i >= 0; i--)
                         {
                             Destroy(heartObjects[i]);
@@ -94,7 +147,7 @@ namespace LLL
                     {
                         heartObjects.Add(Instantiate(heartParticle));
 
-                        if(PetCounter == 1)
+                        if (PetCounter == 1)
                         {
                             currentCatState = Catstate.NEEDY;
                         }
@@ -102,10 +155,11 @@ namespace LLL
                         {
                             currentCatState = Catstate.PET;
                             anim.Play("Chat_Pet", -1, 0f);
+                            Audiomanager.PlaySFX(CatPurr, 10);
+                            Audiomanager.PlaySFX2(LittleValidation, 2);
                         }
-                        StartCoroutine(PetTimer(0.1f));
+                        StartCoroutine(PetTimer(0.05f));
                     }
-                    Debug.Log(PetCounter);
                 }
                 anim.SetInteger("State", (int)currentCatState);
 
@@ -128,10 +182,12 @@ namespace LLL
                     case Catstate.HAPPY: //Le chat est heureux
                         //Son de chat content
                         break;
-
                     case Catstate.ANGRY: //Le chat a recu trop de PatPat
                         srHand.sprite = HandAngry;
                         //Son de chat pas content
+                        break;
+                    case Catstate.VICTORY:
+                        //play animation
                         break;
                 }
             }
@@ -141,11 +197,20 @@ namespace LLL
             {
                 if (Tick == 8)
                 {
-                    if (currentCatState == Catstate.HAPPY) //Si au dernier tick le chat est dans l'état heureux, c'est gagné
+                    canPet = false;
+                    if (currentCatState == Catstate.HAPPY || currentCatState == Catstate.VICTORY) //Si au dernier tick le chat est dans l'état heureux, c'est gagné
                     {
                         bool win = true;
-                        Debug.Log("win");
                         Manager.Instance.Result(win);
+                    }
+                    else if (currentCatState == Catstate.PET || currentCatState == Catstate.IDLE || currentCatState == Catstate.NEEDY)
+                    {
+                        Audiomanager.PlaySFX(Fail, 1);
+                        Manager.Instance.Result(false);
+                    }
+                    else
+                    {
+                        Manager.Instance.Result(false);
                     }
                 }
             }

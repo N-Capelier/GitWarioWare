@@ -67,11 +67,10 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1951159473
+  m_SortingLayer: 1
   m_SortingOrder: 1
-  m_Sprite: {fileID: -4857046059397790125, guid: 3fa0be94241498048a9fc106c9887678,
-    type: 3}
+  m_Sprite: {fileID: 113808644018031961, guid: 0903294251b4cec4388025a1d351bb5e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -141,6 +140,22 @@ MonoBehaviour:
     type: 3}
   HandAngry: {fileID: -4857046059397790125, guid: 3fa0be94241498048a9fc106c9887678,
     type: 3}
+  CatAsking: {fileID: 8300000, guid: 2970eda93d754f64db185ebe016dd324, type: 3}
+  CatAttack: {fileID: 8300000, guid: 8f99b987bec426444a787393ae68a1a2, type: 3}
+  CatDisapointed: {fileID: 8300000, guid: 02a77b3e8a255e942a1712c91b7d3c68, type: 3}
+  CatPurr: {fileID: 8300000, guid: 5e514188f384e194d8d579fd4ecb276e, type: 3}
+  Fail: {fileID: 8300000, guid: d5d10e66cee37214481a8a1b1be88d5c, type: 3}
+  HumanYell: {fileID: 8300000, guid: 38d357c57a141fa408b89a15a6ef3930, type: 3}
+  Validation: {fileID: 8300000, guid: 835a3919ef98c464b95101ada3162d61, type: 3}
+  LittleValidation: {fileID: 8300000, guid: 94bd314c75616624885efa787e81d38b, type: 3}
+  Audiomanager: {fileID: 0}
+  heartParticle: {fileID: 4186352826466223391, guid: 540b9bd9aeb9ff04180aebbb73dfac12,
+    type: 3}
+  victoryParticle: {fileID: 5211083675681892699, guid: 59aca66be67e1da4ebdec5fc2873aa40,
+    type: 3}
+  slider: {fileID: 0}
+  healthbar: {fileID: 0}
+  hbfill: {fileID: 0}
   canPet: 0
 --- !u!212 &2372335551166348539
 SpriteRenderer:
@@ -178,8 +193,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1951159473
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: -6859871597657351477, guid: 0903294251b4cec4388025a1d351bb5e,
     type: 3}

@@ -27,18 +27,18 @@ namespace TrioSAS
             public void SizeEasy()
             {
                 rectTransform.sizeDelta = new Vector2(rectTransform.sizeDelta.x, rectTransform.sizeDelta.y * heightModifierEasy);
-                boxColli.size = new Vector2(rectTransform.sizeDelta.x, rectTransform.sizeDelta.y);
+                boxColli.size = new Vector2(rectTransform.sizeDelta.x, rectTransform.sizeDelta.y + 6);
             }
 
             public void SizeHard()
             {
                 rectTransform.sizeDelta = new Vector2(rectTransform.sizeDelta.x, rectTransform.sizeDelta.y * heightModifierHard);
-                boxColli.size = new Vector2(rectTransform.sizeDelta.x, rectTransform.sizeDelta.y);
+                boxColli.size = new Vector2(rectTransform.sizeDelta.x, rectTransform.sizeDelta.y + 6);
             }
 
             public void SizeMedium()
             {
-                boxColli.size = new Vector2(rectTransform.sizeDelta.x, rectTransform.sizeDelta.y);
+                boxColli.size = new Vector2(rectTransform.sizeDelta.x, rectTransform.sizeDelta.y + 6);
             }
         }
     }

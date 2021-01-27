@@ -10,22 +10,25 @@ namespace TrioSAS
         {
             public Animation anim;
             public AudioSource launch;
+            public AudioSource explosion;
 
 
             public void Start()
             {
                 anim = gameObject.GetComponent<Animation>();
-                launch = gameObject.GetComponent<AudioSource>();
-                
             }
 
             public void ActivateAnimation()
             {
                 anim.Play();
                 launch.Play();
-            }
-
+            }   
             
+            public void ActivateWin()
+            {
+                anim.Play();
+                explosion.Play();
+            }
         }
     }
 }

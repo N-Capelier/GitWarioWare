@@ -87,8 +87,8 @@ namespace TrioTrapioWare
 
                 source = GetComponent<AudioSource>();
                 musique = GetComponent<AudioSource>();
-                source.volume = 1f;
-                musique.volume = 0.1f;
+                source.volume = 1.7f;
+                musique.volume = 0.8f;
                 source.PlayOneShot(paperSound);
                 RandomSorting();
                 ecranNoir.SetActive(false);
@@ -181,10 +181,7 @@ namespace TrioTrapioWare
             }
             public void RandomSorting()
             {
-                tinderProfile = GameObject.FindGameObjectsWithTag("Button1");
-                tinderPaper = GameObject.FindGameObjectsWithTag("Button2");
-                tinderPaperDirty = GameObject.FindGameObjectsWithTag("Wall");
-                greenCircle = GameObject.FindGameObjectsWithTag("Finish");
+               
                 for (int positionOfArray = 0; positionOfArray < tinderProfile.Length; positionOfArray++)
                 {
                     GameObject obj = tinderProfile[positionOfArray];
