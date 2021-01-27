@@ -14,13 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cluster: 0
   trio: Brigantin
+  asSecondSprite: 1
+  secondSprite: {fileID: 21300000, guid: d4f3b58d388706643b41e0c4e3ca9bf8, type: 3}
   indexEnum: 0
   verbe: Eclairez
   microGameScene:
     sceneAsset: {fileID: 102900000, guid: 3ee12d34d8ef07e45ba3205c88c24f63, type: 3}
     required: 0
-    buildIndex: 4
-  inputs: {fileID: 0}
+    buildIndex: 21
+  inputs: {fileID: 21300000, guid: 4e4d81cf5e30260418a902f62af49aa2, type: 3}
   currentDifficulty: 0
-  idWeight: 0
+  winningStreak: 0
+  losingStreak: 0
+  idWeight: 8
   hasBarrel: 0

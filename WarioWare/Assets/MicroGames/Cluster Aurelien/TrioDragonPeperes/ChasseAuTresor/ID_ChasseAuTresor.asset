@@ -14,13 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cluster: 1
   trio: "DragonsP\xE9p\xE8res"
+  asSecondSprite: 1
+  secondSprite: {fileID: 21300000, guid: d4f3b58d388706643b41e0c4e3ca9bf8, type: 3}
   indexEnum: 2
   verbe: Suivez !
   microGameScene:
     sceneAsset: {fileID: 102900000, guid: 5bc049de28ab63348bf6cb99fda67edc, type: 3}
     required: 0
-    buildIndex: 4
-  inputs: {fileID: 21300000, guid: 1012f0ee0f6cb3f4782a4ac5d3f2a735, type: 3}
+    buildIndex: 14
+  inputs: {fileID: 21300000, guid: 4e4d81cf5e30260418a902f62af49aa2, type: 3}
   currentDifficulty: 0
-  idWeight: 0
+  winningStreak: 0
+  losingStreak: 0
+  idWeight: 8
   hasBarrel: 0

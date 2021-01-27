@@ -14,13 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cluster: 0
   trio: TrapioWare
+  asSecondSprite: 1
+  secondSprite: {fileID: 21300000, guid: b0cf4a32b55071946b88623f2efb7d9b, type: 3}
   indexEnum: 2
   verbe: Associer
   microGameScene:
     sceneAsset: {fileID: 102900000, guid: 535ec2bb8a65f414fb9c9315cba272c2, type: 3}
     required: 0
-    buildIndex: 2
-  inputs: {fileID: 21300000, guid: b86c0a6009dfb1247bd860956ae248ef, type: 3}
+    buildIndex: 32
+  inputs: {fileID: 21300000, guid: a3d47d389aa783e4a9f9945c05a12ce9, type: 3}
   currentDifficulty: 0
+  winningStreak: 0
+  losingStreak: 0
   idWeight: 0
   hasBarrel: 0
