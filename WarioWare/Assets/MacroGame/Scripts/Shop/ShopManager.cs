@@ -52,10 +52,6 @@ namespace Shop
 
         private void Update()
         {
-            if(Input.GetKeyDown(KeyCode.A))
-            {
-                Show(shopIslands[0]);
-            }
 
             if (inShop && (Input.GetButtonDown("B_Button")) && !PlayerManager.Instance.inInventory)
             {

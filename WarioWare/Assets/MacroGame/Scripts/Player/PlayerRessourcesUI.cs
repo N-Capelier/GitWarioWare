@@ -10,6 +10,7 @@ namespace UI
     public class PlayerRessourcesUI : MonoBehaviour
     {
         public Image playerHpFillBar;
+        public Image playerHpFillBar_2;
         public Image craneImage;
         public Image moralFillBar;
         public TextMeshProUGUI beatcoinsCount;
@@ -37,7 +38,16 @@ namespace UI
         {
             var moral = PlayerManager.Instance.moral;
 
-            playerHpFillBar.fillAmount = (float)PlayerManager.Instance.playerHp / 300f;
+            if((float)PlayerManager.Instance.playerHp / 100f <= 1)
+            {
+                playerHpFillBar.fillAmount = (float)PlayerManager.Instance.playerHp / 100f;
+                playerHpFillBar_2.fillAmount = 0;
+            }
+            else if ((float)PlayerManager.Instance.playerHp / 100f > 1)
+            {
+                playerHpFillBar_2.fillAmount = (float)(PlayerManager.Instance.playerHp-100) / 100f;
+            }
+
             moralFillBar.fillAmount = (float) moral / 100;
             beatcoinsCount.text = PlayerManager.Instance.beatcoins.ToString();
 
@@ -51,6 +61,7 @@ namespace UI
                 craneImage.sprite = crane_4;
 
         }
+
     }
 }
 
