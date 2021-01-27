@@ -87,6 +87,7 @@ namespace Caps
         public GameObject capUI;
         public GameObject macroUI;
         public GameObject ressourcesUI;
+        public GameObject playerHealthUI;
         public TextMeshProUGUI idName;
         public GameObject clock;
 
@@ -221,6 +222,7 @@ namespace Caps
             capUI.SetActive(true);
             macroUI.SetActive(false);
             ressourcesUI.SetActive(false);
+            playerHealthUI.SetActive(false);
 
 
             FadeManager.Instance.NoPanel();
@@ -312,7 +314,7 @@ namespace Caps
             //panel.SetActive(true);
             sceneCam.SetActive(true);
             SceneManager.UnloadSceneAsync(currentCap.chosenMiniGames[currentMiniGame].microGameScene.BuildIndex);
-            ressourcesUI.SetActive(true);
+            playerHealthUI.SetActive(true);
 
             // difficutly chnage ever wining or losing streak
             if (win)
@@ -957,6 +959,7 @@ namespace Caps
 
         public IEnumerator UnzoomCam()
         {
+            ressourcesUI.SetActive(true);
             eventSystem.enabled = false;
             VcamTarget.transform.position = PlayerMovement.Instance.playerAvatar.transform.position;
             VcamTarget.transform.DOMove(initalCamTransform.position, shipOpening.openingTime * 2).SetEase(Ease.InOutCubic);
