@@ -14,13 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cluster: 2
   trio: Soupe
+  asSecondSprite: 0
+  secondSprite: {fileID: 0}
   indexEnum: 1
   verbe: Memorise
   microGameScene:
     sceneAsset: {fileID: 102900000, guid: efb7f580f4b53a247ab267d11ae8beef, type: 3}
     required: 0
-    buildIndex: 5
-  inputs: {fileID: 21300000, guid: 7ab9df66a4896f349a17df077c82b066, type: 3}
+    buildIndex: 25
+  inputs: {fileID: 21300000, guid: 1a2d3d2dacb88c14ab06c5455b56b731, type: 3}
   currentDifficulty: 0
+  winningStreak: 0
+  losingStreak: 0
   idWeight: 0
   hasBarrel: 0
