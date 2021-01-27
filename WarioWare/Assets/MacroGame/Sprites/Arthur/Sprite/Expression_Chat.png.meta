@@ -1,10 +1,7 @@
 fileFormatVersion: 2
-guid: 366dfd9c76274ac4dab39178baf5071b
+guid: 874e4c757368a4b42bbe40c057db6e7e
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: 5682980813152674108
-    second: Prof_Rig_2_0
+  internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -49,7 +46,7 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
-  spriteBorder: {x: 0, y: 0, z: 0, w: 207}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 0
   alphaUsage: 1
   alphaIsTransparency: 1
