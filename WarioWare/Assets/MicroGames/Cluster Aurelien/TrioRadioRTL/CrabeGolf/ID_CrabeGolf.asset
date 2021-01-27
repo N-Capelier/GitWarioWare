@@ -14,15 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cluster: 1
   trio: RadioRTL
+  asSecondSprite: 0
+  secondSprite: {fileID: 0}
   indexEnum: 1
   verbe: Frappe les crabe
   microGameScene:
     sceneAsset: {fileID: 102900000, guid: 447cdb5bb911ccc4e94457ef6a5baabd, type: 3}
     required: 1
     buildIndex: 16
-  inputs: {fileID: 21300000, guid: 82e9228bc0a7dbc4783af0d0b4d2e9ed, type: 3}
+  inputs: {fileID: 21300000, guid: d4f3b58d388706643b41e0c4e3ca9bf8, type: 3}
   currentDifficulty: 0
   winningStreak: 0
   losingStreak: 0
-  idWeight: 12
+  idWeight: 8
   hasBarrel: 0

@@ -14,15 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cluster: 0
   trio: LeRafiot
+  asSecondSprite: 1
+  secondSprite: {fileID: 21300000, guid: 7b9a07661aad9be41a6263e6adc9b573, type: 3}
   indexEnum: 3
   verbe: Dodge   LB/RB
   microGameScene:
     sceneAsset: {fileID: 102900000, guid: 2eb72f07571d9f24f83eee65b45c087d, type: 3}
     required: 0
     buildIndex: 23
-  inputs: {fileID: 21300000, guid: d47912b28dd41cb46be3965067a182aa, type: 3}
-  currentDifficulty: 0
+  inputs: {fileID: 21300000, guid: 96a51ef8926ea74478db61717aa994f5, type: 3}
+  currentDifficulty: 1
   winningStreak: 0
   losingStreak: 0
-  idWeight: 0
+  idWeight: 10
   hasBarrel: 0
