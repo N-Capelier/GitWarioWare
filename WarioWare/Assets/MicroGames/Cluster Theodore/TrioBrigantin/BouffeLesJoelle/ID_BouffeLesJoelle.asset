@@ -14,12 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cluster: 0
   trio: Brigantin
+  asSecondSprite: 0
+  secondSprite: {fileID: 0}
   indexEnum: 0
   verbe: Bouffe les !
   microGameScene:
-    sceneAsset: {fileID: 102900000, guid: 676eb829d73152b4f8ab08a603f2555d, type: 3}
+    sceneAsset: {fileID: 102900000, guid: 3464b432f5fe2a944a8b7fc42978734b, type: 3}
     required: 0
-    buildIndex: 43
+    buildIndex: 42
   inputs: {fileID: 21300000, guid: 146c5bd8a8f5c684db4c3e48d32764d3, type: 3}
   currentDifficulty: 0
   winningStreak: 0
