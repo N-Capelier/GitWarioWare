@@ -10,6 +10,7 @@ public class CompletionUI : MonoBehaviour
 {
     
     public GameObject rewardCanvas;
+    public GameObject aButton;
     
     [Header("Moral")]
     public GameObject moralBar;
@@ -116,9 +117,11 @@ public class CompletionUI : MonoBehaviour
             chestImage.gameObject.SetActive(false);
             chestParticle.Play();
             yield return new WaitForSeconds(0.5f);
-            completionText.SetActive(true);    
+            completionText.SetActive(true);   
+           
         }
         completionIsDone = true;
+        aButton.SetActive(true);
     }
 
     private IEnumerator FillMoral()
@@ -161,7 +164,8 @@ public class CompletionUI : MonoBehaviour
         completionContainer.SetActive(false);
         rewardCanvas.SetActive(false);
         completionText.SetActive(false);
-        chestImage.gameObject.SetActive(false); 
+        chestImage.gameObject.SetActive(false);
+        aButton.SetActive(false);
     }
 
 }
