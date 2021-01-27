@@ -353,26 +353,26 @@ MonoBehaviour:
       volume: 0.5
     bpm: 3c000000500000006400000078000000
     name: verbeJingleMiniBoss
-    foldout: 1
+    foldout: 0
   - sounds:
-    - name: victoryJingleMinBoss_0
+    - name: victoryJingleMiniBoss_0
       author: 
       clip: {fileID: 8300000, guid: 08e5d924782efd04f9ff4730da120528, type: 3}
       volume: 0.5
-    - name: victoryJingleMinBoss_1
+    - name: victoryJingleMiniBoss_1
       author: 
       clip: {fileID: 8300000, guid: 081d2008bfcea4e4cbf8ca39aaf018be, type: 3}
       volume: 0.5
-    - name: victoryJingleMinBoss_2
+    - name: victoryJingleMiniBoss_2
       author: 
       clip: {fileID: 8300000, guid: 1154572b442e4a846b455743f2b04e3b, type: 3}
       volume: 0.5
-    - name: victoryJingleMinBoss_3
+    - name: victoryJingleMiniBoss_3
       author: 
       clip: {fileID: 8300000, guid: 1e3599d93c0f9ca4a81fdc069480951d, type: 3}
       volume: 0.5
     bpm: 3c000000500000006400000078000000
-    name: victoryJingleMinBoss
+    name: victoryJingleMiniBoss
     foldout: 1
   music:
   - name: ABadDay
