@@ -100,7 +100,7 @@ namespace Islands
 
             if(type == IslandType.Keystone)
             {
-                reward = IslandCreator.Instance.keyStone;
+                reward = IslandCreator.Instance.keystone;
             }
         }
 
