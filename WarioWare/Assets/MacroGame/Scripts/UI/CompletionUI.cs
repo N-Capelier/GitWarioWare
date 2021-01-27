@@ -92,7 +92,7 @@ public class CompletionUI : MonoBehaviour
         if(PlayerMovement.Instance.playerIsland.reward != null)
         {
             rewardImage.sprite = PlayerMovement.Instance.playerIsland.reward.sprite;
-            rewardDescription.text = PlayerMovement.Instance.playerIsland.reward.GetDescription();
+            rewardDescription.text = PlayerMovement.Instance.playerIsland.reward.rewardName;
         }
     }
 

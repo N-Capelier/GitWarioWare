@@ -14,7 +14,7 @@ namespace Player
     {
         #region Variables
         [Header ("Ressources")]
-        public int playerHp;
+        public float playerHp;
         public int beatcoins;
         public int food;
         public int moral;
@@ -58,9 +58,8 @@ namespace Player
 
         void Update()
         {
-
             //Show / Hide Inventory //check micro UI inactive
-            if(!Manager.Instance.capUI.activeSelf && Input.GetButtonDown("Y_Button") && !inInventory)
+            if (!Manager.Instance.capUI.activeSelf && Input.GetButtonDown("Y_Button") && !inInventory)
             {
                 PlayerInventory.Instance.Show();
             }
@@ -93,14 +92,15 @@ namespace Player
             }
             else
             {
-                playerHp -= damage;
+                StartCoroutine(FillHealth(-damage));
             }
             UpdatePlayerUI.Invoke();
         }
 
         public void Heal(int health)
-        {       
-            playerHp += health;
+        {
+            //playerHp += health;
+            StartCoroutine(FillHealth(health));
             
             UpdatePlayerUI.Invoke();
         }
@@ -170,6 +170,21 @@ namespace Player
                 SceneManager.LoadScene("FreeMode");
             else
                 SceneManager.LoadScene("Menu");    
+        }
+
+        private IEnumerator FillHealth(float heal)
+        {
+            float fraction = heal / 100;
+            print(fraction);
+
+            for (float i = 0; i < 1; i += 0.01f)
+            {
+
+                playerHp += fraction;
+                UpdatePlayerUI.Invoke();
+
+                yield return new WaitForSeconds(0.01f);
+            }
         }
         #endregion
     }
