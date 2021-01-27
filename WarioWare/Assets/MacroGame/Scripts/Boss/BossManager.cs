@@ -55,15 +55,18 @@ namespace Boss
         {
             currentType = islandType;
             currentCap.ChoseMiniGames(sorter.bossList, differentMiniGameNumber);
-            bossLifeOnStartOfFight = BossLifeManager.currentLife;
             renderText.texture = bossTexture;
             if(islandType == IslandType.Boss)
             {
-                bossLifeOnStartOfFight = 150;
+                bossLifeOnStartOfFight = BossLifeManager.currentLife;
+                BossLifeManager.Instance.InitialLife();
+
             }
             else
             {
                 bossLifeOnStartOfFight = 150;
+                BossLifeManager.Instance.InitialLife(bossLifeOnStartOfFight);
+
             }
             shipOpening.gameObject.SetActive(true);
             StartCoroutine(Manager.Instance.ZoomCam(shipOpening.openingTime));
@@ -83,13 +86,8 @@ namespace Boss
                     SoundManager.Instance.ApplyAudioClip("victoryJingleMiniBoss", transitionMusic, Manager.Instance.bpm);
 
                 int _damageToBoss =Mathf.RoundToInt( damageToBoss / Mathf.Pow(damageMultiplier, 5- (float) PlayerManager.Instance.keyStoneNumber));
-                if (currentType != IslandType.Boss)
-                {
-                    _damageToBoss = (int)damageToBoss;
-                    BossLifeManager.Instance.TakeDamage(_damageToBoss, bossLifeOnStartOfFight, false);
-                }
-                else
-                    BossLifeManager.Instance.TakeDamage(_damageToBoss, bossLifeOnStartOfFight, true);
+               
+                BossLifeManager.Instance.TakeDamage(_damageToBoss, bossLifeOnStartOfFight, true);
                 phaseBossLife += _damageToBoss;
                 transitionMusic.PlaySecured();
                 yield return new WaitForSeconds(transitionMusic.clip.length);

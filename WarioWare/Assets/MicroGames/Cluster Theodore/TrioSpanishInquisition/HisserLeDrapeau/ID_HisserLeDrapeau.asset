@@ -14,13 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cluster: 0
   trio: SpanishInquisition
+  asSecondSprite: 0
+  secondSprite: {fileID: 0}
   indexEnum: 1
   verbe: Hissez !
   microGameScene:
     sceneAsset: {fileID: 102900000, guid: d1d641469f4b9814fba98db1b859e31e, type: 3}
     required: 0
-    buildIndex: 2
+    buildIndex: 37
   inputs: {fileID: 21300000, guid: 9f718a553c7104049bb0cfd21b0c9378, type: 3}
   currentDifficulty: 0
+  winningStreak: 0
+  losingStreak: 0
   idWeight: 0
   hasBarrel: 0
