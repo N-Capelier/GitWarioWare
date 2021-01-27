@@ -44,11 +44,17 @@ namespace Islands
         [HideInInspector] public List<Cap> capList = new List<Cap>();
         [HideInInspector] public bool isDone;
 
-        [Header("Special Islands")]
+        /*[Header("Special Islands")]
         [SerializeField] Sprite legendaryIslandSprite;
         [SerializeField] Sprite startIslandSprite;
         [SerializeField] Sprite shopIslandSprite;
-        [SerializeField] Sprite bossIslandSprite;
+        [SerializeField] Sprite bossIslandSprite;*/
+
+        [Space]
+
+        [SerializeField] Reward keyStoneIslandReward = null;
+
+        [Space]
 
         //Components
         Image image;
@@ -100,7 +106,7 @@ namespace Islands
 
             if(type == IslandType.Keystone)
             {
-                reward = IslandCreator.Instance.keystone;
+                reward = keyStoneIslandReward;
             }
         }
 
@@ -190,7 +196,16 @@ namespace Islands
 
         public void SetSprite(IslandSprite _sprite)
         {
-            difficulty = IslandDifficulty.Hard;
+            switch(type)
+            {
+                case IslandType.Shop:
+                    difficulty = IslandDifficulty.Easy;
+                    break;
+                default:
+                    difficulty = IslandDifficulty.Hard;
+                    break;
+            }
+
             image.sprite = _sprite.sprite;
             SetAnchor(_sprite);
         }

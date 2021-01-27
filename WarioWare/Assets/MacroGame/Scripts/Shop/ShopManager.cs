@@ -108,10 +108,10 @@ namespace Shop
                 }
             }
 
-            for (int i = 0; i < shopItems[0].Count; i++)
+            /*for (int i = 0; i < shopItems[0].Count; i++)
             {
                 print(shopItems[0][i].name);
-            }
+            }*/
         }
 
         private void LoadShopItems(int index)

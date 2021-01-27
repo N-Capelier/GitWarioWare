@@ -33,11 +33,6 @@ namespace Islands
         public Reward[] islandRewards;
         public Reward[] treasureItems;
 
-        [Space]
-
-        public Reward keystone;
-        public Sprite[] keystoneSprites;
-
         [Header("Procedural Generation")]
 
         [SerializeField] [Range(0, 100)] int commonRewardRateWeight;

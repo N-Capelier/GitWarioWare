@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -605,6 +605,12 @@ PrefabInstance:
       propertyPath: traiList.Array.data[2]
       value: 
       objectReference: {fileID: 1127947527}
+    - target: {fileID: 7309059693642548127, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: keyStoneIslandReward
+      value: 
+      objectReference: {fileID: 11400000, guid: 5055ab61b75c34846971eaf6463dcf73,
+        type: 2}
     - target: {fileID: 8363130318030232697, guid: bc2f8b499c511b94f934b47245aeb98e,
         type: 3}
       propertyPath: m_IsActive
@@ -2537,6 +2543,12 @@ PrefabInstance:
       propertyPath: traiList.Array.data[1]
       value: 
       objectReference: {fileID: 1722201645}
+    - target: {fileID: 7309059693642548127, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: keyStoneIslandReward
+      value: 
+      objectReference: {fileID: 11400000, guid: 9e2eda0f59bc06a41ac7635d80e483ea,
+        type: 2}
     - target: {fileID: 8363130318030232697, guid: bc2f8b499c511b94f934b47245aeb98e,
         type: 3}
       propertyPath: m_IsActive
@@ -6541,6 +6553,12 @@ PrefabInstance:
       propertyPath: traiList.Array.data[1]
       value: 
       objectReference: {fileID: 659719311}
+    - target: {fileID: 7309059693642548127, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: keyStoneIslandReward
+      value: 
+      objectReference: {fileID: 11400000, guid: 42c53780a699e6845b7ac0bfd60adf59,
+        type: 2}
     - target: {fileID: 8363130318030232697, guid: bc2f8b499c511b94f934b47245aeb98e,
         type: 3}
       propertyPath: m_IsActive
@@ -9857,6 +9875,12 @@ PrefabInstance:
       propertyPath: traiList.Array.data[1]
       value: 
       objectReference: {fileID: 1503552291}
+    - target: {fileID: 7309059693642548127, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: keyStoneIslandReward
+      value: 
+      objectReference: {fileID: 11400000, guid: c83cb4e5e3d39454d96192509dff4b69,
+        type: 2}
     - target: {fileID: 8363130318030232697, guid: bc2f8b499c511b94f934b47245aeb98e,
         type: 3}
       propertyPath: m_IsActive
@@ -11318,7 +11342,7 @@ Camera:
   far clip plane: 5000
   field of view: 40
   orthographic: 1
-  orthographic size: 400
+  orthographic size: 550
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -12029,6 +12053,12 @@ PrefabInstance:
       propertyPath: traiList.Array.data[1]
       value: 
       objectReference: {fileID: 1444147958}
+    - target: {fileID: 7309059693642548127, guid: bc2f8b499c511b94f934b47245aeb98e,
+        type: 3}
+      propertyPath: keyStoneIslandReward
+      value: 
+      objectReference: {fileID: 11400000, guid: f96d064df88b4b34d8feb6330b413beb,
+        type: 2}
     - target: {fileID: 8363130318030232697, guid: bc2f8b499c511b94f934b47245aeb98e,
         type: 3}
       propertyPath: m_IsActive
@@ -13759,6 +13789,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 714554007355793623, guid: 6bbebc6197c651f4c8ee1b6918b7c5f7,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 18.300049
+      objectReference: {fileID: 0}
+    - target: {fileID: 714554007355793623, guid: 6bbebc6197c651f4c8ee1b6918b7c5f7,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -10.699951
+      objectReference: {fileID: 0}
     - target: {fileID: 1717028799354508363, guid: 6bbebc6197c651f4c8ee1b6918b7c5f7,
         type: 3}
       propertyPath: m_AnchoredPosition.x
