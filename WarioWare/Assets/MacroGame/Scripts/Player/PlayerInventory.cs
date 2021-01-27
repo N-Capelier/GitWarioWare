@@ -29,9 +29,7 @@ namespace Player
         [Header("Reward UI")]
         public GameObject rewardCanvas;
         public Image rewardImage;
-        public TextMeshProUGUI completion;
         public TextMeshProUGUI goldCompletion;
-        public TextMeshProUGUI foodCompletion;
         public TextMeshProUGUI woodCompletion;
         public TextMeshProUGUI moralCompletion;
         private Reward rewardToAdd;
