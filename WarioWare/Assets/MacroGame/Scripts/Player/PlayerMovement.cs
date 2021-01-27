@@ -106,8 +106,8 @@ namespace Player
         public void Move(Island targetIsland)
         {
             isMoving = true;
-            Debug.Log(targetIsland.name);
-            Debug.Log(playerIsland.name);
+            //Debug.Log(targetIsland.name);
+            //Debug.Log(playerIsland.name);
             if(targetIsland == playerIsland && playerIsland.type == IslandType.Shop)
             {
                 ShopManager.Instance.Show(playerIsland);            

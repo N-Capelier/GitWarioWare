@@ -111,12 +111,16 @@ namespace Islands
 
             for (int i = 0; i < islands.Length; i++)
             {
-                if(islands[i].type == IslandType.Shop || islands[i].type == IslandType.Start || islands[i].type == IslandType.Boss || islands[i].type == IslandType.Keystone)
+                if(islands[i].isIntroIsland)
+                {
+                    continue;
+                }
+                else if(islands[i].type == IslandType.Shop || islands[i].type == IslandType.Start || islands[i].type == IslandType.Boss || islands[i].type == IslandType.Keystone)
                 {
                     _specialIslandList.Add(islands[i]);
                     continue;
                 }
-                if (islands[i].type == IslandType.Common)
+                else if (islands[i].type == IslandType.Common)
                     _generatedIslandsList.Add(islands[i]);
             }
 

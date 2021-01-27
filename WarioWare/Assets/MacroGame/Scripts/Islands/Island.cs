@@ -61,6 +61,13 @@ namespace Islands
         public Button button;
         [HideInInspector] public EventTrigger eventTrigger;
 
+        [Header("Tutorial")]
+        public bool isIntroIsland = false;
+        [SerializeField] IslandType introType;
+        [SerializeField] IslandDifficulty introDifficulty;
+        [SerializeField] IslandSprite introSprite;
+        [SerializeField] Reward introReward;
+
         [Header("References")]
         public RectTransform anchorPoint;
         [SerializeField] float anchorRange = 64;
@@ -107,6 +114,15 @@ namespace Islands
             if(type == IslandType.Keystone)
             {
                 reward = keyStoneIslandReward;
+            }
+
+            if(isIntroIsland)
+            {
+                type = introType;
+                difficulty = introDifficulty;
+                reward = introReward;
+                image.sprite = introSprite.sprite;
+                SetAnchor(introSprite);
             }
         }
 
@@ -173,6 +189,9 @@ namespace Islands
         /// <param name="_reward"></param>
         public void SetReward(Reward _reward, IslandSprite _sprite)
         {
+            if (isIntroIsland)
+                return;
+
             reward = _reward;
             switch (_reward.rarity)
             {
@@ -196,6 +215,9 @@ namespace Islands
 
         public void SetSprite(IslandSprite _sprite)
         {
+            if (isIntroIsland)
+                return;
+
             switch(type)
             {
                 case IslandType.Shop:
