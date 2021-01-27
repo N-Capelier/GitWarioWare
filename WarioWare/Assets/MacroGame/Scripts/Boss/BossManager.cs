@@ -11,6 +11,8 @@ using SD_UsualAction;
 using UnityEngine.SceneManagement;
 using TMPro;
 using Islands;
+using Rewards;
+
 namespace Boss
 {
     public class BossManager : Singleton<BossManager>
@@ -54,7 +56,7 @@ namespace Boss
         }
         public IEnumerator StartBoss(CapsSorter sorter, Cap currentCap, IslandType islandType)
         {
-            keyStoneNumber.text = PlayerManager.Instance.keyStoneNumber.ToString();
+            keyStoneNumber.text = KeystoneReward.keystoneCount.ToString();
             currentType = islandType;
             currentCap.ChoseMiniGames(sorter.bossList, differentMiniGameNumber);
             renderText.texture = bossTexture;
@@ -87,7 +89,7 @@ namespace Boss
                 else
                     SoundManager.Instance.ApplyAudioClip("victoryJingleMiniBoss", transitionMusic, Manager.Instance.bpm);
 
-                int _damageToBoss =Mathf.RoundToInt( damageToBoss / Mathf.Pow(damageMultiplier, 5- (float) PlayerManager.Instance.keyStoneNumber));
+                int _damageToBoss =Mathf.RoundToInt( damageToBoss / Mathf.Pow(damageMultiplier, 5- (float) KeystoneReward.keystoneCount));
                 if (currentType == IslandType.Keystone)
                 {
                     _damageToBoss = (int)damageToBoss;
@@ -104,7 +106,7 @@ namespace Boss
             }
             else
             {
-                int _damageToPlayer = Mathf.RoundToInt(damageToPlayer * Mathf.Pow(damageMultiplier,5- (float)PlayerManager.Instance.keyStoneNumber));
+                int _damageToPlayer = Mathf.RoundToInt(damageToPlayer * Mathf.Pow(damageMultiplier,5- (float)KeystoneReward.keystoneCount));
                 if(currentType != IslandType.Boss)
                 {
                     _damageToPlayer = (int)damageToBoss;

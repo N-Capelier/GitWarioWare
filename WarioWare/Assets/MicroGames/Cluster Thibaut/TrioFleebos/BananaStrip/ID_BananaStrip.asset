@@ -26,5 +26,5 @@ MonoBehaviour:
   currentDifficulty: 0
   winningStreak: 0
   losingStreak: 0
-  idWeight: 10
+  idWeight: 0
   hasBarrel: 0

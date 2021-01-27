@@ -22,7 +22,7 @@ MonoBehaviour:
     sceneAsset: {fileID: 102900000, guid: 090f472027b26f14d988c0016316069a, type: 3}
     required: 0
     buildIndex: 27
-  inputs: {fileID: 21300000, guid: f16edb139a7392e4986b7e1697cd3276, type: 3}
+  inputs: {fileID: 21300000, guid: a3d47d389aa783e4a9f9945c05a12ce9, type: 3}
   currentDifficulty: 0
   winningStreak: 0
   losingStreak: 0

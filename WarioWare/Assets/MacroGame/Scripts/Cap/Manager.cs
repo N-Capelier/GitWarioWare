@@ -146,7 +146,7 @@ namespace Caps
             if (_transitionCam == null)
                 _transitionCam = transitionCam;
 
-            int _keyStoneImpact = Mathf.RoundToInt(PlayerManager.Instance.keyStoneNumber / 2f);
+            int _keyStoneImpact = Mathf.RoundToInt(KeystoneReward.keystoneCount / 2f);
             numberBeforSpeedUp = 1 + Mathf.RoundToInt(((float)_currentIsland.difficulty + 1f) / 5f) + _keyStoneImpact + Mathf.RoundToInt(1f / (1f + _keyStoneImpact));
             cantDoTransition = false;
             currentCap = _currentCap;
@@ -642,8 +642,8 @@ namespace Caps
                     }
                     else
                     {
-                        int keyStoneImpact = PlayerManager.Instance.keyStoneNumber / 2;
-                        island.capList[i].length = 3 * ((int)_IslandTarget.difficulty + 1) + miniGameNumberPerCap +  PlayerManager.Instance.keyStoneNumber - 2 * keyStoneImpact;
+                        int keyStoneImpact = KeystoneReward.keystoneCount / 2;
+                        island.capList[i].length = 3 * ((int)_IslandTarget.difficulty + 1) + miniGameNumberPerCap + KeystoneReward.keystoneCount - 2 * keyStoneImpact;
                     }
 
                     island.capList[i].capWeight = idWeightToAdd;
@@ -667,8 +667,8 @@ namespace Caps
                     Island _IslandTarget = island.accessibleNeighbours[i];
                     if (_IslandTarget.type != IslandType.Boss)
                     {
-                        int keyStoneImpact = PlayerManager.Instance.keyStoneNumber / 2;
-                        island.capList[i].length = 3 * ((int)_IslandTarget.difficulty + 1) + miniGameNumberPerCap +  PlayerManager.Instance.keyStoneNumber - 2 * keyStoneImpact;
+                        int keyStoneImpact = KeystoneReward.keystoneCount / 2;
+                        island.capList[i].length = 3 * ((int)_IslandTarget.difficulty + 1) + miniGameNumberPerCap + KeystoneReward.keystoneCount - 2 * keyStoneImpact;
 
                     }
                 }
@@ -807,13 +807,13 @@ namespace Caps
                     DialogueManager.Instance.PlayDialogue(4, 6);
                     isFirstMiniGame = false;
                 }
-                else if(PlayerManager.Instance.hasFirstKeyStone && PlayerManager.Instance.keyStoneNumber == 0)
+                else if(KeystoneReward.tutorialCompleted && KeystoneReward.keystoneCount == 0)
                 {
                     DialogueManager.Instance.PlayDialogue(10, 6, VcamTarget, allIslands[16].transform,5);
                 }
                 else if (PlayerMovement.Instance.playerIsland.type == IslandType.Keystone)
                 {
-                    switch (PlayerManager.Instance.keyStoneNumber)
+                    switch (KeystoneReward.keystoneCount)
                     {
                         case 1:
                             break;

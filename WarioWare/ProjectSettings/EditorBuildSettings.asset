@@ -131,4 +131,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/MicroGames/Cluster Thibaut/TrioLLL/SensDuPoil/SensDuPoilScene.unity
     guid: 93f2efa409b739b49bdab475c109b82f
+  - enabled: 1
+    path: Assets/MicroGames/Cluster Theodore/TrioSpanishInquisition/HisserLeDrapeau/HisserLeDrapeau.unity
+    guid: 990c34989b7b7bf489bfb45eef55913c
   m_configObjects: {}
