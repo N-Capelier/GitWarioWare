@@ -7,10 +7,8 @@ namespace Brigantin
 {
     namespace FantomeSousLesProjecteurs
     {
-        public class SoundManager : MonoBehaviour
+        public class TestSoundManager : TimedBehaviour
         {
-            #region Variables
-
             public AudioClip slowBackgroundMusic;
             public AudioClip mediumBackgroundMusic;
             public AudioClip fastBackgroundMusic;
@@ -22,45 +20,50 @@ namespace Brigantin
 
             private AudioSource source;
 
-            #endregion
-
-            #region Unity methods
-
-            private void Awake()
+            public override void Start()
             {
-                
-            }
-
-            private void Start()
-            {
-                /*source = GetComponent<AudioSource>();
+                source = GetComponent<AudioSource>();
 
                 switch (Manager.Instance.bpm)
                 {
                     case BPM.Slow:
                         source.clip = slowBackgroundMusic;
+                        PlayMusic();
                         break;
 
                     case BPM.Medium:
                         source.clip = mediumBackgroundMusic;
+                        PlayMusic();
                         break;
 
                     case BPM.Fast:
                         source.clip = fastBackgroundMusic;
+                        PlayMusic();
                         break;
 
                     case BPM.SuperFast:
                         source.clip = veryFastBackgroundMusic;
+                        PlayMusic();
                         break;
-                }*/
+                }
+            }
+
+            public override void FixedUpdate()
+            {
+                // DO NOT REMOVE -----
+                base.FixedUpdate();
+                // -------------------
             }
 
             private void Update()
             {
-
+               
             }
 
-            #endregion
+            public override void TimedUpdate()
+            {
+                
+            }
 
             #region Methods
 
@@ -114,6 +117,7 @@ namespace Brigantin
             }
 
             #endregion
+
         }
     }
 }

@@ -35,8 +35,8 @@ namespace Brigantin
 
             void Start()
             {
-                if (!enemyToSpawn)
-                    Debug.LogError("Need Enemy Prefab to work");
+                /*if (!enemyToSpawn)
+                    Debug.LogError("Need Enemy Prefab to work");*/
                 transform.position = Vector3.zero;
                 previousSpawnPos = new Vector2(100, 100);
             }

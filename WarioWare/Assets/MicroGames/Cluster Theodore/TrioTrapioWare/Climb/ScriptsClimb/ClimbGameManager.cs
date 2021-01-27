@@ -78,7 +78,7 @@ namespace TrapioWare
                     canRight = false;
                     parrot.GetComponent<AudioSource>().Play();
                     parrot.GetComponent<Animator>().SetTrigger("Victory");
-                    Debug.Log("You WIN");
+                
 
                 }
 
@@ -87,7 +87,7 @@ namespace TrapioWare
                     player.transform.position = positions[playerPosition].transform.position;
                 }
 
-                if ((Input.GetButtonDown("Left_Bumper") || Input.GetButtonDown("Right_Bumper")) || ((Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1))) && finishInstantiate)
+                if ((Input.GetButtonDown("Left_Bumper") || Input.GetButtonDown("Right_Bumper")) && finishInstantiate)
                 {
                     if (playerPosition < positions.Count && !needToStop)
                     {
@@ -102,7 +102,7 @@ namespace TrapioWare
             {
                 if ((Input.GetButtonDown("Left_Bumper") || Input.GetMouseButtonDown(0)) && canLeft)
                 {
-                    //Debug.Log("Left");
+                    
                     canRight = true;
                     playerPosition += 1;
                     nextSound++;
@@ -122,7 +122,7 @@ namespace TrapioWare
                 }
                 else if ((Input.GetButtonDown("Right_Bumper") || Input.GetMouseButtonDown(1)) && canRight)
                 {
-                    //Debug.Log("Right");
+                    
                     canLeft = true;
                     canRight = false;
                     nextSound++;

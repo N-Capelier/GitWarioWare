@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using Caps;
+using Testing;
 using UnityEditor;
 using UnityEngine;
 
@@ -31,9 +31,9 @@ namespace Brigantin
             private GameObject area { get; set; }
             private GhostMovement ghostMovement { get; set; }
             private AreaMovement areaMovement { get; set; }
-            private GameObject blackScreen { get; set; }
+            //private GameObject blackScreen { get; set; }
 
-            private SoundManager soundManager;
+            private TestSoundManager soundManager;
 
 
             public override void Start()
@@ -46,11 +46,11 @@ namespace Brigantin
                 area = GameObject.Find("Middle Collider");
                 ghostMovement = ghost.GetComponent<GhostMovement>();
                 areaMovement = area.GetComponent<AreaMovement>();
-                soundManager = GameObject.Find("Sound Manager").GetComponent<SoundManager>();
-                blackScreen = GameObject.Find("Black Screen");
+                soundManager = GameObject.Find("Sound Manager").GetComponent<TestSoundManager>();
+                //blackScreen = GameObject.Find("Black Screen");
 
                 area.SetActive(false);
-                blackScreen.SetActive(false);
+                //blackScreen.SetActive(false);
 
                 switch(currentDifficulty)
                 {
@@ -69,6 +69,8 @@ namespace Brigantin
                         blackScreenDelay = _hardBlackScreenDelay;
                         break;
                 }
+
+                
             }
 
             public override void FixedUpdate()
@@ -99,16 +101,19 @@ namespace Brigantin
                 }
                 else if(Tick == blackScreenDelay)
                 {
-                    blackScreen.SetActive(true);
+                    //blackScreen.SetActive(true);
                     area.SetActive(true);
-                    soundManager.PlayGhost();
+                    //soundManager.PlayGhost();
                 }
                 else if(Tick == 8)
                 {
                     Manager.Instance.Result(ghostMovement.inArea && hasInput);
-                    blackScreen.SetActive(false);
+                    //blackScreen.SetActive(false);
                     if (!hasInput)
                     {
+                        ghostMovement.canMove = false;
+                        areaMovement.canMove = false;
+                        ghost.GetComponent<SpriteRenderer>().sortingOrder = 15;
                         soundManager.StopMusic();
                         soundManager.PlayDefeat();
                     }
@@ -120,7 +125,8 @@ namespace Brigantin
                 ghostMovement.canMove = false;
                 areaMovement.canMove = false;
                 hasInput = true;
-                blackScreen.SetActive(false);
+                //blackScreen.SetActive(false);
+                ghost.GetComponent<SpriteRenderer>().sortingOrder = 15;
                 if (ghostMovement.inArea)
                 {
                     soundManager.StopMusic();
