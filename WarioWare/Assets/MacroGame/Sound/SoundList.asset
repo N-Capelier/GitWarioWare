@@ -376,14 +376,71 @@ MonoBehaviour:
     foldout: 1
   music:
   - name: ABadDay
-    author: MathieuVanCapellen
+    author: MathieuVanCappellen
     clip: {fileID: 8300000, guid: 54bad7354f815b14d937a557800b0040, type: 3}
   - name: APirateLife
-    author: MathieuVanCapellen
+    author: MathieuVanCappellen
     clip: {fileID: 8300000, guid: f8a6539e438514349a7c92dc772e3280, type: 3}
   - name: TheLastJourney
     author: WilliamSchmitt
     clip: {fileID: 8300000, guid: 97843520a0b1c5146ac825297789abc6, type: 3}
-  - name: TheLastJourney(NoPercu)
-    author: WilliamSchmitt
-    clip: {fileID: 8300000, guid: 7d82aa881e47d1549a9a801c2c12f265, type: 3}
+  - name: CestNotreTresor
+    author: Matis Dupperray
+    clip: {fileID: 8300000, guid: fe8b375e8a797df4f8a2277e64ef87ad, type: 3}
+  - name: ChasseAuTresor
+    author: Matis Dupperray
+    clip: {fileID: 8300000, guid: 428264f6c4ed5054393d5369ba74dcde, type: 3}
+  - name: Les4Pieces
+    author: Matis Dupperray
+    clip: {fileID: 8300000, guid: 83b2217fe82e9f746ae426ca646962e2, type: 3}
+  - name: CeremonieDeTe
+    author: Matis Dupperray
+    clip: {fileID: 8300000, guid: 2e95eebf178d19e47b72b88ec3150fb1, type: 3}
+  - name: LaBonneAuberge
+    author: MathieuVanCappellen
+    clip: {fileID: 8300000, guid: 0d46041fa8fb07f40a4b176942ab5ac8, type: 3}
+  - name: HoleInCrab
+    author: MathieuVanCappellen
+    clip: {fileID: 8300000, guid: 8b25e85ccb63ae944ab2b9e0a4faa19c, type: 3}
+  - name: BouffeJoelle
+    author: Matis Dupperray
+    clip: {fileID: 8300000, guid: 682cd5be21161c440a3d1dfb6764cb6e, type: 3}
+  - name: Ghost
+    author: 
+    clip: {fileID: 0}
+  - name: 
+    author: 
+    clip: {fileID: 0}
+  - name: 
+    author: 
+    clip: {fileID: 0}
+  - name: 
+    author: 
+    clip: {fileID: 0}
+  - name: 
+    author: 
+    clip: {fileID: 0}
+  - name: 
+    author: 
+    clip: {fileID: 0}
+  - name: 
+    author: 
+    clip: {fileID: 0}
+  - name: 
+    author: 
+    clip: {fileID: 0}
+  - name: 
+    author: 
+    clip: {fileID: 0}
+  - name: 
+    author: 
+    clip: {fileID: 0}
+  - name: 
+    author: 
+    clip: {fileID: 0}
+  - name: 
+    author: 
+    clip: {fileID: 0}
+  - name: 
+    author: 
+    clip: {fileID: 0}

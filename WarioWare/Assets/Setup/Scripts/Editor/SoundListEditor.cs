@@ -127,7 +127,7 @@ public class SoundListEditor : Editor
             }
             EditorGUILayout.BeginHorizontal();
             if (GUILayout.Button("Actualise music")) { ActualiseMusicList(); }
-           
+            if (GUILayout.Button("AddMusic")) { soundList.music.Add(new Music()); } 
             EditorGUILayout.EndHorizontal();
             EditorGUILayout.EndVertical();
         }
