@@ -20,6 +20,8 @@ namespace Islands
         [SerializeField] IslandSprite[] mediumIslandSprites;
         [SerializeField] IslandSprite[] hardIslandSprites;
 
+        [Space]
+
         [SerializeField] IslandSprite startIslandSprite;
         [SerializeField] IslandSprite shopIslandSprite;
         [SerializeField] IslandSprite keystoneIslandSprite;
@@ -32,6 +34,10 @@ namespace Islands
         public Reward[] islandRewards;
 
         public Reward[] treasureItems;
+
+        [Space]
+
+        public Reward keyStone;
 
         [Header("Procedural Generation")]
 

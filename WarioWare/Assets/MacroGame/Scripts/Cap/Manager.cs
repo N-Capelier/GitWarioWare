@@ -736,7 +736,7 @@ namespace Caps
             PlayerInventory.Instance.rewardCanvas.SetActive(true);
                 CompletionAttribution();
 
-                yield return new WaitUntil(() => Input.GetButtonDown("A_Button"));
+                yield return new WaitUntil(() => Input.GetButtonDown("A_Button") && CompletionUI.completionIsDone);
                 CloseReward();
         }
         public void CloseReward()
@@ -787,8 +787,10 @@ namespace Caps
             float pourcentageCompleted = miniGameWon / currentCap.length;
             int currentMonnaie;
             int goldToAdd = 0;
+            int additionalGold = 0;
             int woodToAdd = 0;
-            int _moralCost = moralCost;
+            int _moralCost = 0;
+
             if (pourcentageCompleted >= 1f)
             {
                 currentMonnaie = monnaieGold;
@@ -868,32 +870,45 @@ namespace Caps
             //add moral based gold
             if (PlayerManager.Instance.moral > 0 && PlayerManager.Instance.moral < 25)
             {
-                goldToAdd += 0;
+                additionalGold += 0;
             }
             else if (PlayerManager.Instance.moral >= 25 && PlayerManager.Instance.moral < 50)
             {
-                goldToAdd += 5;
+                additionalGold += 5;
 
             }
             else if (PlayerManager.Instance.moral >= 50 && PlayerManager.Instance.moral < 75)
             {
-                goldToAdd += 10;
+                additionalGold += 10;
             }
             else if (PlayerManager.Instance.moral >= 75 && PlayerManager.Instance.moral < 100)
             {
-                goldToAdd += 15;
+                additionalGold += 15;
             }
 
-            PlayerManager.Instance.GainCoins(goldToAdd);
+            PlayerManager.Instance.completionUI.StartCompletion(pourcentageCompleted);
+         
+            PlayerManager.Instance.GainCoins(goldToAdd+additionalGold);
             PlayerManager.Instance.Heal(woodToAdd);
-            PlayerManager.Instance.GainMoral(_moralCost);
-            PlayerManager.Instance.completionUI.StartCompletion();
+            PlayerManager.Instance.GainMoral(moralCost + _moralCost);
             miniGameWon = 0;
             transition.completionBar.fillAmount = 0;
-            PlayerInventory.Instance.completion.text = "Completion : " + Mathf.RoundToInt(pourcentageCompleted * 100) + "%";
-            PlayerInventory.Instance.goldCompletion.text = "beatcoin + " + goldToAdd;
-            PlayerInventory.Instance.woodCompletion.text = "planches + " + woodToAdd;
-            PlayerInventory.Instance.moralCompletion.text = "moral + " + _moralCost;
+
+            if (goldToAdd > 0)
+                PlayerInventory.Instance.goldCompletion.text = "beatcoin + " + goldToAdd;
+            else
+                PlayerInventory.Instance.goldCompletion.text = System.String.Empty;
+
+            if (woodToAdd > 0)
+                PlayerInventory.Instance.woodCompletion.text = "planches + " + woodToAdd;
+            else
+                PlayerInventory.Instance.woodCompletion.text = System.String.Empty;
+
+            if (_moralCost > 0)
+                PlayerInventory.Instance.moralCompletion.text = "moral + " + _moralCost;
+            else
+                PlayerInventory.Instance.moralCompletion.text = System.String.Empty;
+
             currentCap = null;
         }
 

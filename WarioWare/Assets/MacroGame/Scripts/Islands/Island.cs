@@ -97,6 +97,11 @@ namespace Islands
 
             button.onClick.AddListener(OnClick);
             eventTrigger.triggers.Add(entry);
+
+            if(type == IslandType.Keystone)
+            {
+                reward = IslandCreator.Instance.keyStone;
+            }
         }
 
         private void Update()
