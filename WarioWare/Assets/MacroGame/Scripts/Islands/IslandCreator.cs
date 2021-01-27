@@ -30,14 +30,13 @@ namespace Islands
         [Space]
 
         public Reward[] gameRewards;
-
         public Reward[] islandRewards;
-
         public Reward[] treasureItems;
 
         [Space]
 
-        public Reward keyStone;
+        public Reward keystone;
+        public Sprite[] keystoneSprites;
 
         [Header("Procedural Generation")]
 

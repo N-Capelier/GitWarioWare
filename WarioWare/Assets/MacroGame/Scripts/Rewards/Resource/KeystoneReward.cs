@@ -8,6 +8,10 @@ namespace Rewards
     [CreateAssetMenu(fileName = "New Keystone", menuName = "Reward/Resource/Keystone", order = 50)]
     public class KeystoneReward : Reward
     {
+
+        public static bool tutorialCompleted = false;
+        public static int keystoneCount = 0;
+
         public override bool ApplyActiveEffect()
         {
             return false;
@@ -15,6 +19,15 @@ namespace Rewards
 
         public override void ApplyPassiveEffect()
         {
+            if(tutorialCompleted)
+            {
+                keystoneCount++;
+            }
+            else
+            {
+                tutorialCompleted = true;
+            }
+
             PlayerManager.Instance.GainKeyStone();
         }
 
