@@ -805,6 +805,20 @@ namespace Caps
                     DialogueManager.Instance.PlayDialogue(4, 6);
                     isFirstMiniGame = false;
                 }
+                else if(PlayerManager.Instance.hasFirstKeyStone && PlayerManager.Instance.keyStoneNumber == 0)
+                {
+                    DialogueManager.Instance.PlayDialogue(10, 6, VcamTarget, allIslands[16].transform,5);
+                }
+                else if (PlayerMovement.Instance.playerIsland.type == IslandType.Keystone)
+                {
+                    switch (PlayerManager.Instance.keyStoneNumber)
+                    {
+                        case 1:
+                            break;
+                        default:
+                            break;
+                    }
+                }
                 else
                     eventSystem.enabled = true;
             }

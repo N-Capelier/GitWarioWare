@@ -486,3 +486,6 @@ MonoBehaviour:
   - name: PiratCove
     author: Matis Dupperray
     clip: {fileID: 8300000, guid: a96f6214317d6f543ba36390ccd0234c, type: 3}
+  - name: TheFirstCove
+    author: Matis Dupperray
+    clip: {fileID: 8300000, guid: ead4bd7724fdfda448ebf79bae7ab6e1, type: 3}

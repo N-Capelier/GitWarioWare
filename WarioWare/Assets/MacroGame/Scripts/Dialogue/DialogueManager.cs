@@ -47,7 +47,7 @@ public class DialogueManager : Singleton<DialogueManager>
     }
 
 
-    public void PlayDialogue(int dialogueNumber, int _dialogueInRow = 0, GameObject target= null, Transform direction = null)
+    public void PlayDialogue(int dialogueNumber, int _dialogueInRow = 0, GameObject target= null, Transform direction = null, int delay = 100)
     {
         UI.UICameraController.canSelect = false;
         canSkip = true;
@@ -56,8 +56,11 @@ public class DialogueManager : Singleton<DialogueManager>
         dialogueInRow--;
         currentDialogueNumber = dialogueNumber + 1;
         Manager.Instance.eventSystem.enabled = false;
-
-        if(target != null)
+        if(delay != 100)
+        {
+            delay--;
+        }
+        if(target != null && delay ==0 )
         {
             currentTarget = target;
             positionToReset = currentTarget.transform.position;
