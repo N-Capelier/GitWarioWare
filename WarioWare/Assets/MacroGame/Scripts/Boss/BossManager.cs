@@ -169,8 +169,8 @@ namespace Boss
             }
 
 
-            Manager.Instance.GlobalTransitionEnd(true);
-            transitionCam.enabled = false;
+            Manager.Instance.GlobalTransitionEnd ( transitionCam, true);
+            
         }
     }
 

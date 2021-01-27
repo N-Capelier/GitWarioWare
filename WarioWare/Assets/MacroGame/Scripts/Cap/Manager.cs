@@ -140,9 +140,11 @@ namespace Caps
         /// </summary>
         /// <param name="_currentCap"></param>
         /// <returns></returns>
-        public IEnumerator StartMiniGame(Cap _currentCap, Island _currentIsland, bool isBoss = false)
+        public IEnumerator StartMiniGame(Cap _currentCap, Island _currentIsland ,Camera _transitionCam  = null, bool isBoss = false)
         {
             UI.UICameraController.canSelect = false;
+            if (_transitionCam == null)
+                _transitionCam = transitionCam;
 
             int _keyStoneImpact = Mathf.RoundToInt(PlayerManager.Instance.keyStoneNumber / 2f);
             numberBeforSpeedUp = 1 + Mathf.RoundToInt(((float)_currentIsland.difficulty + 1f) / 5f) + _keyStoneImpact + Mathf.RoundToInt(1f / (1f + _keyStoneImpact));
@@ -185,7 +187,7 @@ namespace Caps
                 }
             }
 
-            StartCoroutine(PlayMiniGame(transitionCam, isBoss));
+            StartCoroutine(PlayMiniGame(_transitionCam, isBoss));
         }
         public IEnumerator StartMiniGame(Cap _currentCap)
         {
@@ -452,11 +454,11 @@ namespace Caps
                 StartCoroutine(CapEnd());
                 yield break;
             }
-            GlobalTransitionEnd();
+            GlobalTransitionEnd(transitionCam);
 
         }
 
-        public void GlobalTransitionEnd(bool isBoss = false)
+        public void GlobalTransitionEnd(Camera _transtionCam ,bool isBoss = false)
         {
             if (currentMiniGame == currentCap.chosenMiniGames.Count)
             {
@@ -474,7 +476,7 @@ namespace Caps
             currentAsyncScene = SceneManager.LoadSceneAsync(currentCap.chosenMiniGames[currentMiniGame].microGameScene.BuildIndex, LoadSceneMode.Additive);
             currentAsyncScene.allowSceneActivation = false;
             if (currentIsland != null)
-                StartCoroutine(StartMiniGame(currentCap, currentIsland, isBoss));
+                StartCoroutine(StartMiniGame(currentCap, currentIsland,_transtionCam, isBoss));
             else
                 StartCoroutine(StartMiniGame(currentCap));
 
