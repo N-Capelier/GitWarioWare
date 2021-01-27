@@ -55,7 +55,7 @@ namespace TrioBrigantin
 			void Move()
             {
 				horizontal = Input.GetAxis("Left_Joystick_X");
-				vertical = -Input.GetAxis("Left_Joystick_Y");
+				vertical = Input.GetAxis("Left_Joystick_Y");
 
 				if (horizontal < -0.15 || horizontal > 0.15 || vertical < -0.15 || vertical > 0.15)
                 {

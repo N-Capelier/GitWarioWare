@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89b7721df142aee43a85d40a01d50522, type: 3}
   m_Name: BigIsland
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 366062fd9acfee54da4ee3b97fc00d33, type: 3}
+  sprite: {fileID: 21300000, guid: 812d13de88e6c2046ad91f83d47379f5, type: 3}
   anchorPoint: 5
