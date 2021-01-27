@@ -23,11 +23,11 @@ Material:
     - _BaseMap:
         m_Texture: {fileID: 2800000, guid: a3b6c6818245deb49933be0cbc6bd341, type: 3}
         m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 12.824689}
+        m_Offset: {x: 0, y: 7.0880313}
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: a3b6c6818245deb49933be0cbc6bd341, type: 3}
         m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
+        m_Offset: {x: 0, y: 0.9709541}
     m_Floats:
     - _AlphaClip: 0
     - _Blend: 0
