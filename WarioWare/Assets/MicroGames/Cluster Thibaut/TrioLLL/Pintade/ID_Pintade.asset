@@ -19,7 +19,7 @@ MonoBehaviour:
   microGameScene:
     sceneAsset: {fileID: 102900000, guid: 62f158d430b69db49b3829418873778b, type: 3}
     required: 0
-    buildIndex: 34
+    buildIndex: 33
   inputs: {fileID: 21300000, guid: bbece81bda9df384491697cd7d71f398, type: 3}
   currentDifficulty: 0
   winningStreak: 0

@@ -10,7 +10,7 @@ using Player;
 using SD_UsualAction;
 using UnityEngine.SceneManagement;
 using TMPro;
-
+using Islands;
 namespace Boss
 {
     public class BossManager : Singleton<BossManager>
@@ -25,7 +25,7 @@ namespace Boss
         public RawImage renderText;
         public GameObject VcamTarget;
         public CinemachineVirtualCamera cinemachine;
-
+        private IslandType currentType;
 
         [Header("Boss parameters")]
         public float damageToPlayer = 10;
@@ -51,11 +51,20 @@ namespace Boss
             
             
         }
-        public IEnumerator StartBoss(CapsSorter sorter, Cap currentCap)
+        public IEnumerator StartBoss(CapsSorter sorter, Cap currentCap, IslandType islandType)
         {
+            currentType = islandType;
             currentCap.ChoseMiniGames(sorter.bossList, differentMiniGameNumber);
             bossLifeOnStartOfFight = BossLifeManager.currentLife;
             renderText.texture = bossTexture;
+            if(islandType == IslandType.Boss)
+            {
+                bossLifeOnStartOfFight = 150;
+            }
+            else
+            {
+                bossLifeOnStartOfFight = 200;
+            }
             shipOpening.gameObject.SetActive(true);
             StartCoroutine(Manager.Instance.ZoomCam(shipOpening.openingTime));
             yield return new WaitForSeconds(shipOpening.openingTime * 2);
@@ -70,7 +79,11 @@ namespace Boss
                 transition.PlayAnimation((float)Manager.Instance.bpm, true);
                 SoundManager.Instance.ApplyAudioClip("victoryJingleBoss", transitionMusic, Manager.Instance.bpm);
 
-                int _damageToBoss =Mathf.RoundToInt( damageToBoss / Mathf.Pow(damageMultiplier, (float) PlayerManager.Instance.keyStoneNumber));
+                int _damageToBoss =Mathf.RoundToInt( damageToBoss / Mathf.Pow(damageMultiplier, 5- (float) PlayerManager.Instance.keyStoneNumber));
+                if (currentType != IslandType.Boss)
+                {
+                    _damageToBoss = (int)damageToBoss;
+                }
                 BossLifeManager.Instance.TakeDamage(_damageToBoss, bossLifeOnStartOfFight, true);
                 phaseBossLife += _damageToBoss;
                 transitionMusic.PlaySecured();
@@ -78,8 +91,11 @@ namespace Boss
             }
             else
             {
-                int _damageToPlayer = Mathf.RoundToInt(damageToBoss * Mathf.Pow(damageMultiplier, (float)PlayerManager.Instance.keyStoneNumber));
-
+                int _damageToPlayer = Mathf.RoundToInt(damageToPlayer * Mathf.Pow(damageMultiplier,5- (float)PlayerManager.Instance.keyStoneNumber));
+                if(currentType != IslandType.Boss)
+                {
+                    _damageToPlayer = (int)damageToBoss;
+                }
                 PlayerManager.Instance.TakeDamage(_damageToPlayer, true);
                 transition.PlayAnimation((float)Manager.Instance.bpm, false);
 

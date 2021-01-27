@@ -81,6 +81,8 @@ namespace Caps
         public GameObject verbePanel;
         public TextMeshProUGUI verbeText;
         public Image inputImage;
+        public Image secondInputImage;
+        public Image firstInputImage;
         public GameObject sceneCam;
         public GameObject capUI;
         public GameObject macroUI;
@@ -148,10 +150,11 @@ namespace Caps
 
             if (currentAsyncScene == null)
             {
+                
                 BossLifeManager.Instance.bossUI.gameObject.SetActive(false);
-                if (currentIsland.type == IslandType.Boss)
+                if (currentIsland.type == IslandType.Boss || currentIsland.type == IslandType.Keystone)
                 {
-                    StartCoroutine(BossManager.Instance.StartBoss(sorter, currentCap));
+                    StartCoroutine(BossManager.Instance.StartBoss(sorter, currentCap, currentIsland.type));
                     yield break;
                 }
                 else
@@ -211,16 +214,13 @@ namespace Caps
 
         public IEnumerator PlayMiniGame(Camera _transitionCam, bool isBoss = false)
         {
-
+            _transitionCam.enabled = true;
             sceneCam.SetActive(true);
-            _transitionCam.enabled = false;
             if (speedUp.activeSelf)
                 speedUp.SetActive(false);
             capUI.SetActive(true);
             macroUI.SetActive(false);
             ressourcesUI.SetActive(false);
-            panel.SetActive(false);
-            verbePanel.SetActive(true);
 
 
             FadeManager.Instance.NoPanel();
@@ -229,6 +229,9 @@ namespace Caps
             else
                 SoundManager.Instance.ApplyAudioClip("verbeJingleBoss", transitionMusic, bpm);
             transitionMusic.PlaySecured();
+
+            verbePanel.SetActive(true);
+
             if (currentAsyncScene == null)
             {
                 currentDifficulty = currentCap.chosenMiniGames[currentMiniGame].currentDifficulty;
@@ -245,7 +248,25 @@ namespace Caps
             }
             else
             {
-                inputImage.sprite = currentCap.chosenMiniGames[currentMiniGame].inputs;
+                if (currentCap.chosenMiniGames[currentMiniGame].asSecondSprite)
+                {
+                    secondInputImage.enabled = true;
+                    firstInputImage.enabled = true;
+                    inputImage.enabled = false;
+
+                    secondInputImage.sprite = currentCap.chosenMiniGames[currentMiniGame].secondSprite;
+                    firstInputImage.sprite = currentCap.chosenMiniGames[currentMiniGame].inputs;
+
+                }
+                else
+                {
+                    secondInputImage.enabled = false;
+                    firstInputImage.enabled = false;
+                    inputImage.enabled = true;
+
+                    inputImage.sprite = currentCap.chosenMiniGames[currentMiniGame].inputs;
+
+                }
                 verbeText.text = currentCap.chosenMiniGames[currentMiniGame].verbe;
             }
 
@@ -258,6 +279,8 @@ namespace Caps
             currentAsyncScene.allowSceneActivation = true;
             yield return new WaitUntil(() => currentAsyncScene.isDone);
             sceneCam.SetActive(false);
+            panel.SetActive(false);
+            _transitionCam.enabled = false;
 
             verbePanel.SetActive(false);
             isLoaded = true;
@@ -318,7 +341,7 @@ namespace Caps
 
             isLoaded = false;
 
-            if (currentIsland != null && currentIsland.type == IslandType.Boss)
+            if (currentIsland != null && currentIsland.type == IslandType.Boss || currentIsland != null && currentIsland.type == IslandType.Keystone)
             {
                 StartCoroutine(BossManager.Instance.TransitionBoss(win));
             }
@@ -779,8 +802,6 @@ namespace Caps
 
 
         }
-
-
 
         private void CompletionAttribution()
         {
