@@ -14,11 +14,6 @@ namespace TrioBrigantin
 			bool doSpawnSuperEnemy;
 			bool superEnemyIsSpawned = false;
 
-			[Header("SpawnParameters")]
-			[Range(20, 100)]
-			[SerializeField] int chanceOfSpawn = 42;
-			[Range(20, 100)]
-			[SerializeField] int chanceOfSuperSpawn = 47;
 			#endregion
 
 
@@ -55,7 +50,7 @@ namespace TrioBrigantin
                     {
 						int spawnChance = Random.Range(1, 101);
 
-						if(spawnChance <= chanceOfSpawn)
+						if(spawnChance <= 42)
                         {
 							if(doSpawnSuperEnemy && !superEnemyIsSpawned)
                             {
@@ -90,7 +85,7 @@ namespace TrioBrigantin
             {
 				int superSpawnChance = Random.Range(1, 101);
 
-				if (superSpawnChance <= chanceOfSuperSpawn)
+				if (superSpawnChance <= 45)
 				{
                     InstEnemy(ACouteauxTiré_Manager.instance.superEnemy, _position);
 					superEnemyIsSpawned = true;

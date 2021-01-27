@@ -34,7 +34,7 @@ namespace TrapioWare
                 {
                     ClimbGameManager.Instance.setDifficulty = false;
                     SetDifficulty();
-                    //SetDifficulty();
+                    
                 }
             }
 
@@ -82,21 +82,21 @@ namespace TrapioWare
                 {
                     case 0:
                         numberOfMaxGenerator = 1;
-                        Debug.Log(numberOfMaxGenerator);
+                        
                         InitialisationGenerator1();
                         InitialisationGenerator2();
                        
                         break;
                     case 1:
                         numberOfMaxGenerator = 2;
-                        Debug.Log(numberOfMaxGenerator);
+                        
                         InitialisationGenerator1();
                         InitialisationGenerator2();
                        
                         break;
                     case 2:
                         numberOfMaxGenerator = 3;
-                        Debug.Log(numberOfMaxGenerator);
+                        
                         InitialisationGenerator1();
                         InitialisationGenerator2();
                      

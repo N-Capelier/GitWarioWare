@@ -57,6 +57,8 @@ namespace RadioRTL
 
                         guirlande.transform.position = new Vector3(0f, -3.5f, 0f);
 
+                        teaCup.transform.position = new Vector3(0f, -4.45f, 0f);
+
                         break;
 
                     case Difficulty.MEDIUM:
@@ -69,6 +71,8 @@ namespace RadioRTL
 
                         guirlande.transform.position = new Vector3(0f, -3.5f, 0f);
 
+                        teaCup.transform.position = new Vector3(-2f, -4.45f, 0f);
+
                         break;
 
                     case Difficulty.HARD:
@@ -80,6 +84,8 @@ namespace RadioRTL
                         teaPot.transform.position = new Vector3(-2f, 2.75f, 0.0f);
 
                         guirlande.transform.position = new Vector3(0f, -1.5f, 0f);
+                        
+                        teaCup.transform.position = new Vector3(-2f, -4.45f, 0f);
 
                         break;
 

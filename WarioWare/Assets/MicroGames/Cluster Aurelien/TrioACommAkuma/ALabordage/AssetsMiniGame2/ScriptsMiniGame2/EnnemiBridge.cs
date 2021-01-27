@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using Caps;
 
 namespace ACommeAkuma
@@ -47,7 +45,6 @@ namespace ACommeAkuma
                 {
                     win = true;
                     bonk.Play(0);
-                    //bonk.PlayOneShot(bonkClip);
                     GameObject pirateInstance = Instantiate(victoriousPirate, other.transform.position, Quaternion.Euler(new Vector3(0, 0, 0))) as GameObject;
                     Destroy(other.gameObject);
                 }

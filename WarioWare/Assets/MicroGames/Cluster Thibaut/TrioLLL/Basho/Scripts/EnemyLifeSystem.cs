@@ -51,7 +51,6 @@ namespace TrioLLL
                 {
                     victory = true;
                 }
-                Debug.Log("lol");
                 StopCoroutine("BossDamageFeedback");
                 StartCoroutine("BossDamageFeedback");
             }
@@ -61,7 +60,6 @@ namespace TrioLLL
                 Color baseColor = graph.currentBoss.color;
                 //baseColor.a = 1f;
                 baseColor = new Color(baseColor.a, baseColor.g, baseColor.b, 1f);
-                Debug.Log("baseColor= " + baseColor);
                 Color targetColor = new Color(baseColor.r, baseColor.g, baseColor.b, 0.5f);
                 float t = 0f;
                 while (t < 1)

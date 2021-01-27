@@ -29,7 +29,7 @@ namespace RadioRTL
             {
                 if (Tick == 8)
                 {
-                    Debug.Log("win = " + win);
+                    
                     if (win)
                     {
                         Manager.Instance.Result(true);

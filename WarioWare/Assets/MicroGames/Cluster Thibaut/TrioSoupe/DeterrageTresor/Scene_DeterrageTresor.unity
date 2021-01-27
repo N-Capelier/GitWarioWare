@@ -6738,7 +6738,7 @@ MonoBehaviour:
   Win: {fileID: 8300000, guid: db063174f09c341488a9a64ebcfe1ec6, type: 3}
   Mixer: {fileID: 24100000, guid: 9d6c268f3f310c3429c52f9a2ed0fdc8, type: 2}
   difficulty: 3
-  inputNumberToReach: 20
+  inputNumberToReach: 16
   timeBeforeInputAppears: 0.3
   yMaxChestPos: 1.5
 --- !u!4 &1407411939

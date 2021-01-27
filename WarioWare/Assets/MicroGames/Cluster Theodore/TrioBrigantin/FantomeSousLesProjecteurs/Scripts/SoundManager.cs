@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using Caps;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -33,7 +32,7 @@ namespace Brigantin
 
             private void Start()
             {
-                source = GetComponent<AudioSource>();
+                /*source = GetComponent<AudioSource>();
 
                 switch (Manager.Instance.bpm)
                 {
@@ -52,7 +51,7 @@ namespace Brigantin
                     case BPM.SuperFast:
                         source.clip = veryFastBackgroundMusic;
                         break;
-                }
+                }*/
             }
 
             private void Update()

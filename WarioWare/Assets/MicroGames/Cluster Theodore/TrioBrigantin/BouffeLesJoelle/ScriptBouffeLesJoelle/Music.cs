@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Brigantin
 {
@@ -20,10 +19,10 @@ namespace Brigantin
             void Start()
             {
                 source = source ? source : GetComponent<AudioSource>();
-                if (!musicSlow) Debug.LogWarning("Pas de musique Slow chargée");
+                /*if (!musicSlow) Debug.LogWarning("Pas de musique Slow chargée");
                 if (!musicMedium) Debug.LogWarning("Pas de musique Medium chargée");
                 if (!musicFast) Debug.LogWarning("Pas de musique Fast chargée");
-                if (!musicSuperFast) Debug.LogWarning("Pas de musique SuperFast chargée");
+                if (!musicSuperFast) Debug.LogWarning("Pas de musique SuperFast chargée");*/
             }
 
             private void Update()

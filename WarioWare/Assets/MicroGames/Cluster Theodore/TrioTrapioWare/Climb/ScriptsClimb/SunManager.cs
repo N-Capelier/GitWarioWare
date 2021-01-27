@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using Caps;
 
 
@@ -19,50 +17,57 @@ namespace TrapioWare
             {
                 base.Start(); //Do not erase this line!
                 
+                
+
+                switch (Manager.Instance.currentDifficulty)
+                {
+                    case Difficulty.EASY:
+                        ClimbGameManager.Instance.myDifficulty = 0;
+                       
+                        ClimbGameManager.Instance.setDifficulty = true;
+                        break;
+                    case Difficulty.MEDIUM:
+                        ClimbGameManager.Instance.myDifficulty = 1;
+                        
+                        ClimbGameManager.Instance.setDifficulty = true;
+                        break;
+                    case Difficulty.HARD:
+                        ClimbGameManager.Instance.myDifficulty = 2;
+                     
+                        
+                        break;
+                    default:
+                        break;
+                }
+
                 switch (Manager.Instance.bpm)
                 {
                     case BPM.Slow:
                         ClimbGameManager.Instance.mySpeed = 60;
                         musiqueDeFond.GetComponent<AudioSource>().clip = bpmSounds[0];
                         musiqueDeFond.GetComponent<AudioSource>().Play();
+                        ClimbGameManager.Instance.setDifficulty = true;
 
                         break;
                     case BPM.Medium:
                         ClimbGameManager.Instance.mySpeed = 90;
                         musiqueDeFond.GetComponent<AudioSource>().clip = bpmSounds[1];
                         musiqueDeFond.GetComponent<AudioSource>().Play();
+                        ClimbGameManager.Instance.setDifficulty = true;
 
                         break;
                     case BPM.Fast:
                         ClimbGameManager.Instance.mySpeed = 120;
+                        ClimbGameManager.Instance.setDifficulty = true;
                         musiqueDeFond.GetComponent<AudioSource>().clip = bpmSounds[2];
                         musiqueDeFond.GetComponent<AudioSource>().Play();
                         break;
                     case BPM.SuperFast:
                         ClimbGameManager.Instance.mySpeed = 140;
+                        ClimbGameManager.Instance.myDifficulty = 1;
+                        ClimbGameManager.Instance.setDifficulty = true;
                         musiqueDeFond.GetComponent<AudioSource>().clip = bpmSounds[3];
                         musiqueDeFond.GetComponent<AudioSource>().Play();
-                        break;
-                    default:
-                        break;
-                }
-
-                switch (Manager.Instance.currentDifficulty)
-                {
-                    case Difficulty.EASY:
-                        ClimbGameManager.Instance.myDifficulty = 0;
-                        Debug.Log(ClimbGameManager.Instance.myDifficulty);
-                        ClimbGameManager.Instance.setDifficulty = true;
-                        break;
-                    case Difficulty.MEDIUM:
-                        ClimbGameManager.Instance.myDifficulty = 1;
-                        Debug.Log(ClimbGameManager.Instance.myDifficulty);
-                        ClimbGameManager.Instance.setDifficulty = true;
-                        break;
-                    case Difficulty.HARD:
-                        ClimbGameManager.Instance.myDifficulty = 2;
-                        Debug.Log(ClimbGameManager.Instance.myDifficulty);
-                        ClimbGameManager.Instance.setDifficulty = true;
                         break;
                     default:
                         break;
@@ -102,8 +107,6 @@ namespace TrapioWare
 
                 if(timerDead == 8 && ClimbGameManager.Instance.lose == false && ClimbGameManager.Instance.win == false)
                 {
-                    //Manager.Instance.Result(false);
-                    Debug.Log("You Lose");
                     TrapioWare.Climb.ClimbGameManager.Instance.deadSound.Play();
                     TrapioWare.Climb.ClimbGameManager.Instance.lose = true;
                     TrapioWare.Climb.ClimbGameManager.Instance.needToStop = true;

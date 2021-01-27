@@ -19,18 +19,20 @@ namespace RadioRTL
             //1.1- Game Object & Collider
             public Script_PouredTea teaCup;
             public Collider2D teaPotCollider;
+            public GameObject fireWorks;
 
             //1.2- Booléennes & int
             bool cupIsFull;
             int cupQuantity;
 			public int waterToVictory;
-
-            //1.3- Sprites
-            public SpriteRenderer princess;
+            bool victoryMusicWasPlayed = false;
 
             //2- Récupération des donné
             public override void Start()
             {
+
+                victoryMusicWasPlayed = false;
+
                 base.Start(); //Do not erase this line!
 
                 /*switch (currentDifficulty)
@@ -60,7 +62,7 @@ namespace RadioRTL
                 {
 
                     case (60):
-                        waterToVictory = 102;
+                        waterToVictory = 90;
                         FindObjectOfType<Script_SoundManager>().Play("Musique 60", 0);
                         break;
 
@@ -81,8 +83,8 @@ namespace RadioRTL
 
                 }
 
-                //2.2- Désactive le sprite de la princesse
-                this.princess.enabled = false;
+                //2.2- Désactive le particle effect
+                fireWorks.SetActive(false);
 
             }
 
@@ -101,8 +103,9 @@ namespace RadioRTL
                 if (cupQuantity >= waterToVictory)
                 {
 
-                    princess.enabled = true;
                     FindObjectOfType<Script_SoundManager>().Play("Victoire", 1);
+                    victoryMusicWasPlayed = true;
+                    fireWorks.SetActive(true);
 
                 }
 
@@ -111,30 +114,42 @@ namespace RadioRTL
                 //3.1- A la fin de la 8 tick
                 if (Tick == 8)
                 {
-                    Debug.Log("end");
+                    //Debug.Log("end");
 
                     cupQuantity = teaCup.pouredTea;
 
-                    Debug.Log(cupQuantity);
+                    //Debug.Log(cupQuantity);
 
-                //3.1.2- Verfication des conditions
-                if ( cupQuantity >= waterToVictory)
-                {
+                    //3.1.2- Verfication des conditions
+                    if ( cupQuantity >= waterToVictory)
+                    {
 
-                    Manager.Instance.Result(true);
-                    print("victoire");
+                        Manager.Instance.Result(true);
+                        //print("victoire");
 
-                    FindObjectOfType<Script_SoundManager>().Play("Victoire", 1);
+                        FindObjectOfType<Script_SoundManager>().Play("Victoire", 1);
+                        victoryMusicWasPlayed = true;
+                        fireWorks.SetActive(true);
 
-                }
-                else
-                {
+                    }
+                    else
+                    {
 
-                     Manager.Instance.Result(false);
-                     Debug.Log("defaite");
+                        Manager.Instance.Result(false);
+                        //Debug.Log("defaite");
 
-                     FindObjectOfType<Script_SoundManager>().Play("Defaite", 1);
-                }
+                        FindObjectOfType<Script_SoundManager>().Play("Defaite", 1);
+
+                        fireWorks.SetActive(false);
+
+                    }
+
+                    if (victoryMusicWasPlayed == true)
+                    {
+
+                        FindObjectOfType<Script_SoundManager>().Stop("Victoire");
+
+                    }
 
                 }
 

@@ -1,7 +1,7 @@
-﻿using System.Collections;
+﻿
 using System.Collections.Generic;
 using UnityEngine;
-using Caps;
+using Testing;
 
 namespace Fleebos
 {
@@ -191,7 +191,6 @@ namespace Fleebos
                     if (hit.collider.CompareTag("Enemy1"))
                     {
                         pinched = true;
-                        Debug.Log("pinching");
                         SoundManager.sd.PlaySound(3);
                         hand.GetComponent<Animator>().SetTrigger("Transition");
                         box = hit.collider.gameObject;
@@ -278,21 +277,18 @@ namespace Fleebos
                     case 1:
                         SoundManager.sd.PlaySound(2);
                         arrowDown.Play();
-                        Debug.Log("peelCount = 1");
                         peelP1.SetActive(false);
                         peelP2.SetActive(true);
                         break;
                     case 2:
                         SoundManager.sd.PlaySound(3);
                         arrowUp.Play();
-                        Debug.Log("peelCount = 2");
                         peelP1.SetActive(true);
                         peelP2.SetActive(false);
                         break;
                     case 3:
                         SoundManager.sd.PlaySound(2);
                         arrowDown.Play();
-                        Debug.Log("peelCount = 3");
                         peelP1.SetActive(false);
                         peelP2.SetActive(true);
                         break;

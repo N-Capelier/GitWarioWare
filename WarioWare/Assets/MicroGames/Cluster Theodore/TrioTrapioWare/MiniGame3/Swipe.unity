@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -7595,56 +7595,56 @@ MonoBehaviour:
   timer: 0
   currentTime: 0
   tinderProfile:
-  - {fileID: 1723747301}
-  - {fileID: 1770031152}
-  - {fileID: 716869174}
-  - {fileID: 1766253}
-  - {fileID: 956127493}
-  - {fileID: 863927845}
-  - {fileID: 1660211324}
-  - {fileID: 100024312}
-  - {fileID: 1835707625}
-  - {fileID: 1402277124}
-  - {fileID: 233556816}
-  - {fileID: 1457147854}
-  - {fileID: 1090863264}
-  - {fileID: 207795791}
-  - {fileID: 1208374057}
-  - {fileID: 1223783733}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   tinderPaper:
-  - {fileID: 137890462}
-  - {fileID: 1034898707}
-  - {fileID: 365840602}
-  - {fileID: 492019727}
-  - {fileID: 1903542010}
-  - {fileID: 922653556}
-  - {fileID: 697985688}
-  - {fileID: 901597143}
-  - {fileID: 517570755}
-  - {fileID: 1724059239}
-  - {fileID: 1064038076}
-  - {fileID: 64213466}
-  - {fileID: 1001517772}
-  - {fileID: 834336990}
-  - {fileID: 562700226}
-  - {fileID: 1042281438}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   tinderPaperDirty:
-  - {fileID: 1553281860}
-  - {fileID: 113682535}
-  - {fileID: 216838646}
-  - {fileID: 1714505652}
-  - {fileID: 1024952251}
-  - {fileID: 524148818}
-  - {fileID: 124611122}
-  - {fileID: 1302175818}
-  - {fileID: 1645378361}
-  - {fileID: 1211043656}
-  - {fileID: 1291158022}
-  - {fileID: 1467794890}
-  - {fileID: 736437342}
-  - {fileID: 1144728239}
-  - {fileID: 1647081946}
-  - {fileID: 1946223521}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   breakScreen: {fileID: 157947971}
   wanted: {fileID: 1215935281}
   paper: {fileID: 2037795469}
@@ -7653,23 +7653,7 @@ MonoBehaviour:
   personnageRondVert: {fileID: 1225502077}
   match: {fileID: 2128385934}
   ecranNoir: {fileID: 275558548}
-  greenCircle:
-  - {fileID: 821265806}
-  - {fileID: 963500972}
-  - {fileID: 367224204}
-  - {fileID: 2043671884}
-  - {fileID: 2003045658}
-  - {fileID: 892995270}
-  - {fileID: 1198159930}
-  - {fileID: 1924736129}
-  - {fileID: 1559437510}
-  - {fileID: 1701318881}
-  - {fileID: 1471082892}
-  - {fileID: 1790332950}
-  - {fileID: 1629860085}
-  - {fileID: 86241673}
-  - {fileID: 435188703}
-  - {fileID: 451654828}
+  greenCircle: []
   epeeDroit: {fileID: 698051236}
   epeeGauche: {fileID: 1186324274}
   personnageRondRouge: {fileID: 336720495}
@@ -7685,7 +7669,6 @@ MonoBehaviour:
   AuraVertProfil: {fileID: 1082064725}
   AuraRougeProfil: {fileID: 1922479304}
   source: {fileID: 0}
-  musique: {fileID: 0}
   swipeSound: {fileID: 8300000, guid: 483094a5327bda944b221859e1429ce2, type: 3}
   winSound: {fileID: 8300000, guid: ef9ada4326f049b42b251e9e9b8b8bae, type: 3}
   defeatSound: {fileID: 8300000, guid: a3920becaefd35c4e91fc98c040f5bdd, type: 3}

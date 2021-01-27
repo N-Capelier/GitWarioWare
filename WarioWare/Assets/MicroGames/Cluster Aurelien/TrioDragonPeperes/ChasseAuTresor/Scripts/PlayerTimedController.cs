@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Dragons_Peperes
@@ -26,6 +25,10 @@ namespace Dragons_Peperes
             public GameObject bulle;
             public GameObject spritePerso;
             public GameObject jumpParticles;
+            public GameObject inputAppearance;
+
+            public int inputNumber;
+            public int inputMinNumber;
 
             public GameObject footstep1;
             public GameObject footstep2;
@@ -70,13 +73,17 @@ namespace Dragons_Peperes
 
                 idleSprite = downSprite;
 
-                bulle.SetActive(false);                
+                bulle.SetActive(false);
+
+                inputNumber = 0;
             }
 
             //FixedUpdate is called on a fixed time.
             public override void FixedUpdate()
             {
                 base.FixedUpdate(); //Do not erase this line!
+
+                inputMinNumber = inputAppearance.GetComponent<InputsChoiceScript>().inputMinNumber;
 
                 transform.position = Vector3.MoveTowards(transform.position, target.transform.position, speed * bpmAccelerator * Time.deltaTime);
 
@@ -110,6 +117,7 @@ namespace Dragons_Peperes
                             movingSprite = movingRightSprite;
                             idleSprite = rightSprite;
                             audiosource.Play();
+                            inputNumber = inputNumber + 1;
                         }
                         if (Input.GetAxisRaw("Left_Joystick_X") < 0f)
                         {
@@ -119,6 +127,7 @@ namespace Dragons_Peperes
                             movingSprite = movingLeftSprite;
                             idleSprite = leftSprite;
                             audiosource.Play();
+                            inputNumber = inputNumber + 1;
                         }
 
                         canMove = false;
@@ -134,6 +143,7 @@ namespace Dragons_Peperes
                             movingSprite = movingUpSprite;
                             idleSprite = upSprite;
                             audiosource.Play();
+                            inputNumber = inputNumber + 1;
                         }
                         if (Input.GetAxisRaw("Left_Joystick_Y") < 0f)
                         {
@@ -143,6 +153,7 @@ namespace Dragons_Peperes
                             movingSprite = movingDownSprite;
                             idleSprite = downSprite;
                             audiosource.Play();
+                            inputNumber = inputNumber + 1;
                         }
                         canMove = false;
                     }
@@ -153,9 +164,13 @@ namespace Dragons_Peperes
                     audiosource.Stop();
                 }
 
-                if(transform.position == treasure.transform.position)
+                if(transform.position == treasure.transform.position && inputNumber >= inputMinNumber)
                 {
                     bulle.SetActive(true);
+                }
+                else
+                {
+                    bulle.SetActive(false);
                 }
 
                 if (treasure.GetComponent<WinOrLooseScript>().finished == true)

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace TrioRadioRTL
+namespace RadioRTL
 {
     namespace EatingContest
     {
@@ -40,7 +40,7 @@ namespace TrioRadioRTL
             IEnumerator ChangeDirection()
             {
                 isRunning = true;
-                Debug.Log("haha");
+                
                 yield return new WaitForSeconds(1);
                 goingUp = !goingUp;
                 isRunning = false;

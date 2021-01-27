@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace TrioName
 {
@@ -20,13 +18,13 @@ namespace TrioName
                     case 60:
                         sourceList[0].Play();
                         break;
-                    case 90:
+                    case 80:
                         sourceList[1].Play();
                         break;
-                    case 120:
+                    case 100:
                         sourceList[2].Play();
                         break;
-                    case 140:
+                    case 120:
                         sourceList[3].Play();
                         break;
                 }

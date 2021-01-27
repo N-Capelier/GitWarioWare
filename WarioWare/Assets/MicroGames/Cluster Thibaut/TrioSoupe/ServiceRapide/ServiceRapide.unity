@@ -971,7 +971,7 @@ MonoBehaviour:
   - {x: 0, y: 3.5, z: 0}
   - {x: 6, y: 0, z: 0}
   - {x: 0, y: -3.5, z: 0}
-  chefBreadPos: {x: 0, y: 0.5, z: 0}
+  chefBreadPos: {x: 0, y: 0.7, z: 0}
   EasyChefBreadPos: {x: 0, y: 0.2, z: 0}
   chefMeatPos: {x: 0, y: -1.2, z: 0}
   chefVegetablePos: {x: 0, y: -0.7, z: 0}

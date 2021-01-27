@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace ACommeAkuma
 {
@@ -26,13 +24,13 @@ namespace ACommeAkuma
                     case 60:
                         pointEffector.forceMagnitude = attractionForceBase;
                         break;
-                    case 90:
+                    case 80:
                         pointEffector.forceMagnitude = attractionForceBase * 1.4f;
                         break;
-                    case 120:
+                    case 100:
                         pointEffector.forceMagnitude = attractionForceBase * 1.8f;
                         break;
-                    case 140:
+                    case 120:
                         pointEffector.forceMagnitude = attractionForceBase * 2.3f;
                         break;
                 }

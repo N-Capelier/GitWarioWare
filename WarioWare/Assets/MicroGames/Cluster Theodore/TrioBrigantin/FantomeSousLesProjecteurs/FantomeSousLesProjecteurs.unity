@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -246,7 +246,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &127149254
 Transform:
   m_ObjectHideFlags: 0
@@ -1084,6 +1084,7 @@ GameObject:
   - component: {fileID: 1139358765}
   - component: {fileID: 1139358764}
   - component: {fileID: 1139358766}
+  - component: {fileID: 1139358767}
   m_Layer: 0
   m_Name: Sound Manager
   m_TagString: Untagged
@@ -1098,7 +1099,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1139358763}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 76989d2004d0dbb4086bf78bc9651afd, type: 3}
   m_Name: 
@@ -1136,7 +1137,7 @@ AudioSource:
   m_GameObject: {fileID: 1139358763}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: 84c6f08ae7de7cb4a8da3b71a40a1b65,
+  OutputAudioMixerGroup: {fileID: -8419397601054638579, guid: 84c6f08ae7de7cb4a8da3b71a40a1b65,
     type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
@@ -1224,6 +1225,32 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1139358767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1139358763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed08a925b25ec094fb213192fd26223e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bpm: 60
+  currentDifficulty: 0
+  timer: 0
+  currentTime: 0
+  slowBackgroundMusic: {fileID: 8300000, guid: d9ed7cf4e4639144b98b8bd89cc34c96, type: 3}
+  mediumBackgroundMusic: {fileID: 8300000, guid: 698faf19d1f0feb4a8718a344009c681,
+    type: 3}
+  fastBackgroundMusic: {fileID: 8300000, guid: 35d7bc3ea6c8f4846a3e112ecb642dc3, type: 3}
+  veryFastBackgroundMusic: {fileID: 8300000, guid: a3d07ce66f8a08f40ad76b8cfe732787,
+    type: 3}
+  ghostSound: {fileID: 8300000, guid: 89f8205442803a843a4bb731c7f3ec2a, type: 3}
+  lightSound: {fileID: 8300000, guid: 6ce83fd0742243a4e98cd4afb984cdcd, type: 3}
+  victorySound: {fileID: 8300000, guid: 81f595a7ebcae574dbd279d3d2354ce3, type: 3}
+  defeatSound: {fileID: 8300000, guid: 0ba94f755edd76946ade7b5f25408e6e, type: 3}
 --- !u!1 &1218114633
 GameObject:
   m_ObjectHideFlags: 0
@@ -1512,12 +1539,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 21300000, guid: 7ee568a8f2b65364ebcef83c4b26c856, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 8dd3b93c91e5df446a11422360c3164d, type: 3}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 8, y: 8}
+  m_Size: {x: 76.8, y: 43.2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -1536,5 +1563,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   areaSize: 1.25
-  moveSpeed: 8
+  moveSpeed: 10
   canMove: 0

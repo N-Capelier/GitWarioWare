@@ -61,7 +61,6 @@ namespace Dragons_Peperes
             public override void TimedUpdate()
             {
                 //base.TimedUpdate();
-
                 if (Tick == 1)
                 {
                     audioManager.PlayMusic();
@@ -73,11 +72,13 @@ namespace Dragons_Peperes
                 {
                     if (Tick == 1)
                     {
+                        Debug.Log("inputshow");
                         showInput.SetActive(true);
                     }
 
                     if (Tick == 3)
                     {
+                        Debug.Log("spawntie 1");
                         Destroy(showInput);
                         Instantiate(enemy, spot2.transform);
                         audioManager.PlayRandomReplique();
@@ -85,6 +86,7 @@ namespace Dragons_Peperes
 
                     if (Tick == 5)
                     {
+                        Debug.Log("spawntie 2");
                         Destroy(showInput);
                         Instantiate(enemy, spot2.transform);
                     }

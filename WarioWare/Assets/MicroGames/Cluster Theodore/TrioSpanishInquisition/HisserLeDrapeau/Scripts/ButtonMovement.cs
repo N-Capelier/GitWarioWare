@@ -49,6 +49,12 @@ namespace SpanishInquisition
 
             private void Update()
             {
+                if (manager.gameIsWon)
+                {
+                    manager.activeButtons.Remove(this);
+                    Destroy(gameObject);
+                }
+
                 transform.position += Vector3.down * speed * Time.deltaTime;
             }
 

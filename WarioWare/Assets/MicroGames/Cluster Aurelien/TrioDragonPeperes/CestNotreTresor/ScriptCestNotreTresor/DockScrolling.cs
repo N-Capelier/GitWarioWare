@@ -14,12 +14,13 @@ namespace Dragons_Peperes
             public float scrollSpeed = 0.1f;
             private float yScroll;
 
-            private MeshRenderer meshRenderer;
+            private SpriteRenderer spriteRenderer;
 
+            public Material material;
 
             private void Awake()
             {
-                meshRenderer = GetComponent<MeshRenderer>();
+                spriteRenderer = GetComponent<SpriteRenderer>();
             }
 
             private void Update()
@@ -32,7 +33,7 @@ namespace Dragons_Peperes
                 yScroll = Time.time * scrollSpeed;
 
                 Vector2 offset = new Vector2(0f, yScroll);
-                meshRenderer.sharedMaterial.SetTextureOffset("_MainTex", offset);
+                material.SetTextureOffset("_BaseMap", offset);
             }
         }
     }

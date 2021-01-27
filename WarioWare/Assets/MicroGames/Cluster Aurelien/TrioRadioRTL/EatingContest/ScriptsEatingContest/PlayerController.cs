@@ -46,6 +46,8 @@ namespace RadioRTL
             public Sprite platesFull2Dirty;
             public Sprite platesFull1Dirty;
 
+            public GameObject sparkParticles;
+
             public SpriteRenderer platesEmptyStackDisplay;
 
             public Sprite platesEmpty5;
@@ -119,12 +121,23 @@ namespace RadioRTL
 
                             if (platesManager.transform.position.x >= 0)
                             {
+                                if (rottenPlate)
+                                {
+                                    sparkParticles.SetActive(true);
+                                }
+                                
+                                
                                 movePlate = false;
                             }
+                            else
+                            {
+                                sparkParticles.SetActive(false);
+                            }
                         }
+                        
                         if (!rottenPlate) //plate isn't rotten
                         {
-                            if (Input.GetButtonDown("A_Button") || Input.GetKeyDown("e"))
+                            if (Input.GetButtonDown("A_Button"))
                             {
                                 chomp += 1;
                                 FindObjectOfType<AudioManagerLucas>().Play("Eat", 0);
@@ -138,7 +151,7 @@ namespace RadioRTL
                                 FindObjectOfType<AudioManagerLucas>().Play("Burp", 0);
                                 NextPlate(); //Changing Plates
                             }
-                            if (Input.GetKeyDown("a") || Input.GetButtonDown("X_Button"))
+                            if (Input.GetButtonDown("B_Button"))
                             {
 
                                 chomp = 0;
@@ -151,16 +164,16 @@ namespace RadioRTL
                         }
                         else if (rottenPlate)//plate is rotten
                         {
-                            if (Input.GetButtonDown("X_Button") || Input.GetKeyDown("a"))
+                            if (Input.GetButtonDown("B_Button"))
                             {
                                 FindObjectOfType<AudioManagerLucas>().Play("Yarr", 0);
                                 numberOfRottenPlates -= 1;
                                 NextPlate();
 
                             }
-                            if (Input.GetButtonDown("A_Button") || Input.GetKeyDown("e"))
+                            if (Input.GetButtonDown("A_Button"))
                             {
-                                Debug.Log("loooooser");
+                                
                                 win = false;
                                 hasLost = true;
                                 EndMinigame();
@@ -281,7 +294,7 @@ namespace RadioRTL
                 {
                     result += item + " |";
                 }
-                Debug.Log(result);
+                
             }
             void NextPlate()//changing the plate once its empty
             {

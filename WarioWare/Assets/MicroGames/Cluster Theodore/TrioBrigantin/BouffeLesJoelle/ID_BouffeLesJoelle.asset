@@ -17,10 +17,10 @@ MonoBehaviour:
   indexEnum: 0
   verbe: Bouffe les !
   microGameScene:
-    sceneAsset: {fileID: 102900000, guid: 8f88fba471da55247b8ba5e383c7124b, type: 3}
+    sceneAsset: {fileID: 102900000, guid: 676eb829d73152b4f8ab08a603f2555d, type: 3}
     required: 0
-    buildIndex: 41
-  inputs: {fileID: 21300000, guid: 20edbf473d0adbe4b8b77b0546e5a7cd, type: 3}
+    buildIndex: 43
+  inputs: {fileID: 21300000, guid: 146c5bd8a8f5c684db4c3e48d32764d3, type: 3}
   currentDifficulty: 0
   winningStreak: 0
   losingStreak: 0

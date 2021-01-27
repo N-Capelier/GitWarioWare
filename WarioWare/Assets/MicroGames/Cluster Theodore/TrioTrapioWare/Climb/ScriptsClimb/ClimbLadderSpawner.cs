@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace TrioName
 {
@@ -19,13 +17,13 @@ namespace TrioName
                     GameObject instanciateLadder = Instantiate(ladderPrefab, transform.position, Quaternion.identity);
                     instanciateLadder.transform.parent = TrapioWare.Climb.ClimbGameManager.Instance.ladderParent.transform;
                     TrapioWare.Climb.ClimbGameManager.Instance.numberOfLadder += 1;
-                    //Debug.Log("if");
+                   
                 }
                 else
                 {
                     //Instancier le haut du Mat.
                     TrapioWare.Climb.ClimbGameManager.Instance.needToCheck = true;
-                    //Debug.Log("else");
+                    
                 }
 
             }

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace ACommeAkuma
 {
@@ -21,13 +19,13 @@ namespace ACommeAkuma
                     case 60:
                         lineAnimator.speed = 1f;
                         break;
-                    case 90:
+                    case 80:
                         lineAnimator.speed = 1.365f;
                         break;
-                    case 120:
+                    case 100:
                         lineAnimator.speed = 1.635f;
                         break;
-                    case 140:
+                    case 120:
                         lineAnimator.speed = 2f;
                         break;
 

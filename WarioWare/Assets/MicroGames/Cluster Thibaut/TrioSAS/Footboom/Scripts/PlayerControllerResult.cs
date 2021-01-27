@@ -23,6 +23,9 @@ namespace TrioSAS
             public Animator kick;
             public GetMusic music;
             public bool youWinner;
+            public Animator buttonPress;
+            public bool eazy;
+
             public override void Start()
             {
                 base.Start(); //Do not erase this line!
@@ -31,6 +34,7 @@ namespace TrioSAS
                 {
                     case Difficulty.EASY:
                         difficulty.SizeEasy();
+                        eazy = true;
                         break;
                     case Difficulty.MEDIUM:
                         difficulty.SizeMedium();
@@ -85,34 +89,13 @@ namespace TrioSAS
 
                     }
                     endGame = true;
+                    buttonPress.SetBool("PossibleSuccess", false);
                 }
-                if (Input.GetKey("space") && endGame == false)
-                {
-                    gameObject.GetComponent<BarMovement>().barSpeed = 0;
-                    if (winningCondition == true)
-                    {
-                        kick.SetBool("kick", true);
-                        anim.ActivateAnimation();
-                        explosion.SetBool("setActive", true);
-                        youWinner = true;
 
-                        ///explosion.SetBool("setActive", false);
-
-                    }
-                    else
-                    {
-                        kick.SetBool("kick", true);
-                        failure.ActivateFail();
-                        kick.SetBool("breakFail", true);
-                        youWinner = false;
-
-                    }
-                    endGame = true;
-
-                }
                 if (Tick == 8 && youWinner == false)
                 {
                     endGame = true;
+                    buttonPress.SetBool("PossibleSuccess", false);
                     gameObject.GetComponent<BarMovement>().barSpeed = 0;
                     Manager.Instance.Result(false);
 
@@ -120,6 +103,7 @@ namespace TrioSAS
                 else if (Tick == 8 && youWinner == true)
                 {
                     endGame = true;
+                    buttonPress.SetBool("PossibleSuccess", false);
                     Manager.Instance.Result(true);
                 }
 
@@ -128,11 +112,21 @@ namespace TrioSAS
             void OnTriggerEnter2D(Collider2D col)
             {
                 winningCondition = true;
+                if (eazy == true)
+                {
+                    buttonPress.SetBool("PossibleSuccess", true);
+                }
+                else
+                {
+                    buttonPress.SetBool("PossibleSuccess", false);
+                }
+                
             }
 
             void OnTriggerExit2D(Collider2D col)
             {
                 winningCondition = false;
+                buttonPress.SetBool("PossibleSuccess", false);
             }
 
         }
