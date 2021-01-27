@@ -35,7 +35,7 @@ public class TransitionAnimations : MonoBehaviour
         {
 
             var position = Vector3Extensions.AddX(startPosition.position, distance * i / cap.hasBarrel.Length);
-            position = new Vector3(position.x, position.y -0.6f, position.z);
+            position = new Vector3(position.x, position.y -0.5f, position.z);
             var _dot = Instantiate(this.dot, position, Quaternion.identity, transform);
             dots.Add(_dot);
 
