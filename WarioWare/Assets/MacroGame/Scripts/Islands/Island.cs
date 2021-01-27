@@ -44,16 +44,29 @@ namespace Islands
         [HideInInspector] public List<Cap> capList = new List<Cap>();
         [HideInInspector] public bool isDone;
 
-        [Header("Special Islands")]
+        /*[Header("Special Islands")]
         [SerializeField] Sprite legendaryIslandSprite;
         [SerializeField] Sprite startIslandSprite;
         [SerializeField] Sprite shopIslandSprite;
-        [SerializeField] Sprite bossIslandSprite;
+        [SerializeField] Sprite bossIslandSprite;*/
+
+        [Space]
+
+        [SerializeField] Reward keyStoneIslandReward = null;
+
+        [Space]
 
         //Components
         Image image;
         public Button button;
         [HideInInspector] public EventTrigger eventTrigger;
+
+        [Header("Tutorial")]
+        public bool isIntroIsland = false;
+        [SerializeField] IslandType introType;
+        [SerializeField] IslandDifficulty introDifficulty;
+        [SerializeField] IslandSprite introSprite;
+        [SerializeField] Reward introReward;
 
         [Header("References")]
         public RectTransform anchorPoint;
@@ -99,7 +112,16 @@ namespace Islands
 
             if(type == IslandType.Keystone)
             {
-                reward = IslandCreator.Instance.keystone;
+                reward = keyStoneIslandReward;
+            }
+
+            if(isIntroIsland)
+            {
+                type = introType;
+                difficulty = introDifficulty;
+                reward = introReward;
+                image.sprite = introSprite.sprite;
+                SetAnchor(introSprite);
             }
         }
 
@@ -166,6 +188,9 @@ namespace Islands
         /// <param name="_reward"></param>
         public void SetReward(Reward _reward, IslandSprite _sprite)
         {
+            if (isIntroIsland)
+                return;
+
             reward = _reward;
             switch (_reward.rarity)
             {
@@ -189,7 +214,19 @@ namespace Islands
 
         public void SetSprite(IslandSprite _sprite)
         {
-            difficulty = IslandDifficulty.Hard;
+            if (isIntroIsland)
+                return;
+
+            switch(type)
+            {
+                case IslandType.Shop:
+                    difficulty = IslandDifficulty.Easy;
+                    break;
+                default:
+                    difficulty = IslandDifficulty.Hard;
+                    break;
+            }
+
             image.sprite = _sprite.sprite;
             SetAnchor(_sprite);
         }
