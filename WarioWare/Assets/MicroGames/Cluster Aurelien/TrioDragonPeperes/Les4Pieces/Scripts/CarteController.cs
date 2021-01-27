@@ -21,6 +21,7 @@ namespace Dragons_Peperes
             private CarteManager carteManager;
             private SoundManager soundManager;
 
+
             public bool carteIsHere;
 
             private void Start()
@@ -52,6 +53,8 @@ namespace Dragons_Peperes
                     carteManager.weWantCoin4 = true;
                 }
                 #endregion
+
+               
             }
 
         }

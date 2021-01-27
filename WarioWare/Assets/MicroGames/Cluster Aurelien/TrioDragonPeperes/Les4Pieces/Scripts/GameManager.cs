@@ -21,8 +21,6 @@ namespace Dragons_Peperes
 
             public GameObject fourthSpot;
 
-            public GameObject winScreen;
-            public GameObject lostScreen;
 
             bool playerWon;
 
@@ -31,6 +29,11 @@ namespace Dragons_Peperes
             public Transform spot2;
             public Transform spot3;
             public Transform spot4;
+
+            [SerializeField] GameObject Coco_Y;
+            [SerializeField] GameObject Coco_X;
+            [SerializeField] GameObject Coco_B;
+            [SerializeField] GameObject Coco_A;
 
             public override void Start()
             {
@@ -62,6 +65,8 @@ namespace Dragons_Peperes
                 {
                     fourthSpot.SetActive(true);
                 }
+
+                soundManager.PlayMusic();
             }
 
 
@@ -77,10 +82,7 @@ namespace Dragons_Peperes
             public override void TimedUpdate()
             {
 
-                if(Tick == 1)
-                {
-                    soundManager.PlayMusic();
-                }
+
 
                 #region EasyMode
 
@@ -183,15 +185,13 @@ namespace Dragons_Peperes
 
             public void YouWIn()
             {
-                soundManager.PlayFoule_P();
+                soundManager.PlayFoule_N();
                 playerWon = true;
-                winScreen.SetActive(true);
             }
 
             public void YouLost()
             {
-                soundManager.PlayFoule_N();
-                lostScreen.SetActive(true);
+                soundManager.PlayFoule_P();
                 soundManager.StopMusic();
             }
 
@@ -199,13 +199,17 @@ namespace Dragons_Peperes
             {
                 soundManager.PlayCoin();
 
-                Instantiate(hideCoin, spot1);
+                /*Instantiate(hideCoin, spot1);
                 Instantiate(hideCoin, spot2);
-                Instantiate(hideCoin, spot3);
+                Instantiate(hideCoin, spot3);*/
+                Coco_B.SetActive(true);
+                Coco_X.SetActive(true);
+                Coco_Y.SetActive(true);
 
-                if(fourthSpot == true)
+                if (fourthSpot == true)
                 {
-                    Instantiate(hideCoin, spot4);
+                    //Instantiate(hideCoin, spot4);
+                    Coco_A.SetActive(true);
                 }
                 
             }

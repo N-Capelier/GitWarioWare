@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine.Audio;
 using UnityEngine;
+using Caps;
 
 namespace RadioRTL
 {

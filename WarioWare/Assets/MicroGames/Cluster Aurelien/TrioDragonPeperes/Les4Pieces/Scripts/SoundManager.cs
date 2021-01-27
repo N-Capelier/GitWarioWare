@@ -58,7 +58,8 @@ namespace Dragons_Peperes
 
             public void PlayFoule_N()
             {
-                foule_negative.Play();
+                //foule_negative.Play();
+                paper.Play();
             }
 
             public void PlayFoule_P()
@@ -68,7 +69,7 @@ namespace Dragons_Peperes
 
             public void PlayPaper()
             {
-                paper.Play();
+                foule_negative.Play();
             }
 
 

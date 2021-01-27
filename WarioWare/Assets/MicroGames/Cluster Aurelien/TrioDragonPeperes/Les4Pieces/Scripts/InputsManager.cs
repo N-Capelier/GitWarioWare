@@ -21,6 +21,11 @@ namespace Dragons_Peperes
             [SerializeField] bool isSpot4;
 
 
+            [SerializeField] GameObject Coco_Y;
+            [SerializeField] GameObject Coco_X;
+            [SerializeField] GameObject Coco_B;
+            [SerializeField] GameObject Coco_A;
+
             #region Which coin is where (bools)
             [SerializeField] bool coin1OnSpot1;
             [SerializeField] bool coin1OnSpot2;
@@ -53,6 +58,7 @@ namespace Dragons_Peperes
             private void Update()
             {
                 if (gameManager.enableInput)
+
                 {
 
                     if (isSpot1)
@@ -60,6 +66,10 @@ namespace Dragons_Peperes
                         //Y button
                         if (Input.GetButtonDown("Y_Button"))
                         {
+                            gameManager.enableInput = false;
+
+                            Coco_Y.SetActive(false);
+
                             if (coin1OnSpot1)
                             {
                                 if (carteManager.weWantCoin1 == true)
@@ -134,7 +144,10 @@ namespace Dragons_Peperes
                         //B button
                         if (Input.GetButtonDown("B_Button"))
                         {
-                            
+                            gameManager.enableInput = false;
+
+                            Coco_B.SetActive(false);
+
                             if (coin1OnSpot2)
                             {
                                 if (carteManager.weWantCoin1 == true)
@@ -206,7 +219,10 @@ namespace Dragons_Peperes
                         //X button
                         if (Input.GetButtonDown("X_Button"))
                         {
-                            
+                            gameManager.enableInput = false;
+
+                            Coco_X.SetActive(false);
+
                             if (coin1OnSpot3)
                             {
                                 if (carteManager.weWantCoin1 == true)
@@ -278,7 +294,10 @@ namespace Dragons_Peperes
                         //A button
                         if (Input.GetButtonDown("A_Button"))
                         {
-                            
+                            gameManager.enableInput = false;
+
+                            Coco_A.SetActive(false);
+
                             if (coin1OnSpot4)
                             {
                                 if (carteManager.weWantCoin1 == true)

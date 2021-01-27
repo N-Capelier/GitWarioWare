@@ -61,7 +61,7 @@ namespace RadioRTL
                 base.FixedUpdate(); //Do not erase this line!
                 moveHorizontal = Input.GetAxis("Left_Joystick_X");
 
-                moveVertical = Input.GetAxis("Left_Joystick_Y");
+                moveVertical = 0;
 
                 if (moveHorizontal > 0.15f || moveVertical > 0.15f || moveHorizontal < -0.15f || moveVertical < -0.15f) //Pour éviter les micormouvement parasite
                 {

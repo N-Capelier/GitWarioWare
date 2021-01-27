@@ -22,6 +22,9 @@ namespace Dragons_Peperes
             public bool weWantCoin3;
             public bool weWantCoin4;
 
+            public Animator[] anim;
+
+
             public void SpawnRandomCarteEasy()
             {
                 int count = cartesEasy.Count;
@@ -35,6 +38,11 @@ namespace Dragons_Peperes
                 cartesEasy.Remove(go);
 
                 Instantiate(go, spotCarte.transform);
+
+                for (int t = 0; i < anim.Length; t++)
+                {
+                    anim[t].enabled = true;
+                }
             }
 
             public void SpawnRandomCarteMedium()
@@ -50,6 +58,11 @@ namespace Dragons_Peperes
                 cartesMedium.Remove(go);
 
                 Instantiate(go, spotCarte.transform);
+
+                for (int t = 0; t < anim.Length; t++)
+                {
+                    anim[t].enabled = true;
+                }
             }
 
             public void SpawnRandomCarteHard()
@@ -65,6 +78,11 @@ namespace Dragons_Peperes
                 cartesHard.Remove(go);
 
                 Instantiate(go, spotCarte.transform);
+
+                for (int t = 0; t < anim.Length; t++)
+                {
+                    anim[t].enabled = true;
+                }
             }
 
 

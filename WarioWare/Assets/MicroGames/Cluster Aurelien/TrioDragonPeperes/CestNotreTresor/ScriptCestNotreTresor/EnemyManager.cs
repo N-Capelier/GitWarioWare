@@ -18,12 +18,16 @@ namespace Dragons_Peperes
             public GameObject enemy;
             public GameObject enemy2;
             public GameObject lostScreen;
+            public GameObject winScreen;
 
             [Space]
             [Header("Lieux de spawns pour les enemies")]
             public GameObject spot1;
             public GameObject spot2;
             public GameObject spot3;
+
+
+            
 
             private EnemyController enemyController;
 
@@ -61,6 +65,7 @@ namespace Dragons_Peperes
             public override void TimedUpdate()
             {
                 //base.TimedUpdate();
+
                 if (Tick == 1)
                 {
                     audioManager.PlayMusic();
@@ -72,13 +77,11 @@ namespace Dragons_Peperes
                 {
                     if (Tick == 1)
                     {
-                        Debug.Log("inputshow");
                         showInput.SetActive(true);
                     }
 
                     if (Tick == 3)
                     {
-                        Debug.Log("spawntie 1");
                         Destroy(showInput);
                         Instantiate(enemy, spot2.transform);
                         audioManager.PlayRandomReplique();
@@ -86,7 +89,6 @@ namespace Dragons_Peperes
 
                     if (Tick == 5)
                     {
-                        Debug.Log("spawntie 2");
                         Destroy(showInput);
                         Instantiate(enemy, spot2.transform);
                     }
@@ -107,6 +109,7 @@ namespace Dragons_Peperes
 
                         if (!playerLost)
                         {
+                            winScreen.SetActive(true);
                              audioManager.StopMusic();
                              Manager.Instance.Result(true);
                         }
@@ -157,6 +160,7 @@ namespace Dragons_Peperes
 
                         if (!playerLost)
                         {
+                            winScreen.SetActive(true);
                             audioManager.StopMusic();
                             Manager.Instance.Result(true);
                         }
@@ -210,6 +214,7 @@ namespace Dragons_Peperes
 
                         if (!playerLost)
                         {
+                            winScreen.SetActive(true);
                             audioManager.StopMusic();
                             Manager.Instance.Result(true);
                         }

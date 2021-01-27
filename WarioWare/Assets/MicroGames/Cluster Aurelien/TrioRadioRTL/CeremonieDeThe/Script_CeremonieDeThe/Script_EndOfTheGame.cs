@@ -25,13 +25,13 @@ namespace RadioRTL
             bool cupIsFull;
             int cupQuantity;
 			public int waterToVictory;
-            bool victoryMusicWasPlayed = false;
+            bool victoryMusicWasPlayed = true;
 
             //2- Récupération des donné
             public override void Start()
             {
 
-                victoryMusicWasPlayed = false;
+                victoryMusicWasPlayed = true;
 
                 base.Start(); //Do not erase this line!
 
@@ -64,21 +64,25 @@ namespace RadioRTL
                     case (60):
                         waterToVictory = 90;
                         FindObjectOfType<Script_SoundManager>().Play("Musique 60", 0);
+                        //print($"musique de {bpm} bpm");
                         break;
 
                     case (80):
                         waterToVictory = 81;
                         FindObjectOfType<Script_SoundManager>().Play("Musique 80", 0);
+                        //print($"musique de {bpm} bpm");
                         break;
 
                     case (100):
                         waterToVictory = 60;
                         FindObjectOfType<Script_SoundManager>().Play("Musique 100", 0);
+                        //print($"musique de {bpm} bpm");
                         break;
 
                     case (120):
                         waterToVictory = 42;
                         FindObjectOfType<Script_SoundManager>().Play("Musique 120", 0);
+                        //print($"musique de {bpm} bpm");
                         break;
 
                 }
@@ -102,11 +106,13 @@ namespace RadioRTL
 
                 if (cupQuantity >= waterToVictory)
                 {
+                    if (victoryMusicWasPlayed == true)
+                    {
 
-                    FindObjectOfType<Script_SoundManager>().Play("Victoire", 1);
-                    victoryMusicWasPlayed = true;
-                    fireWorks.SetActive(true);
-
+                        FindObjectOfType<Script_SoundManager>().Play("Victoire", 1);
+                        victoryMusicWasPlayed = false;
+                        fireWorks.SetActive(true);
+                    }
                 }
 
                 //Debug.Log(Tick);
@@ -127,10 +133,15 @@ namespace RadioRTL
                         Manager.Instance.Result(true);
                         //print("victoire");
 
-                        FindObjectOfType<Script_SoundManager>().Play("Victoire", 1);
-                        victoryMusicWasPlayed = true;
-                        fireWorks.SetActive(true);
+                        if (victoryMusicWasPlayed == true)
+                        {
 
+                            FindObjectOfType<Script_SoundManager>().Play("Victoire", 1);
+                            victoryMusicWasPlayed = false;
+                            fireWorks.SetActive(true);
+                            print("Music vcitory was played");
+
+                        }
                     }
                     else
                     {
@@ -143,16 +154,7 @@ namespace RadioRTL
                         fireWorks.SetActive(false);
 
                     }
-
-                    if (victoryMusicWasPlayed == true)
-                    {
-
-                        FindObjectOfType<Script_SoundManager>().Stop("Victoire");
-
-                    }
-
                 }
-
             }
         }
     }
