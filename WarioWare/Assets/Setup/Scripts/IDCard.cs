@@ -11,7 +11,8 @@ public class IDCard : ScriptableObject
     public Cluster cluster;
     [SerializeField] public string trio;
 
-
+    [SerializeField] public bool asSecondSprite;
+    [SerializeField] public Sprite secondSprite;
     public int indexEnum;
     public string verbe = string.Empty;
     [SerializeField]  public SceneField microGameScene;

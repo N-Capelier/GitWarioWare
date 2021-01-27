@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8026392168711240057}
   - component: {fileID: 3458718518338813730}
   m_Layer: 0
-  m_Name: Sleepy
+  m_Name: SleepyFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48,7 +48,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 1
   prewarm: 0
-  playOnAwake: 0
+  playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1

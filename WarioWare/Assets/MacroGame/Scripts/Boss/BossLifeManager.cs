@@ -36,7 +36,7 @@ namespace Boss
             currentLife -= Mathf.Clamp(damageValue, 0, currentLife);
 
             if(!isBoss)
-            bossUI.UpdateHp(maxLife,currentLife);
+                bossUI.UpdateHp(maxLife,currentLife);
             else
             {
                 lifeRect.transform.DOScaleX(0.2f * currentLife / initialLife, 60 / (float)Manager.Instance.bpm);
