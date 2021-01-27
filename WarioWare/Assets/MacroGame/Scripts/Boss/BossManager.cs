@@ -26,6 +26,7 @@ namespace Boss
         public GameObject VcamTarget;
         public CinemachineVirtualCamera cinemachine;
         private IslandType currentType;
+        public TextMeshProUGUI keyStoneNumber;
 
         [Header("Boss parameters")]
         public float damageToPlayer = 10;
@@ -53,6 +54,7 @@ namespace Boss
         }
         public IEnumerator StartBoss(CapsSorter sorter, Cap currentCap, IslandType islandType)
         {
+            keyStoneNumber.text = PlayerManager.Instance.keyStoneNumber.ToString();
             currentType = islandType;
             currentCap.ChoseMiniGames(sorter.bossList, differentMiniGameNumber);
             renderText.texture = bossTexture;
@@ -76,7 +78,7 @@ namespace Boss
         public IEnumerator TransitionBoss(bool win)
         {
             transitionCam.enabled = true;
-
+            
             if (win)
             {
                 transition.PlayAnimation((float)Manager.Instance.bpm, true);
