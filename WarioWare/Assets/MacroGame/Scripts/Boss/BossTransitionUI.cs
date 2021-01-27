@@ -28,7 +28,7 @@ namespace Boss
             float currentLifePurcentage = currentLife / initialLife;
 
            while(lifeBar.fillAmount> currentLifePurcentage) 
-            { 
+            {
                 lifeBar.fillAmount -= 0.01f;
                 yield return new WaitForSeconds(0.01f);
             }

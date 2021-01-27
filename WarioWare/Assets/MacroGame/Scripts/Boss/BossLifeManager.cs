@@ -12,6 +12,7 @@ namespace Boss
         public static int currentLife = 100;
         public  int maxLife = 150;
         public BossTransitionUI bossTranstion;
+        public int miniBossLife = 0;
         private void Awake()
         {
             CreateSingleton();
@@ -26,6 +27,7 @@ namespace Boss
         }
         public void InitialLife(int life)
         {
+            miniBossLife = life;
             bossTranstion.InitiateBossLife(life, life);
         }
 
@@ -34,9 +36,8 @@ namespace Boss
         /// </summary>
         /// <param name="damageValue"></param>
         /// <returns></returns>
-        public bool TakeDamage (int damageValue, int initialLife = 150, bool isBoss = false)
-        {
-            currentLife -= Mathf.Clamp(damageValue, 0, currentLife);
+        public bool TakeDamage (int damageValue, int initialLife = 150, bool isBoss = false, bool isMiniBoss = false)
+        {           
 
             if (!isBoss)
             {
@@ -44,10 +45,20 @@ namespace Boss
             }                
             else
             {
-                StartCoroutine(bossTranstion.BossTakeDamage(initialLife,currentLife));
+                if (isMiniBoss)
+                {
+                    miniBossLife -= Mathf.Clamp(damageValue, 0, miniBossLife);
+                    StartCoroutine(bossTranstion.BossTakeDamage(initialLife, miniBossLife));                    
+                }
+                else
+                {
+                    currentLife -= Mathf.Clamp(damageValue, 0, currentLife);
+                    StartCoroutine(bossTranstion.BossTakeDamage(initialLife, currentLife));
+                }
+                
             }
 
-            if (currentLife == 0)
+            if (currentLife == 0 || miniBossLife == 0)
                 return true;
             else
                 return false;

@@ -86,8 +86,16 @@ namespace Boss
                     SoundManager.Instance.ApplyAudioClip("victoryJingleMiniBoss", transitionMusic, Manager.Instance.bpm);
 
                 int _damageToBoss =Mathf.RoundToInt( damageToBoss / Mathf.Pow(damageMultiplier, 5- (float) PlayerManager.Instance.keyStoneNumber));
-               
-                BossLifeManager.Instance.TakeDamage(_damageToBoss, bossLifeOnStartOfFight, true);
+                if (currentType == IslandType.Keystone)
+                {
+                    _damageToBoss = (int)damageToBoss;
+                    BossLifeManager.Instance.TakeDamage(_damageToBoss, bossLifeOnStartOfFight, true, true);
+                }
+                else
+                {
+                    BossLifeManager.Instance.TakeDamage(_damageToBoss, bossLifeOnStartOfFight, true);
+                }           
+                
                 phaseBossLife += _damageToBoss;
                 transitionMusic.PlaySecured();
                 yield return new WaitForSeconds(transitionMusic.clip.length);
