@@ -66,37 +66,31 @@ namespace SpanishInquisition
             public void PlayGoodButton()
             {
                 goodButton.Play();
-                Debug.Log("Goodbutton play.");
             }
 
             public void PlayWrongButton()
             {
                 wrongButton.Play();
-                Debug.Log("WronButton play");
             }
 
             public void PlayFlagFirst()
             {
                 rFlag1.Play();
-                Debug.Log("Drapeau satde 1");
             }
 
             public void PlayVictory()
             {
                 victorySound.Play();
-                Debug.Log("Son Victoire");
             }
 
             public void PlayDefeat()
             {
                 defeatSound.Play();
-                Debug.Log("Son défaite");
             }
 
             public void PlayButtonApparition()
             {
                 buttonApparition.Play();
-                Debug.Log("Son Apparition");
             }
 
             public void PlayFlagMusicSlow()

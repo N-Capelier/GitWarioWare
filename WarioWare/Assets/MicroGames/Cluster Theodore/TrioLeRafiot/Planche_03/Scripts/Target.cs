@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace LeRafiot
@@ -80,8 +79,6 @@ namespace LeRafiot
             public IEnumerator WaitSpawnEnemy()
             {
                 yield return new WaitForSeconds(timeBeforeSpawn);
-
-                //RandomEnemySpawn.Instance.numberToChose.Add(numberPicked);
 
                 if (enemy != null)
                 {

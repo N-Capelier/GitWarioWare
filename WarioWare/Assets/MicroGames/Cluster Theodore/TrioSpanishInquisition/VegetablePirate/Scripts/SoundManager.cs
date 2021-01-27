@@ -70,37 +70,31 @@ namespace SpanishInquisition
             public void PlayGoodButton()
             {
                 goodButton.Play();
-                Debug.Log("Goodbutton play.");
             }
 
             public void PlayWrongButton()
             {
                 wrongButton.Play();
-                Debug.Log("WrongButton play");
             }
 
             public void PlayKatana()
             {
                 katanaCut.Play();
-                Debug.Log("Son Katana");
             }
 
             public void PlayVictory()
             {
                 victorySound.Play();
-                Debug.Log("Son Victoire");
             }
 
             public void PlayDefeat()
             {
                 defeatSound.Play();
-                Debug.Log("Son défaite");
             }
 
             public void PlayObjectThrown()
             {
                 objectThrown.Play();
-                Debug.Log("Son objet lancé");
             }
 
             public void PlayFlagMusicSlow()
@@ -126,7 +120,6 @@ namespace SpanishInquisition
             public void PlayBombNoise()
             {
                 bombNoise.Play();
-                Debug.Log("Son bombe");
             }
         }
     }

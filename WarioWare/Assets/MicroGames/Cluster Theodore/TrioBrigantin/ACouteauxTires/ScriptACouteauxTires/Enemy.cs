@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace TrioBrigantin
 {
@@ -70,7 +68,7 @@ namespace TrioBrigantin
 					detectZone.enabled = false;
 					CrosshairController.instance.targetEnemy = null;
 					ACouteauxTiré_Manager.instance.enemiesKilled.Add(this);
-					Instantiate(CrosshairController.instance.goodLock, transform.position, Quaternion.identity);
+					Instantiate(CrosshairController.instance.goodLock, transform.position, Quaternion.identity).transform.SetParent(gameObject.transform);
 					mySprite.color = Color.magenta;
 					ACouteauxTiré_Manager.instance.soundManager.Play(goodLockSound);
 				}

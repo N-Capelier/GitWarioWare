@@ -1,8 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using Caps;
 
 namespace LeRafiot
 {
@@ -48,8 +46,6 @@ namespace LeRafiot
             private GameObject spawnDrink;
             private int rateStock;
             private int numberOfSpawn;
-            //private bool canScale = true;
-            //private Color alphaColor;
             #endregion
 
             public override void Start()
@@ -58,10 +54,8 @@ namespace LeRafiot
 
                 ManagerInit();
 
-                //alphaColor.a = 0;
                 rateStock = goodSpawnRate;
                 canSpawn = true;
-                //canScale = true;
 
                 DrinkChoice();
                 UiSystem();
@@ -74,11 +68,6 @@ namespace LeRafiot
                 base.FixedUpdate(); //Do not erase this line!
 
                 actualDrink.RemoveAll(list_item => list_item == null);
-
-                /*if (canScale == true)
-                {
-                    UiScale(startScale, finalScale, (tickToIncrase * (60 / bpm)));
-                }*/
             }
 
             //TimedUpdate is called once every tick.
@@ -153,41 +142,6 @@ namespace LeRafiot
 
                 
             }
-
-
-            void UiScale(Vector2 scale, Vector2 endScale, float timeToFade)
-            {
-                //canScale = false;
-                bool switchLock = false;
-
-                Vector2 currentScale = scale;
-                float t = 0;
-
-                if (switchLock == false)
-                {
-                    while (t < 1)
-                    {
-                        Debug.LogWarning("je rentre");
-                        t += Time.deltaTime / timeToFade;
-                        drinkUi.gameObject.transform.localScale = Vector3.Lerp(currentScale, endScale, t);
-                    }
-                    //switchLock = true;
-                }
-                
-                if (switchLock == true)
-                {
-                    t = 0;
-                    while (t < 1)
-                    {
-                        t += Time.deltaTime / timeToFade;
-                        drinkUi.gameObject.transform.localScale = Vector3.Lerp(endScale, scale, t);
-                    }
-                }
-
-                
-                //canScale = true;
-            }
-
 
             public IEnumerator MoveToPosition(Transform transform, Vector3 position, float timeToMove)
             {

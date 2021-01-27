@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using Caps;
 
 
@@ -18,8 +16,6 @@ namespace LeRafiot
             public bool enemyInZone;
             public bool playerInZone;
 
-            //[HideInInspector] public bool playerTouched;
-
             public override void Start()
             {
                 base.Start();
@@ -35,10 +31,7 @@ namespace LeRafiot
 
             public override void TimedUpdate()
             {
-                /*if (Tick == 8 && !Manager.Instance.panel.activeSelf && PlayerController.Instance.playerTouched)
-                {
-                    Manager.Instance.Result(false);
-                }*/
+
             }
 
             private void Update()
@@ -49,7 +42,7 @@ namespace LeRafiot
                     RandomEnemySpawn.Instance.spawnDisabled = true;
 
                     PlayerController.Instance.canMove = false;
-                    //Manager.Instance.Result(false);
+
                     SoundManagerPlanche.Instance.sfxSound[1].Play();
                 }
             }

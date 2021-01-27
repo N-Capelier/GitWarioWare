@@ -69,7 +69,6 @@ namespace SpanishInquisition
                 base.Start(); //Do not erase this line!
 
                 animatorThrower.SetFloat("Speed", bpm / 60);
-                Debug.Log(bpm / 60);
                 trueTarget.position = target.position + (target.position - spawner.transform.position) * 2;
                 canCut = true;
                 cooldownTime = (0.5f * 60) / bpm;
@@ -209,7 +208,7 @@ namespace SpanishInquisition
                         button.SetActive(true);
                         buttonTransparent.SetActive(false);
 
-                        if (Input.GetButtonDown("X_Button") || Input.GetKeyDown(KeyCode.X))
+                        if (Input.GetButtonDown("X_Button"))
                         {
                             animatorPlayer.SetTrigger("Cut");
 
@@ -226,7 +225,7 @@ namespace SpanishInquisition
                     }
                 }
 
-                if (Input.GetButtonDown("X_Button") || Input.GetKeyDown(KeyCode.X))
+                if (Input.GetButtonDown("X_Button"))
                 {
                     animatorPlayer.SetTrigger("Cut");
 
@@ -335,7 +334,7 @@ namespace SpanishInquisition
                         allObjectsOutOfZone = false;
                     }
                 }
-                Debug.Log(allObjectsOutOfZone);
+                //Debug.Log(allObjectsOutOfZone);
                 return allObjectsPassed && allObjectsOutOfZone && objectSpawned >= objectsNumber && fruitsRemaining == 0;
             }
 

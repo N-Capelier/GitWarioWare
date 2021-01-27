@@ -68,31 +68,26 @@ namespace SpanishInquisition
             public void PlayParry()
             {
                 parry.Play();
-                Debug.Log("parry play.");
             }
 
             public void PlayAttack()
             {
                 enemyAttack.Play();
-                Debug.Log("Attaque");
             }
 
             public void PlayVictory()
             {
                 victorySound.Play();
-                Debug.Log("Son Victoire");
             }
 
             public void PlayDefeat()
             {
                 defeatSound.Play();
-                Debug.Log("Son défaite");
             }
 
             public void PlayPrepareAttack()
             {
                 prepareAttack.Play();
-                Debug.Log("Préparation attaque");
             }
 
             public void PlayDuelMusicSlow()

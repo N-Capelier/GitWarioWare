@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace TrioBrigantin
 {
@@ -55,11 +53,11 @@ namespace TrioBrigantin
 			void Move()
             {
 				horizontal = Input.GetAxis("Left_Joystick_X");
-				vertical = Input.GetAxis("Left_Joystick_Y");
+				vertical = -Input.GetAxis("Left_Joystick_Y");
 
 				if (horizontal < -0.15 || horizontal > 0.15 || vertical < -0.15 || vertical > 0.15)
                 {
-					movementVector = new Vector2(horizontal, vertical);
+					movementVector = new Vector2(horizontal, -vertical);
 				}
                 else
                 {
@@ -73,7 +71,7 @@ namespace TrioBrigantin
             {
                 if (Input.GetButtonDown("A_Button"))
                 {
-					Debug.Log("Lock button pressed");
+					//Debug.Log("Lock button pressed");
 					if (ACouteauxTiré_Manager.instance.GetAmmoZero())
 						return;
 					
@@ -83,7 +81,8 @@ namespace TrioBrigantin
 					}
                     else
                     {
-						Instantiate(wrongLock, transform.position, Quaternion.identity);
+						Instantiate(wrongLock, transform.position, Quaternion.identity).transform.SetParent(ACouteauxTiré_Manager.instance.spawnSetAnchor.transform);
+						ACouteauxTiré_Manager.instance.PlusMiss();
 					}
 
 					ACouteauxTiré_Manager.instance.soundManager.Play(anyLockSound);

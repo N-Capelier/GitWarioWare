@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using Caps;
 
 namespace LeRafiot
@@ -39,6 +37,13 @@ namespace LeRafiot
             public GameObject fondLvl2;
             public GameObject fondLvl3;
 
+            [Header("Sous verre")]
+            public GameObject sousVerre;
+            public Color colorSousVerreTriggered;
+
+            [Header("Button")]
+
+
             [HideInInspector] public bool canCatch = true;
             [HideInInspector] public bool catchedGoodDrink;
             [HideInInspector] public bool catchedBadDrink;
@@ -62,6 +67,8 @@ namespace LeRafiot
                 loseScreen.SetActive(false);
                 pirateWin.SetActive(false);
                 pirateLose.SetActive(false);
+
+                sousVerre.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255);
             }
 
             public override void FixedUpdate()
@@ -130,12 +137,12 @@ namespace LeRafiot
 			{
                 if (canCatch == true)
                 {
-
                     if (drinkInZone)
                     {
 					    GetComponent<SpriteRenderer>().color = colorTriggered;
-					
-					    if (Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("A_Button") && !Manager.Instance.panel.activeSelf)
+                        sousVerre.GetComponent<SpriteRenderer>().color = colorSousVerreTriggered;
+
+                        if (Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("A_Button") && !Manager.Instance.panel.activeSelf)
                         {
                             armDown.SetActive(false);
                             armUp.SetActive(true);
@@ -149,6 +156,7 @@ namespace LeRafiot
                                 drinkInHand = Instantiate(drinkTriggered, drinkCatch);
                                 drinkInHand.GetComponent<BoxCollider2D>().enabled = false;
                                 Destroy(drinkTriggered);
+
 
                                 //Manager.Instance.Result(true);
                                 //SoundManagerChoppe.Instance.sfxSound[4].Play();
@@ -164,6 +172,8 @@ namespace LeRafiot
                                 drinkInHand = Instantiate(drinkTriggered, drinkCatch);
                                 drinkInHand.GetComponent<BoxCollider2D>().enabled = false;
                                 Destroy(drinkTriggered);
+
+
                                 //Manager.Instance.Result(false);
                                 //SoundManagerChoppe.Instance.sfxSound[5].Play();
                                 //SoundManagerChoppe.Instance.sfxSound[1].Play();
@@ -174,7 +184,8 @@ namespace LeRafiot
                     else
                     {
 					    GetComponent<SpriteRenderer>().color = colorBase;
-				    }
+                        sousVerre.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255);
+                    }
                 }
 			}
 
@@ -204,6 +215,7 @@ namespace LeRafiot
                 if (col.CompareTag("Enemy2"))
                 {
                     goodDrink = false;
+                    drinkInZone = false;
                 }
             }
         }
