@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8091271953368519543}
   - component: {fileID: 2669067958620108883}
   m_Layer: 5
-  m_Name: Dialogue10
+  m_Name: Dialogue2_7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -163,7 +163,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: bc1d48cabbb20664487c92fab36db842, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f706c07ccb94dfe458e3e9523ac89cd8, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

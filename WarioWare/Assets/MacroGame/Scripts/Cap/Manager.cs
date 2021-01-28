@@ -826,16 +826,16 @@ namespace Caps
                     switch (PlayerMovement.Instance.playerIsland.keyStoneIslandReward.rewardName)
                     {
                         case "Les voiles du Queen Anne’s Revenge":
-                            DialogueManager.Instance.PlayDialogue(16,1);
+                            DialogueManager.Instance.PlayDialogue(21,2);
                             break;
                         case "Les canons de l’Adventure Galley":
-                            DialogueManager.Instance.PlayDialogue(17, 1);
+                            DialogueManager.Instance.PlayDialogue(19, 2);
                             break;
                         case "Figure de proue du Sloop William":
-                            DialogueManager.Instance.PlayDialogue(18, 1);
+                            DialogueManager.Instance.PlayDialogue(23, 2);
                             break;
                         case "La barre du The William":
-                            DialogueManager.Instance.PlayDialogue(19, 1);
+                            DialogueManager.Instance.PlayDialogue(25, 2);
                             break;
                         default:
                             break;
@@ -843,7 +843,7 @@ namespace Caps
                 }
                 else if (isOver)
                 {
-                    DialogueManager.Instance.PlayDialogue(20, 2);
+                    DialogueManager.Instance.PlayDialogue(17, 2);
                 }
                 else
                     eventSystem.enabled = true;

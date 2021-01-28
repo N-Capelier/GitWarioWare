@@ -82,7 +82,7 @@ namespace Caps
                         sorter.iDCardsPlayed.Add(idcard);
                 }
             }
-                hasBarrel = new bool[length];
+                hasBarrel = new bool[(int)length];
                 for (int i = 0; i < hasBarrel.Length; i++)
                 {
                     var _random = Random.Range(1, 99);

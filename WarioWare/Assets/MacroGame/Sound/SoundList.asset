@@ -16,7 +16,7 @@ MonoBehaviour:
   - name: Waves
     author: 
     clip: {fileID: 8300000, guid: 3ec108241bc6d6b468da815ca4525800, type: 3}
-    volume: 0.2
+    volume: 0.1
   - name: Selected
     author: 
     clip: {fileID: 8300000, guid: 4dff5a7da1ded2349af6111eda619228, type: 3}
@@ -59,7 +59,7 @@ MonoBehaviour:
     volume: 0.5
   - name: CapMusic
     author: 
-    clip: {fileID: 8300000, guid: 4d2cf096f160fdc49ac632df34c413d7, type: 3}
+    clip: {fileID: 8300000, guid: b90188dabb79a3447b5f901af4b8cc9d, type: 3}
     volume: 0.5
   soundBpms:
   - sounds:
