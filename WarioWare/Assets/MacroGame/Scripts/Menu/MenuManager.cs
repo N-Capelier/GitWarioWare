@@ -19,6 +19,8 @@ public class MenuManager : MonoBehaviour
     public AudioSource buttonSounds;
     public AudioSource waveSource;
 
+    public GameObject easterEgg;
+
     public EventTrigger[] buttonEventTriggers;
     private void Start()
     {
@@ -46,6 +48,16 @@ public class MenuManager : MonoBehaviour
             if (loading.progress>=0.9f)
                 loading.allowSceneActivation = true;
         }*/
+
+        if(Input.GetButton("Y_Button") &&  Input.GetButton("B_Button") && Input.GetButton("X_Button"))
+        {
+            easterEgg.SetActive(true);
+        }
+        else
+        {
+            if (easterEgg.activeSelf)
+                easterEgg.SetActive(false);
+        }
     }
 
     private void OnSelect()
