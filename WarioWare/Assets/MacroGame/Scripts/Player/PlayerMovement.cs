@@ -291,7 +291,7 @@ namespace Player
         /// </summary>
         public void ResetFocus()
         {
-            Manager.Instance.eventSystem.SetSelectedGameObject(playerIsland.gameObject);
+            PlayerMovement.Instance.playerIsland.button.Select();
         }
 
         private void GetFarNeighbours()
