@@ -33,7 +33,6 @@ namespace TrioLLL
                     {
                         if (!gabarit.isPlayerOut) win=false;
                     }
-                    Debug.Log(win);
                     Manager.Instance.Result(win);
                 }
             }

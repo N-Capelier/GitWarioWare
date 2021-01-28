@@ -26,8 +26,10 @@ namespace Dragons_Peperes
             public GameObject spot2;
             public GameObject spot3;
 
-
-            
+            [SerializeField]
+            private NewScrolling dockScrolling_1 = null;
+            [SerializeField]
+            private NewScrolling dockScrolling_2 = null;
 
             private EnemyController enemyController;
 
@@ -57,6 +59,8 @@ namespace Dragons_Peperes
             {
                 if (playerLost)
                 {
+                    dockScrolling_1.scrollSpeed = 0f;
+                    dockScrolling_2.scrollSpeed = 0f;
                     lostScreen.SetActive(true);
                                      
                 }

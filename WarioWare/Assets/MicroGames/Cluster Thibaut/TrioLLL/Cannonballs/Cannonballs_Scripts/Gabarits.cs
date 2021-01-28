@@ -60,8 +60,6 @@ namespace TrioLLL
                 if (Tick == 7)
                 {
                     Explosion.SetActive(true);
-                    
-                    Debug.Log("boom");
                 }
             }
 

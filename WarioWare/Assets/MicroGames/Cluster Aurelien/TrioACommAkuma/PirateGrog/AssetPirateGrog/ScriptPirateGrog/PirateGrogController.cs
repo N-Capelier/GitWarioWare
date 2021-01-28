@@ -153,23 +153,18 @@ namespace ACommeAkuma
                 if (overFill == true)
                 {
                     Manager.Instance.Result(false);
-                    Debug.Log("Lose");
                 }
 
                 if (Tick == 8)
                 {
-                    Debug.Log("End Time");
                     canFill = false;
-                    Debug.Log(Tick);
                     if (grogAmount >= minGrogAmount && grogAmount <= maxGrogAmount)     //Make the player win or lose at Tick 8
                     {
                         Manager.Instance.Result(true);
-                        Debug.Log("Win");
                     }
                     else
                     {
                         Manager.Instance.Result(false);
-                        Debug.Log("Lose");
                     }
                 }
             }

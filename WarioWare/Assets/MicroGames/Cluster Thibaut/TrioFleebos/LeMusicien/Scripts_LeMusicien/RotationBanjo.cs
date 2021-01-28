@@ -166,16 +166,13 @@ namespace Fleebos
 
                 if (Tick == 6)
                 {
-                    Debug.Log(transform.eulerAngles.z);
                     if (transform.eulerAngles.z == 0f)
                     {
-                        Debug.Log("win");
                         GoldEffect.Play();
                     }
 
                     else if (transform.eulerAngles.z != 0f)
                     {
-                        Debug.Log("loose");
                         KnifeEffect.Play();
                     }
                 }

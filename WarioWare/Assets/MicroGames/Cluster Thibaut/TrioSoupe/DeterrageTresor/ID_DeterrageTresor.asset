@@ -17,14 +17,14 @@ MonoBehaviour:
   asSecondSprite: 0
   secondSprite: {fileID: 0}
   indexEnum: 1
-  verbe: "D\xE9terre"
+  verbe: "D\xE9terre !"
   microGameScene:
     sceneAsset: {fileID: 102900000, guid: caaac774d79574e459c7a3f0ce8fdb81, type: 3}
     required: 0
     buildIndex: 19
   inputs: {fileID: 21300000, guid: 1a2d3d2dacb88c14ab06c5455b56b731, type: 3}
-  currentDifficulty: 0
+  currentDifficulty: 1
   winningStreak: 0
   losingStreak: 0
-  idWeight: 0
+  idWeight: 10
   hasBarrel: 0

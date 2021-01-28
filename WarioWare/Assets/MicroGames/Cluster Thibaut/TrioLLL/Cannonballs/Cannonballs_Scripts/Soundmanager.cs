@@ -24,8 +24,6 @@ namespace TrioLLL
 
                 //créer les audiosources
 
-
-                Debug.Log(musicSource);
                 // loop les musiques
                 musicSource.loop = true;
                 musicSource2.loop = true;

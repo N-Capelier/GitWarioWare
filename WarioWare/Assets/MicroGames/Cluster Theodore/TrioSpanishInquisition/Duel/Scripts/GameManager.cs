@@ -141,7 +141,6 @@ namespace SpanishInquisition
             {
                 base.TimedUpdate();
 
-                Debug.Log(Tick);
 
                 if ((Tick < 8 && !gameIsWon) && !gameIsFinished)
                 {
@@ -244,7 +243,6 @@ namespace SpanishInquisition
 
             private void Parry()
             {
-                Debug.Log("Parry !");
                 soundManager.PlayParry();
                 numberOfParries++;
                 playerAnimator.SetBool("Parrying", true);
@@ -254,7 +252,6 @@ namespace SpanishInquisition
 
             private void Fail()
             {
-                Debug.Log("Fail !");
                 gameIsFinished = true;
                 EndOfGameFeedback();
             }
