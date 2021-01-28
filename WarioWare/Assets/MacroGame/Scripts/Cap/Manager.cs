@@ -132,6 +132,8 @@ namespace Caps
             losingStreakNumber = (int)DebugToolManager.Instance.ChangeVariableValue("losingStreakNumber");
             miniGameNumberPerCap = (int)DebugToolManager.Instance.ChangeVariableValue("miniGameNumberPerCap");
             cantDoTransition = true;
+            KeystoneReward.keystoneCount = 0;
+            KeystoneReward.tutorialCompleted = false;
         }
 
 
