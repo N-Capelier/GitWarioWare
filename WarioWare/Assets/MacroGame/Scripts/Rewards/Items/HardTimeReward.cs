@@ -27,7 +27,7 @@ namespace Rewards
 
         public override string GetDescription()
         {
-            return $"Convertit {beatcoinAmount} beatcoins en {foodAmount} rations.";
+            return $"Cuisinez {beatcoinAmount} beatcoins pour gagner {foodAmount} points en moral.";
         }
 
         public override void RemovePassiveEffect()

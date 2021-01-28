@@ -152,8 +152,16 @@ namespace Islands
 
                     if (Manager.Instance.eventSystem != null && Manager.Instance.eventSystem.enabled)
                     {
+                        Island targetIsland;
+                        try
+                        {
+                            targetIsland = IslandCreator.Instance.eventSystem.currentSelectedGameObject.GetComponent<Island>();
+                        }
+                        catch(System.Exception)
+                        {
+                            targetIsland = null;
+                        }
 
-                        Island targetIsland = IslandCreator.Instance.eventSystem.currentSelectedGameObject.GetComponent<Island>();
                         for (int i = 0; i < accessibleNeighbours.Length; i++)
                         {
                             if (accessibleNeighbours[i] == targetIsland)
