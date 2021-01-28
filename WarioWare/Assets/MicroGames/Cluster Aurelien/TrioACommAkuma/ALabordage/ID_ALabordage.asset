@@ -17,14 +17,14 @@ MonoBehaviour:
   asSecondSprite: 0
   secondSprite: {fileID: 0}
   indexEnum: 0
-  verbe: ABORDEZ !
+  verbe: Abordez !
   microGameScene:
     sceneAsset: {fileID: 102900000, guid: 98aa54dc32c17774486159a32c22b95d, type: 3}
     required: 0
-    buildIndex: 9
+    buildIndex: 8
   inputs: {fileID: 21300000, guid: d4f3b58d388706643b41e0c4e3ca9bf8, type: 3}
   currentDifficulty: 0
   winningStreak: 0
   losingStreak: 0
-  idWeight: 0
+  idWeight: 8
   hasBarrel: 0

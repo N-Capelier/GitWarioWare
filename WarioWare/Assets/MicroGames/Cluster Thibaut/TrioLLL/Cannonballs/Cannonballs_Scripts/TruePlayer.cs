@@ -48,7 +48,6 @@ namespace TrioLLL
                 {
 
                     rb.velocity = new Vector2(0, 0);
-                    print(gabarits.Count);
                     foreach (Gabarits gabarit in gabarits)
                     {
 
@@ -56,8 +55,6 @@ namespace TrioLLL
                         {
                             Face.SetActive(true);
                             Dos.SetActive(false);
-                            Debug.Log("animation explosion");
-                            Debug.Log(Tick);
                             animator.SetBool("Boom", true);
                             
                             Audiomanager.PlaySFX(splatter,2);

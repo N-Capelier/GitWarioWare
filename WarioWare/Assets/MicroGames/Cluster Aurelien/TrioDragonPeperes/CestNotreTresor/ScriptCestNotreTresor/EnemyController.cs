@@ -20,7 +20,6 @@ namespace Dragons_Peperes
 
             EnemyManager minigameManager;
             AudioManager audioManager;
-            DockScrolling dockScrolling;
             PlayerController playerController;
 
             public GameObject looseScreen;
@@ -35,9 +34,7 @@ namespace Dragons_Peperes
                 target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
                 minigameManager = FindObjectOfType<EnemyManager>();
                 particule = GameObject.Find("Particle");
-
                 audioManager = FindObjectOfType<AudioManager>();
-                dockScrolling = FindObjectOfType<DockScrolling>();
                 playerController = FindObjectOfType<PlayerController>();
 
                 if (minigameManager.bpm == 60)
@@ -123,7 +120,6 @@ namespace Dragons_Peperes
                 particule.SetActive(false);
                 audioManager.StopMusic();
                 audioManager.StopRunning();
-                dockScrolling.scrollSpeed = 0f;
                 enemySpeed = 0f;
                 playerController.speed = 0f;
             }
