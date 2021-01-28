@@ -43,6 +43,7 @@ namespace Boss
             bossHPFillbar.fillAmount = currentLife / initialLife;
             if (!isBoss)
             {
+
                 StartCoroutine(bossTranstion.BossTakeDamage(initialLife, currentLife));
             }                
             else

@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -165,18 +165,22 @@ namespace Caps
             if (currentAsyncScene == null)
             {
                 
-                BossLifeManager.Instance.bossUI.gameObject.SetActive(false);
-                if (currentIsland.type == IslandType.Boss || currentIsland.type == IslandType.Keystone)
+                //BossLifeManager.Instance.bossUI.gameObject.SetActive(false);
+                if (!currentCap.isDone)
                 {
-                    StartCoroutine(BossManager.Instance.StartBoss(sorter, currentCap, currentIsland.type));
-                    yield break;
-                }
-                else
-                {
-                    _currentCap.ChoseMiniGames(sorter);
+                    if (currentIsland.type == IslandType.Boss || currentIsland.type == IslandType.Keystone)
+                    {
+                        StartCoroutine(BossManager.Instance.StartBoss(sorter, currentCap, currentIsland.type));
+                        yield break;
+                    }
+                    else
+                    {
+                        _currentCap.ChoseMiniGames(sorter);
+
+                    }
+
 
                 }
-
                 shipOpening.gameObject.SetActive(true);
 
                 StartCoroutine(ZoomCam(shipOpening.openingTime));
@@ -505,6 +509,14 @@ namespace Caps
             if (currentCap.isDone || PlayerMovement.Instance.playerIsland.isDone)
                 _giveReward = false;
 
+
+            if(currentIsland.type == IslandType.Keystone)
+            {
+                foreach (var cap in currentIsland.capList)
+                {
+                    cap.isDone = true;
+                }
+            }
             currentCap.isDone = true;
 
             Island _island = null;
@@ -569,7 +581,7 @@ namespace Caps
                 PlayerMovement.Instance.playerIsland.isDone = true;
                 capUI.SetActive(false);
                 macroUI.SetActive(true);
-                BossLifeManager.Instance.bossUI.gameObject.SetActive(true);
+              //  BossLifeManager.Instance.bossUI.gameObject.SetActive(true);
                 PlayerMovement.Instance.ResetFocus();
                 eventSystem.enabled = false;
 
@@ -863,9 +875,13 @@ namespace Caps
             int woodToAdd = 0;
             int _moralCost = 0;
 
-            if (pourcentageCompleted >= 1f)
+            if (pourcentageCompleted >= 0.75f)
             {
-                currentMonnaie = monnaieGold;
+                if (pourcentageCompleted == 1)
+                    currentMonnaie = monnaieGold;
+                else
+                    currentMonnaie = monnaieSilver;
+
                 while (currentMonnaie > 0)
                 {
                     int random = Random.Range(0, 3);
@@ -891,9 +907,9 @@ namespace Caps
                             }
                             break;
                         case 2:
-                            if (currentMonnaie >= 6)
+                            if (currentMonnaie >= 3)
                             {
-                                currentMonnaie -= 6;
+                                currentMonnaie -= 3;
                                 woodToAdd += 10;
                             }
                             break;
@@ -905,9 +921,7 @@ namespace Caps
             }
             else if (pourcentageCompleted >= 0.5f)
             {
-                if (pourcentageCompleted >= 0.75f)
-                    currentMonnaie = monnaieSilver;
-                else
+                
                     currentMonnaie = monnaieBronze;
                 while (currentMonnaie > 0)
                 {
