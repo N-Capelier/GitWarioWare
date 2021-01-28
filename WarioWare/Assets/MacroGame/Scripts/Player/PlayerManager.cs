@@ -74,8 +74,16 @@ namespace Player
 
 
         #region CustomMethods
+
+        [HideInInspector] public int SMVestCount = 0;
+
         public void TakeDamage(int damage, bool isBoss = false, bool isMiniBoss= false)
         {
+            if(damage > 0 && SMVestCount > 0)
+            {
+                GainMoral(10);
+            }
+
             if(playerHp - damage <= 0)
             {
                 playerHp = 0;
