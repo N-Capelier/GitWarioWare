@@ -31,7 +31,7 @@ public class DialogueManager : Singleton<DialogueManager>
             canSkip = false;
             if (dialogueInRow > 0)
             {
-                PlayDialogue(currentDialogueNumber, dialogueInRow,null,null, currentDelay);
+                PlayDialogue(currentDialogueNumber, dialogueInRow, currentDelay);
             }
             else
             {
@@ -48,7 +48,7 @@ public class DialogueManager : Singleton<DialogueManager>
     }
 
 
-    public void PlayDialogue(int dialogueNumber, int _dialogueInRow = 0, GameObject target= null, Transform direction = null, int delay = 100)
+    public void PlayDialogue(int dialogueNumber, int _dialogueInRow = 0, int delay = 100, GameObject target= null, Transform direction = null)
     {
         currentDelay = delay;
         UI.UICameraController.canSelect = false;
@@ -64,6 +64,7 @@ public class DialogueManager : Singleton<DialogueManager>
         }
         if(target != null && currentDelay ==0 )
         {
+            Player.PlayerManager.Instance.clouds.SetBool("IsZoneActivate", true);
             currentTarget = target;
             positionToReset = currentTarget.transform.position;
             currentTarget.transform.position = direction.position;

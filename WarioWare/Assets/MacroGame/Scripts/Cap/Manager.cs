@@ -811,7 +811,7 @@ namespace Caps
                 else if(KeystoneReward.tutorialCompleted && KeystoneReward.keystoneCount == 0 && !isTutoDialogDone)
                 {
                     isTutoDialogDone = true;
-                    DialogueManager.Instance.PlayDialogue(10, 6, VcamTarget, allIslands[16].transform,5);
+                    DialogueManager.Instance.PlayDialogue(10, 6, 5, VcamTarget, allIslands[16].transform);
                 }
                 else if (PlayerMovement.Instance.playerIsland.type == IslandType.Keystone)
                 {

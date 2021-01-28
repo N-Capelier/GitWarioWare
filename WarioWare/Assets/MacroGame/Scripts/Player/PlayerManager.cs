@@ -38,7 +38,7 @@ namespace Player
         [HideInInspector] public int sturdyHealAmmount = 3;
 
         [Header("VFX")]
-        [SerializeField] VisualEffect clouds = null;
+        [SerializeField] public VisualEffect clouds = null;
 
         #endregion
 
@@ -147,7 +147,6 @@ namespace Player
 
         public void GainKeyStone()
         {
-            clouds.SetBool("IsZoneActivate", true);
             Manager.Instance.KeyStoneReset();
         }
         private IEnumerator DeathCoroutine(bool isBoss = false, bool isMiniBoss = false)
