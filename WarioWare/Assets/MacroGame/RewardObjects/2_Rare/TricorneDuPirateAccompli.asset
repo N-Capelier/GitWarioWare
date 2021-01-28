@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TricorneDuPirateAccompli
   m_EditorClassIdentifier: 
   rewardName: Tricorne du pirate accompli
-  sprite: {fileID: 21300000, guid: df547bc70465afd4c88ad82dff4cca63, type: 3}
+  sprite: {fileID: 21300000, guid: 82cd1b320dff02c44a974fbeafe53989, type: 3}
   type: 1
   rarity: 1
   effect: 1
