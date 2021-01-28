@@ -21,11 +21,7 @@ MonoBehaviour:
   microGameScene:
     sceneAsset: {fileID: 102900000, guid: 277f6b617c88de84e98a16bbffeebd11, type: 3}
     required: 1
-<<<<<<< HEAD
-    buildIndex: 31
-=======
     buildIndex: 23
->>>>>>> Rémi
   inputs: {fileID: 21300000, guid: 56fbc2f9ba788094f9f00518aee859f9, type: 3}
   currentDifficulty: 0
   winningStreak: 0
