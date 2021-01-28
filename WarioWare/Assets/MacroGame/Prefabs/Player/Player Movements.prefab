@@ -117,9 +117,8 @@ MonoBehaviour:
   bossIsland: {fileID: 0}
   islands: []
   selectedIsland: {fileID: 0}
-  resourceSprite: {fileID: 21300000, guid: 69e3d4bae3dc2b94ab38838e9e36f85e, type: 3}
-  shopSprite: {fileID: 21300000, guid: 0bb570a3e3d79054cb660ea51d72abed, type: 3}
-  bossSprite: {fileID: 21300000, guid: d1f69c8160aae5a49a2ebd0804c7658a, type: 3}
+  shopSprite: {fileID: 21300000, guid: 930413800d560d5418a7e3a02adadee6, type: 3}
+  bossSprite: {fileID: 21300000, guid: ff007f1de4d19da46892a297f22d8aa2, type: 3}
   treasureSprite: {fileID: 21300000, guid: bf348e7eb2682144187eca686d3ed5f3, type: 3}
   keystoneSprite: {fileID: 21300000, guid: 8fdc5708518757b4596d7cc3764ddbb7, type: 3}
   emptySprite: {fileID: 21300000, guid: 5575c41a030de4c4180a3ffeb30fbfbc, type: 3}

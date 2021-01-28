@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PackDeRations
   m_EditorClassIdentifier: 
   rewardName: Pack de rations
-  sprite: {fileID: 21300000, guid: 7072eb98516315f42b7236e7f4c8cc1e, type: 3}
+  sprite: {fileID: 21300000, guid: 2543f65f0b7ea704cade200c2bff7adb, type: 3}
   type: 0
   rarity: 1
   effect: 1

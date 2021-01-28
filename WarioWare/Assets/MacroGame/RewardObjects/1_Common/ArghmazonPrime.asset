@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ArghmazonPrime
   m_EditorClassIdentifier: 
   rewardName: Arghmazon Prime
-  sprite: {fileID: 21300000, guid: df547bc70465afd4c88ad82dff4cca63, type: 3}
+  sprite: {fileID: 21300000, guid: 88469a8171e677746bebdd91f1f7b5c9, type: 3}
   type: 1
   rarity: 0
   effect: 0
