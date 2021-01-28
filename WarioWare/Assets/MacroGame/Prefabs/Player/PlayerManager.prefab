@@ -1898,7 +1898,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 93d23a5437618a144969519577d73edc, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -2257,7 +2257,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: New Text
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 93d23a5437618a144969519577d73edc, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: -6597660684989455386, guid: 93d23a5437618a144969519577d73edc,
     type: 2}
   m_fontSharedMaterials: []
@@ -2801,8 +2801,6 @@ MonoBehaviour:
   beatcoins: 200
   food: 50
   moral: 70
-  keyStoneNumber: 0
-  hasFirstKeyStone: 0
   maxFood: 100
   completionUI: {fileID: 8334352148782962100}
   audioSource: {fileID: 1190770246925491698}
@@ -2839,6 +2837,12 @@ MonoBehaviour:
   itemDescriptionContainer: {fileID: 8449175633379867264}
   itemDescription: {fileID: 181420970399945510}
   itemName: {fileID: 2542671740046605407}
+  keystones:
+  - {fileID: 3399364138865890343}
+  - {fileID: 4448145618827799145}
+  - {fileID: 1284119684678538580}
+  - {fileID: 966535813119201669}
+  - {fileID: 9222082922581052315}
   overrideConfirmationPanel: {fileID: 645322326660893994}
   noButton: {fileID: 2725318225762058609}
   rewardCanvas: {fileID: 3299624670619868226}
@@ -2993,7 +2997,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6974677237779837995
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3116,7 +3120,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 93d23a5437618a144969519577d73edc, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -3816,7 +3820,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 93d23a5437618a144969519577d73edc, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -4187,7 +4191,7 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 93d23a5437618a144969519577d73edc, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: -6597660684989455386, guid: 93d23a5437618a144969519577d73edc,
     type: 2}
   m_fontSharedMaterials: []

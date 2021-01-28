@@ -7,6 +7,7 @@ using Rewards;
 using NUnit.Framework;
 using UnityEngine.EventSystems;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 namespace Player
 {
@@ -45,6 +46,12 @@ namespace Player
 
         [HideInInspector] public List<Island> farNeighbors = new List<Island>();
 
+
+        //Island Detector
+        Vector3 direction;
+        float horizontalDir;
+        float verticalDir;
+
         private void Awake()
         {
             CreateSingleton();
@@ -65,12 +72,11 @@ namespace Player
             if(transitionTimer.onFinish)
                 playerAvatar.transform.position = playerIsland.anchorPoint.position;
 
-            /* Pre-Alpha zone transition
-            if(playerIsland == bossIsland)
-            {
-                PlayerManager.Instance.TakeDamage(20);
-            }
-            */
+            //Check for neigbors to select
+            if (Mathf.Abs(Input.GetAxis("Left_Joystick_X")) > 0 || Mathf.Abs(Input.GetAxis("Left_Joystick_Y")) > 0)
+                IslandDetector();
+
+
         }
 
         /// <summary>
@@ -383,6 +389,26 @@ namespace Player
             {
                 islands[i].icon.gameObject.SetActive(false);
                 islands[i].redCross.gameObject.SetActive(false);
+            }
+        }
+
+        private void IslandDetector()
+        {
+            horizontalDir = Input.GetAxis("Left_Joystick_X");
+            verticalDir = Input.GetAxis("Left_Joystick_Y");
+            direction = new Vector3(horizontalDir, verticalDir, 0);
+
+            Selectable detectedIsland = playerIsland.button.FindSelectable(direction);
+
+            if(detectedIsland!=null)
+            {
+                for (int i = 0; i < playerIsland.accessibleNeighbours.Length; i++)
+                {
+                    if(detectedIsland == playerIsland.accessibleNeighbours[i])
+                    {
+                        Debug.Log("Island Detected");
+                    }
+                }
             }
         }
     }

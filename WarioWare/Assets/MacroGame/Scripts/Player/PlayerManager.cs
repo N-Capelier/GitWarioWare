@@ -58,7 +58,7 @@ namespace Player
         void Update()
         {
             //Show / Hide Inventory //check micro UI inactive
-            if (!Manager.Instance.capUI.activeSelf && Input.GetButtonDown("Y_Button") && !inInventory)
+            if (!Manager.Instance.capUI.activeSelf && Input.GetButtonDown("Y_Button") && !inInventory && UI.UICameraController.canSelect)
             {
                 PlayerInventory.Instance.Show();
             }
