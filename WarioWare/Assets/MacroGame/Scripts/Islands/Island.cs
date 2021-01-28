@@ -52,7 +52,7 @@ namespace Islands
 
         [Space]
 
-        [SerializeField] Reward keyStoneIslandReward = null;
+        [SerializeField] public Reward keyStoneIslandReward = null;
 
         [Space]
 

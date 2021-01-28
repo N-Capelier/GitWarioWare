@@ -70,7 +70,7 @@ namespace Boss
             }
             else
             {
-                bossLifeOnStartOfFight = 10;
+                bossLifeOnStartOfFight = 150;
                 BossLifeManager.Instance.InitialLife(bossLifeOnStartOfFight);
 
             }
