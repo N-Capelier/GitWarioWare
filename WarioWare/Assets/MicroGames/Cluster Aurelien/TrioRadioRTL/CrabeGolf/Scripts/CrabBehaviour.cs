@@ -39,7 +39,6 @@ namespace RadioRTL
                 if (gameObject.transform.position.x >= 3f && !isShot)
                 {
                     CrabSpawner.cs.lose = true;
-                    Debug.Log("perd");
                 }
 
                 if (gameObject.transform.position == target)
@@ -78,21 +77,20 @@ namespace RadioRTL
             }
             private void OnTriggerEnter2D(Collider2D collision)
             {
-                Debug.Log("test");
                 if (collision.name == ("Collider Bateau"))
                 {
                     collisionState = 1;
-                    Debug.Log("bateau");
+
                 }
                 if (collision.name == ("Collider Mer") && collisionState == 0)
                 {
                     collisionState = 2;
-                    Debug.Log("mer");
+
                 }
                 if (collision.name == ("Collider Ciel") && collisionState != 1)
                 {
                     collisionState = 3;
-                    Debug.Log("ciel");
+
                 }
             }
         }

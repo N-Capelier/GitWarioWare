@@ -34,14 +34,14 @@ namespace TrapioWare
             public bool needToStop = false;
 
             [Header("Sounds")]
-            [SerializeField] private GameObject audioSource;
-            [SerializeField] private AudioClip[] inputSounds;
+            [SerializeField] private GameObject audioSource = null;
+            [SerializeField] private AudioClip[] inputSounds = null;
             [SerializeField] private int nextSound = 0;
 
             [SerializeField] public AudioSource deadSound;
 
             [Header("Parrot")]
-            [SerializeField] private GameObject parrot;
+            [SerializeField] private GameObject parrot = null;
             public bool animationDone = false;
             public bool loseDone = false;
 

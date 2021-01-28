@@ -96,12 +96,10 @@ namespace Soupe
                     if (SwatterBehevior.flyIsDead == true)
                     {
                         Manager.Instance.Result(true);
-                        Debug.Log("win");
                     }
                     else
                     {
                         Manager.Instance.Result(false);
-                        Debug.Log("Lose");
                     }
                 }
             }

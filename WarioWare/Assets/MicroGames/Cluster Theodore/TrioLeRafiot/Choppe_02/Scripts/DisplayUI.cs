@@ -13,7 +13,7 @@ namespace LeRafiot
         /// </summary>
 
         public class DisplayUI : TimedBehaviour
-        {
+        {/*
             #region Variables
             private float spawnCooldown;
 
@@ -54,8 +54,7 @@ namespace LeRafiot
                 if (Tick <= 8)
                 {
                     tickNumber.text = Tick.ToString();
-                }
-            }          
+                }*/
+            }       
         }
     }
-}

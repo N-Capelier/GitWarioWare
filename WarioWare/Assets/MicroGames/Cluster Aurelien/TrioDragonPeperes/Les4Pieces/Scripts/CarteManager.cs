@@ -39,7 +39,7 @@ namespace Dragons_Peperes
 
                 Instantiate(go, spotCarte.transform);
 
-                for (int t = 0; i < anim.Length; t++)
+                for (int t = 0; t < anim.Length; t++)
                 {
                     anim[t].enabled = true;
                 }

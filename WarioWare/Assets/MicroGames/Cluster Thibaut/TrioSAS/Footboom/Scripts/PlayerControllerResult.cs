@@ -27,7 +27,8 @@ namespace TrioSAS
 
             private bool eazy;
             private bool medium;
-            private bool hard;       
+            private bool hard;
+            private bool alreadyEnded = false;
 
             [Header("Win condition")]
             public int shootNecessaryEasy;
@@ -269,16 +270,18 @@ namespace TrioSAS
                 
                 
 
-                if (Tick == 8 && youWinner == false)
+                if (Tick == 8 && youWinner == false && !alreadyEnded)
                 {
+                    alreadyEnded = true;
                     endGame = true;
                     buttonPress.SetBool("PossibleSuccess", false);
                     gameObject.GetComponent<BarMovement>().barSpeed = 0;
                     Manager.Instance.Result(false);
 
                 }
-                else if (Tick == 8 && youWinner == true)
+                else if (Tick == 8 && youWinner == true && !alreadyEnded)
                 {
+                    alreadyEnded = true;
                     endGame = true;
                     buttonPress.SetBool("PossibleSuccess", false);
                     Manager.Instance.Result(true);

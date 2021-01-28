@@ -12,6 +12,7 @@ namespace TrapioWare
             
             public AudioClip[] bpmSounds;
             [SerializeField] private GameObject musiqueDeFond;
+            private bool alreadyEnded = false;
 
             public override void Start()
             {
@@ -80,16 +81,17 @@ namespace TrapioWare
             {
                 base.FixedUpdate(); //Do not erase this line!
 
-                if (ClimbGameManager.Instance.win && timerDead == 8)
+                if (ClimbGameManager.Instance.win && timerDead == 8 && !alreadyEnded)
                 {
+                    alreadyEnded = true;
                     timerDead = 0;
                     ClimbGameManager.Instance.win = false;
                     Debug.Log("Win");
                     Manager.Instance.Result(true);
                 }
-
-                if (ClimbGameManager.Instance.lose && ClimbGameManager.Instance.win == false && timerDead == 8)
+                else if (ClimbGameManager.Instance.lose && ClimbGameManager.Instance.win == false && timerDead == 8 && !alreadyEnded)
                 {
+                    alreadyEnded = true;
                     Manager.Instance.Result(false);
                 }
 

@@ -63,6 +63,7 @@ namespace TrioSoupe
             bool playerChosedMeat;
             bool playerChosedBread;
             bool playerChosedVegetable;
+            bool alreadyEnded = false;
 
             int difficulty;
             bool loose;
@@ -183,12 +184,14 @@ namespace TrioSoupe
                 }
                 if (Tick == 8)
                 {
-                    if(win == true)
+                    if(win == true && !alreadyEnded)
                     {
+                        alreadyEnded = true;
                         Manager.Instance.Result(true);
                     }
-                    else
+                    else if (!alreadyEnded)
                     {
+                        alreadyEnded = true;
                         Manager.Instance.Result(false);
                     } 
                 }
