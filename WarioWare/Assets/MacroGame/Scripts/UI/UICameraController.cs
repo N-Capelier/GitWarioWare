@@ -52,7 +52,7 @@ namespace UI
                 }
             }
 
-            if(Input.GetButtonDown("Back_Button") && canSelect)
+            if(Input.GetButtonDown("Back_Button") && canSelect && !PlayerManager.Instance.inInventory)
             {
                 if (uiVcam.gameObject.activeSelf)
                 {

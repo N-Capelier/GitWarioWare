@@ -15,6 +15,7 @@ namespace Player
     public class PlayerMovement : Singleton<PlayerMovement>
     {
         public GameObject playerAvatar;
+        public GameObject vCamTarget;
         
         [Header("Island Refs")]
         public Island playerIsland;
@@ -264,6 +265,11 @@ namespace Player
                         targetIsland.islandRewardImage.sprite = bossSprite;
                         targetIsland.rewardDescription.text = "Affrontez le Galion Champion!";
                         break;
+
+                    case IslandType.Keystone:
+                        targetIsland.islandRewardImage.sprite = targetIsland.reward.sprite;
+                        targetIsland.rewardDescription.text = "Récupérez un artefact!";
+                        break;
                 }
 
                 for (int i = 0; i < playerIsland.accessibleNeighbours.Length; i++)
@@ -291,7 +297,8 @@ namespace Player
         /// </summary>
         public void ResetFocus()
         {
-            Manager.Instance.eventSystem.SetSelectedGameObject(playerIsland.gameObject);
+            playerIsland.button.Select();
+            vCamTarget.transform.position = playerAvatar.transform.position;
         }
 
         private void GetFarNeighbours()
@@ -427,7 +434,6 @@ namespace Player
                 {   
                     if(detectedIsland.name == playerIsland.accessibleNeighbours[i].name)
                     {
-                        print(playerIsland.accessibleNeighbours[i]);
                         if(canSelect)
                         {
                             detectedIsland.Select();

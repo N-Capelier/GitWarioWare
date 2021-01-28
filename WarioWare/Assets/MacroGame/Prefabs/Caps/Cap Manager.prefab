@@ -2021,7 +2021,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -2298,7 +2298,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -2770,16 +2770,17 @@ MonoBehaviour:
   cinemachine: {fileID: 0}
   cantDisplayVerbe: 0
   speedUp: {fileID: 6915276350177544496}
-  victory: {fileID: 3738882876921951286}
   zoomed: 0
   isDebug: 0
   eventSystem: {fileID: 0}
   miniGameNumberPerCap: 4
   winingStreakNumber: 2
   losingStreakNumber: 2
+  isMainSail: 0
   isLureActive: 0
   isLure: 0
   bonusBarrels: 0
+  tricornBonus: 0
 --- !u!1 &8977992822539135360
 GameObject:
   m_ObjectHideFlags: 0

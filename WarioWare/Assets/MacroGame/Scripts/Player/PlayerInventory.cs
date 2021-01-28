@@ -49,7 +49,7 @@ namespace Player
 
         void Start()
         {   
-            //rewardToAdd = stockedRewards[0]; //-- feature testing
+            //rewardToAdd = rew; //-- feature testing
         }
 
         void Update()
@@ -122,9 +122,7 @@ namespace Player
                 {
                     StartCoroutine(Manager.Instance.UnzoomCam());
                 }
-               // BossLifeManager.Instance.bossUI.gameObject.SetActive(true);
                 UI.UICameraController.canSelect = true;
-
             }
         }
 
@@ -306,7 +304,7 @@ namespace Player
                 {
                     keystones[3].SetActive(true);
                 }
-                else if (name == "La barre du The William")
+                else if (name == "La clef du magasin")
                 {
                     keystones[4].SetActive(true);
                 }

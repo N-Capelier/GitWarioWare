@@ -3009,7 +3009,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHp: 100
-  beatcoins: 200
+  beatcoins: 0
   food: 50
   moral: 70
   maxFood: 100
@@ -3063,6 +3063,7 @@ MonoBehaviour:
   goldCompletion: {fileID: 4473697247332697212}
   woodCompletion: {fileID: 2897226370680040943}
   moralCompletion: {fileID: 3251874869145558827}
+  rew: {fileID: 0}
   fromInventory: 0
 --- !u!82 &1190770246925491698
 AudioSource:

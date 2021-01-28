@@ -106,7 +106,7 @@ namespace Caps
         public CinemachineVirtualCamera cinemachine;
         [HideInInspector] public bool cantDisplayVerbe;
         public GameObject speedUp;
-        public GameObject victory;
+
         [HideInInspector] public bool zoomed;
         private bool isFirstMiniGame = true;
         [Header("Debug")]
@@ -187,6 +187,7 @@ namespace Caps
                 shipOpening.gameObject.SetActive(true);
 
                 StartCoroutine(ZoomCam(shipOpening.openingTime));
+                if(!isBoss)
                 transition.DisplayBarrel(_currentCap);
 
                 //if zoom is bugging, look at here

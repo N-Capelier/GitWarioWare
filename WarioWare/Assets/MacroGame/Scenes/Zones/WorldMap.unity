@@ -22305,6 +22305,11 @@ PrefabInstance:
       propertyPath: bossIsland
       value: 
       objectReference: {fileID: 1350365007}
+    - target: {fileID: 4982864208669383435, guid: 2a0ba0962e4b52b40a1f46181b9dd3dc,
+        type: 3}
+      propertyPath: vCamTarget
+      value: 
+      objectReference: {fileID: 1226804597}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a0ba0962e4b52b40a1f46181b9dd3dc, type: 3}
 --- !u!114 &4982864208064635643 stripped
