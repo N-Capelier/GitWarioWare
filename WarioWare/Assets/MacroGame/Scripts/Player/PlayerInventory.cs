@@ -49,7 +49,7 @@ namespace Player
 
         void Start()
         {   
-            //rewardToAdd = stockedRewards[0]; //-- feature testing
+            //rewardToAdd = rew; //-- feature testing
         }
 
         void Update()
@@ -122,9 +122,7 @@ namespace Player
                 {
                     StartCoroutine(Manager.Instance.UnzoomCam());
                 }
-               // BossLifeManager.Instance.bossUI.gameObject.SetActive(true);
                 UI.UICameraController.canSelect = true;
-
             }
         }
 
