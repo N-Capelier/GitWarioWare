@@ -3,38 +3,11 @@ using UnityEngine.UI;
 
 public class IslandWaveSwaper : MonoBehaviour
 {
-    public Image island;
-    public Sprite[] islands;
-    public Sprite[] islandDFs;
+    public Image island_Borders;
+    public Texture island_DF_Texture;
 
-    MaterialPropertyBlock mbp;
-    [HideInInspector]
-    public MaterialPropertyBlock Mbp
+    private void ChangeMaterialTexture()
     {
-        get 
-        { 
-            if (mbp == null)
-            {
-                mbp = new MaterialPropertyBlock();
-            }
-            return mbp; 
-        }
-    }
-
-    private void Awake()
-    {
-        //Mbp = island.material;
-    }
-
-    private void OnEnable()
-    {
-        for (int i = 0; i < islandDFs.Length; i++)
-        {
-            if(island.sprite == islands[i])
-            {
-                Mbp.SetTexture("_IslandDistField", islandDFs[i].texture);
-                island.GetComponent<MeshRenderer>().SetPropertyBlock(Mbp);
-            }
-        }
+        island_Borders.material.SetTexture("_MainTex", island_Borders.mainTexture);
     }
 }
