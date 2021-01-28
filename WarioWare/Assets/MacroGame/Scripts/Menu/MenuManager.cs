@@ -96,7 +96,7 @@ public class MenuManager : MonoBehaviour
     private IEnumerator PlayEnumerator()
     {
         loadingScreen.SetActive(true);
-        loading = SceneManager.LoadSceneAsync("WorldMap");
+        loading = SceneManager.LoadSceneAsync("PlayCinematic");
         loading.allowSceneActivation = false;
         //canLoad = true;
         for (float i = 0; i < 1; i+= 0.01f)
