@@ -10824,27 +10824,27 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1007450609}
+      objectReference: {fileID: 0}
     - target: {fileID: 4765462416859257723, guid: bc2f8b499c511b94f934b47245aeb98e,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Move
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4765462416859257723, guid: bc2f8b499c511b94f934b47245aeb98e,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4765462416859257723, guid: bc2f8b499c511b94f934b47245aeb98e,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: Islands.Island, Assembly-CSharp
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4765462416859257723, guid: bc2f8b499c511b94f934b47245aeb98e,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 1301013433}
+      objectReference: {fileID: 0}
     - target: {fileID: 7309059693642548127, guid: bc2f8b499c511b94f934b47245aeb98e,
         type: 3}
       propertyPath: accessibleNeighbours.Array.size
@@ -11555,6 +11555,11 @@ PrefabInstance:
       propertyPath: playerHealthUI
       value: 
       objectReference: {fileID: 261476612}
+    - target: {fileID: 8977992822187955208, guid: 80ac864817d34d641be6448f49de01a3,
+        type: 3}
+      propertyPath: cloudVFX
+      value: 
+      objectReference: {fileID: 2132581220}
     - target: {fileID: 8977992822187955210, guid: 80ac864817d34d641be6448f49de01a3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -12656,6 +12661,11 @@ PrefabInstance:
       propertyPath: moral
       value: 70
       objectReference: {fileID: 0}
+    - target: {fileID: 5975730464407200854, guid: 9a784a7e95199cf47b1f43fb6d7aa90d,
+        type: 3}
+      propertyPath: clouds
+      value: 
+      objectReference: {fileID: 2132581222}
     - target: {fileID: 5975730464407200855, guid: 9a784a7e95199cf47b1f43fb6d7aa90d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -15215,6 +15225,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 23620432766128749, guid: 6bbebc6197c651f4c8ee1b6918b7c5f7,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -84.05908
+      objectReference: {fileID: 0}
     - target: {fileID: 714554007355793623, guid: 6bbebc6197c651f4c8ee1b6918b7c5f7,
         type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -15228,7 +15243,7 @@ PrefabInstance:
     - target: {fileID: 1717028799354508363, guid: 6bbebc6197c651f4c8ee1b6918b7c5f7,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -14.799805
+      value: -14.800049
       objectReference: {fileID: 0}
     - target: {fileID: 1717028799354508363, guid: 6bbebc6197c651f4c8ee1b6918b7c5f7,
         type: 3}
@@ -15344,6 +15359,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PlayerRessourcesUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 7637354793431306552, guid: 6bbebc6197c651f4c8ee1b6918b7c5f7,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 20.000244
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6bbebc6197c651f4c8ee1b6918b7c5f7, type: 3}
@@ -16326,8 +16346,8 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
-  m_SortingLayerID: -1758291959
-  m_SortingOrder: 200
+  m_SortingLayerID: 0
+  m_SortingOrder: -1
   m_TargetDisplay: 0
 --- !u!114 &2001844456 stripped
 MonoBehaviour:
@@ -17694,7 +17714,8 @@ VFXRenderer:
   m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
-  m_Materials: []
+  m_Materials:
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
