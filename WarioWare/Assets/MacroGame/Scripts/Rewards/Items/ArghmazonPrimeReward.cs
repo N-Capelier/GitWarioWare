@@ -10,8 +10,8 @@ namespace Rewards
     {
         public override bool ApplyActiveEffect()
         {
-            float r = Random.Range(0, ShopManager.Instance.shopIslands.Length);
-            ShopManager.Instance.Show(ShopManager.Instance.shopIslands[(int)Mathf.Floor(r)]);
+            int r = Random.Range(0, ShopManager.Instance.shopIslands.Length - 1);
+            ShopManager.Instance.Show(ShopManager.Instance.shopIslands[r]);
             return true;
         }
 
@@ -22,7 +22,7 @@ namespace Rewards
 
         public override string GetDescription()
         {
-            return $"Accédez instantanément à la boutique.";
+            return $"Accédez instantanément à une boutique.";
         }
 
         public override void RemovePassiveEffect()

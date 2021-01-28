@@ -22,7 +22,7 @@ namespace Rewards
 
         public override string GetDescription()
         {
-            return $"Régénère le contenu de la boutique.";
+            return $"Régénère le contenu des boutiques.";
         }
 
         public override void RemovePassiveEffect()

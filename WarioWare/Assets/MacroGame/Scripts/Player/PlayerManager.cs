@@ -44,7 +44,7 @@ namespace Player
 
         private void Awake()
         {
-            CreateSingleton(true);
+            CreateSingleton();
         }
 
         void Start()

@@ -19,4 +19,4 @@ MonoBehaviour:
   effect: 1
   price: 50
   dropRateWeight: 50
-  healAmount: 30
+  healAmount: 20

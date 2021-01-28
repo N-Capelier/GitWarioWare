@@ -732,7 +732,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Description
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 93d23a5437618a144969519577d73edc, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: -6597660684989455386, guid: 93d23a5437618a144969519577d73edc,
     type: 2}
   m_fontSharedMaterials: []
@@ -1024,6 +1024,7 @@ MonoBehaviour:
   monkeyHand: {fileID: 5397623462717466838}
   shopIslands: []
   inShop: 0
+  keyStoneReward: {fileID: 11400000, guid: ac03f5402a46c424789a4c4e48c696cc, type: 2}
   ambianceSource: {fileID: 9190179867747497945}
 --- !u!82 &6748097066056258364
 AudioSource:
