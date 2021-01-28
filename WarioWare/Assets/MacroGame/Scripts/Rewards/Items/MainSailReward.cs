@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using Player;
+using Caps;
 
 namespace Rewards
 {
@@ -13,17 +13,17 @@ namespace Rewards
 
         public override void ApplyPassiveEffect()
         {
-            PlayerMovement.Instance.isMainSail++;
+            Manager.Instance.isMainSail++;
         }
 
         public override string GetDescription()
         {
-            return $"Les caps déjà empruntés ne coûntent plus aucune ration.";
+            return $"Les caps déjà empruntés ne coûntent plus de moral.";
         }
 
         public override void RemovePassiveEffect()
         {
-            PlayerMovement.Instance.isMainSail--;
+            Manager.Instance.isMainSail--;
         }
     }
 }

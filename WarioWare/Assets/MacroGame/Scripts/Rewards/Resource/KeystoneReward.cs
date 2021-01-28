@@ -19,6 +19,8 @@ namespace Rewards
 
         public override void ApplyPassiveEffect()
         {
+            PlayerManager.Instance.GainMoral(25);
+
             if(tutorialCompleted)
             {
                 keystoneCount++;

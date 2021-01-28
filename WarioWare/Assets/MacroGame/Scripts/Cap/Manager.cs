@@ -115,6 +115,9 @@ namespace Caps
         public int miniGameNumberPerCap = 4;
         public int winingStreakNumber = 2;
         public int losingStreakNumber = 2;
+
+        [HideInInspector] public int isMainSail = 0;
+
         //events
         //public delegate void MapUIHandler();
         //public event MapUIHandler ResetFocus;
@@ -589,6 +592,10 @@ namespace Caps
                 currentCap = null;
                 UI.UICameraController.canSelect = true;
 
+                if(isMainSail <= 0)
+                {
+                    PlayerManager.Instance.GainMoral(moralCost);
+                }
             }
 
 
@@ -797,6 +804,7 @@ namespace Caps
             {
                 if (PlayerMovement.Instance.playerIsland.reward.type != RewardType.Resource)
                 {
+                    PlayerManager.Instance.GainMoral(15);
                     PlayerInventory.Instance.SetItemToAdd(PlayerMovement.Instance.playerIsland.reward, true);
                 }
                 else

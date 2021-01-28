@@ -15,7 +15,8 @@ namespace Player
         public GameObject inventoryCanvas;
         public Button[] slots;
         public Image[] rewardImages;
-        public Image rewardToAddImage;
+        public Image rewardToAddImage; //
+        public TextMeshProUGUI rewardToAddName;
         [HideInInspector] public Reward[] stockedRewards;
         public GameObject itemDescriptionContainer;
         public TextMeshProUGUI itemDescription;
@@ -85,6 +86,8 @@ namespace Player
             {
                 rewardToAddImage.gameObject.SetActive(true);
                 rewardToAddImage.sprite = rewardToAdd.sprite;
+                rewardToAddName.gameObject.SetActive(true);
+                rewardToAddName.text = rewardToAdd.rewardName;
             }
 
             ShowCollectedKeyStone();
@@ -158,6 +161,7 @@ namespace Player
             rewardImages[slot].sprite = item.sprite;
             rewardToAdd = null;
             rewardToAddImage.gameObject.SetActive(false);
+            rewardToAddName.gameObject.SetActive(false);
             ShowSelectedSlotInfo(slots[slot]);
             if(stockedRewards[slot].effect == RewardEffect.Passive)
             {
@@ -173,6 +177,7 @@ namespace Player
             rewardImages[slot].sprite = newItem.sprite;
             rewardToAdd = null;
             rewardToAddImage.gameObject.SetActive(false);
+            rewardToAddName.gameObject.SetActive(false);
             if (stockedRewards[slot].effect == RewardEffect.Passive)
             {
                 stockedRewards[slot].ApplyPassiveEffect();

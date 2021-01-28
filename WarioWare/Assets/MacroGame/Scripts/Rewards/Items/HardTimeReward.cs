@@ -14,7 +14,7 @@ namespace Rewards
             if(PlayerManager.Instance.beatcoins >= beatcoinAmount)
             {
                 PlayerManager.Instance.GainCoins(-beatcoinAmount);
-                PlayerManager.Instance.GainFood(foodAmount);
+                PlayerManager.Instance.GainMoral(foodAmount);
                 return true;
             }
             return false;
