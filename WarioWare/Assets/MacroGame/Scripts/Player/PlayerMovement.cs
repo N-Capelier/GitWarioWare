@@ -427,7 +427,6 @@ namespace Player
                 {   
                     if(detectedIsland.name == playerIsland.accessibleNeighbours[i].name)
                     {
-                        print(playerIsland.accessibleNeighbours[i]);
                         if(canSelect)
                         {
                             detectedIsland.Select();
