@@ -1,7 +1,16 @@
 fileFormatVersion: 2
 guid: 68b26eaa7b922aa4f92005e154b6b1d7
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 4837997739480260480
+    second: Expression_Binoclard_Happy
+  - first:
+      213: -8071875389723839485
+    second: Expression_Binoclard_angry
+  - first:
+      213: -604935391172319577
+    second: Expression_Binoclard_Sad
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -109,7 +118,70 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Expression_Binoclard_Happy
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 519
+        width: 311
+        height: 255
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08f1dddaf45042340800000000000000
+      internalID: 4837997739480260480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Expression_Binoclard_angry
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 260
+        width: 311
+        height: 254
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 304fa448910faff80800000000000000
+      internalID: -8071875389723839485
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Expression_Binoclard_Sad
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 2
+        width: 311
+        height: 254
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a6ac118776da97f0800000000000000
+      internalID: -604935391172319577
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

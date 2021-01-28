@@ -1,7 +1,16 @@
 fileFormatVersion: 2
 guid: 19cf2003afb839d4bbb5434deae4b926
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 983493820073533693
+    second: Expression_Ghost_Angry
+  - first:
+      213: 1503515306661887055
+    second: Expression_Ghost_Sad
+  - first:
+      213: -7562938681954864228
+    second: Expression_Ghost_2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -109,7 +118,70 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Expression_Ghost_Angry
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 519
+        width: 311
+        height: 255
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df066482b6216ad00800000000000000
+      internalID: 983493820073533693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Expression_Ghost_Sad
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 260
+        width: 311
+        height: 254
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4cb1f7943f8dd410800000000000000
+      internalID: 1503515306661887055
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Expression_Ghost_2
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1
+        width: 311
+        height: 253
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c93f404c65b0b0790800000000000000
+      internalID: -7562938681954864228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
