@@ -101,6 +101,7 @@ namespace Boss
                 }
                 else
                 {
+                    _damageToBoss = 5;
                     BossLifeManager.Instance.TakeDamage(_damageToBoss, bossLifeOnStartOfFight, true);
                 }           
                 
