@@ -6,7 +6,7 @@ using Caps;
 using UI;
 using UnityEngine.SceneManagement;
 using Sound;
-
+using UnityEngine.VFX;
 
 namespace Player
 {
@@ -36,6 +36,9 @@ namespace Player
         //Rewards
         [HideInInspector] public int isSturdy = 0;
         [HideInInspector] public int sturdyHealAmmount = 3;
+
+        [Header("VFX")]
+        [SerializeField] VisualEffect clouds = null;
 
         #endregion
 
@@ -141,8 +144,10 @@ namespace Player
             }
             UpdatePlayerUI.Invoke();
         }
+
         public void GainKeyStone()
         {
+            clouds.SetBool("IsZoneActivate", true);
             Manager.Instance.KeyStoneReset();
         }
         private IEnumerator DeathCoroutine(bool isBoss = false, bool isMiniBoss = false)

@@ -90,6 +90,7 @@ namespace Caps
         public GameObject playerHealthUI;
         public TextMeshProUGUI idName;
         public GameObject clock;
+        public GameObject cloudVFX;
 
 
         [Header("Transition")]
@@ -131,6 +132,8 @@ namespace Caps
             losingStreakNumber = (int)DebugToolManager.Instance.ChangeVariableValue("losingStreakNumber");
             miniGameNumberPerCap = (int)DebugToolManager.Instance.ChangeVariableValue("miniGameNumberPerCap");
             cantDoTransition = true;
+            KeystoneReward.keystoneCount = 0;
+            KeystoneReward.tutorialCompleted = false;
         }
 
 
@@ -226,7 +229,7 @@ namespace Caps
             macroUI.SetActive(false);
             ressourcesUI.SetActive(false);
             playerHealthUI.SetActive(false);
-
+            cloudVFX.SetActive(false);
 
             FadeManager.Instance.NoPanel();
             if (!isBoss)
@@ -997,6 +1000,7 @@ namespace Caps
         public IEnumerator UnzoomCam()
         {
             ressourcesUI.SetActive(true);
+            cloudVFX.SetActive(true);
             eventSystem.enabled = false;
             VcamTarget.transform.position = PlayerMovement.Instance.playerAvatar.transform.position;
             VcamTarget.transform.DOMove(initalCamTransform.position, shipOpening.openingTime * 2).SetEase(Ease.InOutCubic);
