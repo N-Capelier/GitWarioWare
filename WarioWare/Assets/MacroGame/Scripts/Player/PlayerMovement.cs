@@ -265,6 +265,11 @@ namespace Player
                         targetIsland.islandRewardImage.sprite = bossSprite;
                         targetIsland.rewardDescription.text = "Affrontez le Galion Champion!";
                         break;
+
+                    case IslandType.Keystone:
+                        targetIsland.islandRewardImage.sprite = targetIsland.reward.sprite;
+                        targetIsland.rewardDescription.text = "Récupérez un artefact!";
+                        break;
                 }
 
                 for (int i = 0; i < playerIsland.accessibleNeighbours.Length; i++)
