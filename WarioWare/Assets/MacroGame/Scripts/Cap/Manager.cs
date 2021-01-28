@@ -862,6 +862,8 @@ namespace Caps
             waveSound.PlaySecured();
         }
 
+        [HideInInspector] public int tricornBonus = 0;
+
         private void CompletionAttribution( bool isOver =false)
         {
             float pourcentageCompleted = miniGameWon / currentCap.length;
@@ -968,7 +970,15 @@ namespace Caps
 
             PlayerManager.Instance.completionUI.StartCompletion(pourcentageCompleted,isOver);
          
-            PlayerManager.Instance.GainCoins(goldToAdd+additionalGold);
+            if(PlayerManager.Instance.moral >= 50)
+            {
+                PlayerManager.Instance.GainCoins(goldToAdd + additionalGold + tricornBonus);
+            }
+            else
+            {
+                PlayerManager.Instance.GainCoins(goldToAdd + additionalGold);
+            }
+
             PlayerManager.Instance.Heal(woodToAdd);
             PlayerManager.Instance.GainMoral(moralCost + _moralCost);
             miniGameWon = 0;
