@@ -12,7 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e107fc09272662147bdc5c44a2a6bd76, type: 3}
   m_Name: Faces_Chat
   m_EditorClassIdentifier: 
-  faceHappy: {fileID: 0}
-  faceSad: {fileID: 0}
-  faceNeutral: {fileID: 0}
-  faceAngry: {fileID: 0}
+  faceHappy: {fileID: 6900480103291021723, guid: 874e4c757368a4b42bbe40c057db6e7e,
+    type: 3}
+  faceSad: {fileID: -8164438402845567206, guid: 874e4c757368a4b42bbe40c057db6e7e,
+    type: 3}
+  faceNeutral: {fileID: 4162335974655764661, guid: d1af12055939e664dbabfac919575f8d,
+    type: 3}
+  faceAngry: {fileID: 5978445536703340261, guid: 874e4c757368a4b42bbe40c057db6e7e,
+    type: 3}

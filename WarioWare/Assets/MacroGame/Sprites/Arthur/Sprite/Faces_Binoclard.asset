@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e107fc09272662147bdc5c44a2a6bd76, type: 3}
   m_Name: Faces_Binoclard
   m_EditorClassIdentifier: 
-  faceHappy: {fileID: 0}
-  faceSad: {fileID: 0}
-  faceNeutral: {fileID: 0}
-  faceAngry: {fileID: 0}
+  faceHappy: {fileID: 4837997739480260480, guid: 68b26eaa7b922aa4f92005e154b6b1d7,
+    type: 3}
+  faceSad: {fileID: -604935391172319577, guid: 68b26eaa7b922aa4f92005e154b6b1d7, type: 3}
+  faceNeutral: {fileID: -6806786304396186041, guid: aca0672d97d95794281d913923d774f3,
+    type: 3}
+  faceAngry: {fileID: -8071875389723839485, guid: 68b26eaa7b922aa4f92005e154b6b1d7,
+    type: 3}
