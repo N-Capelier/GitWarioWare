@@ -41,6 +41,7 @@ namespace Boss
 
             if (!isBoss)
             {
+
                 StartCoroutine(bossTranstion.BossTakeDamage(initialLife, currentLife));
             }                
             else
