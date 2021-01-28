@@ -138,13 +138,32 @@ namespace Player
 
                 if (PlayerManager.Instance.food > 0)
                 {
-                    if(!(isMainSail > 0 && _isCapDone))
+                    /*if(!(isMainSail > 0 && _isCapDone))
+                        PlayerManager.Instance.GainFood(-foodPrice);*/
+                    if(!_isCapDone)
+                    {
                         PlayerManager.Instance.GainFood(-foodPrice);
+                        print("!CapDone");
+                    }
+                    else if(isMainSail <= 0)
+                    {
+                        PlayerManager.Instance.GainFood(-foodPrice);
+                        print("!MainSail");
+                    }
                 }
                 else
                 {
-                    if (!(isMainSail > 0 && _isCapDone))
+                    /*if (!(isMainSail > 0 && _isCapDone))
+                        PlayerManager.Instance.TakeDamage(damagesWhenNoFood);*/
+
+                    if(!_isCapDone)
+                    {
                         PlayerManager.Instance.TakeDamage(damagesWhenNoFood);
+                    }
+                    else if(isMainSail <= 0)
+                    {
+                        PlayerManager.Instance.TakeDamage(damagesWhenNoFood);
+                    }
                 }
 
                 //Lancer le cap + check if not dead
