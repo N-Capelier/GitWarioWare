@@ -18,7 +18,7 @@ namespace Rewards
 
         public override string GetDescription()
         {
-            return $"Les caps déjà empruntés ne coûntent plus aucune ration.";
+            return $"Les caps déjà empruntés ne coûntent plus aucune limonade.";
         }
 
         public override void RemovePassiveEffect()

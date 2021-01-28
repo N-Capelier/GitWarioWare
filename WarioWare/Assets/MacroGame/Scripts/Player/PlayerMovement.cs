@@ -352,10 +352,10 @@ namespace Player
                         case "Kaisse en kit":
                             farNeighbors[i].icon.sprite = healthRessource;
                             break;
-                        case "Pack de rations"://a changer avec rhum
+                        case "Pack de limonade"://a changer avec rhum
                             farNeighbors[i].icon.sprite = foodRessource;
                             break;
-                        case "Coffre au trésor"://a changer avec rhum
+                        case "Limonade"://a changer avec rhum
                             farNeighbors[i].icon.sprite = treasureSprite;
                             break;
                         case "Rien":
