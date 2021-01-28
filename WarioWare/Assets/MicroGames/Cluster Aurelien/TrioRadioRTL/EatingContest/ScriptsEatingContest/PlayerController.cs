@@ -349,11 +349,17 @@ namespace RadioRTL
                     win = false;
                     FindObjectOfType<AudioManagerLucas>().Play("Lose", 1);
                     tears.SetActive(true);
+
+                    if (sparkParticles != null)
+                    {
+                        Destroy(sparkParticles);
+                    }
                 }
                 else
                 {
                     if (i == 0)
                     {
+                        Destroy(sparkParticles);
                         fireworks.SetActive(true);
                         FindObjectOfType<AudioManagerLucas>().Play("Win", 0);
                         i += 1;

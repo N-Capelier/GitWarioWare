@@ -86,15 +86,15 @@ namespace Fleebos
                         SoundManager.sd.PlaySound(1);
                         speed *= 1;
                         break;
-                    case 90:
+                    case 80:
                         SoundManager.sd.PlaySound(4);
                         speed *= 1.5f;
                         break;
-                    case 120:
+                    case 100:
                         SoundManager.sd.PlaySound(5);
                         speed *= 2f;
                         break;
-                    case 140:
+                    case 120:
                         SoundManager.sd.PlaySound(6);
                         speed *= 2.4f;
                         break;

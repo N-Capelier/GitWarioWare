@@ -35,6 +35,7 @@ namespace Dragons_Peperes
             AudioManager audioManager;
 
             public bool playerLost;
+            public bool gameFinished;
 
             public GameObject particule;
 
@@ -43,7 +44,7 @@ namespace Dragons_Peperes
                 base.Start(); //Do not erase this line!
                 enemyController = FindObjectOfType<EnemyController>();
                 audioManager = FindObjectOfType<AudioManager>();
-
+                audioManager.PlayMusic();
             }
 
             //FixedUpdate is called on a fixed time.
@@ -68,7 +69,6 @@ namespace Dragons_Peperes
 
                 if (Tick == 1)
                 {
-                    audioManager.PlayMusic();
                 }
 
                 #region EasyMode
@@ -94,27 +94,6 @@ namespace Dragons_Peperes
                     }
 
 
-                    
-
-
-                    if (Tick == 8)
-                    {
-                        particule.SetActive(false);
-
-                        if (playerLost)
-                        {
-                             Manager.Instance.Result(false);
-                        }
-                        
-
-                        if (!playerLost)
-                        {
-                            winScreen.SetActive(true);
-                             audioManager.StopMusic();
-                             Manager.Instance.Result(true);
-                        }
-                        
-                    }
                 }
                     
                 #endregion
@@ -145,25 +124,6 @@ namespace Dragons_Peperes
                     {
                         Instantiate(enemy, spot1.transform);
                         audioManager.PlayRandomReplique();
-                    }
-
-                        
-
-                    if (Tick == 8)
-                    {
-                        particule.SetActive(false);
-
-                        if (playerLost)
-                        {
-                            Manager.Instance.Result(false);
-                        }
-
-                        if (!playerLost)
-                        {
-                            winScreen.SetActive(true);
-                            audioManager.StopMusic();
-                            Manager.Instance.Result(true);
-                        }
                     }
                 }
                 #endregion
@@ -200,30 +160,36 @@ namespace Dragons_Peperes
                     {
                         Instantiate(enemy2, spot3.transform);
                     }
-
-
-
-                    if (Tick == 8)
-                    {
-                        particule.SetActive(false);
-
-                        if (playerLost)
-                        {
-                            Manager.Instance.Result(false);
-                        }
-
-                        if (!playerLost)
-                        {
-                            winScreen.SetActive(true);
-                            audioManager.StopMusic();
-                            Manager.Instance.Result(true);
-                        }
-                    }
                 }
                 #endregion
-            }
 
-            
+
+                if (Tick == 7)
+                {
+                    gameFinished = true;
+                    particule.SetActive(false);
+
+                    if (!playerLost)
+                    {
+                        winScreen.SetActive(true);
+                    }
+                }
+
+
+                if (Tick == 8)
+                {
+                    if (playerLost)
+                    {
+                        Manager.Instance.Result(false);
+                    }
+
+                    if (!playerLost)
+                    {
+                        audioManager.StopMusic();
+                        Manager.Instance.Result(true);
+                    }
+                }
+            }
         }
     }
 }

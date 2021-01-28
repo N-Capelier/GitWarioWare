@@ -15,20 +15,11 @@ namespace TrioSAS
             public AudioSource StepSound;
             public AudioSource EndSound;
 
-            /*
-            public AudioSource Run_60Bpm;
-            public AudioSource Run_90Bpm;
-            public AudioSource Run_120Bpm;
-            public AudioSource Run_140Bpm;
-            */
-
             public AudioSource musicSource;
             public AudioClip Run_60Bpm;
             public AudioClip Run_80Bpm;
             public AudioClip Run_100Bpm;
             public AudioClip Run_120Bpm;
-
-            //public AudioClip BreathMoment;
 
             // Start is called before the first frame update
             public override void Start()
@@ -37,7 +28,7 @@ namespace TrioSAS
 
                 switch (bpm)
                 {
-                    
+                  
                     case (float)BPM.Slow:
                         musicSource.PlayOneShot(Run_60Bpm, 0.4f);
                         break;

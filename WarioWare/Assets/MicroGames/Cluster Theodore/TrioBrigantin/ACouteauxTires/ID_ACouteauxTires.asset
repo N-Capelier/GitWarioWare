@@ -14,17 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cluster: 0
   trio: Brigantin
-  asSecondSprite: 1
-  secondSprite: {fileID: 21300000, guid: d4f3b58d388706643b41e0c4e3ca9bf8, type: 3}
   indexEnum: 0
   verbe: Verrouille-les !
   microGameScene:
     sceneAsset: {fileID: 102900000, guid: 6d6c8e8566b0f174bafa03f5cc48c3d5, type: 3}
     required: 0
-    buildIndex: 8
-  inputs: {fileID: 21300000, guid: 4e4d81cf5e30260418a902f62af49aa2, type: 3}
+    buildIndex: 2
+  inputs: {fileID: 21300000, guid: 2ad4677530d39ec48b98fa850d7a0eb1, type: 3}
   currentDifficulty: 0
-  winningStreak: 0
-  losingStreak: 0
   idWeight: 0
   hasBarrel: 0

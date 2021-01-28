@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -131,6 +130,7 @@ namespace LeRafiot
                                 lockSpawn = true;
                                 //sharkIsHere = true;
                                 actualShark = Instantiate(sharkPrefab, spawnStart.transform.position, spawnStart.transform.rotation);
+                                actualShark.SetActive(true);
                                 StartCoroutine(MoveToPosition(actualShark.transform, spawnEnd.transform.position, (tickSharkStay * (60 / bpm))));
                             }
                         }
@@ -142,7 +142,7 @@ namespace LeRafiot
                             //sharkIsHere = false;
                             if (actualShark != null)
                             {
-                                Destroy(actualShark);
+                                actualShark.SetActive(false);
                             }
                         }
                     }

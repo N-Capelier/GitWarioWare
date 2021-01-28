@@ -32,7 +32,7 @@ namespace TrapioWare
                         ClimbGameManager.Instance.setDifficulty = true;
                         break;
                     case Difficulty.HARD:
-                        ClimbGameManager.Instance.myDifficulty = 2;
+                        ClimbGameManager.Instance.myDifficulty = 1;
                      
                         
                         break;
