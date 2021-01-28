@@ -151,6 +151,7 @@ public class CompletionUI : MonoBehaviour
         yield return new WaitForSeconds(2);
         StartCoroutine(ShowCompletion());
         yield return new WaitUntil(() => Input.GetButtonDown("A_Button"));
+        Manager.Instance.CloseReward();
         ResetAllItems();
         UI.UICameraController.canSelect = true;
     }

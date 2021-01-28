@@ -769,9 +769,7 @@ namespace Caps
             }
             PlayerInventory.Instance.rewardCanvas.SetActive(true);
                 CompletionAttribution();
-
-                yield return new WaitUntil(() => Input.GetButtonDown("A_Button") && CompletionUI.completionIsDone);
-                CloseReward();
+            yield return null;
         }
         public void CloseReward()
         {
