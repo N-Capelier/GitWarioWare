@@ -56,6 +56,8 @@ namespace Boss
         }
         public IEnumerator StartBoss(CapsSorter sorter, Cap currentCap, IslandType islandType)
         {
+            phaseNumber = 1;
+            phaseBossLife = 0;
             keyStoneNumber.text = KeystoneReward.keystoneCount.ToString();
             currentType = islandType;
             currentCap.ChoseMiniGames(sorter.bossList, differentMiniGameNumber);
@@ -68,7 +70,7 @@ namespace Boss
             }
             else
             {
-                bossLifeOnStartOfFight = 150;
+                bossLifeOnStartOfFight = 10;
                 BossLifeManager.Instance.InitialLife(bossLifeOnStartOfFight);
 
             }
