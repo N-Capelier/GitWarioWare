@@ -26,6 +26,7 @@ namespace UI
         public CinemachineVirtualCamera tacticalVcam;
         public Button invisibleButton;
         public static bool canSelect;
+        public GameObject bossLifeBar;
         private void Start()
         {
             targetTransform.position = Manager.Instance.eventSystem.firstSelectedGameObject.transform.position; ; ;
@@ -60,12 +61,14 @@ namespace UI
                     tacticalVcam.gameObject.SetActive(true);
                     invisibleButton.Select();
                     PlayerMovement.Instance.ShowFarNeighboursIcon();
+                    bossLifeBar.SetActive(true);
                 }
                 else if(!uiVcam.gameObject.activeSelf)
                 {
                     uiVcam.gameObject.SetActive(true);
                     tacticalVcam.gameObject.SetActive(false);
                     PlayerMovement.Instance.playerIsland.button.Select();
+                    bossLifeBar.SetActive(false);
                     PlayerMovement.Instance.HideIcons();
                 }
             }
