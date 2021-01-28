@@ -166,17 +166,21 @@ namespace Caps
             {
                 
                 BossLifeManager.Instance.bossUI.gameObject.SetActive(false);
-                if (currentIsland.type == IslandType.Boss || currentIsland.type == IslandType.Keystone)
+                if (!currentCap.isDone)
                 {
-                    StartCoroutine(BossManager.Instance.StartBoss(sorter, currentCap, currentIsland.type));
-                    yield break;
-                }
-                else
-                {
-                    _currentCap.ChoseMiniGames(sorter);
+                    if (currentIsland.type == IslandType.Boss || currentIsland.type == IslandType.Keystone)
+                    {
+                        StartCoroutine(BossManager.Instance.StartBoss(sorter, currentCap, currentIsland.type));
+                        yield break;
+                    }
+                    else
+                    {
+                        _currentCap.ChoseMiniGames(sorter);
+
+                    }
+
 
                 }
-
                 shipOpening.gameObject.SetActive(true);
 
                 StartCoroutine(ZoomCam(shipOpening.openingTime));
@@ -505,6 +509,14 @@ namespace Caps
             if (currentCap.isDone || PlayerMovement.Instance.playerIsland.isDone)
                 _giveReward = false;
 
+
+            if(currentIsland.type == IslandType.Keystone)
+            {
+                foreach (var cap in currentIsland.capList)
+                {
+                    cap.isDone = true;
+                }
+            }
             currentCap.isDone = true;
 
             Island _island = null;
