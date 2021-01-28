@@ -15,6 +15,7 @@ namespace Player
     public class PlayerMovement : Singleton<PlayerMovement>
     {
         public GameObject playerAvatar;
+        public GameObject vCamTarget;
         
         [Header("Island Refs")]
         public Island playerIsland;
@@ -291,7 +292,8 @@ namespace Player
         /// </summary>
         public void ResetFocus()
         {
-            PlayerMovement.Instance.playerIsland.button.Select();
+            playerIsland.button.Select();
+            vCamTarget.transform.position = playerAvatar.transform.position;
         }
 
         private void GetFarNeighbours()
