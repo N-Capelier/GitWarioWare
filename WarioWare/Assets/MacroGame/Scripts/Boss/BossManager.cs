@@ -56,6 +56,8 @@ namespace Boss
         }
         public IEnumerator StartBoss(CapsSorter sorter, Cap currentCap, IslandType islandType)
         {
+            phaseNumber = 1;
+            phaseBossLife = 0;
             keyStoneNumber.text = KeystoneReward.keystoneCount.ToString();
             currentType = islandType;
             currentCap.ChoseMiniGames(sorter.bossList, differentMiniGameNumber);
@@ -134,14 +136,18 @@ namespace Boss
             if (phaseBossLife >= bossLifeOnStartOfFight * phaseNumber / 4)
             {
                 phaseNumber++;
-                if (currentType == IslandType.Boss)
-                    SoundManager.Instance.ApplyAudioClip("speedUpJingleBoss", transitionMusic, Manager.Instance.bpm);
+                if(phaseNumber != 5)
+                {
+                    if (currentType == IslandType.Boss)
+                        SoundManager.Instance.ApplyAudioClip("speedUpJingleBoss", transitionMusic, Manager.Instance.bpm);
+                    else
+                        SoundManager.Instance.ApplyAudioClip("speedUpJingleMiniBoss", transitionMusic, Manager.Instance.bpm);
+                    transitionMusic.PlaySecured();
+                    Manager.Instance.speedUp.SetActive(true);
+                    transition.SpeedUp((float)Manager.Instance.bpm);
+
+                }
                 else
-                    SoundManager.Instance.ApplyAudioClip("speedUpJingleMiniBoss", transitionMusic, Manager.Instance.bpm);
-                transitionMusic.PlaySecured();
-                Manager.Instance.speedUp.SetActive(true);
-                transition.SpeedUp((float)Manager.Instance.bpm);
-                if(phaseNumber == 5)
                 {
                     Manager.Instance.victory.SetActive(true);
                 }
@@ -149,21 +155,13 @@ namespace Boss
                 if (phaseNumber == 5)
                 {
                     int _sceneIndex = Manager.Instance.macroSceneIndex;
-                    if(currentType == IslandType.Boss)
-                    {
-                        if (SceneManager.GetSceneByBuildIndex(_sceneIndex).name == "WorldMap")
-                        {
-                            SceneManager.LoadScene("Menu");
-                        }
-                    }
-                    else
-                    {
-                        StartCoroutine(Manager.Instance.CapEnd());
+                    
+                        StartCoroutine(Manager.Instance.CapEnd(true));
                         Manager.Instance.victory.SetActive(false);
                         transitionCam.enabled = false;
 
                         yield break;
-                    }
+                    
                     
                 }
                 Manager.Instance.bpm = Manager.Instance.bpm.Next();
@@ -171,8 +169,8 @@ namespace Boss
             }
 
 
-            Manager.Instance.GlobalTransitionEnd(true);
-            transitionCam.enabled = false;
+            Manager.Instance.GlobalTransitionEnd ( transitionCam, true);
+            
         }
     }
 

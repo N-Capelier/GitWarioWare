@@ -20,6 +20,7 @@ namespace Player
         public GameObject itemDescriptionContainer;
         public TextMeshProUGUI itemDescription;
         public TextMeshProUGUI itemName;
+        public GameObject[] keystones;
 
         [Header("Override Confirmation")]
         public GameObject overrideConfirmationPanel;
@@ -85,6 +86,8 @@ namespace Player
                 rewardToAddImage.gameObject.SetActive(true);
                 rewardToAddImage.sprite = rewardToAdd.sprite;
             }
+
+            ShowCollectedKeyStone();
         }
 
         public void Hide()
@@ -272,5 +275,21 @@ namespace Player
             indexToOverride = -1;
         }
 
+        private void ShowCollectedKeyStone()
+        {
+            for (int i = 0; i < keystones.Length; i++)
+            {
+                if (keystones[i])
+                {
+                    //keystones[i].SetActive(true);
+                }
+            }
+        }
+
+
+        public void GetKeyStone(string name)
+        {
+
+        }
     }
 }

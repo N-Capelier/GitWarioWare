@@ -6,7 +6,7 @@ using Caps;
 using UI;
 using UnityEngine.SceneManagement;
 using Sound;
-
+using UnityEngine.VFX;
 
 namespace Player
 {
@@ -37,6 +37,9 @@ namespace Player
         [HideInInspector] public int isSturdy = 0;
         [HideInInspector] public int sturdyHealAmmount = 3;
 
+        [Header("VFX")]
+        [SerializeField] public VisualEffect clouds = null;
+
         #endregion
 
         private void Awake()
@@ -58,7 +61,7 @@ namespace Player
         void Update()
         {
             //Show / Hide Inventory //check micro UI inactive
-            if (!Manager.Instance.capUI.activeSelf && Input.GetButtonDown("Y_Button") && !inInventory)
+            if (!Manager.Instance.capUI.activeSelf && Input.GetButtonDown("Y_Button") && !inInventory && UI.UICameraController.canSelect)
             {
                 PlayerInventory.Instance.Show();
             }
@@ -141,6 +144,7 @@ namespace Player
             }
             UpdatePlayerUI.Invoke();
         }
+
         public void GainKeyStone()
         {
             Manager.Instance.KeyStoneReset();

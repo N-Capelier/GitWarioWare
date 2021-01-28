@@ -90,6 +90,7 @@ namespace Caps
         public GameObject playerHealthUI;
         public TextMeshProUGUI idName;
         public GameObject clock;
+        public GameObject cloudVFX;
 
 
         [Header("Transition")]
@@ -131,6 +132,8 @@ namespace Caps
             losingStreakNumber = (int)DebugToolManager.Instance.ChangeVariableValue("losingStreakNumber");
             miniGameNumberPerCap = (int)DebugToolManager.Instance.ChangeVariableValue("miniGameNumberPerCap");
             cantDoTransition = true;
+            KeystoneReward.keystoneCount = 0;
+            KeystoneReward.tutorialCompleted = false;
         }
 
 
@@ -140,9 +143,11 @@ namespace Caps
         /// </summary>
         /// <param name="_currentCap"></param>
         /// <returns></returns>
-        public IEnumerator StartMiniGame(Cap _currentCap, Island _currentIsland, bool isBoss = false)
+        public IEnumerator StartMiniGame(Cap _currentCap, Island _currentIsland ,Camera _transitionCam  = null, bool isBoss = false)
         {
             UI.UICameraController.canSelect = false;
+            if (_transitionCam == null)
+                _transitionCam = transitionCam;
 
             int _keyStoneImpact = Mathf.RoundToInt(KeystoneReward.keystoneCount / 2f);
             numberBeforSpeedUp = 1 + Mathf.RoundToInt(((float)_currentIsland.difficulty + 1f) / 5f) + _keyStoneImpact + Mathf.RoundToInt(1f / (1f + _keyStoneImpact));
@@ -185,7 +190,7 @@ namespace Caps
                 }
             }
 
-            StartCoroutine(PlayMiniGame(transitionCam, isBoss));
+            StartCoroutine(PlayMiniGame(_transitionCam, isBoss));
         }
         public IEnumerator StartMiniGame(Cap _currentCap)
         {
@@ -224,7 +229,7 @@ namespace Caps
             macroUI.SetActive(false);
             ressourcesUI.SetActive(false);
             playerHealthUI.SetActive(false);
-
+            cloudVFX.SetActive(false);
 
             FadeManager.Instance.NoPanel();
             if (!isBoss)
@@ -452,11 +457,11 @@ namespace Caps
                 StartCoroutine(CapEnd());
                 yield break;
             }
-            GlobalTransitionEnd();
+            GlobalTransitionEnd(transitionCam);
 
         }
 
-        public void GlobalTransitionEnd(bool isBoss = false)
+        public void GlobalTransitionEnd(Camera _transtionCam ,bool isBoss = false)
         {
             if (currentMiniGame == currentCap.chosenMiniGames.Count)
             {
@@ -474,7 +479,7 @@ namespace Caps
             currentAsyncScene = SceneManager.LoadSceneAsync(currentCap.chosenMiniGames[currentMiniGame].microGameScene.BuildIndex, LoadSceneMode.Additive);
             currentAsyncScene.allowSceneActivation = false;
             if (currentIsland != null)
-                StartCoroutine(StartMiniGame(currentCap, currentIsland, isBoss));
+                StartCoroutine(StartMiniGame(currentCap, currentIsland,_transtionCam, isBoss));
             else
                 StartCoroutine(StartMiniGame(currentCap));
 
@@ -483,7 +488,7 @@ namespace Caps
         /// <summary>
         /// reset values
         /// </summary>
-        public IEnumerator CapEnd()
+        public IEnumerator CapEnd(bool isOver = false)
         {
             #region resetValue;
 
@@ -566,7 +571,7 @@ namespace Caps
                 StartCoroutine(UnzoomCam());
                 yield return new WaitForSeconds(shipOpening.openingTime * 2);
 
-                StartCoroutine(RewardUI());
+                StartCoroutine(RewardUI(isOver));
 
             }
             else
@@ -752,8 +757,8 @@ namespace Caps
 
             sorter.iDCardsPlayed = new List<IDCard>();
         }
-
-        private IEnumerator RewardUI()
+        private bool isTutoDialogDone;
+        private IEnumerator RewardUI(bool isOver =false)
         {
             // eventSystem = EventSystem.current;
             eventSystem.enabled = false;
@@ -766,12 +771,10 @@ namespace Caps
                 PlayerInventory.Instance.rewardImage.enabled = false;
             }
             PlayerInventory.Instance.rewardCanvas.SetActive(true);
-                CompletionAttribution();
-
-                yield return new WaitUntil(() => Input.GetButtonDown("A_Button") && CompletionUI.completionIsDone);
-                CloseReward();
+                CompletionAttribution(isOver);
+            yield return null;
         }
-        public void CloseReward()
+        public void CloseReward(bool isOver = false)
         {
             //apply object effect if ressource
             PlayerInventory.Instance.rewardCanvas.SetActive(false);
@@ -805,19 +808,35 @@ namespace Caps
                     DialogueManager.Instance.PlayDialogue(4, 6);
                     isFirstMiniGame = false;
                 }
-                else if(KeystoneReward.tutorialCompleted && KeystoneReward.keystoneCount == 0)
+                else if(KeystoneReward.tutorialCompleted && KeystoneReward.keystoneCount == 0 && !isTutoDialogDone)
                 {
-                    DialogueManager.Instance.PlayDialogue(10, 6, VcamTarget, allIslands[16].transform,5);
+                    isTutoDialogDone = true;
+                    DialogueManager.Instance.PlayDialogue(10, 6, 5, VcamTarget, allIslands[16].transform);
                 }
                 else if (PlayerMovement.Instance.playerIsland.type == IslandType.Keystone)
                 {
-                    switch (KeystoneReward.keystoneCount)
+                    PlayerInventory.Instance.GetKeyStone(PlayerMovement.Instance.playerIsland.keyStoneIslandReward.rewardName);
+                    switch (PlayerMovement.Instance.playerIsland.keyStoneIslandReward.rewardName)
                     {
-                        case 1:
+                        case "Les voiles du Queen Anne’s Revenge":
+                            DialogueManager.Instance.PlayDialogue(16,1);
+                            break;
+                        case "Les canons de l’Adventure Galley":
+                            DialogueManager.Instance.PlayDialogue(17, 1);
+                            break;
+                        case "Figure de proue du Sloop William":
+                            DialogueManager.Instance.PlayDialogue(18, 1);
+                            break;
+                        case "La barre du The William":
+                            DialogueManager.Instance.PlayDialogue(19, 1);
                             break;
                         default:
                             break;
                     }
+                }
+                else if (isOver)
+                {
+                    DialogueManager.Instance.PlayDialogue(20, 2);
                 }
                 else
                     eventSystem.enabled = true;
@@ -826,7 +845,7 @@ namespace Caps
 
         }
 
-        private void CompletionAttribution()
+        private void CompletionAttribution( bool isOver =false)
         {
             float pourcentageCompleted = miniGameWon / currentCap.length;
             int currentMonnaie;
@@ -930,7 +949,7 @@ namespace Caps
                 additionalGold += 15;
             }
 
-            PlayerManager.Instance.completionUI.StartCompletion(pourcentageCompleted);
+            PlayerManager.Instance.completionUI.StartCompletion(pourcentageCompleted,isOver);
          
             PlayerManager.Instance.GainCoins(goldToAdd+additionalGold);
             PlayerManager.Instance.Heal(woodToAdd);
@@ -981,6 +1000,7 @@ namespace Caps
         public IEnumerator UnzoomCam()
         {
             ressourcesUI.SetActive(true);
+            cloudVFX.SetActive(true);
             eventSystem.enabled = false;
             VcamTarget.transform.position = PlayerMovement.Instance.playerAvatar.transform.position;
             VcamTarget.transform.DOMove(initalCamTransform.position, shipOpening.openingTime * 2).SetEase(Ease.InOutCubic);
