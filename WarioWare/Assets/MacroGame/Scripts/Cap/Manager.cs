@@ -485,7 +485,7 @@ namespace Caps
         /// <summary>
         /// reset values
         /// </summary>
-        public IEnumerator CapEnd()
+        public IEnumerator CapEnd(bool isOver = false)
         {
             #region resetValue;
 
@@ -568,7 +568,7 @@ namespace Caps
                 StartCoroutine(UnzoomCam());
                 yield return new WaitForSeconds(shipOpening.openingTime * 2);
 
-                StartCoroutine(RewardUI());
+                StartCoroutine(RewardUI(isOver));
 
             }
             else
@@ -755,7 +755,7 @@ namespace Caps
             sorter.iDCardsPlayed = new List<IDCard>();
         }
         private bool isTutoDialogDone;
-        private IEnumerator RewardUI()
+        private IEnumerator RewardUI(bool isOver =false)
         {
             // eventSystem = EventSystem.current;
             eventSystem.enabled = false;
@@ -768,10 +768,10 @@ namespace Caps
                 PlayerInventory.Instance.rewardImage.enabled = false;
             }
             PlayerInventory.Instance.rewardCanvas.SetActive(true);
-                CompletionAttribution();
+                CompletionAttribution(isOver);
             yield return null;
         }
-        public void CloseReward()
+        public void CloseReward(bool isOver = false)
         {
             //apply object effect if ressource
             PlayerInventory.Instance.rewardCanvas.SetActive(false);
@@ -816,16 +816,24 @@ namespace Caps
                     switch (PlayerMovement.Instance.playerIsland.keyStoneIslandReward.rewardName)
                     {
                         case "Les voiles du Queen Anne’s Revenge":
+                            DialogueManager.Instance.PlayDialogue(16,1);
                             break;
                         case "Les canons de l’Adventure Galley":
+                            DialogueManager.Instance.PlayDialogue(17, 1);
                             break;
                         case "Figure de proue du Sloop William":
+                            DialogueManager.Instance.PlayDialogue(18, 1);
                             break;
                         case "La barre du The William":
+                            DialogueManager.Instance.PlayDialogue(19, 1);
                             break;
                         default:
                             break;
                     }
+                }
+                else if (isOver)
+                {
+                    DialogueManager.Instance.PlayDialogue(20, 2);
                 }
                 else
                     eventSystem.enabled = true;
@@ -834,7 +842,7 @@ namespace Caps
 
         }
 
-        private void CompletionAttribution()
+        private void CompletionAttribution( bool isOver =false)
         {
             float pourcentageCompleted = miniGameWon / currentCap.length;
             int currentMonnaie;
@@ -938,7 +946,7 @@ namespace Caps
                 additionalGold += 15;
             }
 
-            PlayerManager.Instance.completionUI.StartCompletion(pourcentageCompleted);
+            PlayerManager.Instance.completionUI.StartCompletion(pourcentageCompleted,isOver);
          
             PlayerManager.Instance.GainCoins(goldToAdd+additionalGold);
             PlayerManager.Instance.Heal(woodToAdd);

@@ -155,21 +155,13 @@ namespace Boss
                 if (phaseNumber == 5)
                 {
                     int _sceneIndex = Manager.Instance.macroSceneIndex;
-                    if(currentType == IslandType.Boss)
-                    {
-                        if (SceneManager.GetSceneByBuildIndex(_sceneIndex).name == "WorldMap")
-                        {
-                            SceneManager.LoadScene("Menu");
-                        }
-                    }
-                    else
-                    {
-                        StartCoroutine(Manager.Instance.CapEnd());
+                    
+                        StartCoroutine(Manager.Instance.CapEnd(true));
                         Manager.Instance.victory.SetActive(false);
                         transitionCam.enabled = false;
 
                         yield break;
-                    }
+                    
                     
                 }
                 Manager.Instance.bpm = Manager.Instance.bpm.Next();

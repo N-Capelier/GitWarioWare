@@ -51,11 +51,11 @@ public class CompletionUI : MonoBehaviour
     }
 
     // Update is called once per frame
-    public void StartCompletion(float completion)
+    public void StartCompletion(float completion, bool isOver = false)
     {
         completionIsDone = false;
         _completion = completion;
-        StartCoroutine(CompletionRoutine());
+        StartCoroutine(CompletionRoutine(isOver));
     }
 
     void ShowMoral()
@@ -140,7 +140,7 @@ public class CompletionUI : MonoBehaviour
         }
     }
 
-    private IEnumerator CompletionRoutine()
+    private IEnumerator CompletionRoutine(bool isOver = false)
     {
         ResetAllItems();
         rewardCanvas.SetActive(true);
@@ -151,7 +151,7 @@ public class CompletionUI : MonoBehaviour
         yield return new WaitForSeconds(2);
         StartCoroutine(ShowCompletion());
         yield return new WaitUntil(() => Input.GetButtonDown("A_Button"));
-        Manager.Instance.CloseReward();
+        Manager.Instance.CloseReward(isOver);
         ResetAllItems();
         UI.UICameraController.canSelect = true;
     }
