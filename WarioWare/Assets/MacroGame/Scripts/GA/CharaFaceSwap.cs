@@ -8,21 +8,25 @@ public class CharaFaceSwap : MonoBehaviour
     [Header("Emplacements"), SerializeField]
     private SpriteRenderer Face;
 
-    [Header("Anim"), SerializeField]
-    private Animator animator;
-    public Animation happy; 
-    public Animation sad; 
-    public Animation iddle; 
-    public Animation angry; 
-
     void Awake()
     {
-        ChangeFace(FacePack);
+        FaceChangeNeutral();
     }
 
-    public void ChangeFace(SCO_CharaFace _FacePack)
+    public void FaceChangeNeutral()
     {
-        //List à edit 
-        Face.sprite = _FacePack.faceNeutral;
+        Face.sprite = FacePack.faceNeutral;
+    }
+    public void FaceChangeHappy()
+    {
+        Face.sprite = FacePack.faceHappy;
+    }
+    public void FaceChangeAngry()
+    {
+        Face.sprite = FacePack.faceAngry;
+    }
+    public void FaceChangeSad()
+    {
+        Face.sprite = FacePack.faceSad;
     }
 }
