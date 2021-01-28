@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dc13c8e99071864189b9581d8c6f80c, type: 3}
   m_Name: PackDeRations
   m_EditorClassIdentifier: 
-  rewardName: Pack de rations
+  rewardName: Pack de limonade
   sprite: {fileID: 21300000, guid: 2543f65f0b7ea704cade200c2bff7adb, type: 3}
   type: 0
   rarity: 1
