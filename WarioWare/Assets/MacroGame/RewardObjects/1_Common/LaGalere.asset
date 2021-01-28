@@ -19,5 +19,5 @@ MonoBehaviour:
   effect: 0
   price: 80
   dropRateWeight: 80
-  beatcoinAmount: 20
-  foodAmount: 10
+  beatcoinAmount: 30
+  foodAmount: 100

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using Caps;
 
 namespace LeRafiot
@@ -139,7 +137,7 @@ namespace LeRafiot
                 
                 if (rope.GetPosition(1).y > 0)
                 {
-                    if (level3 && !Manager.Instance.panel.activeSelf)
+                    if (level3 && !Manager.Instance.panel.activeSelf && win == false)
                     {
                         attachedTo.transform.position -= new Vector3(0, pullingDownRopeSize);   //Automatically pulling down the chest in rythm with tick
                     }

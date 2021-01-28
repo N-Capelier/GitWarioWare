@@ -17,12 +17,12 @@ MonoBehaviour:
   asSecondSprite: 0
   secondSprite: {fileID: 0}
   indexEnum: 3
-  verbe: Ascend !
+  verbe: Remonte !
   microGameScene:
     sceneAsset: {fileID: 102900000, guid: a390dcaae7f88024697b093263341d5d, type: 3}
     required: 0
-    buildIndex: 7
-  inputs: {fileID: 21300000, guid: d4f3b58d388706643b41e0c4e3ca9bf8, type: 3}
+    buildIndex: 6
+  inputs: {fileID: 21300000, guid: 227e01116e19ee9458c8d084c8681391, type: 3}
   currentDifficulty: 0
   winningStreak: 0
   losingStreak: 0

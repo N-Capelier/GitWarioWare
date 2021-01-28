@@ -1522,7 +1522,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 583979742}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.6, y: -0.94, z: 0}
+  m_LocalPosition: {x: -3.54, y: -0.94, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1093690022}
@@ -5240,7 +5240,7 @@ MonoBehaviour:
   positions: []
   needToCheck: 0
   numberOfLadder: 0
-  numberOfLadderNeeded: 28
+  numberOfLadderNeeded: 27
   player: {fileID: 1772324384}
   playerSkin: {fileID: 628879309}
   playerPosition: 0

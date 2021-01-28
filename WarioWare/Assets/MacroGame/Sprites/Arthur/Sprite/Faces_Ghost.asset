@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e107fc09272662147bdc5c44a2a6bd76, type: 3}
   m_Name: Faces_Ghost
   m_EditorClassIdentifier: 
-  faceHappy: {fileID: 0}
-  faceSad: {fileID: 0}
-  faceNeutral: {fileID: 0}
-  faceAngry: {fileID: 0}
+  faceHappy: {fileID: 1710024464717666499, guid: 26370990d2d5b6d45bf8f76ea0623889,
+    type: 3}
+  faceSad: {fileID: 1503515306661887055, guid: 19cf2003afb839d4bbb5434deae4b926, type: 3}
+  faceNeutral: {fileID: 1710024464717666499, guid: 26370990d2d5b6d45bf8f76ea0623889,
+    type: 3}
+  faceAngry: {fileID: 983493820073533693, guid: 19cf2003afb839d4bbb5434deae4b926,
+    type: 3}

@@ -59,7 +59,10 @@ public class DialogueManager : Singleton<DialogueManager>
         dialogueInRow--;
         currentDialogueNumber = dialogueNumber + 1;
         currentTarget = target;
-        positionToReset = currentTarget.transform.position;
+        if(target != null)
+        {
+            positionToReset = currentTarget.transform.position;
+        }
         Manager.Instance.eventSystem.enabled = false;
         currentDirection = direction;
         if(delay != 100)

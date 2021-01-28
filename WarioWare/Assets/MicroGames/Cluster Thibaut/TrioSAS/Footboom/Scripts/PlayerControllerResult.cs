@@ -38,11 +38,12 @@ namespace TrioSAS
             private bool cantPress;
             private bool noInput;
 
-            /*[Header("Life")]
-            public GameObject heart1;
-            public GameObject heart2;
-            public Sprite heartFull;
-            public Sprite heartEmpty;*/
+            [Header("CannonBall")]
+            public GameObject cannon1;
+            public GameObject cannon2;
+            public Sprite cannonFull;
+            public Sprite cannonMiss;
+
 
             public override void Start()
             {
@@ -86,24 +87,24 @@ namespace TrioSAS
                         break;
                 }
 
-                /*heart1.GetComponent<SpriteRenderer>().sprite = heartFull;
-                heart2.GetComponent<SpriteRenderer>().sprite = heartFull;
+                cannon1.GetComponent<SpriteRenderer>().sprite = cannonFull;
+                cannon2.GetComponent<SpriteRenderer>().sprite = cannonFull;
 
                 if (eazy)
                 {
-                    heart1.SetActive(false);
-                    heart2.SetActive(true);
+                    cannon1.SetActive(true);
+                    cannon2.SetActive(false);
                 }
                 else if (medium)
                 {
-                    heart1.SetActive(true);
-                    heart2.SetActive(true);
+                    cannon1.SetActive(true);
+                    cannon2.SetActive(true);
                 }
                 else if (hard)
                 {
-                    heart1.SetActive(true);
-                    heart2.SetActive(true);
-                }*/
+                    cannon1.SetActive(true);
+                    cannon2.SetActive(true);
+                }
             }
 
             private void Update()
@@ -130,8 +131,8 @@ namespace TrioSAS
                             cantPress = true;
 
                             ShootCounter++;
-                            //heart2.GetComponent<Animation>().Play();
-                            //heart2.GetComponent<SpriteRenderer>().sprite = heartEmpty;
+                            
+                            cannon1.GetComponent<SpriteRenderer>().sprite = cannonMiss;
 
                             if (ShootCounter == shootNecessaryEasy)
                             {
@@ -182,8 +183,9 @@ namespace TrioSAS
                             else
                             {
                                 anim.ActivateAnimation();
-                                //heart2.GetComponent<Animation>().Play();
-                                //heart2.GetComponent<SpriteRenderer>().sprite = heartEmpty;
+
+                                cannon1.GetComponent<SpriteRenderer>().sprite = cannonMiss;
+
                                 explosion.SetTrigger("explosion");
                             }
 
@@ -202,8 +204,9 @@ namespace TrioSAS
 
                         if (ShootCounter == shootNecessaryMedium)
                         {
-                            //heart1.GetComponent<Animation>().Play();
-                            //heart1.GetComponent<SpriteRenderer>().sprite = heartEmpty;
+
+                            cannon2.GetComponent<SpriteRenderer>().sprite = cannonMiss;
+
                             explosion.SetBool("lauch", true);
                             buttonPress.SetBool("PossibleSuccess", false);
 
@@ -229,8 +232,9 @@ namespace TrioSAS
                             else
                             {
                                 anim.ActivateAnimation();
-                                //heart2.GetComponent<Animation>().Play();
-                                //heart2.GetComponent<SpriteRenderer>().sprite = heartEmpty;
+
+                                cannon1.GetComponent<SpriteRenderer>().sprite = cannonMiss;
+
                                 explosion.SetTrigger("explosion");
                             }
 
@@ -249,8 +253,9 @@ namespace TrioSAS
 
                         if (ShootCounter == shootNecessaryHard)
                         {
-                            //heart1.GetComponent<Animation>().Play();
-                            //heart1.GetComponent<SpriteRenderer>().sprite = heartEmpty;
+
+                            cannon2.GetComponent<SpriteRenderer>().sprite = cannonMiss;
+
                             explosion.SetBool("lauch", true);
                             buttonPress.SetBool("PossibleSuccess", false);
 

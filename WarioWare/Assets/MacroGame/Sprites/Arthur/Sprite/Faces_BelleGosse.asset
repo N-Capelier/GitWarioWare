@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   faceHappy: {fileID: -163391381815595154, guid: 6b92f320daecbd24ab26fb486ae169a5,
     type: 3}
-  faceSad: {fileID: 5004134486832050391, guid: bee03a783cde819448bfa2b072ac8599, type: 3}
-  faceNeutral: {fileID: 6169312088180518031, guid: 6b92f320daecbd24ab26fb486ae169a5,
+  faceSad: {fileID: 6169312088180518031, guid: 6b92f320daecbd24ab26fb486ae169a5, type: 3}
+  faceNeutral: {fileID: 5004134486832050391, guid: bee03a783cde819448bfa2b072ac8599,
     type: 3}
   faceAngry: {fileID: 1304678315341353346, guid: 6b92f320daecbd24ab26fb486ae169a5,
     type: 3}

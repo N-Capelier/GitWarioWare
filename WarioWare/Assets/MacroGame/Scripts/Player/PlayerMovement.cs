@@ -7,6 +7,7 @@ using Rewards;
 using NUnit.Framework;
 using UnityEngine.EventSystems;
 using System.Collections.Generic;
+using System.Collections;
 using UnityEngine.UI;
 
 namespace Player
@@ -45,6 +46,7 @@ namespace Player
         [HideInInspector] public bool isMoving = false;
 
         [HideInInspector] public List<Island> farNeighbors = new List<Island>();
+        private bool canSelect;
 
 
         //Island Detector
@@ -136,13 +138,32 @@ namespace Player
 
                 if (PlayerManager.Instance.food > 0)
                 {
-                    if(!(isMainSail > 0 && _isCapDone))
+                    /*if(!(isMainSail > 0 && _isCapDone))
+                        PlayerManager.Instance.GainFood(-foodPrice);*/
+                    if(!_isCapDone)
+                    {
                         PlayerManager.Instance.GainFood(-foodPrice);
+                        print("!CapDone");
+                    }
+                    else if(isMainSail <= 0)
+                    {
+                        PlayerManager.Instance.GainFood(-foodPrice);
+                        print("!MainSail");
+                    }
                 }
                 else
                 {
-                    if (!(isMainSail > 0 && _isCapDone))
+                    /*if (!(isMainSail > 0 && _isCapDone))
+                        PlayerManager.Instance.TakeDamage(damagesWhenNoFood);*/
+
+                    if(!_isCapDone)
+                    {
                         PlayerManager.Instance.TakeDamage(damagesWhenNoFood);
+                    }
+                    else if(isMainSail <= 0)
+                    {
+                        PlayerManager.Instance.TakeDamage(damagesWhenNoFood);
+                    }
                 }
 
                 //Lancer le cap + check if not dead
@@ -399,17 +420,29 @@ namespace Player
             direction = new Vector3(horizontalDir, verticalDir, 0);
 
             Selectable detectedIsland = playerIsland.button.FindSelectable(direction);
-
-            if(detectedIsland!=null)
+            if (detectedIsland!=null)
             {
+                
                 for (int i = 0; i < playerIsland.accessibleNeighbours.Length; i++)
-                {
-                    if(detectedIsland == playerIsland.accessibleNeighbours[i])
+                {   
+                    if(detectedIsland.name == playerIsland.accessibleNeighbours[i].name)
                     {
-                        Debug.Log("Island Detected");
+                        print(playerIsland.accessibleNeighbours[i]);
+                        if(canSelect)
+                        {
+                            detectedIsland.Select();
+                            StartCoroutine(canSelectRoutine());
+                        }
                     }
                 }
             }
+        }
+
+        private IEnumerator canSelectRoutine()
+        {
+            canSelect = false;
+            yield return new WaitForSeconds(0.3f);
+            canSelect= true;
         }
     }
 }

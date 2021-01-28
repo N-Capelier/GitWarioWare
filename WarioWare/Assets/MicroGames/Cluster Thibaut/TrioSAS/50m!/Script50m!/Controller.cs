@@ -17,15 +17,15 @@ public class Controller : TimedBehaviour
         switch (currentDifficulty)
         {
             case Difficulty.EASY:
-                speedIncrementation = 2.8f;
+                speedIncrementation = 25.5f;
                 break;
 
             case Difficulty.MEDIUM:
-                speedIncrementation = 2.6f;
+                speedIncrementation = 24f;
                 break;
 
             case Difficulty.HARD:
-                speedIncrementation = 2.4f;
+                speedIncrementation = 22.5f;
                 break;
         }
 
@@ -34,10 +34,9 @@ public class Controller : TimedBehaviour
     // Update is called once per frame
     void Update()
     {
-        speed -= (speed/2) * Time.deltaTime;
+        speed -= (speed/2) * Time.deltaTime * 20f;
         speed = Mathf.Max(0f, speed);
         PlayerMovement();
-        //Debug.Log(speed);
     }
 
     private void PlayerMovement()
@@ -52,7 +51,7 @@ public class Controller : TimedBehaviour
 
     public void PlayerStop()
     {
-        speed = 0;
+        speed = 0.4f;
     }
 
     public void PlayerEnd()

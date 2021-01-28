@@ -104,7 +104,7 @@ namespace Dragons_Peperes
 
             private void OnTriggerEnter2D(Collider2D other)
             {
-                if (other.name == "Player")
+                if (other.name == "Player" && !minigameManager.gameFinished)
                 {
                     EndGame();
 
@@ -119,6 +119,7 @@ namespace Dragons_Peperes
 
             public void EndGame()
             {
+                minigameManager.gameFinished = true;
                 particule.SetActive(false);
                 audioManager.StopMusic();
                 audioManager.StopRunning();

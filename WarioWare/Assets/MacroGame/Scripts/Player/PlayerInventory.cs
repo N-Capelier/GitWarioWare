@@ -277,19 +277,35 @@ namespace Player
 
         private void ShowCollectedKeyStone()
         {
-            for (int i = 0; i < keystones.Length; i++)
-            {
-                if (keystones[i])
-                {
-                    //keystones[i].SetActive(true);
-                }
-            }
+            
         }
 
 
         public void GetKeyStone(string name)
         {
-
+            for (int i = 0; i < keystones.Length; i++)
+            {
+                if(name == "Les voiles du Queen Anne’s Revenge")
+                {
+                    keystones[0].SetActive(true);
+                }
+                else if (name == "Les canons de l’Adventure Galley")
+                {
+                    keystones[1].SetActive(true);
+                }
+                else if (name == "Figure de proue du Sloop William")
+                {
+                    keystones[2].SetActive(true);
+                }
+                else if (name == "La barre du The William")
+                {
+                    keystones[3].SetActive(true);
+                }
+                else if (name == "La barre du The William")
+                {
+                    keystones[4].SetActive(true);
+                }
+            }
         }
     }
 }

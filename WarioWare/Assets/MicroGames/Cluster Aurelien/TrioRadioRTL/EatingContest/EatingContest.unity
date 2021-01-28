@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -860,6 +860,8 @@ MonoBehaviour:
   inputName: B_Button
   normal: {fileID: 21300000, guid: 0d0aeb692d6fbac4d9e834a0d5dbc45e, type: 3}
   lowOpacity: {fileID: 21300000, guid: 4fc048aa41a5cb143956e3f328aa1beb, type: 3}
+  playerController: {fileID: 25077193}
+  revert: 0
 --- !u!1 &656713807
 GameObject:
   m_ObjectHideFlags: 0
@@ -1957,6 +1959,8 @@ MonoBehaviour:
   inputName: A_Button
   normal: {fileID: 21300000, guid: 92e4b3595258f53478dd053800b6f6b8, type: 3}
   lowOpacity: {fileID: 21300000, guid: 217660a7921818c43addecb76d63f0fc, type: 3}
+  playerController: {fileID: 25077193}
+  revert: 1
 --- !u!1 &1395371461
 GameObject:
   m_ObjectHideFlags: 0

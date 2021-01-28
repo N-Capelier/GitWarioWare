@@ -20,7 +20,7 @@ namespace Dragons_Peperes
             public CoinController[] coinController;
 
             public GameObject fourthSpot;
-
+            public bool fourSpotBool;
 
             bool playerWon;
 
@@ -64,6 +64,7 @@ namespace Dragons_Peperes
                 if (currentDifficulty != Difficulty.EASY)
                 {
                     fourthSpot.SetActive(true);
+                    fourSpotBool = true;
                 }
 
                 soundManager.PlayMusic();
@@ -206,7 +207,7 @@ namespace Dragons_Peperes
                 Coco_X.SetActive(true);
                 Coco_Y.SetActive(true);
 
-                if (fourthSpot == true)
+                if (fourSpotBool == true)
                 {
                     //Instantiate(hideCoin, spot4);
                     Coco_A.SetActive(true);

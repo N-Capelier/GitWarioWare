@@ -261,6 +261,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2167018571818590849, guid: 80ac864817d34d641be6448f49de01a3,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: b90188dabb79a3447b5f901af4b8cc9d, type: 3}
+    - target: {fileID: 7464705159266943713, guid: 80ac864817d34d641be6448f49de01a3,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 3ec108241bc6d6b468da815ca4525800, type: 3}
     - target: {fileID: 8977992822187955208, guid: 80ac864817d34d641be6448f49de01a3,
         type: 3}
       propertyPath: sceneCam
@@ -316,6 +326,16 @@ PrefabInstance:
       propertyPath: cloudVFX
       value: 
       objectReference: {fileID: 753237547}
+    - target: {fileID: 8977992822187955208, guid: 80ac864817d34d641be6448f49de01a3,
+        type: 3}
+      propertyPath: mainSound
+      value: 
+      objectReference: {fileID: 68011673}
+    - target: {fileID: 8977992822187955208, guid: 80ac864817d34d641be6448f49de01a3,
+        type: 3}
+      propertyPath: waveSound
+      value: 
+      objectReference: {fileID: 68011672}
     - target: {fileID: 8977992822187955210, guid: 80ac864817d34d641be6448f49de01a3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -398,6 +418,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80ac864817d34d641be6448f49de01a3, type: 3}
+--- !u!82 &68011672 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 7464705159266943713, guid: 80ac864817d34d641be6448f49de01a3,
+    type: 3}
+  m_PrefabInstance: {fileID: 68011671}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &68011673 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2167018571818590849, guid: 80ac864817d34d641be6448f49de01a3,
+    type: 3}
+  m_PrefabInstance: {fileID: 68011671}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &228851666
 GameObject:
   m_ObjectHideFlags: 0

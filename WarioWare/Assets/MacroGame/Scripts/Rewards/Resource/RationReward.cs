@@ -16,7 +16,7 @@ namespace Rewards
 
         public override void ApplyPassiveEffect()
         {
-            PlayerManager.Instance.GainFood(moralAmount);
+            PlayerManager.Instance.GainMoral(moralAmount);
         }
 
         public override string GetDescription()

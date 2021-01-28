@@ -41,6 +41,12 @@ public class CompletionUI : MonoBehaviour
     public Image chestImage;
     public ParticleSystem chestParticle;
 
+    [Header("Jingles")]
+    public AudioClip[] jingles;
+    public AudioSource jingleAudioSource;
+
+
+
     private float _completion;
     public static bool completionIsDone = false;
 
@@ -142,6 +148,10 @@ public class CompletionUI : MonoBehaviour
 
     private IEnumerator CompletionRoutine(bool isOver = false)
     {
+        int random = Random.Range(0, jingles.Length - 1);
+        jingleAudioSource.clip = jingles[random];
+        jingleAudioSource.Play();
+
         ResetAllItems();
         rewardCanvas.SetActive(true);
         yield return new WaitForSeconds(0.5f);

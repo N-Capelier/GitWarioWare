@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Keystone_4_Reward
   m_EditorClassIdentifier: 
   rewardName: La barre du The William
-  sprite: {fileID: 21300000, guid: 6314ea40dc45dad40b4c03856d6474e5, type: 3}
+  sprite: {fileID: 21300000, guid: 9ed4175df742ad14ca7073c04ba96825, type: 3}
   type: 0
   rarity: 2
   effect: 1

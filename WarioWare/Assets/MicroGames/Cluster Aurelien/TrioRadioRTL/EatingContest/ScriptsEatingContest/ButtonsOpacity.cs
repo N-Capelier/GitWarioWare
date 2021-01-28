@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Caps;
 
 /// <summary>
 /// DEUTSCHMANN Lucas
@@ -17,6 +18,8 @@ namespace RadioRTL
             public Sprite normal;
             public Sprite lowOpacity;
             SpriteRenderer spriteRenderer;
+            public PlayerController playerController;
+            public bool revert;
             // Start is called before the first frame update
             void Start()
             {
@@ -26,14 +29,44 @@ namespace RadioRTL
             // Update is called once per frame
             void Update()
             {
-                if (Input.GetButton(inputName))
+                if (Manager.Instance.currentDifficulty == Difficulty.EASY || Manager.Instance.currentDifficulty == Difficulty.MEDIUM)
                 {
-                    spriteRenderer.sprite = normal;
+                    if (!revert)
+                    {
+                        if (playerController.rottenPlate)
+                        {
+                            spriteRenderer.sprite = normal;
+                        }
+                        else
+                        {
+                            spriteRenderer.sprite = lowOpacity;
+                        }
+                    }
+                    else
+                    {
+                        if (playerController.rottenPlate)
+                        {
+                            spriteRenderer.sprite = lowOpacity;
+                        }
+                        else
+                        {
+                            spriteRenderer.sprite = normal;
+                        }
+                    }
+                    
                 }
                 else
                 {
-                    spriteRenderer.sprite = lowOpacity;
+                    if (Input.GetButton(inputName))
+                    {
+                        spriteRenderer.sprite = normal;
+                    }
+                    else
+                    {
+                        spriteRenderer.sprite = lowOpacity;
+                    }
                 }
+                
             }
         }
     }
