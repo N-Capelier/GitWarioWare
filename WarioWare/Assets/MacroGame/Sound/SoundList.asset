@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: SoundList
   m_EditorClassIdentifier: 
   soundClassic:
-  - name: Menu
+  - name: Waves
     author: 
     clip: {fileID: 8300000, guid: 3ec108241bc6d6b468da815ca4525800, type: 3}
-    volume: 0.5
+    volume: 0.2
   - name: Selected
     author: 
     clip: {fileID: 8300000, guid: 4dff5a7da1ded2349af6111eda619228, type: 3}
@@ -52,6 +52,14 @@ MonoBehaviour:
   - name: ShopMusic
     author: 
     clip: {fileID: 8300000, guid: 4e564be7a52c11b4db1c1b01f1ead2b7, type: 3}
+    volume: 0.5
+  - name: MenuMusic
+    author: 
+    clip: {fileID: 8300000, guid: a96f6214317d6f543ba36390ccd0234c, type: 3}
+    volume: 0.5
+  - name: CapMusic
+    author: 
+    clip: {fileID: 8300000, guid: 4d2cf096f160fdc49ac632df34c413d7, type: 3}
     volume: 0.5
   soundBpms:
   - sounds:
@@ -333,7 +341,7 @@ MonoBehaviour:
       volume: 0.5
     bpm: 3c000000500000006400000078000000
     name: speedUpJingleMiniBoss
-    foldout: 1
+    foldout: 0
   - sounds:
     - name: verbeJingleMiniBoss_0
       author: 

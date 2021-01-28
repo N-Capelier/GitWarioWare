@@ -23,12 +23,12 @@ namespace Boss
 
         public void InitialLife()
         {
-            bossTranstion.InitiateBossLife(maxLife,currentLife);
+            bossTranstion.InitiateBossLife(maxLife,currentLife, false);
         }
         public void InitialLife(int life)
         {
             miniBossLife = life;
-            bossTranstion.InitiateBossLife(life, life);
+            bossTranstion.InitiateBossLife(life, life, true);
         }
 
         /// <summary>

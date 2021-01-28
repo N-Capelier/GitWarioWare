@@ -58,6 +58,8 @@ namespace Caps
         */
 
         [Header("Parameters")]
+        public AudioSource mainSound;
+        public AudioSource waveSound;
         public CapsSorter sorter;
         [HideInInspector] public Island[] allIslands;
         public int zoneNumber;
@@ -132,6 +134,10 @@ namespace Caps
             losingStreakNumber = (int)DebugToolManager.Instance.ChangeVariableValue("losingStreakNumber");
             miniGameNumberPerCap = (int)DebugToolManager.Instance.ChangeVariableValue("miniGameNumberPerCap");
             cantDoTransition = true;
+            SoundManager.Instance.ApplyAudioClip("CapMusic", mainSound);
+            SoundManager.Instance.ApplyAudioClip("Waves", waveSound);
+            mainSound.PlaySecured();
+            waveSound.PlaySecured();
             KeystoneReward.keystoneCount = 0;
             KeystoneReward.tutorialCompleted = false;
         }
@@ -145,6 +151,8 @@ namespace Caps
         /// <returns></returns>
         public IEnumerator StartMiniGame(Cap _currentCap, Island _currentIsland ,Camera _transitionCam  = null, bool isBoss = false)
         {
+            mainSound.Stop();
+            waveSound.Stop();
             UI.UICameraController.canSelect = false;
             if (_transitionCam == null)
                 _transitionCam = transitionCam;
@@ -841,6 +849,8 @@ namespace Caps
                 else
                     eventSystem.enabled = true;
             }
+            mainSound.PlaySecured();
+            waveSound.PlaySecured();
 
 
         }

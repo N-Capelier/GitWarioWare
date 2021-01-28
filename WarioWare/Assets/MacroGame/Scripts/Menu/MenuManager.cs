@@ -17,12 +17,15 @@ public class MenuManager : MonoBehaviour
     private AsyncOperation loading;
     public AudioSource mainMusic;
     public AudioSource buttonSounds;
+    public AudioSource waveSource;
 
     public EventTrigger[] buttonEventTriggers;
     private void Start()
     {
-        SoundManager.Instance.ApplyAudioClip("Menu", mainMusic);
+        SoundManager.Instance.ApplyAudioClip("MenuMusic", mainMusic);
+        SoundManager.Instance.ApplyAudioClip("Waves", waveSource);
         mainMusic.PlaySecured();
+        waveSource.PlaySecured();
 
         for (int i = 0; i < buttonEventTriggers.Length; i++)//link onSelect to all buttons
         {

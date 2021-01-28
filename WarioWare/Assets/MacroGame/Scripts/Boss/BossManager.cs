@@ -40,6 +40,7 @@ namespace Boss
         public int differentMiniGameNumber = 4;
         public bool isFinalBoss;
         public float damageMultiplier = 1.2f;
+
         private void Awake()
         {
             CreateSingleton();
