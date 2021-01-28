@@ -3,16 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using Caps;
+using UnityEngine.UI;
+
 namespace Boss
 {
     public class BossLifeManager : Singleton<BossLifeManager>
     {
-        public Transform lifeRect;
         public BossUI bossUI;
         public static int currentLife = 100;
         public  int maxLife = 150;
         public BossTransitionUI bossTranstion;
         public int miniBossLife = 0;
+        public Image bossHPFillbar;
         private void Awake()
         {
             CreateSingleton();
@@ -37,8 +39,8 @@ namespace Boss
         /// <param name="damageValue"></param>
         /// <returns></returns>
         public bool TakeDamage (int damageValue, int initialLife = 150, bool isBoss = false, bool isMiniBoss = false)
-        {           
-
+        {
+            bossHPFillbar.fillAmount = currentLife / initialLife;
             if (!isBoss)
             {
                 StartCoroutine(bossTranstion.BossTakeDamage(initialLife, currentLife));
