@@ -1274,6 +1274,7 @@ GameObject:
   - component: {fileID: 4728909290671667723}
   - component: {fileID: 1686138447289389309}
   - component: {fileID: 4223811213116350353}
+  - component: {fileID: 2671545991425641902}
   m_Layer: 0
   m_Name: RewardCanvas
   m_TagString: Untagged
@@ -1364,6 +1365,102 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!82 &2671545991425641902
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3299624670619868226}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &3399364138865890343
 GameObject:
   m_ObjectHideFlags: 0
@@ -2980,6 +3077,13 @@ MonoBehaviour:
   completionText: {fileID: 5172246268383131380}
   chestImage: {fileID: 6002284537647770760}
   chestParticle: {fileID: 8635724269518131894}
+  jingles:
+  - {fileID: 8300000, guid: 7aae66e3ace122543aaa07ab67caa9e9, type: 3}
+  - {fileID: 8300000, guid: 9ba4de1a24f371647913b4d1a6235e96, type: 3}
+  - {fileID: 8300000, guid: 4ea9b6b27bd0d24479d8782203fd789e, type: 3}
+  - {fileID: 8300000, guid: 9d8401605043cbe44a4dafd2d2a33d4f, type: 3}
+  - {fileID: 8300000, guid: 2bc25d9991965924d8391182942655c1, type: 3}
+  jingleAudioSource: {fileID: 2671545991425641902}
 --- !u!1 &6188493371540205659
 GameObject:
   m_ObjectHideFlags: 0
@@ -4476,15 +4580,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3cc0ea95a9b1a624f946ffbd410f605d, type: 3}
---- !u!198 &8635724269518131894 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 8031801390144277891, guid: 3cc0ea95a9b1a624f946ffbd410f605d,
-    type: 3}
-  m_PrefabInstance: {fileID: 1778624672360881973}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8635724269518131893 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8031801390144277888, guid: 3cc0ea95a9b1a624f946ffbd410f605d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1778624672360881973}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &8635724269518131894 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 8031801390144277891, guid: 3cc0ea95a9b1a624f946ffbd410f605d,
     type: 3}
   m_PrefabInstance: {fileID: 1778624672360881973}
   m_PrefabAsset: {fileID: 0}

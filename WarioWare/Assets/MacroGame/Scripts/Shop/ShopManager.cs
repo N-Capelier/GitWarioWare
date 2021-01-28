@@ -34,6 +34,9 @@ namespace Shop
 
         [HideInInspector] public bool inShop;
 
+        public Reward keyStoneReward;
+        bool keystoneIsBought = false;
+
         private AudioSource audioSource;
         public AudioSource ambianceSource;
 
@@ -104,10 +107,12 @@ namespace Shop
                 }
             }
 
-            /*for (int i = 0; i < shopItems[0].Count; i++)
+
+            if (!keystoneIsBought)
             {
-                print(shopItems[0][i].name);
-            }*/
+                int random = Random.Range(0, shopIslands.Length - 1);
+                shopItems[random][0] = keyStoneReward;
+            }
         }
 
         private void LoadShopItems(int index)
@@ -190,6 +195,11 @@ namespace Shop
                         if(shopItems[loadedShopIndex][i].type == RewardType.Resource)
                         {
                             shopItems[loadedShopIndex][i].ApplyPassiveEffect();
+                            if (shopItems[loadedShopIndex][i] == keyStoneReward)
+                            {
+                                PlayerInventory.Instance.GetKeyStone(keyStoneReward.rewardName);
+                                keystoneIsBought = true;
+                            }
                         }
                         else
                         {
