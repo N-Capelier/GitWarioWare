@@ -38,6 +38,7 @@ namespace LeRafiot
 
             [Header("Temps pour le spawn")]
             public int startTick3;
+            public SharkManager sharkManager;
 
             #endregion
 
@@ -45,7 +46,6 @@ namespace LeRafiot
             {
                 base.Start();
                 ropeScript = rope.GetComponent<RopeController>();
-                
                 SetValues();
             }
 
@@ -70,7 +70,7 @@ namespace LeRafiot
                     ropeScript.pullingUpRopeSize = pullingUpRopeSize1;
                     ropeScript.attachedTo.transform.localPosition = new Vector3(0, ropeScript.ropeSize);
 
-                    SharkManager.Instance.sharkSysteme = false;
+                    sharkManager.sharkSysteme = false;
                 }
                 else if (Manager.Instance.currentDifficulty == Difficulty.MEDIUM)
                 {
@@ -81,7 +81,7 @@ namespace LeRafiot
                     ropeScript.pullingDownRopeSize = pullingDownRopeSize2;
                     ropeScript.attachedTo.transform.localPosition = new Vector3(0, ropeScript.ropeSize);
 
-                    SharkManager.Instance.sharkSysteme = false;
+                    sharkManager.sharkSysteme = false;
                 }
                 else if (Manager.Instance.currentDifficulty == Difficulty.HARD)
                 {
@@ -89,12 +89,14 @@ namespace LeRafiot
                     ropeScript.pullingUpRopeSize = pullingUpRopeSize3;
                     ropeScript.attachedTo.transform.localPosition = new Vector3(0, ropeScript.ropeSize);
 
-                    SharkManager.Instance.sharkSysteme = true;
+                    sharkManager.sharkSysteme = true;
 
-                    SharkManager.Instance.tickBeforeSpawn = tickBeforeSpawn3;
-                    SharkManager.Instance.tickSharkStay = tickSharkStay3;
-                    SharkManager.Instance.startTick = startTick3;
+                    sharkManager.tickBeforeSpawn = tickBeforeSpawn3;
+                    sharkManager.tickSharkStay = tickSharkStay3;
+                    sharkManager.startTick = startTick3;
                 }
+
+               
             }
         }
     }

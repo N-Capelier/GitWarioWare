@@ -3525,6 +3525,14 @@ PrefabInstance:
       propertyPath: loseAnimator
       value: 
       objectReference: {fileID: 1423864104}
+    - target: {fileID: 1295587207, guid: 7f2f3f968f5dc2149a0aace6f38364b3, type: 3}
+      propertyPath: sharkManager
+      value: 
+      objectReference: {fileID: 1481258872}
+    - target: {fileID: 1295587207, guid: 7f2f3f968f5dc2149a0aace6f38364b3, type: 3}
+      propertyPath: sound
+      value: 
+      objectReference: {fileID: 1247814705}
     - target: {fileID: 1798208034, guid: 7f2f3f968f5dc2149a0aace6f38364b3, type: 3}
       propertyPath: m_LocalPosition.y
       value: -2.5
@@ -3598,6 +3606,16 @@ PrefabInstance:
       propertyPath: camBoat
       value: 
       objectReference: {fileID: 55039579}
+    - target: {fileID: 2605243809034401487, guid: 7f2f3f968f5dc2149a0aace6f38364b3,
+        type: 3}
+      propertyPath: sharkManager
+      value: 
+      objectReference: {fileID: 1481258872}
+    - target: {fileID: 2605243809034401487, guid: 7f2f3f968f5dc2149a0aace6f38364b3,
+        type: 3}
+      propertyPath: sound
+      value: 
+      objectReference: {fileID: 1247814705}
     - target: {fileID: 5447814934370675385, guid: 7f2f3f968f5dc2149a0aace6f38364b3,
         type: 3}
       propertyPath: sign
@@ -3628,6 +3646,11 @@ PrefabInstance:
       propertyPath: finalScale.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5447814934370675385, guid: 7f2f3f968f5dc2149a0aace6f38364b3,
+        type: 3}
+      propertyPath: sound
+      value: 
+      objectReference: {fileID: 1247814705}
     - target: {fileID: 7004696036656574218, guid: 7f2f3f968f5dc2149a0aace6f38364b3,
         type: 3}
       propertyPath: m_Name
@@ -3711,6 +3734,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cd385496877b10f419393b798d445c5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1481258872 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5447814934370675385, guid: 7f2f3f968f5dc2149a0aace6f38364b3,
+    type: 3}
+  m_PrefabInstance: {fileID: 1481258869}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e8155d5661b8844cb247c82e0c603a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1506365009
@@ -4737,6 +4772,7 @@ MonoBehaviour:
   tickBeforeSpawn3: 2
   tickSharkStay3: 2
   startTick3: 1
+  sharkManager: {fileID: 1481258872}
 --- !u!1 &2049344693
 GameObject:
   m_ObjectHideFlags: 0

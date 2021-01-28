@@ -30,6 +30,8 @@ namespace LeRafiot
             [Header("Script")]
             public RopeController robeControllerScript;
             public Animator loseAnimator;
+            public SharkManager sharkManager;
+            public SoundManager123Requin sound;
             #endregion
 
             public override void Start()
@@ -54,7 +56,7 @@ namespace LeRafiot
                 if (Tick == 8 && !robeControllerScript.win && !Manager.Instance.panel.activeSelf && !playerCatchByShark)                //Lose if at the end of the game, the player don't pull the chest to the boat 
                 {
                     Manager.Instance.Result(false);
-                    SoundManager123Requin.Instance.sfxSound[1].Play();
+                    sound.sfxSound[1].Play();
                     buttonAnimator.gameObject.SetActive(false);
                 }
                 if (Tick == 8 && !robeControllerScript.win && playerCatchByShark && !Manager.Instance.panel.activeSelf)
@@ -67,7 +69,7 @@ namespace LeRafiot
                     tickNumber.text = Tick.ToString();
                 }
 
-                if (Tick < 8 && !SharkManager.Instance.sharkIsHere)
+                if (Tick < 8 && !sharkManager.sharkIsHere)
                 {
                     buttonAnimator.SetTrigger("Press");
                 }
@@ -77,7 +79,7 @@ namespace LeRafiot
             {              
                 if (!Manager.Instance.panel.activeSelf)                             //Lose if the player pulling up the chest when a shark is here
                 {
-                    if (SharkManager.Instance.sharkIsHere && !playerCatchByShark)              
+                    if (sharkManager.sharkIsHere && !playerCatchByShark)              
                     {
                         buttonAnimator.SetBool("DontPress", true);
 
@@ -86,7 +88,7 @@ namespace LeRafiot
                             playerCatchByShark = true;
                             loseAnimator.SetBool("Lose", true);
                             //Manager.Instance.Result(false);
-                            SoundManager123Requin.Instance.sfxSound[1].Play();
+                            sound.sfxSound[1].Play();
                             robeControllerScript.controllerDisabled = true;
                             buttonAnimator.gameObject.SetActive(false);                        
                         }

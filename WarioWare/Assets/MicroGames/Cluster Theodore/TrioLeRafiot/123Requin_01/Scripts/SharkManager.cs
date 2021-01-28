@@ -8,7 +8,6 @@ namespace LeRafiot
     {
         public class SharkManager : TimedBehaviour
         {
-            public static SharkManager Instance;
 
             #region Variables
             [Header ("Active le systeme de spawn du requin")]
@@ -46,13 +45,13 @@ namespace LeRafiot
             private bool canFlash;
 
             private bool lockSpawn;
+            public SoundManager123Requin sound;
 
             #endregion
 
             public override void Start()
             {
                 base.Start(); //Do not erase this line!
-                ManagerInit();
 
                 canFlash = false;
                 sign.gameObject.SetActive(false);
@@ -125,7 +124,7 @@ namespace LeRafiot
 
                             if (lockSpawn == false && !ropeControllerScript.win)
                             {
-                                SoundManager123Requin.Instance.sfxSound[3].Play();
+                                sound.sfxSound[3].Play();
                                 //sign.gameObject.SetActive(true);
                                 lockSpawn = true;
                                 //sharkIsHere = true;
@@ -149,20 +148,7 @@ namespace LeRafiot
                 }
             }
 
-            void ManagerInit()
-            {
-                if (Instance == null)
-                {
-                    Instance = this;
-                }
-                else
-                {
-                    if (actualShark != null)
-                    {
-                        Destroy(gameObject);
-                    }
-                }
-            }
+          
 
             private void OnTriggerEnter2D(Collider2D col)
             {

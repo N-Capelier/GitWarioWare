@@ -37,7 +37,8 @@ namespace LeRafiot
 
             private int countAnim;
             [HideInInspector] public bool controllerDisabled;
-
+            public SharkManager sharkManager;
+            public SoundManager123Requin sound;
             #endregion
 
             public override void Start()
@@ -69,14 +70,14 @@ namespace LeRafiot
                     if ((Input.GetButtonDown("A_Button") || Input.GetKeyDown(KeyCode.Space)) && !Manager.Instance.panel.activeSelf && !controllerDisabled)
                     {
                         attachedTo.transform.position -= new Vector3(0, -pullingUpRopeSize);            //Pulling up the chest
-                        SoundManager123Requin.Instance.sfxSound[2].Play();
+                        sound.sfxSound[2].Play();
 
                         playerAnimator.SetTrigger("PullUp");
                     }
                 }
                 else
                 {
-                    if (!win && !SharkManager.Instance.sharkIsHere && !Manager.Instance.panel.activeSelf)
+                    if (!win && !sharkManager.sharkIsHere && !Manager.Instance.panel.activeSelf)
                     {
                         win = true;
                         rope.SetPosition(1, new Vector3(0, 0));
@@ -85,7 +86,7 @@ namespace LeRafiot
                         camPlayer.SetActive(false);
                         camBoat.SetActive(true);
                         loseScript.buttonAnimator.gameObject.SetActive(false);
-                        SoundManager123Requin.Instance.sfxSound[0].Play();
+                        sound.sfxSound[0].Play();
                     }
                 }
             }

@@ -12,8 +12,7 @@ namespace LeRafiot
 
         public class SoundManager123Requin : TimedBehaviour
         {
-            public static SoundManager123Requin Instance;
-
+           
             public AudioSource[] globalMusic;
 
             [Space] public AudioSource[] sfxSound;
@@ -21,7 +20,6 @@ namespace LeRafiot
             public override void Start()
             {
                 base.Start();
-                ManagerInit();
 
                 switch (bpm)
                 {
@@ -43,18 +41,7 @@ namespace LeRafiot
 
             }
 
-            void ManagerInit()
-            {
-                if (Instance == null)
-                {
-                    Instance = this;
-                }
-                else
-                {
-                    Destroy(gameObject);
-                }
-            }
-
+           
             //Update call on a fixed time
             public override void FixedUpdate()
             {
