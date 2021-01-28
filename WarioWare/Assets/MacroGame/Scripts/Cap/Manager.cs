@@ -157,8 +157,7 @@ namespace Caps
             if (_transitionCam == null)
                 _transitionCam = transitionCam;
 
-            int _keyStoneImpact = Mathf.RoundToInt(KeystoneReward.keystoneCount / 2f);
-            numberBeforSpeedUp = 1 + Mathf.RoundToInt(((float)_currentIsland.difficulty + 1f) / 5f) + _keyStoneImpact + Mathf.RoundToInt(1f / (1f + _keyStoneImpact));
+            numberBeforSpeedUp = 2 + (int)(((float)_currentIsland.difficulty + 1f) / 3f) + Mathf.RoundToInt(KeystoneReward.keystoneCount/6f);
             cantDoTransition = false;
             currentCap = _currentCap;
             currentIsland = _currentIsland;
@@ -450,7 +449,7 @@ namespace Caps
 
             
 
-            if (miniGamePassedNumber % numberBeforSpeedUp == 0 && currentCap.length != miniGamePassedNumber)
+            if (miniGamePassedNumber % numberBeforSpeedUp == 0 && currentCap.length != miniGamePassedNumber && bpm < BPM.SuperFast)
             {
                 //play speed up jingle and wait for jingle to finish
                 SoundManager.Instance.ApplyAudioClip("speedUpJingle", transitionMusic, bpm);

@@ -9,7 +9,7 @@ namespace Caps
         /// <summary>
         /// this name will be changed latter when we have islandes
         /// </summary>
-        public int length;
+        public float length;
         public bool cursed;
         public List<IDCard> chosenMiniGames = new List<IDCard>();
         public bool[] hasBarrel;
@@ -24,8 +24,7 @@ namespace Caps
         {
 
             //number of different game calculated by devided the lenght by 2 (it's int so it's fine 5/2 = 2)
-                float _differentGameNumberFloat = (length + Rewards.KeystoneReward.keystoneCount) / 1.3f;
-                int differentGameNumber =(int)_differentGameNumberFloat ;
+                int differentGameNumber = (int) (length/1.5f) ;
                 //purcentage will ad every value if each game to creat a global procentage
                 int purcentage =0;
                 for (int i = 0; i < sorter.idCardsNotPlayed.Count; i++)
@@ -59,8 +58,8 @@ namespace Caps
                                 //this number is what will be needed to be calculated
                                 
                                 sorter.idCardsNotPlayed[x].idWeight += capWeight;
-                                if (sorter.idCardsNotPlayed[x].idWeight >= 20)
-                                    sorter.idCardsNotPlayed[x].idWeight = 20;
+                                if (sorter.idCardsNotPlayed[x].idWeight >= 16)
+                                    sorter.idCardsNotPlayed[x].idWeight = 16;
 
                                 break;
                             }
