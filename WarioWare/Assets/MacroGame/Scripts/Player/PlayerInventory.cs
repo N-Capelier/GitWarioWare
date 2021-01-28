@@ -304,7 +304,7 @@ namespace Player
                 {
                     keystones[3].SetActive(true);
                 }
-                else if (name == "La barre du The William")
+                else if (name == "La clef du magasin")
                 {
                     keystones[4].SetActive(true);
                 }
