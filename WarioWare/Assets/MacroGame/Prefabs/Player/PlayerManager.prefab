@@ -614,7 +614,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 9ed4175df742ad14ca7073c04ba96825, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -763,7 +763,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 4b9cb21c2c4b89d418e0c6e48b7934f5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1662,7 +1662,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 1a574dd8eada150458cde85ff76fc01a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2056,7 +2056,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 37a19c7380c9e4c4cb80f174f46cc51f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2547,14 +2547,14 @@ MonoBehaviour:
   m_text: New Text
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6173173baffc8b543a8c5c1d9a7c9a86, type: 2}
-  m_sharedMaterial: {fileID: -6597660684989455386, guid: 93d23a5437618a144969519577d73edc,
+  m_sharedMaterial: {fileID: 7905383801847112502, guid: 6173173baffc8b543a8c5c1d9a7c9a86,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
+    rgba: 4288124305
   m_fontColor: {r: 0.5686275, g: 0.58431375, b: 0.5921569, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -2950,9 +2950,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a406e1fada0968340bb323169af05705, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6a1093caa45cd704399ad49183beeb9c, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -3020,6 +3020,7 @@ MonoBehaviour:
   isSturdy: 0
   sturdyHealAmmount: 3
   clouds: {fileID: 0}
+  SMVestCount: 0
 --- !u!114 &1517109797
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3063,7 +3064,6 @@ MonoBehaviour:
   goldCompletion: {fileID: 4473697247332697212}
   woodCompletion: {fileID: 2897226370680040943}
   moralCompletion: {fileID: 3251874869145558827}
-  rew: {fileID: 0}
   fromInventory: 0
 --- !u!82 &1190770246925491698
 AudioSource:
@@ -4751,7 +4751,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 3c950a2969893204697bf4709375b351, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
