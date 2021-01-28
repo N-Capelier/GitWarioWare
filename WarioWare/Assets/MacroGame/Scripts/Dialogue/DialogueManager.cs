@@ -41,6 +41,8 @@ public class DialogueManager : Singleton<DialogueManager>
                     currentTarget.transform.position = positionToReset;
                     currentTarget = null;
                 }
+                currentDelay = 100;
+                currentDirection = null;
                 Manager.Instance.eventSystem.enabled = true;
                 UI.UICameraController.canSelect = true;
 

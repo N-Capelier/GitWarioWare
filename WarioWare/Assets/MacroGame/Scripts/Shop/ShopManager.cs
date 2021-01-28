@@ -149,7 +149,8 @@ namespace Shop
         public void Show(Island shop)
         {
             UI.UICameraController.canSelect = false;
-
+            Manager.Instance.waveSound.PlaySecured();
+            Manager.Instance.mainSound.PlaySecured();
             SoundManager.Instance.ApplyAudioClip("Clicked", audioSource);
             audioSource.PlaySecured();
 
@@ -170,7 +171,8 @@ namespace Shop
         {
             SoundManager.Instance.ApplyAudioClip("Cancel", audioSource);
             audioSource.PlaySecured();
-
+            Manager.Instance.mainSound.PlaySecured();
+            Manager.Instance.waveSound.PlaySecured();
             inShop = false;
             shopCanvas.SetActive(false);
             Manager.Instance.macroUI.SetActive(true);
@@ -186,13 +188,13 @@ namespace Shop
             {
                 if (clickedButton == shopSlots[i] && shopItems[loadedShopIndex][i] != null)
                 {
-                    if(PlayerManager.Instance.beatcoins >= shopItems[loadedShopIndex][i].price)
+                    if (PlayerManager.Instance.beatcoins >= shopItems[loadedShopIndex][i].price)
                     {
                         SoundManager.Instance.ApplyAudioClip("CollectItem", audioSource);
                         audioSource.PlaySecured();
 
                         PlayerManager.Instance.GainCoins(-shopItems[loadedShopIndex][i].price);
-                        if(shopItems[loadedShopIndex][i].type == RewardType.Resource)
+                        if (shopItems[loadedShopIndex][i].type == RewardType.Resource)
                         {
                             shopItems[loadedShopIndex][i].ApplyPassiveEffect();
                             if (shopItems[loadedShopIndex][i] == keyStoneReward)
@@ -219,7 +221,7 @@ namespace Shop
                 }
             }
         }
-
+        
         public void ShowSelectedInfo(Button selectedSlot)
         {
             SoundManager.Instance.ApplyAudioClip("Selected", audioSource);

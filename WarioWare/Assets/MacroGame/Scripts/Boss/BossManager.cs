@@ -152,7 +152,6 @@ namespace Boss
                 }
                 else
                 {
-                    Manager.Instance.victory.SetActive(true);
                 }
                 yield return new WaitForSeconds(transitionMusic.clip.length);
                 if (phaseNumber == 5)
@@ -160,7 +159,6 @@ namespace Boss
                     int _sceneIndex = Manager.Instance.macroSceneIndex;
                     
                         StartCoroutine(Manager.Instance.CapEnd(true));
-                        Manager.Instance.victory.SetActive(false);
                         transitionCam.enabled = false;
 
                         yield break;
