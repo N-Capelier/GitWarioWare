@@ -61,16 +61,17 @@ namespace Boss
             phaseBossLife = 0;
             keyStoneNumber.text = KeystoneReward.keystoneCount.ToString();
             currentType = islandType;
-            currentCap.ChoseMiniGames(sorter.bossList, differentMiniGameNumber);
             renderText.texture = bossTexture;
             if(islandType == IslandType.Boss)
             {
+                currentCap.ChoseMiniGames(sorter.bossList, differentMiniGameNumber);
                 bossLifeOnStartOfFight = BossLifeManager.currentLife;
                 BossLifeManager.Instance.InitialLife();
 
             }
             else
             {
+                currentCap.ChoseMiniGames(sorter.bossList, 7);
                 bossLifeOnStartOfFight = 100;
                 BossLifeManager.Instance.InitialLife(bossLifeOnStartOfFight);
 
@@ -100,6 +101,7 @@ namespace Boss
                 }
                 else
                 {
+                    _damageToBoss = 5;
                     BossLifeManager.Instance.TakeDamage(_damageToBoss, bossLifeOnStartOfFight, true);
                 }           
                 

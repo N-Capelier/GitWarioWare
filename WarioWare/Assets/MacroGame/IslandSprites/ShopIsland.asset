@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: a33057a965827894e909ef92a9b8d6d2, type: 3}
   anchorPoint: 5
+  borderMaterial: {fileID: 2100000, guid: 8d218ab47e481c5428fcd58c9727b099, type: 2}

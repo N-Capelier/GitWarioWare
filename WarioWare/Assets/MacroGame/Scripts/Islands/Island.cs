@@ -44,6 +44,8 @@ namespace Islands
         [HideInInspector] public List<Cap> capList = new List<Cap>();
         [HideInInspector] public bool isDone;
 
+        private Texture borderTex;
+
         /*[Header("Special Islands")]
         [SerializeField] Sprite legendaryIslandSprite;
         [SerializeField] Sprite startIslandSprite;
@@ -80,6 +82,7 @@ namespace Islands
         private AudioSource audioSource;
         public Image icon;
         public Image redCross;
+        public Image outlineShader;
 
         #endregion
 
@@ -122,6 +125,10 @@ namespace Islands
                 reward = introReward;
                 image.sprite = introSprite.sprite;
                 SetAnchor(introSprite);
+                if(introSprite.borderMaterial!=null)
+                {
+                    outlineShader.material= introSprite.borderMaterial;
+                }
             }
         }
 
@@ -216,6 +223,12 @@ namespace Islands
             }
 
             image.sprite = _sprite.sprite;
+            if (_sprite.borderMaterial != null)
+                outlineShader.material = _sprite.borderMaterial;
+            else
+            {
+                outlineShader.gameObject.SetActive(false);
+            }
 
             SetAnchor(_sprite);
         }
@@ -236,6 +249,12 @@ namespace Islands
             }
 
             image.sprite = _sprite.sprite;
+            if(_sprite.borderMaterial!=null)
+                outlineShader.material = _sprite.borderMaterial;
+            else
+            {
+                outlineShader.gameObject.SetActive(false);
+            }
             SetAnchor(_sprite);
         }
 

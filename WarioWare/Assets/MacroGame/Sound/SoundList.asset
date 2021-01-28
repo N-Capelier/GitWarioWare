@@ -497,3 +497,6 @@ MonoBehaviour:
   - name: TheFirstCove
     author: Matis Dupperray
     clip: {fileID: 8300000, guid: ead4bd7724fdfda448ebf79bae7ab6e1, type: 3}
+  - name: FunkyCOve
+    author: Matis Dupperray
+    clip: {fileID: 8300000, guid: ea641ab9ed604c34d95d13381ceed7d2, type: 3}

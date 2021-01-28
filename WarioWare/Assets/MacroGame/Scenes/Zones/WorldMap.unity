@@ -5801,6 +5801,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e6305ac144d8d6478d3d105566a76bc, type: 3}
+--- !u!1 &551599150 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1895828713670121620, guid: 8e6305ac144d8d6478d3d105566a76bc,
+    type: 3}
+  m_PrefabInstance: {fileID: 551599149}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &565996099
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8690,7 +8696,7 @@ PrefabInstance:
         type: 3}
       propertyPath: introSprite
       value: 
-      objectReference: {fileID: 11400000, guid: 9f894c7469558714196b60f731c7e538,
+      objectReference: {fileID: 11400000, guid: 8099d458cd407424287a99a64b8cf339,
         type: 2}
     - target: {fileID: 7309059693642548127, guid: bc2f8b499c511b94f934b47245aeb98e,
         type: 3}
@@ -20426,7 +20432,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: -1
+  m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!114 &2001844456 stripped
 MonoBehaviour:
@@ -21036,6 +21042,11 @@ PrefabInstance:
       propertyPath: mapCanvas
       value: 
       objectReference: {fileID: 1958824539}
+    - target: {fileID: 4425091558691189060, guid: 44ce734831448f74f8249d0ec54e9655,
+        type: 3}
+      propertyPath: bossLifeBar
+      value: 
+      objectReference: {fileID: 551599150}
     - target: {fileID: 4425091558691189061, guid: 44ce734831448f74f8249d0ec54e9655,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -22179,7 +22190,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2132581220}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 168, y: 294, z: 0}
+  m_LocalPosition: {x: 168, y: 294, z: 44.31}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

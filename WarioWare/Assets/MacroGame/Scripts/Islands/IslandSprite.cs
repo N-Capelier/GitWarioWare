@@ -21,5 +21,6 @@ namespace Islands
     {
         public Sprite sprite;
         public IslandAnchorPoint anchorPoint;
+        public Material borderMaterial;
     }
 }
