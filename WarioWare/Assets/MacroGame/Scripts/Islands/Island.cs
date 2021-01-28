@@ -293,7 +293,7 @@ namespace Islands
 
         public void OnClick()
         {
-            if(this != PlayerMovement.Instance.playerIsland)
+            if (this != PlayerMovement.Instance.playerIsland && Manager.Instance.zoomed == false)
             {
                 SoundManager.Instance.ApplyAudioClip("StartCap", audioSource);
                 Manager.Instance.eventSystem.enabled = false;
@@ -301,7 +301,7 @@ namespace Islands
                 PlayerMovement.Instance.Move(this);
                 audioSource.PlaySecured();
             }
-            else
+            else if(Manager.Instance.zoomed == false)
             {
                 if (PlayerMovement.Instance.playerIsland.type != IslandType.Shop)
                 {

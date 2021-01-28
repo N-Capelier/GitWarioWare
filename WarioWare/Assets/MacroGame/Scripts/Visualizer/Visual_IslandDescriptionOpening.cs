@@ -2,6 +2,8 @@
 using UnityEngine;
 using DG.Tweening;
 using System.Collections;
+using Caps;
+
 namespace UI
 {
     public class Visual_IslandDescriptionOpening : MonoBehaviour
@@ -48,6 +50,7 @@ namespace UI
             yield return new WaitForSeconds(openingTime);
             gameObject.SetActive(false);
             willClose = false;
+            Manager.Instance.zoomed = false;
         }
     }
 }

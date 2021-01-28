@@ -29,6 +29,7 @@ namespace Boss
         public CinemachineVirtualCamera cinemachine;
         private IslandType currentType;
         public TextMeshProUGUI keyStoneNumber;
+        Texture normalText;
 
         [Header("Boss parameters")]
         public float damageToPlayer = 10;
@@ -52,8 +53,8 @@ namespace Boss
             damageToBoss = (float)DebugToolManager.Instance.ChangeVariableValue("damageToBoss");
             differentMiniGameNumber = (int)DebugToolManager.Instance.ChangeVariableValue("differentMiniGameNumber");
             damageMultiplier = DebugToolManager.Instance.ChangeVariableValue("damageMultiplier");
-            
-            
+
+
         }
         public IEnumerator StartBoss(CapsSorter sorter, Cap currentCap, IslandType islandType)
         {
@@ -61,8 +62,9 @@ namespace Boss
             phaseBossLife = 0;
             keyStoneNumber.text = KeystoneReward.keystoneCount.ToString();
             currentType = islandType;
+            normalText = renderText.texture;
             renderText.texture = bossTexture;
-            if(islandType == IslandType.Boss)
+            if (islandType == IslandType.Boss)
             {
                 currentCap.ChoseMiniGames(sorter.bossList, differentMiniGameNumber);
                 bossLifeOnStartOfFight = BossLifeManager.currentLife;
@@ -79,21 +81,21 @@ namespace Boss
             shipOpening.gameObject.SetActive(true);
             StartCoroutine(Manager.Instance.ZoomCam(shipOpening.openingTime));
             yield return new WaitForSeconds(shipOpening.openingTime * 2);
-            StartCoroutine(Manager.Instance.PlayMiniGame(transitionCam,true));
+            StartCoroutine(Manager.Instance.PlayMiniGame(transitionCam, true));
         }
         public IEnumerator TransitionBoss(bool win)
         {
             transitionCam.enabled = true;
-            
+
             if (win)
             {
                 transition.PlayAnimation((float)Manager.Instance.bpm, true);
-                if(currentType == IslandType.Boss)
+                if (currentType == IslandType.Boss)
                     SoundManager.Instance.ApplyAudioClip("victoryJingleBoss", transitionMusic, Manager.Instance.bpm);
                 else
                     SoundManager.Instance.ApplyAudioClip("victoryJingleMiniBoss", transitionMusic, Manager.Instance.bpm);
 
-                int _damageToBoss =Mathf.RoundToInt( damageToBoss / Mathf.Pow(damageMultiplier, 5- (float) KeystoneReward.keystoneCount));
+                int _damageToBoss = Mathf.RoundToInt(damageToBoss / Mathf.Pow(damageMultiplier, 5 - (float)KeystoneReward.keystoneCount));
                 if (currentType == IslandType.Keystone)
                 {
                     _damageToBoss = (int)damageToBoss;
@@ -103,16 +105,16 @@ namespace Boss
                 {
                     _damageToBoss = 5;
                     BossLifeManager.Instance.TakeDamage(_damageToBoss, bossLifeOnStartOfFight, true);
-                }           
-                
+                }
+
                 phaseBossLife += _damageToBoss;
                 transitionMusic.PlaySecured();
                 yield return new WaitForSeconds(transitionMusic.clip.length);
             }
             else
             {
-                int _damageToPlayer = Mathf.RoundToInt(damageToPlayer * Mathf.Pow(damageMultiplier,5- (float)KeystoneReward.keystoneCount));
-                if(currentType != IslandType.Boss)
+                int _damageToPlayer = Mathf.RoundToInt(damageToPlayer * Mathf.Pow(damageMultiplier, 5 - (float)KeystoneReward.keystoneCount));
+                if (currentType != IslandType.Boss)
                 {
                     _damageToPlayer = (int)damageToBoss;
                 }
@@ -123,9 +125,9 @@ namespace Boss
                 {
                     if (currentType == IslandType.Boss)
                         SoundManager.Instance.ApplyAudioClip("loseJingleBoss", transitionMusic, Manager.Instance.bpm);
-                   else
+                    else
                         SoundManager.Instance.ApplyAudioClip("loseJingleMiniBoss", transitionMusic, Manager.Instance.bpm);
-                        transitionMusic.PlaySecured();
+                    transitionMusic.PlaySecured();
                     yield return new WaitForSeconds(transitionMusic.clip.length);
                 }
                 else
@@ -135,11 +137,11 @@ namespace Boss
                 }
             }
 
-          
+
             if (phaseBossLife >= bossLifeOnStartOfFight * phaseNumber / 4)
             {
                 phaseNumber++;
-                if(phaseNumber != 5)
+                if (phaseNumber != 5)
                 {
                     if (currentType == IslandType.Boss)
                         SoundManager.Instance.ApplyAudioClip("speedUpJingleBoss", transitionMusic, Manager.Instance.bpm);
@@ -157,21 +159,21 @@ namespace Boss
                 if (phaseNumber == 5)
                 {
                     int _sceneIndex = Manager.Instance.macroSceneIndex;
-                    
-                        StartCoroutine(Manager.Instance.CapEnd(true));
-                        transitionCam.enabled = false;
+                    renderText.texture = normalText;
+                    StartCoroutine(Manager.Instance.CapEnd(true));
+                    transitionCam.enabled = false;
 
-                        yield break;
-                    
-                    
+                    yield break;
+
+
                 }
                 Manager.Instance.bpm = Manager.Instance.bpm.Next();
-               
+
             }
 
 
-            Manager.Instance.GlobalTransitionEnd ( transitionCam, true);
-            
+            Manager.Instance.GlobalTransitionEnd(transitionCam, true);
+
         }
     }
 
