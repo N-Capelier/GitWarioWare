@@ -201,6 +201,8 @@ namespace Caps
         }
         public IEnumerator StartMiniGame(Cap _currentCap)
         {
+            mainSound.Stop();
+            waveSound.Stop();
             //_currentCap.ChoseMiniGames(sorter);
 
             cantDoTransition = false;
@@ -850,8 +852,6 @@ namespace Caps
             }
             mainSound.PlaySecured();
             waveSound.PlaySecured();
-
-
         }
 
         private void CompletionAttribution( bool isOver =false)
