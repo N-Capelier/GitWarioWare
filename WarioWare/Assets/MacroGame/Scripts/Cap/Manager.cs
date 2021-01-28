@@ -165,7 +165,7 @@ namespace Caps
             if (currentAsyncScene == null)
             {
                 
-                BossLifeManager.Instance.bossUI.gameObject.SetActive(false);
+                //BossLifeManager.Instance.bossUI.gameObject.SetActive(false);
                 if (!currentCap.isDone)
                 {
                     if (currentIsland.type == IslandType.Boss || currentIsland.type == IslandType.Keystone)
@@ -581,7 +581,7 @@ namespace Caps
                 PlayerMovement.Instance.playerIsland.isDone = true;
                 capUI.SetActive(false);
                 macroUI.SetActive(true);
-                BossLifeManager.Instance.bossUI.gameObject.SetActive(true);
+              //  BossLifeManager.Instance.bossUI.gameObject.SetActive(true);
                 PlayerMovement.Instance.ResetFocus();
                 eventSystem.enabled = false;
 
