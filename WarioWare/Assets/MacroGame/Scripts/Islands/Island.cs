@@ -125,11 +125,10 @@ namespace Islands
                 reward = introReward;
                 image.sprite = introSprite.sprite;
                 SetAnchor(introSprite);
-            }
-
-            if(introSprite.borderMaterial!=null)
-            {
-                outlineShader.material= introSprite.borderMaterial;
+                if(introSprite.borderMaterial!=null)
+                {
+                    outlineShader.material= introSprite.borderMaterial;
+                }
             }
         }
 
