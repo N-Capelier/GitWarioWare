@@ -12,6 +12,7 @@ public class DialogueManager : Singleton<DialogueManager>
     private Vector3 positionToReset;
     private GameObject currentTarget;
     private int currentDelay;
+    private Transform currentDirection;
     private void Awake()
     {
         CreateSingleton();
@@ -31,7 +32,7 @@ public class DialogueManager : Singleton<DialogueManager>
             canSkip = false;
             if (dialogueInRow > 0)
             {
-                PlayDialogue(currentDialogueNumber, dialogueInRow, currentDelay);
+                PlayDialogue(currentDialogueNumber, dialogueInRow, currentDelay, currentTarget,currentDirection);
             }
             else
             {
@@ -57,7 +58,10 @@ public class DialogueManager : Singleton<DialogueManager>
         currenDialogue = Instantiate(dialogues[dialogueNumber], transform.position, Quaternion.identity);
         dialogueInRow--;
         currentDialogueNumber = dialogueNumber + 1;
+        currentTarget = target;
+        positionToReset = currentTarget.transform.position;
         Manager.Instance.eventSystem.enabled = false;
+        currentDirection = direction;
         if(delay != 100)
         {
             currentDelay --;
@@ -65,8 +69,6 @@ public class DialogueManager : Singleton<DialogueManager>
         if(target != null && currentDelay ==0 )
         {
             Player.PlayerManager.Instance.clouds.SetBool("IsZoneActivate", true);
-            currentTarget = target;
-            positionToReset = currentTarget.transform.position;
             currentTarget.transform.position = direction.position;
         }
     }
