@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Caps;
-using UnityEditor.Build.Reporting;
 using TrioSAS.Cinquante;
 using UnityEditor;
 
