@@ -286,5 +286,10 @@ namespace Player
             }
         }
 
+
+        public void GetKeyStone(string name)
+        {
+
+        }
     }
 }

@@ -333,7 +333,7 @@ MonoBehaviour:
       volume: 0.5
     bpm: 3c000000500000006400000078000000
     name: speedUpJingleMiniBoss
-    foldout: 0
+    foldout: 1
   - sounds:
     - name: verbeJingleMiniBoss_0
       author: 

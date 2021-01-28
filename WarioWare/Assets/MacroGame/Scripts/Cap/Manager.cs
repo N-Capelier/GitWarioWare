@@ -812,9 +812,16 @@ namespace Caps
                 }
                 else if (PlayerMovement.Instance.playerIsland.type == IslandType.Keystone)
                 {
-                    switch (KeystoneReward.keystoneCount)
+                    PlayerInventory.Instance.GetKeyStone(PlayerMovement.Instance.playerIsland.keyStoneIslandReward.rewardName);
+                    switch (PlayerMovement.Instance.playerIsland.keyStoneIslandReward.rewardName)
                     {
-                        case 1:
+                        case "Les voiles du Queen Anne’s Revenge":
+                            break;
+                        case "Les canons de l’Adventure Galley":
+                            break;
+                        case "Figure de proue du Sloop William":
+                            break;
+                        case "La barre du The William":
                             break;
                         default:
                             break;
