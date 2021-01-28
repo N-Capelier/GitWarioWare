@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -875,9 +875,13 @@ namespace Caps
             int woodToAdd = 0;
             int _moralCost = 0;
 
-            if (pourcentageCompleted >= 1f)
+            if (pourcentageCompleted >= 0.75f)
             {
-                currentMonnaie = monnaieGold;
+                if (pourcentageCompleted == 1)
+                    currentMonnaie = monnaieGold;
+                else
+                    currentMonnaie = monnaieSilver;
+
                 while (currentMonnaie > 0)
                 {
                     int random = Random.Range(0, 3);
@@ -903,9 +907,9 @@ namespace Caps
                             }
                             break;
                         case 2:
-                            if (currentMonnaie >= 6)
+                            if (currentMonnaie >= 3)
                             {
-                                currentMonnaie -= 6;
+                                currentMonnaie -= 3;
                                 woodToAdd += 10;
                             }
                             break;
@@ -917,9 +921,7 @@ namespace Caps
             }
             else if (pourcentageCompleted >= 0.5f)
             {
-                if (pourcentageCompleted >= 0.75f)
-                    currentMonnaie = monnaieSilver;
-                else
+                
                     currentMonnaie = monnaieBronze;
                 while (currentMonnaie > 0)
                 {

@@ -119,7 +119,7 @@ namespace Player
                 {
                     StartCoroutine(Manager.Instance.UnzoomCam());
                 }
-                BossLifeManager.Instance.bossUI.gameObject.SetActive(true);
+               // BossLifeManager.Instance.bossUI.gameObject.SetActive(true);
                 UI.UICameraController.canSelect = true;
 
             }

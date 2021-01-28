@@ -2734,8 +2734,8 @@ MonoBehaviour:
   moralCost: -10
   _moralCost: 10
   monnaieBronze: 3
-  monnaieSilver: 4
-  monnaieGold: 6
+  monnaieSilver: 5
+  monnaieGold: 8
   mainSound: {fileID: 2167018571818590849}
   waveSound: {fileID: 7464705159266943713}
   sorter: {fileID: 11400000, guid: 6dc05a15978033047a905a916eb5d27c, type: 2}
