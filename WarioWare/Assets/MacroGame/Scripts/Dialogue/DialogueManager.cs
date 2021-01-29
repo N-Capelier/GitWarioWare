@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Caps;
+using UnityEngine.SceneManagement;
 public class DialogueManager : Singleton<DialogueManager>
 {
     private bool canSkip;
@@ -13,6 +14,7 @@ public class DialogueManager : Singleton<DialogueManager>
     private GameObject currentTarget;
     private int currentDelay;
     private Transform currentDirection;
+    public bool over;
     private void Awake()
     {
         CreateSingleton();
@@ -45,13 +47,17 @@ public class DialogueManager : Singleton<DialogueManager>
                 currentDirection = null;
                 Manager.Instance.eventSystem.enabled = true;
                 UI.UICameraController.canSelect = true;
-
+                if (over)
+                {
+                    
+                        SceneManager.LoadScene("Menu");
+                }
             }
         }
     }
 
 
-    public void PlayDialogue(int dialogueNumber, int _dialogueInRow = 0, int delay = 100, GameObject target= null, Transform direction = null)
+    public void PlayDialogue(int dialogueNumber, int _dialogueInRow = 0, int delay = 100, GameObject target= null, Transform direction = null, bool isOver = false)
     {
         currentDelay = delay;
         UI.UICameraController.canSelect = false;
@@ -76,5 +82,18 @@ public class DialogueManager : Singleton<DialogueManager>
             Player.PlayerManager.Instance.clouds.SetBool("IsZoneActivate", true);
             currentTarget.transform.position = direction.position;
         }
+    }
+    public void PlayDialogue(int dialogueNumber, bool isOver, int _dialogueInRow = 0 )
+    {
+        UI.UICameraController.canSelect = false;
+        canSkip = true;
+        dialogueInRow = _dialogueInRow;
+        currenDialogue = Instantiate(dialogues[dialogueNumber], transform.position, Quaternion.identity);
+        dialogueInRow--;
+        currentDialogueNumber = dialogueNumber + 1;
+
+        Manager.Instance.eventSystem.enabled = false;
+        over = isOver;
+       
     }
 }

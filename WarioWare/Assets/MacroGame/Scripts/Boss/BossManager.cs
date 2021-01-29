@@ -67,7 +67,7 @@ namespace Boss
             if (islandType == IslandType.Boss)
             {
                 currentCap.ChoseMiniGames(sorter.bossList, differentMiniGameNumber);
-                bossLifeOnStartOfFight = BossLifeManager.currentLife;
+                bossLifeOnStartOfFight =  BossLifeManager.currentLife;
                 BossLifeManager.Instance.InitialLife();
 
             }
@@ -81,6 +81,7 @@ namespace Boss
             shipOpening.gameObject.SetActive(true);
             StartCoroutine(Manager.Instance.ZoomCam(shipOpening.openingTime));
             yield return new WaitForSeconds(shipOpening.openingTime * 2);
+
             StartCoroutine(Manager.Instance.PlayMiniGame(transitionCam, true));
         }
         public IEnumerator TransitionBoss(bool win)
@@ -103,7 +104,6 @@ namespace Boss
                 }
                 else
                 {
-                    _damageToBoss = 5;
                     BossLifeManager.Instance.TakeDamage(_damageToBoss, bossLifeOnStartOfFight, true);
                 }
 
@@ -158,7 +158,6 @@ namespace Boss
                 yield return new WaitForSeconds(transitionMusic.clip.length);
                 if (phaseNumber == 5)
                 {
-                    int _sceneIndex = Manager.Instance.macroSceneIndex;
                     renderText.texture = normalText;
                     StartCoroutine(Manager.Instance.CapEnd(true));
                     transitionCam.enabled = false;

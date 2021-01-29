@@ -569,8 +569,6 @@ namespace Caps
             SceneManager.SetActiveScene(scene);
             #endregion
 
-
-
             //reward attribution
             if (_giveReward)
             {
@@ -858,7 +856,7 @@ namespace Caps
                 }
                 else if (isOver)
                 {
-                    DialogueManager.Instance.PlayDialogue(17, 2);
+                    DialogueManager.Instance.PlayDialogue(17,true, 2);
                 }
                 else
                     eventSystem.enabled = true;
