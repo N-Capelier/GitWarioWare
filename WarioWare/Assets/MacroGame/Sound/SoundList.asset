@@ -393,16 +393,16 @@ MonoBehaviour:
     author: WilliamSchmitt
     clip: {fileID: 8300000, guid: 97843520a0b1c5146ac825297789abc6, type: 3}
   - name: CestNotreTresor
-    author: Matis Dupperray
+    author: MatisDuperray
     clip: {fileID: 8300000, guid: fe8b375e8a797df4f8a2277e64ef87ad, type: 3}
   - name: ChasseAuTresor
-    author: Matis Dupperray
+    author: MatisDuperray
     clip: {fileID: 8300000, guid: 428264f6c4ed5054393d5369ba74dcde, type: 3}
   - name: Les4Pieces
-    author: Matis Dupperray
+    author: MatisDuperray
     clip: {fileID: 8300000, guid: 83b2217fe82e9f746ae426ca646962e2, type: 3}
   - name: CeremonieDeTe
-    author: Matis Dupperray
+    author: MatisDuperray
     clip: {fileID: 8300000, guid: 2e95eebf178d19e47b72b88ec3150fb1, type: 3}
   - name: LaBonneAuberge
     author: MathieuVanCappellen
@@ -411,16 +411,16 @@ MonoBehaviour:
     author: MathieuVanCappellen
     clip: {fileID: 8300000, guid: 8b25e85ccb63ae944ab2b9e0a4faa19c, type: 3}
   - name: BouffeJoelle
-    author: Matis Dupperray
+    author: MatisDuperray
     clip: {fileID: 8300000, guid: 682cd5be21161c440a3d1dfb6764cb6e, type: 3}
   - name: Ghost
-    author: Matis Dupperray
+    author: MatisDuperray
     clip: {fileID: 8300000, guid: d9ed7cf4e4639144b98b8bd89cc34c96, type: 3}
   - name: SharkExfiltration
     author: MathieuVanCappellen
     clip: {fileID: 8300000, guid: 03cfa9f40c2aee641bcd1e6c88ed2c5c, type: 3}
   - name: Chope
-    author: Matis Dupperray
+    author: MatisDuperray
     clip: {fileID: 8300000, guid: 382616d7713d0e549b7c2606433781b5, type: 3}
   - name: BulletHead
     author: MathieuVanCappellen
@@ -429,10 +429,10 @@ MonoBehaviour:
     author: MathieuVanCappellen
     clip: {fileID: 8300000, guid: f4fd89019ed556c4d9e4f301b5706c3d, type: 3}
   - name: Spin
-    author: Matis Dupperray
+    author: MatisDuperray
     clip: {fileID: 8300000, guid: 8c18a6d2f8df6184983f4709a335bcdf, type: 3}
   - name: Swipe
-    author: Matis Dupperray
+    author: MatisDuperray
     clip: {fileID: 8300000, guid: 33f69b76db2268c4caed428a3e13226d, type: 3}
   - name: TheCanonBalls
     author: MathieuVanCappellen
@@ -441,7 +441,7 @@ MonoBehaviour:
     author: MathieuVanCappellen
     clip: {fileID: 8300000, guid: d776831e9a0f9d04b9d34436725df779, type: 3}
   - name: Run
-    author: Matis Dupperray
+    author: MatisDuperray
     clip: {fileID: 8300000, guid: f1ec3847b3978004cbb3510378f892ce, type: 3}
   - name: CatchFly
     author: MathieuVanCappellen
@@ -459,13 +459,13 @@ MonoBehaviour:
     author: MathieuVanCappellen
     clip: {fileID: 8300000, guid: 83011337ef652f64f94c0943fef46b37, type: 3}
   - name: CallOfGold
-    author: Matis Dupperray
+    author: MatisDuperray
     clip: {fileID: 8300000, guid: b90188dabb79a3447b5f901af4b8cc9d, type: 3}
   - name: CallOfGoldProto
-    author: Matis Dupperray
+    author: MatisDuperray
     clip: {fileID: 8300000, guid: 4d2cf096f160fdc49ac632df34c413d7, type: 3}
   - name: JazzyTime
-    author: Matis Dupperray
+    author: MatisDuperray
     clip: {fileID: 8300000, guid: 033bef46ace569b4c810039794515275, type: 3}
   - name: LandInSight
     author: MathieuVanCappellen
@@ -483,20 +483,20 @@ MonoBehaviour:
     author: MathieuVanCappellen
     clip: {fileID: 8300000, guid: 88fcf8ea2ee16a34ca06aea5db7f3be2, type: 3}
   - name: PerfectRide
-    author: Matis Dupperray
+    author: MatisDuperray
     clip: {fileID: 8300000, guid: 475149d1cfa4efe4688b48bc8791586c, type: 3}
   - name: TheJazzCat
-    author: Matis Dupperray
+    author: MatisDuperray
     clip: {fileID: 8300000, guid: 6c3e9a669e195d040bc280d61d4bd118, type: 3}
   - name: Travelers
-    author: Matis Dupperray
+    author: MatisDuperray
     clip: {fileID: 8300000, guid: 7ffc05d7360f95341ad5a98f314689d9, type: 3}
   - name: PiratCove
-    author: Matis Dupperray
+    author: MatisDuperray
     clip: {fileID: 8300000, guid: a96f6214317d6f543ba36390ccd0234c, type: 3}
   - name: TheFirstCove
-    author: Matis Dupperray
+    author: MatisDuperray
     clip: {fileID: 8300000, guid: ead4bd7724fdfda448ebf79bae7ab6e1, type: 3}
   - name: FunkyCOve
-    author: Matis Dupperray
+    author: MatisDuperray
     clip: {fileID: 8300000, guid: ea641ab9ed604c34d95d13381ceed7d2, type: 3}
