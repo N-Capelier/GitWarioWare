@@ -67,7 +67,7 @@ namespace Boss
             if (islandType == IslandType.Boss)
             {
                 currentCap.ChoseMiniGames(sorter.bossList, differentMiniGameNumber);
-                bossLifeOnStartOfFight =  BossLifeManager.currentLife;
+                bossLifeOnStartOfFight =  150;
                 BossLifeManager.Instance.InitialLife();
 
             }

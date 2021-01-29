@@ -40,10 +40,10 @@ namespace Boss
         /// <returns></returns>
         public bool TakeDamage (int damageValue, int initialLife = 150, bool isBoss = false, bool isMiniBoss = false)
         {
-            bossHPFillbar.fillAmount = currentLife / initialLife;
             if (!isBoss)
             {
-
+                currentLife -= Mathf.Clamp(damageValue, 0, currentLife);
+                bossHPFillbar.fillAmount = currentLife / initialLife;
                 StartCoroutine(bossTranstion.BossTakeDamage(initialLife, currentLife));
             }                
             else
