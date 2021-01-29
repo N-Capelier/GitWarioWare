@@ -71,6 +71,7 @@ namespace Caps
         [HideInInspector] public int macroSceneIndex;
         private Cap currentCap;
         [HideInInspector] public bool isLoaded;
+        [HideInInspector] public bool playedMiniGames = false;
         public BPM bpm = BPM.Slow;
 
         public Difficulty currentDifficulty;
@@ -171,6 +172,7 @@ namespace Caps
                 //BossLifeManager.Instance.bossUI.gameObject.SetActive(false);
                 if (!currentCap.isDone)
                 {
+                    
                     if (currentIsland.type == IslandType.Boss || currentIsland.type == IslandType.Keystone)
                     {
                         StartCoroutine(BossManager.Instance.StartBoss(sorter, currentCap, currentIsland.type));
@@ -202,6 +204,10 @@ namespace Caps
                     initalCamTransform = PlayerMovement.Instance.playerAvatar.transform;
                     StartCoroutine(CapEnd());
                     yield break;
+                }   
+                else if(!currentCap.isDone)
+                {
+                    playedMiniGames = true;
                 }
             }
 
@@ -593,6 +599,8 @@ namespace Caps
             }
             else
             {
+                macroUI.SetActive(true);
+                capUI.SetActive(false);
                 StartCoroutine(UnzoomCam());
                 currentCap = null;
                 UI.UICameraController.canSelect = true;
@@ -1043,7 +1051,9 @@ namespace Caps
             yield return new WaitForSeconds(shipOpening.openingTime * 2);
             eventSystem.enabled = true;
             cantDoTransition = true;
+            transitionCam.enabled = false;
             shipOpening.Close();
+            playedMiniGames = false;
         }
         #endregion
 

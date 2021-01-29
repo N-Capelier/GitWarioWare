@@ -21,13 +21,16 @@ namespace UI
         public bool cantScaleOnStart;
         private void OnEnable()
         {
-            if (parchemin.transform.localScale.y != openedSize)
-                parchemin.DOScaleY(openedSize, openingTime);
-            if (willClose)
+            if(Manager.Instance.playedMiniGames == false)
             {
-                willClose = false;
-                parchemin.DOScaleY(closedSize, 1);
+                if (parchemin.transform.localScale.y != openedSize)
+                    parchemin.DOScaleY(openedSize, openingTime);
+                if (willClose)
+                {
+                    willClose = false;
+                    parchemin.DOScaleY(closedSize, 1);
 
+                }
             }
         }
 

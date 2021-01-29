@@ -43,9 +43,7 @@ namespace UI
                 {
                     if (Mathf.Abs(Input.GetAxis("Left_Joystick_X")) > joystickDeadZone || Mathf.Abs(Input.GetAxis("Left_Joystick_Y")) > joystickDeadZone || !IsInsideMap())
                     {
-
-                        targetTransform.position = Manager.Instance.eventSystem.currentSelectedGameObject.transform.position;
-
+                         targetTransform.position = Manager.Instance.eventSystem.currentSelectedGameObject.transform.position;
                     }
 
                     MoveTarget();

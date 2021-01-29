@@ -119,4 +119,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/MicroGames/Cluster Thibaut/TrioFleebos/VielleOfTime/VielleOfTime.unity
     guid: b73f9ad270c138c48aae61cd3d1203c5
+  - enabled: 1
+    path: Assets/MacroGame/Scenes/PlayCinematic.unity
+    guid: ec44df8377d5cfa44b88a746ae779db4
+  - enabled: 1
+    path: Assets/MacroGame/Scenes/IntroCinematic.unity
+    guid: ed139dd73b3801544ac18eb1564e824a
   m_configObjects: {}
