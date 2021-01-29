@@ -158,8 +158,13 @@ namespace Boss
                 yield return new WaitForSeconds(transitionMusic.clip.length);
                 if (phaseNumber == 5)
                 {
+
                     renderText.texture = normalText;
-                    StartCoroutine(Manager.Instance.CapEnd(true));
+                    if (currentType == IslandType.Boss)
+                        StartCoroutine(Manager.Instance.CapEnd(true));
+                    else
+                        StartCoroutine(Manager.Instance.CapEnd(false));
+
                     transitionCam.enabled = false;
 
                     yield break;
