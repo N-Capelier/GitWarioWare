@@ -179,9 +179,7 @@ namespace Caps
                     else
                     {
                         _currentCap.ChoseMiniGames(sorter);
-
                     }
-
 
                 }
                 shipOpening.gameObject.SetActive(true);
@@ -805,6 +803,11 @@ namespace Caps
             }
             else
             {
+                 if (isOver)
+                    {
+                        DialogueManager.Instance.PlayDialogue(17, true, 2);
+                    return;
+                    }
                 if (PlayerMovement.Instance.playerIsland.reward.type != RewardType.Resource)
                 {
                     PlayerManager.Instance.GainMoral(15);
@@ -853,10 +856,6 @@ namespace Caps
                         default:
                             break;
                     }
-                }
-                else if (isOver)
-                {
-                    DialogueManager.Instance.PlayDialogue(17,true, 2);
                 }
                 else
                     eventSystem.enabled = true;
